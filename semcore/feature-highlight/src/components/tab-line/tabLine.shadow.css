@@ -1,46 +1,11 @@
-SHighlightedItem {
-  &:focus-visible {
-    outline: none;
-
-    &::before {
-      opacity: 1;
-      transform: scale(1);
+STabLineFH {
+  SHighlightedItem {
+    &:focus-visible {
+      outline-color: var(--intergalactic-feature-highlight-keyboard-focus-outline, oklch(0.82 0.15 170));
     }
-  }
-
-  &::after {
-    opacity: 0;
-    transition: opacity calc(var(--intergalactic-duration-control, 200) * 1ms) ease-in-out;
-  }
-  &[selected]::after, &:hover:not(:focus-visible)::after {
-    opacity: 1;
-    background: var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.117 274.1)));
-  }
-
-  &::before {
-    content: "";
-    position: absolute;
-    z-index: 0;
-    inset: 0;
-    height: auto;
-    width: calc(100% + 4px);
-    margin: -4px;
-    padding: 2px;
-    box-sizing: content-box;
-    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.58 0.168 278.2)));
-
-    mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
-    mask-composite: exclude;
-
-    opacity: 0;
-    transform: scale(0.96);
-
-    transition:
-      opacity calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
-      transform calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 }
 
-SHighlightedCaret {
-  background: var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.117 274.1)));
+SCaret {
+  background: var(--intergalactic-feature-highlight-border-primary-active, oklch(0.22 0.008 245));
 }

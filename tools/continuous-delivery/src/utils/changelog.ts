@@ -357,7 +357,7 @@ export class Changelog {
             );
           }
 
-          if (Changelog.isMajor(traversingVersion)) {
+          if (traversingVersion === '16.0.0') {
             if (
               changelogs[changelogs.length - 1]?.version !== traversingVersion ||
               changelogs[changelogs.length - 1]?.component !== traversingComponent

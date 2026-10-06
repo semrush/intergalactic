@@ -7,7 +7,16 @@ import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
 import {
+  Area,
+  BAD,
+  DATA_TYPE,
+  FORECAST,
+  GOOD,
+  HIGHLIGHT_DOT,
+  INSIGHTFUL,
+  interpolateValue,
   Plot,
+  POTENTIAL,
   YAxis,
   XAxis,
   makeDataHintsContainer,
@@ -357,6 +366,43 @@ describe('Focus skip to content after plot', () => {
   });
 });
 
+const PLOT = { plotWidth: 500, plotHeight: 300, duration: 0 } as const;
+
+const makeAreaData = (count = 6) =>
+  Array.from({ length: count }, (_, i) => ({
+    time: new Date(2024, 0, 1 + i * 5),
+    line: i + 1,
+  }));
+
+const areaDots = (container: HTMLElement) =>
+  queryAllByAttribute('data-ui-name', container, (value: string) =>
+    Boolean(value?.endsWith('Dots')),
+  );
+
+const areaPaths = (container: HTMLElement) =>
+  Array.from(container.querySelectorAll('path')).filter((path) => {
+    const mask = path.getAttribute('mask') ?? '';
+    if (mask.includes('forecast') || mask.includes('potential')) return true;
+
+    return path.getAttribute('data-ui-name')?.endsWith('Area') ?? false;
+  });
+
+const drawnAreaPaths = (container: HTMLElement) =>
+  areaPaths(container).filter((path) => (path.getAttribute('d') ?? '').length > 0);
+
+const mainAreaPaths = (container: HTMLElement) =>
+  drawnAreaPaths(container).filter((path) => !path.getAttribute('mask'));
+
+const vertices = (path: Element | undefined) => (path?.getAttribute('d') ?? '').split('L').length;
+
+const rings = (container: HTMLElement) => container.querySelectorAll('circle[r="11.5"]');
+const halos = (container: HTMLElement) => container.querySelectorAll('circle[r="8.5"]');
+
+const renderArea = (props: Record<string, unknown> = {}) =>
+  render(
+    <Chart.Area groupKey='time' data={makeAreaData()} aria-label='Area chart' {...PLOT} {...props} />,
+  );
+
 describe('Chart.Area', () => {
   beforeEach(cleanup);
 
@@ -412,6 +458,212 @@ describe('Chart.Area', () => {
     expect(dots.length).toBeGreaterThan(0);
 
     await userEvent.click(dots[0]);
+  });
+
+  describe('HIGHLIGHT_DOT equivalence classes', () => {
+    beforeEach(cleanup);
+
+    const withHighlight = (highlight: unknown) => {
+      const data: any[] = makeAreaData();
+      data[2] = { ...data[2], [HIGHLIGHT_DOT]: highlight };
+      return data;
+    };
+
+    test.each([
+      ['GOOD', GOOD],
+      ['BAD', BAD],
+      ['INSIGHTFUL', INSIGHTFUL],
+    ])('%s draws one ring and one halo around the marked point', (_name, highlight) => {
+      const { container } = renderArea({ data: withHighlight(highlight), showDots: false });
+
+      expect(rings(container)).toHaveLength(1);
+      expect(halos(container)).toHaveLength(1);
+    });
+
+    test('each class resolves to its own colour reference', () => {
+      const colourOf = (highlight: unknown) => {
+        cleanup();
+        const { container } = renderArea({ data: withHighlight(highlight), showDots: false });
+        return halos(container)[0]?.getAttribute('color');
+      };
+
+      expect(colourOf(GOOD)).toContain('chart-data-success');
+      expect(colourOf(BAD)).toContain('chart-data-critical');
+      // INSIGHTFUL is the only class that points at a gradient rather than a flat token.
+      expect(colourOf(INSIGHTFUL)).toMatch(/^url\(#dotGradient_/);
+    });
+
+    test('an unmarked dataset draws no highlight decorations', () => {
+      const { container } = renderArea({ showDots: true });
+
+      expect(rings(container)).toHaveLength(0);
+      expect(halos(container)).toHaveLength(0);
+    });
+  });
+
+  describe('DATA_TYPE equivalence classes', () => {
+    beforeEach(cleanup);
+
+    const withTail = (marker: symbol) => {
+      const base = makeAreaData();
+      const last = base[base.length - 1];
+      return [
+        ...base,
+        { ...last, [DATA_TYPE]: marker },
+        { time: new Date(2024, 1, 5), line: 9, [DATA_TYPE]: marker },
+      ] as any[];
+    };
+
+    test.each([
+      ['FORECAST', FORECAST],
+      ['POTENTIAL', POTENTIAL],
+    ])('%s data adds a second drawn segment', (_name, marker) => {
+      const { container } = renderArea({ data: withTail(marker) });
+
+      expect(drawnAreaPaths(container)).toHaveLength(2);
+    });
+
+    test('the forecast segment is dashed and masked', () => {
+      const { container } = renderArea({ data: withTail(FORECAST) });
+      const dashed = container.querySelectorAll('path[stroke-dasharray="4 4"]');
+      const masked = drawnAreaPaths(container).filter((path) =>
+        path.getAttribute('mask')?.includes('forecast'),
+      );
+
+      expect(dashed.length).toBeGreaterThan(0);
+      expect(masked).toHaveLength(1);
+    });
+
+    test('marked points are excluded from the main segment', () => {
+      const plain = renderArea().container;
+      const plainVertices = vertices(mainAreaPaths(plain)[0]);
+      cleanup();
+
+      const marked: any[] = makeAreaData();
+      marked[2] = { ...marked[2], [DATA_TYPE]: FORECAST };
+      const { container } = renderArea({ data: marked });
+
+      expect(vertices(mainAreaPaths(container)[0])).toBe(plainVertices - 2);
+    });
+  });
+
+  describe('interpolateValue gaps', () => {
+    beforeEach(cleanup);
+
+    /** A gap in the middle of `line2`, with real values on both sides to bridge between. */
+    const withGap = () => {
+      const data: any[] = makeAreaData().map((point) => ({ ...point, line2: point.line + 1 }));
+      data[2] = { ...data[2], line2: interpolateValue };
+      return data;
+    };
+
+    test('a gap does not break the unstacked series', () => {
+      const { container } = renderArea({ data: withGap(), stacked: false, showDots: true });
+
+      mainAreaPaths(container).forEach((path) => {
+        expect(path.getAttribute('d') ?? '').not.toContain('NaN');
+      });
+      expect(mainAreaPaths(container).length).toBeGreaterThan(0);
+    });
+
+    test('the interpolated point gets no dot of its own', () => {
+      const plain = renderArea({
+        data: makeAreaData().map((point) => ({ ...point, line2: point.line + 1 })),
+        stacked: false,
+        showDots: true,
+      }).container;
+      const plainDots = areaDots(plain).length;
+      cleanup();
+
+      const { container } = renderArea({ data: withGap(), stacked: false, showDots: true });
+
+      expect(areaDots(container)).toHaveLength(plainDots - 1);
+    });
+
+    test.fails('a gap does not break the stacked series', () => {
+      expect(() => renderArea({ data: withGap(), stacked: true })).not.toThrow();
+    });
+  });
+
+  describe('boundary values', () => {
+    beforeEach(cleanup);
+
+    test.fails('renders an empty dataset without throwing', () => {
+      expect(() => renderArea({ data: [] })).not.toThrow();
+    });
+
+    test.each([1, 2])('renders a %i-point dataset without producing NaN geometry', (count) => {
+      const { container } = renderArea({ data: makeAreaData(count), showDots: true });
+      const paths = areaPaths(container);
+
+      // Guard: an empty selection would make the loop below assert nothing at all.
+      expect(paths.length).toBeGreaterThan(0);
+      paths.forEach((path) => {
+        expect(path.getAttribute('d') ?? '').not.toContain('NaN');
+      });
+    });
+
+    test('a one-point forecast run produces no NaN in the segment geometry', () => {
+      const data: any[] = [
+        ...makeAreaData(),
+        { time: new Date(2024, 1, 5), line: 9, [DATA_TYPE]: FORECAST },
+      ];
+
+      const { container } = renderArea({ data });
+      const paths = areaPaths(container);
+
+      // Guard: an empty selection would make the loop below assert nothing at all.
+      expect(paths.length).toBeGreaterThan(0);
+      paths.forEach((path) => {
+        expect(path.getAttribute('d') ?? '').not.toContain('NaN');
+      });
+    });
+
+    test('a dataset marked FORECAST end to end leaves the main segment empty', () => {
+      const data = makeAreaData().map((point) => ({ ...point, [DATA_TYPE]: FORECAST }));
+
+      const { container } = renderArea({ data });
+
+      expect(drawnAreaPaths(container)).toHaveLength(1);
+    });
+  });
+
+  describe('stacked interaction', () => {
+    beforeEach(cleanup);
+
+    test('Chart.Area is stacked by default', () => {
+      const { container } = renderArea();
+
+      expect(queryAllByAttribute('data-ui-name', container, 'StackedArea').length).toBeGreaterThan(0);
+    });
+
+    test('stacked={false} is deprecated but still switches the rendering', () => {
+      const { container } = renderArea({ stacked: false });
+
+      expect(queryAllByAttribute('data-ui-name', container, 'StackedArea')).toHaveLength(0);
+    });
+
+    test('marking a point FORECAST does not move the stack baseline of the other series', () => {
+      const base = [
+        { time: new Date(2024, 0, 1), a: 1, b: 2 },
+        { time: new Date(2024, 0, 6), a: 2, b: 2 },
+        { time: new Date(2024, 0, 11), a: 3, b: 2 },
+        { time: new Date(2024, 0, 16), a: 4, b: 2 },
+      ];
+      const plain = render(
+        <Chart.Area groupKey='time' data={base} aria-label='Area chart' {...PLOT} />,
+      ).container;
+      const plainPaths = mainAreaPaths(plain).length;
+      cleanup();
+
+      const marked: any[] = [...base];
+      marked[2] = { ...marked[2], [DATA_TYPE]: FORECAST };
+      const { container } = render(
+        <Chart.Area groupKey='time' data={marked} aria-label='Area chart' {...PLOT} />,
+      );
+
+      expect(mainAreaPaths(container)).toHaveLength(plainPaths);
+    });
   });
 });
 
