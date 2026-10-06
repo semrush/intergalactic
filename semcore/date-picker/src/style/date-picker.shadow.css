@@ -20,7 +20,7 @@ SHeader {
 
 STitle {
   font-size: var(--intergalactic-fs-200, 14px);
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
   height: 32px;
   width: 100%;
   display: flex;
@@ -57,7 +57,7 @@ SSingleDateInput {
 }
 
 SInputMask {
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
   line-height: normal;
   padding-right: var(--intergalactic-spacing-2x, 8px);
   transition: width calc(var(--intergalactic-duration-medium, 300) * 1ms) ease, min-width calc(var(--intergalactic-duration-medium, 300) * 1ms) ease;
@@ -76,7 +76,7 @@ SInputMask SValue {
 }
 
 SIndicator {
-  color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
+  color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
 }
 
 SRangeIndicator {
@@ -85,7 +85,7 @@ SRangeIndicator {
 }
 
 SRangeIndicator[range='value'] {
-  background-color: var(--intergalactic-date-picker-cell-active, oklch(0.23 0.01 140));
+  background-color: var(--intergalactic-date-picker-cell-active, oklch(0.23 0.009 245));
 }
 
 SRangeIndicator[range='compare'] {
@@ -148,16 +148,16 @@ SInputMask[noHumanizedDate] SMask {
 }
 
 SDateRange SInputMask:focus-within SMask {
-  background-color: var(--intergalactic-bg-highlight-focus, oklch(0.525 0.265 263 / 0.077));
+  background-color: var(--intergalactic-bg-highlight-focus, oklch(0.508 0.293 286.9 / 0.067));
 }
 
 SRangeSep[fulfilled],
 SDateRange:focus-within SRangeSep {
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
 }
 
 SRangeComparatorHeader {
-  border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+  border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
   padding: var(--intergalactic-spacing-4x, 16px);
 }
 
@@ -166,7 +166,7 @@ SRangeCalendar {
 }
 
 SFooter {
-  border-top: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+  border-top: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
   padding: var(--intergalactic-spacing-4x, 16px);
 }
 
