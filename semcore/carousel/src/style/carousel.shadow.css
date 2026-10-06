@@ -76,14 +76,14 @@ SItem[zoomOut] {
 SIndicators {
   display: flex;
   justify-content: center;
-  margin: var(--intergalactic-spacing-content-gap-xxlarge, 16px) var(--intergalactic-spacing-content-gap-small, 4px) var(--intergalactic-spacing-content-gap-small, 4px) var(--intergalactic-spacing-content-gap-small, 4px);
+  margin: var(--intergalactic-spacing-4x, 16px) var(--intergalactic-spacing-1x, 4px) var(--intergalactic-spacing-1x, 4px) var(--intergalactic-spacing-1x, 4px);
   outline: none;
   position: relative;
   border-radius: var(--intergalactic-rounded-extra-small, 2px);
 }
 
 SIndicator {
-  margin: 0 calc(0.5 * var(--intergalactic-spacing-content-gap-xlarge, 12px));
+  margin: 0 calc(0.5 * var(--intergalactic-spacing-3x, 12px));
   cursor: pointer;
   display: block;
   flex-shrink: 0;
@@ -142,17 +142,17 @@ SNext {
 
   SPrevButton span:has(> svg:only-child),
   SNextButton span:has(> svg:only-child) {
-    margin-left: calc(2 * var(--intergalactic-spacing-content-gap-small, 4px) - 1px);
-    margin-right: calc(2 * var(--intergalactic-spacing-content-gap-small, 4px) - 1px);
+    margin-left: calc(2 * var(--intergalactic-spacing-1x, 4px) - 1px);
+    margin-right: calc(2 * var(--intergalactic-spacing-1x, 4px) - 1px);
   }
 }
 
 SPrev {
-  margin-right: var(--intergalactic-spacing-content-gap-large, 8px);
+  margin-right: var(--intergalactic-spacing-2x, 8px);
 }
 
 SNext {
-  margin-left: var(--intergalactic-spacing-content-gap-large, 8px);
+  margin-left: var(--intergalactic-spacing-2x, 8px);
 }
 
 SPrev[disabled],
