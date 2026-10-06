@@ -8,7 +8,7 @@ SWizard {
 SSidebar {
   background: var(--intergalactic-wizard-sidebar-bg, oklch(0.23 0.009 245));
   color: var(--intergalactic-wizard-sidebar-text-primary, oklch(0.991 0.005 232.5 / 0.959));
-  padding: var(--intergalactic-spacing-content-padding-xxlarge, 40px) var(--intergalactic-spacing-content-padding-small, 8px);
+  padding: var(--intergalactic-spacing-10x, 40px) var(--intergalactic-spacing-2x, 8px);
   max-width: 220px;
   flex-shrink: 0;
   box-sizing: border-box;
@@ -20,9 +20,9 @@ SSidebar {
   SStepper {
     box-sizing: border-box;
     min-height: 36px;
-    gap: var(--intergalactic-spacing-content-gap-small, 4px);
+    gap: var(--intergalactic-spacing-1x, 4px);
     border-radius: var(--intergalactic-control-rounded, 6px);
-    padding: var(--intergalactic-spacing-content-padding-small, 8px) var(--intergalactic-spacing-content-padding-medium, 12px);
+    padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
     cursor: pointer;
     position: relative;
     overflow: auto;
@@ -49,11 +49,11 @@ SSidebar {
     }
 
     @media (max-width: 1060px) {
-      padding: var(--intergalactic-spacing-content-padding-small, 8px) var(--intergalactic-spacing-content-padding-xsmall, 4px);
+      padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-1x, 4px);
 
       &:hover {
         display: flex;
-        padding: var(--intergalactic-spacing-content-padding-small, 8px) var(--intergalactic-spacing-content-padding-medium, 12px) var(--intergalactic-spacing-content-padding-small, 8px) var(--intergalactic-spacing-content-padding-xsmall, 4px);
+        padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-1x, 4px);
         width: max-content;
         max-width: 220px;
       }
@@ -72,7 +72,7 @@ SSidebar {
 SSidebarHeader {
   font-size: var(--intergalactic-fs-300, 16px);
   margin: 0;
-  padding: 0 var(--intergalactic-spacing-content-padding-xlarge, 20px) var(--intergalactic-spacing-content-padding-large, 16px) var(--intergalactic-spacing-content-padding-xlarge, 20px);
+  padding: 0 var(--intergalactic-spacing-5x, 20px) var(--intergalactic-spacing-4x, 16px) var(--intergalactic-spacing-5x, 20px);
   @media (max-width: 1060px) {
     display: none;
   }
@@ -91,7 +91,7 @@ SStepNumber {
 
 SStepDescription {
   flex-direction: column;
-  gap: var(--intergalactic-spacing-content-gap-small, 4px);
+  gap: var(--intergalactic-spacing-1x, 4px);
 
   overflow-wrap: anywhere;
   @media (max-width: 1060px) {
@@ -100,7 +100,7 @@ SStepDescription {
 }
 
 SContent {
-  padding: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
+  padding: var(--intergalactic-spacing-10x, 40px);
   overflow: hidden;
   flex: 1;
   border-radius: 0 var(--intergalactic-modal-rounded, 14px) var(--intergalactic-modal-rounded, 14px) 0;
@@ -110,7 +110,7 @@ SContent {
     display: block;
     word-break: break-word;
     font-weight: var(--intergalactic-semi-bold, 600);
-    margin-bottom: var(--intergalactic-spacing-content-gap-xxlarge-extended, 20px);
+    margin-bottom: var(--intergalactic-spacing-5x, 20px);
   }
 }
 SContent[noSidebar] {

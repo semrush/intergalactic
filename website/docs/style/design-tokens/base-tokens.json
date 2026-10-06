@@ -754,6 +754,11 @@
     "description": "2px"
   },
   {
+    "name": "--intergalactic-spacing-1-5x",
+    "value": "6px",
+    "description": "6px"
+  },
+  {
     "name": "--intergalactic-rounded-extra-small",
     "value": "2px"
   },

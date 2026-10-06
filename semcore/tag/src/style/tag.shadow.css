@@ -49,8 +49,8 @@ STagContainerClose {
   box-sizing: border-box;
   background-color: var(--intergalactic-tag-primary-bg-normal, oklch(1 0 0));
   border-radius: var(--intergalactic-tag-rounded, 24px);
-  padding-left: var(--intergalactic-spacing-content-gap-small, 4px);
-  padding-right: var(--intergalactic-spacing-content-gap-small, 4px);
+  padding-left: var(--intergalactic-spacing-1x, 4px);
+  padding-right: var(--intergalactic-spacing-1x, 4px);
   font-family: inherit;
   font-weight: var(--intergalactic-medium, 500);
   color: var(--tag-color);
@@ -135,7 +135,7 @@ STag[size="xl"],
 STagContainerClose[size="xl"] {
   height: 40px;
   min-width: 40px;
-  padding: 0 var(--intergalactic-spacing-content-gap-large, 8px);
+  padding: 0 var(--intergalactic-spacing-2x, 8px);
 
   & SText {
     font-size: var(--intergalactic-fs-300, 16px);
@@ -255,8 +255,8 @@ STagContainerClose[theme="additional-invert"] {
 
 SText {
   display: flex;
-  padding-left: var(--intergalactic-spacing-content-gap-small, 4px);
-  padding-right: var(--intergalactic-spacing-content-gap-small, 4px);
+  padding-left: var(--intergalactic-spacing-1x, 4px);
+  padding-right: var(--intergalactic-spacing-1x, 4px);
   position: relative;
 }
 
@@ -367,7 +367,7 @@ STagContainer {
 
     svg {
       padding-left: 0;
-      padding-right: var(--intergalactic-spacing-content-gap-small, 4px);
+      padding-right: var(--intergalactic-spacing-1x, 4px);
     }
 
     svg path {
@@ -381,8 +381,8 @@ STagContainer {
 
   STagContainerClose[size="xl"] {
     svg {
-      padding-left: var(--intergalactic-spacing-content-gap-small, 4px);
-      padding-right: var(--intergalactic-spacing-content-gap-large, 8px);
+      padding-left: var(--intergalactic-spacing-1x, 4px);
+      padding-right: var(--intergalactic-spacing-2x, 8px);
     }
   }
 }

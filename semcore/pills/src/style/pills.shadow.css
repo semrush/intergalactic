@@ -1,7 +1,7 @@
 SPills {
   position: relative;
   display: inline-flex;
-  padding: var(--intergalactic-spacing-content-padding-xxsmall, 2px);
+  padding: var(--intergalactic-spacing-05x, 2px);
   min-height: var(--intergalactic-form-control-m, 32px);
   border-radius: var(--intergalactic-pills-rounded, 6px);
   background: var(--intergalactic-control-pills-bg-normal, oklch(0.324 0.077 242.1 / 0.079));
@@ -50,9 +50,9 @@ SPill {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  gap: var(--intergalactic-spacing-content-gap-medium, 6px);
-  padding: 0 var(--intergalactic-spacing-content-padding-medium, 12px);
-  
+  gap: var(--intergalactic-spacing-1-5x, 6px);
+  padding: 0 var(--intergalactic-spacing-3x, 12px);
+
   border-style: solid;
   border-color: transparent;
   border-radius: var(--intergalactic-rounded-small, 4px);
@@ -86,12 +86,12 @@ SPill {
   }
 
   &[size='m'] {
-    min-width: calc(var(--intergalactic-form-control-m, 32px) - var(--intergalactic-spacing-content-padding-xsmall, 4px));
+    min-width: calc(var(--intergalactic-form-control-m, 32px) - var(--intergalactic-spacing-1x, 4px));
     border-width: 2px 3px;
   }
 
   &[size='l'] {
-    min-width: calc(var(--intergalactic-form-control-l, 44px) - var(--intergalactic-spacing-content-padding-xsmall, 4px));
+    min-width: calc(var(--intergalactic-form-control-l, 44px) - var(--intergalactic-spacing-1x, 4px));
     border-width: 3px 3px;
   }
 }
@@ -116,11 +116,11 @@ SPillSeparator {
   align-self: center;
 
   width: 1px;
-  height: calc(100% - var(--intergalactic-spacing-content-padding-xsmall-extended, 6px) * 2);
+  height: calc(100% - var(--intergalactic-spacing-1-5x, 6px) * 2);
   background-color: var(--intergalactic-control-pills-border, oklch(0.277 0.066 242.6 / 0.18));
-  
+
   &[size='l'] {
-    height: calc(100% - var(--intergalactic-spacing-content-padding-small, 8px) * 2);
+    height: calc(100% - var(--intergalactic-spacing-2x, 8px) * 2);
   }
 }
 
