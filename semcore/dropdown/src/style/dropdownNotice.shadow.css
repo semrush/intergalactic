@@ -39,6 +39,10 @@ SDropdownNotice {
 
   SDropdownNoticeText {
     margin-top: var(--intergalactic-spacing-content-padding-xsmall, 4px);
-    margin-bottom: var(--intergalactic-spacing-content-padding-xsmall, 4px);
+    margin-bottom: 0;
+  }
+
+  SDropdownNoticeActions {
+    margin-top: var(--intergalactic-spacing-content-gap-large, 8px);
   }
 }

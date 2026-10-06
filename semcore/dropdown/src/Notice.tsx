@@ -44,8 +44,16 @@ function NoticeText(props: Intergalactic.InternalTypings.InferComponentProps<NSN
   );
 }
 
+function NoticeActions(props: Intergalactic.InternalTypings.InferComponentProps<NSNotice.Actions.Component>) {
+  const SDropdownNoticeActions = Root;
+
+  return sstyled(props.styles)(
+    <SDropdownNoticeActions render={Notice.Actions} />,
+  );
+}
+
 export const DropdownNotice = createComponent<NSDropdown.Notice.Component, typeof DropdownNoticeRoot>(DropdownNoticeRoot, {
   Text: NoticeText,
-  Actions: Notice.Actions,
+  Actions: NoticeActions,
   Close: Notice.Close,
 }, { parent: Notice });
