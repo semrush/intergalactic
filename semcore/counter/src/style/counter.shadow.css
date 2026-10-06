@@ -9,9 +9,9 @@ SCounter {
   border-radius: var(--intergalactic-counter-rounded, 12px);
   font-weight: var(--intergalactic-medium, 500);
 
-  color: var(--intergalactic-text-secondary, oklch(0.089 0.025 149.5 / 0.56));
+  color: var(--intergalactic-text-secondary, oklch(0.182 0.045 244.8 / 0.593));
   background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
-  border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+  border: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
 }
 
 SCounter[size='s'] {

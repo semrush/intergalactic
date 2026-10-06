@@ -404,7 +404,7 @@ export const theme: Theme = {
         description: 'Secondary text color for Badge.',
       },
       bg_highlight_focus: {
-        value: focus.opaqueAt(L_BG_SECONDARY_ACTIVE),
+        value: highlight.opaqueAt(L_BG_SECONDARY_ACTIVE),
         description: 'Focusing values in the input.',
       },
       bg_highlight_results: {
@@ -568,7 +568,7 @@ export const theme: Theme = {
         description: 'Subtle secondary border in the informational message.',
       },
       border_info_active: {
-        value: info.at(L_BORDER_ACTIVE),
+        value: focus.at(L_BORDER_STRONG),
         description: 'Active border in focused input filed.',
       },
       border_primary_DEFAULT: {
@@ -696,11 +696,11 @@ export const theme: Theme = {
         value: colors.yellow['200'].value,
         description: 'Color for the transactional data intent on the chart.',
       },
-      chart_grid_bar_chart_base_bg: {
-        value: neutral.at(L_BG_LIGHT),
+      chart_grid_bar_base_bg: {
+        value: neutral.at(L_BG_MEDIUM),
         description: 'Default background color of a bar in the BarChart.',
       },
-      chart_grid_bar_chart_hover: {
+      chart_grid_bar_hover: {
         value: neutral.opaqueAt(L_BG_PRIMARY_HOVER),
         description: 'Background color for the hover state of a bar on the chart grid.',
       },
@@ -917,19 +917,19 @@ export const theme: Theme = {
         description: 'Color of the checkmark.',
       },
       control_checkbox_button_bg_hover: {
-        value: '{semanticTokens.colors.control_secondary_info_DEFAULT}',
+        value: '{semanticTokens.colors.control_tertiary_neutral_hover}',
         description: 'Hover state of the Checkbox button background.',
       },
       control_checkbox_button_bg_normal: {
-        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        value: '{semanticTokens.colors.control_tertiary_neutral_DEFAULT}',
         description: 'Normal state of the Checkbox button background.',
       },
       control_checkbox_button_bg_selected_DEFAULT: {
-        value: '{semanticTokens.colors.control_secondary_info_active}',
+        value: '{semanticTokens.colors.control_tertiary_neutral_active}',
         description: 'Selected state of the Checkbox button background.',
       },
       control_checkbox_button_bg_selected_hover: {
-        value: '{semanticTokens.colors.control_secondary_info_active}',
+        value: '{semanticTokens.colors.control_tertiary_neutral_active}',
         description: 'Hover for a selected state of the Checkbox button background.',
       },
       control_checkbox_button_border_DEFAULT: {
@@ -937,7 +937,7 @@ export const theme: Theme = {
         description: 'Border color of the Checkbox button in its normal state.',
       },
       control_checkbox_button_border_selected: {
-        value: '{semanticTokens.colors.border_info_active}',
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
         description: 'Border color of the Checkbox button in its active state.',
       },
       control_radio_bg_normal: {
@@ -1061,7 +1061,7 @@ export const theme: Theme = {
         description: 'Hover state of the regular secondary control.',
       },
       control_select_trigger_active: {
-        value: '{semanticTokens.colors.bg_primary_neutral_active}',
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
         description: 'Background of the Select trigger in its active state.',
       },
       control_select_trigger_hover: {
@@ -1097,11 +1097,11 @@ export const theme: Theme = {
         description: 'Knob border color of the Slider in its hover state.',
       },
       control_slider_rating_icon_DEFAULT: {
-        value: neutral.at(L_ICON_SECONDARY),
+        value: neutral.opaqueAt(L_ICON_PRIMARY),
         description: 'Icon color for the SliderRating component in its normal state.',
       },
       control_slider_rating_icon_hover_active: {
-        value: highlight.at(L_ICON_SECONDARY_HOVER),
+        value: '{semanticTokens.colors.brand_secondary}',
         description: 'Icon color for the SliderRating component in its hovered and active states.',
       },
       control_switch_bg_DEFAULT: {
@@ -1229,15 +1229,15 @@ export const theme: Theme = {
         description: 'Text color of the Dot.',
       },
       dropdown_menu_item_DEFAULT: {
-        value: neutral.at(L_BG_PRIMARY),
+        value: '{semanticTokens.colors.control_tertiary_neutral_DEFAULT}',
         description: 'Default background color for the list item in the dropdown-menu.',
       },
       dropdown_menu_item_hover: {
-        value: neutral.opaqueAt(L_BG_PRIMARY_HOVER),
+        value: '{semanticTokens.colors.control_tertiary_neutral_hover}',
         description: 'Hover state of the default background color for the list item in the dropdown-menu.',
       },
       dropdown_menu_item_selected_DEFAULT: {
-        value: focus.opaqueAt(L_BG_SELECTED),
+        value: '{semanticTokens.colors.control_tertiary_neutral_active}',
         description: 'Active (selected) state of the default background color for the list item in the dropdown-menu.',
       },
       dropdown_menu_item_selected_box_shadow: {
@@ -1245,7 +1245,7 @@ export const theme: Theme = {
         description: 'Border color of the selected item in the DropdownMenu.',
       },
       dropdown_menu_item_selected_hover: {
-        value: focus.opaqueAt(L_BG_SELECTED_HOVER),
+        value: neutral.opaqueAt(L_BG_BUTTON_SECONDARY_HOVER),
         description: 'Hover state for the selected state of the default background color for the list item in the dropdown-menu.',
       },
       feature_popover_bg_accent: {
@@ -1289,67 +1289,67 @@ export const theme: Theme = {
       header_border_primary: { value: '{semanticTokens.colors.border.primary}' },
       header_border_secondary: { value: '{semanticTokens.colors.border.primary}' },
       icon_non_interactive: {
-        value: neutral.opaqueAt(L_ICON_NON_INTERACTIVE),
+        value: neutral.at(L_ICON_NON_INTERACTIVE),
         description: 'Color for the default non-interactive icon.',
       },
       icon_primary_critical_DEFAULT: {
-        value: error.opaqueAt(L_ICON_PRIMARY),
+        value: error.at(L_ICON_PRIMARY),
         description: 'Semantic error icon.',
       },
       icon_primary_critical_hover_active: {
-        value: error.opaqueAt(L_ICON_PRIMARY_HOVER),
+        value: error.at(L_ICON_PRIMARY_HOVER),
         description: 'Red background color for the hover and active states of the primary critical icon. It’s created using a CSS filter with a brightness(0.8), applied to the red-500 color.',
       },
       icon_primary_info_DEFAULT: {
-        value: info.opaqueAt(L_ICON_PRIMARY),
+        value: info.at(L_ICON_PRIMARY),
         description: 'Primary link-lookalike icon.',
       },
       icon_primary_info_hover_active: {
-        value: info.opaqueAt(L_ICON_PRIMARY_HOVER),
+        value: info.at(L_ICON_PRIMARY_HOVER),
         description: 'Blue background color for the hover and active states of the primary link-lookalike icon. It’s created using a CSS filter with a brightness(0.8), applied to the blue-500 color.',
       },
       icon_primary_invert_DEFAULT: {
-        value: neutral.opaqueInvAt(L_INV_ICON_PRIMARY),
+        value: neutral.at(L_INV_ICON_PRIMARY),
         description: 'Inverted version of the primary icon.',
       },
       icon_primary_invert_hover_active: {
-        value: neutral.opaqueInvAt(L_INV_ICON_PRIMARY_HOVER),
+        value: neutral.at(L_INV_ICON_PRIMARY_HOVER),
         description: 'Hover and active (selected) states of the inverted version of the primary icon.',
       },
       icon_primary_neutral_DEFAULT: {
-        value: neutral.opaqueAt(L_ICON_PRIMARY),
+        value: neutral.at(L_ICON_PRIMARY),
         description: 'Default icon weight on normal backgrounds—stronger emphasis than secondary icons.',
       },
       icon_primary_neutral_hover_active: {
-        value: neutral.opaqueAt(L_ICON_PRIMARY_HOVER),
+        value: neutral.at(L_ICON_PRIMARY_HOVER),
         description: 'Gray background color for the hover and active states of the primary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-500 color.',
       },
       icon_primary_success_DEFAULT: {
-        value: success.opaqueAt(L_ICON_PRIMARY),
+        value: success.at(L_ICON_PRIMARY),
         description: 'Semantic success icon.',
       },
       icon_primary_success_hover_active: {
-        value: success.opaqueAt(L_ICON_PRIMARY_HOVER),
+        value: success.at(L_ICON_PRIMARY_HOVER),
         description: 'Green background color for the hover and active states of the primary success icon. It’s created using a CSS filter with a brightness(0.8), applied to the green-500 color.',
       },
       icon_primary_warning_DEFAULT: {
-        value: warning.opaqueAt(L_ICON_PRIMARY + 0.15),
+        value: warning.at(L_ICON_PRIMARY + 0.15),
         description: 'Semantic warning icon.',
       },
       icon_primary_warning_hover_active: {
-        value: warning.opaqueAt(L_ICON_PRIMARY_HOVER),
+        value: warning.at(L_ICON_PRIMARY_HOVER),
         description: 'Orange background color for the hover and active states of the primary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-500 color.',
       },
       icon_secondary_critical_DEFAULT: {
-        value: error.opaqueAt(L_ICON_SECONDARY),
+        value: error.at(L_ICON_SECONDARY),
         description: 'Softer error icon for dense UI or inline hints where the surface should stay calm.',
       },
       icon_secondary_critical_hover_active: {
-        value: error.opaqueAt(L_ICON_SECONDARY_HOVER),
+        value: error.at(L_ICON_SECONDARY_HOVER),
         description: 'Red background color for the hover and active states of the secondary critical icon. It’s created using a CSS filter with a brightness(0.8), applied to the red-300 color.',
       },
       icon_secondary_info_DEFAULT: {
-        value: info.opaqueAt(L_ICON_SECONDARY),
+        value: info.at(L_ICON_SECONDARY),
         description: 'Secondary link-lookalike icon.',
       },
       icon_secondary_info_hover_active: {
@@ -1357,31 +1357,31 @@ export const theme: Theme = {
         description: 'Blue background color for the hover and active states of the secondary link-lookalike icon. It’s created using a CSS filter with a brightness(0.8), applied to the blue-300 color.',
       },
       icon_secondary_neutral_DEFAULT: {
-        value: neutral.opaqueAt(L_ICON_SECONDARY),
+        value: neutral.at(L_ICON_SECONDARY),
         description: 'De-emphasized icons for dense layouts (tables, tertiary actions).',
       },
       icon_secondary_neutral_hover_active: {
-        value: neutral.opaqueAt(L_ICON_SECONDARY_HOVER),
+        value: neutral.at(L_ICON_SECONDARY_HOVER),
         description: 'Gray background color for the hover and active states of the secondary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-300 color.',
       },
       icon_secondary_success_DEFAULT: {
-        value: success.opaqueAt(L_ICON_SECONDARY),
+        value: success.at(L_ICON_SECONDARY),
         description: 'Softer success icon for dense UI or inline hints where the surface should stay calm.',
       },
       icon_secondary_success_hover_active: {
-        value: success.opaqueAt(L_ICON_SECONDARY_HOVER),
+        value: success.at(L_ICON_SECONDARY_HOVER),
         description: 'Green background color for the hover and active states of the secondary success icon. It’s created using a CSS filter with a brightness(0.8), applied to the green-300 color.',
       },
       icon_secondary_warning_DEFAULT: {
-        value: warning.opaqueAt(L_ICON_SECONDARY),
+        value: warning.at(L_ICON_SECONDARY),
         description: 'Softer warning icon for dense UI or inline hints where the surface should stay calm.',
       },
       icon_secondary_warning_hover_active: {
-        value: warning.opaqueAt(L_ICON_SECONDARY_HOVER),
+        value: warning.at(L_ICON_SECONDARY_HOVER),
         description: 'Orange background color for the hover and active states of the secondary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-300 color.',
       },
       icon_secondary_invert_DEFAULT: {
-        value: neutral.opaqueInvAt(L_INV_ICON_SECONDARY),
+        value: neutral.at(L_INV_ICON_SECONDARY),
         description: 'Softer inverted icon for dense UI or inline hints where the surface should stay calm.',
       },
       illustration_blue: {
@@ -1433,7 +1433,7 @@ export const theme: Theme = {
         description: 'Color for keyboard focus outline styles to use on the dark and color background.',
       },
       keyboard_focus_outline: {
-        value: focus.opaqueAt(L_BORDER_FOCUS),
+        value: focus.at(L_BORDER_STRONG),
         description: 'Color for default keyboard focus outline styles.',
       },
       keyboard_focus_valid_outline: {
@@ -1457,7 +1457,7 @@ export const theme: Theme = {
         description: 'Background of the NoticeBubble.',
       },
       overlay_limitation_primary: {
-        value: `oklch(from ${neutral.at(0.97)} l c h / 0.7)`,
+        value: `oklch(from {semanticTokens.colors.page.bg} l c h / 0.7)`,
         description: 'Use as a primary cover of the content under the messages about limitations.',
       },
       overlay_limitation_secondary: {
@@ -1465,15 +1465,15 @@ export const theme: Theme = {
         description: 'Use as a secondary cover of the content under the messages about limitations.',
       },
       overlay_primary: {
-        value: neutral.opaqueAt(0.74),
+        value: `oklch(from ${colors.gray['600'].value} l c h / 0.4)`,
         description: 'Use for cover the content under the modal dialogs.',
       },
       overlay_secondary: {
-        value: neutral.opaqueAt(0.8),
+        value: `oklch(from ${colors.gray['600'].value} l c h / 0.3)`,
         description: 'Use for the secondary modal dialogs that were opened upon the other modal dialogs.',
       },
       page_bg: {
-        value: neutral.at(0.97),
+        value: neutral.at(0.98),
         description: 'Background fill for the whole product page.',
       },
       control_pills_bg_hover: {
@@ -1938,11 +1938,11 @@ export const theme: Theme = {
         description: 'Hover and active states of the text with font-size ≥20px associated with critical states and data.',
       },
       text_large_info_DEFAULT: {
-        value: info.at(L_TEXT_ACCENT),
+        value: '{semanticTokens.colors.text.link.primary}',
         description: 'Link text with font-size ≥20px.',
       },
       text_large_info_hover_active: {
-        value: info.at(L_TEXT_ACCENT),
+        value: '{semanticTokens.colors.text.link.primary_hover_active}',
         description: 'Hover and active states of the link text with font-size ≥20px.',
       },
       text_large_secondary: {
@@ -2002,7 +2002,7 @@ export const theme: Theme = {
         description: 'Placeholder text color for inputs and fields.',
       },
       text_primary_DEFAULT: {
-        value: neutral.opaqueAt(L_TEXT_PRIMARY),
+        value: neutral.at(L_TEXT_PRIMARY),
         description: 'Default body and UI copy; strongest reading emphasis for primary content.',
       },
       text_primary_invert: {
@@ -2136,7 +2136,7 @@ export const theme: Theme = {
         description: 'Keyboard focus styles for use on dark backgrounds.',
       },
       keyboard_focus_DEFAULT: {
-        value: '0px 0px 0px 3px {semanticTokens.colors.keyboard.focus.outline}',
+        value: '0px 0px 0px 3px oklch(from {semanticTokens.colors.keyboard.focus.outline} l c h / 0.5)',
         description: 'Default keyboard focus box-shadow styles.',
       },
     },
@@ -2436,6 +2436,16 @@ export const theme: Theme = {
     blue: {
       400: colors.blue['400'],
       500: colors.blue['500'],
+    },
+    chart: {
+      grid: {
+        bar: {
+          chart: {
+            base: { bg: { value: '{semanticTokens.colors.chart_grid_bar_base_bg}' } },
+            hover: { value: '{semanticTokens.colors.chart_grid_bar_hover}' },
+          },
+        },
+      },
     },
     table: { td: { cell: { actions: { accordion: { value: '{semanticTokens.colors.table_td_cell_accordion}' } } } } },
     keyboard: {
@@ -3535,11 +3545,9 @@ type SemanticColors = {
         };
       };
       bar: {
-        chart: {
-          hover: Value;
-          base: {
-            bg: Value;
-          };
+        hover: Value;
+        base: {
+          bg: Value;
         };
       };
       period: {
@@ -3734,6 +3742,16 @@ type Deprecates = {
   fs: { 50: Value };
   violet: { 400: Value; 500: Value };
   blue: { 400: Value; 500: Value };
+  chart: {
+    grid: {
+      bar: {
+        chart: {
+          base: { bg: Value };
+          hover: Value;
+        };
+      };
+    };
+  };
   table: { td: { cell: { actions: { accordion: Value } } } };
   keyboard: {
     focus: {

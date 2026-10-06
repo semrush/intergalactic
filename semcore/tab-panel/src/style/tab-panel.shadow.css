@@ -9,7 +9,7 @@ STabPanel {
     bottom: -1px;
     flex: 1;
     border-top: 1px solid transparent;
-    border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+    border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
   }
 }
 
@@ -20,7 +20,7 @@ STabPanelItem {
   gap: var(--intergalactic-spacing-content-gap-medium, 6px);
   min-width: 0;
   height: var(--intergalactic-form-control-m, 32px);
-  color: var(--intergalactic-text-secondary, oklch(0.089 0.025 149.5 / 0.56));
+  color: var(--intergalactic-text-secondary, oklch(0.182 0.045 244.8 / 0.593));
   border: 1px solid transparent;
   border-bottom: none;
   border-radius: var(--intergalactic-control-rounded, 6px) var(--intergalactic-control-rounded, 6px) 0 0;
@@ -52,7 +52,7 @@ STabPanelItem {
   }
 
   &:hover {
-    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
   }
 
   &::after {
@@ -61,7 +61,7 @@ STabPanelItem {
     left: -1px;
     bottom: 0px;
     width: calc(100% + 2px);
-    border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+    border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
   }
 }
 
@@ -77,8 +77,8 @@ STabPanelItem[disabled] {
 }
 
 STabPanelItem[selected] {
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
-  border-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
+  border-color: var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
   flex-shrink: 0;
   background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
 

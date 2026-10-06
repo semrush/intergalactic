@@ -76,9 +76,9 @@ SSwitch[disabled] {
 }
 
 SToggle {
-  background: var(--intergalactic-control-switch-bg, oklch(0.166 0.031 175.8 / 0.097));
+  background: var(--intergalactic-control-switch-bg, oklch(0.324 0.077 242.1 / 0.079));
   position: relative;
-  color: var(--intergalactic-icon-secondary-neutral, oklch(0.118 0.023 170.1 / 0.262));
+  color: var(--intergalactic-icon-secondary-neutral, oklch(0.8 0.017 238.3));
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -91,8 +91,8 @@ SToggle {
 }
 
 SToggle[checked][theme='info'] {
-  color: var(--intergalactic-control-switch-bg-info-active, oklch(0.23 0.01 140));
-  background-color: var(--intergalactic-control-switch-bg-info-active, oklch(0.23 0.01 140));
+  color: var(--intergalactic-control-switch-bg-info-active, oklch(0.23 0.009 245));
+  background-color: var(--intergalactic-control-switch-bg-info-active, oklch(0.23 0.009 245));
 }
 
 SToggle[checked][theme='success'] {
@@ -132,7 +132,7 @@ SSlider {
     left,
     calc(var(--intergalactic-duration-switch, 100) * 1ms)
     ease-in-out;
-  box-shadow: var(--intergalactic-box-shadow-control-elevated, 0px 0px 1px 0px oklch(0.176 0.033 175.7 / 0.07), 0px 1px 3px 0px oklch(0.176 0.033 175.7 / 0.07));
+  box-shadow: var(--intergalactic-box-shadow-control-elevated, 0px 0px 1px 0px oklch(0.324 0.077 242.1 / 0.079), 0px 1px 3px 0px oklch(0.324 0.077 242.1 / 0.079));
   border-radius: 50%;
   
 
@@ -167,28 +167,28 @@ SAddon {
 }
 
 SAddon[neighborLocation='right'] {
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
 }
 
 SAddon[neighborLocation='left'] {
-  color: var(--intergalactic-text-secondary, oklch(0.089 0.025 149.5 / 0.56));
+  color: var(--intergalactic-text-secondary, oklch(0.182 0.045 244.8 / 0.593));
 }
 
 SAddon[neighborLocation='left']:nth-child(2) {
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
 }
 
 SSwitch[checked] {
   & SAddon[neighborLocation='right'] {
-    color: var(--intergalactic-text-secondary, oklch(0.089 0.025 149.5 / 0.56));
+    color: var(--intergalactic-text-secondary, oklch(0.182 0.045 244.8 / 0.593));
   }
 
   & SAddon[neighborLocation='right']:nth-last-child(2) {
-    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
   }
 
   & SAddon[neighborLocation='left'] {
-    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
   }
 }
 
