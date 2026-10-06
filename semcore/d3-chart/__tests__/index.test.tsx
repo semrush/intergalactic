@@ -1,4 +1,6 @@
 import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
+import DiffDown from '@semcore/icon/DiffDown/m';
+import DiffUp from '@semcore/icon/DiffUp/m';
 import Icon from '@semcore/icon/Video/m';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup, queryAllByAttribute, queryByAttribute, userEvent } from '@semcore/testing-utils/testing-library';
@@ -22,7 +24,9 @@ import {
   makeDataHintsContainer,
   Chart,
   ChartLegend,
+  ChartLegendTable,
   HoverLine,
+  Metric,
   // @ts-ignore
 } from '../src';
 import { PlotA11yView } from '../src/a11y/PlotA11yView';
@@ -1070,6 +1074,352 @@ describe('ChartLegend', () => {
   });
 });
 
+describe('Metric', () => {
+  beforeEach(cleanup);
+  afterEach(cleanup);
+
+  const getMetric = (container: HTMLElement) => container.querySelector('[data-ui-name="Metric"]')!;
+  /** The diff text receives its colour through the `--textColor_*` variable of Text. */
+  const getDiffColor = (container: HTMLElement) =>
+    getMetric(container).querySelector('[data-ui-name="Text"][size="100"]')?.getAttribute('style') ?? '';
+
+  /**
+   * Pairwise set. Factors: diffUse (good|bad|neutral), diffIcon (none|DiffUp|DiffDown),
+   * href (none|set). The 3x3 pair of the two 3-value factors is the lower bound, and href
+   * alternates across those 9 rows so that every pair with it appears at least once.
+   */
+  const pairwiseCases = [
+    { name: '#1 good, no icon, no href', diffUse: 'good', icon: null, href: undefined },
+    { name: '#2 good, DiffUp, href', diffUse: 'good', icon: 'DiffUp', href: '/report' },
+    { name: '#3 good, DiffDown, no href', diffUse: 'good', icon: 'DiffDown', href: undefined },
+    { name: '#4 bad, no icon, href', diffUse: 'bad', icon: null, href: '/report' },
+    { name: '#5 bad, DiffUp, no href', diffUse: 'bad', icon: 'DiffUp', href: undefined },
+    { name: '#6 bad, DiffDown, href', diffUse: 'bad', icon: 'DiffDown', href: '/report' },
+    { name: '#7 neutral, no icon, href', diffUse: 'neutral', icon: null, href: '/report' },
+    { name: '#8 neutral, DiffUp, no href', diffUse: 'neutral', icon: 'DiffUp', href: undefined },
+    { name: '#9 neutral, DiffDown, href', diffUse: 'neutral', icon: 'DiffDown', href: '/report' },
+  ] as const;
+
+  const icons = { DiffUp, DiffDown };
+  const colors = {
+    good: '--intergalactic-text-success',
+    bad: '--intergalactic-text-critical',
+    neutral: '--intergalactic-text-secondary',
+  };
+
+  test.each(pairwiseCases)('should render pairwise $name', ({ diffUse, icon, href }) => {
+    const { container } = render(
+      <Metric
+        value='12.6%'
+        diffValue='+12'
+        diffUse={diffUse}
+        {...(icon ? { diffIcon: icons[icon] } : {})}
+        {...(href ? { href } : {})}
+      />,
+    );
+    const metric = getMetric(container);
+
+    expect(getDiffColor(container)).toContain(`var(${colors[diffUse]})`);
+    expect(metric.textContent).toBe('12.6%+12');
+
+    expect(metric.querySelector('[data-ui-name="DiffUp"]') !== null).toBe(icon === 'DiffUp');
+    expect(metric.querySelector('[data-ui-name="DiffDown"]') !== null).toBe(icon === 'DiffDown');
+
+    const link = metric.querySelector('a');
+    if (href) {
+      expect(link).not.toBeNull();
+      expect(link!.getAttribute('href')).toBe(href);
+      expect(link!.textContent).toBe('12.6%');
+    } else {
+      expect(link).toBeNull();
+    }
+  });
+
+  test('should not leak value and href to the root DOM attributes', () => {
+    const { container } = render(<Metric value='12%' diffValue='+3' diffUse='good' href='/report' />);
+    const metric = getMetric(container);
+
+    expect(metric.hasAttribute('value')).toBe(false);
+    expect(metric.hasAttribute('href')).toBe(false);
+  });
+
+  test('should pass data-testid, className and ref to the root', () => {
+    const ref = React.createRef<HTMLElement>();
+    const { container } = render(
+      <Metric ref={ref} value='12%' diffValue='+3' diffUse='good' data-testid='metric' className='custom' />,
+    );
+    const metric = getMetric(container);
+
+    expect(metric.getAttribute('data-testid')).toBe('metric');
+    expect(metric.classList.contains('custom')).toBe(true);
+    expect(ref.current).toBe(metric);
+  });
+
+  describe('boundary values', () => {
+    test('should render only the icon when diffValue is empty', () => {
+      const { container } = render(<Metric value='12%' diffValue='' diffUse='good' diffIcon={DiffUp} />);
+      const diff = getMetric(container).querySelector('[data-ui-name="Text"][size="100"]')!;
+
+      expect(diff.textContent).toBe('');
+      expect(diff.querySelector('[data-ui-name="DiffUp"]')).not.toBeNull();
+    });
+
+    test('should still render a link when value is empty', () => {
+      const { container } = render(<Metric value='' diffValue='+3' diffUse='good' href='/report' />);
+      const link = getMetric(container).querySelector('a');
+
+      expect(link).not.toBeNull();
+      expect(link!.textContent).toBe('');
+    });
+
+    test('should treat an empty href as no link', () => {
+      const { container } = render(<Metric value='12%' diffValue='+3' diffUse='good' href='' />);
+
+      expect(getMetric(container).querySelector('a')).toBeNull();
+      expect(getMetric(container).textContent).toBe('12%+3');
+    });
+
+    test.each([
+      ['not set', undefined],
+      ['unknown', 'unknown'],
+    ])('should fall back to the secondary colour when diffUse is %s', (_, diffUse) => {
+      const { container } = render(<Metric value='12%' diffValue='+3' diffUse={diffUse as any} />);
+
+      expect(getDiffColor(container)).toContain(`var(${colors.neutral})`);
+    });
+
+    test('should render a very long value', () => {
+      const value = 'x'.repeat(200);
+      const { container } = render(<Metric value={value} diffValue='+3' diffUse='good' href='/report' />);
+
+      expect(getMetric(container).querySelector('a')!.textContent).toBe(value);
+    });
+  });
+});
+
+describe('LegendTable', () => {
+  beforeEach(cleanup);
+  afterEach(cleanup);
+
+  type Direction = 'columns' | 'rows';
+
+  const makeItems = (direction: Direction, additions: number, count = 3) =>
+    Array.from({ length: count }, (_, row) => ({
+      id: `item${row}`,
+      label: `Item ${row}`,
+      checked: true,
+      color: `chart-palette-order-${row + 1}`,
+      [direction]: Array.from({ length: additions }, (_, cell) => `r${row}c${cell}`),
+    }));
+
+  const getCells = (container: HTMLElement) =>
+    Array.from(container.querySelectorAll('[data-ui-name="LegendTable.Column"]'));
+  const getTable = (container: HTMLElement) => container.querySelector('[data-ui-name="LegendTable"]');
+  const getModifier = (node: Element | null, name: string) =>
+    Array.from(node?.classList ?? [])
+      .find((className) => className.includes(`_${name}_`))
+      ?.match(new RegExp(`_${name}_(\\w+?)_`))?.[1];
+  const isDimmed = (node: Element) => /_transparent_/.test(node.className);
+
+  /**
+   * Pairwise set. Factors: direction (columns|rows), additions per item (1|2|3),
+   * size (m|l), highlightedItem (-1|0). The 2x3 pair of direction and additions is the
+   * lower bound, and size and highlightedItem are spread over those 6 rows so that every
+   * pair of values appears at least once.
+   */
+  const pairwiseCases = [
+    { name: '#1 columns, 1 addition, m, no highlight', direction: 'columns', additions: 1, size: 'm', highlightedItem: -1 },
+    { name: '#2 columns, 2 additions, l, highlight 0', direction: 'columns', additions: 2, size: 'l', highlightedItem: 0 },
+    { name: '#3 columns, 3 additions, m, highlight 0', direction: 'columns', additions: 3, size: 'm', highlightedItem: 0 },
+    { name: '#4 rows, 1 addition, l, highlight 0', direction: 'rows', additions: 1, size: 'l', highlightedItem: 0 },
+    { name: '#5 rows, 2 additions, m, no highlight', direction: 'rows', additions: 2, size: 'm', highlightedItem: -1 },
+    { name: '#6 rows, 3 additions, l, no highlight', direction: 'rows', additions: 3, size: 'l', highlightedItem: -1 },
+  ] as const;
+
+  test.each(pairwiseCases)('should render pairwise $name', ({ direction, additions, size, highlightedItem }) => {
+    const items = makeItems(direction, additions);
+    const { container } = render(
+      <ChartLegendTable items={items} size={size} highlightedItem={highlightedItem} aria-label='Legend' />,
+    );
+    const cells = getCells(container);
+    const table = getTable(container)!;
+
+    expect(cells.map((cell) => cell.textContent)).toEqual(items.flatMap((item: any) => item[direction]));
+    expect(getModifier(table, 'additions-direction')).toBe(direction);
+    expect(table.getAttribute('style')).toMatch(new RegExp(`--additions-count_\\w+: ${additions};`));
+    cells.forEach((cell) => expect(getModifier(cell, 'size')).toBe(size));
+
+    cells.forEach((cell, index) => {
+      const row = Math.floor(index / additions);
+      const expectedDimmed = highlightedItem !== -1 && row !== highlightedItem;
+
+      expect(isDimmed(cell)).toBe(expectedDimmed);
+    });
+  });
+
+  describe('boundary values', () => {
+    test('should render nothing for an empty items list', () => {
+      const { container } = render(<ChartLegendTable items={[]} aria-label='Legend' />);
+
+      expect(getTable(container)).toBeNull();
+      expect(container.innerHTML).toBe('');
+    });
+
+    test.each(['columns', 'rows'] as const)('should render a single item with a single %s cell', (direction) => {
+      const { container } = render(<ChartLegendTable items={makeItems(direction, 1, 1)} aria-label='Legend' />);
+
+      expect(getCells(container).map((cell) => cell.textContent)).toEqual(['r0c0']);
+      expect(container.querySelectorAll('div[data-ui-name="LegendTable.LegendItem"]')).toHaveLength(1);
+    });
+
+    test.each(['columns', 'rows'] as const)('should render only the labels when %s are empty', (direction) => {
+      const { container } = render(<ChartLegendTable items={makeItems(direction, 0)} aria-label='Legend' />);
+
+      expect(getCells(container)).toHaveLength(0);
+      expect(container.querySelectorAll('div[data-ui-name="LegendTable.LegendItem"]')).toHaveLength(3);
+    });
+
+    test.each(['columns', 'rows'] as const)('should render every cell when items have a different number of %s', (direction) => {
+      const items = [
+        { id: 'a', label: 'A', checked: true, color: 'chart-palette-order-1', [direction]: ['a0'] },
+        { id: 'b', label: 'B', checked: true, color: 'chart-palette-order-2', [direction]: ['b0', 'b1', 'b2'] },
+      ];
+      const { container } = render(<ChartLegendTable items={items as any} aria-label='Legend' />);
+
+      expect(getCells(container).map((cell) => cell.textContent)).toEqual(['a0', 'b0', 'b1', 'b2']);
+    });
+  });
+
+  describe('hover on cells', () => {
+    // The handlers also receive the React event; compare the ids only, so a failure
+    // does not try to print the whole synthetic event.
+    const hoveredIds = (handler: ReturnType<typeof vi.fn>) => handler.mock.calls.map(([id]) => id);
+
+    test.each(['columns', 'rows'] as const)('should report the hovered item for %s cells of a checked row', (direction) => {
+      const onMouseEnterItem = vi.fn();
+      const onMouseLeaveItem = vi.fn();
+      const { container } = render(
+        <ChartLegendTable
+          items={makeItems(direction, 2)}
+          onMouseEnterItem={onMouseEnterItem}
+          onMouseLeaveItem={onMouseLeaveItem}
+          aria-label='Legend'
+        />,
+      );
+      // Cell 3 is the second cell of the second row.
+      const cell = getCells(container)[3];
+
+      fireEvent.mouseEnter(cell);
+      expect(hoveredIds(onMouseEnterItem)).toEqual(['item1']);
+
+      fireEvent.mouseLeave(cell);
+      expect(hoveredIds(onMouseLeaveItem)).toEqual(['item1']);
+    });
+
+    test('should not report hover for cells of an unchecked row', () => {
+      const onMouseEnterItem = vi.fn();
+      const items = makeItems('rows', 1).map((item, index) => ({ ...item, checked: index !== 0 }));
+      const { container } = render(
+        <ChartLegendTable items={items} onMouseEnterItem={onMouseEnterItem} aria-label='Legend' />,
+      );
+
+      fireEvent.mouseEnter(getCells(container)[0]);
+      expect(hoveredIds(onMouseEnterItem)).toEqual([]);
+
+      fireEvent.mouseEnter(getCells(container)[1]);
+      expect(hoveredIds(onMouseEnterItem)).toEqual(['item1']);
+    });
+  });
+});
+
+describe('Chart.* legend with rows', () => {
+  beforeEach(cleanup);
+  afterEach(cleanup);
+
+  const lineData = [
+    { x: 0, a: 1, b: 2 },
+    { x: 1, a: 3, b: 1 },
+  ];
+
+  const getCells = (container: HTMLElement) =>
+    Array.from(container.querySelectorAll('[data-ui-name="LegendTable.Column"]')).map((cell) => cell.textContent);
+
+  test('should render Metric rows from legendMap for every series of Chart.Line', () => {
+    const { container } = render(
+      <Chart.Line
+        data={lineData}
+        groupKey='x'
+        plotWidth={300}
+        plotHeight={200}
+        aria-label='Line chart'
+        legendProps={{
+          legendType: 'Table',
+          legendMap: {
+            a: { label: 'A', rows: [<Metric key='a' value='1%' diffValue='+1' diffUse='good' />] },
+            b: { label: 'B', rows: [<Metric key='b' value='2%' diffValue='-1' diffUse='bad' />] },
+          },
+        }}
+      />,
+    );
+
+    expect(container.querySelectorAll('[data-ui-name="Metric"]')).toHaveLength(2);
+    expect(getCells(container)).toEqual(['1%+1', '2%-1']);
+  });
+
+  test('should keep the computed percent and value columns of Chart.Donut', () => {
+    const { container } = render(
+      <Chart.Donut data={{ a: 1, b: 3 }} plotWidth={200} plotHeight={200} aria-label='Donut chart' legendProps={{ legendType: 'Table' }} />,
+    );
+
+    expect(getCells(container)).toEqual(['25.00%', '1', '75.00%', '3']);
+  });
+
+  test('should use legendMap rows instead of the computed columns of Chart.Donut', () => {
+    const { container } = render(
+      <Chart.Donut
+        data={{ a: 1, b: 3 }}
+        plotWidth={200}
+        plotHeight={200}
+        aria-label='Donut chart'
+        legendProps={{ legendType: 'Table', legendMap: { a: { label: 'a', rows: ['R1'] }, b: { label: 'b', rows: ['R2'] } } }}
+      />,
+    );
+
+    expect(getCells(container)).toEqual(['R1', 'R2']);
+    const table = container.querySelector('[data-ui-name="LegendTable"]');
+    expect(table?.className).toMatch(/_additions-direction_rows_/);
+  });
+
+  test('should keep every legendMap row of Chart.Cigarette', () => {
+    const { container } = render(
+      <Chart.Cigarette
+        showLegend
+        data={{ Cats: 10, Dogs: 20 }}
+        plotWidth={300}
+        plotHeight={28}
+        aria-label='Cigarette chart'
+        legendProps={{
+          legendType: 'Table',
+          legendMap: {
+            Cats: { label: 'Cats', rows: ['FIRST', 'SECOND'] },
+            Dogs: { label: 'Dogs', rows: ['D1', 'D2'] },
+          },
+        }}
+      />,
+    );
+
+    expect(getCells(container)).toEqual(['FIRST', 'SECOND', 'D1', 'D2']);
+  });
+
+  test('should drop only the computed percent column of Chart.Cigarette', () => {
+    const { container } = render(
+      <Chart.Cigarette showLegend data={{ Cats: 10, Dogs: 20 }} plotWidth={300} plotHeight={28} aria-label='Cigarette chart' />,
+    );
+
+    expect(getCells(container)).toEqual(['10', '20']);
+  });
+});
+
 describe('TextMeasurer', () => {
   test('should measure text and reuse the cached result for the same text and font size', () => {
     const measurer = new TextMeasurer();
@@ -1269,6 +1619,47 @@ describe('Chart tooltip percent delta', () => {
     expect(getColumnsCount(tooltip)).toBe('3');
     // 2 series x 3 columns
     expect(getChildrenWrapper(tooltip).children).toHaveLength(6);
+  });
+
+  describe('deltaPercentGrowthColor', () => {
+    const getGrowthColor = (node: Element) =>
+      Array.from(node.classList)
+        .find((className) => className.includes('_deltaPercentGrowthColor_'))
+        ?.match(/_deltaPercentGrowthColor_(\w+?)_/)?.[1];
+
+    const readDeltas = (clientX: number, deltaPercentGrowthColor?: 'good' | 'bad') => {
+      const tooltip = hoverBarChart(clientX, deltaPercentGrowthColor ? { deltaPercentGrowthColor } : {});
+
+      return Array.from(tooltip.querySelectorAll('[class*="STooltipDeltaWrapper"]')).map((node) => ({
+        trend: Array.from(node.classList)
+          .find((className) => className.includes('_trend_'))
+          ?.match(/_trend_(\w+?)_/)?.[1],
+        growthColor: getGrowthColor(node),
+      }));
+    };
+
+    /**
+     * Factors: deltaPercentGrowthColor (good | bad | not set) x trend (upward | downward | stable).
+     * Point 1 carries an upward and a downward delta, Point 2 two stable ones, so two hovers
+     * per value cover all three trends and the full 3x3 product stays cheap.
+     *
+     * sstyled emits a modifier class only for values the stylesheet styles. `good` is the
+     * default palette and has no rule of its own, so it leaves no modifier, while `bad` is
+     * the override and has to reach every delta wrapper.
+     */
+    test.each([
+      { name: 'good', value: 'good', expected: undefined },
+      { name: 'bad', value: 'bad', expected: 'bad' },
+      { name: 'not set (falls back to good)', value: undefined, expected: undefined },
+    ] as const)('should style every trend of the delta for $name', ({ value, expected }) => {
+      const point1 = readDeltas(150, value);
+      cleanup();
+      const point2 = readDeltas(250, value);
+
+      expect(point1.map((delta) => delta.trend)).toEqual(['upward', 'downward']);
+      expect(point2.map((delta) => delta.trend)).toEqual(['stable', 'stable']);
+      [...point1, ...point2].forEach((delta) => expect(delta.growthColor).toBe(expected));
+    });
   });
 });
 

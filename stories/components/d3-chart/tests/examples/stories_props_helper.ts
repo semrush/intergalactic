@@ -58,13 +58,27 @@ export function getPropsToChart<F>(props: StoryChartProps<F>): F {
     if (key.startsWith('legendProps.')) {
       const legendKey = key.slice('legendProps.'.length);
       result.legendProps[legendKey] = value;
-    } else {
+    } else if (key !== 'legendProps') {
       result[key] = value;
     }
   });
 
+  // A `legendProps` object passed explicitly (e.g. from a browser test) has to win over the
+  // flattened `legendProps.*` defaults, which React merges in after the passed props.
+  result.legendProps = { ...result.legendProps, ...(props as any).legendProps };
+
   return result;
 }
+
+/**
+ * A Table legend is valid only when every item has `columns` or `rows`. The chart computes
+ * them itself only for object data (Donut, Cigarette, Venn); for list data the story would
+ * have to pass `legendMap` additions, and without them `LegendTable` throws. So the control
+ * is hidden by default, and a story whose chart fills the columns opts in with this entry.
+ */
+export const legendTypeControl = {
+  'legendProps.legendType': { control: 'select', options: ['Flex', 'Table'] },
+} as const;
 
 export const getChartArgTypes = (additionalControls?: any) => {
   return {
@@ -83,7 +97,8 @@ export const getChartArgTypes = (additionalControls?: any) => {
     'legendProps.shape': { control: 'select', options: ['Checkbox', 'Circle', 'Pattern'] },
     'legendProps.disableHoverItems': { control: 'boolean' },
     'legendProps.disableSelectItems': { control: 'boolean' },
-    'legendProps.legendType': { control: 'select', options: ['Flex', 'Table'] },
+    // Hidden on purpose, see `legendTypeControl`.
+    'legendProps.legendType': { table: { disable: true } },
     'legendProps.title': { control: 'text' },
 
     'showTooltip': { control: { type: 'boolean' } },

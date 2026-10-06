@@ -965,15 +965,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     /**
-     * `deltaPercentGrowthColor='critical'` is for metrics where growing is the bad outcome
+     * `deltaPercentGrowthColor='bad'` is for metrics where growing is the bad outcome
      * — bounce rate, error rate, cost. It swaps the two trend colours and nothing else.
      *
      * Rather than naming the colours, the test reads both modes and asserts they are each
-     * other's mirror: whatever `success` paints a decline is what `critical` has to paint
+     * other's mirror: whatever `good` paints a decline is what `bad` has to paint
      * growth. That needs no knowledge of the palette, so a theme change cannot break it,
      * and it fails the moment the swap stops happening or starts leaking a third colour.
      */
-    test('Verify deltaPercentGrowthColor=critical swaps the two trend colours', {
+    test('Verify deltaPercentGrowthColor=bad swaps the two trend colours', {
       tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
         '@area-chart',
         '@base-components',
@@ -992,19 +992,19 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         return { upward, downward };
       };
 
-      const success = await readBothTrends('success');
-      const critical = await readBothTrends('critical');
+      const good = await readBothTrends('good');
+      const bad = await readBothTrends('bad');
 
       // The direction is untouched — only the colour carries the new meaning.
-      expect(critical.upward.every((d) => d.trend === 'upward')).toBe(true);
-      expect(critical.downward.every((d) => d.trend === 'downward')).toBe(true);
+      expect(bad.upward.every((d) => d.trend === 'upward')).toBe(true);
+      expect(bad.downward.every((d) => d.trend === 'downward')).toBe(true);
 
-      expect(critical.upward[0].color).toBe(success.downward[0].color);
-      expect(critical.downward[0].color).toBe(success.upward[0].color);
-      expect(critical.upward[0].color).not.toBe(success.upward[0].color);
+      expect(bad.upward[0].color).toBe(good.downward[0].color);
+      expect(bad.downward[0].color).toBe(good.upward[0].color);
+      expect(bad.upward[0].color).not.toBe(good.upward[0].color);
     });
 
-    test('Verify deltaPercentGrowthColor=critical keeps the icons and the printed values', {
+    test('Verify deltaPercentGrowthColor=bad keeps the icons and the printed values', {
       tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
         '@area-chart',
         '@base-components',
@@ -1032,10 +1032,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     /**
-     * A `stable` delta has no direction to reinterpret, so `critical` must leave it on the
+     * A `stable` delta has no direction to reinterpret, so `bad` must leave it on the
      * muted secondary colour instead of pulling it into either trend palette.
      */
-    test('Verify deltaPercentGrowthColor=critical leaves a stable delta muted', {
+    test('Verify deltaPercentGrowthColor=bad leaves a stable delta muted', {
       tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart',
         '@area-chart',
         '@base-components',

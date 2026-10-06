@@ -43,7 +43,7 @@ STooltipDeltaWrapper {
     color: var(--intergalactic-text-secondary-invert, oklch(0.953 0.025 240.1 / 0.726));
   }
 
-  &[deltaPercentGrowthColor='critical'] {
+  &[deltaPercentGrowthColor='bad'] {
     &[trend='upward'] {
       color: var(--intergalactic-chart-data-critical, oklch(0.74 0.19 22));
     }
