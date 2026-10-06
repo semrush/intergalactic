@@ -20,7 +20,7 @@ SButton {
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   font-weight: var(--intergalactic-medium, 500);
-  color: var(--intergalactic-control-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
+  color: var(--intergalactic-control-text-secondary, oklch(0.182 0.045 244.8 / 0.593));
   min-width: fit-content;
 
   &::-moz-focus-inner {
@@ -218,7 +218,7 @@ SButton[theme='tertiary-info'] {
 }
 
 SButton[theme='tertiary-muted'] {
-  color: var(--intergalactic-control-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
+  color: var(--intergalactic-control-text-secondary, oklch(0.182 0.045 244.8 / 0.593));
   background-color: var(--intergalactic-control-tertiary-neutral, transparent);
 
   &:hover {

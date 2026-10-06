@@ -146,7 +146,7 @@
   },
   {
     "name": "--intergalactic-badge-text-secondary",
-    "value": "oklch(0.209 0.055 246.6 / 0.505)",
+    "value": "oklch(0.182 0.045 244.8 / 0.593)",
     "description": "Secondary text color for Badge.",
     "components": [
       "badge"
@@ -822,7 +822,7 @@
   },
   {
     "name": "--intergalactic-chart-grid-text-label",
-    "value": "oklch(0.209 0.055 246.6 / 0.505)",
+    "value": "oklch(from oklch(0.182 0.045 244.8 / 0.593) l c h / 0.4)",
     "description": "Text label on the chart grid.",
     "components": [
       "d3-chart"
@@ -1595,7 +1595,7 @@
   },
   {
     "name": "--intergalactic-control-text-secondary",
-    "value": "oklch(0.209 0.055 246.6 / 0.505)",
+    "value": "oklch(0.182 0.045 244.8 / 0.593)",
     "description": "Secondary text color for form controls.",
     "components": [
       "button"
@@ -1609,7 +1609,7 @@
   },
   {
     "name": "--intergalactic-control-text-tertiary",
-    "value": "oklch(0.209 0.055 246.6 / 0.505)",
+    "value": "oklch(0.182 0.045 244.8 / 0.593)",
     "description": "Tertiary text color for form controls.",
     "components": []
   },
@@ -2427,7 +2427,7 @@
   },
   {
     "name": "--intergalactic-sidebar-nav-control-text-normal",
-    "value": "oklch(0.63 0.022 244.1)",
+    "value": "oklch(0.55 0.021 245)",
     "description": "Sidebar navigation label color.",
     "components": []
   },
@@ -2983,7 +2983,7 @@
   },
   {
     "name": "--intergalactic-text-critical",
-    "value": "oklch(0.63 0.224 24.8)",
+    "value": "oklch(0.55 0.209 26.8)",
     "description": "Text associated with critical states and data.",
     "components": []
   },
@@ -2995,7 +2995,7 @@
   },
   {
     "name": "--intergalactic-text-hint",
-    "value": "oklch(0.209 0.055 246.6 / 0.505)",
+    "value": "oklch(0.182 0.045 244.8 / 0.593)",
     "description": "Supplementary helper text near controls (short guidance), distinct from placeholder text inside inputs.",
     "components": [
       "button",
@@ -3051,7 +3051,7 @@
   },
   {
     "name": "--intergalactic-text-large-secondary",
-    "value": "oklch(0.209 0.055 246.6 / 0.505)",
+    "value": "oklch(0.182 0.045 244.8 / 0.593)",
     "description": "Secondary text. Use with font-size ≥20px.",
     "components": [
       "typography"
@@ -3115,7 +3115,7 @@
   },
   {
     "name": "--intergalactic-text-link-secondary",
-    "value": "oklch(0.209 0.055 246.6 / 0.505)",
+    "value": "oklch(0.182 0.045 244.8 / 0.593)",
     "description": "Default secondary link color.",
     "components": [
       "link"
@@ -3123,7 +3123,7 @@
   },
   {
     "name": "--intergalactic-text-link-secondary-hover-active",
-    "value": "oklch(0.209 0.055 246.6 / 0.505)",
+    "value": "oklch(0.182 0.045 244.8 / 0.593)",
     "description": "Hover and active states for the secondary link.",
     "components": [
       "link"
@@ -3148,7 +3148,7 @@
   },
   {
     "name": "--intergalactic-text-link-visited",
-    "value": "oklch(0.63 0.228 298.9)",
+    "value": "oklch(0.55 0.27 296)",
     "description": "Visited link state so users can tell visited destinations apart from default links.",
     "components": [
       "link"
@@ -3217,7 +3217,7 @@
   },
   {
     "name": "--intergalactic-text-secondary",
-    "value": "oklch(0.209 0.055 246.6 / 0.505)",
+    "value": "oklch(0.182 0.045 244.8 / 0.593)",
     "description": "Supporting text: captions, metadata, hints in flowing copy—visually quieter than primary body text.",
     "components": [
       "breadcrumbs",
@@ -3250,7 +3250,7 @@
   },
   {
     "name": "--intergalactic-text-success",
-    "value": "oklch(0.63 0.16 170)",
+    "value": "oklch(0.55 0.145 170)",
     "description": "Text associated with success states and data.",
     "components": []
   },

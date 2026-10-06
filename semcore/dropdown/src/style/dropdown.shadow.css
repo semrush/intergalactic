@@ -145,7 +145,7 @@ SDropdownPopper {
   }
 
   SDropdownItem[variant='hint'] {
-    color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
+    color: var(--intergalactic-text-secondary, oklch(0.182 0.045 244.8 / 0.593));
     cursor: default;
 
     &:hover {
@@ -171,7 +171,7 @@ SDropdownPopper {
   }
 
   SGroupHint {
-    color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
+    color: var(--intergalactic-text-secondary, oklch(0.182 0.045 244.8 / 0.593));
   }
 
   SDropdownItemContainer[sticky] {
