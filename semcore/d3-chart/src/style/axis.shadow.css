@@ -59,7 +59,7 @@ STick {
 
 SGrid {
   fill: transparent;
-  stroke: var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
+  stroke: var(--intergalactic-chart-grid-line, oklch(0.88 0.011 234.9));
   stroke-dasharray: 0 4;
   stroke-linecap: round;
 }
