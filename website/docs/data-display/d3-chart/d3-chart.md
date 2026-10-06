@@ -64,6 +64,10 @@ The maximum chart height depends on your specific case. For charts with greater 
 
 ![](static/max-height.png)
 
+### Links in ticks
+
+In charts with definite number of categories (most often, [bar charts](../bar-chart/bar-chart)), category ticks can serve as links leading to other reports or pages. Refer to the [example of ticks with links](../bar-chart/bar-chart-code#links-in-tick-labels) for more details.
+
 ## Tooltip
 
 Tooltips show data when hovering over chart parts, even if no data is present (use "n/a" in this case).
