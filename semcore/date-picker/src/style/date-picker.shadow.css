@@ -1,5 +1,5 @@
 SPopper {
-  padding: var(--intergalactic-spacing-4x, 16px);
+  padding: var(--intergalactic-spacing-content-padding-large, 16px);
 
   &::-moz-focus-inner {
     border: none;
@@ -30,14 +30,14 @@ STitle {
 
 SToday {
   display: flex;
-  margin-top: var(--intergalactic-spacing-3x, 12px);
+  margin-top: var(--intergalactic-spacing-content-gap-xlarge, 12px);
   justify-content: center;
 }
 
 SPeriod {
   display: flex;
   flex-direction: column;
-  margin-bottom: var(--intergalactic-spacing-2x, 8px);
+  margin-bottom: var(--intergalactic-spacing-content-gap-large, 8px);
 }
 
 SButton SInner {
@@ -45,13 +45,11 @@ SButton SInner {
 }
 
 SSingleDateInput {
-  &[size='l'] {
-    SInputMask {
-      padding-right: var(--intergalactic-spacing-3x, 12px);
+  SInputMask {
+    padding-right: var(--intergalactic-spacing-content-gap-xlarge, 12px);
 
-      &:has(SHumanizedDate) {
-        padding-right: var(--intergalactic-spacing-2x, 8px);
-      }
+    &:has(SHumanizedDate) {
+      padding-right: var(--intergalactic-spacing-content-gap-large, 8px);
     }
   }
 }
@@ -59,7 +57,7 @@ SSingleDateInput {
 SInputMask {
   color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
   line-height: normal;
-  padding-right: var(--intergalactic-spacing-2x, 8px);
+  padding-right: var(--intergalactic-spacing-content-gap-large, 8px);
   transition: width calc(var(--intergalactic-duration-medium, 300) * 1ms) ease, min-width calc(var(--intergalactic-duration-medium, 300) * 1ms) ease;
 }
 
@@ -158,24 +156,24 @@ SDateRange:focus-within SRangeSep {
 
 SRangeComparatorHeader {
   border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
-  padding: var(--intergalactic-spacing-4x, 16px);
+  padding: var(--intergalactic-spacing-content-padding-large, 16px);
 }
 
 SRangeCalendar {
-  padding: var(--intergalactic-spacing-4x, 16px);
+  padding: var(--intergalactic-spacing-content-padding-large, 16px);
 }
 
 SFooter {
   border-top: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
-  padding: var(--intergalactic-spacing-4x, 16px);
+  padding: var(--intergalactic-spacing-content-padding-large, 16px);
 }
 
 SPeriodsList {
-  padding: var(--intergalactic-spacing-4x, 16px);
+  padding: var(--intergalactic-spacing-content-padding-large, 16px);
 }
 
 STooltip {
-  padding: var(--intergalactic-spacing-3x, 12px);
+  padding: var(--intergalactic-spacing-content-padding-medium, 12px);
 }
 
 SCompareToggle {
