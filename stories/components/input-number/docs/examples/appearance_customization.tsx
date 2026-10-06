@@ -24,7 +24,7 @@ const Demo = () => {
         <Button onClick={decrement} title='Decrease by 10' neighborLocation='right'>
           -
         </Button>
-        <InputNumber neighborLocation='both'>
+        <InputNumber neighborLocation='both' style={{ borderLeft: '1px solid var(--intergalactic-border-primary)' }}>
           <InputNumber.Value
             placeholder='0'
             ref={inputRef}
@@ -32,7 +32,6 @@ const Demo = () => {
             value={value}
             onChange={setValue}
             id='alternative-example'
-            style={{ borderLeft: '1px solid var(--intergalactic-border-primary)', marginLeft: '-1px' }}
           />
         </InputNumber>
         <Button onClick={increment} title='Increase by 10' neighborLocation='left'>

@@ -27,5 +27,5 @@ SSlider {
   height: 6px;
   /* disable-tokens-validator */
   border-radius: var(--intergalactic-rounded-small, 6px);
-  background-color: var(--intergalactic-scroll-bar-background, oklch(0.137 0.026 175.7 / 0.161));
+  background-color: var(--intergalactic-scroll-bar-background, oklch(0.277 0.066 242.6 / 0.18));
 }
