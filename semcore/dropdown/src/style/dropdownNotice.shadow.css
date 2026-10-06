@@ -38,11 +38,11 @@ SDropdownNotice {
   }
 
   SDropdownNoticeText {
-    margin-top: var(--intergalactic-spacing-content-padding-xsmall, 4px);
-    margin-bottom: 0;
+    margin-top: var(--intergalactic-spacing-content-gap-small, 4px);
+    margin-bottom: var(--intergalactic-spacing-content-gap-small, 4px);
   }
 
   SDropdownNoticeActions {
-    margin-top: var(--intergalactic-spacing-content-gap-large, 8px);
+    margin-top: var(--intergalactic-spacing-content-gap-small, 4px);
   }
 }
