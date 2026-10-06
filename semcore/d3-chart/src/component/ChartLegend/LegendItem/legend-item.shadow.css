@@ -85,7 +85,7 @@ SAdditionalLabel {
 SAdditionalLabel::before {
   content: '';
   display: inline-block;
-  background-color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
+  background-color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
   height: 4px;
   width: 4px;
   border-radius: 2px;
