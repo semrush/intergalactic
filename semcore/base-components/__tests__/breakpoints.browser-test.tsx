@@ -10,10 +10,10 @@ We verify states, visibility, and attributes.
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Simple use', () => {
     const breakpoints = [
-      { width: 320, expectedSize: 'L', expectedHeight: '40px' },
-      { width: 768, expectedSize: 'M', expectedHeight: '28px' },
-      { width: 1200, expectedSize: 'M', expectedHeight: '28px' },
-      { width: 1920, expectedSize: 'M', expectedHeight: '28px' },
+      { width: 320, expectedSize: 'L', expectedHeight: '44px' },
+      { width: 768, expectedSize: 'M', expectedHeight: '32px' },
+      { width: 1200, expectedSize: 'M', expectedHeight: '32px' },
+      { width: 1920, expectedSize: 'M', expectedHeight: '32px' },
     ];
 
     breakpoints.forEach(({ width, expectedSize, expectedHeight }) => {
@@ -40,10 +40,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test.describe('Manual control', () => {
     const breakpoints = [
-      { width: 320, expectedSize: 'L', expectedHeight: '40px' },
-      { width: 768, expectedSize: 'M', expectedHeight: '28px' },
-      { width: 1200, expectedSize: 'M', expectedHeight: '28px' },
-      { width: 1920, expectedSize: 'M', expectedHeight: '28px' },
+      { width: 320, expectedSize: 'L', expectedHeight: '44px' },
+      { width: 768, expectedSize: 'M', expectedHeight: '32px' },
+      { width: 1200, expectedSize: 'M', expectedHeight: '32px' },
+      { width: 1920, expectedSize: 'M', expectedHeight: '32px' },
     ];
 
     breakpoints.forEach(({ width, expectedSize, expectedHeight }) => {

@@ -1,3 +1,4 @@
+import type { IconComponent } from '@semcore/icon';
 import ChargebackLoss from '@semcore/icon/ChargebackLoss/m';
 import ChargebackWinM from '@semcore/icon/ChargebackWin/m';
 import MoneyCoinsM from '@semcore/icon/MoneyCoins/m';
@@ -5,7 +6,7 @@ import PopupM from '@semcore/icon/Popup/m';
 import ReloadM from '@semcore/icon/Reload/m';
 import ReturnM from '@semcore/icon/Return/m';
 import { Flex } from '@semcore/ui/base-components';
-import type { TextProps } from '@semcore/ui/typography';
+import InlineInput from '@semcore/ui/inline-input';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 import type { FC } from 'react';
@@ -16,7 +17,7 @@ type PaymentOperationTypeProps = {
   testIdPrefix?: string;
 };
 
-const mapIcons: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
+const mapIcons: Record<string, IconComponent> = {
   purchase: MoneyCoinsM,
   charge: ReloadM,
   refund: ReturnM,
@@ -73,6 +74,43 @@ const PaymentOperationType: FC<PaymentOperationTypeProps> = ({
       <Icon color='icon-secondary-neutral' />
       {title}
     </Text>
+  );
+};
+
+export const EditableOperationType: FC<PaymentOperationTypeProps> = ({
+  operationType,
+  testIdPrefix,
+}) => {
+  const intl = useIntl();
+
+  const Icon = mapIcons[operationType];
+  const initialTitle = mapTitles[operationType]
+    ? intl.formatMessage(mapTitles[operationType])
+    : operationType;
+
+  const [value, setValue] = React.useState(initialTitle);
+  const [confirmed, setConfirmed] = React.useState(initialTitle);
+
+  return (
+    <InlineInput
+      onConfirm={() => setConfirmed(value)}
+      onCancel={() => setValue(confirmed)}
+      onClick={(e: React.MouseEvent) => e.stopPropagation()}
+      data-test={`${testIdPrefix}-payment-operation-type`}
+    >
+      {Icon && (
+        <InlineInput.Addon>
+          <Icon color='icon-secondary-neutral' />
+        </InlineInput.Addon>
+      )}
+      <InlineInput.Value
+        aria-label='Operation type'
+        value={value}
+        onChange={setValue}
+      />
+      <InlineInput.ConfirmControl />
+      <InlineInput.CancelControl />
+    </InlineInput>
   );
 };
 

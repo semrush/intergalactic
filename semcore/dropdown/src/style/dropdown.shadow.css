@@ -3,10 +3,10 @@ SDropdownPopper {
   background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
   border-radius: var(--intergalactic-popper-rounded, 6px);
   box-sizing: border-box;
-  border: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
+  border: 1px solid var(--intergalactic-border-secondary, oklch(0.324 0.077 242.1 / 0.079));
   white-space: normal;
-  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.176 0.033 175.7 / 0.07));
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.324 0.077 242.1 / 0.079));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
 
 
   SDropdownItem {
@@ -14,18 +14,23 @@ SDropdownPopper {
     text-decoration: none;
     box-sizing: border-box;
     cursor: pointer;
-    width: 100%;
     text-align: left;
     line-height: normal;
     outline: none;
   }
-
+  
   SDropdownItem:not(button) {
-    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+    width: 100%;
+    color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
 
     &:hover {
-      background-color: var(--intergalactic-dropdown-menu-item-hover, oklch(0.177 0.033 175.6 / 0.028));
+      background-color: var(--intergalactic-dropdown-menu-item-hover, oklch(0.375 0.09 242.7 / 0.05));
     }
+  }
+
+  SDropdownItem[size='l'] SDropdownItem:is(button) {
+    width: 24px;
+    height: 24px;
   }
 
   SDropdownItem[isMenuItemCheckbox] {
@@ -36,31 +41,38 @@ SDropdownPopper {
       position: absolute;
       border: 1px solid;
       border-radius: var(--intergalactic-addon-rounded, 4px);
-      box-sizing: content-box;
+      box-sizing: border-box;
     }
 
     &::before {
       display: inline-block;
       background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
       transition: calc(var(--intergalactic-duration-control, 200) * 1ms) all ease-in-out;
-      border-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+      border-color: var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
     }
 
     &[selected]::after {
       background-repeat: no-repeat;
       background-position: center center;
-      background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
-      border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
-      background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDEwIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik04LjI1IDFMNCA1LjI1TDEuNzUgMyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==');
+      background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.009 245));
+      border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.009 245));
+    }
+    
+    &[selected][size='m']::after {
+      background-image: var(--intergalactic-assets-checkmark-m, url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMiAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTAuMzEwNyAyLjE2NzkxTDQuNjQ2NDUgNy44MzIxMkwxLjY4OTM0IDQuODc1MDEiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0id2hpdGUiLz48L3N2Zz4="));
+    }
+
+    &[selected][size='l']::after {
+      background-image: var(--intergalactic-assets-checkmark-l, url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxNCAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIuNCAyLjQ1MjIxTDUuMzA0NCA5LjU0NzgyTDEuNjAwMDEgNS44NDM0MyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg=="));
     }
   }
 
   SDropdownItem[selected]:not(SDropdownItem[isMenuItemCheckbox]) {
-    background-color: var(--intergalactic-dropdown-menu-item-selected, oklch(0.525 0.265 263 / 0.077));
-    box-shadow: 2px 0px 0px 0px var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)) inset;
+    background-color: var(--intergalactic-dropdown-menu-item-selected, oklch(0.344 0.082 242.3 / 0.065));
+    box-shadow: 2px 0px 0px 0px var(--intergalactic-dropdown-menu-item-selected-box-shadow, oklch(0.23 0.009 245)) inset;
 
     &:hover {
-      background-color: var(--intergalactic-dropdown-menu-item-selected-hover, oklch(0.52 0.268 263.2 / 0.191));
+      background-color: var(--intergalactic-dropdown-menu-item-selected-hover, oklch(0.31 0.074 242 / 0.094));
     }
   }
 
@@ -86,38 +98,40 @@ SDropdownPopper {
 
   SDropdownItem[size='l'] {
     font-size: var(--intergalactic-fs-300, 16px);
-    line-height: var(--intergalactic-lh-300, 150%);
-    padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
+    line-height: var(--intergalactic-lh-300, 1.5);
+    padding: var(--intergalactic-spacing-content-padding-small, 8px) var(--intergalactic-spacing-content-padding-medium, 12px);
     min-height: 40px;
 
     &[isMenuItemCheckbox] {
-      padding-left: calc(var(--intergalactic-spacing-3x, 12px) * 2 + 16px + 2px); /* padding*2 (parent item and from checkbox to content) + checkboxWidth + border*2 */
+      padding-left: calc(var(--intergalactic-spacing-content-padding-medium, 12px) + var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-content-gap-large, 8px));
+      /* padding before + checkbox + padding after */
 
       &::before,
       &::after {
         width: 20px;
         height: 20px;
-        top: calc(var(--intergalactic-spacing-2x, 8px) - 1px);
-        left: var(--intergalactic-spacing-3x, 12px);
+        top: calc(var(--intergalactic-spacing-content-padding-small, 8px) + var(--intergalactic-spacing-05x, 2px));
+        left: var(--intergalactic-spacing-content-padding-medium, 12px);
       }
     }
   }
 
   SDropdownItem[size='m'] {
     font-size: var(--intergalactic-fs-200, 14px);
-    line-height: var(--intergalactic-lh-200, 142%);
-    padding: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) var(--intergalactic-spacing-2x, 8px);
+    line-height: var(--intergalactic-lh-200, 1.4286);
+    padding: calc(var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-05x, 2px)) var(--intergalactic-spacing-content-padding-medium, 12px);
     min-height: 32px;
 
     &[isMenuItemCheckbox] {
-      padding-left: calc(var(--intergalactic-spacing-2x, 8px) * 2 + 16px + 2px); /* padding*2 (parent item and from checkbox to content) + checkboxWidth + border*2 */
+      padding-left: calc(var(--intergalactic-spacing-content-padding-medium, 12px) + var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-content-gap-medium, 6px));
+      /* padding before + checkbox + padding after */
 
       &::before,
       &::after {
         width: 16px;
         height: 16px;
-        top: calc(var(--intergalactic-spacing-2x, 8px) - 1px);
-        left: var(--intergalactic-spacing-2x, 8px);
+        top: var(--intergalactic-spacing-content-padding-small, 8px);
+        left: var(--intergalactic-spacing-content-padding-medium, 12px);
       }
     }
   }
@@ -131,7 +145,7 @@ SDropdownPopper {
   }
 
   SDropdownItem[variant='hint'] {
-    color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+    color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
     cursor: default;
 
     &:hover {
@@ -157,17 +171,17 @@ SDropdownPopper {
   }
 
   SGroupHint {
-    color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+    color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
   }
 
   SDropdownItemContainer[sticky] {
     position: sticky;
     top: 0;
-    background-color: var(--intergalactic-dropdown-menu-item, oklch(1 0 0));
+    background-color: var(--intergalactic-dropdown-menu-item, transparent);
     z-index: 2;
 
     &:hover {
-      background-color: var(--intergalactic-dropdown-menu-item, oklch(1 0 0));
+      background-color: var(--intergalactic-dropdown-menu-item, transparent);
     }
   }
 }

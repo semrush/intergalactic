@@ -1,5 +1,4 @@
-import type { NSFlex, NSBox } from '@semcore/base-components';
-import type Popper from '@semcore/base-components';
+import type { NSFlex, NSBox, NSPopper } from '@semcore/base-components';
 import type { BaseTriggerProps } from '@semcore/base-trigger';
 import type BaseTrigger from '@semcore/base-trigger';
 import type { NSButton } from '@semcore/button';
@@ -349,7 +348,7 @@ declare const DatePicker: Intergalactic.Component<
     Text: typeof BaseTrigger.Text;
   };
   Trigger: typeof InputTrigger;
-  Popper: typeof Popper.Popper;
+  Popper: NSPopper.Popper.Component;
   Header: NSBox.Component;
   Title: Intergalactic.Component<'div', DatePickerProps, DatePickerContext>;
   Prev: NSButton.Component;
@@ -383,7 +382,7 @@ declare const DateRangePicker: Intergalactic.Component<
     Text: typeof BaseTrigger.Text;
   };
   Trigger: typeof RangeInputTrigger;
-  Popper: typeof Popper.Popper;
+  Popper: NSPopper.Popper.Component;
   Header: NSBox.Component;
   Title: Intergalactic.Component<'div', DateRangePickerProps, DateRangePickerContext>;
   Prev: NSButton.Component;
@@ -418,7 +417,7 @@ declare const MonthPicker: Intergalactic.Component<
     Text: typeof BaseTrigger.Text;
   };
   Trigger: typeof InputTrigger;
-  Popper: typeof Popper.Popper;
+  Popper: NSPopper.Popper.Component;
   Header: NSBox.Component;
   Title: Intergalactic.Component<'div', DatePickerProps, MonthPickerContext>;
   Prev: NSButton.Component;
@@ -451,7 +450,7 @@ declare const MonthRangePicker: Intergalactic.Component<
     Text: typeof BaseTrigger.Text;
   };
   Trigger: typeof RangeInputTrigger;
-  Popper: typeof Popper.Popper;
+  Popper: NSPopper.Popper.Component;
   Header: NSBox.Component;
   Title: Intergalactic.Component<'div', DateRangePickerProps, MonthRangePickerContext>;
   Prev: NSButton.Component;
@@ -604,7 +603,7 @@ declare const DateRangeComparator: Intergalactic.Component<
   DateRangeComparatorProps,
   DateRangeComparatorContext & CalendarDaysContext
 > & {
-  Popper: typeof Popper.Popper;
+  Popper: NSPopper.Popper.Component;
   Header: NSFlex.Component;
   Prev: NSButton.Component;
   Next: NSButton.Component;

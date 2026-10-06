@@ -82,12 +82,6 @@ const Demo = (props: ExampleProps) => (
       <li>I'm gonna make him an offer he can't refuse.</li>
       <li>Carpe diem. Seize the day, boys. Make your lives extraordinary.</li>
     </ol>
-    <blockquote>
-      I've seen things you people wouldn't believe. Attack ships on fire off the shoulder of Orion.
-      I watched C-beams glitter in the dark near the Tannhäuser Gate. All those moments will be lost
-      in time, like tears in rain. Time to die.
-      <cite>Roy Batty</cite>
-    </blockquote>
   </Text>
 );
 

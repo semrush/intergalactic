@@ -13,7 +13,7 @@ title: Punctuation and special symbols
 * Use sparingly in sentences in place of a comma or colon
 * Omit the spaces on both sides of the dash
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         It makes us sound like <nobr>Semrush &mdash; regardless</nobr>
         of who the person behind the communication is.
@@ -22,7 +22,7 @@ title: Punctuation and special symbols
         It makes us sound like <nobr>Semrush&mdash;regardless</nobr>
         of who the person behind the communication is.
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### En dash
 
@@ -34,7 +34,7 @@ title: Punctuation and special symbols
 * Use to indicate an empty value in tables
 * Omit the spaces on both sides of the dash
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         <p>100 &ndash; 100</p>
         <p>Sep 5 &ndash; Oct 4, 2016</p>
@@ -45,7 +45,7 @@ title: Punctuation and special symbols
         <p>Sep 5&ndash;Oct 4, 2016 </p>
         <p>Sep 5, 2016&ndash;Jan 4, 2017</p>
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Hyphen
 
@@ -55,7 +55,7 @@ title: Punctuation and special symbols
 
 Use for telephone numbers and compound modifiers.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         <p>703&ndash;555&ndash;6593</p>
         <p>AI&ndash;powered</p>
@@ -64,7 +64,7 @@ Use for telephone numbers and compound modifiers.
         <p>703-555-6593</p>
         <p>AI-powered</p>
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Non-breaking hyphen
 
@@ -74,14 +74,14 @@ Use for telephone numbers and compound modifiers.
 
 Use to prevent unwanted line breaks.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         Metrics like click-<br />through rate
     </template>
     <template #do>
         Metrics like<br />click&#8209;through rate
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Soft hyphen
 
@@ -92,14 +92,14 @@ Use to prevent unwanted line breaks.
 * Use to indicate where a hyphenated break is allowed. It’s invisible otherwise
 * Useful in scenarios when the same string is displayed in different layouts
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         SEO-<br />friendly
     </template>
     <template #do>
         SEO­<br />friendly
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ## Non-breaking space
 
@@ -109,14 +109,14 @@ Use to prevent unwanted line breaks.
 
 Use to keep the words “glued.”
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         Click here to<br /> subscribe
     </template>
     <template #do>
         Click here<br />to&nbsp;subscribe
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ## Quotation marks and apostrophe
 
@@ -132,7 +132,7 @@ Use to keep the words “glued.”
 * Dashes, semicolons, exclamation points, and question marks go inside the quotation mark only if they relate to the quotation
 * Use when quoting UI text, if text formatting isn't available
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         <p>"Project name"</p>
         <p>Search for “small business websites”.</p>
@@ -145,7 +145,7 @@ Use to keep the words “glued.”
         <p>Click “How can you help?”</p>
         <p>Enter the <b>My Profile</b> section</p>
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Apostrophe
 
@@ -155,14 +155,14 @@ Use to keep the words “glued.”
 
 Use the curly style, just like for the quotation ‘a‘ ’marks
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         What's new
     </template>
     <template #do>
         What’s new
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ## Period
 
@@ -170,7 +170,7 @@ Use the curly style, just like for the quotation ‘a‘ ’marks
 * Include in quotation marks and brackets
 * Use with shortened forms of words (mainly in table columns)
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         <p>5. If the error persists, contact us</p>
         <p>Click the edit button next to “Billing information”.</p>
@@ -183,7 +183,7 @@ Use the curly style, just like for the quotation ‘a‘ ’marks
         <p>Position → Pos.</p>
         <p><u style="color: var(--intergalactic-text-link)">Cookie Policy</u></p>
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 **Omit:**
 * in headings
@@ -193,18 +193,18 @@ Use the curly style, just like for the quotation ‘a‘ ’marks
 * in tooltips that serve as labels for icons or display the element’s full name
 * after URLs
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
-        <img src="./static/period-dont.png" style="margin: auto" alt="A hovered button with tooltip saying 'Share report' with period in the end" />
+        <img src="./static/period-dont.png" style="margin: auto; width: 160px;" alt="A hovered button with tooltip saying 'Share report' with period in the end" />
         <p style="line-height: 20px;"><img src="./static/checkbox.png" alt="Checkbox" style="display: inline; border-radius: 0; vertical-align: top;"> Remind later.</p>
         <p>Your competitor <span style="color: var(--intergalactic-text-link)">https://rival.com</span>.</p>
     </template>
     <template #do>
-        <img src="./static/period-do.png" style="margin: auto" alt="A hovered button with tooltip saying 'Share report' without period in the end" />
+        <img src="./static/period-do.png" style="margin: auto; width: 160px;" alt="A hovered button with tooltip saying 'Share report' without period in the end" />
         <p style="line-height: 20px;"><img src="./static/checkbox.png" alt="Checkbox" style="display: inline; border-radius: 0; vertical-align: top;"> Remind later</p>
         <p>Your competitor <span style="color: var(--intergalactic-text-link)">https://rival.com</span></p>
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ## Lists
 
@@ -216,7 +216,7 @@ Use the curly style, just like for the quotation ‘a‘ ’marks
 Use numbered lists for a sequence of actions!
 :::
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         <p>Profile settings.</p>
         <p>1. Open the <b>Billing and Account</b> Tab</p>
@@ -225,7 +225,7 @@ Use numbered lists for a sequence of actions!
         <p>Profile settings</p>
         <p>1. Open the <b>Billing and Account</b> Tab.</p>
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ## Special symbols
 
@@ -238,7 +238,7 @@ Use numbered lists for a sequence of actions!
 * Enclose in spaces
 * Avoid. If there’s enough space—always use “and”
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         <p>Plans&Pricing</p>
         <p>Questions & Answers</p>
@@ -247,7 +247,7 @@ Use numbered lists for a sequence of actions!
         <p>Plans & Pricing</p>
         <p>Questions and Answers</p>
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Number sign
 
@@ -257,14 +257,14 @@ Use numbered lists for a sequence of actions!
 
 Omit the space after the sign.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         # 1, # 3–6
     </template>
     <template #do>
         #1, #3–6
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Percent sign
 
@@ -276,7 +276,7 @@ Omit the space after the sign.
 * Omit the space before the percent sign<br>
 (**Exception:** German, French, Swedish languages)
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         <p>%Traffic</p>
         <p>156 %</p>
@@ -285,7 +285,7 @@ Omit the space after the sign.
         <p>Traffic %</p>
         <p>156%</p>
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Minus and plus signs
 
@@ -298,7 +298,7 @@ Omit the space after the sign.
 * Use to show changes in metrics
 * If you can't use the minus character for some reason, use the en dash
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         <p>190 + countries</p>
         <p>-45%</p>
@@ -307,7 +307,7 @@ Omit the space after the sign.
         <p>190&plus; countries</p>
         <p>&minus;45%</p>
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Slash
 
@@ -317,14 +317,14 @@ Omit the space after the sign.
 
 Omit the spaces around the sign.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         24 / 7 competitor tracking
     </template>
     <template #do>
         24/7 competitor tracking
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Multiplication sign
 
@@ -334,7 +334,7 @@ Omit the spaces around the sign.
 
 Avoid using the “x” letter.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         1080 x<span style="font-size: 0">.</span> 1920 px
         <!-- the period prevents Vitepress from converting x to &times; -->
@@ -342,4 +342,4 @@ Avoid using the “x” letter.
     <template #do>
         1080 &times; 1920 px
     </template>
-</DosDonts>
+</DosDontsCopy>

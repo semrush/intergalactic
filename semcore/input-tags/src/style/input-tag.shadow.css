@@ -1,13 +1,9 @@
 SInputTags {
   box-sizing: border-box;
   cursor: text;
-  align-items: flex-start;
+  align-items: center;
   /* reset for ScrollArea because cut box-shadow */
   overflow: initial;
-
-  li:first-of-type {
-    padding-left: var(--intergalactic-spacing-05x, 2px);
-  }
 }
 
 SInputTags[disabled] {
@@ -15,8 +11,8 @@ SInputTags[disabled] {
 }
 
 SInputTags SContainer:focus SOutline {
-  border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px oklch(0.424 0.269 264.2 / 0.469));
+  border-color: var(--intergalactic-border-info-active, oklch(0.23 0.009 245));
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px oklch(from oklch(0.23 0.009 245) l c h / 0.5));
 }
 
 SInputTags SContainer:focus:has(SOutline)::after {
@@ -41,15 +37,15 @@ SInputTags>div[data-ui-name='ScrollArea.Bar'][orientation='vertical'] {
 }
 
 SInputTags[size='m'] {
-  min-height: var(--intergalactic-form-control-m, 28px);
+  min-height: var(--intergalactic-form-control-m, 32px);
   height: auto;
-  padding: 0 calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) 0 var(--intergalactic-spacing-1x, 4px);
+  padding: var(--intergalactic-spacing-content-padding-xxsmall, 2px) var(--intergalactic-spacing-content-padding-medium, 12px);
 }
 
 SInputTags[size='l'] {
-  min-height: var(--intergalactic-form-control-l, 40px);
+  min-height: var(--intergalactic-form-control-l, 44px);
   height: auto;
-  padding: 0 calc(var(--intergalactic-spacing-2x, 8px) + var(--intergalactic-spacing-05x, 2px)) 0 var(--intergalactic-spacing-2x, 8px);
+  padding: var(--intergalactic-spacing-content-padding-xsmall, 4px) var(--intergalactic-spacing-content-padding-medium, 12px);
 }
 
 SInputTags STag:focus-visible, SInputTags STagContainerClose:focus-visible {
@@ -59,20 +55,20 @@ SInputTags STag:focus-visible, SInputTags STagContainerClose:focus-visible {
   }
 }
 
-STagContainer {
-  margin: var(--intergalactic-spacing-05x, 2px);
+STagContainer[size='m'] {
+  margin: var(--intergalactic-spacing-05x, 2px) var(--intergalactic-spacing-05x, 2px) var(--intergalactic-spacing-05x, 2px) 0;
+}
+
+STagContainer[size='l'] {
+  margin: var(--intergalactic-spacing-05x, 2px) var(--intergalactic-spacing-05x, 2px) var(--intergalactic-spacing-05x, 2px) 0;
+}
+
+STagContainer[size='xl'] {
+  margin: var(--intergalactic-spacing-05x, 2px) var(--intergalactic-spacing-05x, 2px) var(--intergalactic-spacing-05x, 2px) 0;
 }
 
 STagContainer[editable] {
   cursor: pointer;
-}
-
-SInputTags[size='m'] SValue {
-  height: calc(var(--intergalactic-form-control-m, 28px) - var(--intergalactic-spacing-1x, 4px));
-}
-
-SInputTags[size='l'] SValue {
-  height: calc(var(--intergalactic-form-control-l, 40px) - var(--intergalactic-spacing-1x, 4px));
 }
 
 SValue {

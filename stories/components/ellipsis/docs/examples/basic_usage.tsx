@@ -14,7 +14,6 @@ const Demo = (props: EllipsisProps) => {
   return (
     <Box w={220}>
       <Link
-        inline
         href='https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis'
         display={linkDisplayValue}
       >

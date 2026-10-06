@@ -34,7 +34,8 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@base-components',
 
         '@counter',
-        '@badge'],
+        '@badge',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/tab-line/tests/examples/tab_line_item_addons_and_props.tsx', 'en', item);
 
@@ -47,40 +48,40 @@ test.describe(`${TAG.VISUAL} `, () => {
       const l_size = page.locator('[data-ui-name="TabLine"][class*="size_l"]');
 
       await test.step('Verify tab line styles styles', async () => {
-        const countText = await locators.text(page).count();
-        for (let i = 0; i < countText - 2; i++) {
-          await expect(locators.text(page).nth(i)).toHaveCSS('margin-right', '8px');
-        }
-        await expect(locators.text(page).nth(countText - 2)).not.toHaveCSS('margin-right', '8px');
-        await expect(locators.text(page).nth(countText - 1)).not.toHaveCSS('margin-right', '8px');
+        // Spacing between tabs comes from the tablist gap and depends on the size
+        await expect(locators.tabLine(page)).toHaveCSS('column-gap', item.size === 'l' ? '20px' : '16px');
 
         const countTabs = await locators.tabLines(page).count();
-        for (let i = 0; i < countTabs - 1; i++) {
-          await expect(locators.tabLines(page).nth(i)).toHaveCSS('margin-right', '16px');
+        for (let i = 0; i < countTabs; i++) {
+          // Spacing between an addon and the text comes from the tab gap
+          await expect(locators.tabLines(page).nth(i)).toHaveCSS('column-gap', '6px');
+          await expect(locators.tabLines(page).nth(i)).toHaveCSS('margin-right', '0px');
         }
-        await expect(locators.tabLines(page).nth(countTabs - 1)).not.toHaveCSS('margin-right', '16px');
 
-        await expect(locators.addons(page).nth(0)).toHaveCSS('margin-right', '8px');
-        await expect(locators.addons(page).nth(2)).toHaveCSS('margin-right', '8px');
-        await expect(locators.addons(page).nth(4)).toHaveCSS('margin-right', '8px');
-        await expect(locators.addons(page).nth(7)).toHaveCSS('margin-right', '8px');
+        // Per-child margins were replaced by the gaps above and must not come back
+        const countText = await locators.text(page).count();
+        for (let i = 0; i < countText; i++) {
+          await expect(locators.text(page).nth(i)).toHaveCSS('margin-right', '0px');
+          await expect(locators.text(page).nth(i)).toHaveCSS('margin-left', '0px');
+        }
 
-        await expect(locators.addons(page).nth(1)).not.toHaveCSS('margin-right', '8px');
-        await expect(locators.addons(page).nth(3)).not.toHaveCSS('margin-right', '8px');
-        await expect(locators.addons(page).nth(5)).not.toHaveCSS('margin-right', '8px');
-        await expect(locators.addons(page).nth(6)).not.toHaveCSS('margin-right', '8px');
+        const countAddons = await locators.addons(page).count();
+        for (let i = 0; i < countAddons; i++) {
+          await expect(locators.addons(page).nth(i)).toHaveCSS('margin-right', '0px');
+          await expect(locators.addons(page).nth(i)).toHaveCSS('margin-left', '0px');
+        }
       });
 
       await test.step('Verify tab line sizes styles', async () => {
         if (await m_size.count() > 0) {
           const tabLinesCount = await locators.tabLines(page).count();
           for (let i = 0; i < tabLinesCount; i++) {
-            await expect(locators.tabLines(page).nth(i)).toHaveCSS('height', '28px');
+            await expect(locators.tabLines(page).nth(i)).toHaveCSS('height', '32px');
           }
         } else if (await l_size.count() > 0) {
           const tabLinesCount = await locators.tabLines(page).count();
           for (let i = 0; i < tabLinesCount; i++) {
-            await expect(locators.tabLines(page).nth(i)).toHaveCSS('height', '40px');
+            await expect(locators.tabLines(page).nth(i)).toHaveCSS('height', '44px');
           }
         }
       });
@@ -98,7 +99,8 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@base-components',
 
         '@counter',
-        '@badge'],
+        '@badge',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/tab-line/tests/examples/tab_line_item_addons_and_props.tsx', 'en', item);
 
@@ -126,9 +128,9 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   const variablesEllipsis = [
     { w: 100, size: 'l', behavior: 'auto', hintPlacement: 'right', desc: 'default' },
-    { w: 100, size: 'm', behavior: 'auto', ellipsis: { 'ellipsis:cropPosition': 'middle' }, hintPlacement: 'right', desc: 'cropPosition:middle' },
+    { w: 70, size: 'm', behavior: 'auto', ellipsis: { 'ellipsis:cropPosition': 'middle' }, hintPlacement: 'right', desc: 'cropPosition:middle' },
     { w: 100, size: 'l', behavior: 'manual', hintPlacement: 'right', desc: 'default' },
-    { w: 100, size: 'm', behavior: 'manual', ellipsis: { 'ellipsis:cropPosition': 'middle' }, hintPlacement: 'right', desc: 'cropPosition:middle' },
+    { w: 70, size: 'm', behavior: 'manual', ellipsis: { 'ellipsis:cropPosition': 'middle' }, hintPlacement: 'right', desc: 'cropPosition:middle' },
   ];
   variablesEllipsis.forEach((item) => {
     test(`Verify ellipsis in Tab lines behavior = ${item.behavior} size = ${item.size} ellipsis = ${item.desc} styles`, {
@@ -138,7 +140,8 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@ellipsis',
         '@hint',
         '@counter',
-        '@badge'],
+        '@badge',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/tab-line/tests/examples/tab_line_item_addons_and_props.tsx', 'en', item);
       await page.waitForTimeout(100);
@@ -174,7 +177,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify automatic tabs activation by mouse', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@tab-line'],
+      '@tab-line',
+      '@badge',
+      '@counter',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tab-line/tests/examples/tab_line_item_addons_and_props.tsx', 'en', { behavior: 'auto' });
 
@@ -221,7 +227,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify automatic tabs activation by keyboard', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@tab-line'],
+      '@tab-line',
+      '@badge',
+      '@counter',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tab-line/tests/examples/tab_line_item_addons_and_props.tsx', 'en', { behavior: 'auto' });
 
@@ -253,7 +262,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify manual tabs activation by keyboard', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@tab-line'],
+      '@tab-line',
+      '@badge',
+      '@counter',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tab-line/tests/examples/tab_line_item_addons_and_props.tsx', 'en', { behavior: 'manual' });
 
@@ -289,7 +301,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify manual tabs activation by mouse', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@tab-line'],
+      '@tab-line',
+      '@badge',
+      '@counter',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tab-line/tests/examples/tab_line_item_addons_and_props.tsx', 'en', { behavior: 'manual' });
 
@@ -338,7 +353,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@base-components',
 
       '@counter',
-      '@badge'],
+      '@badge',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tab-line/tests/examples/tab_line_item_addons_and_props.tsx', 'en', { behavior: 'auto' });
 

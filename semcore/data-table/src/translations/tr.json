@@ -4,5 +4,6 @@
   "DataTable.Cell.AccordionToggle.collapse:aria-label": "Detayları gizle",
   "DataTable.Header.selectAllCheckbox:aria-label": "Tüm öğeler",
   "DataTable.allItemsSelected:aria-live": "Tüm öğeler seçildi",
-  "DataTable.allItemsDeselected:aria-live": "Tüm öğeler seçilmedi"
+  "DataTable.allItemsDeselected:aria-live": "Tüm öğeler seçilmedi",
+  "DataTable.maxLimitReached:aria-live": "Maksimum limite ulaşıldı"
 }

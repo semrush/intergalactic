@@ -1,9 +1,4 @@
 {
-  "compilerOptions": {
-    "module": "esnext",
-    "target": "esnext",
-    "allowImportingTsExtensions": true
-  },
-  "extends": "../../tsconfig.json",
-  "include": ["src", "lib", "bin"]
+  "extends": "../tsconfig.json",
+  "include": ["src", "bin"]
 }

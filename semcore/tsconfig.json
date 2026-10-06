@@ -22,9 +22,6 @@
       "path": "./base-components"
     },
     {
-      "path": "./base-trigger"
-    },
-    {
       "path": "./breadcrumbs"
     },
     {
@@ -58,9 +55,6 @@
       "path": "./data-table"
     },
     {
-      "path": "./date-picker"
-    },
-    {
       "path": "./divider"
     },
     {
@@ -70,13 +64,7 @@
       "path": "./drag-and-drop"
     },
     {
-      "path": "./dropdown"
-    },
-    {
       "path": "./dropdown-menu"
-    },
-    {
-      "path": "./ellipsis"
     },
     {
       "path": "./errors"
@@ -89,12 +77,6 @@
     },
     {
       "path": "./feedback-form"
-    },
-    {
-      "path": "./flags"
-    },
-    {
-      "path": "./fullscreen-modal"
     },
     {
       "path": "./icon"
@@ -184,13 +166,7 @@
       "path": "./time-picker"
     },
     {
-      "path": "./tooltip"
-    },
-    {
       "path": "./typography"
-    },
-    {
-      "path": "./ui"
     },
     {
       "path": "./widget-empty"

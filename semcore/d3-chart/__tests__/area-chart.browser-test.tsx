@@ -1,6 +1,6 @@
 import type { Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
-import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { expectEachToHaveAttribute, loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
@@ -16,6 +16,10 @@ export const locators = {
     const base = page.locator('path[data-ui-name="Area"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
+  areaLine: (page: Page, index?: number) => {
+    const base = page.locator('path[clip-path*="-animation"][d]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
   legendItem: (page: Page, text?: string, index?: number) => {
     const base = text ? page.getByText(text) : page.locator('[data-ui-name="Legend.Item"]');
     return typeof index === 'number' ? base.nth(index) : base;
@@ -24,7 +28,61 @@ export const locators = {
     const base = text ? page.getByText(text) : page.locator('[data-ui-name="LegendFlex.LegendItem"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
+  highlightRing: (page: Page) => page.locator('circle[r="11.5"]'),
+  highlightHalo: (page: Page) => page.locator('circle[r="8.5"]'),
   tooltip: (page: Page) => page.locator('[data-ui-name="AreaChart.Tooltip"], [data-ui-name="Chart.Tooltip"], [data-ui-name="HoverLine.Tooltip"]'),
+};
+
+const AREA_STORY = 'stories/components/d3-chart/tests/examples/area-chart/basic-usage.tsx';
+
+type SegmentKind = 'main' | 'forecast' | 'potential';
+type Segment = { kind: SegmentKind; fill: string; hasGradient: boolean };
+
+const segments = (page: Page): Promise<Segment[]> =>
+  page.evaluate(() => {
+    const classify = (path: Element) => {
+      const mask = path.getAttribute('mask') ?? '';
+      if (mask.includes('forecast')) return 'forecast' as const;
+      if (mask.includes('potential')) return 'potential' as const;
+
+      // Only the filled area carries the name; lines, axes and grid paths do not.
+      return path.getAttribute('data-ui-name')?.endsWith('Area') ? ('main' as const) : null;
+    };
+
+    return Array.from(document.querySelectorAll('svg[data-ui-name="Plot"] path'))
+      .filter((path) => (path.getAttribute('d') ?? '').length > 0)
+      .flatMap((path) => {
+        const kind = classify(path);
+        if (kind === null) return [];
+
+        const styles = getComputedStyle(path);
+
+        return [{
+          kind,
+          fill: styles.fill,
+          hasGradient: styles.maskImage !== 'none' && styles.maskImage !== '',
+        }];
+      });
+  });
+
+const segmentsOfKind = async (page: Page, kind: SegmentKind) => {
+  const all = await segments(page);
+  const found = all.filter((segment) => segment.kind === kind);
+
+  expect(
+    found,
+    `expected a "${kind}" segment, found kinds: [${all.map((s) => s.kind).join(', ') || 'none'}]`,
+  ).not.toHaveLength(0);
+
+  return found;
+};
+
+const mainHasGradient = async (page: Page) =>
+  (await segmentsOfKind(page, 'main')).every((segment) => segment.hasGradient);
+
+const openAreaStory = async (page: Page, props: Record<string, unknown>) => {
+  await loadPage(page, AREA_STORY, 'en', { duration: 0, ...props });
+  await locators.plot(page).first().waitFor({ state: 'visible' });
 };
 
 /* =====================================================
@@ -90,11 +148,49 @@ test.describe(`${TAG.VISUAL}`, () => {
       patterns: false,
       duration: 0,
     },
+    {
+      description: 'Highlighted dots, ordinary dots off',
+      highlightDots: 'mixed',
+      singleSeries: true,
+      showDots: false,
+      plotWidth: 500,
+      plotHeight: 300,
+      showTooltip: false,
+      duration: 0,
+    },
+    {
+      description: 'Forecast segment',
+      dataType: 'forecast',
+      singleSeries: true,
+      plotWidth: 500,
+      plotHeight: 300,
+      showTooltip: false,
+      duration: 0,
+    },
+    {
+      description: 'Potential segment',
+      dataType: 'potential',
+      singleSeries: true,
+      plotWidth: 500,
+      plotHeight: 300,
+      showTooltip: false,
+      duration: 0,
+    },
+    {
+      description: 'Highlighted dots with a11y patterns',
+      highlightDots: 'mixed',
+      singleSeries: true,
+      patterns: true,
+      plotWidth: 500,
+      plotHeight: 300,
+      showTooltip: false,
+      duration: 0,
+    },
   ];
 
   variables.forEach((vars, index) => {
     test(`Verify area chart ${vars.description}`, {
-      tag: [TAG.PRIORITY_HIGH, '@area-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, '@area-chart', '@d3-chart', '@base-components', '@flex-box'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -145,7 +241,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   dataVariations.forEach((dataVariant) => {
     test(`Verify area chart ${dataVariant.description}`, {
-      tag: [TAG.PRIORITY_MEDIUM, '@area-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, '@area-chart', '@d3-chart', '@base-components', '@flex-box'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -179,7 +275,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify chart with no data and single data', {
-    tag: [TAG.PRIORITY_MEDIUM, '@area-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, '@area-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/area-chart/edge-cases.tsx', 'en');
 
@@ -218,7 +314,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify stacked area when part of the chart has no data or only one value', {
-    tag: [TAG.PRIORITY_HIGH, '@stacked-area-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@stacked-area-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/stacked-area-chart/edge-cases.tsx', 'en');
 
@@ -236,7 +332,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify stacked area chart rendering', {
-    tag: [TAG.PRIORITY_MEDIUM, '@stacked-area-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, '@stacked-area-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/stacked-area-chart/stacked-area.tsx', 'en');
 
@@ -248,7 +344,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify legend and pattern fill hover and focus styles', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@area-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@area-chart', '@d3-chart', '@chart-legend'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/area-chart/legend-and-pattern-fill.tsx', 'en');
 
@@ -274,7 +370,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify stacked area chart legend hover styles', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@stacked-area-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@stacked-area-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/stacked-area-chart/legend-and-pattern-fill.tsx', 'en');
 
@@ -294,7 +390,7 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify props configurations behavior', {
-    tag: [TAG.PRIORITY_HIGH, '@area-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@area-chart', '@d3-chart', '@base-components', '@flex-box'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -361,13 +457,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await locators.plot(page).waitFor({ state: 'visible' });
       await page.waitForTimeout(500);
 
-      const count = await locators.areaDots(page).count();
-      await expect(count).toBe(10);
-      for (let i = 0; i < count; i++) {
-        const dot = locators.areaDots(page, i);
-        await expect(dot).toHaveAttribute('aria-hidden', 'true');
-        await expect(dot).toHaveAttribute('r', '4');
-      }
+      await expect(locators.areaDots(page)).toHaveCount(8);
+      await expectEachToHaveAttribute(locators.areaDots(page), 'aria-hidden', 'true');
+      await expectEachToHaveAttribute(locators.areaDots(page), 'r', '3.5');
     });
 
     await test.step('Verify no unneeded attributes on DOM nodes', async () => {
@@ -375,6 +467,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       expect(pathsCount).toBe(1);
       await expect(locators.areaPath(page)).not.toHaveAttribute('use:duration');
     });
+  });
+
+  test('Verify area line stroke width is 2px', {
+    tag: [TAG.PRIORITY_MEDIUM, '@area-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/d3-chart/docs/examples/area-chart/area.tsx', 'en');
+    await locators.plot(page).waitFor({ state: 'visible' });
+
+    await expect(locators.areaLine(page)).toHaveCount(1);
+    await expect(locators.areaLine(page)).toHaveCSS('stroke-width', '2px');
   });
 
   test('Verify interpolation attributes', {
@@ -392,7 +494,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify click handler (onClickArea)', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@area-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@area-chart', '@d3-chart', '@base-components', '@flex-box'],
   }, async ({ page }) => {
     const consoleMessages: string[] = [];
 
@@ -422,7 +524,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify legend checkbox attributes', {
-    tag: [TAG.PRIORITY_MEDIUM, '@area-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, '@area-chart', '@d3-chart', '@chart-legend'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/area-chart/legend-and-pattern-fill.tsx', 'en');
 
@@ -430,14 +532,141 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await locators.plot(page).waitFor({ state: 'visible' });
 
       const checkboxes = page.locator('[data-ui-name="LegendFlex.LegendItem"][shape="Checkbox"]');
-      const checkboxesInputs = checkboxes.locator('input');
-      const count = await checkboxesInputs.count();
-      expect(count).toBeGreaterThan(0);
+      await expectEachToHaveAttribute(checkboxes.locator('input'), 'aria-invalid', 'false');
+    });
+  });
 
-      for (let i = 0; i < count; i++) {
-        const checkboxesInput = checkboxesInputs.nth(i);
-        await expect(checkboxesInput).toHaveAttribute('aria-invalid', 'false');
-      }
+  const gradientRules = [
+    { description: 'stacked, no patterns', props: { stacked: true }, gradient: true },
+    { description: 'stacked, patterns', props: { stacked: true, patterns: true }, gradient: false },
+    {
+      description: 'not stacked, one series, no patterns',
+      props: { stacked: false, singleSeries: true },
+      gradient: true,
+    },
+    {
+      description: 'not stacked, one series, patterns',
+      props: { stacked: false, singleSeries: true, patterns: true },
+      gradient: false,
+    },
+    {
+      description: 'not stacked, two series, no patterns',
+      props: { stacked: false },
+      gradient: false,
+    },
+    {
+      description: 'not stacked, two series, patterns',
+      props: { stacked: false, patterns: true },
+      gradient: false,
+    },
+  ];
+
+  gradientRules.forEach(({ description, props, gradient }) => {
+    test(`Verify area gradient is ${gradient ? 'applied' : 'suppressed'}: ${description}`, {
+      tag: [TAG.PRIORITY_HIGH, '@area-chart', '@d3-chart'],
+    }, async ({ page }) => {
+      await openAreaStory(page, props);
+
+      expect(await mainHasGradient(page)).toBe(gradient);
+    });
+  });
+
+  test('Verify the area gradient follows the legend rather than the data', {
+    tag: [TAG.PRIORITY_MEDIUM, '@mouse', '@area-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await openAreaStory(page, {
+      stacked: false,
+      data: [
+        { time: new Date('2024-01-01').getTime(), a: 2, b: 3, c: 4 },
+        { time: new Date('2024-01-06').getTime(), a: 4, b: 3, c: 2 },
+        { time: new Date('2024-01-11').getTime(), a: 3, b: 5, c: 6 },
+      ],
+    });
+
+    await test.step('three series checked: no gradient', async () => {
+      expect(await mainHasGradient(page)).toBe(false);
+    });
+
+    await test.step('one series left: gradient appears', async () => {
+      await locators.legendFlexItem(page, undefined, 1).click();
+      await locators.legendFlexItem(page, undefined, 2).click();
+      await page.waitForTimeout(300);
+      expect(await mainHasGradient(page)).toBe(true);
+    });
+
+    await test.step('series restored: gradient disappears again', async () => {
+      await locators.legendFlexItem(page, undefined, 1).click();
+      await locators.legendFlexItem(page, undefined, 2).click();
+      await page.waitForTimeout(300);
+      expect(await mainHasGradient(page)).toBe(false);
+    });
+  });
+
+  test('Verify highlighted dots survive a hover', {
+    tag: [TAG.PRIORITY_MEDIUM, '@mouse', '@area-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await openAreaStory(page, { highlightDots: 'mixed', singleSeries: true, showDots: false });
+
+    const ringsBefore = await locators.highlightRing(page).count();
+    expect(ringsBefore).toBeGreaterThan(0);
+
+    const box = await locators.plot(page).first().boundingBox();
+    if (box) await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+    await page.waitForTimeout(300);
+
+    await test.step('Hover grows the ordinary dot without disturbing the decorations', async () => {
+      expect(await locators.highlightRing(page).count()).toBe(ringsBefore);
+    });
+  });
+
+  test('Verify forecast does not use the pattern fill when patterns are enabled', {
+    tag: [TAG.PRIORITY_HIGH, '@area-chart', '@d3-chart', '@accessibility'],
+  }, async ({ page }) => {
+    await openAreaStory(page, { dataType: 'forecast', singleSeries: true, patterns: true });
+
+    const [forecast] = await segmentsOfKind(page, 'forecast');
+
+    expect(forecast.fill).not.toContain('pattern');
+  });
+
+  test('Verify forecast segments differ in colour between two series', {
+    tag: [TAG.PRIORITY_HIGH, '@area-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await openAreaStory(page, { dataType: 'forecast' });
+
+    const stopColours = await page.evaluate(() =>
+      Array.from(document.querySelectorAll('linearGradient[id*="forecast-gradient"]')).map(
+        (gradient) => getComputedStyle(gradient.querySelector('stop')!).stopColor,
+      ),
+    );
+
+    expect(stopColours.length).toBeGreaterThan(1);
+    expect(new Set(stopColours).size).toBeGreaterThan(1);
+  });
+
+  test('Verify interpolated points bridge the gap instead of breaking the series', {
+    tag: [TAG.PRIORITY_MEDIUM, '@area-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await openAreaStory(page, {
+      withInterpolatedGaps: true,
+      singleSeries: true,
+      showDots: true,
+      stacked: false,
+    });
+
+    const [main] = await segmentsOfKind(page, 'main');
+
+    expect(main.fill).not.toBe('none');
+
+    await test.step('The segment still draws, with no gap in its geometry', async () => {
+      const d = await locators.areaPath(page).first().getAttribute('d');
+
+      expect(d).toBeTruthy();
+      expect(d).not.toContain('NaN');
+    });
+
+    await test.step('Interpolated points carry no dot of their own', async () => {
+      await expect(locators.areaDots(page)).toHaveCount(7);
     });
   });
 });

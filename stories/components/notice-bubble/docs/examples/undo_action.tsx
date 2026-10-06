@@ -15,7 +15,7 @@ const Demo = (props: UndoActionNoticeBubbleProps) => {
         <>
           Link was moved to
           {' '}
-          <Link href='#'>Cats from outer space group</Link>
+          <Link href='#' theme='invert'>Cats from outer space group</Link>
         </>
       ),
       action: <Button theme='invert'>Undo</Button>,

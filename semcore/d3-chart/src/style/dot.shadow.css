@@ -8,10 +8,16 @@ SDots {
 
 SDot {
   stroke-width: 1px;
-  stroke: var(--intergalactic-chart-grid-border, #fff);
-  fill: var(--intergalactic-chart-palette-order-1, oklch(0.58 0.168 278.2));
-  transition-property: cx, cy, x, y;
+  stroke: var(--intergalactic-chart-grid-border, #ffffff);
+  fill: var(--intergalactic-chart-palette-order-1, oklch(0.23 0.009 245));
+  transition-property: cx, cy, x, y, filter;
   transition-timing-function: ease-in-out;
+}
+
+SDot[active] {
+  filter:
+    drop-shadow(0 0 1px oklch(0.137 0.026 175.7 / 0.161))
+    drop-shadow(0 1px 1px oklch(0.137 0.026 175.7 / 0.161));
 }
 
 SDot[hide] {
@@ -22,6 +28,41 @@ SDot[color] {
   fill: var(--color);
 }
 
+SDotHighlight {
+  &[color] {
+    opacity: 0.4;
+    fill: var(--color);
+  }
+
+  &[transparent] {
+    opacity: 0.12;
+  }
+} 
+
+SDotBorder {
+  fill: none;
+  stroke-width: 1px;
+  stroke: var(--intergalactic-chart-grid-dot-outer-border, oklch(from oklch(0.23 0.009 245) l c h / 0.1));
+  stroke-dasharray: 2;
+
+  &[transparent] {
+    opacity: 0.03;
+  }
+}
+
 SDot[transparent] {
   opacity: 0.3;
+}
+
+SDotBackdrop {
+  stroke-width: 1px;
+  stroke: var(--intergalactic-chart-grid-border, #ffffff);
+  fill: var(--intergalactic-chart-grid-border, #ffffff);
+  transition-property: cx, cy;
+  transition-duration: var(--duration);
+  transition-timing-function: ease-in-out;
+
+  &[hide] {
+    display: none
+  }
 }

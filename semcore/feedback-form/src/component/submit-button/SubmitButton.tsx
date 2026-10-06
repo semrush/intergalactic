@@ -8,5 +8,5 @@ import type { NSSubmitButton } from './SubmitButton.type';
 export function SubmitButton(props: Intergalactic.InternalTypings.InferComponentProps<NSSubmitButton.Component>) {
   const { styles } = props;
   const SSubmit = Root;
-  return sstyled(styles)(<SSubmit render={Button} type='submit' use='primary' theme='success' />);
+  return sstyled(styles)(<SSubmit render={Button} type='submit' use='primary' theme='brand' />);
 }

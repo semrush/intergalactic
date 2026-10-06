@@ -4,28 +4,12 @@ fileSource: input
 tabs: Design('input'), A11y('input-a11y'), API('input-api'), Examples('input-code'), Changelog('input-changelog')
 ---
 
-## Password input
-
-Button with the `ShowYes` icon enables the password display. `ShowNo` hides the password and shows bullets, respectively.
+## Input with icon addon
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/input/docs/examples/password_input.tsx';
-</script>
-
-:::
-
-## Loading state
-
-If the input is in a loading state while searching, sending, or entering data dynamically, add [Spin](/components/spin/spin) as the right addon.
-
-<!-- During this time, the input may also be `disabled`. -->
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/input/docs/examples/loading_state_in_the_input.tsx';
+  export Demo from 'stories/components/input/docs/examples/input_with_an_icon_addon.tsx';
 </script>
 
 :::
@@ -78,6 +62,20 @@ When stacking two addons, the indents of the adjacent addons should be divided i
 
 :::
 
+## Loading state
+
+If the input is in a loading state while searching, sending, or entering data dynamically, add [Spin](/components/spin/spin) as the right addon.
+
+<!-- During this time, the input may also be `disabled`. -->
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/input/docs/examples/loading_state_in_the_input.tsx';
+</script>
+
+:::
+
 ## Input with other components
 
 You can also place a [Badge](/components/badge/badge) or a [Tag](/components/tag/tag) inside the input.
@@ -86,6 +84,18 @@ You can also place a [Badge](/components/badge/badge) or a [Tag](/components/tag
 
 <script lang="tsx">
   export Demo from 'stories/components/input/docs/examples/input_with_other_component_inside.tsx';
+</script>
+
+:::
+
+## Password input
+
+Button with the `ShowYes` icon enables the password display. `ShowNo` hides the password and shows bullets, respectively.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/input/docs/examples/password_input.tsx';
 </script>
 
 :::

@@ -3,6 +3,8 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { type ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
+import type { ObjectData } from './AbstractChart.type';
+import { HIGHLIGHT_DOT } from './AbstractChart.type';
 import type { LineChartData, LineChartDefaultProps, LineChartProps, LineChartType } from './LineChart.type';
 // @ts-ignore
 import { Line, minMax, HoverLine } from '../..';
@@ -27,6 +29,8 @@ class LineChartComponent extends AbstractChart<
     showXAxis: true,
     showYAxis: true,
     showTooltip: true,
+    locale: 'en',
+    deltaPercentGrowthColor: 'success',
   } as const;
 
   protected get xScale() {
@@ -49,7 +53,7 @@ class LineChartComponent extends AbstractChart<
   }
 
   protected get yScale(): ScaleLinear<any, any> {
-    const { yScale, marginX = 30 } = this.asProps;
+    const { yScale, marginX = 32 } = this.asProps;
     const { plotHeight } = this;
 
     if (yScale) {
@@ -68,7 +72,7 @@ class LineChartComponent extends AbstractChart<
 
   protected renderChart() {
     const { groupKey, curve, showDots, area, areaCurve, onClickLine } = this.asProps;
-    const { dataDefinitions, highlightedLine } = this.state;
+    const { dataDefinitions, highlightedItem } = this.state;
 
     return dataDefinitions.map((item, index) => {
       return (
@@ -78,11 +82,11 @@ class LineChartComponent extends AbstractChart<
             y={item.id}
             key={item.id}
             color={item.color}
-            transparent={highlightedLine !== -1 && highlightedLine !== index}
+            transparent={highlightedItem !== -1 && highlightedItem !== index}
             curve={curve}
             onClick={onClickLine}
           >
-            {showDots && <Line.Dots display />}
+            <Line.Dots display={showDots || this.displayDots} />
             {area?.[item.id] && (
               <Line.Area area={area[item.id]} y0='y0' y1='y1' curve={areaCurve} />
             )}
@@ -104,6 +108,7 @@ class LineChartComponent extends AbstractChart<
             children: this.getTooltipChildren({
               Tooltip: HoverLine.Tooltip,
               dataItem,
+              index: xIndex,
             }),
           };
         }}
@@ -114,6 +119,10 @@ class LineChartComponent extends AbstractChart<
   protected getLegendAriaLabel(): string {
     return this.asProps.getI18nText('legendForChart', { chartType: 'Line' });
   }
+
+  protected displayDots = (i: number, isActive: boolean, noAround: boolean, data: ObjectData): boolean => {
+    return isActive || noAround || Boolean(data[HIGHLIGHT_DOT]);
+  };
 }
 
 /**

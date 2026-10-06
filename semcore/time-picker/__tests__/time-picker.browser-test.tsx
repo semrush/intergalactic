@@ -29,7 +29,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   variablesStatesAndSizes.forEach((item) => {
     test(`Verify TimePicker with is12Hour=${item.is12Hour} state= ${item.state} size= ${item.size}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@time-picker'],
+        '@time-picker', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/time-picker/tests/examples/different_cases.tsx', 'en', item);
 
@@ -40,13 +40,13 @@ test.describe(`${TAG.VISUAL} `, () => {
 
         if (classAttr?.includes('_size_m_')) {
           for (let i = 0; i < 2; i++) {
-            await expect(locators.timeBoxes(page).nth(i)).toHaveCSS('margin-left', '8px');
-            await expect(locators.timeBoxes(page).nth(i)).toHaveCSS('margin-right', '8px');
+            await expect(locators.timeBoxes(page).nth(i)).toHaveCSS('margin-left', '12px');
+            await expect(locators.timeBoxes(page).nth(i)).toHaveCSS('margin-right', '12px');
           }
         } else if (classAttr?.includes('_size_l_')) {
           await expect(locators.timeBoxes(page).nth(0)).toHaveCSS('margin-left', '12px');
-          await expect(locators.timeBoxes(page).nth(0)).toHaveCSS('margin-right', '8px');
-          await expect(locators.timeBoxes(page).nth(1)).toHaveCSS('margin-left', '8px');
+          await expect(locators.timeBoxes(page).nth(0)).toHaveCSS('margin-right', '12px');
+          await expect(locators.timeBoxes(page).nth(1)).toHaveCSS('margin-left', '12px');
           await expect(locators.timeBoxes(page).nth(1)).toHaveCSS('margin-right', '12px');
         }
       },
@@ -90,7 +90,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   variablesDisabledStatesSizes.forEach((item) => {
     test(`Verify disabled TimePicker with state= ${item.state} size= ${item.size} is12Hour=${item.is12Hour}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@time-picker'],
+        '@time-picker', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/time-picker/tests/examples/different_cases.tsx', 'en', item);
       await expect(page).toHaveScreenshot();
@@ -106,7 +106,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   variablesValueandDefaultValue.forEach((item) => {
     test(`Verify TimePicker with value= ${item.value} defaultValue= ${item.defaultValue} is12Hour=${item.is12Hour}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@time-picker'],
+        '@time-picker', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/time-picker/tests/examples/different_cases.tsx', 'en', item);
       await expect(page).toHaveScreenshot();
@@ -115,7 +115,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify hours and minutes listboxes with and without step ', {
     tag: [TAG.PRIORITY_HIGH,
-      '@time-picker'],
+      '@time-picker', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/time-picker/tests/examples/different_cases.tsx', 'en');
 
@@ -164,7 +164,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify expanded Time Picker with format keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@time-picker'],
+      '@time-picker', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/time-picker/docs/examples/expanded_access_to_all_the_components.tsx', 'en');
 
@@ -268,7 +268,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify Time Picker inputs has correct aria-invalid value for invalid state', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@time-picker'],
+      '@time-picker', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/time-picker/tests/examples/different_cases.tsx', 'en', { state: 'invalid' });
 
@@ -279,7 +279,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify Time Picker expanded with format mouse interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@time-picker'],
+      '@time-picker', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/time-picker/docs/examples/expanded_access_to_all_the_components.tsx', 'en');
 
@@ -332,7 +332,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify Time Picker base with format keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@time-picker'],
+      '@time-picker', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/time-picker/tests/examples/different_cases.tsx', 'en', { is12Hour: true });
 
@@ -468,7 +468,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify Time Picker base without format keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@time-picker'],
+      '@time-picker', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/time-picker/tests/examples/different_cases.tsx', 'en', { is12Hour: false });
 
@@ -535,7 +535,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify Format changing when value empty', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@time-picker'],
+      '@time-picker', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/time-picker/docs/examples/expanded_access_to_all_the_components.tsx', 'en');
     const formatButton = page.locator('[data-ui-name="TimePicker.Format"] span');
@@ -561,7 +561,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify valid time is logged to console when selecting from list or entering manually', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.FUNCTIONAL,
-      '@time-picker'],
+      '@time-picker', '@base-components', '@flex-box', '@button', '@typography'],
   }, async ({ page }) => {
     const consoleMessages: string[] = [];
 
@@ -658,7 +658,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify 24-hour mode returns 12 when entering noon manually', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.FUNCTIONAL,
-      '@time-picker'],
+      '@time-picker', '@base-components', '@flex-box', '@button', '@typography'],
   }, async ({ page }) => {
     const consoleMessages: string[] = [];
 
@@ -689,7 +689,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify custom format does not convert values in 24-hour mode', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.FUNCTIONAL,
-      '@time-picker'],
+      '@time-picker', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/time-picker/tests/examples/different_cases.tsx', 'en', {
       defaultValue: '14:44',
@@ -711,7 +711,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify locale prop localizes time field labels', {
     tag: [TAG.PRIORITY_MEDIUM,
       TAG.FUNCTIONAL,
-      '@time-picker'],
+      '@time-picker', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/time-picker/tests/examples/different_cases.tsx', 'fr', {
       locale: 'fr',
@@ -728,7 +728,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify item-level step, placeholder and autoFocus props', {
     tag: [TAG.PRIORITY_MEDIUM,
       TAG.FUNCTIONAL,
-      '@time-picker'],
+      '@time-picker', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/time-picker/tests/examples/different_cases.tsx', 'en', {
       autoFocus: true,
@@ -759,7 +759,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify 12-hour mode should infer PM from a controlled 24-hour value', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.FUNCTIONAL,
-      '@time-picker'],
+      '@time-picker', '@base-components', '@flex-box', '@button', '@typography'],
   }, async ({ page }) => {
     const consoleMessages: string[] = [];
 
@@ -792,7 +792,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify 12-hour mode should infer PM after external controlled value updates', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.FUNCTIONAL,
-      '@time-picker'],
+      '@time-picker', '@base-components', '@flex-box', '@button', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/time-picker/tests/examples/interactive_examples.tsx', 'en', {
       showOnChange: true,

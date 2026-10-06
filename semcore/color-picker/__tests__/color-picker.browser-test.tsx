@@ -57,7 +57,10 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify Keyboard navigation when No palette', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/tests/examples/base-no-palette-manager.tsx', 'en');
 
@@ -75,13 +78,16 @@ test.describe(`${TAG.VISUAL} `, () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-    await page.getByText('#fdc23c').waitFor({ state: 'visible' });
+    await page.getByText('--yellow-200').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 
   test('Verify input validation in palette manager', {
     tag: [TAG.PRIORITY_HIGH,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/docs/examples/palettemanager.tsx', 'en');
 
@@ -101,7 +107,10 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify base styles', {
     tag: [TAG.PRIORITY_HIGH,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/color-picker/docs/examples/basic_example.tsx', 'en');
 
@@ -129,8 +138,8 @@ test.describe(`${TAG.VISUAL} `, () => {
       const triggerBox = await triggerCircle.boundingBox();
       expect(triggerBox).not.toBeNull();
       if (triggerBox) {
-        expect(triggerBox.width).toBe(18);
-        expect(triggerBox.height).toBe(18);
+        expect(triggerBox.width).toBe(22);
+        expect(triggerBox.height).toBe(22);
       }
     });
 
@@ -156,27 +165,9 @@ test.describe(`${TAG.VISUAL} `, () => {
       const count = await locators.color(page).count();
       for (let i = 0; i < count; i++) {
         const item = locators.color(page, i);
-        await expect(item).toHaveCSS('width', '26px');
-        await expect(item).toHaveCSS('height', '26px');
+        await expect(item).toHaveCSS('width', '32px');
+        await expect(item).toHaveCSS('height', '32px');
       }
-    });
-
-    await test.step('Verify divider styles', async () => {
-      const dividerStyles = await getComputedStyles(locators.divider(page), [
-        'marginTop',
-        'marginBottom',
-      ]);
-      expect(dividerStyles.marginTop).toBe('12px');
-      expect(dividerStyles.marginBottom).toBe('12px');
-    });
-
-    await test.step('Verify input styles', async () => {
-      const wrapperStyles = await getComputedStyles(page.locator('[data-ui-name="Input"]'), [
-        'width',
-        'marginLeft',
-      ]);
-      expect(wrapperStyles.width).toBe('135px');
-      expect(wrapperStyles.marginLeft).toBe('4px');
     });
 
     await test.step('Verify add color styles', async () => {
@@ -230,8 +221,8 @@ test.describe(`${TAG.VISUAL} `, () => {
       const paletteBox = await locators.paletteItem(page).boundingBox();
       expect(paletteBox).not.toBeNull();
       if (paletteBox) {
-        expect(paletteBox.width).toBe(28);
-        expect(paletteBox.height).toBe(28);
+        expect(paletteBox.width).toBe(32);
+        expect(paletteBox.height).toBe(32);
       }
 
       const paletteIcon = locators.paletteItem(page).locator('svg');
@@ -250,7 +241,9 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify default item states for active and background colors', {
     tag: [TAG.PRIORITY_HIGH,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/tests/examples/label-and-color-expanded.tsx', 'en');
 
@@ -270,7 +263,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     await test.step('Verify hover on text color ', async () => {
       const items = locators.dialog(page, 1).getByRole('option');
       await items.nth(1).hover();
-      await page.getByText('#008ff8').waitFor({ state: 'visible' });
+      await page.getByText('--blue-400').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 
@@ -282,7 +275,10 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify predefined palette ', {
     tag: [TAG.PRIORITY_HIGH,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/docs/examples/predefined_palette.tsx', 'en');
 
@@ -308,7 +304,10 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify ColorPicker.Colors', {
     tag: [TAG.PRIORITY_HIGH,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/tests/examples/color-picker-props.tsx', 'en');
 
@@ -327,7 +326,9 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify ColorPicker.Item PaletteManager.Item and ColorPicker.Input', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/tests/examples/input-color-and-items-props.tsx', 'en');
 
@@ -349,7 +350,13 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@color-picker',
       '@input',
-      '@tag'],
+      '@tag',
+      '@base-components',
+      '@flex-box',
+      '@base-trigger',
+      '@filter-trigger',
+      '@button',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/tests/examples/triggers.tsx', 'en');
 
@@ -368,7 +375,10 @@ We verify states, visibility, and attributes.
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Roles and attributes', {
     tag: [TAG.PRIORITY_HIGH,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/docs/examples/basic_example.tsx', 'en');
 
@@ -485,7 +495,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify mouse navigation when No palette', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/tests/examples/base-no-palette-manager.tsx', 'en');
 
@@ -502,7 +515,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await locators.trigger(page, 0).click();
     await locators.color(page, 4).click();
     await locators.color(page, 0).waitFor({ state: 'visible' });
-    await expect(locators.trigger(page, 0)).toHaveAttribute('aria-label', 'Color field, current color is #fdc23c');
+    await expect(locators.trigger(page, 0)).toHaveAttribute('aria-label', 'Color field, current color is --yellow-200');
 
     await locators.trigger(page, 0).click();
     await locators.color(page, 0).click();
@@ -521,7 +534,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Keyboard navigation when No palette', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/tests/examples/base-no-palette-manager.tsx', 'en');
 
@@ -563,7 +579,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await expect(locators.trigger(page)).toHaveAttribute(
       'aria-label',
-      'Color field, current color is #fdc23c',
+      'Color field, current color is --yellow-200',
     );
 
     await page.keyboard.press('Space');
@@ -587,7 +603,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify mouse navigation when palette manager presents', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/docs/examples/palettemanager.tsx', 'en');
 
@@ -641,7 +660,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify keyboard navigation when palette manager presents', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/docs/examples/palettemanager.tsx', 'en');
 
@@ -710,7 +732,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Colors and Palette.Manager props', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/tests/examples/colors-and-palette-manager-colors-props.tsx', 'en');
 
@@ -811,7 +835,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.MOUSE,
       '@color-picker',
       '@input',
-      '@tag'],
+      '@tag',
+      '@base-components',
+      '@flex-box',
+      '@base-trigger',
+      '@filter-trigger',
+      '@button',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/tests/examples/triggers.tsx', 'en');
 
@@ -840,7 +870,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.FUNCTIONAL,
       '@color-picker',
       '@input',
-      '@tag'],
+      '@tag',
+      '@base-components',
+      '@flex-box',
+      '@base-trigger',
+      '@filter-trigger',
+      '@button',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/tests/examples/triggers.tsx', 'en');
 

@@ -8,7 +8,11 @@ export type RadarChartData = Record<string, string[] | number[]>;
 
 export type RadarChartProps = Intergalactic.InternalTypings.EfficientOmit<
   BaseChartProps<RadarChartData>,
-  'showTotalInTooltip' | 'showPercentValueInTooltip'
+  | 'showTotalInTooltip'
+  | 'showPercentValueInTooltip'
+  | 'showDeltaPercentInTooltip'
+  | 'getPercentDelta'
+  | 'deltaPercentGrowthColor'
 > & {
   groupKey: string;
   scale?: ScaleLinear<any, any>;
@@ -25,6 +29,7 @@ export type RadarChartDefaultProps = {
   showXAxis: true;
   showYAxis: true;
   showTooltip: true;
+  locale: 'en';
 };
 
 export type RadarChartType = Intergalactic.Component<typeof Flex, RadarChartProps>;

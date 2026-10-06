@@ -23,48 +23,59 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 test.describe(`${TAG.VISUAL}`, () => {
   test.describe('Base states and styles', () => {
     const tagVariables = [
-      // Base tags without addons (sizes m, l, xl) - pairwise with colors
+      // Base tags without addons (sizes m, l, xl). `color` is only supported by the primary theme.
       { size: 'm', theme: 'primary', color: 'gray-500', disabled: false, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: false, showClose: false },
-      { size: 'l', theme: 'secondary', color: 'blue-500', disabled: false, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: false, showClose: false },
-      { size: 'xl', theme: 'additional', color: 'green-500', disabled: false, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: false, showClose: false },
+      { size: 'l', theme: 'secondary', disabled: false, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: false, showClose: false },
+      { size: 'xl', theme: 'additional', disabled: false, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: false, showClose: false },
 
-      // Disabled state - pairwise with different theme/color
-      { size: 'm', theme: 'muted', color: 'salad-500', disabled: true, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: false, showClose: false },
+      // Disabled state - pairwise with theme/color
+      { size: 'm', theme: 'primary', color: 'salad-500', disabled: true, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: false, showClose: false },
+      { size: 'm', theme: 'additional', disabled: true, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: false, showClose: false },
 
-      // Interactive with addons - pairwise colors
+      // Invert on a dark background - all three themes, pairwise with sizes
+      { size: 'm', theme: 'primary', invert: true, color: 'blue-500', disabled: false, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: false, showClose: false },
+      { size: 'l', theme: 'secondary', invert: true, disabled: false, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: false, showClose: false },
+      { size: 'xl', theme: 'additional', invert: true, disabled: false, interactive: false, showAddonLeft: true, showAddonRight: false, useTagContainer: false, showClose: false },
+
+      // Interactive with addons
       { size: 'm', theme: 'primary', color: 'orange-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: true, useTagContainer: false, showClose: false },
-      { size: 'm', theme: 'secondary', color: 'yellow-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: true, useTagContainer: false, showClose: false },
-      { size: 'm', theme: 'additional', color: 'red-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: true, useTagContainer: false, showClose: false },
+      { size: 'm', theme: 'secondary', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: true, useTagContainer: false, showClose: false },
+      { size: 'm', theme: 'additional', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: true, useTagContainer: false, showClose: false },
 
-      // TagContainer with close button - pairwise colors
+      // TagContainer with close button
       { size: 'm', theme: 'primary', color: 'pink-500', disabled: false, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: true, showClose: true },
-      { size: 'm', theme: 'secondary', color: 'violet-500', disabled: false, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: true, showClose: true },
+      { size: 'm', theme: 'secondary', disabled: false, interactive: false, showAddonLeft: false, showAddonRight: false, useTagContainer: true, showClose: true },
 
-      // TagContainer with icon and close - pairwise colors
+      // TagContainer with icon and close
       { size: 'm', theme: 'primary', color: 'white-500', disabled: false, interactive: false, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
-      { size: 'm', theme: 'secondary', color: 'gray-500', disabled: false, interactive: false, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
 
-      // TagContainer disabled with icon - pairwise with invert theme
-      { size: 'm', theme: 'invert', color: 'blue-500', disabled: true, interactive: true, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
+      // TagContainer disabled with icon and close
+      { size: 'm', theme: 'primary', color: 'blue-500', disabled: true, interactive: true, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
 
-      // TagContainer interactive with addons without close - pairwise colors
+      // TagContainer invert, interactive with icon and close - all three themes
+      { size: 'm', theme: 'primary', invert: true, color: 'violet-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
+      { size: 'm', theme: 'secondary', invert: true, disabled: false, interactive: true, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
+      { size: 'm', theme: 'additional', invert: true, disabled: false, interactive: true, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
+
+      // TagContainer interactive with addons without close
       { size: 'm', theme: 'primary', color: 'green-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: true, useTagContainer: true, showClose: false },
-      { size: 'm', theme: 'secondary', color: 'salad-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: true, useTagContainer: true, showClose: false },
-      { size: 'm', theme: 'additional', color: 'orange-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: true, useTagContainer: true, showClose: false },
+      { size: 'm', theme: 'secondary', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: true, useTagContainer: true, showClose: false },
+      { size: 'm', theme: 'additional', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: true, useTagContainer: true, showClose: false },
 
-      // TagContainer interactive with addon and close - pairwise colors
+      // TagContainer interactive with addon and close
       { size: 'm', theme: 'primary', color: 'yellow-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
-      { size: 'm', theme: 'secondary', color: 'red-500', disabled: false, interactive: true, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
 
-      // TagContainer disabled with addon and close - pairwise colors
-      { size: 'm', theme: 'muted', color: 'pink-500', disabled: true, interactive: false, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
+      // TagContainer disabled with addon and close - pairwise themes
+      { size: 'm', theme: 'secondary', disabled: true, interactive: false, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
 
-      // TagContainer active with addon and close - pairwise colors
-      { size: 'm', theme: 'invert', color: 'violet-500', disabled: false, active: true, interactive: false, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
+      // TagContainer active with addon and close - pairwise themes
+      { size: 'm', theme: 'primary', color: 'violet-500', disabled: false, active: true, interactive: false, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
+      { size: 'm', theme: 'additional', invert: true, disabled: false, active: true, interactive: false, showAddonLeft: true, showAddonRight: false, useTagContainer: true, showClose: true },
     ];
 
     tagVariables.forEach((item) => {
       const description = `Verify Tag size ${item.size}, theme ${item.theme}, ` +
+        `invert ${item.invert || false}, ` +
         `color ${item.color || 'default'}, ` +
         `disabled ${item.disabled}, active ${item.active || false}, ` +
         `interactive ${item.interactive}, ` +
@@ -117,14 +128,18 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify grouping More than 5 tags', {
-    tag: [TAG.PRIORITY_MEDIUM, '@tag'],
+    tag: [TAG.PRIORITY_MEDIUM, '@tag',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tag/docs/examples/grouping_tags_more.tsx', 'en');
     await expect(page).toHaveScreenshot();
   });
 
   test('Verify tag with ellipsis visual', {
-    tag: [TAG.PRIORITY_MEDIUM, '@tag'],
+    tag: [TAG.PRIORITY_MEDIUM, '@tag',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tag/tests/examples/tag-with-ellipsis.tsx', 'en');
     await expect(page).toHaveScreenshot();
@@ -138,7 +153,9 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Editing tag by mouse inside inline-edit', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@tag'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@tag',
+      '@inline-edit',
+      '@inline-input'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tag/docs/examples/editing_tag.tsx', 'en');
 
@@ -174,7 +191,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify Removing tags by mouse', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@tag'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@tag',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tag/docs/examples/removing_tag.tsx', 'en');
 
@@ -202,7 +221,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify Removing tags by keyboard', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@tag'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@tag',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tag/docs/examples/removing_tag.tsx', 'en');
 
@@ -234,7 +255,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify tag with ellipsis hint appearing', {
-    tag: [TAG.PRIORITY_MEDIUM, '@tag'],
+    tag: [TAG.PRIORITY_MEDIUM, '@tag',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/tag/tests/examples/tag-with-ellipsis.tsx', 'en');
     if (browserName == 'webkit') test.skip();

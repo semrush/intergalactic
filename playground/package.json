@@ -10,6 +10,9 @@
     "shiki": "^1.29.2"
   },
   "devDependencies": {
-    "@types/d3-shape": "^3.1.7"
+    "@types/d3-shape": "^3.1.7",
+    "@semcore/ui": "workspace:*",
+    "@semcore/illustration": "workspace:*",
+    "@semcore/icon": "workspace:*"
   }
 }

@@ -114,7 +114,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     variables.forEach((vars) => {
       test(`Verify bar chart ${vars.description}`, {
-        tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart'],
+        tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@base-components', '@flex-box'],
       }, async ({ page }) => {
         await loadPage(
           page,
@@ -159,7 +159,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     variablesTrend.forEach((vars) => {
       test(`Verify trend for chart ${vars.description}`, {
-        tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart'],
+        tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@base-components', '@flex-box'],
       }, async ({ page }) => {
         await loadPage(
           page,
@@ -223,7 +223,8 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify date format in bar chart', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart',
+        '@responsive'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -250,7 +251,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify negative values look good on bar charts', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -283,7 +284,8 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify trend line', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart',
+        '@line-chart'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -382,7 +384,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     groupedStackedVariations.forEach((variant) => {
       test(`Verify bar chart ${variant.name}`, {
-        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-chart', '@d3-chart'],
+        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box'],
       }, async ({ page }) => {
         await loadPage(
           page,
@@ -429,7 +431,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test.describe('Bar chart - Legend and interactions', () => {
     test('Verify bar legend and pattern fill mouse interaction', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@typography'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -473,7 +475,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify bar legend and pattern fill keyboard interaction', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@typography'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -567,7 +569,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     dataVariations.forEach((dataVariant) => {
       test(`Verify bar chart ${dataVariant.name}`, {
-        tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart'],
+        tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@base-components', '@flex-box'],
       }, async ({ page }) => {
         await loadPage(
           page,
@@ -592,7 +594,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test.describe('Horizontal bars', () => {
     test('Verify HorizontalBar implementation', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -628,7 +630,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify horizontal bar with background', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -652,7 +654,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify grouped horizontal bars', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -727,7 +729,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify horizontal bar legend and pattern fill mouse interaction', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@typography'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -756,7 +758,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify horizontal bar legend and pattern fill keyboard interaction', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@horizontal-bar-chart', '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@typography'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -827,7 +829,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify stacked grouped bars', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -853,7 +855,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify stacked bar legend and pattern fill mouse interaction', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@card', '@chart-legend'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -887,7 +889,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify stacked bar legend and pattern fill keyboard interaction', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@card', '@chart-legend'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -915,7 +917,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test.describe('Stacked horizontal bars', () => {
     test('Verify stacked horizontal bar chart with HoverRect tooltip', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -935,7 +937,8 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify stacked horizontal bar chart with negative values', {
-      tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography',
+        '@horizontal-bar-chart'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -952,7 +955,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify stacked horizontal bar legend and pattern fill mouse interaction', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@card', '@chart-legend'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -986,7 +989,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify stacked horizontal bar legend and pattern fill keyboard interaction', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@card', '@chart-legend'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -1081,7 +1084,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   ariaHiddenVariations.forEach((variant) => {
     test(`Verify bars aria-hidden attribute for ${variant.name}`, {
-      tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@base-components', '@flex-box'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -1139,7 +1142,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify negative values bars attributes', {
-    tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -1161,7 +1164,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify trend line attributes', {
-    tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart',
+      '@line-chart'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -1185,13 +1189,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       for (const dot of dots) {
         await expect(dot).toHaveAttribute('aria-hidden', 'true');
-        await expect(dot).toHaveAttribute('r', '4');
+        await expect(dot).toHaveAttribute('r', '3.5');
       }
     });
   });
 
   test('Verify grouped bars count and attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -1234,7 +1238,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify HorizontalBar aria-hidden attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography',
+      '@horizontal-bar-chart'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -1255,7 +1260,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify HorizontalBar.Background aria-hidden attributes', {
-    tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography',
+      '@horizontal-bar-chart'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -1276,7 +1282,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify StackBar.Bar aria-hidden attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -1297,7 +1303,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify StackGroupBar.Bar aria-hidden attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -1318,7 +1324,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify StackBar.HorizontalBar aria-hidden attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(
       page,

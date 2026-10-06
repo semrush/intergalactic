@@ -139,7 +139,7 @@ describe('Carousel.Indicators', () => {
     expect(spy).toHaveBeenCalledWith(0);
   });
 
-  test.concurrent('Verify right change index with Next button', async () => {
+  test('Verify right change index with Next button', async () => {
     const spy = vi.fn();
     const { rerender, getByLabelText, getByRole } = render(
       <Carousel index={1} onIndexChange={spy}>

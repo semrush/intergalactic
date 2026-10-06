@@ -27,6 +27,8 @@ class HistogramChartComponent extends AbstractChart<
     showXAxis: true,
     showYAxis: true,
     showTooltip: true,
+    locale: 'en',
+    deltaPercentGrowthColor: 'success',
   } as const;
 
   get xScale() {
@@ -114,7 +116,7 @@ class HistogramChartComponent extends AbstractChart<
 
   renderChart() {
     const { groupKey, invertAxis } = this.asProps;
-    const { dataDefinitions, highlightedLine } = this.state;
+    const { dataDefinitions, highlightedItem } = this.state;
 
     if (this.isStack) {
       return (
@@ -124,7 +126,7 @@ class HistogramChartComponent extends AbstractChart<
 
             const commonBarComponentProps: BarProps = {
               color: item.color,
-              transparent: highlightedLine !== -1 && highlightedLine !== index,
+              transparent: highlightedItem !== -1 && highlightedItem !== index,
             };
 
             if (invertAxis) {
@@ -170,6 +172,7 @@ class HistogramChartComponent extends AbstractChart<
             children: this.getTooltipChildren({
               Tooltip: HoverRect.Tooltip,
               dataItem,
+              index,
             }),
           };
         }}

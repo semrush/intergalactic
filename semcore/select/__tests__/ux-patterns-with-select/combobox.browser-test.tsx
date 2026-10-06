@@ -14,7 +14,7 @@ const locators = {
   ===================================================== */
 test.describe(TAG.VISUAL, () => {
   test('Verify Combobox menu opened state', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select', '@input'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select', '@input', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/auto-suggest/docs/examples/combobox_example.tsx', 'en');
 
@@ -26,7 +26,7 @@ test.describe(TAG.VISUAL, () => {
   });
 
   test('Verify Combobox with typed value', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/auto-suggest/docs/examples/combobox_example.tsx', 'en');
 
@@ -39,7 +39,7 @@ test.describe(TAG.VISUAL, () => {
   });
 
   test('Verify Combobox arrows navigation state', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/auto-suggest/docs/examples/combobox_example.tsx', 'en');
 
@@ -63,7 +63,7 @@ test.describe(TAG.VISUAL, () => {
   ===================================================== */
 test.describe(TAG.FUNCTIONAL, () => {
   test('Verify Combobox keyboard navigation', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/auto-suggest/docs/examples/combobox_example.tsx', 'en');
 

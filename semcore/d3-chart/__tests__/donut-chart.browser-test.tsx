@@ -1,6 +1,6 @@
 import type { Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
-import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { expectEachToHaveAttribute, loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
@@ -50,7 +50,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   variables.forEach((item) => {
     test(`Verify donut chart ${item.description}`, {
-      tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -108,7 +108,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   halfsizeVariables.forEach((item, index) => {
     test(`Verify semi-donut ${item.description}`, {
-      tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -139,7 +139,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify donut controlled highlight interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@donut-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -162,7 +162,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify donut legend and pattern fill interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@donut-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -206,7 +206,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
   test('Verify semi-donut with labels', {
-    tag: [TAG.PRIORITY_MEDIUM, '@donut-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/donut-chart/semi-donut.tsx', 'en');
 
@@ -225,18 +225,13 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify aria-hidden attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await test.step('Verify pies have aria-hidden attribute in basic usage', async () => {
       await loadPage(page, 'stories/components/d3-chart/docs/examples/donut-chart/basic-usage.tsx', 'en');
       await locators.plot(page).waitFor({ state: 'visible' });
-      const pies = locators.pie(page);
-      const count = await pies.count();
 
-      for (let i = 0; i < count; i++) {
-        const pie = pies.nth(i);
-        await expect(pie).toHaveAttribute('aria-hidden', 'true');
-      }
+      await expectEachToHaveAttribute(locators.pie(page), 'aria-hidden', 'true');
     });
 
     await test.step('Verify pies and labels have aria-hidden attribute', async () => {
@@ -246,19 +241,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
       await locators.plot(page).waitFor({ state: 'visible' });
 
-      const pies = locators.pie(page);
-      const pieCount = await pies.count();
-      for (let i = 0; i < pieCount; i++) {
-        const pie = pies.nth(i);
-        await expect(pie).toHaveAttribute('aria-hidden', 'true');
-      }
-
-      const labels = locators.label(page);
-      const labelCount = await labels.count();
-      for (let i = 0; i < labelCount; i++) {
-        const label = labels.nth(i);
-        await expect(label).toHaveAttribute('aria-hidden', 'true');
-      }
+      await expectEachToHaveAttribute(locators.pie(page), 'aria-hidden', 'true');
+      await expectEachToHaveAttribute(locators.label(page), 'aria-hidden', 'true');
     });
   });
 
@@ -303,7 +287,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   showLegendCombinations.forEach((item) => {
     test(`Verify showLegend prop: ${item.description}`, {
-      tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart', '@base-components', '@flex-box'],
     }, async ({ page }) => {
       const testProps: any = {
         data: item.data,
@@ -330,7 +314,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify onClick callback in donut pie', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@donut-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     const messages: string[] = [];
     page.on('console', (msg) => {

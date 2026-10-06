@@ -149,6 +149,7 @@ class TimePickerRoot extends Component<
   }
 
   render() {
+    const STimePickerWrapper = 'div';
     const STimePicker = Root;
     const { styles, Children, value, is12Hour, getI18nText, id } = this.asProps;
 
@@ -163,12 +164,12 @@ class TimePickerRoot extends Component<
       : `${this.state.ariaLabel} ${getI18nText('titleEmpty')}`;
 
     return sstyled(styles)(
-      <>
+      <STimePickerWrapper>
         <STimePicker render={Input} role='group' aria-label={label} __excludeProps={['value', 'id']}>
           <Children />
         </STimePicker>
         <ScreenReaderOnly tag='input' tabIndex={-1} id={id} aria-hidden={true} value={`${time} ${meridiem}`} readOnly />
-      </>,
+      </STimePickerWrapper>,
     );
   }
 }

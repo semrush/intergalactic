@@ -10,6 +10,8 @@ export type DemoProps = {
   limitMode?: boolean;
   rowsLimit?: number;
   columnsLimit?: number;
+  /** Max rows allowed to be selected. -1 means unlimited. Reactive API only. */
+  maxAvailableSelectedRows?: number;
   reactive?: boolean;
   pagination?: boolean;
   pageSize?: number;
@@ -271,12 +273,17 @@ const ReactiveDemo = ({
   use,
   compact,
   sideIndents = 'default',
+  maxAvailableSelectedRows = -1,
 }: Omit<DemoProps, 'reactive'>) => {
   const { count } = useSelectedRowsCount(reactiveSelectedRows);
   const [sort, setSort] = React.useState<DataTableSort<DataColumn>>();
   const [currentPage, setCurrentPage] = React.useState(0);
   const tableRef = React.useRef<HTMLDivElement>(null);
   const limit = getLimitConfig(limitMode, rowsLimit, columnsLimit);
+
+  // the store has no public setter for the limit, and it is created at module level.
+  // set it in the render body so the very first render already sees it.
+  (reactiveSelectedRows as unknown as { maxAvailableCount: number }).maxAvailableCount = maxAvailableSelectedRows;
 
   const handleDeselectAll = () => {
     reactiveSelectedRows.clearAll();
@@ -439,6 +446,7 @@ export const defaultProps: DemoProps = {
   limitMode: false,
   columnsLimit: 1,
   rowsLimit: 1,
+  maxAvailableSelectedRows: -1,
   reactive: true,
   pagination: false,
   pageSize: 5,

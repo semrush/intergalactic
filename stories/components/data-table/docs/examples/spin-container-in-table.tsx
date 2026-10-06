@@ -4,7 +4,7 @@ import { DataTable } from '@semcore/ui/data-table';
 import React from 'react';
 
 const Demo = (): any => {
-  const [loading, setLoading] = React.useState(true);
+  const [loading, setLoading] = React.useState(false);
   const [message, setMessage] = React.useState('');
 
   React.useEffect(() => {
@@ -38,7 +38,7 @@ const Demo = (): any => {
           { name: 'vol', children: 'Vol.' },
         ]}
       />
-      <Button onClick={toggleLoading} mt={3}>
+      <Button use='primary' onClick={toggleLoading} mt={3}>
         {loading ? 'Stop loading' : 'Start loading'}
       </Button>
     </>

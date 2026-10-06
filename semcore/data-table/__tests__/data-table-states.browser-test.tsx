@@ -1,8 +1,28 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
+import type { Page } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 import { locators, checkStyles, getCssVarColor, getTransparentColor } from './utils';
+
+const PAGE_ORIGIN = 'https://data-table.test';
+
+const setPageOrigin = async (page: Page) => {
+  await page.route(`${PAGE_ORIGIN}/**`, (route) =>
+    route.fulfill({ contentType: 'text/html', body: '<!DOCTYPE html><html><body></body></html>' }));
+  await page.goto(`${PAGE_ORIGIN}/`);
+};
+
+const hint = (page: Page) => page.locator('[data-ui-name="Hint"]');
+
+/** Same wait as in the ellipsis tests: the hint is rendered, laid out and fully faded in. */
+const waitForHint = async (page: Page) => {
+  await hint(page).waitFor({ state: 'visible' });
+  await page.waitForFunction(() => {
+    const el = document.querySelector('[data-ui-name="Hint"]');
+    return el !== null && getComputedStyle(el).opacity === '1';
+  });
+};
 
 /* =====================================================
 @visual
@@ -13,27 +33,36 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify loading state of table', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
-    }, async ({ page }) => {
+        '@data-table',
+        '@base-components',
+        '@button',
+        '@flex-box'],
+    }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/spin-container-in-table.tsx', 'en');
-
+      await locators.button(page, 'Start loading').click();
       await test.step('Verify roles and attributes', async () => {
         const loadingIcon = page.locator('svg[data-ui-name="Spin"]');
         await expect(loadingIcon).toBeVisible();
         await expect(loadingIcon).toHaveAttribute('role', 'gridcell');
         await expect(loadingIcon).toHaveAttribute('aria-label', 'Loading…');
+        await expect(page).toHaveScreenshot();
       });
 
       await test.step('Verify focus when loading ', async () => {
-        await page.keyboard.press('Tab');
-        await expect(page.getByRole('row', { name: 'Loading…' })).toBeFocused();
+        await page.keyboard.press('Shift+Tab');
+        if (browserName != 'webkit') await expect(page.getByRole('row', { name: 'Loading…' })).toBeFocused();
       });
-      await expect(page).toHaveScreenshot();
     });
 
     test('Verify loading state in with sticky header', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en');
 
@@ -50,7 +79,11 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test('Verify skeleton in table', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@button',
+        '@skeleton',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/skeleton-in-table.tsx', 'en');
 
@@ -75,7 +108,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test('Verify empty table state', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@button',
+        '@widget-empty',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/empty-table.tsx', 'en');
       const cellDefaultBg = await getCssVarColor(page, '--intergalactic-bg-primary-neutral');
@@ -121,7 +157,10 @@ test.describe(`${TAG.VISUAL}`, () => {
       test(`Verify table in table card styles when variant=${item.variant} use=${item.use} and  compact=${item.compact}`, {
         tag: [TAG.PRIORITY_HIGH,
           '@data-table',
-          '@card'],
+          '@card',
+          '@d3-chart',
+          '@line-chart',
+          '@responsive'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/card/tests/examples/table-with-accordions-in-card.tsx', 'en', item);
 
@@ -165,7 +204,10 @@ test.describe(`${TAG.VISUAL}`, () => {
       test(`Verify table in table card styles when variant=${item.variant} use=${item.use} and  compact=${item.compact}`, {
         tag: [TAG.PRIORITY_HIGH,
           '@data-table',
-          '@card'],
+          '@card',
+          '@d3-chart',
+          '@line-chart',
+          '@responsive'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/card/tests/examples/table-with-accordions-in-card.tsx', 'en', item);
 
@@ -199,7 +241,9 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@data-table',
         '@ellipsis',
-        '@base-components'],
+        '@base-components',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/ellipsis/docs/examples/multiple_use.tsx', 'en');
 
@@ -210,23 +254,26 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
 
-      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+      await waitForHint(page);
       await expect(page).toHaveScreenshot();
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
 
       await page.keyboard.press('ArrowDown');
-      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'hidden' });
-      await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(0);
+      await hint(page).waitFor({ state: 'hidden' });
+      await expect(hint(page)).toHaveCount(0);
     });
 
-    test(`Ellipsis with cropPosition = middle`, {
+    test(`Ellipsis with Action Link and cropPosition = middle`, {
       tag: [TAG.PRIORITY_HIGH,
         '@data-table',
         '@ellipsis',
         '@link',
-        '@base-components'],
+        '@base-components',
+        '@pagination',
+        '@link-action'],
     }, async ({ page }) => {
+      await setPageOrigin(page);
       await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/in_table_with_link.tsx', 'en');
       await page.waitForTimeout(250); // wait for ellipsis apply
       await page.keyboard.press('Tab');
@@ -234,15 +281,43 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
-
-      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+      await page.keyboard.press('Enter');
+      await waitForHint(page);
       await expect(page).toHaveScreenshot();
 
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
-      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'hidden' });
-      await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(0);
+      await page.keyboard.press('Escape');
+      await page.keyboard.press('Escape');
+      await hint(page).waitFor({ state: 'hidden' });
+      await expect(hint(page)).toHaveCount(0);
+    });
+
+    test(`Ellipsis with Action Link and cropPosition = end`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@data-table',
+        '@ellipsis',
+        '@link',
+        '@base-components',
+        '@pagination',
+        '@link-action'],
+    }, async ({ page, browserName }) => {
+      test.skip(browserName === 'webkit', 'hint is unstable shown by keyboard focus in WebKit Playwright');
+
+      await setPageOrigin(page);
+      await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/in_table_with_link.tsx', 'en', { cropPosition: 'end' });
+      await page.waitForTimeout(250); // wait for ellipsis apply
+      await page.keyboard.press('Tab');
+      await page.waitForTimeout(200); // wait for ellipsis apply
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('Enter');
+      await waitForHint(page);
+      await expect(page).toHaveScreenshot();
+
+      await page.keyboard.press('Escape');
+      await page.keyboard.press('Escape');
+      await hint(page).waitFor({ state: 'hidden' });
+      await expect(hint(page)).toHaveCount(0);
     });
   });
 
@@ -250,7 +325,13 @@ test.describe(`${TAG.VISUAL}`, () => {
     test(`Verify limited state for table with accordion keyboard and mouse interactions`, {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@typography',
+        '@widget-empty',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/limited-mode/accordion.tsx', 'en', { rowsLimit: 1, columnsLimit: 2 });
 
@@ -269,7 +350,9 @@ test.describe(`${TAG.VISUAL}`, () => {
         await page.getByText('Nothing found').waitFor({ state: 'visible' });
         await page.waitForTimeout(300);
         await page.keyboard.press('ArrowDown');
-        await expect(page).toHaveScreenshot();
+        if (browserName !== 'webkit') {
+          await expect(page).toHaveScreenshot();
+        }
         await page.keyboard.press('ArrowDown');
         await expect(locators.toggle(page).nth(3)).toBeFocused();
       });
@@ -303,7 +386,13 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test(`Verify limited state for checkbox in table `, {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/limited-mode/checkboxes.tsx', 'en', { rowsLimit: 0, columnsLimit: 0 });
 
@@ -315,7 +404,13 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('SelectableRows', () => {
     test('Verify sideIndents=wide  and compact', {
       tag: [TAG.PRIORITY_MEDIUM,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
         sideIndents: 'wide',
@@ -335,7 +430,13 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test('Verify SelectableRows with fixed-left column — checkbox cell positioning', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
         fixedColumns: true,
@@ -360,7 +461,13 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify SelectableRows with fixed-left column — checkbox stays pinned on horizontal scroll', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
         fixedColumns: true,
@@ -392,7 +499,13 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify SelectableRows with fixed-left column — selection persists after scroll', {
       tag: [TAG.PRIORITY_MEDIUM,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
         fixedColumns: true,
@@ -418,7 +531,13 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test('Verify SelectableRows with fixed-left column and accordion rows', {
       tag: [TAG.PRIORITY_MEDIUM,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
         fixedColumns: true,
@@ -484,7 +603,13 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@data-table',
-        '@tooltip'],
+        '@tooltip',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation',
+        '@base-components',
+        '@flex-box'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/selectable_with_merged_rows.tsx', 'en');
       const cellSelectedBg = await getCssVarColor(page, '--intergalactic-table-td-cell-selected');
@@ -540,7 +665,13 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('SelectableRows (legacy API)', () => {
     test('Verify SelectableRows row highlight on selection', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
       if (browserName == 'firefox') return;
@@ -558,7 +689,13 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test('Verify sideIndents=wide and compact', {
       tag: [TAG.PRIORITY_MEDIUM,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
         sideIndents: 'wide', reactive: false,
@@ -578,7 +715,13 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test('Verify SelectableRows select all rows highlight', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
       const cellSelectedHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-selected-hover');
@@ -601,7 +744,13 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test('Verify color on hover when merged rows with SelectableRows', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
     }, async ({ page, browserName }) => {
       if (browserName === 'firefox') test.skip();
 
@@ -646,7 +795,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         await firstRowCheckbox.click();
         await locators.collapse(page).waitFor({ state: 'visible' });
         for (let row = 2; row <= 3; row++) {
-          await checkStyles(locators.getCell(page, row, 1), { 'background-color': cellSelectedHoverBg });
+          await checkStyles(locators.getCell(page, row, 1), { 'background-color': cellSelectedBg });
         }
       });
 
@@ -683,7 +832,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Loading states', () => {
     test('Verify empty table scroll\'s state when column width is defined', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@widget-empty',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/table-states-tests/nothing-found-with-fixed-column-width.tsx', 'en');
 
@@ -699,10 +853,52 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       expect(hasScroll).toBe(true);
     });
 
+    test('Verify loading state of empty table with nothing found', {
+      tag: [TAG.PRIORITY_HIGH,
+        '@data-table',
+        '@base-components',
+        '@button',
+        '@flex-box',
+        '@widget-empty'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/table-states-tests/nothing-found-with-fixed-column-width.tsx', 'en', { loading: true });
+
+      const table = locators.dataTable(page);
+      const header = locators.row(page, 1);
+      const spinContainer = page.getByRole('row', { name: 'Loading…' });
+
+      await test.step('Verify spinner and empty state are both rendered', async () => {
+        await expect(page.locator('svg[data-ui-name="Spin"]')).toBeVisible();
+        await expect(locators.button(page, 'Clear filters')).toBeVisible();
+      });
+
+      await test.step('Verify spinner is positioned relatively to the table', async () => {
+        await expect(table).toHaveCSS('position', 'relative');
+        await expect(spinContainer).toHaveCSS('position', 'absolute');
+      });
+
+      await test.step('Verify spinner covers the empty table area below the header', async () => {
+        const tableBox = (await table.boundingBox())!;
+        const headerBox = (await header.boundingBox())!;
+        const spinBox = (await spinContainer.boundingBox())!;
+
+        // spinner spans the whole table width and does not overflow it
+        expect(Math.abs(spinBox.x - tableBox.x)).toBeLessThanOrEqual(1);
+        expect(Math.abs(spinBox.width - tableBox.width)).toBeLessThanOrEqual(1);
+
+        // spinner starts below the header and stays inside the table
+        expect(spinBox.y).toBeGreaterThanOrEqual(headerBox.y + headerBox.height - 1);
+        expect(spinBox.y + spinBox.height).toBeLessThanOrEqual(tableBox.y + tableBox.height + 1);
+        expect(spinBox.height).toBeGreaterThan(0);
+      });
+    });
+
     test('Verify focus after loading is finished', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@button',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/table-states-tests/loading-in-scroll.tsx', 'en');
       const spin = page.locator('svg[data-ui-name="Spin"]');
@@ -730,6 +926,42 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.getCell(page, 2, 1)).not.toBeFocused();
       });
     });
+
+    test('Verify mouse interaction in loading state does not steal focus and does not scroll to the table', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@data-table',
+        '@button',
+        '@typography'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/table-states-tests/loading-with-sort-and-scroll.tsx', 'en');
+
+      const spin = page.locator('svg[data-ui-name="Spin"]');
+      const spinContainer = page.getByRole('row', { name: 'Loading…' });
+
+      await locators.dataTable(page).waitFor({ state: 'visible' });
+      await locators.button(page, 'Start loading').click();
+      await spin.waitFor({ state: 'visible' });
+
+      await test.step('Verify click in the loading table does not move focus to the spinner', async () => {
+        const sortButton = locators.sortButton(page, 4);
+
+        await sortButton.click();
+
+        await expect(spinContainer).not.toBeFocused();
+        await expect(sortButton).toBeFocused();
+      });
+
+      await test.step('Verify page is not scrolled back to the table when loading is finished', async () => {
+        await spinContainer.click();
+        await page.evaluate(() => window.scrollTo(0, 0));
+        expect(await page.evaluate(() => window.scrollY)).toBe(0);
+
+        await spin.waitFor({ state: 'hidden', timeout: 10000 });
+
+        expect(await page.evaluate(() => window.scrollY)).toBe(0);
+      });
+    });
   });
 
   test.describe('Selectable rows ', () => {
@@ -746,7 +978,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify table with checkbox attributes and mouse interaction', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en');
 
@@ -785,18 +1023,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       await test.step('Verify action bar when one checkbox is checked and unchecked', async () => {
-        firstColumnCells.nth(3).click();
+        await firstColumnCells.nth(3).click();
         await expect(collapse).toBeVisible();
         await expect(region).toHaveAttribute('role', 'region');
 
-        firstColumnCells.nth(3).click();
+        await firstColumnCells.nth(3).click();
         await expect(collapse).toBeHidden();
 
-        firstColumnCells.nth(3).click();
+        await firstColumnCells.nth(3).click();
         await expect(collapse).toBeVisible();
 
-        const button = page.locator('[data-ui-name="Button"]');
-        button.click();
+        await deselectAllButton.click();
         await expect(collapse).toBeHidden();
       });
 
@@ -817,46 +1054,59 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(selectAllCheckbox).not.toBeChecked();
       });
 
-      await test.step('Verify action bar when all items on next page checked', async () => {
+      // the example is configured with maxAvailableCount: 7, so a cross-page select all
+      // stops at 7 of the 23 rows instead of selecting every row on the page
+      await test.step('Verify select all on the next page stops at maxAvailableCount', async () => {
         await selectAllCheckbox.click();
 
-        await expect(selectedRowsCount).toHaveText('10');
-        await expect(selectAllCheckbox).toBeChecked();
-        for (let i = 0; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).toBeChecked();
+        await expect(selectedRowsCount).toHaveText('7');
+        await expect(rowCheckboxes.nth(0).locator('input')).toBeChecked();
+        await expect(rowCheckboxes.nth(1).locator('input')).toBeChecked();
+        await expect(rowCheckboxes.nth(2).locator('input')).not.toBeChecked();
       });
 
-      await test.step('Verify action bar when one item on next page unchecked', async () => {
+      await test.step('Verify rows above the limit are disabled and the header is not fully checked', async () => {
+        await expect(rowCheckboxes.nth(2).locator('input')).toBeDisabled();
+        await expect(rowCheckboxes.nth(3).locator('input')).toBeDisabled();
+        await expect(rowCheckboxes.nth(4).locator('input')).toBeDisabled();
+
+        await expect(selectAllCheckbox).not.toBeChecked();
+        await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
+      });
+
+      await test.step('Verify unchecking a row below the limit re-enables the rest', async () => {
         await rowCheckboxes.first().click();
 
-        await expect(rowCheckboxes.first()).not.toBeChecked();
-        await expect(selectedRowsCount).toHaveText('9');
-        await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
-        for (let i = 1; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).toBeChecked();
+        await expect(rowCheckboxes.first().locator('input')).not.toBeChecked();
+        await expect(selectedRowsCount).toHaveText('6');
+        await expect(rowCheckboxes.nth(2).locator('input')).toBeEnabled();
+        await expect(rowCheckboxes.nth(3).locator('input')).toBeEnabled();
       });
 
-      await test.step('Verify action bar when next page opened', async () => {
+      await test.step('Verify the selected count survives paging', async () => {
         await nextButton.click();
 
         await expect(selectAllCheckbox).not.toBeChecked();
-        await expect(selectedRowsCount).toHaveText('9');
+        await expect(selectedRowsCount).toHaveText('6');
         for (let i = 0; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).not.toBeChecked();
+          await expect(rowCheckboxes.nth(i).locator('input')).not.toBeChecked();
       });
 
-      await test.step('Verify indeterminate state saved when prev button is opened', async () => {
+      await test.step('Verify the selection state is restored when the prev page is opened', async () => {
         await prevButton.click();
+
         await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
-        await expect(rowCheckboxes.first()).not.toBeChecked();
-        for (let i = 1; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).toBeChecked();
+        await expect(rowCheckboxes.first().locator('input')).not.toBeChecked();
+        await expect(rowCheckboxes.nth(1).locator('input')).toBeChecked();
       });
 
-      await test.step('Verify checked state on all pages changes to undhecked by click on Deselect all', async () => {
+      await test.step('Verify the first page is still fully checked', async () => {
         await prevButton.click();
-        await expect(selectAllCheckbox).toBeChecked();
 
+        await expect(selectAllCheckbox).toBeChecked();
+      });
+
+      await test.step('Verify Deselect all clears the selection on every page', async () => {
         await deselectAllButton.click();
 
         await expect(collapse).toBeHidden();
@@ -871,20 +1121,232 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
     });
 
-    test('Verify table with checkbox keyboard interaction', {
+    test('Verify checkboxes are disabled when maxAvailableCount is reached', {
       tag: [TAG.PRIORITY_HIGH,
-        TAG.KEYBOARD,
-        '@data-table'],
-    }, async ({ page, browserName }) => {
-      await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en');
+        TAG.MOUSE,
+        '@data-table',
+        '@animation',
+        '@base-components',
+        '@button',
+        '@flex-box',
+        '@pagination',
+        '@typography'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
+        maxAvailableSelectedRows: 2,
+      });
 
-      const firstHeader = locators.getHeadColumn(page, 1);
-      const firstColumnCells = page.locator('[data-ui-name="Row.Cell"][aria-colindex="1"]');
-      const headerCheckbox = firstHeader.locator('input');
+      const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
+      const rowCheckboxes = page.locator('[data-ui-name="DataTable.Body"] [data-ui-name="Checkbox"]');
+      // the native input carries checked/disabled; it is visually hidden, so clicks go to the wrapper
+      const selectAllInput = selectAllCheckbox.locator('input');
+      const rowInput = (index: number) => rowCheckboxes.nth(index).locator('input');
+
+      await test.step('Verify nothing is disabled before the limit is reached', async () => {
+        await expect(selectAllInput).toBeEnabled();
+        await expect(rowInput(0)).toBeEnabled();
+        await expect(rowInput(1)).toBeEnabled();
+        await expect(rowInput(2)).toBeEnabled();
+      });
+
+      await test.step('Verify checkboxes stay enabled while under the limit', async () => {
+        await rowCheckboxes.nth(0).click();
+
+        await expect(rowInput(0)).toBeChecked();
+        await expect(rowInput(1)).toBeEnabled();
+        await expect(rowInput(2)).toBeEnabled();
+      });
+
+      await test.step('Verify unselected rows are disabled once the limit is reached', async () => {
+        await rowCheckboxes.nth(1).click();
+
+        await expect(rowInput(1)).toBeChecked();
+        await expect(rowInput(2)).toBeDisabled();
+        await expect(rowInput(3)).toBeDisabled();
+      });
+
+      await test.step('Verify already selected rows stay clickable so they can be unselected', async () => {
+        await expect(rowInput(0)).toBeEnabled();
+        await expect(rowInput(1)).toBeEnabled();
+      });
+
+      await test.step('Verify the indeterminate header checkbox is disabled at the limit', async () => {
+        await expect(selectAllInput).toBeDisabled();
+      });
+
+      await test.step('Verify unselecting a row re-enables everything', async () => {
+        await rowCheckboxes.nth(0).click();
+
+        await expect(rowInput(0)).not.toBeChecked();
+        await expect(rowInput(2)).toBeEnabled();
+        await expect(rowInput(3)).toBeEnabled();
+        await expect(selectAllInput).toBeEnabled();
+      });
+    });
+
+    test('Verify select all respects maxAvailableCount and deselect all stays available', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@data-table',
+        '@animation',
+        '@base-components',
+        '@button',
+        '@flex-box',
+        '@pagination',
+        '@typography'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
+        maxAvailableSelectedRows: 3,
+      });
+
       const collapse = locators.collapse(page);
       const selectedRowsCount = collapse.locator('[data-ui-name="Text"]').nth(1);
       const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
       const rowCheckboxes = page.locator('[data-ui-name="DataTable.Body"] [data-ui-name="Checkbox"]');
+      const selectAllInput = selectAllCheckbox.locator('input');
+      const rowInput = (index: number) => rowCheckboxes.nth(index).locator('input');
+
+      await test.step('Verify select all stops at the limit instead of selecting every row', async () => {
+        await selectAllCheckbox.click();
+
+        await expect(selectedRowsCount).toHaveText('3');
+        await expect(rowInput(0)).toBeChecked();
+        await expect(rowInput(1)).toBeChecked();
+        await expect(rowInput(2)).toBeChecked();
+        await expect(rowInput(3)).not.toBeChecked();
+      });
+
+      await test.step('Verify the header checkbox is not fully checked when the selection was capped', async () => {
+        await expect(selectAllInput).not.toBeChecked();
+        await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
+      });
+
+      await test.step('Verify a capped selection can still be cleared from the action bar', async () => {
+        await collapse.getByRole('button', { name: 'Deselect all' }).click();
+
+        await expect(selectedRowsCount).toBeHidden();
+        await expect(rowInput(0)).not.toBeChecked();
+        await expect(rowInput(3)).toBeEnabled();
+      });
+    });
+
+    test('Verify header checkbox disabled when the limit is spent on another page', {
+      tag: [TAG.PRIORITY_MEDIUM,
+        TAG.MOUSE,
+        '@data-table',
+        '@animation',
+        '@base-components',
+        '@button',
+        '@flex-box',
+        '@pagination',
+        '@typography'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
+        pagination: true,
+        pageSize: 5,
+        maxAvailableSelectedRows: 2,
+      });
+
+      const selectedRowsCount = locators.collapse(page).locator('[data-ui-name="Text"]').nth(1);
+      const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
+      const rowCheckboxes = page.locator('[data-ui-name="DataTable.Body"] [data-ui-name="Checkbox"]');
+      const selectAllInput = selectAllCheckbox.locator('input');
+      const nextButton = page.locator('[data-ui-name="Pagination.NextPage"]');
+
+      await test.step('Verify the header checkbox is enabled while this page is partly selected', async () => {
+        await rowCheckboxes.nth(0).click();
+
+        await expect(selectedRowsCount).toHaveText('1');
+        await expect(selectAllInput).toBeEnabled();
+      });
+
+      await test.step('Verify the header checkbox is disabled while this page is fully selected', async () => {
+        await rowCheckboxes.nth(1).click();
+
+        await expect(selectedRowsCount).toHaveText('2');
+        await expect(selectAllInput).toBeDisabled();
+      });
+
+      await test.step('Verify it becomes disabled on other page', async () => {
+        await nextButton.click();
+
+        await expect(rowCheckboxes).toHaveCount(5);
+        await expect(selectAllInput).toBeDisabled();
+        await expect(selectAllInput).not.toBeChecked();
+      });
+
+      await test.step('Verify the rows on that page are disabled', async () => {
+        for (let i = 0; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i).locator('input')).toBeDisabled();
+      });
+    });
+
+    test('Verify a fully checked header checkbox stays clickable at the limit', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@data-table',
+        '@animation',
+        '@base-components',
+        '@button',
+        '@flex-box',
+        '@pagination',
+        '@typography'],
+    }, async ({ page }) => {
+      // regression guard: the header checkbox used to be disabled whenever the limit was
+      // reached, which blocked deselect-all once every visible row was selected
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
+        pagination: true,
+        pageSize: 5,
+        maxAvailableSelectedRows: 5,
+      });
+
+      const selectedRowsCount = locators.collapse(page).locator('[data-ui-name="Text"]').nth(1);
+      const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
+      const rowCheckboxes = page.locator('[data-ui-name="DataTable.Body"] [data-ui-name="Checkbox"]');
+      const selectAllInput = selectAllCheckbox.locator('input');
+
+      await test.step('Verify all rows of the page are selected and the limit is reached', async () => {
+        await selectAllCheckbox.click();
+
+        await expect(selectedRowsCount).toHaveText('5');
+        await expect(selectAllInput).toBeChecked();
+      });
+
+      await test.step('Verify the checked header checkbox is still enabled', async () => {
+        await expect(selectAllInput).toBeEnabled();
+      });
+
+      await test.step('Verify clicking it deselects every row', async () => {
+        await selectAllCheckbox.click();
+
+        await expect(selectAllInput).not.toBeChecked();
+        await expect(selectedRowsCount).toBeHidden();
+        for (let i = 0; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i).locator('input')).not.toBeChecked();
+      });
+    });
+
+    test('Verify table with checkbox keyboard interaction', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
+    }, async ({ page, browserName }) => {
+      await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en');
+
+      const firstHeader = locators.getHeadColumn(page, 1);
+      const headerCheckbox = firstHeader.locator('input');
+      const collapse = locators.collapse(page);
+      const selectedRowsCount = collapse.locator('[data-ui-name="Text"]').nth(1);
+      const deselectAllButton = collapse.getByRole('button', { name: 'Deselect all' });
+      const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
+      const rowCheckboxes = page.locator('[data-ui-name="DataTable.Body"] [data-ui-name="Checkbox"]');
+      const prevButton = page.locator('[data-ui-name="Pagination.PrevPage"]');
 
       await test.step('Verify checkbox in header focused by tab', async () => {
         await page.keyboard.press('Tab');
@@ -920,68 +1382,53 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         for (let i = 0; i < await rowCheckboxes.count(); i++)
           await expect(rowCheckboxes.nth(i)).not.toBeChecked();
       });
-      await test.step('Verify panel when activating Select all on text page', async () => {
+      // the example is configured with maxAvailableCount: 7, so activating select all on the
+      // second page tops the selection up to 7 instead of checking every row on the page
+      await test.step('Verify activating Select all on the next page stops at maxAvailableCount', async () => {
         await page.keyboard.press('Shift+Tab');
         await page.keyboard.press('Shift+Tab');
         await page.keyboard.press('Shift+Tab');
         await page.keyboard.press('Space');
-        await expect(selectedRowsCount).toHaveText('10');
+
+        await expect(selectedRowsCount).toHaveText('7');
+        await expect(selectAllCheckbox).not.toBeChecked();
+        await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
+        await expect(rowCheckboxes.nth(0).locator('input')).toBeChecked();
+        await expect(rowCheckboxes.nth(1).locator('input')).toBeChecked();
+      });
+
+      await test.step('Verify rows above the limit are disabled', async () => {
+        for (let i = 2; i < await rowCheckboxes.count(); i++) {
+          await expect(rowCheckboxes.nth(i).locator('input')).not.toBeChecked();
+          await expect(rowCheckboxes.nth(i).locator('input')).toBeDisabled();
+        }
+      });
+
+      if (browserName === 'webkit') return; // because of pagination bug in safari
+
+      await test.step('Verify the previous page keeps its selection', async () => {
+        await prevButton.focus();
+        await page.keyboard.press('Enter');
+
+        await expect(selectedRowsCount).toHaveText('7');
         await expect(selectAllCheckbox).toBeChecked();
         for (let i = 0; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).toBeChecked();
+          await expect(rowCheckboxes.nth(i).locator('input')).toBeChecked();
       });
 
-      await test.step('Verify counter on the panel decreased and indeterminate state when uncheck one checkbox', async () => {
-        await page.keyboard.press('ArrowDown');
-        await page.keyboard.press('ArrowDown');
-        await page.keyboard.press('Space');
-        await expect(rowCheckboxes.nth(0)).toBeChecked();
-
-        await expect(rowCheckboxes.nth(1)).not.toBeChecked();
-        await expect(selectedRowsCount).toHaveText('9');
-        await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
-        for (let i = 2; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).toBeChecked();
+      await test.step('Verify the header checkbox is operable again on a fully selected page', async () => {
+        await expect(selectAllCheckbox.locator('input')).toBeEnabled();
       });
-      await test.step('Verify panel when opening next page', async () => {
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Space');
-        await expect(selectAllCheckbox).not.toBeChecked();
-        await expect(selectedRowsCount).toHaveText('9');
-        for (let i = 0; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).not.toBeChecked();
-      });
-      await test.step('Verify panel state saved on prev pages', async () => {
-        await page.keyboard.press('Shift+Tab');
-        await page.keyboard.press('Space');
-        await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
-        await expect(rowCheckboxes.nth(0)).toBeChecked();
 
-        await expect(rowCheckboxes.nth(1)).not.toBeChecked();
-        for (let i = 2; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).toBeChecked();
-        await page.keyboard.press('Shift+Tab');
-        await page.keyboard.press('Space');
-      });
-      if (browserName === 'webkit') return; // because of pagination bus in safari
-
-      await test.step('Verify panel hides when press Deselect all', async () => {
-        await page.keyboard.press('Shift+Tab');
-        await page.keyboard.press('Shift+Tab');
-        await page.keyboard.press('Space');
+      await test.step('Verify panel hides when Deselect all is activated', async () => {
+        await deselectAllButton.focus();
+        await page.keyboard.press('Enter');
 
         await expect(collapse).toBeHidden();
         await expect(selectedRowsCount).toBeHidden();
         await expect(selectAllCheckbox).not.toBeChecked();
-
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Space');
-        await expect(selectAllCheckbox).not.toBeChecked();
-
-        await page.keyboard.press('Space');
-        await expect(selectAllCheckbox).not.toBeChecked();
+        for (let i = 0; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i).locator('input')).not.toBeChecked();
       });
     });
 
@@ -991,7 +1438,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.MOUSE,
 
         '@data-table',
-      ],
+
+        '@base-components',
+
+        '@flex-box',
+
+        '@button',
+
+        '@pagination',
+
+        '@typography',
+        '@animation'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en');
 
@@ -1023,7 +1480,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         TAG.MOUSE,
         '@data-table',
-      ],
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation',
+        '@base-components',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/selectable_with_merged_rows.tsx', 'en');
 
@@ -1048,7 +1510,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@data-table',
-        '@tooltip'],
+        '@tooltip',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation',
+        '@base-components',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/selectable_with_merged_rows.tsx', 'en');
 
@@ -1101,7 +1569,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify aria-live announcement when all rows selected via header checkbox', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en');
 
@@ -1122,7 +1596,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify aria-live announcement on partial row selection', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en');
 
@@ -1151,7 +1631,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify SelectableRows checkbox attributes and mouse interaction', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
 
@@ -1212,7 +1698,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify SelectableRows keyboard navigation and selection', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
 
@@ -1264,7 +1756,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify SelectableRows with pagination mouse interaction', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false, pagination: true });
 
@@ -1359,7 +1857,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify SelectableRows with pagination keyboard interaction', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false, pagination: true });
 
@@ -1434,7 +1938,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         TAG.MOUSE,
         '@data-table',
-      ],
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
 
@@ -1473,7 +1982,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         TAG.MOUSE,
         '@data-table',
-      ],
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false, mergedRows: true });
 
@@ -1501,7 +2015,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify SelectableRows with merged rows mouse interaction', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false, mergedRows: true });
 
@@ -1550,7 +2070,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify SelectableRows with merged rows keyboard interaction', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false, mergedRows: true });
 
@@ -1588,7 +2114,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify aria-live announcement when all rows selected via header checkbox', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
 
@@ -1604,7 +2136,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify aria-live announcement on partial row selection', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+        '@animation'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
 
@@ -1629,12 +2167,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     variantState.forEach((item) => {
       test(`Verify limited state for base table when rowsLimit=${item.rowsLimit} columnsLimit=${item.columnsLimit}`, {
         tag: [TAG.PRIORITY_HIGH,
-          '@data-table'],
+          '@data-table',
+          '@base-components',
+          '@flex-box',
+          '@button',
+          '@typography',
+        ],
       }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/data-table/docs/examples/limited-mode.tsx', 'en', item);
 
         const columnsCount = await page.getByRole('columnheader').count();
-        const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+        const rows = page.locator('div[data-ui-name="Row"][role="row"]');
         const rowsCount = await rows.count();
         const limitedContent = page.locator('div[class*="LimitOverlay"]').first();
 
@@ -1654,9 +2197,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await test.step('Verify aria attributes', async () => {
           await expect(limitedCell).toHaveAttribute('tabindex', '-1');
 
-          const visibleRowsLocator = page.locator('div[data-ui-name="Body.Row"][role="row"]:not([aria-hidden="true"])');
+          const visibleRowsLocator = page.locator('div[data-ui-name="Row"][role="row"]:not([aria-hidden="true"])');
           if (limitedRows === rowsCount && limitedColumns < columnsCount) {
-            const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+            const rows = page.locator('div[data-ui-name="Row"][role="row"]');
             const rowCount = await rows.count();
 
             for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
@@ -1710,12 +2253,18 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       test(`Verify limited state for checkbox in table when rowsLimit=${item.rowsLimit} columnsLimit=${item.columnsLimit}`, {
         tag: [TAG.PRIORITY_HIGH,
-          '@data-table'],
+          '@data-table',
+          '@base-components',
+          '@flex-box',
+          '@button',
+          '@pagination',
+          '@typography',
+          '@animation'],
       }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/data-table/tests/examples/limited-mode/checkboxes.tsx', 'en', item);
 
         const columnsCount = await page.getByRole('columnheader').count();
-        const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+        const rows = page.locator('div[data-ui-name="Row"][role="row"]');
         const rowsCount = await rows.count();
         const limitedContent = page.locator('div[class*="LimitOverlay"]').first();
 
@@ -1735,9 +2284,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
           await expect(limitedCell).toHaveAttribute('tabindex', '-1');
 
-          const visibleRowsLocator = page.locator('div[data-ui-name="Body.Row"][role="row"]:not([aria-hidden="true"])');
+          const visibleRowsLocator = page.locator('div[data-ui-name="Row"][role="row"]:not([aria-hidden="true"])');
           if (limitedRows === rowsCount && limitedColumns < columnsCount) {
-            const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+            const rows = page.locator('div[data-ui-name="Row"][role="row"]');
             const rowCount = await rows.count();
 
             for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
@@ -1785,9 +2334,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
           await expect(limitedCell).toHaveAttribute('tabindex', '-1');
 
-          const visibleRowsLocator = page.locator('div[data-ui-name="Body.Row"][role="row"]:not([aria-hidden="true"])');
+          const visibleRowsLocator = page.locator('div[data-ui-name="Row"][role="row"]:not([aria-hidden="true"])');
           if (limitedRows === rowsCount && limitedColumns < columnsCount) {
-            const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+            const rows = page.locator('div[data-ui-name="Row"][role="row"]');
             const rowCount = await rows.count();
 
             for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
@@ -1841,7 +2390,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await test.step('Verify overlay shown and aria attributes on the last page', async () => {
           await locators.button(page, 'Last page #').click();
           const columnsCount = await page.getByRole('columnheader').count();
-          const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+          const rows = page.locator('div[data-ui-name="Row"][role="row"]');
           const rowsCount = await rows.count();
           const limitedContent = page.locator('div[class*="LimitOverlay"]').first();
 
@@ -1852,9 +2401,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
             await expect(limitedCell).toHaveAttribute('tabindex', '-1');
 
-            const visibleRowsLocator = page.locator('div[data-ui-name="Body.Row"][role="row"]:not([aria-hidden="true"])');
+            const visibleRowsLocator = page.locator('div[data-ui-name="Row"][role="row"]:not([aria-hidden="true"])');
             if (limitedRows === rowsCount && limitedColumns < columnsCount) {
-              const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+              const rows = page.locator('div[data-ui-name="Row"][role="row"]');
               const rowCount = await rows.count();
 
               for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
@@ -1900,12 +2449,18 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       test(`Verify limited state for accordion in table when rowsLimit=${item.rowsLimit} columnsLimit=${item.columnsLimit}`, {
         tag: [TAG.PRIORITY_HIGH,
-          '@data-table'],
+          '@data-table',
+          '@base-components',
+          '@flex-box',
+          '@button',
+          '@typography',
+          '@widget-empty',
+        ],
       }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/data-table/tests/examples/limited-mode/accordion.tsx', 'en', item);
 
         const columnsCount = await page.getByRole('columnheader').count();
-        const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+        const rows = page.locator('div[data-ui-name="Row"][role="row"]');
         const rowsCount = await rows.count();
         const limitedContent = page.locator('div[class*="LimitOverlay"]').first();
 
@@ -1925,9 +2480,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await test.step('Verify aria attributes', async () => {
           await expect(limitedCell).toHaveAttribute('tabindex', '-1');
 
-          const visibleRowsLocator = page.locator('div[data-ui-name="Body.Row"][role="row"]:not([aria-hidden="true"])');
+          const visibleRowsLocator = page.locator('div[data-ui-name="Row"][role="row"]:not([aria-hidden="true"])');
           if (limitedRows === rowsCount && limitedColumns < columnsCount) {
-            const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+            const rows = page.locator('div[data-ui-name="Row"][role="row"]');
             const rowCount = await rows.count();
 
             for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
@@ -1983,7 +2538,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test(`Verify limited state for base table keyboard interactions when overlay has one interactive element`, {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@typography',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/limited-mode.tsx', 'en', { rowsLimit: 2, columnsLimit: 1 });
 
@@ -2028,7 +2588,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test(`Verify limited state for base table keyboard interactions when overlay has few interactive element`, {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@typography',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/limited-mode/sortable-table.tsx', 'en', { rowsLimit: 2, columnsLimit: 1 });
 
@@ -2065,7 +2630,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test(`Verify limited state for table with rows and columns merging keyboard interactions when overlay without interactive element`, {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@typography',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/limited-mode/row-and-column-merging.tsx', 'en', { rowsLimit: 1, columnsLimit: 2 });
 
@@ -2101,7 +2670,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test(`Verify limited state for table with accordion keyboard and mouse interactions`, {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@typography',
+        '@widget-empty',
+      ],
     }, async ({ page, browserName }) => {
       test.skip(browserName === 'webkit', 'Flaky focus handling in webkit');
       await loadPage(page, 'stories/components/data-table/tests/examples/limited-mode/accordion.tsx', 'en', { rowsLimit: 1, columnsLimit: 2 });

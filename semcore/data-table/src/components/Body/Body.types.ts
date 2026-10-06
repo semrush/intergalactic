@@ -1,8 +1,9 @@
+import type { NSScrollArea } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type * as React from 'react';
 
 import type { DataTableCellProps, Theme } from './Cell.types';
-import type { DTRow, RowPropsInner } from './Row.types';
+import type { DTRow, DataTableRowProps } from './Row.types';
 import type { ISelectedRows } from '../../store/SelectableRows';
 import type { ACCORDION } from '../DataTable/DataTable';
 import type { DataRowItem, DTUse, VirtualScroll, DataTableProps, DataTableData } from '../DataTable/DataTable.types';
@@ -95,7 +96,8 @@ export type BodyPropsInner<Data extends DataTableData, UniqKeyType> = DataTableB
   limit?: DataTableProps<any, any, any>['limit'];
   variant?: DataTableProps<any, any, any>['variant'];
   totalRows?: number;
-  accordionAnimationRows: RowPropsInner<Data, UniqKeyType>['accordionAnimationRows'];
+  accordionAnimationRows: DataTableRowProps<Data, UniqKeyType>['accordionAnimationRows'];
+  scrollBarInstanceRef: React.RefObject<NSScrollArea.Bar.Instance>;
 };
 
 export type DataTableBodyType = (<

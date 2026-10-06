@@ -9,15 +9,15 @@ tabs: Design('mini-chart'), A11y('mini-chart-a11y'), API('mini-chart-api'), Exam
 import MiniChart from '@semcore/ui/mini-chart';
 ```
 
-<TypesView type="CommonScoreProps" :types={...types} />
+<TypesView type="NSMiniChart.Score.CommonProps" :types={...types} />
 
-<TypesView type="ScoreLineGaugeProps" :types={...types} />
+<TypesView type="NSMiniChart.Score.Line.Props" :types={...types} />
 ```jsx
 import MiniChart from '@semcore/ui/mini-chart';
 <MiniChart.ScoreLine />
 ```
 
-<TypesView type="ScoreDonutProps" :types={...types} />
+<TypesView type="NSMiniChart.Score.Donut.Props" :types={...types} />
 ```jsx
 import MiniChart from '@semcore/ui/mini-chart';
 <MiniChart.ScoreDonut />
@@ -26,16 +26,16 @@ import MiniChart from '@semcore/ui/mini-chart';
 
 ## Trend charts
 
-<TypesView type="CommonTrendProps" :types={...types} />
+<TypesView type="NSMiniChart.Trend.CommonProps" :types={...types} />
 
-<TypesView type="TrendLineProps" :types={...types} />
+<TypesView type="NSMiniChart.Trend.Line.Props" :types={...types} />
 ```jsx
 import MiniChart from '@semcore/ui/mini-chart';
 <MiniChart.TrendLine />
 <MiniChart.TrendArea />
 ```
 
-<TypesView type="TrendBarProps" :types={...types} />
+<TypesView type="NSMiniChart.Trend.Bar.Props" :types={...types} />
 ```jsx
 import MiniChart from '@semcore/ui/mini-chart';
 <MiniChart.TrendBar />

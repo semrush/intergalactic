@@ -26,7 +26,7 @@ function getJSX(props: TabPanelJSXProps) {
           ? [
               <TabPanel.Item.Text key={1}>Analytics</TabPanel.Item.Text>,
               <TabPanel.Item.Addon key={2}>
-                <Badge bg='bg-primary-success'>new</Badge>
+                <Badge type='new' />
               </TabPanel.Item.Addon>,
             ]
           : 'Analytics'}

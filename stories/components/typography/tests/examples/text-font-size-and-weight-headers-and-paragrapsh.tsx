@@ -38,6 +38,9 @@ const Demo = () => (
       <Text tag='p' mb={2} mt={0}>
         Paragraph example.
       </Text>
+      <Text size={350} tag='p' mb={2} mt={10}>
+        Text, 18px, --fs-350
+      </Text>
       <Text size={300} tag='h6' mb={1} mt={10}>
         H6, 16px, --fs-300
       </Text>

@@ -29,8 +29,7 @@ Component consists of the following:
 
 ### Sizes
 
-- The `TabLine.Item` has a `margin-right: var(--spacing-4x)` (except for the `last-child`).
-- Addons before and after the text have a margin of 8px.
+TabLine has 2 sizes: M and L.
 
 Table: TabLine sizes and margins
 
@@ -41,17 +40,17 @@ Table: TabLine sizes and margins
 
 ### Types
 
-Depending on the context, you can use TabLine with or without a border-bottom. The border uses the `--border-primary` token for its color.
+Depending on the context, you can use TabLine with or without `border-bottom`.
 
 #### Tabs with border (underlined)
 
-Use TabLine with border-bottom to visually separate navigation from the content it switches. This is particularly helpful for secondary navigation on a page.
+Use TabLine with `border-bottom` to visually separate navigation from the content. This is particularly helpful for secondary navigation on a page.
 
 ![](static/tab-with-border.png)
 
 #### Tabs without border
 
-Use TabLine with border-bottom to visually separate navigation from the content it switches. This is particularly helpful for secondary navigation on a page.
+Use TabLine without `border-bottom` for lower levels of navigation, such as switching data visualizations in widgets.
 
 ![](static/tab-without-border.png)
 
@@ -80,18 +79,13 @@ Table: Examples of addons for TabLine
 
 Table: TabLine states
 
-| State           | Appearance example       | Styles  |
-| --------------- | ------------------------ | ------- |
-| Normal          | ![](static/normal-active.png)            | `color: var(--text-primary)`  |
-| Hover           | ![](static/hover.png)                     | `border-bottom: 2px solid var(--border-primary)` |
-| Active          | ![](static/normal-active.png)            | `border-bottom: 2px solid var(--border-info-active)` |
-| Disabled        | ![](static/disabled.png)               | Use `--disabled-opacity` token.  |
-| Initial loading | ![](static/initial-loading.png) | When indicating that data is being loaded for the first time in the counter inside `TabLine.Item`, use Skeleton with the size of the text's line-height.                 |
-| Loading         | ![](static/loading.png)                 | When showing that data in the counter inside `TabLine.Item` is currently being loaded, use [Spin](/components/spin/spin) with the smallest size (same as in [Button](/components/button/button)).|
-
-### Animation
-
-When switching between active tabs, the border-bottom moves with an `ease` transition and a duration of `500ms`.
+| State                        | Appearance example                                                                                                                                                                                                        |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <nobr>Normal & Active</nobr> | ![](static/normal-active.png)                                                                                                                                                                                             |
+| Hover                        | ![](static/hover.png)                                                                                                                                                                                                     |
+| Disabled                     | ![](static/disabled.png)                                                                                                                                                                                                  |
+| <nobr>Initial loading</nobr> | When indicating that data is being loaded for the first time in the counter inside `TabLine.Item`, use Skeleton with the size of the text's line-height. ![](static/initial-loading.png)                                  |
+| Loading                      | When showing that data in the counter inside `TabLine.Item` is currently being loaded, use [Spin](/components/spin/spin) with the smallest size (same as in [Button](/components/button/button)). ![](static/loading.png) |
 
 ## Placement
 

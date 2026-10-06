@@ -3,7 +3,7 @@ SInfo {
   align-items: center;
   flex-wrap: wrap;
   font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
+  line-height: var(--intergalactic-lh-200, 1.4286);
 
   & > SItem:not(:last-child) {
     margin-right: var(--intergalactic-spacing-6x, 24px);

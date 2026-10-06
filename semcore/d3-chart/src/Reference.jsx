@@ -6,6 +6,10 @@ import createElement from './createElement';
 import style from './style/reference.shadow.css';
 import { scaleOfBandwidth } from './utils';
 
+const STROKE_WIDTH = 1;
+const NOTCH_WIDTH = 9;
+const NOTCH_DELTA = NOTCH_WIDTH / 2 - STROKE_WIDTH / 4;
+
 const side2direction = {
   left: 'vertical',
   right: 'vertical',
@@ -22,6 +26,18 @@ const lineDirection2props = {
       x2: x,
       y1: yRange[0],
       y2: yRange[1],
+      notchFirst: {
+        x1: x - NOTCH_DELTA,
+        x2: x + NOTCH_DELTA,
+        y1: yRange[0],
+        y2: yRange[0],
+      },
+      notchLast: {
+        x1: x - NOTCH_DELTA,
+        x2: x + NOTCH_DELTA,
+        y1: yRange[1],
+        y2: yRange[1],
+      },
     };
   },
   horizontal: ([xScale, yScale], value) => {
@@ -32,6 +48,18 @@ const lineDirection2props = {
       x2: xRange[1],
       y1: y,
       y2: y,
+      notchFirst: {
+        x1: xRange[0],
+        x2: xRange[0],
+        y1: y - NOTCH_DELTA,
+        y2: y + NOTCH_DELTA,
+      },
+      notchLast: {
+        x1: xRange[1],
+        x2: xRange[1],
+        y1: y - NOTCH_DELTA,
+        y2: y + NOTCH_DELTA,
+      },
     };
   },
 };
@@ -118,15 +146,19 @@ class ReferenceLineRoot extends Component {
     const SReferenceLine = this.Element;
     const { title, scale, position, value, color, resolveColor, styles } = this.asProps;
     const positionProps = lineDirection2props[side2direction[position]];
+    const { notchFirst, notchLast, ...line } = positionProps(scale, value);
 
     return sstyled(styles)(
       <>
         <SReferenceLine
-          render='line'
+          render='g'
           __excludeProps={['data', 'scale', 'format', 'value', 'color']}
           stroke={resolveColor(color)}
-          {...positionProps(scale, value)}
-        />
+        >
+          <line {...notchFirst} />
+          <line {...line} />
+          <line {...notchLast} />
+        </SReferenceLine>
         {title && <ReferenceLine.Title>{title}</ReferenceLine.Title>}
       </>,
     );

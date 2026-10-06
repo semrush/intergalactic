@@ -21,6 +21,13 @@ export type DemoProps = {
 
 const reactiveSelectedRows = new SelectableRows<string>();
 
+const columns = [
+  { name: 'keyword', children: 'Keyword' },
+  { name: 'kd', children: 'KD %' },
+  { name: 'cpc', children: 'CPC' },
+  { name: 'vol', children: 'Vol.' },
+];
+
 const ReactiveDemo = ({ loading, compact, sideIndents }: Omit<DemoProps, 'reactive'>) => {
   const { count } = useSelectedRowsCount(reactiveSelectedRows);
   const [currentPage, setCurrentPage] = React.useState(0);
@@ -32,7 +39,9 @@ const ReactiveDemo = ({ loading, compact, sideIndents }: Omit<DemoProps, 'reacti
   };
 
   const limit = 5;
-  const tableData = data.slice(currentPage * limit, currentPage * limit + limit);
+  const tableData = React.useMemo(() => {
+    return data.slice(currentPage * limit, currentPage * limit + limit);
+  }, [currentPage]);
 
   return (
     <>
@@ -76,12 +85,7 @@ const ReactiveDemo = ({ loading, compact, sideIndents }: Omit<DemoProps, 'reacti
             top: count ? 44 : 0,
             animationDuration: 200,
           }}
-          columns={[
-            { name: 'keyword', children: 'Keyword' },
-            { name: 'kd', children: 'KD %' },
-            { name: 'cpc', children: 'CPC' },
-            { name: 'vol', children: 'Vol.' },
-          ]}
+          columns={columns}
           uniqueRowKey='id'
         />
       </Box>

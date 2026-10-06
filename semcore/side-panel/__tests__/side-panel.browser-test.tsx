@@ -12,8 +12,11 @@ export const locators = {
   header: (page: Page) => page.locator('[data-ui-name="SidePanel.Header"]'),
   body: (page: Page) => page.locator('[data-ui-name="SidePanel.Body"]'),
   footer: (page: Page) => page.locator('[data-ui-name="SidePanel.Footer"]'),
-  title: (page: Page) => page.locator('h6[data-ui-name="SidePanel.Title"]'),
-  back: (page: Page) => page.locator('[data-ui-name="SidePanel.Back"]'),
+  // Title renders as h6 by default, but examples may override the tag (e.g. tag={Flex}),
+  // so the locators must not depend on the rendered tag name.
+  title: (page: Page) => page.locator('[data-ui-name="SidePanel.Title"]'),
+  backButton: (page: Page) => page.locator('[data-ui-name="SidePanel.Title"] [data-ui-name="ButtonLink"]'),
+  titleText: (page: Page) => page.locator('[data-ui-name="SidePanel.Title"] [data-ui-name="Text"]'),
   dialog: (page: Page) => page.getByRole('dialog'),
   hint: (page: Page) => page.locator('[data-ui-name="Hint"]'),
 
@@ -53,7 +56,8 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify Base example looks good in each placement = ${item.placement}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@side-panel',
-        '@button'],
+        '@button',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/side-panel/docs/examples/basic_example.tsx', 'en', item);
 
@@ -66,7 +70,10 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify Side panel with Header and Footer looks good in each placement = ${item.placement}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@side-panel',
-        '@button'],
+        '@button',
+        '@base-components',
+        '@button-link',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/side-panel/docs/examples/advanced_example.tsx', 'en', item);
 
@@ -88,9 +95,11 @@ test.describe(`${TAG.VISUAL} `, () => {
         await expect(locators.body(page)).toHaveCSS('padding-bottom', '16px');
       });
 
-      await test.step('Verify body styles', async () => {
+      await test.step('Verify footer styles', async () => {
         await expect(locators.footer(page)).toHaveCSS('padding-top', '8px');
-        await expect(locators.footer(page)).toHaveCSS('padding-top', '8px');
+        await expect(locators.footer(page)).toHaveCSS('padding-bottom', '8px');
+        await expect(locators.footer(page)).toHaveCSS('padding-left', '24px');
+        await expect(locators.footer(page)).toHaveCSS('padding-right', '24px');
       });
 
       const box = await locators.title(page).boundingBox();
@@ -108,7 +117,8 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify Internal component inside positioned correclty in each placement = ${item.placement}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@side-panel',
-        '@button'],
+        '@button',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/side-panel/docs/examples/access_to_internal_components.tsx', 'en', item);
 
@@ -121,7 +131,8 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify Side panel with disabled overlay in each placement = ${item.placement}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@side-panel',
-        '@button'],
+        '@button',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/side-panel/docs/examples/disabling_overlay.tsx', 'en', item);
 
@@ -135,7 +146,8 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify No Close button when no SidePanel.Close and closable = false', {
     tag: [TAG.PRIORITY_HIGH,
       '@side-panel',
-      '@button'],
+      '@button',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/side-panel/docs/examples/basic_example.tsx', 'en', { closable: false });
 
@@ -149,7 +161,12 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify Close button shown when SidePanel.Close and closable = false', {
     tag: [TAG.PRIORITY_HIGH,
       '@side-panel',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@button-link',
+      '@flex-box',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/side-panel/tests/examples/side-panel-additional-states.tsx', 'en', { withClose: true });
 
@@ -164,7 +181,12 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify Close button looks good when SidePanel.Close and closable = true', {
     tag: [TAG.PRIORITY_HIGH,
       '@side-panel',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@button-link',
+      '@flex-box',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/side-panel/tests/examples/side-panel-additional-states.tsx', 'en', { withClose: true });
 
@@ -180,54 +202,90 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@side-panel',
       '@ellipsis',
-      '@tooltip'],
+      '@tooltip',
+      '@base-components',
+      '@button',
+      '@button-link',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/side-panel/tests/examples/side-panel-additional-states.tsx', 'en', { ellipsisTitle: true, withTooltipInBody: true, withFooter: true });
+    const titleText = 'Heading 6, 16px Heading 6, 16px';
+
+    await loadPage(page, 'stories/components/side-panel/tests/examples/side-panel-additional-states.tsx', 'en', {
+      ellipsisTitle: true,
+      withTooltipInBody: true,
+      withFooter: true,
+      animationsDisabled: true,
+    });
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await expect(locators.button(page, 'Close')).toBeFocused();
-    await locators.hint(page).waitFor({ state: 'visible' });
+    await locators.hint(page).filter({ hasText: 'Close' }).waitFor({ state: 'visible' });
 
-    const title = page.locator('h6[data-ui-name="SidePanel.Title"]');
-    const box = await title.boundingBox();
+    await expect(locators.title(page)).toHaveText(titleText);
 
-    if (box) {
-      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
-    }
-    await locators.hint(page).nth(1).waitFor({ state: 'visible' });
+    // Ellipsis lives on the Text inside SidePanel.Title, the title itself has ellipsis={false}.
+    const titleTextNode = locators.titleText(page);
+    await expect.poll(async () => {
+      return titleTextNode.evaluate((el) => el.scrollWidth > el.clientWidth);
+    }).toBe(true);
+
+    await titleTextNode.hover();
+    await locators.hint(page).filter({ hasText: titleText }).waitFor({ state: 'visible' });
+    await page.waitForFunction((expectedText) => {
+      const titleHint = Array.from(document.querySelectorAll<HTMLElement>('[data-ui-name="Hint"]'))
+        .find((hint) => hint.textContent?.includes(expectedText));
+
+      return titleHint && getComputedStyle(titleHint).opacity === '1';
+    }, titleText);
+    await expect(locators.hint(page)).toHaveCount(2);
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
-  test('Verify SidePanel.Back with long text truncates via ellipsis', {
-    tag: [TAG.PRIORITY_HIGH, '@side-panel', '@ellipsis', '@button'],
+  test('Verify back button stays intact while long title text truncates via ellipsis', {
+    tag: [TAG.PRIORITY_HIGH, '@side-panel', '@ellipsis', '@button',
+      '@base-components',
+      '@button-link',
+      '@flex-box',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(
       page,
       'stories/components/side-panel/tests/examples/side-panel-additional-states.tsx',
       'en',
       {
-        backText: 'This is a very long Back navigation label that must be truncated',
-        backWMax: 120,
+        ellipsisTitle: true,
         withFooter: true,
+        animationsDisabled: true,
       },
     );
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await locators.back(page).waitFor({ state: 'visible' });
+    await locators.backButton(page).waitFor({ state: 'visible' });
 
-    await test.step('Back container width is constrained by wMax', async () => {
-      const backBox = await locators.back(page).boundingBox();
-      expect(backBox!.width).toBeLessThanOrEqual(121);
+    await test.step('Back control is a single icon-only ButtonLink inside the title', async () => {
+      await expect(locators.backButton(page)).toHaveCount(1);
+      await expect(locators.backButton(page).locator('[data-ui-name="ButtonLink.Text"]'))
+        .toHaveCount(0);
     });
 
-    await test.step('Back inner text node is actually truncated', async () => {
-      const textNode = locators.back(page).locator('[data-ui-name="ButtonLink.Text"]');
-      const isTruncated = await textNode.evaluate(
+    await test.step('Title text is truncated', async () => {
+      await expect.poll(async () => {
+        return locators.titleText(page).evaluate((el) => el.scrollWidth > el.clientWidth);
+      }).toBe(true);
+    });
+
+    await test.step('Back button keeps its full width and is not squeezed by the title', async () => {
+      const backBox = await locators.backButton(page).boundingBox();
+      expect(backBox!.width).toBeGreaterThan(0);
+
+      const isBackTruncated = await locators.backButton(page).evaluate(
         (el) => el.scrollWidth > el.clientWidth,
       );
-      expect(isTruncated).toBe(true);
+      expect(isBackTruncated).toBe(false);
     });
   });
 });
@@ -242,7 +300,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@side-panel',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@button-link',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/side-panel/docs/examples/advanced_example.tsx', 'en');
 
@@ -259,7 +320,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await test.step('Verify focus orted and is looped inside side panel', async () => {
       await page.keyboard.press('Tab');
-      await expect(locators.back(page)).toBeFocused();
+      await expect(locators.backButton(page)).toBeFocused();
 
       await page.keyboard.press('Tab');
       await expect(footerButtons.first()).toBeFocused();
@@ -269,7 +330,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     });
 
     await test.step('Verify closed by ESC when Close is not focused', async () => {
-      await expect(locators.back(page)).toBeFocused();
+      await expect(locators.backButton(page)).toBeFocused();
       await page.keyboard.press('Escape');
       await locators.dialog(page).waitFor({ state: 'hidden' });
       await expect(page.getByRole('button')).toBeFocused();
@@ -302,7 +363,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@side-panel',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@button-link',
+      '@flex-box',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/side-panel/tests/examples/side-panel-additional-states.tsx', 'en', { withClose: true });
 
@@ -341,7 +407,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@side-panel',
-      '@button'],
+      '@button',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/side-panel/docs/examples/access_to_internal_components.tsx', 'en', { closable: false });
 
@@ -369,7 +436,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@side-panel',
-      '@button'],
+      '@button',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/side-panel/docs/examples/access_to_internal_components.tsx', 'en', { closable: false });
 
@@ -401,7 +469,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@side-panel',
-      '@button'],
+      '@button',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/side-panel/docs/examples/basic_example.tsx', 'en', { closable: false });
 
@@ -429,7 +498,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@side-panel',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@button-link',
+      '@flex-box',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/side-panel/docs/examples/basic_example.tsx', 'en', { closable: false });
 
@@ -468,7 +542,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@side-panel',
-      '@ellipsis'],
+      '@ellipsis',
+      '@button'],
   }, async ({ page }) => {
     const asyncTitle = 'My Article Title';
     const errors = collectRuntimeErrors(page);
@@ -494,7 +569,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@side-panel',
-      '@ellipsis'],
+      '@ellipsis',
+      '@button'],
   }, async ({ page }) => {
     const initialTitle = 'My Article Title';
     const errors = collectRuntimeErrors(page);

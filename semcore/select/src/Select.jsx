@@ -155,6 +155,7 @@ class RootSelect extends AbstractDropdown {
       'aria-controls': visible ? ariaControls : undefined,
       'aria-haspopup': isMenu ? 'listbox' : 'dialog',
       'aria-disabled': disabled ? 'true' : 'false',
+      'aria-invalid': state === 'invalid',
       'aria-activedescendant':
         visible && highlightedIndex !== null && this.itemRefs[highlightedIndex]
           ? `igc-${uid}-option-${highlightedIndex}`
@@ -509,6 +510,7 @@ const Select = createComponent(
     Divider,
     InputSearch: [InputSearchWrapper, InputSearch._______childrenComponents],
     Input: [InputSearchWrapper, InputSearch._______childrenComponents],
+    Notice: Dropdown.Notice,
   },
   { parent: DropdownMenu, context: selectContext },
 );

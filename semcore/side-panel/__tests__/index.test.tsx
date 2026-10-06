@@ -69,6 +69,8 @@ describe('SidePanel', () => {
 
     await userEvent.keyboard('[Escape]');
     expect(spy).toBeCalledWith('onEscape', expect.any(Object));
+
+    closeButton.blur();
   });
 
   test('Verify onClose for click outside of SidePanel.Panel', async () => {

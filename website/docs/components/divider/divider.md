@@ -18,10 +18,10 @@ Divider has two types: `primary` and `secondary`. Secondary type helps to separa
 
 Table: Divider types
 
-| `use`       | Appearance             | Styles                                     |
-| ----------- | ---------------------- | ------------------------------------------ |
-| `primary`   | ![](static/solid.png)  | `border: 1px solid var(--border-primary)`  |
-| `secondary` | ![](static/dashed.png) | `border: 1px dashed var(--border-primary)` |
+| `use`       | Appearance             |
+| ----------- | ---------------------- |
+| `primary`   | ![](static/solid.png)  |
+| `secondary` | ![](static/dashed.png) |
 
 ### Themes
 
@@ -29,10 +29,10 @@ The divider can be used either on a light or dark/colored background.
 
 Table: Divider themes
 
-| `theme` | Appearance                    | Styles                                           |
-| ------- | ----------------------------- | ------------------------------------------------ |
-| Default | ![](static/default-theme.png) | `border: 1px solid var(--border-primary)`        |
-| Invert  | ![](static/invert-theme.png)  | `border: 1px solid var(--border-primary-invert)` |
+| `theme` | Appearance                    |
+| ------- | ----------------------------- |
+| Default | ![](static/default-theme.png) |
+| Invert  | ![](static/invert-theme.png)  |
 
 ## Orientation
 

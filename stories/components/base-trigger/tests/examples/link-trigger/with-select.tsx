@@ -1,3 +1,4 @@
+import type { Intergalactic } from '@semcore/core';
 import MathPlusAltL from '@semcore/icon/MathPlusAlt/l';
 import MathPlusAltM from '@semcore/icon/MathPlusAlt/m';
 import Badge from '@semcore/ui/badge';
@@ -19,7 +20,7 @@ interface Project {
   name: string;
 }
 
-type LinkTriggerSelectDDMenuExample = LinkTriggerProps & {
+type LinkTriggerSelectDDMenuExample = Intergalactic.InternalTypings.EfficientOmit<LinkTriggerProps, 'ellipsis' | 'formatTags'> & {
   showAddonLeft?: boolean;
   showAddonRight?: boolean;
   addonLeftType?: AddonType;

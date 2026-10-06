@@ -1,12 +1,14 @@
 import { Flex } from '@semcore/ui/base-components';
+import type { NSMiniChart } from '@semcore/ui/mini-chart';
 import MiniChart from '@semcore/ui/mini-chart';
 import React from 'react';
 
-type trendBarsProps = { loading?: boolean; animate?: boolean };
+type TrendBarsProps = NSMiniChart.Trend.Bar.Props;
+
 const Demo = ({
   loading,
   animate,
-}: trendBarsProps) => {
+}: TrendBarsProps) => {
   return (
     <Flex id='mylabel' direction='column'>
       <Flex id='mylabel'>
@@ -41,6 +43,6 @@ const Demo = ({
     </Flex>
   );
 };
-export type { trendBarsProps };
+export type { TrendBarsProps };
 
 export default Demo;

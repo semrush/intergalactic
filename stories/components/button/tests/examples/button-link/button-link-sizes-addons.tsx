@@ -17,6 +17,7 @@ const Demo = (props: ButtonLinkSizesProps) => {
     600,
     500,
     400,
+    350,
     300,
     200,
     100,

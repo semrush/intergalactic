@@ -28,13 +28,13 @@ It isn't recommended to use Skeleton for pages that are indexed by Google such a
 
 ## Themes
 
-Skeleton has two themes—`dark` and `invert`–for using on light and dark/colored backgrounds, respectively. All skeleton “bones” have a `border-radius` of 4px.
+Skeleton has two themes—`default` and `invert`–for using on light and dark/colored backgrounds, respectively. All skeleton “bones” have a `border-radius` of 4px.
 
 Table: Skeleton themes
 
 | Theme  | Appearance example                     | Styles                                    |
 | ------ | -------------------------------------- | ----------------------------------------- |
-| Dark   | ![](static/theme-light.png) | `background: var(--skeleton-bg)`.        |
+| Default   | ![](static/theme-light.png) | `background: var(--skeleton-bg)`.        |
 | Invert | ![](static/theme-dark.png)   | `background: var(--skeleton-bg-invert)`. |
 
 ## Animation

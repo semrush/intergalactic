@@ -1,4 +1,4 @@
-import Badge from '@semcore/badge';
+import { Box } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
@@ -30,7 +30,7 @@ class BadgeFHRoot extends Component<
 
     return sstyled(styles)(
       <SHighlightedBadge
-        render={Badge}
+        render={Box}
         use:bg={bg}
       />,
     );

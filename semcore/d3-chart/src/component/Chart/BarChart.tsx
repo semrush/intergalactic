@@ -30,6 +30,8 @@ class BarChartComponent extends AbstractChart<
     showXAxis: true,
     showYAxis: true,
     showTooltip: true,
+    locale: 'en',
+    deltaPercentGrowthColor: 'success',
   } as const;
 
   get xScale() {
@@ -85,7 +87,7 @@ class BarChartComponent extends AbstractChart<
 
   renderChart() {
     const { groupKey, type = 'group', invertAxis } = this.asProps;
-    const { dataDefinitions, highlightedLine } = this.state;
+    const { dataDefinitions, highlightedItem } = this.state;
 
     if (dataDefinitions.length === 1) {
       const item = dataDefinitions[0];
@@ -116,7 +118,7 @@ class BarChartComponent extends AbstractChart<
 
               const commonBarComponentProps: BarProps = {
                 color: item.color,
-                transparent: highlightedLine !== -1 && highlightedLine !== index,
+                transparent: highlightedItem !== -1 && highlightedItem !== index,
                 onClick: this.handleClickBar,
               };
 
@@ -143,7 +145,7 @@ class BarChartComponent extends AbstractChart<
 
               const commonBarComponentProps: BarProps = {
                 color: item.color,
-                transparent: highlightedLine !== -1 && highlightedLine !== index,
+                transparent: highlightedItem !== -1 && highlightedItem !== index,
                 onClick: this.handleClickBar,
               };
 
@@ -182,6 +184,7 @@ class BarChartComponent extends AbstractChart<
             children: this.getTooltipChildren({
               Tooltip: HoverRect.Tooltip,
               dataItem,
+              index,
             }),
           };
         }}
@@ -266,7 +269,7 @@ class BarChartComponent extends AbstractChart<
   private get categoryScale() {
     const {
       marginY = 40,
-      marginX = 24,
+      marginX = 32,
       invertAxis,
       data,
       groupKey,
@@ -290,7 +293,7 @@ class BarChartComponent extends AbstractChart<
   }
 
   private get valueScale() {
-    const { marginY = 40, marginX = 24, invertAxis, type } = this.asProps;
+    const { marginY = 40, marginX = 32, invertAxis, type } = this.asProps;
     const { plotWidth, plotHeight } = this;
 
     const max = type === 'stack' ? super.maxStackedValue : Math.max(...super.flatValues);

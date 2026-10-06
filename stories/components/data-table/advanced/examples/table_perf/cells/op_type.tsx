@@ -1,3 +1,4 @@
+import type { IconComponent } from '@semcore/icon';
 import ChargebackLoss from '@semcore/icon/ChargebackLoss/m';
 import ChargebackWinM from '@semcore/icon/ChargebackWin/m';
 import MoneyCoinsM from '@semcore/icon/MoneyCoins/m';
@@ -15,7 +16,7 @@ type PaymentOperationTypeProps = {
   testIdPrefix?: string;
 } & NSText.Props;
 
-const mapIcons: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
+const mapIcons: Record<string, IconComponent> = {
   purchase: MoneyCoinsM,
   charge: ReloadM,
   refund: ReturnM,

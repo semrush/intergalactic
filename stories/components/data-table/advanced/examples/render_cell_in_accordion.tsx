@@ -71,6 +71,7 @@ const ChartExample = () => {
     <DataTable
       data={data1}
       aria-label='Table title'
+      h={220}
       columns={[
         { name: 'keyword', children: 'Keyword' },
         { name: 'kd', children: 'KD,%' },

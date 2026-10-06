@@ -3,7 +3,7 @@ import { AutoSuggest } from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-import { suggestions } from './autosuggest_sync_example.tsx';
+import { suggestions } from './autosuggest_sync_example';
 
 const fakeFetch = async (query: string, signal: AbortSignal): Promise<string[]> => {
   if (!query) return [];

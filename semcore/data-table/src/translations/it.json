@@ -4,5 +4,6 @@
   "DataTable.Cell.AccordionToggle.collapse:aria-label": "Nascondi dettagli",
   "DataTable.Header.selectAllCheckbox:aria-label": "Tutti gli elementi",
   "DataTable.allItemsSelected:aria-live": "Tutti gli elementi selezionati",
-  "DataTable.allItemsDeselected:aria-live": "Tutti gli elementi deselezionati"
+  "DataTable.allItemsDeselected:aria-live": "Tutti gli elementi deselezionati",
+  "DataTable.maxLimitReached:aria-live": "È stato raggiunto il limite massimo"
 }

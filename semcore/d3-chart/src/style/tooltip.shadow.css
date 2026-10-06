@@ -2,19 +2,21 @@
 
 STooltip {
   font-size: var(--intergalactic-fs-100, 12px);
-  line-height: var(--intergalactic-lh-100, 133%);
+  line-height: var(--intergalactic-lh-100, 1.3334);
+  font-variant-numeric: tabular-nums;
   position: relative;
-  background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
+  color: var(--intergalactic-text-primary-invert, oklch(0.991 0.005 232.5 / 0.959));
+  background-color: var(--intergalactic-tooltip-bg-invert, oklch(0.23 0.009 245));
   border-radius: var(--intergalactic-popper-rounded, 6px);
-  border: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
+  border: 1px solid var(--intergalactic-tooltip-border-invert, oklch(0.4 0.015 245));
   box-sizing: border-box;
-  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.176 0.033 175.7 / 0.07));
-  padding: var(--intergalactic-spacing-3x, 12px);
+  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.324 0.077 242.1 / 0.079));
+  padding: var(--intergalactic-spacing-content-padding-medium, 12px);
 }
 
 STitle {
-  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
-  margin-bottom: var(--intergalactic-spacing-2x, 8px);
+  color: var(--intergalactic-text-secondary-invert, oklch(0.953 0.025 240.1 / 0.726));
+  margin-bottom: var(--intergalactic-spacing-content-gap-large, 8px);
 }
 
 SDotGroup {
@@ -23,20 +25,27 @@ SDotGroup {
 }
 
 SDot {
-  margin-right: var(--intergalactic-spacing-2x, 8px);
+  margin-right: var(--intergalactic-spacing-content-gap-large, 8px);
 }
 
-SDotCircle[color] {
+SDotCircle[color][lightness] {
   background-color: var(--color);
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
+  box-shadow: 0 0 0 1px oklch(from var(--color) calc(l + var(--lightness)) c h);
 }
 
 
 SFooter {
-  background: var(--intergalactic-bg-secondary-neutral, oklch(0.98 0.001 180));
-  padding: var(--intergalactic-spacing-1x, 4px) var(--intergalactic-spacing-3x, 12px);
+  background: var(--intergalactic-bg-secondary-invert, oklch(0.907 0.048 245.2 / 0.129));
+  color: var(--intergalactic-text-secondary-invert, oklch(0.953 0.025 240.1 / 0.726));
+  padding: var(--intergalactic-spacing-content-padding-xsmall, 4px) var(--intergalactic-spacing-content-padding-medium, 12px);
   border-radius: 0 0 var(--intergalactic-rounded-medium, 6px) var(--intergalactic-rounded-medium, 6px);
-  margin: var(--intergalactic-spacing-3x, 12px) calc(-1 * var(--intergalactic-spacing-3x, 12px)) calc(-1 * var(--intergalactic-spacing-3x, 12px));
+  margin: var(--intergalactic-spacing-content-gap-xlarge, 12px) calc(-1 * var(--intergalactic-spacing-content-gap-xlarge, 12px)) calc(-1 * var(--intergalactic-spacing-content-gap-xlarge, 12px));
+}
+
+SDotPattern {
+  stroke-width: 1px;
+  stroke: oklch(from var(--intergalactic-chart-grid-border, #ffffff) l c h / 0.5);
 }

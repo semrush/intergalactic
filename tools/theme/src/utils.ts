@@ -45,9 +45,7 @@ export function getConfigValue(path: string[], config: Theme): string {
     const [group, subGroup, ...key] = path;
     pathToSearch = path[0] === 'baseTokens'
       ? path
-      : path[0] === 'featureHighlight'
-        ? [group, `${subGroup}_${key.join('_')}`]
-        : [group, subGroup, key.join('_')];
+      : [group, subGroup, key.join('_')];
     const valueObj = getByPath(config, pathToSearch);
 
     if ('value' in valueObj) {
@@ -139,6 +137,14 @@ export function processTokens(config: Theme, prefix: string): ProcessedTokens {
         traverse({ node: config.baseTokens[key], path: [], prefix: `${prefix}-duration`, groupKey: 'baseTokens' });
         break;
       }
+      case 'easings': {
+        traverse({ node: config.baseTokens[key], path: [], prefix: `${prefix}-easings`, groupKey: 'baseTokens' });
+        break;
+      }
+      case 'assets': {
+        traverse({ node: config.baseTokens[key], path: [], prefix: `${prefix}-assets`, groupKey: 'baseTokens' });
+        break;
+      }
       default: {
         const k: never = key;
         throw new Error(`Please, handle key ${k}`);
@@ -157,6 +163,10 @@ export function processTokens(config: Theme, prefix: string): ProcessedTokens {
       }
       case 'opacity': {
         traverse({ node: config.semanticTokens[key], path: [], prefix, postfix: '-opacity', groupKey: 'semanticTokens' });
+        break;
+      }
+      case 'spacing': {
+        traverse({ node: config.semanticTokens[key], path: [], prefix: `${prefix}-spacing`, groupKey: 'semanticTokens' });
         break;
       }
       default: {

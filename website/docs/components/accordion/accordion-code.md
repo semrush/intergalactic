@@ -43,28 +43,14 @@ By default, `Accordion.Item.Toggle` is set to an `h3` heading level, but you can
 
 :::
 
-## Primary theme
+## Primary accordion
 
 Pass `use='primary'` to enable the primary theme for the accordion.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/accordion/docs/examples/non_compact.tsx';
-</script>
-
-:::
-
-## Custom styles for selected toggle
-
-You can customize accordion styles if needed.
-
-For example, to find out whether an element is selected and to highlight it, pass the function into the body of the element.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/accordion/docs/examples/custom_styles.tsx';
+  export Demo from 'stories/components/accordion/docs/examples/primary_accordion.tsx';
 </script>
 
 :::

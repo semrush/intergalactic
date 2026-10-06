@@ -15,7 +15,7 @@
     "upload-static": "gcs-upload intergalactic-illustrations svg/*.svg"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^17.0.1"
+    "@semcore/base-components": "^17.2.2"
   },
   "repository": {
     "type": "git",

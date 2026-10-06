@@ -34,7 +34,16 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify base feedback form styles', {
     tag: [
       TAG.PRIORITY_HIGH,
-      '@feedback-form'],
+      '@feedback-form',
+      '@base-components',
+      '@flex-box',
+      '@button-link',
+      '@dropdown',
+      '@input',
+      '@link',
+      '@textarea',
+      '@typography',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/feedback/docs/examples/default_feedback_form.tsx', 'en');
 
@@ -93,7 +102,16 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify base feedback form loading styles', {
     tag: [
       TAG.PRIORITY_HIGH,
-      '@feedback-form'],
+      '@feedback-form',
+      '@base-components',
+      '@flex-box',
+      '@button-link',
+      '@dropdown',
+      '@input',
+      '@link',
+      '@textarea',
+      '@typography',
+      '@button'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/feedback/tests/examples/feedback_form_theme_loading.tsx', 'en');
     if (browserName == 'webkit') test.skip(); // unstable
@@ -131,7 +149,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [
       TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@feedback-form'],
+      '@feedback-form',
+      '@base-components',
+      '@flex-box',
+      '@button-link',
+      '@dropdown',
+      '@input',
+      '@link',
+      '@textarea',
+      '@typography',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/feedback/docs/examples/default_feedback_form.tsx', 'en');
 
@@ -252,7 +279,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [
       TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@feedback-form'],
+      '@feedback-form',
+      '@base-components',
+      '@flex-box',
+      '@button-link',
+      '@dropdown',
+      '@input',
+      '@link',
+      '@textarea',
+      '@typography',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/feedback/docs/examples/default_feedback_form.tsx', 'en');
 
@@ -286,7 +322,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [
       TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@feedback-form'],
+      '@feedback-form',
+      '@base-components',
+      '@flex-box',
+      '@button-link',
+      '@dropdown',
+      '@input',
+      '@link',
+      '@textarea',
+      '@typography',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/feedback/docs/examples/default_feedback_form.tsx', 'en');
 

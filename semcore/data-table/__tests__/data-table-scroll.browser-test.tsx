@@ -53,12 +53,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         if (item.sticky) {
           await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
         }
-        if (item.withScrollBar) {
-          await checkScrolled(scrollBar.nth(0));
-          await checkScrolled(scrollBar.nth(1));
-        } else {
-          await checkScrolled(scrollBar.nth(0));
-        }
+        await checkScrolled(scrollBar.nth(0));
       });
     });
   });
@@ -76,11 +71,7 @@ test.describe(`${TAG.VISUAL}`, () => {
           await page.keyboard.press('ArrowRight');
         }
         await page.waitForTimeout(200);
-
-        if (item.withScrollBar) {
-          await checkScrolled(scrollBar.nth(1));
-        } else
-          await checkScrolled(scrollBar.nth(0));
+        await checkScrolled(scrollBar.nth(0));
       });
 
       await test.step('Verify vertical scroll', async () => {
@@ -107,7 +98,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   ];
   variantNoFixedColumn.forEach((item) => {
     test(`Verify keyboard scroll One Level scroll sticky=${item.sticky} withScrollBar=${item.withScrollBar} wMax=${item.wMax}`, {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@data-table'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@data-table',
+        '@base-components',
+        '@flex-box',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/scroll-tests/scroll-in-table.tsx', 'en', { ...item, multiLevel: false });
       const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
@@ -159,7 +153,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   variantNoFixedColumn.forEach((item) => {
     test(`Verify Mouse scroll Multi Level scroll sticky=${item.sticky} withScrollBar=${item.withScrollBar} wMax=${item.wMax}`, {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@data-table'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@data-table',
+        '@base-components',
+        '@flex-box',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/scroll-tests/scroll-in-table.tsx', 'en', { ...item, multiLevel: true });
       const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
@@ -204,7 +201,12 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 
-  test('Verify keyboard when sticky header with top props', async ({ page }) => {
+  test('Verify keyboard when sticky header with top props', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@data-table',
+      '@base-components',
+      '@flex-box',
+    ],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/scroll-tests/scroll-with-sticky-and-top-props-header.tsx', 'en');
 
     await page.keyboard.press('Tab');
@@ -226,4 +228,54 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   // add cases when hedader has interactive element
+});
+
+/* =====================================================
+@functional
+Scroll bar geometry - no snapshots here.
+We verify offsets of the scroll bars against the fixed columns.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify offset of horizontal scroll bar is recalculated after table resize', {
+    tag: [TAG.PRIORITY_HIGH, '@data-table',
+      '@base-components',
+      '@card',
+      '@flex-box',
+      '@typography'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/tests/examples/scroll-tests/real-table.tsx', 'en');
+
+    // The fixed column is sized as `minmax(139px, auto)`, so it takes the leftover space in a wide
+    // container and shrinks back to its minimum in a narrow one.
+    const fixedColumn = locators.getHeadColumn(page, 1);
+    const horizontalScrollBars = page.locator('[data-ui-name="ScrollArea.Bar"][aria-orientation="horizontal"]');
+
+    await page.setViewportSize({ width: 1500, height: 900 });
+    await expect(fixedColumn).toBeVisible();
+    const wideColumnWidth = (await fixedColumn.boundingBox())!.width;
+
+    await page.setViewportSize({ width: 800, height: 900 });
+
+    await test.step('Verify the fixed column shrinks together with the table', async () => {
+      await expect.poll(async () => (await fixedColumn.boundingBox())!.width, { timeout: 3000 }).toBeLessThan(wideColumnWidth);
+    });
+
+    await test.step('Verify horizontal scroll bars start at the end of the fixed column', async () => {
+      await expect(horizontalScrollBars.first()).toBeVisible();
+
+      const scrollBarsCount = await horizontalScrollBars.count();
+
+      for (let i = 0; i < scrollBarsCount; i++) {
+        const scrollBar = horizontalScrollBars.nth(i);
+
+        await expect.poll(async () => {
+          const scrollBarBox = (await scrollBar.boundingBox())!;
+          const columnBox = (await fixedColumn.boundingBox())!;
+          const scrollBarMargin = 4;
+
+          return Math.abs(scrollBarBox.x - scrollBarMargin - (columnBox.x + columnBox.width));
+        }, { timeout: 3000 }).toBeLessThanOrEqual(1);
+      }
+    });
+  });
 });

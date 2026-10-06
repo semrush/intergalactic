@@ -1,6 +1,6 @@
 import type { Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
-import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { expectEachToHaveAttribute, loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
@@ -97,7 +97,7 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify aria-hidden attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@radial-tree-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@radial-tree-chart', '@d3-chart', '@base-components', '@flex-box', '@select'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -115,36 +115,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     await test.step('Verify labels have aria-hidden attribute', async () => {
-      const labels = locators.label(page);
-      const count = await labels.count();
-      expect(count).toBeGreaterThan(0);
-
-      for (let i = 0; i < count; i++) {
-        const label = labels.nth(i);
-        await expect(label).toHaveAttribute('aria-hidden', 'true');
-      }
+      await expectEachToHaveAttribute(locators.label(page), 'aria-hidden', 'true');
     });
 
     await test.step('Verify caps have aria-hidden attribute', async () => {
-      const caps = locators.cap(page);
-      const count = await caps.count();
-      expect(count).toBeGreaterThan(0);
-
-      for (let i = 0; i < count; i++) {
-        const cap = caps.nth(i);
-        await expect(cap).toHaveAttribute('aria-hidden', 'true');
-      }
+      await expectEachToHaveAttribute(locators.cap(page), 'aria-hidden', 'true');
     });
 
     await test.step('Verify lines have aria-hidden attribute', async () => {
-      const lines = locators.line(page);
-      const count = await lines.count();
-      expect(count).toBeGreaterThan(0);
-
-      for (let i = 0; i < count; i++) {
-        const line = lines.nth(i);
-        await expect(line).toHaveAttribute('aria-hidden', 'true');
-      }
+      await expectEachToHaveAttribute(locators.line(page), 'aria-hidden', 'true');
     });
   });
 });

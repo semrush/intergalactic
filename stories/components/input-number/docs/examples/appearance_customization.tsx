@@ -20,11 +20,11 @@ const Demo = () => {
       <Text tag='label' htmlFor='alternative-example' size={200}>
         Members count
       </Text>
-      <Flex w={100} mt={2}>
+      <Flex w={120} mt={2}>
         <Button onClick={decrement} title='Decrease by 10' neighborLocation='right'>
           -
         </Button>
-        <InputNumber neighborLocation='both'>
+        <InputNumber neighborLocation='both' style={{ borderLeft: '1px solid var(--intergalactic-border-primary)' }}>
           <InputNumber.Value
             placeholder='0'
             ref={inputRef}

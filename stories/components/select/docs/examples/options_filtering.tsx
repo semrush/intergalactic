@@ -26,7 +26,7 @@ const Demo = () => {
             onChange={setFilter}
           />
           {options.length > 0 && (
-            <Select.List hMax='224px'>
+            <Select.List>
               {options.map(({ value, label }) => (
                 <Select.Option value={value} key={value}>
                   {label}

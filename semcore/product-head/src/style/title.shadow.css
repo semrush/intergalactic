@@ -2,13 +2,13 @@ STitle {
   align-items: center;
   display: flex;
   font-size: var(--intergalactic-fs-400, 20px);
-  line-height: var(--intergalactic-lh-400, 120%);
+  line-height: var(--intergalactic-lh-400, 1.2);
   font-weight: var(--intergalactic-semi-bold, 600);
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
   margin: 0;
 }
 

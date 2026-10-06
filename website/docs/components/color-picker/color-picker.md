@@ -8,7 +8,7 @@ tabs: Design('color-picker'), A11y('color-picker-a11y'), API('color-picker-api')
 
 ## Description
 
-**ColorPicker** is a component that allows the user selecting a color from a given list or input a custom color using its HEX code.
+**ColorPicker** is a component that allows the user selecting a color from a predefined list or input a custom color using its HEX code.
 
 ## Component composition
 
@@ -27,15 +27,13 @@ tabs: Design('color-picker'), A11y('color-picker-a11y'), API('color-picker-api')
 
 ### Trigger
 
-The trigger for a ColorPicker is a Select with a circle as the leading addon, and has 16px * 16px size.
+ColorPicker's trigger is a Dropdown.Trigger with a circle showing the current selected color.
 
 ![](static/trigger-size.png)
 
 ### List of colors
 
-The list of colors consists of color preview swatches that display all available color values.
-
-Margins between the swatches must be [multiples of 4](/layout/box-system/box-system-spacing). The default margin is 4px:
+The list of colors consists of preview swatches that display all available color values.
 
 ![](static/colorpicker-margins.png)
 
@@ -45,16 +43,16 @@ Color swatches can have one of the two types of appearance:
 
 Table: Color types
 
-| Type             | Appearance example                            | Usage                                                                                                              |
-| ---------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Background color | ![](static/colorpicker-item-bg-default.png)   | Use for changing the background color. For example, a user can pick colors to visually separate their competitors. |
-| Text color       | ![](static/colorpicker-item-text-default.png) | Use for changing the Tag color, for example                                                                        |
+| Type       | Appearance example                            | Usage                                                                                                              |
+| ---------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Fill       | ![](static/colorpicker-item-bg-default.png)   | Use for setting colors for markers, lines, and other non-text elements. For example, a user can pick colors to visually separate their competitors. |
+| Text color | ![](static/colorpicker-item-text-default.png) | Use for changing the Tag color, for example                                                                        |
 
 ## Dropdown
 
-### Width and height
+### Height
 
-**The recommended width of the dropdown is 188px.** The height of the dropdown depends on its content.
+The height of the dropdown depends on its content.
 
 Showing all available colors in the dropdown is crucial. However, if there's more than 5 rows of colors, you should limit the height and display a scrollbar.
 
@@ -66,40 +64,37 @@ Table: DropdownMenu appearance
 
 ## Interaction
 
-- In the hover state, trigger has a `border: 1px solid var(--border-secondary)`.
-- In the active state, trigger changes its border color to `var(--border-info-active)`.
+### Background color
 
-### Default color
+Table: Background color item states
 
-Table: Color item states
+| Item type       | Normal                                           | Hover                                          | Active                                          |
+| --------------- | ------------------------------------------------ | ---------------------------------------------- | ----------------------------------------------- |
+| Predefined fill | ![](static/colorpicker-item-bg-default.png)      | ![](static/colorpicker-item-bg-hover.png)      | ![](static/colorpicker-item-bg-active.png)      |
+| Custom fill     | ![](static/colorpicker-item-custom-default.png)  | ![](static/colorpicker-item-custom-hover.png)  | ![](static/colorpicker-item-custom-active.png)  |
+| No fill         | ![](static/colorpicker-item-nocolor-default.png) | ![](static/colorpicker-item-nocolor-hover.png) | ![](static/colorpicker-item-nocolor-active.png) |
 
-| Item type | Normal | Hover | Active | Usage |
-| ------------------- | ------------------------------- | -------------------------- | ----------------------- | -------------------- |
-| Background color | ![](static/colorpicker-item-bg-default.png) | ![](static/colorpicker-item-bg-hover.png) | ![](static/colorpicker-item-bg-active.png)| Use for changing the background color of other components.|
-| Text color | ![](static/colorpicker-item-text-default.png) | ![](static/colorpicker-item-text-hover.png) | ![](static/colorpicker-item-text-active.png)| Use for changing text and background colors of other components.|
-| No background color | ![](static/colorpicker-item-nocolor-default.png) | ![](static/colorpicker-item-nocolor-hover.png) | ![](static/colorpicker-item-nocolor-active.png)| Use when no color is selected.|
-| No text color | ![](static/colorpicker-item-text-nocolor-default.png) | ![](static/colorpicker-item-text-nocolor-hover.png) | ![](static/colorpicker-item-text-nocolor-active.png)| Use when no color is selected.|
+### Text color
 
-### Custom color
+Table: Text color item states
 
-Table: Custom color item states
-
-| Item type | Normal | Hover | Active                                              | Usage |
-| ------------------- | ------------------------------- | -------------------------- |-----------------------------------------------------| -------------------- |
-| Background color | ![](static/colorpicker-item-custom-default.png) | ![](static/colorpicker-item-custom-hover.png) | ![](static/colorpicker-item-custom-active.png)      | Use for changing the background color of other components.|
-| Text color | ![](static/colorpicker-item-custom-text-default.png) | ![](static/colorpicker-item-custom-text-hover.png) | ![](static/colorpicker-item-custom-text-active.png) | Use for changing the text and background colors of other components.|
+| Item type        | Normal                                                | Hover                                               | Active                                               |
+| ---------------- | ----------------------------------------------------- | --------------------------------------------------- | ---------------------------------------------------- |
+| Predefined text color | ![](static/colorpicker-item-text-default.png)         | ![](static/colorpicker-item-text-hover.png)         | ![](static/colorpicker-item-text-active.png)         |
+| Custom text color     | ![](static/colorpicker-item-custom-text-default.png)  | ![](static/colorpicker-item-custom-text-hover.png)  | ![](static/colorpicker-item-custom-text-active.png)  |
+| No text color    | ![](static/colorpicker-item-text-nocolor-default.png) | ![](static/colorpicker-item-text-nocolor-hover.png) | ![](static/colorpicker-item-text-nocolor-active.png) |
 
 ### Adding colors
 
 Table: States of item for adding colors
 
-| Item type            | Normal                          | Hover                         | Active                         | Usage                                        |
-| -------------------- | ------------------------------- | ----------------------------- | ------------------------------ | -------------------------------------------- |
-| **Add color** button | ![](static/btn-add-default.png) | ![](static/btn-add-hover.png) | ![](static/btn-add-active.png) | A tertiary button with `border-radius: 50%`. |
+| Item type            | Normal                          | Hover                         | Active                         |
+| -------------------- | ------------------------------- | ----------------------------- | ------------------------------ |
+| **Add color** button | ![](static/btn-add-default.png) | ![](static/btn-add-hover.png) | ![](static/btn-add-active.png) |
 
 ## Custom colors (optional)
 
-Users have the ability to add or remove custom colors, but they can't modify default or existing custom colors.
+Users have the ability to add or remove custom colors, but they can't modify predefined colors.
 
 ::: tip
 We recommend that your product sync and save the user's custom palette in different parts of the interface.

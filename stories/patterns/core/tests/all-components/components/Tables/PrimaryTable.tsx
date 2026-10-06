@@ -15,12 +15,12 @@ import Pills from '@semcore/ui/pills';
 import ProgressBar from '@semcore/ui/progress-bar';
 import SidePanel from '@semcore/ui/side-panel';
 import { Text } from '@semcore/ui/typography';
-import React, { useState } from 'react';
+import React, { useDeferredValue, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 
 import { BeforeTablesControls } from './BeforeTablesControls';
 import PrimaryTableAddFilter from './PrimaryTableAddFilter';
-import { CopyCell, Currency, DateCell, Money, OperationType, StatusCell, TimeCell } from './table_perf/cells';
+import { CopyCell, Currency, DateCell, Money, OperationType, StatusCell, TimeCell, UrlLinkCell } from './table_perf/cells';
 import { SelectedRowsInfo } from './table_perf/SelectedRowsInfo';
 import Table, { type TableDemoState } from './table_perf/table_perf';
 import AdvancedFilter from '../../../../../filters/advanced-filters/docs/examples/filters-with-filter-conditions';
@@ -37,6 +37,19 @@ const COLUMNS_CONFIG = [
     ref: (node: HTMLElement | null) => {
       if (node) {
         refsMap.name = node;
+      }
+    },
+    fixed: 'left' as const,
+  },
+  {
+    id: 'url',
+    defaultActive: true,
+    copyHandle: false,
+    Component: UrlLinkCell,
+    wMin: 200,
+    ref: (node: HTMLElement | null) => {
+      if (node) {
+        refsMap.url = node;
       }
     },
     fixed: 'left' as const,
@@ -218,7 +231,7 @@ const componentsMap = Object.fromEntries(
 
 const cols = COLUMNS_CONFIG.map((c) => ({
   name: c.id,
-  children: c.id,
+  children: c.id === 'url' ? 'URL' : c.id,
   gtcWidth: c.wMin ? `minmax(${c.wMin}px, 1fr)` : 'max-content',
   ref: c.ref,
   fixed: c.fixed,
@@ -250,8 +263,9 @@ export default function PrimaryTable({ onPageErrorChange }: PrimaryTableProps = 
 
   const [currentPage, setCurrentPage] = React.useState(1);
   const [pillValue, setPillValue] = React.useState<PillValue>('default');
+  const defferedPillValue = React.useDeferredValue(pillValue);
   const tableDemoState: TableDemoState =
-    pillValue === 'pageError' || pillValue === 'progress' ? 'default' : pillValue;
+    defferedPillValue === 'pageError' || defferedPillValue === 'progress' ? 'default' : defferedPillValue;
   const [nameFilter, setNameFilter] = React.useState('');
   const [debouncedNameFilter, setDebouncedNameFilter] = React.useState('');
   const [sidePanelOpen, setSidePanelOpen] = React.useState(false);
@@ -399,7 +413,7 @@ export default function PrimaryTable({ onPageErrorChange }: PrimaryTableProps = 
   }, [columns, setColumns]);
 
   const mainTableContent =
-    pillValue === 'pageError'
+    defferedPillValue === 'pageError'
       ? (
           <Box w='100%'>
             <PageError />
@@ -490,7 +504,7 @@ export default function PrimaryTable({ onPageErrorChange }: PrimaryTableProps = 
         </Flex>
 
         <Flex gap={3} alignItems='center'>
-          {pillValue === 'progress' && (
+          {defferedPillValue === 'progress' && (
             <ProgressBar
               tabIndex={0}
               value={65}

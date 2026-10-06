@@ -56,7 +56,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify List supports custom marker and Item content', {
-    tag: [TAG.PRIORITY_HIGH, '@typography'],
+    tag: [TAG.PRIORITY_HIGH, '@typography',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/typography/docs/examples/list-with-custom-bullets.tsx', 'en');
 
@@ -83,7 +85,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify List with custom bullets', {
-    tag: [TAG.PRIORITY_HIGH, '@typography'],
+    tag: [TAG.PRIORITY_HIGH, '@typography',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/typography/docs/examples/list-with-custom-content.tsx', 'en');
 
@@ -103,7 +107,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify text styles with tags', {
-    tag: [TAG.PRIORITY_HIGH, '@typography'],
+    tag: [TAG.PRIORITY_HIGH, '@typography',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/typography/docs/examples/text-styles.tsx', 'en');
 
@@ -113,7 +119,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify Additional information styles', {
-    tag: [TAG.PRIORITY_MEDIUM, '@typography'],
+    tag: [TAG.PRIORITY_MEDIUM, '@typography',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/typography/docs/examples/additional-information.tsx', 'en');
 
@@ -154,6 +162,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     // main coverage
     { bold: true, italic: false, size: 200, use: 'primary' },
     { bold: false, italic: true, size: 300 },
+    { size: 350 },
     { semibold: true, lowercase: true, size: 400 },
     { semibold: false, medium: true, size: 500 },
     { underline: true, lineThrough: false, size: 600 },
@@ -184,7 +193,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify counter in limits', {
-    tag: [TAG.PRIORITY_LOW, '@counter', '@typography'],
+    tag: [TAG.PRIORITY_LOW, '@counter', '@typography',
+      '@base-components',
+      '@flex-box',
+      '@progress-bar'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/counter/docs/examples/counter_in_limits.tsx', 'en');
 
@@ -246,6 +258,45 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify formatted nested list margins visual', async () => {
         await expect(page).toHaveScreenshot();
+      });
+    });
+  });
+
+  // Nested list indentation must be driven only by nesting depth, not by whether
+  // the size prop happens to be passed. Text has no default size, so the base
+  // formatTags block and the size-specific blocks must stay in sync.
+  const nestedListIndent = [
+    { size: 'none', thirdLevel: '36px' },
+    { size: '100', thirdLevel: '32px' },
+    { size: '200', thirdLevel: '36px' },
+    { size: '300', thirdLevel: '36px' },
+    { size: '350', thirdLevel: '36px' },
+  ];
+
+  nestedListIndent.forEach(({ size, thirdLevel }) => {
+    test(`Verify nested list indentation with size=${size}`, {
+      tag: [TAG.PRIORITY_HIGH, '@typography',
+        '@base-components',
+        '@flex-box'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/typography/tests/examples/nested-list-indent-props.tsx', 'en', { size });
+
+      const item = (testId: string, level: 1 | 2 | 3) =>
+        page.getByTestId(testId).locator(`li[data-level="${level}"]`).first();
+
+      await test.step('Verify baseline without size prop keeps 18/26/36px indents', async () => {
+        await expect(item('baseline-no-size', 1)).toHaveCSS('padding-left', '18px');
+        await expect(item('baseline-no-size', 2)).toHaveCSS('padding-left', '26px');
+        await expect(item('baseline-no-size', 3)).toHaveCSS('padding-left', '36px');
+      });
+
+      await test.step(`Verify size=${size} keeps 18/26px on first two levels`, async () => {
+        await expect(item('controlled-with-size', 1)).toHaveCSS('padding-left', '18px');
+        await expect(item('controlled-with-size', 2)).toHaveCSS('padding-left', '26px');
+      });
+
+      await test.step(`Verify size=${size} third level indent is ${thirdLevel}`, async () => {
+        await expect(item('controlled-with-size', 3)).toHaveCSS('padding-left', thirdLevel);
       });
     });
   });

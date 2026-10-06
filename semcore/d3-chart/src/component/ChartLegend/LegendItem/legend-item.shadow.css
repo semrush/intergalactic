@@ -11,9 +11,13 @@ SLegendItem[disabled]:hover {
   cursor: default;
 }
 
+SLegendItem[transparent] {
+  opacity: 0.3;
+}
+
 SPointShape[color] {
   background-color: var(--color);
-  margin-right: 8px;
+  margin-right: var(--intergalactic-spacing-content-gap-medium, 6px);
   flex-shrink: 0;
 }
 
@@ -21,60 +25,32 @@ SPointShape[shape='Circle'][size='l'] {
   width: 16px;
   height: 16px;
   border-radius: 8px;
-  margin-top: 4px;
+  margin-top: var(--intergalactic-spacing-content-gap-small, 4px);
 }
 
 SPointShape[shape='Circle'][size='m'] {
   width: 12px;
   height: 12px;
   border-radius: 6px;
-  margin-top: 4px;
-}
-
-SPointShape[shape='Line'][size='l'] {
-  width: 16px;
-  height: 4px;
-  border-radius: 3px;
-  margin-top: 9px;
-}
-
-SPointShape[shape='Line'][size='m'] {
-  width: 12px;
-  height: 4px;
-  border-radius: 3px;
-  margin-top: 8px;
-}
-
-SPointShape[shape='Square'][size='l'] {
-  width: 16px;
-  height: 16px;
-  border-radius: 2px;
-  margin-top: 4px;
-}
-
-SPointShape[shape='Square'][size='m'] {
-  width: 12px;
-  height: 12px;
-  border-radius: 2px;
-  margin-top: 4px;
+  margin-top: var(--intergalactic-spacing-content-gap-small, 4px);
 }
 
 SPointShape[shape='Pattern'] {
   background-color: transparent;
-  margin-right: 4px;
+  margin-right: var(--intergalactic-spacing-content-gap-small, 4px);
 }
 
 SIcon {
   line-height: 0;
-  margin-right: 4px;
+  margin-right: var(--intergalactic-spacing-content-gap-small, 4px);
 }
 
 SIcon[size='l'] {
-  margin-top: 4px;
+  margin-top: var(--intergalactic-spacing-content-gap-small, 4px);
 }
 
 SIcon[size='m'] {
-  margin-top: 2px;
+  margin-top: var(--intergalactic-spacing-content-gap-xsmall, 2px);
 }
 
 SLabel {
@@ -85,19 +61,19 @@ SLabel[size='l'],
 SAdditionalLabel[size='l'],
 SCount[size='l'] {
   font-size: var(--intergalactic-fs-300, 16px);
-  line-height: var(--intergalactic-lh-300, 150%);
+  line-height: var(--intergalactic-lh-300, 1.5);
 }
 
 SLabel[size='m'],
 SAdditionalLabel[size='m'],
 SCount[size='m'] {
   font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
+  line-height: var(--intergalactic-lh-200, 1.4286);
 }
 
 SAdditionalLabel,
 SCount {
-  margin-left: 4px;
+  margin-left: var(--intergalactic-spacing-content-gap-small, 4px);
 }
 
 SAdditionalLabel {
@@ -109,11 +85,11 @@ SAdditionalLabel {
 SAdditionalLabel::before {
   content: '';
   display: inline-block;
-  background-color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+  background-color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
   height: 4px;
   width: 4px;
   border-radius: 2px;
-  margin-right: 4px;
+  margin-right: var(--intergalactic-spacing-content-gap-small, 4px);
 }
 
 SAdditionalLabel[size='l']::before {

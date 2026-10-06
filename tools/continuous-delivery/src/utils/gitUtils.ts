@@ -1,6 +1,7 @@
 import { execSync } from 'child_process';
 import process from 'process';
 
+import semver from 'semver';
 import Git from 'simple-git';
 
 import type { ReleaseVersion } from './changelog';
@@ -191,6 +192,16 @@ export const gitUtils = {
 
       if (lastReleasedTag === null) {
         throw new Error(errorMessage);
+      }
+
+      if (lastReleasedTag === '') {
+        const prevTag = await gitUtils.getTag('v');
+
+        if (prevTag === null) {
+          throw new Error(errorMessage);
+        }
+
+        return prevTag.slice(1) as ReleaseVersion;
       }
 
       return lastReleasedTag.slice(1) as ReleaseVersion;

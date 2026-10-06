@@ -20,7 +20,11 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify accordion with custom component styles', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@button',
+        '@d3-chart',
+        '@line-chart',
+        '@responsive'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-button-not-in-accordion-cell.tsx', 'en');
       const cellActiveBg = await getCssVarColor(page, '--intergalactic-table-td-cell-active');
@@ -94,27 +98,44 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify accordion and custom component inside after keyboard interactions ', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@button',
+        '@d3-chart',
+        '@line-chart',
+        '@responsive'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-button-not-in-accordion-cell.tsx', 'en', { h: '100%' });
 
       await page.keyboard.press('Tab');
+      await expect(locators.toggle(page).nth(0)).toBeFocused();
+
       await page.keyboard.press('Enter');
       await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
       await page.waitForTimeout(500); // for chart animation is finished (webkit needs more time)
 
+      // ArrowDown must land on the accordion cell with the chart. Without waiting
+      // for the focus to actually get there, webkit screenshots the moment before
+      // and captures the focus ring on the next data row instead.
       await page.keyboard.press('ArrowDown');
+      await expect(locators.chart(page, 'Chart')).toBeFocused();
       await expect(page).toHaveScreenshot();
 
       await page.keyboard.press('ArrowUp');
+      await expect(locators.toggle(page).nth(0)).toBeFocused();
       await page.keyboard.press('Enter');
-      await locators.chart(page, 'Chart').waitFor({ state: 'hidden' });
+      // wait for the closing animation to end, not just for the content to hide:
+      // the row keeps the expanded attribute — and with it the active background and
+      // the left accent border — until expandedForAnimation resets
+      await expect(page.locator('[data-ui-name="Row.Cell"][expanded]')).toHaveCount(0);
+      await expect(locators.chart(page, 'Chart')).toHaveCount(0);
       await expect(page).toHaveScreenshot();
     });
 
     test('Verify table component inside accordion', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/table-in-table/with-sorting.tsx', 'en');
 
@@ -137,7 +158,13 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify accordion with renderCell function for parent', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@button-link',
+        '@button',
+        '@d3-chart',
+        '@widget-empty',
+        '@line-chart',
+        '@responsive'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-render-cell.tsx', 'en');
 
@@ -181,11 +208,14 @@ test.describe(`${TAG.VISUAL}`, () => {
     variantWithScrollBar.forEach((item) => {
       test(`Verify accordion with fixed Column withScrollBar=${item.withScrollBar}`, {
         tag: [TAG.PRIORITY_HIGH,
-          '@data-table'],
+          '@data-table',
+          '@widget-empty',
+        ],
       }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-fixed-column.tsx', 'en', item);
 
         await page.keyboard.press('Tab');
+        await page.keyboard.press('ArrowDown'); // the keyword column is sortable, so the initial focus is in the header
         await page.keyboard.press('Enter');
         await locators.collapse(page).waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
@@ -202,7 +232,13 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify table with checkbox and accordion not in 1st cell', {
       tag: [TAG.PRIORITY_HIGH,
         '@data-table',
-        '@pagination'],
+        '@pagination',
+        '@animation',
+        '@base-components',
+        '@button',
+        '@flex-box',
+        '@notice',
+        '@typography'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_pagination.tsx', 'en');
       const stylesActiveHovered = await getStylesActiveHovered(page);
@@ -259,7 +295,9 @@ test.describe(`${TAG.VISUAL}`, () => {
       test(`Verify checkbox and accordion in first cell mouse interactions when variant=${item.variant} and sedeIndents=${item.sideIndents}`, {
         tag: [TAG.PRIORITY_HIGH,
           '@data-table',
-          '@d3-chart'],
+          '@d3-chart',
+          '@line-chart',
+          '@responsive'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_checkbox.tsx', 'en', item);
         const cellSelectedActiveBg = await getCssVarColor(page, '--intergalactic-table-td-cell-selected-active');
@@ -299,7 +337,11 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test('Verify accordion with themed rows', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@widget-empty',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/themed-parent-rows.tsx', 'en');
       const stylesExpanded = await getStylesExpanded(page);
@@ -402,7 +444,10 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify accordion with themed cells', {
       tag: [TAG.PRIORITY_HIGH,
         '@data-table',
-        '@base-components'],
+        '@base-components',
+        '@flex-box',
+        '@widget-empty',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/colored-parent-cells', 'en');
       const stylesActiveHovered = await getStylesActiveHovered(page);
@@ -455,7 +500,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_in_merged_rows.tsx', 'en');
 
-      const spannedCell = page.locator('[data-ui-name="Body.Row"] div[aria-rowspan="3"]');
+      const spannedCell = page.locator('[data-ui-name="Row"] div[aria-rowspan="3"]');
 
       await spannedCell.click();
       await locators.collapse(page).waitFor({ state: 'visible' });
@@ -511,7 +556,9 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test('Verify table in table with sorting', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/table-in-table/with-sorting.tsx', 'en');
 
@@ -554,6 +601,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await new Promise((resolve) => setTimeout(resolve, 1000)); // need this for AccordionRows grid calculations after rendering
         await page.keyboard.press('Tab');
+        await page.keyboard.press('ArrowDown'); // the keyword column is sortable, so the initial focus is in the header
         await page.keyboard.press('Enter');
         await locators.rowTableInTable(page, 2, 5).waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
@@ -575,7 +623,9 @@ test.describe(`${TAG.VISUAL}`, () => {
     variantJustifyContent.forEach((item) => {
       test(`Verify accordion with justifyContent=${item.justifyContent}`, {
         tag: [TAG.PRIORITY_HIGH,
-          '@data-table'],
+          '@data-table',
+          '@typography',
+        ],
       }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/table-in-table/for-animation-and-justify-content-test', 'en', item);
 
@@ -603,7 +653,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@data-table',
-        '@ellipsis'],
+        '@ellipsis',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/table-in-table/with-sorting.tsx', 'en');
 
@@ -643,7 +695,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Verify child table keyboard navigation when child expanded', async () => {
         await page.keyboard.press('ArrowDown');
-        const childFirstRow = locators.dataTable(page).nth(1).locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
+        const childFirstRow = locators.dataTable(page).nth(1).locator('[data-ui-name="Row"][aria-rowindex="2"]');
         const childFirstCell = childFirstRow.locator('[data-ui-name="Row.Cell"][aria-colindex="1"]');
         await expect(childFirstCell).toBeFocused();
 
@@ -659,7 +711,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         for (let i = 0; i < 3; i++) await page.keyboard.press('ArrowDown');
         for (let i = 0; i < 3; i++) await page.keyboard.press('ArrowRight');
 
-        const childFLastRow = locators.dataTable(page).nth(1).locator('[data-ui-name="Body.Row"][aria-rowindex="5"]');
+        const childFLastRow = locators.dataTable(page).nth(1).locator('[data-ui-name="Row"][aria-rowindex="5"]');
         const childlastCell = childFLastRow.locator('[data-ui-name="Row.Cell"][aria-colindex="4"]');
         await expect(childlastCell).toBeFocused();
 
@@ -677,7 +729,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await locators.dataTable(page).nth(1).waitFor({ state: 'hidden' });
         await expect(sortIconKeywordAcc).toHaveAttribute('aria-expanded', 'false');
         await page.keyboard.press('ArrowDown');
-        const nextRow = locators.dataTable(page).first().locator('[data-ui-name="Body.Row"][aria-rowindex="5"]');
+        const nextRow = locators.dataTable(page).first().locator('[data-ui-name="Row"][aria-rowindex="5"]');
         const nextCell = nextRow.locator('[data-ui-name="Row.Cell"][aria-colindex="4"]').first();
         await expect(nextCell).toBeFocused();
       });
@@ -687,7 +739,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
         '@data-table',
-        '@ellipsis'],
+        '@ellipsis',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/table-in-table/with-sorting.tsx', 'en');
 
@@ -717,7 +771,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_in_merged_rows.tsx', 'en');
 
-      const spannedCell = page.locator('[data-ui-name="Body.Row"] div[aria-rowspan="3"]');
+      const spannedCell = page.locator('[data-ui-name="Row"] div[aria-rowspan="3"]');
       const showDetails = page.locator('[aria-label="Show details"]').first();
 
       await expect(locators.collapse(page)).toBeHidden();
@@ -755,7 +809,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify base keyboard interactions with accordion ', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@button',
+        '@d3-chart',
+        '@line-chart',
+        '@responsive'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-button-not-in-accordion-cell.tsx', 'en');
 
@@ -810,7 +868,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify base mouse interactions with accordion', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@button',
+        '@d3-chart',
+        '@line-chart',
+        '@responsive'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-button-not-in-accordion-cell.tsx', 'en');
 
@@ -865,7 +927,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     test('Verify accordion attributes', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@button',
+        '@d3-chart',
+        '@line-chart',
+        '@responsive'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-button-not-in-accordion-cell.tsx', 'en');
 
@@ -903,7 +969,18 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.MOUSE,
         '@data-table',
         '@select',
-        '@link'],
+        '@link',
+        '@base-components',
+        '@flex-box',
+        '@button-link',
+        '@button',
+        '@checkbox',
+        '@inline-edit',
+        '@inline-input',
+        '@tooltip',
+        '@typography',
+        '@widget-empty',
+        '@description-tooltip'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-interactive-elements-in-cell-with-toggle.tsx', 'en');
 
@@ -930,7 +1007,18 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         '@data-table',
         '@select',
-        '@link'],
+        '@link',
+        '@base-components',
+        '@flex-box',
+        '@button-link',
+        '@button',
+        '@checkbox',
+        '@inline-edit',
+        '@inline-input',
+        '@tooltip',
+        '@typography',
+        '@widget-empty',
+        '@description-tooltip'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-interactive-elements-in-cell-with-toggle.tsx', 'en');
 
@@ -981,7 +1069,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
         '@data-table',
-        '@pagination'],
+        '@pagination',
+        '@animation',
+        '@base-components',
+        '@button',
+        '@flex-box',
+        '@notice',
+        '@typography'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_pagination.tsx', 'en');
 
@@ -1047,7 +1141,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@data-table',
-        '@ellipsis'],
+        '@ellipsis',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/table-in-table/with-sorting.tsx', 'en');
 
@@ -1170,7 +1266,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         }
       });
 
-      const rows = page.locator('[data-ui-name="Body.Row"]');
+      const rows = page.locator('[data-ui-name="Row"]');
       await page.keyboard.press('Tab');
 
       await test.step('Verify it is possible to scroll the last cell by keyboard when accordion collapsed', async () => {
@@ -1311,7 +1407,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         }
       });
 
-      const rows = page.locator('[data-ui-name="Body.Row"]');
+      const rows = page.locator('[data-ui-name="Row"]');
       await page.keyboard.press('Tab');
 
       await test.step('Verify it is possible to scroll the last cell by keyboard', async () => {
@@ -1428,7 +1524,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify accordion toggle mode works correctly with nested tables', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.FUNCTIONAL,
-      '@data-table'],
+      '@data-table',
+      '@typography',
+      '@widget-empty',
+    ],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/table-in-table/table-in-table-in-table.tsx', 'en', {
       accordionMode: 'toggle',
@@ -1470,7 +1569,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test('Verify accordion after skeleton in table cell', {
     tag: [TAG.PRIORITY_HIGH,
-      '@data-table'],
+      '@data-table',
+      '@typography',
+      '@widget-empty',
+    ],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/table-in-table/table-in-table-in-table.tsx', 'en', {
       withSkeletonsAndAsyncDataLoading: true,

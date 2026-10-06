@@ -15,7 +15,7 @@ const Demo = () => {
       ]}
       renderCell={({ dataKey, row, defaultRender }) => {
         const value = row[dataKey].toString();
-        return ['-', '$0', 'n/a'].includes(value) ? <Spin /> : defaultRender();
+        return ['-', '$0', 'n/a'].includes(value) ? <Spin size='s' /> : defaultRender();
       }}
     />
   );

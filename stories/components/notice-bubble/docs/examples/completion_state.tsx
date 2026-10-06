@@ -11,7 +11,7 @@ const Demo = (props: CompletionNoticeBubbleProps) => {
   const handleClick = () => {
     manager.add({
       children: (
-        <Flex justifyContent='center' alignItems='center' gap={1}>
+        <Flex justifyContent='center' alignItems='center' gap={1.5}>
           <CheckM color='--intergalactic-icon-primary-success' />
           Undone
         </Flex>

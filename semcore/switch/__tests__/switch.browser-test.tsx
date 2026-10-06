@@ -211,7 +211,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify switch with external label changes state by mouse interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@switch'],
+      '@switch',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/switch/docs/examples/external_label.tsx', 'en');
 

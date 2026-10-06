@@ -7,7 +7,14 @@ import React from 'react';
 import { Area, minMax, HoverLine, StackedArea } from '../..';
 import type { ChartState } from './AbstractChart';
 import { AbstractChart } from './AbstractChart';
-import type { AreaChartData, AreaChartProps, AreaChartType, AreaChartDefaultProps } from './AreaChart.type';
+import type { ObjectData } from './AbstractChart.type';
+import { HIGHLIGHT_DOT } from './AbstractChart.type';
+import type {
+  AreaChartData,
+  AreaChartProps,
+  AreaChartType,
+  AreaChartDefaultProps,
+} from './AreaChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 class AreaChartComponent extends AbstractChart<
@@ -27,6 +34,9 @@ class AreaChartComponent extends AbstractChart<
     showXAxis: true,
     showYAxis: true,
     showTooltip: true,
+    stacked: true,
+    locale: 'en',
+    deltaPercentGrowthColor: 'success',
   } as const;
 
   get xScale() {
@@ -49,7 +59,7 @@ class AreaChartComponent extends AbstractChart<
   }
 
   get yScale(): ScaleLinear<any, any> {
-    const { yScale, marginX = 24, stacked } = this.asProps;
+    const { yScale, marginX = 32, stacked } = this.asProps;
     const { plotHeight } = this;
 
     if (yScale) {
@@ -67,7 +77,7 @@ class AreaChartComponent extends AbstractChart<
 
   renderChart() {
     const { groupKey, curve, showDots, stacked, onClickArea } = this.asProps;
-    const { dataDefinitions, highlightedLine } = this.state;
+    const { dataDefinitions, highlightedItem } = this.state;
 
     if (stacked) {
       return (
@@ -80,11 +90,12 @@ class AreaChartComponent extends AbstractChart<
                   y={item.id}
                   key={item.id}
                   color={item.color}
-                  transparent={highlightedLine !== -1 && highlightedLine !== index}
+                  transparent={highlightedItem !== -1 && highlightedItem !== index}
                   curve={curve}
                   onClick={onClickArea}
+                  withGradient
                 >
-                  {showDots && <StackedArea.Area.Dots display />}
+                  <StackedArea.Area.Dots display={showDots ? true : this.displayDots} />
                 </StackedArea.Area>
               )
             );
@@ -92,6 +103,8 @@ class AreaChartComponent extends AbstractChart<
         </StackedArea>
       );
     }
+
+    const withGradient = dataDefinitions.filter((item) => item.checked).length === 1;
 
     return dataDefinitions.map((item, index) => {
       return (
@@ -101,11 +114,12 @@ class AreaChartComponent extends AbstractChart<
             y={item.id}
             key={item.id}
             color={item.color}
-            transparent={highlightedLine !== -1 && highlightedLine !== index}
+            transparent={highlightedItem !== -1 && highlightedItem !== index}
             curve={curve}
             onClick={onClickArea}
+            withGradient={withGradient}
           >
-            {showDots && <Area.Dots display />}
+            <Area.Dots display={showDots ? true : this.displayDots} />
           </Area>
         )
       );
@@ -124,6 +138,7 @@ class AreaChartComponent extends AbstractChart<
             children: this.getTooltipChildren({
               Tooltip: HoverLine.Tooltip,
               dataItem,
+              index: xIndex,
             }),
           };
         }}
@@ -134,6 +149,10 @@ class AreaChartComponent extends AbstractChart<
   protected getLegendAriaLabel(): string {
     return this.asProps.getI18nText('legendForChart', { chartType: 'Area' });
   }
+
+  protected displayDots = (i: number, isActive: boolean, noAround: boolean, data: ObjectData): boolean => {
+    return isActive || noAround || Boolean(data[HIGHLIGHT_DOT]);
+  };
 }
 
 /**

@@ -1,6 +1,6 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, userEvent, cleanup, waitFor, fireEvent } from '@semcore/testing-utils/testing-library';
+import { act, render, userEvent, cleanup, waitFor, fireEvent } from '@semcore/testing-utils/testing-library';
 import { describe, test, vi, assertType, expect, afterEach, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -41,18 +41,22 @@ const typeText = async (element: HTMLElement, text: string) => {
   else delete (InputEvent.prototype as Partial<InputEvent>).getTargetRanges;
 };
 
+beforeEach(() => {
+  cleanup();
+  vi.useFakeTimers({ shouldAdvanceTime: true });
+});
+
+afterEach(async () => {
+  await act(() => vi.runAllTimersAsync());
+  cleanup();
+  vi.useRealTimers();
+});
+
 describe('BulkTextarea Dependency imports', () => {
   runDependencyCheckTests('bulk-textarea');
 });
 
 describe('BulkTextarea OnChange', () => {
-  beforeEach(() => {
-    cleanup();
-  });
-  afterEach(() => {
-    cleanup();
-  });
-
   test('Verify data-ui-name', () => {
     const bulkTextarea = (
       <BulkTextarea

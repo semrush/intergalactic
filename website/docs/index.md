@@ -46,9 +46,9 @@ features:
     details: Equip your components with a custom theme
     link: /style/design-tokens/design-tokens
     linkText: Explore
-  - title: Accessibility
-    details: Principles and recommendations to help you build interface for all
-    link: /core-principles/a11y/a11y
+  - title: Content
+    details: Principles and recommendations to help you write copy for your interface
+    link: /content/content-principles/content-principles
     linkText: Explore
 titleTemplate: false
 ---

@@ -25,6 +25,7 @@ class RadarChartComponent extends AbstractChart<
     showXAxis: true,
     showYAxis: true,
     showTooltip: true,
+    locale: 'en',
   } as const;
 
   protected renderChart(): React.ReactNode {
@@ -66,7 +67,7 @@ class RadarChartComponent extends AbstractChart<
           return {
             children: (
               <>
-                <Radar.Tooltip.Title>{data[groupKey]?.[index]}</Radar.Tooltip.Title>
+                <Radar.Tooltip.Title>{this.tooltipTitleFormatter(data[groupKey]?.[index])}</Radar.Tooltip.Title>
 
                 {dataDefinitions.map((item) => {
                   const value = data[item.id]?.[index];

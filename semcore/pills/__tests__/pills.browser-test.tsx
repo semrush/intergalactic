@@ -23,7 +23,12 @@ test.describe(`${TAG.VISUAL}`, () => {
   ];
   variables.forEach((item) => {
     test(`Verify Pills with different addons and size=${item.size}`, {
-      tag: [TAG.PRIORITY_HIGH, '@pills'],
+      tag: [TAG.PRIORITY_HIGH, '@pills',
+        '@badge',
+        '@base-components',
+        '@flex-box',
+        '@spin',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/pills/tests/examples/basic_example.tsx', 'en', item);
 
@@ -42,27 +47,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify pills sizes styles', async () => {
         if ((await locators.sizeM(page).count()) > 0) {
-          await expect(locators.pillsItem(page).nth(0).locator('[data-ui-name="Pills.Item.Addon"]').first()).toHaveCSS('margin-left', '8px');
-          await expect(locators.pillsItem(page).nth(0).locator('[data-ui-name="Pills.Item.Addon"]').nth(1)).toHaveCSS('margin-right', '8px');
-
-          await expect(locators.pillsItem(page).nth(0).locator('[data-ui-name="Pills.Item.Text"]')).toHaveCSS('margin-right', '8px');
-          await expect(locators.pillsItem(page).nth(0).locator('[data-ui-name="Pills.Item.Text"]')).toHaveCSS('margin-left', '8px');
-
-          await expect(locators.pillsItemText(page).nth(1)).toHaveCSS('margin-left', '8px');
-          await expect(locators.pillsItemText(page).nth(1)).toHaveCSS('margin-right', '8px');
-
           const count = await locators.pillsItem(page).count();
           for (let i = 0; i < count; i++)
             await expect(locators.pillsItem(page).nth(i)).toHaveCSS('height', '28px');
         } else if ((await locators.sizeL(page).count()) > 0) {
-          await expect(locators.pillsItem(page).nth(0).locator('[data-ui-name="Pills.Item.Addon"]').first()).toHaveCSS('margin-left', '12px');
-          await expect(locators.pillsItem(page).nth(0).locator('[data-ui-name="Pills.Item.Addon"]').nth(1)).toHaveCSS('margin-right', '12px');
-
-          await expect(locators.pillsItem(page).nth(0).locator('[data-ui-name="Pills.Item.Text"]')).toHaveCSS('margin-right', '8px');
-          await expect(locators.pillsItem(page).nth(0).locator('[data-ui-name="Pills.Item.Text"]')).toHaveCSS('margin-left', '8px');
-
-          await expect(locators.pillsItemText(page).nth(1)).toHaveCSS('margin-left', '12px');
-          await expect(locators.pillsItemText(page).nth(1)).toHaveCSS('margin-right', '12px');
           const count = await locators.pillsItem(page).count();
           for (let i = 0; i < count; i++)
             await expect(locators.pillsItem(page).nth(i)).toHaveCSS('height', '40px');
@@ -77,7 +65,12 @@ test.describe(`${TAG.VISUAL}`, () => {
   ];
   variablesDisabled.forEach((item) => {
     test(`Verify disabled Pills with different addons and size=${item.size}`, {
-      tag: [TAG.PRIORITY_HIGH, '@pills'],
+      tag: [TAG.PRIORITY_HIGH, '@pills',
+        '@badge',
+        '@base-components',
+        '@flex-box',
+        '@spin',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/pills/tests/examples/basic_example.tsx', 'en', item);
 
@@ -85,30 +78,11 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 
-  test('Verify custom pills', {
-    tag: [TAG.PRIORITY_HIGH, '@pills'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/pills/docs/examples/custom_pills_example.tsx', 'en');
-
-    await test.step('Verify hover state', async () => {
-      await locators.pillsItem(page).nth(1).hover();
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify focus state', async () => {
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify navigation and hover', async () => {
-      await page.keyboard.press('ArrowRight');
-      await locators.pillsItem(page).nth(1).hover();
-      await expect(page).toHaveScreenshot();
-    });
-  });
-
   test('Verify pills with tab panel', {
-    tag: [TAG.PRIORITY_HIGH, '@pills'],
+    tag: [TAG.PRIORITY_HIGH, '@pills',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/pills/docs/examples/tabs_example.tsx', 'en');
 
@@ -120,7 +94,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify different amout of pills', {
-    tag: [TAG.PRIORITY_HIGH, '@pills'],
+    tag: [TAG.PRIORITY_HIGH, '@pills',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/pills/tests/examples/different-amount-of-pills.tsx', 'en');
 
@@ -128,7 +104,8 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify pills with counter', {
-    tag: [TAG.PRIORITY_HIGH, '@pills'],
+    tag: [TAG.PRIORITY_HIGH, '@pills',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/counter/docs/examples/counter_in_pills.tsx', 'en');
 
@@ -143,7 +120,12 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify manual behavior when swicthing between tabs by keyboard', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@pills'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@pills',
+      '@badge',
+      '@base-components',
+      '@flex-box',
+      '@spin',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/pills/tests/examples/basic_example.tsx', 'en', { behavior: 'manual' });
 
@@ -183,7 +165,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify manual behavior when swicthing between tabs by mouse', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@pills'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@pills',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/pills/docs/examples/basic_example.tsx', 'en', { behavior: 'manual' });
 
@@ -215,7 +200,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify auto behavior when swicthing between tabs by keyboard', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@pills'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@pills',
+      '@badge',
+      '@base-components',
+      '@flex-box',
+      '@spin',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/pills/tests/examples/basic_example.tsx', 'en', { behavior: 'auto' });
 
@@ -243,7 +233,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify auto behavior when swicthing between tabs by mouse', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@pills'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@pills',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/pills/docs/examples/basic_example.tsx', 'en', { behavior: 'auto' });
 

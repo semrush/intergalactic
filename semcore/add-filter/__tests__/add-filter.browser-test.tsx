@@ -73,9 +73,11 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@add-filter',
       '@base-trigger',
+      '@filter-trigger',
       '@button',
       '@input',
-      '@select'],
+      '@select',
+      '@button-link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/docs/examples/add-filter-basic.tsx', 'en');
 
@@ -100,9 +102,11 @@ test.describe(`${TAG.VISUAL}`, () => {
       TAG.KEYBOARD,
       '@add-filter',
       '@base-trigger',
+      '@filter-trigger',
       '@button',
       '@input',
-      '@select'],
+      '@select',
+      '@button-link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/docs/examples/add-filter-basic.tsx', 'en');
 
@@ -126,11 +130,16 @@ test.describe(`${TAG.VISUAL}`, () => {
       TAG.MOUSE,
       '@add-filter',
       '@base-trigger',
+      '@filter-trigger',
       '@button',
       '@input',
       '@radio',
       '@textarea',
-      '@select'],
+      '@select',
+      '@base-components',
+      '@flex-box',
+      '@button-link',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -163,11 +172,16 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@add-filter',
       '@base-trigger',
+      '@filter-trigger',
       '@button',
       '@input',
       '@radio',
       '@textarea',
-      '@select'],
+      '@select',
+      '@base-components',
+      '@flex-box',
+      '@button-link',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -187,7 +201,12 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@button',
       '@input',
       '@input-number',
-      '@divider'],
+      '@divider',
+      '@base-components',
+      '@flex-box',
+      '@neighbor-location',
+      '@button-link',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -205,7 +224,12 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@button',
       '@input',
       '@input-number',
-      '@divider'],
+      '@divider',
+      '@base-components',
+      '@flex-box',
+      '@neighbor-location',
+      '@button-link',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -234,11 +258,16 @@ test.describe(`${TAG.VISUAL}`, () => {
       TAG.MOUSE,
       '@add-filter',
       '@base-trigger',
+      '@filter-trigger',
       '@button',
       '@input',
       '@radio',
       '@textarea',
-      '@select'],
+      '@select',
+      '@base-components',
+      '@flex-box',
+      '@button-link',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -260,7 +289,12 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@button',
       '@input',
       '@input-number',
-      '@divider'],
+      '@divider',
+      '@base-components',
+      '@flex-box',
+      '@neighbor-location',
+      '@button-link',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -295,9 +329,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.MOUSE,
         '@add-filter',
         '@base-trigger',
+        '@filter-trigger',
         '@button',
         '@input',
-        '@select'],
+        '@select',
+        '@button-link'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/docs/examples/add-filter-basic.tsx', 'en');
 
@@ -338,9 +374,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         '@add-filter',
         '@base-trigger',
+        '@filter-trigger',
         '@button',
         '@input',
-        '@select'],
+        '@select',
+        '@button-link'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/docs/examples/add-filter-basic.tsx', 'en');
 
@@ -369,11 +407,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.MOUSE,
         '@add-filter',
         '@base-trigger',
+        '@filter-trigger',
         '@button',
         '@input',
         '@radio',
         '@textarea',
-        '@select'],
+        '@select',
+        '@base-components',
+        '@flex-box',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -442,11 +485,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.FUNCTIONAL,
         '@add-filter',
         '@base-trigger',
+        '@filter-trigger',
         '@button',
         '@input',
         '@radio',
         '@textarea',
-        '@select'],
+        '@select',
+        '@base-components',
+        '@flex-box',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -565,11 +613,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.MOUSE,
         '@add-filter',
         '@base-trigger',
+        '@filter-trigger',
         '@button',
         '@input',
         '@radio',
         '@textarea',
-        '@select'],
+        '@select',
+        '@base-components',
+        '@flex-box',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -609,11 +662,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         '@add-filter',
         '@base-trigger',
+        '@filter-trigger',
         '@button',
         '@input',
         '@radio',
         '@textarea',
-        '@select'],
+        '@select',
+        '@base-components',
+        '@flex-box',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -692,11 +750,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         '@add-filter',
         '@base-trigger',
+        '@filter-trigger',
         '@button',
         '@input',
         '@radio',
         '@textarea',
-        '@select'],
+        '@select',
+        '@base-components',
+        '@flex-box',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -737,11 +800,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.MOUSE,
         '@add-filter',
         '@base-trigger',
+        '@filter-trigger',
         '@button',
         '@input',
         '@radio',
         '@textarea',
-        '@select'],
+        '@select',
+        '@base-components',
+        '@flex-box',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -770,10 +838,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_MEDIUM,
         TAG.KEYBOARD,
         '@add-filter',
+        '@base-trigger',
+        '@filter-trigger',
         '@button',
         '@input',
         '@input-number',
-        '@divider'],
+        '@divider',
+        '@base-components',
+        '@flex-box',
+        '@neighbor-location',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -819,10 +894,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_MEDIUM,
         TAG.MOUSE,
         '@add-filter',
+        '@base-trigger',
+        '@filter-trigger',
         '@button',
         '@input',
         '@input-number',
-        '@divider'],
+        '@divider',
+        '@base-components',
+        '@flex-box',
+        '@neighbor-location',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -856,10 +938,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_MEDIUM,
         TAG.KEYBOARD,
         '@add-filter',
+        '@base-trigger',
+        '@filter-trigger',
         '@button',
         '@input',
         '@input-number',
-        '@divider'],
+        '@divider',
+        '@base-components',
+        '@flex-box',
+        '@neighbor-location',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -898,10 +987,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_MEDIUM,
         TAG.MOUSE,
         '@add-filter',
+        '@base-trigger',
+        '@filter-trigger',
         '@button',
         '@input',
         '@input-number',
-        '@divider'],
+        '@divider',
+        '@base-components',
+        '@flex-box',
+        '@neighbor-location',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -927,10 +1023,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_MEDIUM,
         TAG.KEYBOARD,
         '@add-filter',
+        '@base-trigger',
+        '@filter-trigger',
         '@button',
         '@input',
         '@input-number',
-        '@divider'],
+        '@divider',
+        '@base-components',
+        '@flex-box',
+        '@neighbor-location',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -958,10 +1061,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_MEDIUM,
         TAG.MOUSE,
         '@add-filter',
+        '@base-trigger',
+        '@filter-trigger',
         '@button',
         '@input',
         '@input-number',
-        '@divider'],
+        '@divider',
+        '@base-components',
+        '@flex-box',
+        '@neighbor-location',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -981,11 +1091,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         '@add-filter',
         '@base-trigger',
+        '@filter-trigger',
         '@button',
         '@input',
         '@radio',
         '@textarea',
-        '@select'],
+        '@select',
+        '@base-components',
+        '@flex-box',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -1019,8 +1134,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.MOUSE,
         '@add-filter',
         '@base-trigger',
+        '@filter-trigger',
         '@d3-chart',
-        '@select'],
+        '@select',
+        '@base-components',
+        '@flex-box',
+        '@cigarette-chart'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/controlled_add_filter.tsx', 'en');
 

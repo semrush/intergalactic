@@ -1,5 +1,5 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
-import type { Page } from '@semcore/testing-utils/playwright';
+import type { Locator, Page } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
@@ -63,7 +63,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('Month Range Trigger', () => {
     test('Verify trigger when entering date manually', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker'],
+        '@date-picker',
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/monthrangepicker.tsx', 'en');
 
@@ -105,7 +108,11 @@ test.describe(`${TAG.VISUAL}`, () => {
     triggerVariables.forEach((item) => {
       test(`Verify trigger size=${item.size} state=${item.state} disabled=${item.disabled} neighborLocation=${item.neighborLocation}`, {
         tag: [TAG.PRIORITY_HIGH,
-          '@date-picker'],
+          '@date-picker',
+          '@base-components',
+          '@button',
+          '@flex-box',
+          '@typography'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/date-picker/tests/examples/month-range-trigger.tsx', 'en', item);
         await page.keyboard.press('Tab');
@@ -122,7 +129,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('Month range', () => {
     test('Verify Month RangePicker styles', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker'],
+        '@date-picker',
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/monthrangepicker.tsx', 'en');
 
@@ -133,15 +143,15 @@ test.describe(`${TAG.VISUAL}`, () => {
       await test.step('Verify SVG dimensions and paddings', async () => {
         const svg = locators.monthRangePickerTrigger(page).locator('svg');
         await checkStyle(svg, {
-          paddingLeft: '8px',
-          paddingRight: '8px',
+          paddingLeft: '12px',
+          paddingRight: '6px',
         });
         await expect(svg).toHaveAttribute('width', '16');
         await expect(svg).toHaveAttribute('height', '16');
       });
 
       await test.step('Verify trigger separator padding', async () => {
-        await checkStyle(separator, { paddingRight: '8px' });
+        await checkStyle(separator, { paddingRight: '12px' });
       });
 
       await test.step('Verify disabled date style', async () => {
@@ -150,14 +160,14 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await checkStyle(locators.cells(page, 0), {
           ...defaultCellStyles,
-          margin: '4px 0px 0px',
+          margin: '0px',
         });
       });
 
       await test.step('Verify available date style', async () => {
         await checkStyle(locators.cells(page, 2), {
           ...defaultCellStyles,
-          margin: '4px 0px 0px',
+          margin: '0px',
         });
       });
 
@@ -175,7 +185,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify selected date style', async () => {
         await checkStyle(selectedCells.nth(0), {
-          margin: '4px 0px 0px',
+          margin: '0px',
           width: '60px',
           height: '32px',
         });
@@ -196,7 +206,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Month range', () => {
     test('Verify roles and attributes', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker'],
+        '@date-picker',
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/monthrangepicker.tsx', 'en');
 
@@ -269,7 +282,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify Month RangePicker mouse interactions', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@date-picker'],
+        '@date-picker',
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/monthrangepicker.tsx', 'en');
 
@@ -365,7 +381,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify Month RangePicker keyboard interactions', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@date-picker'],
+        '@date-picker',
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/monthrangepicker.tsx', 'en');
       const buttons = page.locator('[data-ui-name="Button"]');
@@ -375,6 +394,23 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         for (let i = 0; i < times; i++) {
           await page.keyboard.press('Tab');
         }
+      };
+
+      /*
+        The number of Tab presses needed to reach the action buttons from a calendar cell
+        depends on the current date: when the focused cell belongs to the second (right) year
+        grid, the 'Next year' button is not in the tab path, when it belongs to the first one,
+        it is. So we tab until the expected button gets the focus instead of hardcoding a count.
+      */
+      const pressTabUntilFocused = async (locator: Locator, maxPresses = 10) => {
+        for (let i = 0; i < maxPresses; i++) {
+          await page.keyboard.press('Tab');
+          if (await locator.evaluate((node: Element) => node === document.activeElement)) {
+            return;
+          }
+        }
+
+        throw new Error(`Element is not focused after ${maxPresses} Tab presses`);
       };
 
       await test.step('Open popper using Enter key', async () => {
@@ -508,7 +544,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('ArrowRight');
         await page.keyboard.press('Space');
 
-        await pressTab(6);
+        await pressTabUntilFocused(locators.button(page, 'Apply'));
         await expect(locators.button(page, 'Apply')).toBeFocused();
 
         await page.keyboard.press('Enter');

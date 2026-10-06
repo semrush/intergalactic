@@ -1,9 +1,7 @@
-SInputSearch[size='m'] {
-  height: 32px;
-}
-
 SSearchClear {
-  padding: 0 var(--intergalactic-spacing-2x, 8px);
+  padding: 0 var(--intergalactic-spacing-05x, 2px);
+  margin-left: var(--intergalactic-spacing-05x, 2px);
+  margin-right: var(--intergalactic-spacing-content-gap-medium, 6px);
 }
 
 SSearchClear[hide] {

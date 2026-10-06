@@ -10,8 +10,8 @@ import AdvancedFilteringControlExample from './examples/advanced_filtering_contr
 import BasicUsageExample from './examples/basic_usage';
 import ControlledAndUncontrolledModesExample from './examples/controlled_and_uncontrolled_modes';
 import CustomSelectedLabelExample from './examples/custom_selected_label';
-import DropdownMenuCustomizationExample from './examples/dropdownmenu_customization';
 import LoadingStateExample from './examples/loading_state';
+import MenuCustomizationExample from './examples/menu_customization';
 import MultiselectExample from './examples/multiselect';
 import OptionsExample from './examples/options';
 import OptionsFilteringExample from './examples/options_filtering';
@@ -48,8 +48,8 @@ export const CustomSelectedLabel: Story = {
   render: CustomSelectedLabelExample,
 };
 
-export const DropdownMenuCustomization: Story = {
-  render: DropdownMenuCustomizationExample,
+export const MenuCustomization: Story = {
+  render: MenuCustomizationExample,
 };
 
 export const LoadingState: Story = {
