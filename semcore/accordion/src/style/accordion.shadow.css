@@ -1,6 +1,6 @@
 SAccordion {
   flex-direction: column;
-  gap: var(--intergalactic-spacing-content-gap-xsmall, 2px);
+  gap: var(--intergalactic-spacing-05x, 2px);
 }
 
 SItemToggle {
@@ -14,11 +14,11 @@ SItemToggle {
     color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
     background-color: var(--intergalactic-bg-secondary-neutral, oklch(0.98 0.004 232));
     border-radius: var(--intergalactic-surface-rounded, 8px);
-    padding: var(--intergalactic-spacing-content-padding-small, 8px)
-      var(--intergalactic-spacing-content-padding-large, 16px)
-      var(--intergalactic-spacing-content-padding-small, 8px)
-      var(--intergalactic-spacing-content-padding-xlarge, 20px);
-      
+    padding: var(--intergalactic-spacing-2x, 8px)
+      var(--intergalactic-spacing-4x, 16px)
+      var(--intergalactic-spacing-2x, 8px)
+      var(--intergalactic-spacing-5x, 20px);
+
 
     &:has(SItemChevron[selected]) {
       border-bottom-left-radius: 0;
@@ -30,7 +30,7 @@ SItemToggle {
     }
 
     SItemToggleButton {
-      gap: var(--intergalactic-spacing-content-gap-large, 8px);
+      gap: var(--intergalactic-spacing-2x, 8px);
       justify-content: space-between;
     }
 
@@ -42,13 +42,13 @@ SItemToggle {
   &[use='secondary'] {
     color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
     padding:
-      var(--intergalactic-spacing-content-gap-large, 8px)
-      var(--intergalactic-spacing-content-padding-xxsmall, 2px)
-      var(--intergalactic-spacing-content-padding-small, 8px)
-      var(--intergalactic-spacing-content-padding-xxsmall, 2px);
+      var(--intergalactic-spacing-2x, 8px)
+      var(--intergalactic-spacing-05x, 2px)
+      var(--intergalactic-spacing-2x, 8px)
+      var(--intergalactic-spacing-05x, 2px);
 
     SItemToggleButton {
-      gap: var(--intergalactic-spacing-content-gap-small, 4px);
+      gap: var(--intergalactic-spacing-1x, 4px);
       justify-content: unset;
     }
 
@@ -119,7 +119,7 @@ SAccordionItem {
 }
 
 SItemCollapseContainer {
-  padding: var(--intergalactic-spacing-content-padding-medium, 12px) var(--intergalactic-spacing-content-padding-xlarge, 20px);
+  padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-5x, 20px);
 }
 
 @media (prefers-reduced-motion) {

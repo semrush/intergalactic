@@ -7,7 +7,7 @@ SChart {
 
 STooltipChildrenWrapper {
   display: grid;
-  gap: var(--intergalactic-spacing-content-gap-large, 8px);
+  gap: var(--intergalactic-spacing-2x, 8px);
   align-items: center;
 
   &[columnsCount='2'] {
@@ -28,7 +28,7 @@ STooltipChildrenWrapper {
 }
 
 STooltipDeltaWrapper {
-  gap: var(--intergalactic-spacing-content-gap-xsmall, 2px);
+  gap: var(--intergalactic-spacing-05x, 2px);
   justify-content: flex-end;
 
   &[trend='upward'] {
