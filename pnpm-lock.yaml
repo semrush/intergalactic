@@ -1420,6 +1420,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/mini-chart:
+    dependencies:
+      d3-shape:
+        specifier: ^3.2.0
+        version: 3.2.0
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -1430,6 +1434,9 @@ importers:
       '@semcore/testing-utils':
         specifier: workspace:*
         version: link:../../tools/testing-utils
+      '@types/d3-shape':
+        specifier: ^3.2.0
+        version: 3.2.0
 
   semcore/modal:
     dependencies:
@@ -5931,6 +5938,9 @@ packages:
 
   '@types/d3-shape@3.1.7':
     resolution: {integrity: sha512-VLvUQ33C+3J+8p+Daf+nYSOsjB4GXp19/S/aGo60m9h1v6XaxjiT82lKVWJCfzhtuZ3yD7i/TPeC/fuKLLOSmg==}
+
+  '@types/d3-shape@3.2.0':
+    resolution: {integrity: sha512-kVd74ta9eof3eJOvbNd1vGKS/XERRyQbT26Og63hIsvDO84cjD5gEOhsXf26w3FSoNlPVz84DOFcKv/oou+fMw==}
 
   '@types/d3-time@3.0.4':
     resolution: {integrity: sha512-yuzZug1nkAAaBlBBikKZTgzCeA+k1uy4ZFwWANOfKw5z5LRhV0gNA7gNkKm7HoK+HRN0wX3EkxGk0fpbWhmB7g==}
@@ -18974,6 +18984,10 @@ snapshots:
     dependencies:
       '@types/d3-path': 3.1.1
 
+  '@types/d3-shape@3.2.0':
+    dependencies:
+      '@types/d3-path': 3.1.1
+
   '@types/d3-time@3.0.4': {}
 
   '@types/d3-transition@3.0.9':
@@ -19615,7 +19629,7 @@ snapshots:
       sirv: 3.0.2
       tinyglobby: 0.2.17
       tinyrainbow: 2.0.0
-      vitest: 3.2.4(@types/debug@4.1.13)(@types/node@25.5.2)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@9.20.3)(jsdom@22.1.0)(lightningcss@1.31.1)(sass@1.100.0)(sugarss@5.0.1(postcss@8.5.15))(terser@5.48.0)(yaml@2.8.3)
+      vitest: 3.2.4(@types/debug@4.1.13)(@types/node@25.5.2)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@9.20.3)(jsdom@22.1.0)(lightningcss@1.31.1)(sass@1.100.0)(sugarss@5.0.1(postcss@8.5.14))(terser@5.48.0)(yaml@2.8.3)
 
   '@vitest/utils@3.2.4':
     dependencies:
