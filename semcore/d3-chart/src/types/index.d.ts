@@ -94,6 +94,8 @@ export * from './component/ChartLegend/LegendItem/LegendItem.type';
 
 // @ts-ignore
 export * from './component/Metric/Metric.type';
+// @ts-ignore
+export { default as Metric } from './component/Metric/Metric';
 
 // @ts-ignore
 export * from './Pattern';
