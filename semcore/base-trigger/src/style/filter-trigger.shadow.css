@@ -97,4 +97,8 @@ SWrapper {
       background-color: var(--intergalactic-control-select-trigger-active, oklch(1 0 0));
     }
   }
+
+  STriggerAddon {
+    color: var(--intergalactic-icon-non-interactive, oklch(0.6 0.023 245));
+  }
 }
