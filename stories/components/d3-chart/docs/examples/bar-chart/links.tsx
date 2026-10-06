@@ -5,9 +5,9 @@ import React from 'react';
 import BarMockData from '../../../__mocks__/bar';
 
 const links: Record<string, string> = {
-  'Category 1': 'https://google.com',
-  'Category 2': 'https://semrush.com',
-  'Category 3': 'https://developer.semrush.com/intergalactic/',
+  'Category 1': 'https://www.semrush.com',
+  'Category 2': '#legend-and-pattern-fill',
+  'Category 3': '/intergalactic/data-display/area-chart/area-chart',
 };
 
 const Demo = () => {

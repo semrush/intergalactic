@@ -505,7 +505,7 @@
   {
     "name": "--intergalactic-border-accent",
     "value": "oklch(0.23 0.009 245)",
-    "description": "Accent border for the active and selected states..",
+    "description": "Accent border for the active and selected states.",
     "components": [
       "accordion"
     ]
@@ -747,7 +747,7 @@
   },
   {
     "name": "--intergalactic-chart-grid-line",
-    "value": "oklch(0.88 0.011 234.9)",
+    "value": "oklch(0.7 0.021 242)",
     "description": "Grid and axis guide lines for charts.",
     "components": [
       "d3-chart"
