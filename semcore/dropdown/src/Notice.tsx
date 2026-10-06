@@ -19,17 +19,19 @@ class DropdownNoticeRoot extends Component<NSDropdown.Notice.Props> {
 
     return sstyled(styles)(
       <SDropdownNotice render={Notice} use:icon={undefined} __excludeProps={['title']}>
-        <Flex alignItems='flex-start' gap={2}>
-          {Boolean(icon) && (
-            <SIcon
-            // @ts-expect-error for css styles only
-              theme={theme}
-            >
-              {icon}
-            </SIcon>
-          )}
-          <STitle bold size={200}>{title}</STitle>
-        </Flex>
+        {(Boolean(icon) || Boolean(title)) && (
+          <Flex alignItems='flex-start' gap={2}>
+            {Boolean(icon) && (
+              <SIcon
+                // @ts-expect-error for css styles only
+                theme={theme}
+              >
+                {icon}
+              </SIcon>
+            )}
+            {Boolean(title) && (<STitle bold size={200}>{title}</STitle>)}
+          </Flex>
+        )}
         <Children />
       </SDropdownNotice>,
     );
