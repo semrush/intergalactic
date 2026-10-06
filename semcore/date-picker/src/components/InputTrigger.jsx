@@ -476,7 +476,7 @@ function RangeSep(props) {
       tag={Flex}
       alignItems='center'
       justifyContent='center'
-      pl={0}
+      px={1.5}
       flex='0'
     >
       –

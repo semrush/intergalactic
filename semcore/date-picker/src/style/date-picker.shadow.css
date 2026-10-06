@@ -50,18 +50,16 @@ SButton {
 
 SSingleDateInput {
   SInputMask {
-    padding-right: var(--intergalactic-spacing-content-gap-xlarge, 12px);
-
-    &:has(SHumanizedDate) {
-      padding-right: var(--intergalactic-spacing-content-gap-large, 8px);
-    }
+    padding-right: 0;
+  }
+  SValue {
+    padding-right: 0;
   }
 }
 
 SInputMask {
   color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
   line-height: normal;
-  padding-right: var(--intergalactic-spacing-content-gap-large, 8px);
   transition: width calc(var(--intergalactic-duration-medium, 300) * 1ms) ease, min-width calc(var(--intergalactic-duration-medium, 300) * 1ms) ease;
 }
 
@@ -111,6 +109,11 @@ SMask {
   letter-spacing: 0;
   white-space: nowrap;
   overflow: hidden;
+}
+
+SSingleDateInput,
+SDateRange {
+  padding-right: var(--intergalactic-spacing-content-padding-medium, 12px);
 }
 
 SSingleDateInput SValue,
