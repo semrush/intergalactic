@@ -1,11 +1,11 @@
 SHighlightedInput[state='normal'] {
   SOutline {
-    border-color: var(--intergalactic-feature-highlight-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+    border-color: var(--intergalactic-feature-highlight-border-primary, oklch(0.277 0.066 242.6 / 0.18));
   }
 
   &:has(SValue:focus-visible) SOutline {
     outline-color: var(--intergalactic-feature-highlight-keyboard-focus-outline, oklch(0.82 0.15 170));
     outline-width: 2px;
-    border-color: var(--intergalactic-feature-highlight-border-primary-active, oklch(0.22 0.01 140));
+    border-color: var(--intergalactic-feature-highlight-border-primary-active, oklch(0.22 0.008 245));
   }
 }

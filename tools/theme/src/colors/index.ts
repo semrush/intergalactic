@@ -22,7 +22,16 @@ export type Lightness = typeof lightnessNames[number];
 // =============================================================================
 // Base color scales
 export const baseColors: Record<Colors, ColorScale> = {
-  'gray': new ColorScale(['oklch(0.94 0.002 180)', 'oklch(0.40 0.004 140)', 'oklch(0.22 0.01 140)'], 'p3'),
+  'gray': new ColorScale(
+    [
+      'oklch(0.979 0.004 232)',
+      'oklch(0.9 0.009 234)',
+      'oklch(0.807 0.017 238)',
+      'oklch(0.7 0.021 242)',
+      'oklch(0.602 0.023 245)',
+    ],
+    'p3',
+  ),
   'mint': new ColorScale(
     ['oklch(0.935 0.019 184.9)', 'oklch(0.736 0.036 189.338)', 'oklch(0.4 0.032 189.338)'],
     'p3',
@@ -103,14 +112,13 @@ export const baseColors: Record<Colors, ColorScale> = {
 
 // =============================================================================
 // Semantic color scales
-// Maybe other name instead of 'link'?
 export const semanticColors = {
   neutral: baseColors.gray,
   success: baseColors.green,
   error: baseColors.red,
   warning: baseColors.orange,
   info: baseColors.blue,
-  focus: baseColors.blue,
+  focus: baseColors.gray,
   advertising: baseColors.violet,
   highlight: baseColors.violet,
   brand: baseColors.violet,
@@ -182,8 +190,8 @@ export const L_BG_SELECTED_HOVER = 0.9;
 
 /** Background levels */
 export const L_BG_LIGHT = 0.96;
-export const L_BG_MEDIUM = 0.92; // Midlight?
-export const L_BG_STRONG = 0.64; // Heavy? Dark?
+export const L_BG_MEDIUM = 0.92;
+export const L_BG_STRONG = 0.64;
 
 export const L_BG_SKELETON = 0.94;
 
@@ -202,10 +210,10 @@ export const L_BG_BUTTON_STRONG = 0.23;
 export const L_BG_BUTTON_STRONG_HOVER = 0.32;
 export const L_BG_BUTTON_STRONG_ACTIVE = 0;
 
-/** Button secondary bg         | ⚠️ APCA 60+ under white */
-export const L_BG_BUTTON_SECONDARY = 0.93;
-export const L_BG_BUTTON_SECONDARY_HOVER = 0.91;
-export const L_BG_BUTTON_SECONDARY_ACTIVE = 0.9;
+/** Button secondary bg         | ⚠️ APCA 90+ on secondary bg */
+export const L_BG_BUTTON_SECONDARY = 0.95;
+export const L_BG_BUTTON_SECONDARY_HOVER = 0.94;
+export const L_BG_BUTTON_SECONDARY_ACTIVE = 0.92;
 
 /** Text primary      | ⚠️ APCA 90+ on secondary bg */
 export const L_TEXT_PRIMARY = 0.23;
@@ -228,7 +236,7 @@ export const L_ICON_SECONDARY = 0.8;
 export const L_ICON_SECONDARY_HOVER = 0.66; // Delete with minor
 
 /** Border primary    | ⚠️ APCA 15+ on secondary bg */
-export const L_BORDER_PRIMARY = 0.88; // inputs, buttons, table header, tab-line, divider
+export const L_BORDER_PRIMARY = 0.88; // inputs, buttons, checkboxes, radio, table header, tab-line, divider
 export const L_BORDER_PRIMARY_DIMMED = 0.95; // for dimmed borders with opacity (notice, tag)
 /** Border secondary */
 export const L_BORDER_SECONDARY = 0.95; // divider, cell borders, card header

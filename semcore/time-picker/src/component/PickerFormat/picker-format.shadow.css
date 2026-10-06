@@ -19,7 +19,7 @@ SPickerFormat {
   user-select: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
+  color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
   background-color: var(--intergalactic-control-tertiary-neutral, transparent);
 
   &::before {
@@ -29,20 +29,20 @@ SPickerFormat {
     top: 50%;
     transform: translateY(-50%);
     width: 1px;
-    background-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+    background-color: var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
     transition: height calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-out; /* TODO: Sync with animationin FilterTrigger */
   }
 
   &:hover {
     cursor: pointer;
-    color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
-    background-color: var(--intergalactic-control-tertiary-neutral-hover, oklch(0.177 0.033 175.6 / 0.042));
+    color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
+    background-color: var(--intergalactic-control-tertiary-neutral-hover, oklch(0.375 0.09 242.7 / 0.05));
   }
 
   &:active,
   &[active] {
-    color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
-    background-color: var(--intergalactic-control-tertiary-neutral-active, oklch(0.176 0.033 175.6 / 0.056));
+    color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
+    background-color: var(--intergalactic-control-tertiary-neutral-active, oklch(0.344 0.082 242.3 / 0.065));
   }
 }
 
@@ -52,7 +52,7 @@ SPickerFormat[size='m'] {
   font-size: var(--intergalactic-fs-200, 14px);
 
   &::before {
-    height: 18px;
+    height: 16px;
   }
 }
 
@@ -62,7 +62,7 @@ SPickerFormat[size='l'] {
   font-size: var(--intergalactic-fs-300, 16px);
 
   &::before {
-    height: 28px;
+    height: 24px;
   }
 }
 
