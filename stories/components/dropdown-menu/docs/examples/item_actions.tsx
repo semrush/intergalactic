@@ -20,7 +20,7 @@ const Demo = () => {
               <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
                 Menu item 3
               </DropdownMenu.Item.Content>
-              <DropdownMenu.Actions gap='var(--intergalactic-spacing-content-gap-medium)'>
+              <DropdownMenu.Actions gap={1.5}>
                 <DropdownMenu.Item tag={Button} addonLeft={PlusM} title='Add new' />
                 <DropdownMenu.Item tag={Button} addonLeft={TrashM} title='Delete' />
               </DropdownMenu.Actions>
