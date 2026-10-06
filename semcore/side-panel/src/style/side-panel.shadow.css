@@ -69,10 +69,10 @@ SBack {
 }
 
 SHeader {
-  padding-left: var(--intergalactic-spacing-content-padding-xlarge-extended, 24px);
-  padding-bottom: var(--intergalactic-spacing-content-padding-xsmall, 4px);
+  padding-left: var(--intergalactic-spacing-6x, 24px);
+  padding-bottom: var(--intergalactic-spacing-1x, 4px);
   padding-right: var(--intergalactic-spacing-14x, 56px);
-  padding-top: var(--intergalactic-spacing-content-padding-xsmall, 4px);
+  padding-top: var(--intergalactic-spacing-1x, 4px);
   min-height: calc(var(--intergalactic-spacing-10x, 40px) + var(--intergalactic-spacing-3x, 12px));
   border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
   box-sizing: border-box;
@@ -83,18 +83,18 @@ SHeader {
 
 SFooter {
   min-height: 44px;
-  padding: var(--intergalactic-spacing-content-padding-small, 8px) var(--intergalactic-spacing-content-padding-xlarge-extended, 24px);
+  padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-6x, 24px);
   justify-content: center;
   align-items: center;
-  gap: var(--intergalactic-spacing-content-gap-xlarge, 12px);
+  gap: var(--intergalactic-spacing-3x, 12px);
   border-top: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
 }
 
 SBody {
   height: 100%;
   overflow: auto;
-  padding-left: var(--intergalactic-spacing-content-padding-xlarge-extended, 24px);
-  padding-bottom:var(--intergalactic-spacing-content-padding-large, 16px);
-  padding-right: var(--intergalactic-spacing-content-padding-xlarge-extended, 24px);
-  padding-top: var(--intergalactic-spacing-content-padding-large, 16px);
+  padding-left: var(--intergalactic-spacing-6x, 24px);
+  padding-bottom:var(--intergalactic-spacing-4x, 16px);
+  padding-right: var(--intergalactic-spacing-6x, 24px);
+  padding-top: var(--intergalactic-spacing-4x, 16px);
 }

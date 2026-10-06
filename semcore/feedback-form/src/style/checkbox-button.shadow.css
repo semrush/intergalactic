@@ -1,12 +1,12 @@
 SCheckboxButton {
-  margin-top: var(--intergalactic-spacing-content-gap-large, 8px);
+  margin-top: var(--intergalactic-spacing-2x, 8px);
   background-color: var(--intergalactic-control-checkbox-button-bg-normal, transparent);
   border: 1px solid var(--intergalactic-control-checkbox-button-border, oklch(0.277 0.066 242.6 / 0.18));
   border-radius: var(--intergalactic-control-rounded, 6px);
 
   label {
     width: 100%;
-    padding: var(--intergalactic-spacing-content-padding-medium, 12px);
+    padding: var(--intergalactic-spacing-3x, 12px);
     box-sizing: border-box;
   }
 }
