@@ -1,1 +1,15 @@
-<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M2 2v7h1v2H1a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v2H9V2H2Zm7 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm3 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm-1 4a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm-2-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm-2 3V7h7v7H7ZM5 6a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6Z"/></svg>
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_11339_5961)">
+<rect x="6" y="6" width="9" height="9" rx="0.01" stroke="#191B23" stroke-width="1.5"/>
+<path d="M3 10H1.01C1.00448 10 1 9.99552 1 9.99V1.01C1 1.00448 1.00448 1 1.01 1H9.99C9.99552 1 10 1.00448 10 1.01V3" stroke="#191B23" stroke-width="1.5"/>
+<path d="M8.9999 9H9" stroke="#191B23" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M8.9999 12H9" stroke="#191B23" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M11.9999 9H12" stroke="#191B23" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M11.9999 12H12" stroke="#191B23" stroke-width="1.5" stroke-linecap="round"/>
+</g>
+<defs>
+<clipPath id="clip0_11339_5961">
+<rect width="16" height="16" fill="white"/>
+</clipPath>
+</defs>
+</svg>

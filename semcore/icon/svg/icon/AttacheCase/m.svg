@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-  <path d="M7 7a1 1 0 0 0 0 2h2a1 1 0 1 0 0-2H7Z"/>
-  <path fill-rule="evenodd" d="M6 1a2 2 0 0 0-2 2v1H2a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-2V3a2 2 0 0 0-2-2H6Zm4 3V3H6v1h4Zm-7 9V6h10v7H3Z" clip-rule="evenodd"/>
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="2" y="14" width="9" height="12" rx="0.01" transform="rotate(-90 2 14)" stroke="#191B23" stroke-width="1.5"/>
+<path d="M5.01 5C5.00448 5 5 4.99552 5 4.99L5 3C5 2.44772 5.44772 2 6 2L10 2C10.5523 2 11 2.44772 11 3V4.99C11 4.99552 10.9955 5 10.99 5L5.01 5Z" stroke="#191B23" stroke-width="1.5"/>
+<path d="M7 8H9" stroke="#191B23" stroke-width="1.5" stroke-linecap="round"/>
 </svg>
