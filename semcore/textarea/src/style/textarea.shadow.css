@@ -1,7 +1,7 @@
 STextarea {
   height: auto;
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
-  border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
+  border: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
   border-radius: var(--intergalactic-control-rounded, 6px);
   width: 100%;
   box-sizing: border-box;
@@ -10,7 +10,7 @@ STextarea {
   background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
 
   &:read-only {
-    background-color: var(--intergalactic-bg-secondary-neutral, oklch(0.98 0.001 180));
+    background-color: var(--intergalactic-bg-secondary-neutral, oklch(0.98 0.004 232));
   }
 
   &:disabled {
@@ -18,7 +18,7 @@ STextarea {
   }
 
   &::placeholder {
-    color: var(--intergalactic-text-placeholder, oklch(0.109 0.023 165.5 / 0.337));
+    color: var(--intergalactic-text-placeholder, oklch(0.242 0.062 245.8 / 0.371));
   }
 }
 
@@ -38,7 +38,7 @@ STextarea[size='l'] {
 
 STextarea[state='normal'] {
   &:focus {
-    border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
+    border-color: var(--intergalactic-border-info-active, oklch(0.23 0.009 245));
     @mixin focus-outline-mixin {
       outline-offset: 0;
       transition-property: outline-color, outline-width;
