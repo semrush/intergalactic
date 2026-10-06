@@ -110,7 +110,7 @@ SAddon {
   flex: 0 0 auto;
   height: 100%;
   color: var(--intergalactic-icon-secondary-neutral, oklch(0.8 0.017 238.3));
-  padding: 0 var(--intergalactic-spacing-content-gap-small, 4px);
+  padding: 0 var(--intergalactic-spacing-1x, 4px);
 }
 
 SAddon[disabled] {

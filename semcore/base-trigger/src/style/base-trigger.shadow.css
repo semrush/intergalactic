@@ -25,7 +25,7 @@ SBaseTrigger {
   color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
 
   border-radius: var(--intergalactic-control-rounded, 6px);
-  padding: 0 var(--intergalactic-spacing-content-padding-medium, 12px);
+  padding: 0 var(--intergalactic-spacing-3x, 12px);
 
   &::-moz-focus-inner {
     border: none;
@@ -67,7 +67,7 @@ SInner {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--intergalactic-spacing-content-gap-medium, 6px);
+  gap: var(--intergalactic-spacing-1-5x, 6px);
   height: 100%;
   width: 100%;
 }
@@ -90,8 +90,8 @@ SAddon {
   pointer-events: none;
 
   &:only-child {
-    margin-left: calc(-1 * var(--intergalactic-spacing-content-gap-small, 4px));
-    margin-right: calc(-1 * var(--intergalactic-spacing-content-gap-small, 4px));
+    margin-left: calc(-1 * var(--intergalactic-spacing-1x, 4px));
+    margin-right: calc(-1 * var(--intergalactic-spacing-1x, 4px));
   }
 }
 
@@ -150,5 +150,5 @@ SBaseTrigger[state='invalid'] {
 
 SInvalidPattern[size='m'],
 SInvalidPattern[size='l'] {
-  margin-left: calc(-1 * var(--intergalactic-spacing-content-padding-medium, 12px));
+  margin-left: calc(-1 * var(--intergalactic-spacing-3x, 12px));
 }
