@@ -40,7 +40,7 @@ STooltipDeltaWrapper {
   }
 
   &[trend='stable'] {
-    color: var(--intergalactic-text-secondary-invert, oklch(0.997 0.004 165.9 / 0.684));
+    color: var(--intergalactic-text-secondary-invert, oklch(0.953 0.025 240.1 / 0.726));
   }
 
   &[deltaPercentGrowthColor='critical'] {

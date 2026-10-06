@@ -653,7 +653,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     );
     await locators.plot(page).first().waitFor({ state: 'visible' });
 
-    await expect(locators.lineNull(page).first()).toHaveCSS('stroke', 'oklch(0.9 0.002 177)');
+    await expect(locators.lineNull(page).first()).toHaveCSS('stroke', 'oklch(0.9 0.009 234)');
     await expect(locators.lineNull(page).first()).toHaveCSS('stroke-dasharray', '4px');
   });
 
