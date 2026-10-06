@@ -90,7 +90,7 @@ Trend lines can help identify overall patterns but may clutter simple charts. If
 
 ## Interaction
 
-Hovering highlights a bar with `--chart-grid-bar-chart-hover`, indicating focus or clickability. For trend lines, display corresponding points on hover.
+Hovering highlights a bar with `--chart-grid-bar-hover`, indicating focus or clickability. For trend lines, display corresponding points on hover.
 
 Table: Bar chart interaction
 
@@ -165,6 +165,6 @@ Sometimes, the chart provides an overall view, and detailed data can be accessed
 
 For example, clicking on a bar opens the corresponding report. The bar should have the `hover` state. For clarity, you can add a "Click to view details" message to the chart's tooltip.
 
-Upon hovering, the bar or bars are highlighted with `--chart-grid-bar-chart-hover`.
+Upon hovering, the bar or bars are highlighted with `--chart-grid-bar-hover`.
 
 ![](static/interactive.png)

@@ -199,7 +199,7 @@ On hover, the chart shows the values of the variable for all data sets.
 ![](static/tooltip-example-1.png)
 ![](static/tooltip-example-2.png)
 
-Highlight the area on the axes with the `--chart-grid-bar-chart-hover` color token. The hover area for a variable includes the area of the variable itself and half the distance to the next variables.
+Highlight the area on the axes with the `--chart-grid-bar-hover` color token. The hover area for a variable includes the area of the variable itself and half the distance to the next variables.
 
 Highlight the variable line with the `--chart-grid-y-accent-hover` color token.
 
