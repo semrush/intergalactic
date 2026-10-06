@@ -9,7 +9,7 @@ SLabel {
   }
 
   SText {
-    margin-left: var(--intergalactic-spacing-content-gap-medium, 6px);
+    margin-left: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
     color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
 
     &[disabled] {
@@ -18,7 +18,7 @@ SLabel {
   }
 
   SText[size='l'] {
-    margin-left: var(--intergalactic-spacing-content-gap-large, 8px);
+    margin-left: var(--intergalactic-spacing-2x, 8px);
   }
 
   SText[color] {

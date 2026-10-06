@@ -1,6 +1,6 @@
 SNotice {
   display: flex;
-  padding: var(--intergalactic-spacing-content-padding-large, 16px);
+  padding: var(--intergalactic-spacing-4x, 16px);
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 1.4286);
   box-sizing: border-box;
@@ -8,7 +8,7 @@ SNotice {
   border-width: 1px;
   border-radius: var(--intergalactic-surface-rounded, 8px);
   color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
-  gap: var(--intergalactic-spacing-content-gap-large, 8px);
+  gap: var(--intergalactic-spacing-2x, 8px);
 }
 
 SNotice[theme='info'] {
@@ -85,29 +85,29 @@ SActions {
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: var(--intergalactic-spacing-content-gap-large, 8px);
-  margin-top: var(--intergalactic-spacing-content-padding-medium, 12px);
+  gap: var(--intergalactic-spacing-2x, 8px);
+  margin-top: var(--intergalactic-spacing-3x, 12px);
 }
 
 SLabel {
   height: fit-content;
   display: inline-flex;
   align-items: center;
-  margin-top: var(--intergalactic-spacing-content-padding-small, 8px);
+  margin-top: var(--intergalactic-spacing-2x, 8px);
 }
 
 SIcon {
   height: fit-content;
   display: inline-flex;
   align-items: center;
-  margin-top: var(--intergalactic-spacing-content-padding-small, 8px);
+  margin-top: var(--intergalactic-spacing-2x, 8px);
 }
 
 SIllustration {
   height: fit-content;
   display: inline-flex;
   align-items: center;
-  margin-right: var(--intergalactic-spacing-content-padding-xlarge, 20px);
+  margin-right: var(--intergalactic-spacing-5x, 20px);
 }
 
 SLabel[theme='info'], SIcon[theme='info'] {
@@ -132,14 +132,14 @@ SLabel[theme='muted'], SIcon[theme='muted'] {
 
 SCloseIcon {
   flex-shrink: 0;
-  margin-left: var(--intergalactic-spacing-content-padding-large, 16px);
+  margin-left: var(--intergalactic-spacing-4x, 16px);
 }
 
 STitle {
-  margin-top: var(--intergalactic-spacing-content-padding-xsmall, 4px);
+  margin-top: var(--intergalactic-spacing-1x, 4px);
 }
 
 SText {
-  margin-top: var(--intergalactic-spacing-content-padding-xsmall-extended, 6px);
-  margin-bottom: var(--intergalactic-spacing-content-padding-xsmall-extended, 6px);
+  margin-top: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
+  margin-bottom: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
 }

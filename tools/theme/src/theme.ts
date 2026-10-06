@@ -2155,80 +2155,6 @@ export const theme: Theme = {
       },
     },
     spacing: {
-      content: {
-        padding: {
-          xxsmall: {
-            value: `${SCALE_INDENT / 2}px`,
-            description: 'Tiny padding for content inside controls and surfaces.',
-          },
-          xsmall: {
-            value: `${SCALE_INDENT}px`,
-            description: 'Extra small padding for content inside controls and surfaces.',
-          },
-          xsmall_extended: {
-            value: `${SCALE_INDENT * 1.5}px`,
-            description: 'Extended extra small padding for content inside controls and surfaces.',
-          },
-          small: {
-            value: `${SCALE_INDENT * 2}px`,
-            description: 'Small padding for content inside controls and surfaces.',
-          },
-          medium: {
-            value: `${SCALE_INDENT * 3}px`,
-            description: 'Medium padding for content inside controls and surfaces.',
-          },
-          large: {
-            value: `${SCALE_INDENT * 4}px`,
-            description: 'Large padding for content inside controls and surfaces.',
-          },
-          xlarge: {
-            value: `${SCALE_INDENT * 5}px`,
-            description: 'Extra large padding for content inside controls and surfaces.',
-          },
-          xlarge_extended: {
-            value: `${SCALE_INDENT * 6}px`,
-            description: 'Extended extra large padding for content inside controls and surfaces.',
-          },
-          xxlarge: {
-            value: `${SCALE_INDENT * 10}px`,
-            description: '2x large padding for content inside controls and surfaces.',
-          },
-        },
-        gap: {
-          xsmall: {
-            value: `${SCALE_INDENT / 2}px`,
-            description: 'Extra small gap between content elements inside controls, rows, or columns.',
-          },
-          small: {
-            value: `${SCALE_INDENT}px`,
-            description: 'Small gap between content elements inside controls, rows, or columns.',
-          },
-          medium: {
-            value: `${SCALE_INDENT * 1.5}px`,
-            description: 'Medium gap between content elements inside controls, rows, or columns.',
-          },
-          large: {
-            value: `${SCALE_INDENT * 2}px`,
-            description: 'Large gap between content elements inside controls, rows, or columns.',
-          },
-          xlarge: {
-            value: `${SCALE_INDENT * 3}px`,
-            description: 'Extra large gap between elements, rows, or columns.',
-          },
-          xxlarge: {
-            value: `${SCALE_INDENT * 4}px`,
-            description: '2x large gap between elements, rows, or columns.',
-          },
-          xxlarge_extended: {
-            value: `${SCALE_INDENT * 5}px`,
-            description: 'Extended 2x large gap between elements, rows, or columns.',
-          },
-          xxxlarge: {
-            value: `${SCALE_INDENT * 6}px`,
-            description: '3x large gap between elements, rows, or columns.',
-          },
-        },
-      },
       layout: {
         padding: {
           desktop: {
@@ -2618,29 +2544,6 @@ export type SemanticTokens = {
   shadows: Record<FlattenPaths<SemanticShadows>, Value>;
   sizes: Record<`form_control_${'s' | 'm' | 'l'}`, Value>;
   spacing: {
-    content: {
-      padding: {
-        xxsmall: Value;
-        xsmall: Value;
-        xsmall_extended: Value;
-        small: Value;
-        medium: Value;
-        large: Value;
-        xlarge: Value;
-        xlarge_extended: Value;
-        xxlarge: Value;
-      };
-      gap: {
-        xsmall: Value;
-        small: Value;
-        medium: Value;
-        large: Value;
-        xlarge: Value;
-        xxlarge: Value;
-        xxlarge_extended: Value;
-        xxxlarge: Value;
-      };
-    };
     layout: {
       padding: {
         desktop: Value;

@@ -1,10 +1,10 @@
 SColorPickerPopper {
-  max-width: calc(var(--intergalactic-form-control-m, 32px) * 6 + var(--intergalactic-spacing-content-gap-xsmall, 2px) * 5 + var(--intergalactic-spacing-content-padding-large, 16px) * 2 + 2px);
-  padding: var(--intergalactic-spacing-content-padding-large, 16px);
+  max-width: calc(var(--intergalactic-form-control-m, 32px) * 6 + var(--intergalactic-spacing-05x, 2px) * 5 + var(--intergalactic-spacing-4x, 16px) * 2 + 2px);
+  padding: var(--intergalactic-spacing-4x, 16px);
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--intergalactic-spacing-content-gap-xlarge, 12px);
+  gap: var(--intergalactic-spacing-3x, 12px);
 }
 
 SItemContainer {
@@ -72,7 +72,7 @@ SColorsContainer, SColors {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--intergalactic-spacing-content-gap-xsmall, 2px);
+  gap: var(--intergalactic-spacing-05x, 2px);
 
   &:empty {
     display: none;
@@ -82,7 +82,7 @@ SColorsContainer, SColors {
 SPaletteManager {
   display: flex;
   align-items: center;
-  gap: var(--intergalactic-spacing-content-gap-medium, 6px);
+  gap: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
 }
 
 SPlusButton {
@@ -108,7 +108,7 @@ SDefaultTrigger {
   align-items: center;
   outline-color: transparent;
   cursor: pointer;
-  gap: var(--intergalactic-spacing-content-gap-medium, 6px);
+  gap: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
   border: 0;
   background: transparent;
   padding: 0;

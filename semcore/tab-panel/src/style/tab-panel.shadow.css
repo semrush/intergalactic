@@ -17,7 +17,7 @@ STabPanelItem {
   position: relative;
   bottom: -1px;
   display: inline-flex;
-  gap: var(--intergalactic-spacing-content-gap-medium, 6px);
+  gap: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
   min-width: 0;
   height: var(--intergalactic-form-control-m, 32px);
   color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
@@ -30,7 +30,7 @@ STabPanelItem {
   touch-action: manipulation;
   user-select: none;
   box-sizing: border-box;
-  padding: 0 var(--intergalactic-spacing-content-padding-medium, 12px);
+  padding: 0 var(--intergalactic-spacing-3x, 12px);
   padding-bottom: 1px;
   margin: 0;
   box-shadow: none;
