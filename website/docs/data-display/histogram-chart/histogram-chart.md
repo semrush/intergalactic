@@ -67,7 +67,7 @@ Usually, histograms don't need a legend. Just clearly name the chart and possibl
 
 ## Interaction
 
-Hovering highlights a column with `--chart-grid-bar-chart-hover`, indicating focus or clickability. For trend lines, display corresponding points on hover.
+Hovering highlights a column with `--chart-grid-bar-hover`, indicating focus or clickability. For trend lines, display corresponding points on hover.
 
 ![](static/histogram.png)
 

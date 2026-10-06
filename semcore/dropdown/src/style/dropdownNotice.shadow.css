@@ -1,6 +1,6 @@
 SDropdownNotice {
-  padding-top: var(--intergalactic-spacing-content-padding-medium, 12px);
-  padding-bottom: var(--intergalactic-spacing-content-padding-medium, 12px);
+  padding-top: var(--intergalactic-spacing-3x, 12px);
+  padding-bottom: var(--intergalactic-spacing-3x, 12px);
   border-left: none;
   border-right: none;
   border-bottom: none;
@@ -10,10 +10,10 @@ SDropdownNotice {
   border-top-right-radius: 0;
 
   flex-direction: column;
-  gap: 0;
+  gap: var(--intergalactic-spacing-1x, 4px);
 
   SIcon {
-    margin-top: var(--intergalactic-spacing-content-padding-xxsmall, 2px);
+    margin-top: var(--intergalactic-spacing-05x, 2px);
     height: var(--intergalactic-spacing-4x, 16px);
 
     &[theme='info'] {
@@ -38,11 +38,11 @@ SDropdownNotice {
   }
 
   SDropdownNoticeText {
-    margin-top: var(--intergalactic-spacing-content-gap-small, 4px);
-    margin-bottom: var(--intergalactic-spacing-content-gap-small, 4px);
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   SDropdownNoticeActions {
-    margin-top: var(--intergalactic-spacing-content-gap-small, 4px);
+    margin-top: var(--intergalactic-spacing-1x, 4px);
   }
 }

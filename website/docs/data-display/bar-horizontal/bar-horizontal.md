@@ -98,7 +98,7 @@ Use legends for multiple categories.
 
 ## Interaction
 
-Hovering highlights a bar with `--chart-grid-bar-chart-hover`, indicating focus or clickability. The hover takes up half of the bars margin on the top and bottom sides.
+Hovering highlights a bar with `--chart-grid-bar-hover`, indicating focus or clickability. The hover takes up half of the bars margin on the top and bottom sides.
 
 Table: Horizontal bar chart interaction
 

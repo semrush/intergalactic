@@ -11,7 +11,7 @@ SHintPopper {
   background: var(--intergalactic-tooltip-bg-invert, oklch(0.23 0.009 245));
   border: 1px solid var(--intergalactic-tooltip-border-invert, oklch(0.4 0.015 245));
   color: var(--intergalactic-tooltip-text-invert, oklch(0.991 0.005 232.5 / 0.959));
-  padding: var(--intergalactic-spacing-content-padding-xsmall, 4px) var(--intergalactic-spacing-content-padding-small, 8px);
+  padding: var(--intergalactic-spacing-1x, 4px) var(--intergalactic-spacing-2x, 8px);
   border-radius: var(--intergalactic-rounded-small, 4px);
   font-size: var(--intergalactic-fs-100, 12px);
   line-height: var(--intergalactic-lh-100, 1.3334);
