@@ -1,6 +1,6 @@
 SHighlightedButton[theme='primary-highlighted'] {
-  color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
+  color: var(--intergalactic-control-text-primary-invert, oklch(0.991 0.005 232.5 / 0.959));
+  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.009 245));
 
   [data-ui-name='SummaryAI'] {
     color: var(--intergalactic-brand-tertiary, oklch(0.82 0.15 170));
@@ -13,22 +13,22 @@ SHighlightedButton[theme='primary-highlighted'] {
 }
 
 SHighlightedButton[theme='secondary-highlighted'] {
-  color: var(--intergalactic-feature-highlight-text, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-feature-highlight-text, oklch(0.23 0.009 245));
 
   &:focus-visible {
     outline-color: var(--intergalactic-feature-highlight-keyboard-focus-outline, oklch(0.82 0.15 170));
     outline-width: 2px;
   }
 
-  background-color: var(--intergalactic-feature-highlight-control-secondary, oklch(0.166 0.031 175.8 / 0.097));
+  background-color: var(--intergalactic-feature-highlight-control-secondary, oklch(0.324 0.077 242.1 / 0.079));
 
   &:hover {
-    background-color: var(--intergalactic-feature-highlight-control-secondary-hover, oklch(0.151 0.028 176.1 / 0.123));
+    background-color: var(--intergalactic-feature-highlight-control-secondary-hover, oklch(0.31 0.074 242 / 0.094));
   }
 
   &:active,
   &[active] {
-    background-color: var(--intergalactic-feature-highlight-control-secondary-active, oklch(0.145 0.027 176.1 / 0.135));
+    background-color: var(--intergalactic-feature-highlight-control-secondary-active, oklch(0.291 0.069 241.9 / 0.123));
   }
 }
 

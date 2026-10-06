@@ -7,5 +7,5 @@ STabLineFH {
 }
 
 SCaret {
-  background: var(--intergalactic-feature-highlight-border-primary-active, oklch(0.22 0.01 140));
+  background: var(--intergalactic-feature-highlight-border-primary-active, oklch(0.22 0.008 245));
 }

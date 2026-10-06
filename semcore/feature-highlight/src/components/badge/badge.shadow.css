@@ -13,11 +13,11 @@ SHighlightedBadge {
   letter-spacing: 0.3px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--intergalactic-badge-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+  color: var(--intergalactic-badge-text-primary-invert, oklch(0.991 0.005 232.5 / 0.959));
 }
 
 SHighlightedBadge[use='accent'] {
-  background-color: var(--intergalactic-feature-highlight-badge-accent, oklch(0.22 0.01 140));
+  background-color: var(--intergalactic-feature-highlight-badge-accent, oklch(0.22 0.008 245));
 }
 
 SHighlightedBadge[bg] {

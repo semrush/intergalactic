@@ -201,7 +201,12 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 
-  test('Verify keyboard when sticky header with top props', async ({ page }) => {
+  test('Verify keyboard when sticky header with top props', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@data-table',
+      '@base-components',
+      '@flex-box',
+    ],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/scroll-tests/scroll-with-sticky-and-top-props-header.tsx', 'en');
 
     await page.keyboard.press('Tab');
