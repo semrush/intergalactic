@@ -16,7 +16,7 @@ SLink {
 
   &[enableVisited]:visited,
   &[enableVisited]:visited:hover {
-    color: var(--intergalactic-text-link-visited, oklch(0.63 0.228 298.9));
+    color: var(--intergalactic-text-link-visited, oklch(0.55 0.27 296));
   }
 
   &[theme='default'] {
@@ -37,7 +37,7 @@ SLink {
     }
   }
   &[theme='light'] {
-    color: var(--intergalactic-text-link-secondary, oklch(0.209 0.055 246.6 / 0.505));
+    color: var(--intergalactic-text-link-secondary, oklch(0.182 0.045 244.8 / 0.593));
 
     & SText {
       text-decoration-color: transparent;
@@ -46,7 +46,7 @@ SLink {
     &[active],
     &:hover,
     &:active {
-      color: var(--intergalactic-text-link-secondary-hover-active, oklch(0.209 0.055 246.6 / 0.505));
+      color: var(--intergalactic-text-link-secondary-hover-active, oklch(0.182 0.045 244.8 / 0.593));
 
       & SText {
         text-decoration-color: currentColor;

@@ -79,7 +79,7 @@ Refer to the [example with custom step](/components/wizard/wizard-code#custom-st
 We recommend:
 
 - Using the `L` size for basic controls
-- Using the `spacing-content-gap-xlarge` gap within the footer and the `spacing-content-gap-xxlarge-extended` gap between the footer and the content.
+- Using the `spacing-3x` gap within the footer and the `spacing-5x` gap between the footer and the content.
 
 ![](static/footer.png)
 
