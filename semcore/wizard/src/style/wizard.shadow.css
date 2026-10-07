@@ -8,7 +8,7 @@ SWizard {
 SSidebar {
   background: var(--intergalactic-wizard-sidebar-bg, oklch(0.23 0.009 245));
   color: var(--intergalactic-wizard-sidebar-text-primary, oklch(0.991 0.005 232.5 / 0.959));
-  padding: var(--intergalactic-spacing-content-padding-xxlarge, undefined) var(--intergalactic-spacing-content-padding-small, undefined);
+  padding: var(--intergalactic-spacing-10x, undefined) var(--intergalactic-spacing-2x, undefined);
   max-width: 220px;
   flex-shrink: 0;
   box-sizing: border-box;
@@ -20,7 +20,7 @@ SSidebar {
   SStepper {
     box-sizing: border-box;
     min-height: 36px;
-    gap: var(--intergalactic-spacing-content-gap-small, undefined);
+    gap: var(--intergalactic-spacing-1x, undefined);
     border-radius: var(--intergalactic-control-rounded, 6px);
     padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
     cursor: pointer;

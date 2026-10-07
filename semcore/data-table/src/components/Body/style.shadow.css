@@ -15,31 +15,31 @@ SAccordionRows {
 
 SBody[compact] {
   SCell {
-    padding: var(--intergalactic-spacing-content-padding-medium, undefined) var(--intergalactic-spacing-content-padding-small, undefined);
+    padding: var(--intergalactic-spacing-3x, undefined) var(--intergalactic-spacing-2x, undefined);
   }
 
   SCell[data-aria-level] {
-    padding-left: calc(var(--intergalactic-spacing-content-padding-small, undefined) + ((var(--intergalactic-spacing-content-padding-large, undefined) + var(--intergalactic-spacing-content-padding-xsmall, undefined) + var(--intergalactic-spacing-content-padding-xxsmall, undefined)) * (var(--data-aria-level) - 1)));
+    padding-left: calc(var(--intergalactic-spacing-2x, undefined) + ((var(--intergalactic-spacing-4x, undefined) + var(--intergalactic-spacing-1x, undefined) + var(--intergalactic-spacing-05x, undefined)) * (var(--data-aria-level) - 1)));
   }
 
   SRow {
     SCellWrapper:first-child SCell[data-aria-level] {
-      padding-left: calc(var(--intergalactic-spacing-content-padding-small, undefined) + ((var(--intergalactic-spacing-content-padding-large, undefined) + var(--intergalactic-spacing-content-padding-xsmall, undefined) + var(--intergalactic-spacing-content-padding-xxsmall, undefined)) * (var(--data-aria-level) - 1)));
+      padding-left: calc(var(--intergalactic-spacing-2x, undefined) + ((var(--intergalactic-spacing-4x, undefined) + var(--intergalactic-spacing-1x, undefined) + var(--intergalactic-spacing-05x, undefined)) * (var(--data-aria-level) - 1)));
     }
   }
   SRow[sideIndents='wide'] {
     SCellWrapper:first-child SCell[data-aria-level] {
-      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge, undefined) + ((var(--intergalactic-spacing-content-padding-large, undefined) + var(--intergalactic-spacing-content-padding-xsmall, undefined) + var(--intergalactic-spacing-content-padding-xxsmall, undefined)) * (var(--data-aria-level) - 1)));
+      padding-left: calc(var(--intergalactic-spacing-5x, undefined) + ((var(--intergalactic-spacing-4x, undefined) + var(--intergalactic-spacing-1x, undefined) + var(--intergalactic-spacing-05x, undefined)) * (var(--data-aria-level) - 1)));
     }
   }
   SCollapseRow[sideIndents='wide'] {
     SCellWrapper:first-child SCell[data-aria-level] {
-      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge, undefined) + ((var(--intergalactic-spacing-content-padding-large, undefined) + var(--intergalactic-spacing-content-padding-xsmall, undefined) + var(--intergalactic-spacing-content-padding-xxsmall, undefined)) * (var(--data-aria-level) - 1)));
+      padding-left: calc(var(--intergalactic-spacing-5x, undefined) + ((var(--intergalactic-spacing-4x, undefined) + var(--intergalactic-spacing-1x, undefined) + var(--intergalactic-spacing-05x, undefined)) * (var(--data-aria-level) - 1)));
     }
   }
 
   SCell SAccordionToggle {
-    margin-right: var(--intergalactic-spacing-content-gap-large, undefined);
+    margin-right: var(--intergalactic-spacing-2x, undefined);
   }
 }
 
@@ -176,8 +176,8 @@ SCell {
   overflow: hidden;
 
   SAccordionToggle {
-    margin-right: var(--intergalactic-spacing-content-gap-xlarge, undefined);
-    margin-left: calc(var(--intergalactic-spacing-content-gap-xsmall, undefined) * -1);
+    margin-right: var(--intergalactic-spacing-3x, undefined);
+    margin-left: calc(var(--intergalactic-spacing-05x, undefined) * -1);
     height: fit-content;
 
     svg {
@@ -194,20 +194,20 @@ SCell {
   }
 
   &[use='primary'] {
-    padding: var(--intergalactic-spacing-content-padding-medium, undefined);
+    padding: var(--intergalactic-spacing-3x, undefined);
     min-height: 45px;
 
     &[data-aria-level] {
-      padding-left: calc(var(--intergalactic-spacing-content-padding-medium, undefined) + ((var(--intergalactic-spacing-content-padding-xlarge, undefined) + var(--intergalactic-spacing-content-padding-xsmall, undefined) + var(--intergalactic-spacing-content-padding-xxsmall, undefined)) * (var(--data-aria-level) - 1)));
+      padding-left: calc(var(--intergalactic-spacing-3x, undefined) + ((var(--intergalactic-spacing-5x, undefined) + var(--intergalactic-spacing-1x, undefined) + var(--intergalactic-spacing-05x, undefined)) * (var(--data-aria-level) - 1)));
     }
   }
 
   &[use='secondary'] {
-    padding: var(--intergalactic-spacing-content-padding-small, undefined);
+    padding: var(--intergalactic-spacing-2x, undefined);
     min-height: 37px;
 
     &[data-aria-level] {
-      padding-left: calc(var(--intergalactic-spacing-content-padding-small, undefined) + ((var(--intergalactic-spacing-content-padding-xlarge, undefined) + var(--intergalactic-spacing-content-padding-xsmall, undefined) + var(--intergalactic-spacing-content-padding-xxsmall, undefined)) * (var(--data-aria-level) - 1)));
+      padding-left: calc(var(--intergalactic-spacing-2x, undefined) + ((var(--intergalactic-spacing-5x, undefined) + var(--intergalactic-spacing-1x, undefined) + var(--intergalactic-spacing-05x, undefined)) * (var(--data-aria-level) - 1)));
     }
   }
 
@@ -326,15 +326,15 @@ SEmptyData {
 
 SRow[sideIndents='wide'], SCollapseRow[sideIndents='wide'] {
   SCellWrapper:first-child SCell[aria-colindex="1"] {
-    padding-left: var(--intergalactic-spacing-content-padding-xlarge, undefined);
+    padding-left: var(--intergalactic-spacing-5x, undefined);
 
     &[data-aria-level] {
-      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge, undefined) + ((var(--intergalactic-spacing-content-padding-xlarge, undefined) + var(--intergalactic-spacing-content-padding-xsmall, undefined) + var(--intergalactic-spacing-content-padding-xxsmall, undefined)) * (var(--data-aria-level) - 1)));
+      padding-left: calc(var(--intergalactic-spacing-5x, undefined) + ((var(--intergalactic-spacing-5x, undefined) + var(--intergalactic-spacing-1x, undefined) + var(--intergalactic-spacing-05x, undefined)) * (var(--data-aria-level) - 1)));
     }
   }
 
   SCellWrapper:last-child SCell {
-    padding-right: var(--intergalactic-spacing-content-padding-xlarge, undefined);
+    padding-right: var(--intergalactic-spacing-5x, undefined);
   }
 }
 
