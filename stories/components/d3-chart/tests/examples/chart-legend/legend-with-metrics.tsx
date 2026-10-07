@@ -25,7 +25,6 @@ type LegendWithMetricsStoryProps = Omit<
   'legendProps'?: Partial<BaseLegendProps>;
   'aria-label'?: string;
   'patterns'?: boolean;
-  'highlightedItem'?: number;
   'metricsPerItem'?: 1 | 2;
   'diffIcon'?: DiffIconMode;
   'diffUse'?: DiffUseMode;
@@ -52,7 +51,6 @@ const Demo = (props: LegendWithMetricsStoryProps) => {
     diffValue = '+12',
     metricLink = 'single',
     href = '/some-report',
-    highlightedItem = -1,
     legendPosition = 'bottom',
     legendProps = {},
     patterns = false,
@@ -69,15 +67,7 @@ const Demo = (props: LegendWithMetricsStoryProps) => {
     shape = 'Checkbox',
     disableHoverItems = false,
     disableSelectItems = false,
-    title,
   } = legendProps;
-
-  const [unchecked, setUnchecked] = React.useState<Record<string, boolean>>({});
-  const [hoveredItem, setHoveredItem] = React.useState(-1);
-
-  // Hovering a legend row wins over the static knob, so the knob stays usable as a
-  // starting state while the pointer still drives the dimming of the legend rows.
-  const activeItem = hoveredItem !== -1 ? hoveredItem : highlightedItem;
 
   const resolveDiffUse = (index: number) =>
     diffUse === 'mixed' ? (['good', 'bad', 'neutral'] as const)[index % 3] : diffUse;
@@ -118,22 +108,9 @@ const Demo = (props: LegendWithMetricsStoryProps) => {
   const items = series.map((id, index) => ({
     id,
     label: `Line ${index + 1}`,
-    checked: !unchecked[id],
     color: `chart-palette-order-${index + 1}`,
     rows: buildMetrics(index),
   }));
-
-  const handleChangeVisibleItem = (id: string, isVisible: boolean) => {
-    setUnchecked((prev) => ({ ...prev, [id]: !isVisible }));
-  };
-
-  const handleMouseEnterItem = (id: string) => {
-    setHoveredItem(series.indexOf(String(id)));
-  };
-
-  const handleMouseLeaveItem = () => {
-    setHoveredItem(-1);
-  };
 
   const tableProps: Partial<BaseLegendProps> = {
     'legendType': 'Table',
@@ -144,6 +121,8 @@ const Demo = (props: LegendWithMetricsStoryProps) => {
     }, {}),
     size,
     shape,
+    disableHoverItems,
+    disableSelectItems,
     ...(patterns ? { patterns: true as const } : {}),
     'aria-label': legendAriaLabel ?? 'Chart legend with metrics',
   };
@@ -178,7 +157,6 @@ export const defaultProps = getChartProps<LegendWithMetricsStoryProps>({
   'metricLink': 'single',
   'href': '/some-report',
   'patterns': false,
-  'highlightedItem': -1,
   'legendPosition': 'bottom',
   'aria-label': 'Chart legend with metrics',
 });

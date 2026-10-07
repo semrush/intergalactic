@@ -32,7 +32,6 @@ export const LegendWithMetrics = {
     'diffValue': { control: 'text' },
     'metricLink': { control: 'select', options: ['none', 'single', 'all'] },
     'href': { control: 'text' },
-    'highlightedItem': { control: { type: 'number', min: -1, max: 2, step: 1 } },
     'legendPosition': { control: 'select', options: ['bottom', 'right'] },
     'w': { control: { type: 'number' } },
     'aria-label': { control: 'text' },
