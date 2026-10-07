@@ -32,6 +32,7 @@ export const defaultProps = getChartProps<BarChartProps>({
   groupKey: 'bar',
   data,
   type: 'stack',
+  maxBarSize: 12,
 });
 
 Demo.defaultProps = defaultProps;
