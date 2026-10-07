@@ -402,7 +402,7 @@ class PageInput extends Component<
         </SLabel>
         <SPageInput
           render={InputNumber}
-          controlsLength={Children.origin ? undefined : 2}
+          controlsLength={Children.origin ? undefined : 1}
           locale={locale}
         >
           {Children.origin

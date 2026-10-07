@@ -31,7 +31,7 @@ class BarChartComponent extends AbstractChart<
     showYAxis: true,
     showTooltip: true,
     locale: 'en',
-    deltaPercentGrowthColor: 'good',
+    deltaPercentGrowthColor: 'success',
   } as const;
 
   get xScale() {

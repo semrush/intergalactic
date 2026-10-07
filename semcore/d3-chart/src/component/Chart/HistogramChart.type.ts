@@ -21,7 +21,7 @@ export type HistogramChartDefaultProps = {
   showYAxis: true;
   showTooltip: true;
   locale: 'en';
-  deltaPercentGrowthColor: 'good';
+  deltaPercentGrowthColor: 'success';
 };
 
 export type HistogramChartType = Intergalactic.Component<typeof Flex, HistogramChartProps>;

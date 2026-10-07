@@ -4,21 +4,21 @@ SScrollBar {
 }
 
 SScrollBar[orientation='vertical'] {
-  margin-top: var(--intergalactic-spacing-content-padding-xsmall, 4px);
+  margin-top: var(--intergalactic-spacing-1x, 4px);
   top: 0;
   right: 0;
   width: 8px;
-  height: calc(100% - var(--offsetSum) - var(--intergalactic-spacing-content-padding-small, 8px));
+  height: calc(100% - var(--offsetSum) - var(--intergalactic-spacing-2x, 8px));
   justify-content: center;
 }
 
 SScrollBar[orientation='horizontal'] {
-  margin-left: var(--intergalactic-spacing-content-padding-xsmall, 4px);
+  margin-left: var(--intergalactic-spacing-1x, 4px);
   left: 0;
   bottom: 0;
   height: 12px;
   align-items: center;
-  width: calc(100% - var(--offsetSum) - var(--intergalactic-spacing-content-padding-medium, 12px));
+  width: calc(100% - var(--offsetSum) - var(--intergalactic-spacing-3x, 12px));
 }
 
 SSlider {

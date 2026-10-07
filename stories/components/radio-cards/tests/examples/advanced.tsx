@@ -12,7 +12,7 @@ const Demo = () => {
   return (
     <RadioCards aria-label='Radio cards' name='radio-cards' defaultValue='loading-state'>
       <RadioCards.Item value='custom-layout'>
-        <Flex alignItems='center' gap='var(--intergalactic-spacing-content-gap-medium, 6px)'>
+        <Flex alignItems='center' gap={1.5}>
           <FileExport />
           <Text size={300} use='primary'>Custom layout</Text>
           <Info />
@@ -21,7 +21,7 @@ const Demo = () => {
         <Dot up size='l' aria-label='New'>12</Dot>
       </RadioCards.Item>
       <RadioCards.Item value='loading-state'>
-        <Flex alignItems='center' gap='var(--intergalactic-spacing-content-gap-medium, 6px)'>
+        <Flex alignItems='center' gap={1.5}>
           <Spin />
           <Text size={300} use='primary'>Loading state</Text>
           <TagContainer interactive={false}>

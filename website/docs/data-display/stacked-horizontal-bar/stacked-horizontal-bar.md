@@ -49,7 +49,7 @@ Refer to [Horizontal bar chart > Legend](/data-display/bar-horizontal/bar-horizo
 
 ## Interaction
 
-Hovering highlights a bar with `--chart-grid-bar-chart-hover`, indicating focus or clickability. The hover takes up half of the bars margin on the top and bottom sides.
+Hovering highlights a bar with `--chart-grid-bar-hover`, indicating focus or clickability. The hover takes up half of the bars margin on the top and bottom sides.
 
 ![stacked bar chart](static/hover.png)
 

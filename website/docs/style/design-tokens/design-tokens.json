@@ -146,7 +146,7 @@
   },
   {
     "name": "--intergalactic-badge-text-secondary",
-    "value": "oklch(0.209 0.055 246.6 / 0.505)",
+    "value": "oklch(0.182 0.045 244.8 / 0.593)",
     "description": "Secondary text color for Badge.",
     "components": [
       "badge"
@@ -822,7 +822,7 @@
   },
   {
     "name": "--intergalactic-chart-grid-text-label",
-    "value": "oklch(0.209 0.055 246.6 / 0.505)",
+    "value": "oklch(from oklch(0.182 0.045 244.8 / 0.593) l c h / 0.4)",
     "description": "Text label on the chart grid.",
     "components": [
       "d3-chart"
@@ -1595,7 +1595,7 @@
   },
   {
     "name": "--intergalactic-control-text-secondary",
-    "value": "oklch(0.209 0.055 246.6 / 0.505)",
+    "value": "oklch(0.182 0.045 244.8 / 0.593)",
     "description": "Secondary text color for form controls.",
     "components": [
       "button"
@@ -1609,7 +1609,7 @@
   },
   {
     "name": "--intergalactic-control-text-tertiary",
-    "value": "oklch(0.209 0.055 246.6 / 0.505)",
+    "value": "oklch(0.182 0.045 244.8 / 0.593)",
     "description": "Tertiary text color for form controls.",
     "components": []
   },
@@ -1853,6 +1853,7 @@
     "value": "oklch(0.58 0.215 26)",
     "description": "Semantic error icon.",
     "components": [
+      "dropdown",
       "notice"
     ]
   },
@@ -1894,6 +1895,7 @@
     "description": "Default icon weight on normal backgrounds—stronger emphasis than secondary icons.",
     "components": [
       "carousel",
+      "dropdown",
       "feature-highlight",
       "notice",
       "radio-cards",
@@ -1914,6 +1916,7 @@
     "value": "oklch(0.58 0.151 170)",
     "description": "Semantic success icon.",
     "components": [
+      "dropdown",
       "notice"
     ]
   },
@@ -1930,6 +1933,7 @@
     "value": "oklch(0.73 0.191 52.4)",
     "description": "Semantic warning icon.",
     "components": [
+      "dropdown",
       "notice"
     ]
   },
@@ -2427,7 +2431,7 @@
   },
   {
     "name": "--intergalactic-sidebar-nav-control-text-normal",
-    "value": "oklch(0.63 0.022 244.1)",
+    "value": "oklch(0.55 0.021 245)",
     "description": "Sidebar navigation label color.",
     "components": []
   },
@@ -2983,7 +2987,7 @@
   },
   {
     "name": "--intergalactic-text-critical",
-    "value": "oklch(0.63 0.224 24.8)",
+    "value": "oklch(0.55 0.209 26.8)",
     "description": "Text associated with critical states and data.",
     "components": []
   },
@@ -2995,7 +2999,7 @@
   },
   {
     "name": "--intergalactic-text-hint",
-    "value": "oklch(0.209 0.055 246.6 / 0.505)",
+    "value": "oklch(0.182 0.045 244.8 / 0.593)",
     "description": "Supplementary helper text near controls (short guidance), distinct from placeholder text inside inputs.",
     "components": [
       "button",
@@ -3051,7 +3055,7 @@
   },
   {
     "name": "--intergalactic-text-large-secondary",
-    "value": "oklch(0.209 0.055 246.6 / 0.505)",
+    "value": "oklch(0.182 0.045 244.8 / 0.593)",
     "description": "Secondary text. Use with font-size ≥20px.",
     "components": [
       "typography"
@@ -3115,7 +3119,7 @@
   },
   {
     "name": "--intergalactic-text-link-secondary",
-    "value": "oklch(0.209 0.055 246.6 / 0.505)",
+    "value": "oklch(0.182 0.045 244.8 / 0.593)",
     "description": "Default secondary link color.",
     "components": [
       "link"
@@ -3123,7 +3127,7 @@
   },
   {
     "name": "--intergalactic-text-link-secondary-hover-active",
-    "value": "oklch(0.209 0.055 246.6 / 0.505)",
+    "value": "oklch(0.182 0.045 244.8 / 0.593)",
     "description": "Hover and active states for the secondary link.",
     "components": [
       "link"
@@ -3148,7 +3152,7 @@
   },
   {
     "name": "--intergalactic-text-link-visited",
-    "value": "oklch(0.63 0.228 298.9)",
+    "value": "oklch(0.55 0.27 296)",
     "description": "Visited link state so users can tell visited destinations apart from default links.",
     "components": [
       "link"
@@ -3217,7 +3221,7 @@
   },
   {
     "name": "--intergalactic-text-secondary",
-    "value": "oklch(0.209 0.055 246.6 / 0.505)",
+    "value": "oklch(0.182 0.045 244.8 / 0.593)",
     "description": "Supporting text: captions, metadata, hints in flowing copy—visually quieter than primary body text.",
     "components": [
       "breadcrumbs",
@@ -3250,7 +3254,7 @@
   },
   {
     "name": "--intergalactic-text-success",
-    "value": "oklch(0.63 0.16 170)",
+    "value": "oklch(0.55 0.145 170)",
     "description": "Text associated with success states and data.",
     "components": []
   },
@@ -3535,281 +3539,6 @@
       "tab-line",
       "textarea",
       "time-picker"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-content-padding-xxsmall",
-    "value": "2px",
-    "description": "Tiny padding for content inside controls and surfaces.",
-    "components": [
-      "accordion",
-      "counter",
-      "data-table",
-      "input-tags",
-      "notice-bubble",
-      "pills",
-      "radio-cards",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-content-padding-xsmall",
-    "value": "4px",
-    "description": "Extra small padding for content inside controls and surfaces.",
-    "components": [
-      "base-components",
-      "bulk-textarea",
-      "counter",
-      "d3-chart",
-      "data-table",
-      "dropdown",
-      "dropdown-menu",
-      "input-tags",
-      "notice",
-      "pills",
-      "side-panel",
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-content-padding-xsmall-extended",
-    "value": "6px",
-    "description": "Extended extra small padding for content inside controls and surfaces.",
-    "components": [
-      "counter",
-      "notice",
-      "pills"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-content-padding-small",
-    "value": "8px",
-    "description": "Small padding for content inside controls and surfaces.",
-    "components": [
-      "accordion",
-      "base-components",
-      "bulk-textarea",
-      "data-table",
-      "dropdown",
-      "fullscreen-modal",
-      "modal",
-      "notice",
-      "pills",
-      "side-panel",
-      "typography",
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-content-padding-medium",
-    "value": "12px",
-    "description": "Medium padding for content inside controls and surfaces.",
-    "components": [
-      "accordion",
-      "base-components",
-      "base-trigger",
-      "bulk-textarea",
-      "button",
-      "card",
-      "d3-chart",
-      "data-table",
-      "dropdown",
-      "feedback-form",
-      "fullscreen-modal",
-      "input",
-      "input-tags",
-      "modal",
-      "notice",
-      "pills",
-      "radio-cards",
-      "tab-panel",
-      "textarea",
-      "time-picker",
-      "tooltip",
-      "typography",
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-content-padding-large",
-    "value": "16px",
-    "description": "Large padding for content inside controls and surfaces.",
-    "components": [
-      "accordion",
-      "bulk-textarea",
-      "color-picker",
-      "data-table",
-      "feature-popover",
-      "fullscreen-modal",
-      "notice",
-      "notice-bubble",
-      "side-panel",
-      "typography",
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-content-padding-xlarge",
-    "value": "20px",
-    "description": "Extra large padding for content inside controls and surfaces.",
-    "components": [
-      "accordion",
-      "bulk-textarea",
-      "card",
-      "data-table",
-      "notice",
-      "radio-cards",
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-content-padding-xlarge-extended",
-    "value": "24px",
-    "description": "Extended extra large padding for content inside controls and surfaces.",
-    "components": [
-      "fullscreen-modal",
-      "side-panel",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-content-padding-xxlarge",
-    "value": "40px",
-    "description": "2x large padding for content inside controls and surfaces.",
-    "components": [
-      "feature-popover",
-      "fullscreen-modal",
-      "modal",
-      "notice-bubble",
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-content-gap-xsmall",
-    "value": "2px",
-    "description": "Extra small gap between content elements inside controls, rows, or columns.",
-    "components": [
-      "accordion",
-      "color-picker",
-      "d3-chart",
-      "data-table",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-content-gap-small",
-    "value": "4px",
-    "description": "Small gap between content elements inside controls, rows, or columns.",
-    "components": [
-      "accordion",
-      "base-trigger",
-      "bulk-textarea",
-      "carousel",
-      "d3-chart",
-      "data-table",
-      "date-picker",
-      "dropdown-menu",
-      "inline-input",
-      "link",
-      "pagination",
-      "radio-cards",
-      "tag",
-      "typography",
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-content-gap-medium",
-    "value": "6px",
-    "description": "Medium gap between content elements inside controls, rows, or columns.",
-    "components": [
-      "base-trigger",
-      "button",
-      "checkbox",
-      "color-picker",
-      "d3-chart",
-      "dropdown",
-      "dropdown-menu",
-      "input",
-      "pills",
-      "radio",
-      "radio-cards",
-      "select",
-      "tab-line",
-      "tab-panel"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-content-gap-large",
-    "value": "8px",
-    "description": "Large gap between content elements inside controls, rows, or columns.",
-    "components": [
-      "accordion",
-      "breadcrumbs",
-      "button",
-      "carousel",
-      "checkbox",
-      "d3-chart",
-      "data-table",
-      "date-picker",
-      "dropdown",
-      "feedback-form",
-      "fullscreen-modal",
-      "notice",
-      "notice-bubble",
-      "pagination",
-      "radio",
-      "radio-cards",
-      "select",
-      "tag",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-content-gap-xlarge",
-    "value": "12px",
-    "description": "Extra large gap between elements, rows, or columns.",
-    "components": [
-      "carousel",
-      "color-picker",
-      "d3-chart",
-      "data-table",
-      "fullscreen-modal",
-      "notice-bubble",
-      "pagination",
-      "side-panel",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-content-gap-xxlarge",
-    "value": "16px",
-    "description": "2x large gap between elements, rows, or columns.",
-    "components": [
-      "carousel",
-      "d3-chart",
-      "pagination",
-      "tab-line",
-      "typography"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-content-gap-xxlarge-extended",
-    "value": "20px",
-    "description": "Extended 2x large gap between elements, rows, or columns.",
-    "components": [
-      "pagination",
-      "tab-line",
-      "typography",
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-spacing-content-gap-xxxlarge",
-    "value": "24px",
-    "description": "3x large gap between elements, rows, or columns.",
-    "components": [
-      "typography"
     ]
   },
   {

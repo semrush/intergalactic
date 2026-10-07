@@ -42,14 +42,14 @@ SHead[sticky] SColumn, SHead[sticky] SGroup {
 }
 
 SHead[compact] SColumn {
-  padding: var(--intergalactic-spacing-content-padding-medium, 12px) var(--intergalactic-spacing-content-padding-small, 8px);
+  padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px);
 }
 
 SGroup, SColumn {
   display: flex;
   align-items: flex-start;
   font-size: var(--intergalactic-fs-100, 12px);
-  color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
+  color: var(--intergalactic-text-secondary, oklch(0.182 0.045 244.8 / 0.593));
   box-sizing: border-box;
   height: 100%;
   position: relative;
@@ -70,14 +70,14 @@ SGroup {
 }
 
 SGroup[use='primary'] {
-  padding: var(--intergalactic-spacing-content-padding-medium, 12px);
+  padding: var(--intergalactic-spacing-3x, 12px);
 
   &:has(~ SColumn[visibleSort]) {
     background-color: var(--intergalactic-table-th-primary-cell-active, oklch(1 0 0));
   }
 }
 SGroup[use='secondary'] {
-  padding: var(--intergalactic-spacing-content-padding-small, 8px);
+  padding: var(--intergalactic-spacing-2x, 8px);
 }
 
 SGroup[borders='both'], SColumn[borders='both'], SGroup[borders='left'], SColumn[borders='left'] {
@@ -89,7 +89,7 @@ SGroup[borders='both'], SColumn[borders='both'], SGroup[borders='right'], SColum
 }
 
 SColumn[use='primary'] {
-  padding: var(--intergalactic-spacing-content-padding-medium, 12px);
+  padding: var(--intergalactic-spacing-3x, 12px);
   border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
   background-color: var(--intergalactic-table-th-primary-cell, oklch(1 0 0));
 
@@ -111,7 +111,7 @@ SColumn[use='primary'] {
     color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
 
     SSortWrapper {
-      flex-basis: calc(var(--intergalactic-spacing-content-padding-xsmall, 4px) + 16px);
+      flex-basis: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
       opacity: 1;
 
       &::before {
@@ -140,7 +140,7 @@ SColumn[use='primary'] {
 }
 
 SColumn[use='secondary'] {
-  padding: var(--intergalactic-spacing-content-padding-small, 8px);
+  padding: var(--intergalactic-spacing-2x, 8px);
   border-bottom: 1px solid var(--intergalactic-table-border-accent, oklch(0.277 0.066 242.6 / 0.18));
   background-color: var(--intergalactic-table-th-secondary-cell, oklch(1 0 0));
 
@@ -162,7 +162,7 @@ SColumn[use='secondary'] {
     color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
 
     SSortWrapper {
-      flex-basis: calc(var(--intergalactic-spacing-content-padding-xsmall, 4px) + 16px);
+      flex-basis: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
       opacity: 1;
 
       &::before {
@@ -232,17 +232,17 @@ SSortButton, SSortIndicator {
   fill: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
   position: absolute;
   right: 0;
-  margin-left: var(--intergalactic-spacing-content-gap-small, 4px);
+  margin-left: var(--intergalactic-spacing-1x, 4px);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 SHead[sideIndents='wide'] {
   SColumn:first-child {
-    padding-left: var(--intergalactic-spacing-content-padding-xlarge, 20px);
+    padding-left: var(--intergalactic-spacing-5x, 20px);
   }
   SColumn:last-child {
-    padding-right: var(--intergalactic-spacing-content-padding-xlarge, 20px);
+    padding-right: var(--intergalactic-spacing-5x, 20px);
   }
 }
 
@@ -279,10 +279,10 @@ SGroup[fixed='left'][shadowVertical='start'] {
   border-right-color: transparent;
 
   &[use='primary'] {
-    padding-right: calc(var(--intergalactic-spacing-content-padding-medium, 12px) + 5px);
+    padding-right: calc(var(--intergalactic-spacing-3x, 12px) + 5px);
   }
   &[use='secondary'] {
-    padding-right: calc(var(--intergalactic-spacing-content-padding-small, 8px) + 5px);
+    padding-right: calc(var(--intergalactic-spacing-2x, 8px) + 5px);
   }
 
   &:after {
@@ -300,10 +300,10 @@ SGroup[fixed='right'][shadowVertical='end'] {
   border-left-color: transparent;
 
   &[use='primary'] {
-    padding-left: calc(var(--intergalactic-spacing-content-padding-medium, 12px) + 5px);
+    padding-left: calc(var(--intergalactic-spacing-3x, 12px) + 5px);
   }
   &[use='secondary'] {
-    padding-left: calc(var(--intergalactic-spacing-content-padding-small, 8px) + 5px);
+    padding-left: calc(var(--intergalactic-spacing-2x, 8px) + 5px);
   }
 
   &:after {

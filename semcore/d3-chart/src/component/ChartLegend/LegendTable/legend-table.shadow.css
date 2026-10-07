@@ -2,8 +2,8 @@ SLegendTable[additions-count] {
   font-variant-numeric: tabular-nums;
   display: grid;
   align-items: center;
-  grid-column-gap: var(--intergalactic-spacing-content-gap-large, 8px);
-  grid-row-gap: var(--intergalactic-spacing-content-gap-large, 8px);
+  grid-column-gap: var(--intergalactic-spacing-2x, 8px);
+  grid-row-gap: var(--intergalactic-spacing-2x, 8px);
 
   &[additions-direction='columns'] {
     grid-template-columns: auto repeat(var(--additions-count), 0.2fr);

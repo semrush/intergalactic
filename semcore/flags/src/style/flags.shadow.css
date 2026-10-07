@@ -30,6 +30,6 @@ SFlags[data-capital-letters] {
     font-size: calc(var(--intergalactic-fs-50, 10px) - 2px);
     line-height: normal;
     font-weight: var(--intergalactic-bold, 700);
-    color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
+    color: var(--intergalactic-text-secondary, oklch(0.182 0.045 244.8 / 0.593));
   }
 }

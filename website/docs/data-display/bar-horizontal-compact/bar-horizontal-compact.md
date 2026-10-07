@@ -58,7 +58,7 @@ For the case with multiple categories, add a legend.
 
 ## Interaction
 
-Hovering highlights a bar with `--chart-grid-bar-chart-hover`, indicating focus or clickability.
+Hovering highlights a bar with `--chart-grid-bar-hover`, indicating focus or clickability.
 
 ![](static/hor-bar-compact-hover.png)
 

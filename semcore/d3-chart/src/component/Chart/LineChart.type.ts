@@ -40,7 +40,7 @@ export type LineChartDefaultProps = {
   showYAxis: true;
   showTooltip: true;
   locale: 'en';
-  deltaPercentGrowthColor: 'good';
+  deltaPercentGrowthColor: 'success';
 };
 
 export type LineChartType = Intergalactic.Component<typeof Flex, LineChartProps>;

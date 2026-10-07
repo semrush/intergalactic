@@ -22,17 +22,23 @@ export const locators = {
     const base = page.locator('[data-ui-name="Checkbox.Value"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
+  /**
+   * The checkbox input itself is visually hidden, so clicks have to go through the
+   * rendered checkmark. The input stays the place to assert the checked state.
+   */
   checkboxMark: (page: Page, index?: number) => {
     const base = page.locator('[data-ui-name="Value.CheckMark"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
+  /**
+   * Dimmed items are styled through sstyled, so the generated class carries the
+   * modifier name rather than a `transparent` attribute.
+   */
   dimmed: (page: Page) => page.locator('[class*="_transparent_"]'),
-  metricLink: (page: Page) => page.locator('[data-ui-name="Metric"] a'),
 };
 
 const FLEX_EXAMPLE = 'stories/components/d3-chart/tests/examples/chart-legend/customizable_legend.tsx';
 const TABLE_EXAMPLE = 'stories/components/d3-chart/tests/examples/chart-legend/legend-table-data.tsx';
-const METRICS_EXAMPLE = 'stories/components/d3-chart/tests/examples/chart-legend/legend-with-metrics.tsx';
 
 /**
  * Pairwise set for LegendFlex.
@@ -40,6 +46,10 @@ const METRICS_EXAMPLE = 'stories/components/d3-chart/tests/examples/chart-legend
  * Factors: shape (Checkbox|Circle|Pattern), addon (none|trend|suffix),
  * size (m|l), direction (row|column), patterns (false|true),
  * highlightedItem (-1|0).
+ *
+ * The two 3-value factors put the lower bound at 9 cases, and the 2-value factors
+ * are distributed across those 9 rows so that every pair of values appears at
+ * least once.
  */
 const flexPairwiseCases = [
   {
@@ -84,6 +94,7 @@ const flexPairwiseCases = [
  * Pairwise set for LegendTable.
  *
  * Factors: size (m|l), highlightedItem (-1|0), columnsCount (1|2), width (185|300).
+ * Four 2-value factors need five cases to cover every pair.
  */
 const tablePairwiseCases = [
   {
@@ -105,79 +116,6 @@ const tablePairwiseCases = [
   {
     name: '#5 l, highlight 0, 2 columns, narrow',
     props: { size: 'l', highlightedItem: 0, columnsCount: 2, w: 185 },
-  },
-];
-
-/**
- * Pairwise set for the legend with metrics.
- *
- * Factors: diffIcon (none|up|down|mixed), diffUse (good|bad|neutral|mixed),
- * metricLink (none|single|all), metricsPerItem (1|2), size (m|l).
- */
-const metricsPairwiseCases = [
-  {
-    name: '#1 icon none, good, link none, 1 per item, m',
-    props: { diffIcon: 'none', diffUse: 'good', metricLink: 'none', metricsPerItem: 1, legendProps: { size: 'm' } },
-  },
-  {
-    name: '#2 icon none, bad, link single, 2 per item, l',
-    props: { diffIcon: 'none', diffUse: 'bad', metricLink: 'single', metricsPerItem: 2, legendProps: { size: 'l' } },
-  },
-  {
-    name: '#3 icon none, neutral, link all, 1 per item, m',
-    props: { diffIcon: 'none', diffUse: 'neutral', metricLink: 'all', metricsPerItem: 1, legendProps: { size: 'm' } },
-  },
-  {
-    name: '#4 icon none, mixed, link none, 2 per item, l',
-    props: { diffIcon: 'none', diffUse: 'mixed', metricLink: 'none', metricsPerItem: 2, legendProps: { size: 'l' } },
-  },
-  {
-    name: '#5 icon up, good, link single, 2 per item, m',
-    props: { diffIcon: 'up', diffUse: 'good', metricLink: 'single', metricsPerItem: 2, legendProps: { size: 'm' } },
-  },
-  {
-    name: '#6 icon up, bad, link all, 1 per item, l',
-    props: { diffIcon: 'up', diffUse: 'bad', metricLink: 'all', metricsPerItem: 1, legendProps: { size: 'l' } },
-  },
-  {
-    name: '#7 icon up, neutral, link none, 2 per item, m',
-    props: { diffIcon: 'up', diffUse: 'neutral', metricLink: 'none', metricsPerItem: 2, legendProps: { size: 'm' } },
-  },
-  {
-    name: '#8 icon up, mixed, link single, 1 per item, l',
-    props: { diffIcon: 'up', diffUse: 'mixed', metricLink: 'single', metricsPerItem: 1, legendProps: { size: 'l' } },
-  },
-  {
-    name: '#9 icon down, good, link all, 1 per item, l',
-    props: { diffIcon: 'down', diffUse: 'good', metricLink: 'all', metricsPerItem: 1, legendProps: { size: 'l' } },
-  },
-  {
-    name: '#10 icon down, bad, link none, 2 per item, m',
-    props: { diffIcon: 'down', diffUse: 'bad', metricLink: 'none', metricsPerItem: 2, legendProps: { size: 'm' } },
-  },
-  {
-    name: '#11 icon down, neutral, link single, 1 per item, l',
-    props: { diffIcon: 'down', diffUse: 'neutral', metricLink: 'single', metricsPerItem: 1, legendProps: { size: 'l' } },
-  },
-  {
-    name: '#12 icon down, mixed, link all, 2 per item, m',
-    props: { diffIcon: 'down', diffUse: 'mixed', metricLink: 'all', metricsPerItem: 2, legendProps: { size: 'm' } },
-  },
-  {
-    name: '#13 icon mixed, good, link none, 2 per item, l',
-    props: { diffIcon: 'mixed', diffUse: 'good', metricLink: 'none', metricsPerItem: 2, legendProps: { size: 'l' } },
-  },
-  {
-    name: '#14 icon mixed, bad, link single, 1 per item, m',
-    props: { diffIcon: 'mixed', diffUse: 'bad', metricLink: 'single', metricsPerItem: 1, legendProps: { size: 'm' } },
-  },
-  {
-    name: '#15 icon mixed, neutral, link all, 2 per item, l',
-    props: { diffIcon: 'mixed', diffUse: 'neutral', metricLink: 'all', metricsPerItem: 2, legendProps: { size: 'l' } },
-  },
-  {
-    name: '#16 icon mixed, mixed, link none, 1 per item, m',
-    props: { diffIcon: 'mixed', diffUse: 'mixed', metricLink: 'none', metricsPerItem: 1, legendProps: { size: 'm' } },
   },
 ];
 
@@ -209,44 +147,6 @@ test.describe(`${TAG.VISUAL}`, () => {
         await locators.legendTable(page).waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
       });
-    });
-  });
-
-  test.describe('Legend with metrics', () => {
-    metricsPairwiseCases.forEach((c) => {
-      test(`Verify pairwise ${c.name}`, {
-        tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@chart-legend', '@link'],
-      }, async ({ page }) => {
-        await loadPage(page, METRICS_EXAMPLE, 'en', c.props);
-
-        await locators.legendTable(page).waitFor({ state: 'visible' });
-        await expect(page).toHaveScreenshot();
-      });
-    });
-
-    [
-      { name: 'empty diffValue', props: { diffValue: '' } },
-      { name: 'long diffValue', props: { diffValue: '+1 234 567 890%', metricsPerItem: 2 } },
-      { name: 'patterns', props: { patterns: true } },
-    ].forEach((c) => {
-      test(`Verify boundary ${c.name}`, {
-        tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@link'],
-      }, async ({ page }) => {
-        await loadPage(page, METRICS_EXAMPLE, 'en', c.props);
-
-        await locators.legendTable(page).waitFor({ state: 'visible' });
-        await expect(page).toHaveScreenshot();
-      });
-    });
-
-    test('Verify a hovered metric row keeps the other rows dimmed', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@chart-legend', '@link'],
-    }, async ({ page }) => {
-      await loadPage(page, METRICS_EXAMPLE, 'en', { metricsPerItem: 2 });
-
-      await locators.tableColumn(page, 0).hover();
-      await expect(locators.tableColumn(page, 2)).toHaveClass(/_transparent_/);
-      await expect(page).toHaveScreenshot();
     });
   });
 
@@ -403,6 +303,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       }
     });
 
+    /**
+     * A dimmed row has to fade as a whole. The label lives inside `SLegendItem` while the
+     * values are its grid siblings, so each side carries its own `transparent` rule and
+     * they are easy to let drift apart.
+     */
     test('Verify the value columns of a dimmed row are dimmed as well', {
       tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend'],
     }, async ({ page }) => {
@@ -415,81 +320,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       // The highlighted row stays fully opaque.
       await expect(locators.tableColumn(page, 0)).not.toHaveClass(/_transparent_/);
       await expect(locators.tableColumn(page, 1)).not.toHaveClass(/_transparent_/);
-    });
-
-    test('Verify the columns grid has a track per value column', {
-      tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@chart-legend'],
-    }, async ({ page }) => {
-      for (const columnsCount of [1, 2]) {
-        await loadPage(page, TABLE_EXAMPLE, 'en', { columnsCount });
-
-        const tracks = await locators.legendTable(page).evaluate((el) => getComputedStyle(el).gridTemplateColumns.split(' ').length);
-        expect(tracks).toBe(columnsCount + 1);
-      }
-    });
-  });
-
-  test.describe('Legend with metrics', () => {
-    test('Verify the rows grid has a track per metric', {
-      tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@chart-legend'],
-    }, async ({ page }) => {
-      for (const metricsPerItem of [1, 2]) {
-        await loadPage(page, METRICS_EXAMPLE, 'en', { metricsPerItem });
-
-        const table = locators.legendTable(page);
-        await expect(table).toHaveCSS('grid-auto-flow', 'column');
-
-        const tracks = await table.evaluate((el) => getComputedStyle(el).gridTemplateRows.split(' ').length);
-        expect(tracks).toBe(metricsPerItem + 1);
-      }
-    });
-
-    test('Verify the metric link is reachable from the keyboard', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@d3-chart', '@chart-legend', '@link'],
-    }, async ({ page }) => {
-      await loadPage(page, METRICS_EXAMPLE, 'en', { metricLink: 'single' });
-
-      const link = locators.metricLink(page);
-      await expect(link).toHaveCount(1);
-
-      // Checkboxes and the chart summary button come first in the tab order.
-      for (let i = 0; i < 20; i++) {
-        await page.keyboard.press('Tab');
-        if (await link.evaluate((el) => el === document.activeElement)) break;
-      }
-
-      await expect(link).toBeFocused();
-    });
-
-    test('Verify the metric cells use a pointer cursor', {
-      tag: [TAG.PRIORITY_LOW, '@d3-chart', '@chart-legend'],
-    }, async ({ page }) => {
-      await loadPage(page, METRICS_EXAMPLE, 'en', {});
-
-      await expect(locators.tableColumn(page)).not.toHaveCount(0);
-      const cursors = await locators.tableColumn(page).evaluateAll((els) => els.map((el) => getComputedStyle(el).cursor));
-      expect(cursors).toEqual(cursors.map(() => 'pointer'));
-    });
-
-    test('Verify hovering a metric cell dims the other rows', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@chart-legend'],
-    }, async ({ page }) => {
-      await loadPage(page, METRICS_EXAMPLE, 'en', { metricsPerItem: 1 });
-
-      await test.step('Hover the metric of the first row', async () => {
-        await locators.tableColumn(page, 0).hover();
-
-        await expect(locators.tableColumn(page, 0)).not.toHaveClass(/_transparent_/);
-        await expect(locators.tableColumn(page, 1)).toHaveClass(/_transparent_/);
-        await expect(locators.tableColumn(page, 2)).toHaveClass(/_transparent_/);
-        await expect(locators.tableItem(page, 1)).toHaveClass(/_transparent_/);
-      });
-
-      await test.step('Move the pointer away', async () => {
-        await page.mouse.move(0, 0);
-
-        await expect(locators.dimmed(page)).toHaveCount(0);
-      });
     });
   });
 });
