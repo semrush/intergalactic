@@ -2,6 +2,21 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-07
+
+### BREAK
+
+- New theme applied.
+
+### Changed
+
+- Default `Donut` thickness to 12.
+- Default `Donut` thickness to `12`.
+
+### Added
+
+- `deltaPercentGrowthColor` prop to define color for delta growth.
+
 ## [17.3.1] - 2026-09-10
 
 ### Fixed
