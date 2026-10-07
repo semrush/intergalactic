@@ -15,7 +15,7 @@ const ItemContent = (props: ItemContentProps) => {
     <>
       <Flex
         alignItems='center'
-        gap='var(--intergalactic-spacing-content-gap-xxlarge)'
+        gap={4}
       >
         <Flex
           w={40}
@@ -28,13 +28,13 @@ const ItemContent = (props: ItemContentProps) => {
         />
         <Flex
           direction='column'
-          gap='var(--intergalactic-spacing-content-gap-small)'
+          gap={1}
         >
           <Text size={300}>
             {primaryText}
             <Text
               use='secondary'
-              ml='var(--intergalactic-spacing-content-gap-medium)'
+              ml={1.5}
             >
               {count}
             </Text>
