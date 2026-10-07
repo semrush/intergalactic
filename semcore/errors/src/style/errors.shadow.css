@@ -43,7 +43,7 @@ SError {
 
     SWrapper {
       max-width: 100%;
-      margin-top: var(--intergalactic-spacing-10x, 40px);
+      margin-top: var(--intergalactic-spacing-8x, 32px);
     }
 
     STitle[data-errors-title] {
