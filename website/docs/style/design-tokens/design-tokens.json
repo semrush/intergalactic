@@ -1853,6 +1853,7 @@
     "value": "oklch(0.58 0.215 26)",
     "description": "Semantic error icon.",
     "components": [
+      "dropdown",
       "notice"
     ]
   },
@@ -1894,6 +1895,7 @@
     "description": "Default icon weight on normal backgrounds—stronger emphasis than secondary icons.",
     "components": [
       "carousel",
+      "dropdown",
       "feature-highlight",
       "notice",
       "radio-cards",
@@ -1914,6 +1916,7 @@
     "value": "oklch(0.58 0.151 170)",
     "description": "Semantic success icon.",
     "components": [
+      "dropdown",
       "notice"
     ]
   },
@@ -1930,6 +1933,7 @@
     "value": "oklch(0.73 0.191 52.4)",
     "description": "Semantic warning icon.",
     "components": [
+      "dropdown",
       "notice"
     ]
   },
