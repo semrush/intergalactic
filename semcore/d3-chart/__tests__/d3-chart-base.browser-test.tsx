@@ -609,7 +609,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       expect(hiddenCount).toBeGreaterThan(0);
     });
 
-    test('Verify grid lines are dashed and drawn with the border-primary token', {
+    test('Verify grid lines are dashed and drawn with the chart-grid-line token', {
       tag: [TAG.PRIORITY_MEDIUM, '@d3-chart',
         '@bar-chart'],
     }, async ({ page }) => {
@@ -621,7 +621,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       const style = await grids.first().evaluate((el) => {
         const probe = document.createElement('span');
-        probe.style.color = 'var(--intergalactic-border-primary)';
+        probe.style.color = 'var(--intergalactic-chart-grid-line)';
         document.body.append(probe);
         const tokenColor = getComputedStyle(probe).color;
         probe.remove();
@@ -636,7 +636,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         };
       });
 
-      expect(style.dashArray.replace(/px/g, '').split(/[\s,]+/).filter(Boolean)).toEqual(['0', '4']);
+      expect(style.dashArray.replace(/px/g, '').split(/[\s,]+/).filter(Boolean)).toEqual(['0', '6']);
       expect(style.lineCap).toBe('round');
       expect(style.stroke).toBe(style.tokenColor);
     });
@@ -670,11 +670,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       const links = locators.axisTicks(page).locator('a');
 
       await expect(links).toHaveCount(3);
-      await expect(links.nth(0)).toHaveAttribute('href', 'https://google.com');
-      await expect(links.nth(1)).toHaveAttribute('href', 'https://semrush.com');
+      await expect(links.nth(0)).toHaveAttribute('href', 'https://www.semrush.com');
+      await expect(links.nth(1)).toHaveAttribute('href', '#legend-and-pattern-fill');
       await expect(links.nth(2)).toHaveAttribute(
         'href',
-        'https://developer.semrush.com/intergalactic/',
+        '/intergalactic/data-display/area-chart/area-chart',
       );
     });
 
