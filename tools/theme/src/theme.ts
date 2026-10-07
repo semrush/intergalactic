@@ -581,7 +581,7 @@ export const theme: Theme = {
       },
       border_accent_DEFAULT: {
         value: neutral.at(L_BORDER_STRONG),
-        description: 'Accent border for the active and selected states..',
+        description: 'Accent border for the active and selected states.',
       },
       border_primary_invert: {
         value: neutral.opaqueInvAt(L_INV_BORDER_PRIMARY),
@@ -713,7 +713,7 @@ export const theme: Theme = {
         description: 'Border for distinguishing data sets and chart dots on the chart grid.',
       },
       chart_grid_line: {
-        value: neutral.at(L_BORDER_SECONDARY),
+        value: neutral.at(L_BORDER_ACTIVE),
         description: 'Grid and axis guide lines for charts.',
       },
       chart_grid_dot_outer_border: {

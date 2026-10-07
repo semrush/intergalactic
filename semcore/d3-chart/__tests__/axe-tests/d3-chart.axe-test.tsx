@@ -51,8 +51,20 @@ test.describe(`@d3-chart ${TAG.ACCESSIBILITY}`, () => {
     expect(violations).toEqual([]);
   });
 
+  test('custom-delta-percent-calculation', async ({ page }) => {
+    await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/custom-delta-percent-calculation.tsx', 'en');
+    const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
+
   test('custom-patterns', async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/custom-patterns.tsx', 'en');
+    const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
+
+  test('default-delta-percent-calculation', async ({ page }) => {
+    await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/default-delta-percent-calculation.tsx', 'en');
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
   });
@@ -89,6 +101,12 @@ test.describe(`@d3-chart ${TAG.ACCESSIBILITY}`, () => {
 
   test('reference-line', async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/reference-line.tsx', 'en');
+    const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
+
+  test('responsive-chart', async ({ page }) => {
+    await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/responsive-chart.tsx', 'en');
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
   });
