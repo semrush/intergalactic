@@ -1,22 +1,26 @@
 import { Component, sstyled, Root } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
+import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
 import React from 'react';
 
 import createElement from './createElement';
 import style from './style/hover.shadow.css';
 import Tooltip from './Tooltip';
 import { scaleOfBandwidth, getIndexFromData, eventToPoint, invert, scaleToBand } from './utils';
-import { TextMeasurer } from './utils/TextMeasurer';
 
 const STROKE_WIDTH = 1;
 const NOTCH_WIDTH = 9;
 const NOTCH_DELTA = NOTCH_WIDTH / 2 - STROKE_WIDTH / 4;
 
-function formatValue(value) {
+function formatValue(locale, value) {
   if (value instanceof Date) {
-    return value.toLocaleDateString();
+    return new Intl.DateTimeFormat(locale ?? 'en', {
+      day: 'numeric',
+      month: 'short',
+    }).format(value);
   }
   return value;
 }
@@ -28,8 +32,6 @@ class Hover extends Component {
     yIndex: null,
   };
 
-  measurer = new TextMeasurer();
-
   virtualElement = canUseDOM() ? document.createElement('div') : {};
 
   handlerMouseMoveRoot = trottle((e, currentTarget, isTickUnder) => {
@@ -39,10 +41,8 @@ class Hover extends Component {
     const [pX, pY] = eventToPoint(e, rootRef.current);
     const vX = invert(xScale, pX);
     const vY = invert(yScale, pY);
-    const xIndex =
-      x === undefined || vX === undefined ? null : getIndexFromData(data, xScale, x, vX);
-    const yIndex =
-      y === undefined || vY === undefined ? null : getIndexFromData(data, yScale, y, vY);
+    const xIndex = x === undefined || vX === undefined ? null : getIndexFromData(data, xScale, x, vX);
+    const yIndex = y === undefined || vY === undefined ? null : getIndexFromData(data, yScale, y, vY);
     const state = { xIndex, yIndex, patterns };
 
     const { x: xRect, y: yRect, height } = rootRef.current.getBoundingClientRect();
@@ -89,10 +89,7 @@ class Hover extends Component {
       e.persist();
       this.handlerMouseMoveRoot(e, e.currentTarget, isTickUnder);
     });
-    this.unsubscribeMouseLeaveRoot = eventEmitter.subscribe(
-      'onMouseLeaveChart',
-      this.handlerMouseLeaveRoot,
-    );
+    this.unsubscribeMouseLeaveRoot = eventEmitter.subscribe('onMouseLeaveChart', this.handlerMouseLeaveRoot);
   }
 
   componentWillUnmount() {
@@ -109,11 +106,10 @@ class HoverLineRoot extends Hover {
   static displayName = 'HoverLine';
 
   render() {
-    const { hideHoverLine } = this.asProps;
+    const { hideHoverLine, meta, locale } = this.asProps;
     const { xIndex, yIndex } = this.state;
 
-    const isHide =
-      typeof hideHoverLine === 'function' ? hideHoverLine(xIndex, yIndex) : hideHoverLine;
+    const isHide = typeof hideHoverLine === 'function' ? hideHoverLine(xIndex, yIndex) : hideHoverLine;
 
     if (isHide) {
       return null;
@@ -140,14 +136,15 @@ class HoverLineRoot extends Hover {
                 </SHoverLine>
                 {!hideTickHover && (
                   <HoveredTick
-                    tickFormatter={dataHints.titles.getHorizontalAxesTitle ?? formatValue}
+                    size={meta.getTicksSize('horizontal')}
+                    position={meta.getTicksPosition('horizontal')}
+                    tickFormatter={dataHints.titles.getHorizontalAxesTitle ?? formatValue.bind(null, locale)}
                     value={data[xIndex]?.[x]}
                     isFirstTick={xIndex === 0}
                     isLastTick={xIndex === data.length - 1}
-                    textMeasurer={this.measurer}
                     styles={styles}
                     x={x1}
-                    y={yRange[0]}
+                    yRange={yRange}
                   />
                 )}
               </>
@@ -171,14 +168,14 @@ class HoverRectRoot extends Hover {
   static displayName = 'HoverRect';
 
   render() {
-    const { hideHoverLine } = this.asProps;
+    const { hideHoverLine, meta } = this.asProps;
 
     if (hideHoverLine) {
       return null;
     }
 
     const SHoverRect = this.Element;
-    const { styles, x, y, data, scale, dataHints, hideTickHover } = this.asProps;
+    const { styles, x, y, data, scale, dataHints, hideTickHover, locale } = this.asProps;
     const { xIndex, yIndex } = this.state;
     const [xScale, yScale] = scale;
 
@@ -207,12 +204,13 @@ class HoverRectRoot extends Hover {
             />
             {!hideTickHover && (
               <HoveredTick
-                tickFormatter={dataHints.titles.getHorizontalAxesTitle ?? formatValue}
+                size={meta.getTicksSize('horizontal')}
+                position={meta.getTicksPosition('horizontal')}
+                tickFormatter={dataHints.titles.getHorizontalAxesTitle ?? formatValue.bind(null, locale)}
                 value={data[xIndex]?.[x]}
-                textMeasurer={this.measurer}
                 styles={styles}
                 x={xScale(data[xIndex][x]) + (xStep * (1 - xPaddingInner)) / 2}
-                y={yRange[0]}
+                yRange={yRange}
               />
             )}
           </>
@@ -233,84 +231,72 @@ class HoverRectRoot extends Hover {
   }
 }
 
+const HOVERED_TICK_MARGIN_Y = 8;
+const HOVERED_TICK_PADDING_Y = 3;
 const HOVERED_TICK_PADDING_X = 12;
-const HOVERED_TICK_PADDING_Y = 4;
-const HOVERED_TOCK_BORDER_RADIUS = 6;
 
 function HoveredTick(props) {
-  const {
-    paddingX = HOVERED_TICK_PADDING_X,
-    paddingY = HOVERED_TICK_PADDING_Y,
-    borderRadius = HOVERED_TOCK_BORDER_RADIUS,
-    tickFormatter,
-    value,
-    isFirstTick = false,
-    isLastTick = false,
-    textMeasurer,
-    styles,
-    x,
-    y,
-  } = props;
-  const STickWrapper = 'g';
-  const STickHover = 'rect';
-  const STick = 'text';
+  const { tickFormatter, value, isFirstTick = false, isLastTick = false, styles, x, yRange, size, position } = props;
+
+  const contentRef = React.useRef(null);
+  const [interactive, setInteractive] = React.useState(false);
 
   const formattedValue = tickFormatter(value);
 
-  const { width: textWidth, height: textHeight } = formattedValue !== undefined
-    ? textMeasurer.measure(formattedValue)
-    : { width: 0, height: 0 };
+  const isMightBeInteractive = formattedValue !== null && typeof formattedValue === 'object';
 
-  const hoverX = isFirstTick
-    ? x - NOTCH_DELTA
-    : isLastTick
-      ? x - textWidth - paddingX * 2 + NOTCH_DELTA
-      : x - paddingX - textWidth / 2;
+  useEnhancedEffect(() => {
+    if (!isMightBeInteractive || !contentRef.current) {
+      setInteractive(false);
+      return;
+    }
 
+    setInteractive(getFocusableIn(contentRef.current).length > 0);
+  });
+
+  if (size?.width === undefined || size?.height === undefined || position === null) return null;
+
+  const { width, height } = size;
+
+  const SHoveredTickWrapper = 'foreignObject';
+  const SHoveredTickContent = 'div';
+  const SHoveredTick = 'span';
+
+  const w = width + HOVERED_TICK_PADDING_X * 2;
   const tickX = isFirstTick
-    ? x + paddingX + textWidth / 2 - NOTCH_DELTA
+    ? x
     : isLastTick
-      ? x - textWidth / 2 - paddingX + NOTCH_DELTA
-      : x;
-
-  const hoverPos = {
-    x: hoverX,
-    y: y + textHeight / 2 - paddingY / 2,
-    width: textWidth + paddingX * 2,
-    height: textHeight + paddingY * 2,
-  };
-
-  const tickPos = {
-    x: tickX,
-    y: y,
-  };
+      ? x - w
+      : x - w / 2;
+  const tickY = position === 'top'
+    ? yRange[1] - height - HOVERED_TICK_MARGIN_Y + HOVERED_TICK_PADDING_Y
+    : yRange[0] + HOVERED_TICK_MARGIN_Y - HOVERED_TICK_PADDING_Y;
 
   return sstyled(styles)(
-    <STickWrapper>
-      <STickHover
-        {...hoverPos}
-        rx={borderRadius}
-      />
-      <STick
-        {...tickPos}
-      >
-        {formattedValue}
-      </STick>
-    </STickWrapper>,
+    <SHoveredTickWrapper
+      x={tickX}
+      y={tickY}
+      width={w}
+      height={height}
+      data-is-first={isFirstTick}
+      data-is-last={isLastTick}
+      position={position}
+      aria-hidden={interactive ? undefined : true}
+    >
+      <SHoveredTickContent ref={contentRef}>
+        <SHoveredTick>{formattedValue}</SHoveredTick>
+      </SHoveredTickContent>
+    </SHoveredTickWrapper>,
   );
 }
 
 function HoverLineTooltip(props) {
   const SHoverLineTooltip = Root;
-  return sstyled(props.styles)(
-    <SHoverLineTooltip render={Tooltip} tag={HoverLine} excludeAnchorProps />,
-  );
+  return sstyled(props.styles)(<SHoverLineTooltip render={Tooltip} tag={HoverLine} excludeAnchorProps />);
 }
 function HoverRectTooltip(props) {
   const SHoverRectTooltip = Root;
-  return sstyled(props.styles)(
-    <SHoverRectTooltip render={Tooltip} tag={HoverRect} excludeAnchorProps />,
-  );
+  return sstyled(props.styles)(<SHoverRectTooltip render={Tooltip} tag={HoverRect} excludeAnchorProps />);
 }
 
 const HoverLine = createElement(HoverLineRoot, {

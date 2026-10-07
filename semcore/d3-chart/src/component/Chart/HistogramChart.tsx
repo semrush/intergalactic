@@ -156,13 +156,14 @@ class HistogramChartComponent extends AbstractChart<
   }
 
   renderTooltip(): React.ReactNode {
-    const { data, groupKey, invertAxis } = this.asProps;
+    const { data, groupKey, invertAxis, showXAxis } = this.asProps;
 
     return (
       <HoverRect.Tooltip
         x={invertAxis ? undefined : groupKey}
         y={invertAxis ? groupKey : undefined}
         wMin={100}
+        hideTickHover={!showXAxis}
       >
         {({ xIndex, yIndex }: any) => {
           const index = invertAxis ? yIndex : xIndex;

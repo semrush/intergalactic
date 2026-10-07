@@ -7,25 +7,66 @@ SAxis[hide] {
 }
 
 STick {
+  display: block;
   font-size: var(--intergalactic-fs-100, 12px);
-  fill: var(--intergalactic-chart-grid-text-label, oklch(from oklch(0.182 0.045 244.8 / 0.593) l c h / 0.4));
-}
-STick[primaryText] {
-  fill: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
-}
+  font-variant-numeric: tabular-nums;
+  line-height: var(--intergalactic-lh-100, 1.3334);
+  color: var(--intergalactic-chart-grid-text-label, oklch(from oklch(0.182 0.045 244.8 / 0.593) l c h / 0.4));
+  overflow: visible;
 
-STick[hide] {
-  display: none;
+  /* FF fix */
+  [data-tick-content] {
+    height: 100%;
+  }
+
+  &[position='bottom'] {
+    text-align: center;
+  }
+
+  &[position='left'] {
+    text-align: end;
+    dominant-baseline: central;
+
+    [data-tick-content] {
+      align-content: center;
+    }
+  }
+
+  &[position='top'] {
+    text-align: center;
+
+    [data-tick-content] {
+      align-content: end;
+    }
+  }
+
+  &[position='right'] {
+    dominant-baseline: central;
+
+    [data-tick-content] {
+      align-content: center;
+    }
+  }
+
+  &[hide] {
+    display: none;
+  }
+
+  &[primaryText] {
+    color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
+  }
 }
 
 SGrid {
   fill: transparent;
-  stroke: var(--intergalactic-border-secondary, oklch(0.324 0.077 242.1 / 0.079));
+  stroke: var(--intergalactic-chart-grid-line, oklch(0.7 0.021 242));
+  stroke-dasharray: 0 6;
+  stroke-linecap: round;
 }
 
 STitle {
   font-size: var(--intergalactic-fs-100, 12px);
-  fill: var(--intergalactic-text-hint, oklch(0.182 0.045 244.8 / 0.593));
+  fill: var(--intergalactic-chart-grid-text-label, oklch(from oklch(0.182 0.045 244.8 / 0.593) l c h / 0.4));
   transform-origin: var(--transform-origin);
 }
 
@@ -53,56 +94,6 @@ STitle[position='right'][verticalWritingMode],
 STitle[position='left'][verticalWritingMode] {
   writing-mode: vertical-rl;
   transform: none;
-}
-
-STick[position='top'] {
-  transform: translateY(-12px);
-  text-anchor: middle;
-}
-
-STick[position='bottom'] {
-  transform: translateY(12px);
-  text-anchor: middle;
-  dominant-baseline: hanging;
-
-  tspan {
-    dominant-baseline: hanging;
-  }
-}
-
-STick[position='right'] {
-  transform: translateX(16px);
-  dominant-baseline: middle;
-
-  tspan {
-    dominant-baseline: middle;
-  }
-
-  &[multiline] {
-    dominant-baseline: auto;
-
-    tspan {
-      dominant-baseline: auto;
-    }
-  }
-}
-
-STick[position='left'] {
-  transform: translateX(-16px);
-  text-anchor: end;
-  dominant-baseline: middle;
-
-  tspan {
-    dominant-baseline: middle;
-  }
-
-  &[multiline] {
-    dominant-baseline: auto;
-
-    tspan {
-      dominant-baseline: auto;
-    }
-  }
 }
 
 STick[position='custom_0'] {
