@@ -526,6 +526,7 @@
     "components": [
       "card",
       "color-picker",
+      "d3-chart",
       "data-table",
       "date-picker",
       "dropdown",
@@ -3002,6 +3003,7 @@
     "description": "Supplementary helper text near controls (short guidance), distinct from placeholder text inside inputs.",
     "components": [
       "button",
+      "d3-chart",
       "typography"
     ]
   },
