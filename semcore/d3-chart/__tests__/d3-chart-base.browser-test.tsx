@@ -45,13 +45,20 @@ export const locators = {
     return typeof index === 'number' ? base.nth(index) : base;
   },
   /**
-   * The hovered tick pill is rendered by plain svg tags, so it has no data-ui-name.
-   * It is the only rounded rect drawn inside the plot, which makes `rect[rx]` a
-   * stable structural anchor that survives style and class-name changes.
+   * The hovered tick pill is rendered by plain tags, so it has no data-ui-name. Since the
+   * tick rework it is a `foreignObject` wrapping HTML rather than a `<g>` of `<rect>` and
+   * `<text>`, so the generated class name is the stable anchor. Only the name part is
+   * matched; the hash suffix changes between builds.
    */
-  hoveredTick: (page: Page) => page.locator('svg[data-ui-name="Plot"] g:has(> rect[rx])'),
-  hoveredTickRect: (page: Page) => locators.hoveredTick(page).locator('rect'),
-  hoveredTickText: (page: Page) => locators.hoveredTick(page).locator('text'),
+  hoveredTick: (page: Page) =>
+    page.locator('svg[data-ui-name="Plot"] foreignObject[class*="SHoveredTickWrapper"]'),
+  /**
+   * The rounded background and the label now live on the same `<span>`, so both locators
+   * resolve to one node. They are kept apart because the assertions mean different things:
+   * one checks the pill box, the other its text.
+   */
+  hoveredTickRect: (page: Page) => locators.hoveredTick(page).locator('span'),
+  hoveredTickText: (page: Page) => locators.hoveredTick(page).locator('span'),
   diffUp: (page: Page) => page.locator('[data-ui-name="DiffUp"]'),
   diffDown: (page: Page) => page.locator('[data-ui-name="DiffDown"]'),
 };
@@ -601,6 +608,140 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       }
       expect(hiddenCount).toBeGreaterThan(0);
     });
+
+    test('Verify grid lines are dashed and drawn with the chart-grid-line token', {
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart',
+        '@bar-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, GRID_AXIS_EXAMPLE, 'en', { yShowGrid: true });
+      await locators.plot(page).waitFor({ state: 'visible' });
+
+      const grids = locators.axisGrid(page);
+      expect(await grids.count()).toBeGreaterThan(0);
+
+      const style = await grids.first().evaluate((el) => {
+        const probe = document.createElement('span');
+        probe.style.color = 'var(--intergalactic-chart-grid-line)';
+        document.body.append(probe);
+        const tokenColor = getComputedStyle(probe).color;
+        probe.remove();
+
+        const computed = getComputedStyle(el);
+
+        return {
+          dashArray: computed.strokeDasharray,
+          lineCap: computed.strokeLinecap,
+          stroke: computed.stroke,
+          tokenColor,
+        };
+      });
+
+      expect(style.dashArray.replace(/px/g, '').split(/[\s,]+/).filter(Boolean)).toEqual(['0', '6']);
+      expect(style.lineCap).toBe('round');
+      expect(style.stroke).toBe(style.tokenColor);
+    });
+
+    test('Verify tick labels use tabular figures', {
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart',
+        '@bar-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, GRID_AXIS_EXAMPLE, 'en');
+      await locators.plot(page).waitFor({ state: 'visible' });
+
+      const numeric = await locators
+        .axisTicks(page)
+        .first()
+        .evaluate((el) => getComputedStyle(el).fontVariantNumeric);
+
+      expect(numeric).toContain('tabular-nums');
+    });
+  });
+
+  test.describe('Tick links', () => {
+    const LINKS_EXAMPLE = 'stories/components/d3-chart/docs/examples/bar-chart/links.tsx';
+
+    test('Verify axisXValueFormatter renders links in the X tick labels', {
+      tag: [TAG.PRIORITY_HIGH, '@d3-chart',
+        '@bar-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, LINKS_EXAMPLE, 'en');
+      await locators.plot(page).waitFor({ state: 'visible' });
+
+      const links = locators.axisTicks(page).locator('a');
+
+      await expect(links).toHaveCount(3);
+      await expect(links.nth(0)).toHaveAttribute('href', 'https://www.semrush.com');
+      await expect(links.nth(1)).toHaveAttribute('href', '#legend-and-pattern-fill');
+      await expect(links.nth(2)).toHaveAttribute(
+        'href',
+        '/intergalactic/data-display/area-chart/area-chart',
+      );
+    });
+
+    test('Verify a tick holding a link is exposed while a plain tick stays hidden', {
+      tag: [TAG.PRIORITY_HIGH, '@d3-chart',
+        '@bar-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, LINKS_EXAMPLE, 'en');
+      await locators.plot(page).waitFor({ state: 'visible' });
+
+      const ticks = locators.axisTicks(page);
+      const count = await ticks.count();
+      expect(count).toBeGreaterThan(0);
+
+      let exposed = 0;
+      let hidden = 0;
+
+      for (let i = 0; i < count; i++) {
+        const tick = ticks.nth(i);
+        const hasLink = (await tick.locator('a').count()) > 0;
+        const ariaHidden = await tick.getAttribute('aria-hidden');
+
+        if (hasLink) {
+          expect(ariaHidden).toBeNull();
+          exposed++;
+        } else {
+          expect(ariaHidden).toBe('true');
+          hidden++;
+        }
+      }
+
+      expect(exposed).toBe(3);
+      expect(hidden).toBeGreaterThan(0);
+    });
+
+    test('Verify tick links can be reached with the keyboard', {
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@d3-chart',
+        '@bar-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, LINKS_EXAMPLE, 'en');
+      await locators.plot(page).waitFor({ state: 'visible' });
+
+      const firstLink = locators.axisTicks(page).locator('a').first();
+      await firstLink.focus();
+
+      await expect(firstLink).toBeFocused();
+    });
+
+    test('Verify a tick link keeps the tick label font size', {
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart',
+        '@bar-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, LINKS_EXAMPLE, 'en');
+      await locators.plot(page).waitFor({ state: 'visible' });
+
+      const ticks = locators.axisTicks(page);
+      const linkSize = await ticks
+        .locator('a')
+        .first()
+        .evaluate((el) => getComputedStyle(el).fontSize);
+
+      const plainTick = ticks.filter({ hasNot: page.locator('a') }).first();
+      const tickSize = await plainTick.evaluate((el) => getComputedStyle(el).fontSize);
+
+      // The link is styled as a link, but it must not grow or shrink the label.
+      expect(linkSize).toBe(tickSize);
+    });
   });
 
   test.describe('Pattern fills, dots and lines', () => {
@@ -663,11 +804,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(activeDots).toHaveCount(1);
     });
 
-    /**
-     * `showDots` no longer gates the dots on or off, it is forwarded as `display`:
-     * `showDots={false}` hides the resting dots but the hovered point is still drawn,
-     * while `showDots` renders every dot. Both examples below plot two series.
-     */
     ([
       ['Chart.Line', LINE_CHART_EXAMPLE, '[data-ui-name="Line.Dots"]'],
       ['Chart.Area', AREA_CHART_EXAMPLE, '[data-ui-name="Area.Dots"]'],
@@ -880,6 +1016,64 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.mouse.move(box.x + box.width / 2, box.y + box.height - 20);
 
       await expect(locators.hoveredTickText(page)).toHaveCount(1);
+    });
+
+    (
+      [
+        ['no axis at all', { showXAxis: false, showYAxis: false }],
+        ['only the Y axis', { showXAxis: false }],
+      ] as const
+    ).forEach(([name, axisProps]) => {
+      test(`Verify hovering a chart with ${name} renders no pill and raises no error`, {
+        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
+          '@line-chart'],
+      }, async ({ page }) => {
+        const pageErrors: string[] = [];
+        page.on('pageerror', (error) => pageErrors.push(error.message));
+
+        await loadPage(page, LINE_CHART_EXAMPLE, 'en', { ...axisProps, duration: 0 });
+        await locators.plot(page).first().waitFor({ state: 'visible' });
+
+        await hoverPlotCenter(page);
+
+        await expect(locators.hoveredTick(page)).toHaveCount(0);
+        expect(pageErrors).toEqual([]);
+      });
+    });
+
+    (['bottom', 'top'] as const).forEach((xPosition) => {
+      test(`Verify the tick pill sits on the ${xPosition} side when the X axis is there`, {
+        tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart',
+          '@bar-chart'],
+      }, async ({ page }) => {
+        await loadPage(
+          page,
+          'stories/components/d3-chart/tests/examples/d3-chart/grid-axis-props.tsx',
+          'en',
+          { xPosition, hoverType: 'line' },
+        );
+
+        const plot = locators.plot(page).first();
+        await plot.waitFor({ state: 'visible' });
+
+        await hoverPlotCenter(page);
+
+        const pill = locators.hoveredTick(page).first();
+        await expect(pill).toHaveAttribute('position', xPosition);
+
+        const plotBox = await plot.boundingBox();
+        const pillBox = await pill.boundingBox();
+        if (!plotBox || !pillBox) throw new Error('Bounding box not found');
+
+        const plotCenterY = plotBox.y + plotBox.height / 2;
+        const pillCenterY = pillBox.y + pillBox.height / 2;
+
+        if (xPosition === 'top') {
+          expect(pillCenterY).toBeLessThan(plotCenterY);
+        } else {
+          expect(pillCenterY).toBeGreaterThan(plotCenterY);
+        }
+      });
     });
   });
 
@@ -1245,10 +1439,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       // Jan 21 is both a data point and an axis label, so the two have to agree.
       await hoverDot(page, '[data-ui-name="Area.Dots"]', 4);
 
-      await expect(locators.hoveredTickText(page)).toHaveText('1/21/2024');
+      await expect(locators.hoveredTickText(page)).toHaveText('Jan 21');
 
       const labels = await readXAxisLabels(page);
-      expect(labels).toContain('1/21/2024');
+      expect(labels).toContain('Jan 21');
     });
 
     test('Verify HoverRect highlights the hovered category', {

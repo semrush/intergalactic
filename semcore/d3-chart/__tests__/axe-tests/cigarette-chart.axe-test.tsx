@@ -33,6 +33,12 @@ test.describe(`@d3-chart @cigarette-chart ${TAG.ACCESSIBILITY}`, () => {
     expect(violations).toEqual([]);
   });
 
+  test('skeleton', async ({ page }) => {
+    await loadPage(page, 'stories/components/d3-chart/docs/examples/cigarette-chart/skeleton.tsx', 'en');
+    const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
+
   test('tooltip-type', async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/cigarette-chart/tooltip-type.tsx', 'en');
     const violations = await getAccessibilityViolations({ page });

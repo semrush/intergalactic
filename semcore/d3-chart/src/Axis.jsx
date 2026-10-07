@@ -1,10 +1,15 @@
 import { Component, sstyled } from '@semcore/core';
+import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
+import propsForElement from '@semcore/core/lib/utils/propsForElement';
+import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
 import React from 'react';
 
 import createElement from './createElement';
 import style from './style/axis.shadow.css';
 import { scaleOfBandwidth } from './utils';
-import { TextMeasurer } from './utils/TextMeasurer';
+
+const TICK_MARGIN_X = 16;
+const TICK_MARGIN_Y = 8;
 
 const CUSTOM_0 = Symbol('custom_0');
 const CUSTOM_1 = Symbol('custom_1');
@@ -83,32 +88,40 @@ const MAP_POSITION_AXIS = {
 };
 
 const MAP_POSITION_TICK = {
-  top: ([xScale, yScale], value) => {
+  top: ([xScale, yScale], value, _, { width, height }) => {
     const yRange = yScale.range();
+    const [translateX, translateY] = [-width / 2, -height - TICK_MARGIN_Y];
+
     return {
-      x: scaleOfBandwidth(xScale, value),
-      y: yRange[1],
+      x: scaleOfBandwidth(xScale, value) + translateX,
+      y: yRange[1] + translateY,
     };
   },
-  bottom: ([xScale, yScale], value) => {
+  bottom: ([xScale, yScale], value, _, { width }) => {
     const yRange = yScale.range();
+    const [translateX, translateY] = [-width / 2, TICK_MARGIN_Y];
+
     return {
-      x: scaleOfBandwidth(xScale, value),
-      y: yRange[0],
+      x: scaleOfBandwidth(xScale, value) + translateX,
+      y: yRange[0] + translateY,
     };
   },
-  right: ([xScale, yScale], value) => {
+  right: ([xScale, yScale], value, _, { height }) => {
     const xRange = xScale.range();
+    const [translateX, translateY] = [TICK_MARGIN_X, -height / 2];
+
     return {
-      x: xRange[1],
-      y: scaleOfBandwidth(yScale, value),
+      x: xRange[1] + translateX,
+      y: scaleOfBandwidth(yScale, value) + translateY,
     };
   },
-  left: ([xScale, yScale], value) => {
+  left: ([xScale, yScale], value, _, { width, height }) => {
     const xRange = xScale.range();
+    const [translateX, translateY] = [-width - TICK_MARGIN_X, -height / 2];
+
     return {
-      x: xRange[0],
-      y: scaleOfBandwidth(yScale, value),
+      x: xRange[0] + translateX,
+      y: scaleOfBandwidth(yScale, value) + translateY,
     };
   },
   [CUSTOM_0]: ([xScale, yScale], value, pos) => {
@@ -180,55 +193,37 @@ const MAP_POSITION_TITlE = {
   },
 };
 
-function renderValue(value) {
+function renderValue(value, locale = 'en') {
   if (value instanceof Date) {
-    return value.toLocaleDateString();
+    return new Intl.DateTimeFormat(locale, {
+      day: 'numeric',
+      month: 'short',
+    }).format(value);
   }
   return value;
 }
 
-function splitTextByWidth(measurer) {
-  return (text, maxWidth) => {
-    {
-      if (!text || !maxWidth || maxWidth <= 0) return [];
+const TickForeignObject = React.forwardRef(function (
+  { children, isRenderProp, 'aria-hidden': ariaHidden, ...props },
+  ref,
+) {
+  const contentRef = React.useRef(null);
+  const [interactive, setInteractive] = React.useState(false);
 
-      const words = text.split(/\s+/).filter((word) => word.length > 0);
-      if (words.length === 0) return [];
+  useEnhancedEffect(() => {
+    if (!isRenderProp || !contentRef.current) return;
 
-      const lines = [];
-      let currentLine = words[0];
+    setInteractive(getFocusableIn(contentRef.current).length > 0);
+  }, []);
 
-      for (let i = 1; i < words.length; i++) {
-        const testLine = `${currentLine} ${words[i]}`.trim();
-        const { width: testWidth } = measurer.measure(testLine);
-
-        if (testWidth <= maxWidth) {
-          currentLine = testLine;
-        } else {
-          if (currentLine) {
-            lines.push(currentLine);
-          }
-
-          currentLine = words[i];
-
-          const { width: currentLineWidth } = measurer.measure(currentLine);
-          if (currentLineWidth > maxWidth) {
-            lines.push(currentLine);
-            currentLine = '';
-          }
-        }
-      }
-
-      if (currentLine) {
-        lines.push(currentLine);
-      }
-
-      return lines;
-    }
-  };
-}
-
-const measurer = new TextMeasurer();
+  return (
+    <foreignObject ref={ref} aria-hidden={interactive ? undefined : true} {...propsForElement(props, 'foreignObject')}>
+      <div ref={contentRef} data-tick-content>
+        {children}
+      </div>
+    </foreignObject>
+  );
+});
 
 class AxisRoot extends Component {
   static displayName = 'Axis';
@@ -256,7 +251,6 @@ class AxisRoot extends Component {
       ticks: this.ticks,
       indexScale,
       position,
-      splitTextByWidth: splitTextByWidth(measurer),
     };
   }
 
@@ -272,8 +266,7 @@ class AxisRoot extends Component {
     const SAxis = this.Element;
     const { styles, position, scale, hide, indexScale } = this.asProps;
 
-    const pos =
-      MAP_POSITION_AXIS[position] ?? MAP_POSITION_AXIS[MAP_INDEX_SCALE_SYMBOL[indexScale]];
+    const pos = MAP_POSITION_AXIS[position] ?? MAP_POSITION_AXIS[MAP_INDEX_SCALE_SYMBOL[indexScale]];
 
     return sstyled(styles)(<SAxis render='line' hide={hide} {...pos(scale, position)} />);
   }
@@ -291,22 +284,34 @@ function Ticks(props) {
     dataHintsHandler,
     children,
     childrenPosition = 'inside',
-    multiline,
-    splitTextByWidth,
+    locale,
+    primaryText,
+    size,
+    meta,
   } = props;
 
-  const tickBandwidth = scale[indexScale]?.bandwidth?.();
-  const ticksWithLines = ticks.map((tick) => ({
-    tick,
-    lines: typeof tick === 'string' && multiline
-      ? splitTextByWidth(tick, tickBandwidth)
-      : [],
-  }));
+  const isRenderProp = typeof children === 'function';
+
+  const isXScale = indexScale === 0;
+  const axis = isXScale ? 'horizontal' : 'vertical';
+
+  const [_, plotHeight] = size;
+  const currentScale = scale[indexScale];
+  const secondaryScale = scale[isXScale ? 1 : 0];
+
+  const [startPointCurrentScale, endPointCurrentScale] = currentScale.range();
+  const [startPointSecondaryScale, endPointSecondaryScale] = secondaryScale.range();
+
+  const tickStepSize = currentScale?.step?.() ?? Math.abs(startPointCurrentScale - endPointCurrentScale) / ticks.length;
+
+  const [tickWidth, tickHeight] = isXScale
+    ? [tickStepSize, Math.max(Math.abs(plotHeight - startPointSecondaryScale), endPointSecondaryScale)]
+    : [startPointSecondaryScale, tickStepSize];
 
   const pos = MAP_POSITION_TICK[position] ?? MAP_POSITION_TICK[MAP_INDEX_SCALE_SYMBOL[indexScale]];
   const positionClass = MAP_POSITION_TICK[position] ? position : `custom_${indexScale}`;
 
-  if (typeof children === 'function') {
+  if (isRenderProp) {
     const labelGetter = (value) => {
       const result = children({ value });
       return result.value ?? result.children;
@@ -318,29 +323,30 @@ function Ticks(props) {
     }
   }
 
-  return ticksWithLines.map(({ tick: value, lines }, i) => {
-    const displayValue = typeof children === 'function' ? undefined : renderValue(value);
+  meta.setTicksSize(axis, { width: tickWidth, height: tickHeight });
+  meta.setTicksVisibility(axis, !hide);
+  meta.setTicksPosition(axis, position);
+
+  return ticks.map((value, i) => {
+    const displayValue = isRenderProp ? undefined : renderValue(value, locale);
 
     return sstyled(styles)(
       <STick
-        aria-hidden
         key={i}
-        render='text'
-        childrenPosition={childrenPosition}
-        __excludeProps={['data', 'scale', 'format', 'value']}
-        value={value}
         index={i}
+        render={TickForeignObject}
+        childrenPosition={childrenPosition}
+        width={tickWidth}
+        height={tickHeight}
         position={positionClass}
         hide={hide}
-        multiline={multiline}
-        primaryText={props.primaryText}
-        {...pos(scale, value, position)}
+        primaryText={primaryText}
+        value={value}
+        isRenderProp={isRenderProp}
+        __excludeProps={['data', 'scale', 'format', 'value']}
+        {...pos(scale, value, position, { width: tickWidth, height: tickHeight })}
       >
-        { lines.length > 1
-          ? lines.map((line, lineIndex) => (
-              <tspan key={line} {...pos(scale, value, position)} dy={lineIndex * 15}>{line}</tspan>
-            ))
-          : displayValue}
+        {displayValue}
       </STick>,
     );
   });
@@ -358,9 +364,7 @@ function Grid(props) {
   }
 
   return ticks.map((value, i) => {
-    return sstyled(styles)(
-      <SGrid key={i} render='line' {...MAP_POSITION_GRID[indexScale](scale, value)} />,
-    );
+    return sstyled(styles)(<SGrid key={i} render='line' {...MAP_POSITION_GRID[indexScale](scale, value)} />);
   });
 }
 
