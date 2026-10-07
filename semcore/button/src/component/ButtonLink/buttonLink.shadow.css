@@ -26,7 +26,7 @@ SButtonLink[use='primary'] {
 }
 
 SButtonLink[use='secondary']:not([color]) {
-  color: var(--intergalactic-text-hint, oklch(0.209 0.055 246.6 / 0.505));
+  color: var(--intergalactic-text-hint, oklch(0.182 0.045 244.8 / 0.593));
 
   &[active],
   &:active,

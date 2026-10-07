@@ -209,6 +209,10 @@ export const theme: Theme = {
         value: `${SCALE_INDENT}px`,
         description: '4px',
       },
+      '1_5': {
+        value: `${SCALE_INDENT * 1.5}px`,
+        description: '6px',
+      },
       '2': {
         value: `${SCALE_INDENT * 2}px`,
         description: '8px',
@@ -753,7 +757,7 @@ export const theme: Theme = {
         description: 'Forecast line color on the chart grid.',
       },
       chart_grid_text_label_DEFAULT: {
-        value: neutral.opaqueAt(L_TEXT_SECONDARY),
+        value: 'oklch(from {semanticTokens.colors.text.secondary} l c h / 0.4)',
         description: 'Text label on the chart grid.',
       },
       chart_grid_text_label_accent: {
@@ -2155,80 +2159,6 @@ export const theme: Theme = {
       },
     },
     spacing: {
-      content: {
-        padding: {
-          xxsmall: {
-            value: `${SCALE_INDENT / 2}px`,
-            description: 'Tiny padding for content inside controls and surfaces.',
-          },
-          xsmall: {
-            value: `${SCALE_INDENT}px`,
-            description: 'Extra small padding for content inside controls and surfaces.',
-          },
-          xsmall_extended: {
-            value: `${SCALE_INDENT * 1.5}px`,
-            description: 'Extended extra small padding for content inside controls and surfaces.',
-          },
-          small: {
-            value: `${SCALE_INDENT * 2}px`,
-            description: 'Small padding for content inside controls and surfaces.',
-          },
-          medium: {
-            value: `${SCALE_INDENT * 3}px`,
-            description: 'Medium padding for content inside controls and surfaces.',
-          },
-          large: {
-            value: `${SCALE_INDENT * 4}px`,
-            description: 'Large padding for content inside controls and surfaces.',
-          },
-          xlarge: {
-            value: `${SCALE_INDENT * 5}px`,
-            description: 'Extra large padding for content inside controls and surfaces.',
-          },
-          xlarge_extended: {
-            value: `${SCALE_INDENT * 6}px`,
-            description: 'Extended extra large padding for content inside controls and surfaces.',
-          },
-          xxlarge: {
-            value: `${SCALE_INDENT * 10}px`,
-            description: '2x large padding for content inside controls and surfaces.',
-          },
-        },
-        gap: {
-          xsmall: {
-            value: `${SCALE_INDENT / 2}px`,
-            description: 'Extra small gap between content elements inside controls, rows, or columns.',
-          },
-          small: {
-            value: `${SCALE_INDENT}px`,
-            description: 'Small gap between content elements inside controls, rows, or columns.',
-          },
-          medium: {
-            value: `${SCALE_INDENT * 1.5}px`,
-            description: 'Medium gap between content elements inside controls, rows, or columns.',
-          },
-          large: {
-            value: `${SCALE_INDENT * 2}px`,
-            description: 'Large gap between content elements inside controls, rows, or columns.',
-          },
-          xlarge: {
-            value: `${SCALE_INDENT * 3}px`,
-            description: 'Extra large gap between elements, rows, or columns.',
-          },
-          xxlarge: {
-            value: `${SCALE_INDENT * 4}px`,
-            description: '2x large gap between elements, rows, or columns.',
-          },
-          xxlarge_extended: {
-            value: `${SCALE_INDENT * 5}px`,
-            description: 'Extended 2x large gap between elements, rows, or columns.',
-          },
-          xxxlarge: {
-            value: `${SCALE_INDENT * 6}px`,
-            description: '3x large gap between elements, rows, or columns.',
-          },
-        },
-      },
       layout: {
         padding: {
           desktop: {
@@ -2573,7 +2503,7 @@ export const theme: Theme = {
 type FontSize = '100' | '200' | '300' | '350' | '400' | '500' | '600' | '700' | '800';
 type LineHeight = '100' | '200' | '300' | '350' | '400' | '500' | '600' | '700' | '800';
 type FontWeight = 'semi-bold' | 'bold' | 'regular' | 'medium';
-type Spacing = '05' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '14' | '20' | '24' | '30';
+type Spacing = '05' | '1' | '1_5' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '14' | '20' | '24' | '30';
 type Radii = 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
 type Breakpoints = 'extra-small' | 'small' | 'medium' | 'large' | 'layout-compact' | 'layout-data-heavy';
 type Durations = 'extra-slow' | 'slow' | 'medium' | 'fast' | 'extra-fast';
@@ -2618,29 +2548,6 @@ export type SemanticTokens = {
   shadows: Record<FlattenPaths<SemanticShadows>, Value>;
   sizes: Record<`form_control_${'s' | 'm' | 'l'}`, Value>;
   spacing: {
-    content: {
-      padding: {
-        xxsmall: Value;
-        xsmall: Value;
-        xsmall_extended: Value;
-        small: Value;
-        medium: Value;
-        large: Value;
-        xlarge: Value;
-        xlarge_extended: Value;
-        xxlarge: Value;
-      };
-      gap: {
-        xsmall: Value;
-        small: Value;
-        medium: Value;
-        large: Value;
-        xlarge: Value;
-        xxlarge: Value;
-        xxlarge_extended: Value;
-        xxxlarge: Value;
-      };
-    };
     layout: {
       padding: {
         desktop: Value;

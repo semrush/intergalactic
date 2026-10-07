@@ -11,12 +11,12 @@ STooltip {
   border: 1px solid var(--intergalactic-tooltip-border-invert, oklch(0.4 0.015 245));
   box-sizing: border-box;
   box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.324 0.077 242.1 / 0.079));
-  padding: var(--intergalactic-spacing-content-padding-medium, 12px);
+  padding: var(--intergalactic-spacing-3x, 12px);
 }
 
 STitle {
   color: var(--intergalactic-text-secondary-invert, oklch(0.953 0.025 240.1 / 0.726));
-  margin-bottom: var(--intergalactic-spacing-content-gap-large, 8px);
+  margin-bottom: var(--intergalactic-spacing-2x, 8px);
 }
 
 SDotGroup {
@@ -25,7 +25,7 @@ SDotGroup {
 }
 
 SDot {
-  margin-right: var(--intergalactic-spacing-content-gap-large, 8px);
+  margin-right: var(--intergalactic-spacing-2x, 8px);
 }
 
 SDotCircle[color][lightness] {
@@ -40,9 +40,9 @@ SDotCircle[color][lightness] {
 SFooter {
   background: var(--intergalactic-bg-secondary-invert, oklch(0.907 0.048 245.2 / 0.129));
   color: var(--intergalactic-text-secondary-invert, oklch(0.953 0.025 240.1 / 0.726));
-  padding: var(--intergalactic-spacing-content-padding-xsmall, 4px) var(--intergalactic-spacing-content-padding-medium, 12px);
+  padding: var(--intergalactic-spacing-1x, 4px) var(--intergalactic-spacing-3x, 12px);
   border-radius: 0 0 var(--intergalactic-rounded-medium, 6px) var(--intergalactic-rounded-medium, 6px);
-  margin: var(--intergalactic-spacing-content-gap-xlarge, 12px) calc(-1 * var(--intergalactic-spacing-content-gap-xlarge, 12px)) calc(-1 * var(--intergalactic-spacing-content-gap-xlarge, 12px));
+  margin: var(--intergalactic-spacing-3x, 12px) calc(-1 * var(--intergalactic-spacing-3x, 12px)) calc(-1 * var(--intergalactic-spacing-3x, 12px));
 }
 
 SDotPattern {
