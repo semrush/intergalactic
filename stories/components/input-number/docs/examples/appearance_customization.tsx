@@ -32,6 +32,7 @@ const Demo = () => {
             value={value}
             onChange={setValue}
             id='alternative-example'
+            style={{ borderLeft: '1px solid var(--intergalactic-border-primary)', marginLeft: '-1px' }}
           />
         </InputNumber>
         <Button onClick={increment} title='Increase by 10' neighborLocation='left'>
