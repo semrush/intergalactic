@@ -1,25 +1,61 @@
-import { Component, createComponent, Root, sstyled } from '@semcore/core';
+import { Flex } from '@semcore/base-components';
+import { Component, createComponent, type Intergalactic, Root, sstyled } from '@semcore/core';
 import Notice, { type NSNotice } from '@semcore/notice';
+import { Text } from '@semcore/typography';
 import React from 'react';
 
+import type { NSDropdown } from './index';
 import style from './style/dropdownNotice.shadow.css';
 
-class DropdownNoticeRoot extends Component<NSNotice.Props> {
+class DropdownNoticeRoot extends Component<NSDropdown.Notice.Props> {
   static displayName = 'Notice';
   static style = style;
 
   render() {
-    const { styles } = this.asProps;
+    const { styles, Children, icon, title, theme } = this.asProps;
     const SDropdownNotice = Root;
-    return sstyled(styles)(<SDropdownNotice render={Notice} />);
+    const SIcon = 'div';
+    const STitle = Text;
+
+    return sstyled(styles)(
+      <SDropdownNotice render={Notice} use:icon={undefined} __excludeProps={['title']}>
+        {(Boolean(icon) || Boolean(title)) && (
+          <Flex alignItems='flex-start' gap={2}>
+            {Boolean(icon) && (
+              <SIcon
+                // @ts-expect-error for css styles only
+                theme={theme}
+              >
+                {icon}
+              </SIcon>
+            )}
+            {Boolean(title) && (<STitle bold size={200}>{title}</STitle>)}
+          </Flex>
+        )}
+        <Children />
+      </SDropdownNotice>,
+    );
   }
 }
 
-export const DropdownNotice = createComponent<NSNotice.Component, typeof DropdownNoticeRoot>(DropdownNoticeRoot, {
-  Label: Notice.Label,
-  Title: Notice.Title,
-  Text: Notice.Text,
-  Actions: Notice.Actions,
-  Content: Notice.Content,
+function NoticeText(props: Intergalactic.InternalTypings.InferComponentProps<NSNotice.Text.Component>) {
+  const SDropdownNoticeText = Root;
+
+  return sstyled(props.styles)(
+    <SDropdownNoticeText render={Notice.Text} />,
+  );
+}
+
+function NoticeActions(props: Intergalactic.InternalTypings.InferComponentProps<NSNotice.Actions.Component>) {
+  const SDropdownNoticeActions = Root;
+
+  return sstyled(props.styles)(
+    <SDropdownNoticeActions render={Notice.Actions} />,
+  );
+}
+
+export const DropdownNotice = createComponent<NSDropdown.Notice.Component, typeof DropdownNoticeRoot>(DropdownNoticeRoot, {
+  Text: NoticeText,
+  Actions: NoticeActions,
   Close: Notice.Close,
 }, { parent: Notice });

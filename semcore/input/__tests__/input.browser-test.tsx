@@ -13,6 +13,7 @@ export const locators = {
   hint: (page: Page) => page.locator('[data-ui-name="Hint"]'),
 
   addon: (page: Page) => page.locator('[data-ui-name="Input.Addon"]'),
+  control: (page: Page) => page.locator('[data-ui-name="Input"]'),
 };
 /* =====================================================
   @visual
@@ -69,7 +70,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       if (item.size == 'm') {
         await test.step('Verify m styles ', async () => {
           for (let i = 0; i < count; i++) {
-            await expect(locators.input(page).nth(i)).toHaveCSS('height', '30px');
+            await expect(locators.control(page).nth(i)).toHaveCSS('height', '32px');
           }
         });
       }
@@ -77,7 +78,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       if (item.size == 'l') {
         await test.step('Verify l styles ', async () => {
           for (let i = 0; i < count; i++) {
-            await expect(locators.input(page).nth(i)).toHaveCSS('height', '42px');
+            await expect(locators.control(page).nth(i)).toHaveCSS('height', '44px');
           }
         });
       }

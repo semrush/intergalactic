@@ -1,49 +1,49 @@
 [
   {
     "name": "--gray-50",
-    "value": "oklch(0.97 0.001 180)",
+    "value": "oklch(0.97 0.005 232.2)",
     "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
   },
   {
     "name": "--gray-75",
-    "value": "oklch(0.93 0.002 179.3)"
+    "value": "oklch(0.93 0.007 233.2)"
   },
   {
     "name": "--gray-100",
-    "value": "oklch(0.9 0.002 177)",
+    "value": "oklch(0.9 0.009 234)",
     "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
   },
   {
     "name": "--gray-200",
-    "value": "oklch(0.82 0.002 171.1)"
+    "value": "oklch(0.82 0.016 237.4)"
   },
   {
     "name": "--gray-300",
-    "value": "oklch(0.74 0.003 165.2)"
+    "value": "oklch(0.74 0.02 240.5)"
   },
   {
     "name": "--gray-400",
-    "value": "oklch(0.64 0.003 157.8)"
+    "value": "oklch(0.64 0.022 243.8)"
   },
   {
     "name": "--gray-450",
-    "value": "oklch(0.58 0.003 153.3)"
+    "value": "oklch(0.58 0.022 245)"
   },
   {
     "name": "--gray-500",
-    "value": "oklch(0.53 0.004 149.6)"
+    "value": "oklch(0.53 0.02 245)"
   },
   {
     "name": "--gray-600",
-    "value": "oklch(0.46 0.004 144.4)"
+    "value": "oklch(0.46 0.018 245)"
   },
   {
     "name": "--gray-700",
-    "value": "oklch(0.33 0.006 140)"
+    "value": "oklch(0.33 0.013 245)"
   },
   {
     "name": "--gray-800",
-    "value": "oklch(0.23 0.01 140)"
+    "value": "oklch(0.23 0.009 245)"
   },
   {
     "name": "--gray-white",
@@ -754,6 +754,11 @@
     "description": "2px"
   },
   {
+    "name": "--intergalactic-spacing-1-5x",
+    "value": "6px",
+    "description": "6px"
+  },
+  {
     "name": "--intergalactic-rounded-extra-small",
     "value": "2px"
   },
@@ -868,6 +873,14 @@
     "value": "oklch(0.53 0.157 279.2)"
   },
   {
+    "name": "--intergalactic-chart-grid-bar-chart-base-bg",
+    "value": "oklch(0.92 0.008 233.5)"
+  },
+  {
+    "name": "--intergalactic-chart-grid-bar-chart-hover",
+    "value": "oklch(0.375 0.09 242.7 / 0.05)"
+  },
+  {
     "name": "--intergalactic-table-td-cell-actions-accordion",
     "value": "oklch(1 0 0)"
   },
@@ -876,16 +889,84 @@
     "value": "oklch(1 0 0 / 0.7)"
   },
   {
+    "name": "--intergalactic-keyboard-focus-feature-highlight",
+    "value": "3px solid oklch(0.82 0.15 170)"
+  },
+  {
+    "name": "--intergalactic-keyboard-focus-feature-highlight-outline",
+    "value": "oklch(0.82 0.15 170)"
+  },
+  {
+    "name": "--intergalactic-badge-feature-highlight-accent",
+    "value": "oklch(0.22 0.008 245)"
+  },
+  {
+    "name": "--intergalactic-bg-primary-feature-highlight",
+    "value": "oklch(1 0 0)"
+  },
+  {
+    "name": "--intergalactic-bg-primary-feature-highlight-hover-active",
+    "value": "oklch(0.97 0.005 232.2)"
+  },
+  {
+    "name": "--intergalactic-bg-secondary-feature-highlight",
+    "value": "oklch(0.9 0.065 303)"
+  },
+  {
     "name": "--intergalactic-border-tooltip-invert",
-    "value": "oklch(0.4 0.004 140)"
+    "value": "oklch(0.4 0.015 245)"
   },
   {
     "name": "--intergalactic-border-table-accent",
-    "value": "oklch(0.137 0.026 175.7 / 0.161)"
+    "value": "oklch(0.277 0.066 242.6 / 0.18)"
   },
   {
     "name": "--intergalactic-border-date-picker-range-comparison",
     "value": "oklch(0.74 0.117 274.1)"
+  },
+  {
+    "name": "--intergalactic-border-feature-highlight",
+    "value": "oklch(0.277 0.066 242.6 / 0.18)"
+  },
+  {
+    "name": "--intergalactic-border-feature-highlight-active",
+    "value": "oklch(0.22 0.008 245)"
+  },
+  {
+    "name": "--intergalactic-border-feature-highlight-secondary",
+    "value": "oklch(0.324 0.077 242.1 / 0.079)"
+  },
+  {
+    "name": "--intergalactic-control-primary-feature-highlight",
+    "value": "oklch(0.23 0.009 245)"
+  },
+  {
+    "name": "--intergalactic-control-primary-feature-highlight-hover",
+    "value": "oklch(0.32 0.012 245)"
+  },
+  {
+    "name": "--intergalactic-control-primary-feature-highlight-active",
+    "value": "oklch(0 0 245)"
+  },
+  {
+    "name": "--intergalactic-control-secondary-feature-highlight",
+    "value": "oklch(0.324 0.077 242.1 / 0.079)"
+  },
+  {
+    "name": "--intergalactic-control-secondary-feature-highlight-hover",
+    "value": "oklch(0.31 0.074 242 / 0.094)"
+  },
+  {
+    "name": "--intergalactic-control-secondary-feature-highlight-active",
+    "value": "oklch(0.291 0.069 241.9 / 0.123)"
+  },
+  {
+    "name": "--intergalactic-icon-primary-feature-highlight",
+    "value": "oklch(0.22 0.008 245)"
+  },
+  {
+    "name": "--intergalactic-icon-primary-feature-highlight-hover-active",
+    "value": "oklch(0.22 0.008 245)"
   },
   {
     "name": "--intergalactic-tooltip-default",
@@ -893,11 +974,19 @@
   },
   {
     "name": "--intergalactic-tooltip-invert",
-    "value": "oklch(0.23 0.01 140)"
+    "value": "oklch(0.23 0.009 245)"
   },
   {
     "name": "--intergalactic-tooltip-warning",
     "value": "oklch(0.958 0.029 5.7)"
+  },
+  {
+    "name": "--intergalactic-feature-highlight-border",
+    "value": "oklch(0.277 0.066 242.6 / 0.18)"
+  },
+  {
+    "name": "--intergalactic-feature-highlight-border-active",
+    "value": "oklch(0.22 0.008 245)"
   },
   {
     "name": "--intergalactic-feature-popover-bg",
@@ -925,7 +1014,7 @@
   },
   {
     "name": "--intergalactic-feature-popover-neutral-bg",
-    "value": "oklch(0.23 0.01 140)"
+    "value": "oklch(0.23 0.009 245)"
   },
   {
     "name": "--intergalactic-feature-popover-neutral-dot-outer-border",
@@ -933,15 +1022,15 @@
   },
   {
     "name": "--intergalactic-slider-rating-normal",
-    "value": "oklch(0.8 0.003 169.6)"
+    "value": "oklch(0.193 0.05 246 / 0.562)"
   },
   {
     "name": "--intergalactic-slider-rating-hover-active",
-    "value": "oklch(0.66 0.212 300.1)"
+    "value": "oklch(0.22 0.008 245)"
   },
   {
     "name": "--intergalactic-radio-border",
-    "value": "oklch(0.137 0.026 175.7 / 0.161)"
+    "value": "oklch(0.277 0.066 242.6 / 0.18)"
   },
   {
     "name": "--intergalactic-radio-bg-normal",
@@ -949,22 +1038,30 @@
   },
   {
     "name": "--intergalactic-radio-bg-selected",
-    "value": "oklch(0.23 0.01 140)"
+    "value": "oklch(0.23 0.009 245)"
   },
   {
     "name": "--intergalactic-text-link",
-    "value": "oklch(0.1 0.03 137 / 0.899)"
+    "value": "oklch(0.23 0.009 245)"
   },
   {
     "name": "--intergalactic-text-link-hover-active",
-    "value": "oklch(0.1 0.03 137 / 0.899)"
+    "value": "oklch(0.23 0.009 245)"
   },
   {
     "name": "--intergalactic-text-link-invert",
-    "value": "oklch(0.999 0.001 180 / 0.949)"
+    "value": "oklch(0.991 0.005 232.5 / 0.959)"
   },
   {
     "name": "--intergalactic-text-link-invert-hover",
-    "value": "oklch(0.999 0.001 180 / 0.949)"
+    "value": "oklch(0.991 0.005 232.5 / 0.959)"
+  },
+  {
+    "name": "--intergalactic-text-feature-highlight",
+    "value": "oklch(0.23 0.009 245)"
+  },
+  {
+    "name": "--intergalactic-text-feature-highlight-hover-active",
+    "value": "oklch(0.23 0.009 245)"
   }
 ]

@@ -74,7 +74,7 @@ export const TooltipDeltaEdgeCases = {
   argTypes: getChartArgTypes({
     deltaOverride: {
       control: 'select',
-      options: ['off', 'divideByZero'],
+      options: ['off', 'custom', 'divideByZero', 'includesFirstPoint'],
     },
   }),
   args: TooltipDeltaEdgeCasesProps,
