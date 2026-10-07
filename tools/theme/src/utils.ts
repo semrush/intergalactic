@@ -10,6 +10,7 @@ type ProcessedTokens = {
   baseTokens: Token[];
   semanticTokens: Token[];
   highlightsTokens: Token[];
+  deprecates: Token[];
 };
 
 // @ts-ignore
@@ -68,6 +69,7 @@ export function processTokens(config: Theme, prefix: string): ProcessedTokens {
     baseTokens: [],
     semanticTokens: [],
     highlightsTokens: [],
+    deprecates: [],
   };
 
   function traverse(params: { node: N; path: string[]; prefix?: string; postfix?: string; groupKey: keyof ProcessedTokens }) {
@@ -177,7 +179,7 @@ export function processTokens(config: Theme, prefix: string): ProcessedTokens {
 
   traverse({ node: config.featureHighlight, path: [], prefix, groupKey: 'highlightsTokens' });
 
-  traverse({ node: config.deprecates, path: [], prefix, groupKey: 'baseTokens' });
+  traverse({ node: config.deprecates, path: [], prefix, groupKey: 'deprecates' });
 
   return processedTokens;
 }
