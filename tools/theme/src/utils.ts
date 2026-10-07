@@ -45,9 +45,7 @@ export function getConfigValue(path: string[], config: Theme): string {
     const [group, subGroup, ...key] = path;
     pathToSearch = path[0] === 'baseTokens'
       ? path
-      : path[0] === 'featureHighlight'
-        ? [group, `${subGroup}_${key.join('_')}`]
-        : [group, subGroup, key.join('_')];
+      : [group, subGroup, key.join('_')];
     const valueObj = getByPath(config, pathToSearch);
 
     if ('value' in valueObj) {

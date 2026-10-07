@@ -42,7 +42,7 @@ Stick to the [designated chart palette](/data-display/color-palette/color-palett
 
 ## Interaction
 
-Hovering highlights a bar with `--chart-grid-bar-chart-hover`, indicating focus or clickability. For trend lines, display corresponding points on hover.
+Hovering highlights a bar with `--chart-grid-bar-hover`, indicating focus or clickability. For trend lines, display corresponding points on hover.
 
 ![stacked bar chart](static/stacked-bar-chart-hover.png)
 

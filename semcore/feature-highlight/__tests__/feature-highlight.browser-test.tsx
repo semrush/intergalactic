@@ -3,44 +3,60 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-// Helper to get ::before pseudo-element styles
-export const getBeforeStyles = async (el: Locator) => {
-  return el.evaluate((node) => {
-    const style = getComputedStyle(node, '::before');
-    return { backgroundImage: style.backgroundImage };
-  });
+// Helper to get outline styles of an element or of one of its pseudo-elements
+export const getOutlineStyles = async (el: Locator, pseudoElement: string | null = null) => {
+  return el.evaluate((node, pseudo) => {
+    const style = getComputedStyle(node, pseudo);
+    return {
+      outlineColor: style.outlineColor,
+      outlineStyle: style.outlineStyle,
+      outlineWidth: style.outlineWidth,
+    };
+  }, pseudoElement);
 };
 
 const featureHighlightTokens = {
-  focusOutline: '--intergalactic-keyboard-focus-feature-highlight-outline',
-  border: '--intergalactic-border-feature-highlight',
-  borderActive: '--intergalactic-border-feature-highlight-active',
+  focusOutline: '--intergalactic-feature-highlight-keyboard-focus-outline',
 };
 
-// Matches the CSS fallback gradients after the test bundle normalizes them.
-const cssVarBackgroundImageFallbacks: Record<string, string> = {
-  '--intergalactic-keyboard-focus-feature-highlight-outline': 'linear-gradient(90deg in oklch, #c08eff, oklch(0.58 0.168 278.2))',
-  '--intergalactic-border-feature-highlight': 'linear-gradient(90deg in oklch, #d2b3ff, oklch(0.82 0.088 272.1))',
-  '--intergalactic-border-feature-highlight-active': 'linear-gradient(90deg in oklch, #c08eff, oklch(0.74 0.117 274.1))',
+const cssVarColorFallbacks: Record<string, string> = {
+  '--intergalactic-feature-highlight-keyboard-focus-outline': 'oklch(0.82 0.15 170)',
 };
 
-const getCssVarBackgroundImage = async (page: Page, varName: string) => {
+const getCssVarColor = async (page: Page, varName: string) => {
   return page.evaluate(({ name, fallback }) => {
     const probe = document.createElement('div');
-    probe.style.backgroundImage = fallback ? `var(${name}, ${fallback})` : `var(${name})`;
+    probe.style.color = fallback ? `var(${name}, ${fallback})` : `var(${name})`;
     document.body.appendChild(probe);
-    const backgroundImage = getComputedStyle(probe).backgroundImage;
+    const color = getComputedStyle(probe).color;
     probe.remove();
-    return backgroundImage;
-  }, { name: varName, fallback: cssVarBackgroundImageFallbacks[varName] });
+    return color;
+  }, { name: varName, fallback: cssVarColorFallbacks[varName] });
 };
 
-const expectBackgroundImageToContainToken = async (
+const expectFeatureHighlightFocusOutline = async (
   page: Page,
-  backgroundImage: string,
-  varName: string,
+  el: Locator,
+  pseudoElement: string | null = null,
 ) => {
-  await expect(backgroundImage).toContain(await getCssVarBackgroundImage(page, varName));
+  const outlineColor = await getCssVarColor(page, featureHighlightTokens.focusOutline);
+
+  await expect
+    .poll(async () => getOutlineStyles(el, pseudoElement))
+    .toEqual({ outlineColor, outlineStyle: 'solid', outlineWidth: '2px' });
+};
+
+// Non-highlighted neighbours keep the regular keyboard focus outline.
+const expectNoFeatureHighlightFocusOutline = async (
+  page: Page,
+  el: Locator,
+  pseudoElement: string | null = null,
+) => {
+  const styles = await getOutlineStyles(el, pseudoElement);
+
+  expect(styles.outlineColor).not.toBe(
+    await getCssVarColor(page, featureHighlightTokens.focusOutline),
+  );
 };
 
 export const locators = {
@@ -52,7 +68,8 @@ export const locators = {
   input: (page: Page) => page.getByRole('textbox'),
   inputOutline: (page: Page) => page.locator('[class*="SOutline"]'),
   switch: (page: Page) => page.locator('[data-ui-name="SwitchFH"]'),
-  switchOutline: (page: Page) => page.locator('[class*="inAfterOutline"][data-ui-name="Box"]').first(),
+  // The focus outline is painted on the toggle that wraps the switch input.
+  switchToggle: (page: Page) => page.locator('[class*="SToggle"]').first(),
   radioGroup: (page: Page) => page.locator('[data-ui-name="RadioGroup"]'),
   radioMark: (page: Page) => page.locator('[data-ui-name="Value.RadioMark"]'),
   checkbox: (page: Page) => page.locator('[data-ui-name="CheckboxFH"]'),
@@ -109,12 +126,7 @@ test.describe(`${TAG.VISUAL} `, () => {
             await page.keyboard.press('Tab');
 
             await expect(button).toBeFocused();
-            const styles = await getBeforeStyles(button);
-            await expectBackgroundImageToContainToken(
-              page,
-              styles.backgroundImage,
-              featureHighlightTokens.focusOutline,
-            );
+            await expectFeatureHighlightFocusOutline(page, button);
             await expect(page).toHaveScreenshot();
           });
 
@@ -152,12 +164,8 @@ test.describe(`${TAG.VISUAL} `, () => {
 
             await page.keyboard.press('ArrowRight');
             await page.keyboard.press('ArrowLeft');
-            const styles = await getBeforeStyles(pills.nth(1));
-            await expectBackgroundImageToContainToken(
-              page,
-              styles.backgroundImage,
-              featureHighlightTokens.focusOutline,
-            );
+            await expect(pills.nth(1)).toBeFocused();
+            await expectFeatureHighlightFocusOutline(page, pills.nth(1));
             await expect(page).toHaveScreenshot();
           });
           await test.step('Verify Hover when not focused', async () => {
@@ -198,12 +206,8 @@ test.describe(`${TAG.VISUAL} `, () => {
         } else {
           await test.step('Verify focus style', async () => {
             await page.keyboard.press('Tab');
-            const styles = await getBeforeStyles(outline);
-            await expectBackgroundImageToContainToken(
-              page,
-              styles.backgroundImage,
-              featureHighlightTokens.focusOutline,
-            );
+            await expect(locators.input(page)).toBeFocused();
+            await expectFeatureHighlightFocusOutline(page, outline);
             await expect(page).toHaveScreenshot();
           });
         }
@@ -224,10 +228,10 @@ test.describe(`${TAG.VISUAL} `, () => {
     variables.forEach((item) => {
       test(`Verify Switch disabled=${item.disabled} size=${item.size}  checked=${item.checked} showBadge=${item.showBadge}`, {
         tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@feature-highlight', '@switch', '@base-components', '@flex-box'],
-      }, async ({ page }) => {
+      }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/feature-highlight/tests/examples/switch-fh.tsx', 'en', item);
 
-        const outline = locators.switchOutline(page);
+        const toggle = locators.switchToggle(page);
         if (item.disabled) {
           await test.step('Verify disabled state', async () => {
             await expect(page).toHaveScreenshot();
@@ -235,21 +239,17 @@ test.describe(`${TAG.VISUAL} `, () => {
         } else {
           await test.step('Verify focus and toggle', async () => {
             await page.keyboard.press('Tab');
-            const styles = await getBeforeStyles(outline);
-            await expectBackgroundImageToContainToken(
-              page,
-              styles.backgroundImage,
-              featureHighlightTokens.focusOutline,
-            );
+            // Webkit doesn't move focus to checkbox based controls with Tab,
+            // so the focus outline can only be verified in the other browsers.
+            if (browserName !== 'webkit') {
+              await expectFeatureHighlightFocusOutline(page, toggle);
+            }
             await expect(page).toHaveScreenshot();
 
             await page.keyboard.press('Space');
-            const stylesSelected = await getBeforeStyles(outline);
-            await expectBackgroundImageToContainToken(
-              page,
-              stylesSelected.backgroundImage,
-              featureHighlightTokens.focusOutline,
-            );
+            if (browserName !== 'webkit') {
+              await expectFeatureHighlightFocusOutline(page, toggle);
+            }
             await expect(page).toHaveScreenshot();
           });
         }
@@ -315,12 +315,8 @@ test.describe(`${TAG.VISUAL} `, () => {
             await tab.nth(1).hover();
             await expect(page).toHaveScreenshot();
 
-            const stylesFH = await getBeforeStyles(tab.nth(1));
-            await expectBackgroundImageToContainToken(
-              page,
-              stylesFH.backgroundImage,
-              featureHighlightTokens.focusOutline,
-            );
+            await expect(tab.nth(1)).toBeFocused();
+            await expectFeatureHighlightFocusOutline(page, tab.nth(1));
           });
         }
       });
@@ -352,26 +348,16 @@ test.describe(`${TAG.VISUAL} `, () => {
           if (browserName !== 'webkit') {
             await test.step('Verify focus and selection', async () => {
               await page.keyboard.press('Tab');
-              const styles = await getBeforeStyles(radioMark.first());
-              await expectBackgroundImageToContainToken(
-                page,
-                styles.backgroundImage,
-                featureHighlightTokens.focusOutline,
-              );
+              await expectFeatureHighlightFocusOutline(page, radioMark.first(), '::before');
               await expect(page).toHaveScreenshot();
 
               await page.keyboard.press('Space');
-              const stylesSelected = await getBeforeStyles(radioMark.first());
-              await expectBackgroundImageToContainToken(
-                page,
-                stylesSelected.backgroundImage,
-                featureHighlightTokens.focusOutline,
-              );
+              await expectFeatureHighlightFocusOutline(page, radioMark.first(), '::before');
               await expect(page).toHaveScreenshot();
 
+              // The second radio is a regular one, it keeps the default focus outline.
               await page.keyboard.press('ArrowDown');
-              const stylesSecond = await getBeforeStyles(radioMark.nth(1));
-              expect(stylesSecond.backgroundImage).toContain('none');
+              await expectNoFeatureHighlightFocusOutline(page, radioMark.nth(1), '::before');
             });
           }
         }
@@ -391,7 +377,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     variables.forEach((item) => {
       test(`Verify Checkbox disabled = ${item.disabled} size = ${item.size} state = ${item.state} checked = ${item.checked} showBadge = ${item.showBadge}`, {
         tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@feature-highlight', '@checkbox', '@base-components', '@flex-box', '@typography'],
-      }, async ({ page }) => {
+      }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/feature-highlight/tests/examples/checkbox.tsx', 'en', item);
 
         const value = locators.checkboxMark(page);
@@ -403,26 +389,22 @@ test.describe(`${TAG.VISUAL} `, () => {
         } else {
           await test.step('Verify focus and toggle', async () => {
             await page.keyboard.press('Tab');
-            const styles = await getBeforeStyles(value.first());
-            await expectBackgroundImageToContainToken(
-              page,
-              styles.backgroundImage,
-              featureHighlightTokens.border,
-            );
+            // Webkit doesn't move focus to checkbox based controls with Tab,
+            // so the focus outline can only be verified in the other browsers.
+            if (browserName !== 'webkit') {
+              await expectFeatureHighlightFocusOutline(page, value.first(), '::before');
+            }
             await expect(page).toHaveScreenshot();
 
             await page.keyboard.press('Enter');
-            const stylesSelected = await getBeforeStyles(value.first());
-            await expectBackgroundImageToContainToken(
-              page,
-              stylesSelected.backgroundImage,
-              featureHighlightTokens.border,
-            );
+            if (browserName !== 'webkit') {
+              await expectFeatureHighlightFocusOutline(page, value.first(), '::before');
+            }
             await expect(page).toHaveScreenshot();
 
+            // The second checkbox is a regular one, it keeps the default focus outline.
             await page.keyboard.press('Tab');
-            const stylesSecond = await getBeforeStyles(value.nth(1));
-            expect(stylesSecond.backgroundImage).toContain('none');
+            await expectNoFeatureHighlightFocusOutline(page, value.nth(1), '::before');
           });
         }
       });
@@ -455,12 +437,7 @@ test.describe(`${TAG.VISUAL} `, () => {
           await test.step('Verify hover and focus styles', async () => {
             await page.keyboard.press('Tab');
             await trigger.hover();
-            const stylesEmpty = await getBeforeStyles(trigger.nth(0));
-            await expectBackgroundImageToContainToken(
-              page,
-              stylesEmpty.backgroundImage,
-              featureHighlightTokens.focusOutline,
-            );
+            await expectFeatureHighlightFocusOutline(page, trigger.nth(0));
             await expect(page).toHaveScreenshot();
           });
 
@@ -470,12 +447,7 @@ test.describe(`${TAG.VISUAL} `, () => {
             await page.keyboard.press('Enter');
             await options.first().waitFor({ state: 'hidden' });
 
-            const stylesSelected = await getBeforeStyles(trigger.nth(0));
-            await expectBackgroundImageToContainToken(
-              page,
-              stylesSelected.backgroundImage,
-              featureHighlightTokens.focusOutline,
-            );
+            await expectFeatureHighlightFocusOutline(page, trigger.nth(0));
             await expect(page).toHaveScreenshot();
           });
         }

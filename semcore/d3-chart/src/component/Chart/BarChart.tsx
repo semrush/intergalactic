@@ -31,6 +31,7 @@ class BarChartComponent extends AbstractChart<
     showYAxis: true,
     showTooltip: true,
     locale: 'en',
+    deltaPercentGrowthColor: 'success',
   } as const;
 
   get xScale() {
@@ -166,7 +167,7 @@ class BarChartComponent extends AbstractChart<
   }
 
   renderTooltip(): React.ReactNode {
-    const { data, groupKey, invertAxis, onClickHoverRect } = this.asProps;
+    const { data, groupKey, invertAxis, onClickHoverRect, showXAxis } = this.asProps;
 
     return (
       <HoverRect.Tooltip
@@ -174,6 +175,7 @@ class BarChartComponent extends AbstractChart<
         y={invertAxis ? groupKey : undefined}
         wMin={100}
         onClick={onClickHoverRect}
+        hideTickHover={!showXAxis}
       >
         {({ xIndex, yIndex }: any) => {
           const index = invertAxis ? yIndex : xIndex;

@@ -64,6 +64,10 @@ The maximum chart height depends on your specific case. For charts with greater 
 
 ![](static/max-height.png)
 
+### Links in ticks
+
+In charts with definite number of categories (most often, [bar charts](../bar-chart/bar-chart)), category ticks can serve as links leading to other reports or pages. Refer to the [example of ticks with links](../bar-chart/bar-chart-code#links-in-tick-labels) for more details.
+
 ## Tooltip
 
 Tooltips show data when hovering over chart parts, even if no data is present (use "n/a" in this case).
@@ -114,7 +118,7 @@ Table: Chart dot styles
 | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | ![](static/tooltip-4.png) ![](static/tooltip-2.png) | Default dot size is `8px * 8px`. The dot's size in hovered state is `10px * 10px`.                                      |
 | ![](static/tooltip-1.png)                           | Color for the additional vertical line that appears on line charts when hovering is `--chart-grid-y-accent-hover-line`. |
-| ![](static/tooltip-3.png)                           | Background color for hovering bar charts is `--chart-grid-bar-chart-hover`.                                             |
+| ![](static/tooltip-3.png)                           | Background color for hovering bar charts is `--chart-grid-bar-hover`.                                             |
 
 ## Legend
 

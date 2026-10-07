@@ -5,15 +5,15 @@ STabLine {
   max-width: 100%;
 
   &[size='m'] {
-    gap: var(--intergalactic-spacing-content-gap-xxlarge, 16px);
+    gap: var(--intergalactic-spacing-4x, 16px);
   }
   &[size='l'] {
-    gap: var(--intergalactic-spacing-content-gap-xxlarge-extended, 20px);
+    gap: var(--intergalactic-spacing-5x, 20px);
   }
 }
 
 STabLine[underlined] {
-  border-bottom: 1px solid var(--intergalactic-control-tab-line-border, oklch(0.137 0.026 175.7 / 0.161));
+  border-bottom: 1px solid var(--intergalactic-control-tab-line-border, oklch(0.277 0.066 242.6 / 0.18));
 }
 
 STabLineItem {
@@ -37,8 +37,8 @@ STabLineItem {
   cursor: pointer;
   border: none;
   background: transparent;
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
-  gap: var(--intergalactic-spacing-content-gap-medium, 6px);
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
+  gap: var(--intergalactic-spacing-1-5x, 6px);
   font-weight: var(--intergalactic-medium, 500);
 
   &::-moz-focus-inner {
@@ -67,7 +67,7 @@ STabLineItem {
   }
 
   &:hover::before {
-    background-color: var(--intergalactic-control-tab-line-border-hover, oklch(0.137 0.026 175.7 / 0.161));
+    background-color: var(--intergalactic-control-tab-line-border-hover, oklch(0.277 0.066 242.6 / 0.18));
     transition-duration: calc(var(--intergalactic-duration-extra-fast, 100) * 1ms);
   }
 
@@ -75,7 +75,7 @@ STabLineItem {
     bottom: -1px;
     height: 3px;
     transition-delay: calc(var(--intergalactic-duration-control, 200) * 1ms);
-    background-color: var(--intergalactic-control-tab-line-border-active, oklch(0.23 0.01 140));
+    background-color: var(--intergalactic-control-tab-line-border-active, oklch(0.23 0.009 245));
   }
 }
 
@@ -83,7 +83,7 @@ SCaret {
   position: absolute;
   bottom: -1px;
   height: 3px;
-  background: var(--intergalactic-control-tab-line-border-active, oklch(0.23 0.01 140));
+  background: var(--intergalactic-control-tab-line-border-active, oklch(0.23 0.009 245));
   transition: calc(var(--intergalactic-duration-control, 200) * 1ms) all ease-in-out;
 }
 

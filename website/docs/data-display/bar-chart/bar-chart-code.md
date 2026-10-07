@@ -119,3 +119,15 @@ Note that for ChartLegend `patterns` property works only with default `shape={'C
 </script>
 
 :::
+
+## Links in tick labels
+
+Tick labels on the X axis can be rendered as links — for example, to lead from a category to its detailed report.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/d3-chart/docs/examples/bar-chart/links.tsx';
+</script>
+
+:::

@@ -17,17 +17,18 @@ const eventEmitter = new PlotEventEmitter();
 
 const Demo = () => {
   const [width, height] = [600, 300];
-  const MARGIN = 80;
+  const MARGIN_X = 80;
+  const MARGIN_Y = 45;
 
   const xScale = scaleBand()
     .domain(data.map((d) => String(d.date_chart)))
-    .range([MARGIN, width - MARGIN])
+    .range([MARGIN_X, width - MARGIN_X])
     .paddingInner(0.4)
     .paddingOuter(0.2);
 
   const yScale = scaleLinear()
     .domain([0, Math.max(...data.map((d) => d.download))])
-    .range([height - MARGIN / 2, MARGIN / 2]);
+    .range([height - MARGIN_Y, MARGIN_Y]);
 
   const getDate = (date: number) =>
     new Intl.DateTimeFormat('en-US', {

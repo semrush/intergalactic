@@ -3,6 +3,8 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { type ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
+import type { ObjectData } from './AbstractChart.type';
+import { HIGHLIGHT_DOT } from './AbstractChart.type';
 import type { LineChartData, LineChartDefaultProps, LineChartProps, LineChartType } from './LineChart.type';
 // @ts-ignore
 import { Line, minMax, HoverLine } from '../..';
@@ -28,6 +30,7 @@ class LineChartComponent extends AbstractChart<
     showYAxis: true,
     showTooltip: true,
     locale: 'en',
+    deltaPercentGrowthColor: 'success',
   } as const;
 
   protected get xScale() {
@@ -83,7 +86,7 @@ class LineChartComponent extends AbstractChart<
             curve={curve}
             onClick={onClickLine}
           >
-            <Line.Dots display={showDots} />
+            <Line.Dots display={showDots || this.displayDots} />
             {area?.[item.id] && (
               <Line.Area area={area[item.id]} y0='y0' y1='y1' curve={areaCurve} />
             )}
@@ -94,10 +97,10 @@ class LineChartComponent extends AbstractChart<
   }
 
   protected renderTooltip() {
-    const { data, groupKey } = this.asProps;
+    const { data, groupKey, showXAxis } = this.asProps;
 
     return (
-      <HoverLine.Tooltip x={groupKey} wMin={100}>
+      <HoverLine.Tooltip x={groupKey} wMin={100} hideTickHover={!showXAxis}>
         {({ xIndex }: any) => {
           const dataItem = data[xIndex];
 
@@ -116,6 +119,10 @@ class LineChartComponent extends AbstractChart<
   protected getLegendAriaLabel(): string {
     return this.asProps.getI18nText('legendForChart', { chartType: 'Line' });
   }
+
+  protected displayDots = (i: number, isActive: boolean, noAround: boolean, data: ObjectData): boolean => {
+    return isActive || noAround || Boolean(data[HIGHLIGHT_DOT]);
+  };
 }
 
 /**

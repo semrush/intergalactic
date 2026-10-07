@@ -33,6 +33,8 @@ type HoverTooltip = (<X, Y>(
     }) => { children: ReturnEl };
     /** Flag for hide line on hovered value */
     hideHoverLine?: boolean | ((xIndex: number | null, yIndex: number | null) => boolean);
+    /** Hide tick hover */
+    hideTickHover?: boolean;
   } & Omit<NSBox.Props, 'children'>,
 ) => ReturnEl) &
 TooltipTypeBase;

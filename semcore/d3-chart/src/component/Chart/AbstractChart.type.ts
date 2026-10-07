@@ -6,10 +6,19 @@ import type React from 'react';
 import type { PatternsConfig } from '../../Pattern';
 // @ts-ignore
 import type { PlotSummarizerConfig } from '../../Plot';
-import type { PlotEventEmitter } from '../../utils';
+import type { interpolateValue, PlotEventEmitter } from '../../utils';
 import type { BaseChartLegendProps } from '../ChartLegend/BaseLegend.type';
 import type { TrendProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
+
+export const GOOD = Symbol('GOOD');
+export const BAD = Symbol('BAD');
+export const INSIGHTFUL = Symbol('INSIGHTFUL');
+export const HIGHLIGHT_DOT = Symbol('HIGHLIGHT_DOT');
+
+export const DATA_TYPE = Symbol('DATA_TYPE');
+export const FORECAST = Symbol('FORECAST_DATA');
+export const POTENTIAL = Symbol('POTENTIAL_DATA');
 
 export type BaseLegendProps = BaseChartLegendProps & {
   /**
@@ -44,7 +53,10 @@ export type BaseLegendProps = BaseChartLegendProps & {
   );
 
 export type ObjectDataKey = string;
-export type ObjectData = Record<ObjectDataKey, unknown>;
+export type ObjectData = Record<ObjectDataKey, number | typeof interpolateValue | Date | string | string[] | number[]> & {
+  [HIGHLIGHT_DOT]?: typeof GOOD | typeof BAD | typeof INSIGHTFUL;
+  [DATA_TYPE]?: typeof POTENTIAL | typeof FORECAST;
+};
 export type ListData = ObjectData[];
 
 /**
@@ -120,6 +132,12 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
    */
   getPercentDelta?: (key: ObjectDataKey, index: number, data: T) => number | null;
   /**
+   * Defines a color of the growing percentage delta in the tooltip.
+   * Use `critical` when an increase isn't a positive change.
+   * @default success
+   */
+  deltaPercentGrowthColor?: 'success' | 'critical';
+  /**
    * Scale for xAxis (see more in d3-scale)
    */
   xScale?: unknown;
@@ -136,8 +154,10 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
    */
   yTicksCount?: number;
   /** Enables multiline tick labels for X axis, applicable only for band scales */
+  /** @deprecated has no effect since v.18 */
   multilineXTicks?: boolean;
   /** Enables multiline tick labels for Y axis, applicable only for band scales */
+  /** @deprecated has no effect since v.18 */
   multilineYTicks?: boolean;
   /**
    * Group key for all array-based charts (for get keys of items for legend except that group key)
@@ -146,8 +166,8 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
   /**
    * function for format axis item text
    */
-  axisXValueFormatter?: (value: unknown) => string;
-  axisYValueFormatter?: (value: unknown) => string;
+  axisXValueFormatter?: (value: unknown) => React.ReactNode;
+  axisYValueFormatter?: (value: unknown) => React.ReactNode;
   /**
    * Function to format values in tooltip
    */

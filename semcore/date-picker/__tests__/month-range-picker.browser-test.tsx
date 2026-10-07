@@ -1,5 +1,5 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
-import type { Page } from '@semcore/testing-utils/playwright';
+import type { Locator, Page } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
@@ -396,6 +396,23 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         }
       };
 
+      /*
+        The number of Tab presses needed to reach the action buttons from a calendar cell
+        depends on the current date: when the focused cell belongs to the second (right) year
+        grid, the 'Next year' button is not in the tab path, when it belongs to the first one,
+        it is. So we tab until the expected button gets the focus instead of hardcoding a count.
+      */
+      const pressTabUntilFocused = async (locator: Locator, maxPresses = 10) => {
+        for (let i = 0; i < maxPresses; i++) {
+          await page.keyboard.press('Tab');
+          if (await locator.evaluate((node: Element) => node === document.activeElement)) {
+            return;
+          }
+        }
+
+        throw new Error(`Element is not focused after ${maxPresses} Tab presses`);
+      };
+
       await test.step('Open popper using Enter key', async () => {
         await pressTab(3);
         await page.keyboard.press('Enter');
@@ -527,7 +544,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('ArrowRight');
         await page.keyboard.press('Space');
 
-        await pressTab(6);
+        await pressTabUntilFocused(locators.button(page, 'Apply'));
         await expect(locators.button(page, 'Apply')).toBeFocused();
 
         await page.keyboard.press('Enter');

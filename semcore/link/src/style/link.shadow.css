@@ -16,20 +16,20 @@ SLink {
 
   &[enableVisited]:visited,
   &[enableVisited]:visited:hover {
-    color: var(--intergalactic-text-link-visited, oklch(0.63 0.228 298.9));
+    color: var(--intergalactic-text-link-visited, oklch(0.55 0.27 296));
   }
 
   &[theme='default'] {
-    color: var(--intergalactic-text-link-primary, oklch(0.1 0.03 137 / 0.899));
+    color: var(--intergalactic-text-link-primary, oklch(0.23 0.009 245));
 
     & SText {
-      text-decoration-color: var(--intergalactic-text-link-primary-underline, oklch(0.86 0.002 174.1));
+      text-decoration-color: var(--intergalactic-text-link-primary-underline, oklch(0.86 0.012 235.7));
     }
 
     &[active],
     &:hover,
     &:active {
-      color: var(--intergalactic-text-link-primary-hover-active, oklch(0.1 0.03 137 / 0.899));
+      color: var(--intergalactic-text-link-primary-hover-active, oklch(0.23 0.009 245));
 
       & SText {
         text-decoration-color: currentColor;
@@ -37,7 +37,7 @@ SLink {
     }
   }
   &[theme='light'] {
-    color: var(--intergalactic-text-link-secondary, oklch(0.097 0.023 156.5 / 0.468));
+    color: var(--intergalactic-text-link-secondary, oklch(0.182 0.045 244.8 / 0.593));
 
     & SText {
       text-decoration-color: transparent;
@@ -46,7 +46,7 @@ SLink {
     &[active],
     &:hover,
     &:active {
-      color: var(--intergalactic-text-link-secondary-hover-active, oklch(0.097 0.023 156.5 / 0.468));
+      color: var(--intergalactic-text-link-secondary-hover-active, oklch(0.182 0.045 244.8 / 0.593));
 
       & SText {
         text-decoration-color: currentColor;
@@ -71,16 +71,16 @@ SLink {
     }
   }
   &[theme='invert'] {
-    color: var(--intergalactic-text-link-primary-invert, oklch(0.999 0.001 180 / 0.949));
+    color: var(--intergalactic-text-link-primary-invert, oklch(0.991 0.005 232.5 / 0.959));
 
     & SText {
-      text-decoration-color: var(--intergalactic-text-link-primary-underline, oklch(0.86 0.002 174.1));
+      text-decoration-color: var(--intergalactic-text-link-primary-underline, oklch(0.86 0.012 235.7));
     }
 
     &[active],
     &:hover,
     &:active {
-      color: var(--intergalactic-text-link-primary-invert-hover-active, oklch(0.999 0.001 180 / 0.949));
+      color: var(--intergalactic-text-link-primary-invert-hover-active, oklch(0.991 0.005 232.5 / 0.959));
 
       & SText {
         text-decoration-color: currentColor;
@@ -114,11 +114,11 @@ SAddon {
 
 SLink SAddon {
   &:not(:only-child):first-child {
-    margin-right: var(--intergalactic-spacing-content-gap-small, 4px);
+    margin-right: var(--intergalactic-spacing-1x, 4px);
   }
 
   &:not(:only-child):last-child {
-    margin-left: var(--intergalactic-spacing-content-gap-small, 4px);
+    margin-left: var(--intergalactic-spacing-1x, 4px);
   }
 }
 

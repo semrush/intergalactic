@@ -45,13 +45,20 @@ export const locators = {
     return typeof index === 'number' ? base.nth(index) : base;
   },
   /**
-   * The hovered tick pill is rendered by plain svg tags, so it has no data-ui-name.
-   * It is the only rounded rect drawn inside the plot, which makes `rect[rx]` a
-   * stable structural anchor that survives style and class-name changes.
+   * The hovered tick pill is rendered by plain tags, so it has no data-ui-name. Since the
+   * tick rework it is a `foreignObject` wrapping HTML rather than a `<g>` of `<rect>` and
+   * `<text>`, so the generated class name is the stable anchor. Only the name part is
+   * matched; the hash suffix changes between builds.
    */
-  hoveredTick: (page: Page) => page.locator('svg[data-ui-name="Plot"] g:has(> rect[rx])'),
-  hoveredTickRect: (page: Page) => locators.hoveredTick(page).locator('rect'),
-  hoveredTickText: (page: Page) => locators.hoveredTick(page).locator('text'),
+  hoveredTick: (page: Page) =>
+    page.locator('svg[data-ui-name="Plot"] foreignObject[class*="SHoveredTickWrapper"]'),
+  /**
+   * The rounded background and the label now live on the same `<span>`, so both locators
+   * resolve to one node. They are kept apart because the assertions mean different things:
+   * one checks the pill box, the other its text.
+   */
+  hoveredTickRect: (page: Page) => locators.hoveredTick(page).locator('span'),
+  hoveredTickText: (page: Page) => locators.hoveredTick(page).locator('span'),
   diffUp: (page: Page) => page.locator('[data-ui-name="DiffUp"]'),
   diffDown: (page: Page) => page.locator('[data-ui-name="DiffDown"]'),
 };
@@ -110,6 +117,27 @@ const deltaProps = {
   duration: 0,
 };
 
+/**
+ * Trend and resolved colour of every delta cell in the open tooltip, in render order.
+ *
+ * The trend is read off the generated class rather than an attribute: `sstyled` turns the
+ * `trend` / `deltaPercentGrowthColor` props into class names and leaves nothing on the DOM.
+ */
+const readTrendColours = (page: Page) =>
+  page.locator('[class*="STooltipDeltaWrapper"]').evaluateAll((els) =>
+    els.map((el) => ({
+      trend: Array.from(el.classList).find((c) => c.includes('_trend_'))?.match(/_trend_(\w+?)_/)?.[1],
+      color: getComputedStyle(el).color,
+    })),
+  );
+
+/**
+ * The muted colour a `stable` delta falls back to. It is the tooltip's own secondary text
+ * colour, so it is read from the title instead of being hard-coded.
+ */
+const readTooltipTitleColour = (page: Page) =>
+  page.locator('[data-ui-name="HoverLine.Tooltip.Title"]').evaluate((el) => getComputedStyle(el).color);
+
 const hoverPlotCenter = async (page: Page) => {
   const plot = locators.plot(page).first();
   await plot.waitFor({ state: 'visible' });
@@ -149,8 +177,7 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 test.describe(`${TAG.VISUAL}`, () => {
   test.describe('Chart Plot', () => {
     test('Verify paddings and margins apply to the plot', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart',
-        '@line-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/paddings-&-margins.tsx', 'en');
 
@@ -293,8 +320,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     pairwiseCases.forEach((c) => {
       test(`Verify pairwise ${c.name}`, {
-        tag: [TAG.PRIORITY_HIGH, '@d3-chart',
-          '@bar-chart'],
+        tag: [TAG.PRIORITY_HIGH, '@d3-chart'],
       }, async ({ page }) => {
         await loadPage(page, GRID_AXIS_EXAMPLE, 'en', c.props);
         await locators.plot(page).waitFor({ state: 'visible' });
@@ -303,8 +329,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify vertical writing mode + primaryText ticks on both axes', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart',
-        '@bar-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, GRID_AXIS_EXAMPLE, 'en', {
         yShowTitle: true,
@@ -321,9 +346,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test.describe('Adaptive chart', () => {
     test('Verify chart looks good on small resolutions', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart',
-        '@line-chart',
-        '@responsive'],
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/responsive-low-level-chart.tsx', 'en');
 
@@ -339,8 +362,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test.describe('Hover Line and Tooltip', () => {
     test('Verify Tooltip controlled appearing', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@base-components', '@flex-box', '@typography',
-        '@line-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/tooltip-control.tsx', 'en');
       await page.waitForTimeout(500); // wait for finish animation
@@ -350,9 +372,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify synscronous charts by EventEmitter', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart',
-        '@bar-chart',
-        '@line-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/synchronous-charts.tsx', 'en');
 
@@ -366,8 +386,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test.describe('Pattern fills, dots and lines', () => {
     test('Verify enforcing patterns', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart',
-        '@stacked-area-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/enforcing-patterns.tsx', 'en');
 
@@ -397,9 +416,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('Hovered tick', () => {
     (['Line', 'Rect'] as const).forEach((hoverType) => {
       test(`Verify the tick pill appears under the hovered tick for Hover${hoverType}`, {
-        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
-          '@bar-chart',
-          '@line-chart'],
+        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
       }, async ({ page }) => {
         await loadPage(page, HOVERED_TICK_EXAMPLE, 'en', { hoverType });
 
@@ -414,10 +431,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test.describe('Tooltip percent delta', () => {
     test('Verify upward deltas render with the DiffUp icon', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
-        '@area-chart',
-        '@base-components',
-        '@flex-box'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', deltaProps);
 
@@ -441,8 +455,7 @@ We verify states, visibility, and attributes.
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Chart Plot', () => {
     test('Verify Plot roles and attributes', {
-      tag: [TAG.PRIORITY_HIGH, '@d3-chart',
-        '@line-chart'],
+      tag: [TAG.PRIORITY_HIGH, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/d3-chart/tests/examples/d3-chart/plot-props.tsx', 'en');
 
@@ -460,9 +473,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           await expect(svg).toHaveAttribute(attr, value);
         }
 
-        const path = svg.locator('path');
-
-        await expect(path).toHaveAttribute('aria-hidden', 'true');
+        await expectEachToHaveAttribute(svg.locator('path'), 'aria-hidden', 'true');
       });
 
       await test.step('Verify data attributes and accessibility structure', async () => {
@@ -527,10 +538,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         for (const [attr, value] of svgAttributes) {
           await expect(svg).toHaveAttribute(attr, value);
         }
-
-        const path = svg.locator('path');
-
-        await expect(path).toHaveAttribute('aria-hidden', 'true');
+        await expectEachToHaveAttribute(svg.locator('path'), 'aria-hidden', 'true');
       });
     });
   });
@@ -539,8 +547,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     const GRID_AXIS_EXAMPLE = 'stories/components/d3-chart/tests/examples/d3-chart/grid-axis-props.tsx';
 
     test('Verify attributes of all <text> elements in the chart', {
-      tag: [TAG.PRIORITY_HIGH, '@d3-chart',
-        '@bar-chart'],
+      tag: [TAG.PRIORITY_HIGH, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, GRID_AXIS_EXAMPLE, 'en', {
         yShowTitle: true,
@@ -567,8 +574,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify yHide=true hides at least one axis via display:none', {
-      tag: [TAG.PRIORITY_HIGH, '@d3-chart',
-        '@bar-chart'],
+      tag: [TAG.PRIORITY_HIGH, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, GRID_AXIS_EXAMPLE, 'en', { yHide: true });
       await locators.plot(page).waitFor({ state: 'visible' });
@@ -586,8 +592,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify yTicksHide=true hides Y tick texts via display:none', {
-      tag: [TAG.PRIORITY_HIGH, '@d3-chart',
-        '@bar-chart'],
+      tag: [TAG.PRIORITY_HIGH, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, GRID_AXIS_EXAMPLE, 'en', { yTicksHide: true });
       await locators.plot(page).waitFor({ state: 'visible' });
@@ -603,27 +608,153 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       }
       expect(hiddenCount).toBeGreaterThan(0);
     });
+
+    test('Verify grid lines are dashed and drawn with the chart-grid-line token', {
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart',
+        '@bar-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, GRID_AXIS_EXAMPLE, 'en', { yShowGrid: true });
+      await locators.plot(page).waitFor({ state: 'visible' });
+
+      const grids = locators.axisGrid(page);
+      expect(await grids.count()).toBeGreaterThan(0);
+
+      const style = await grids.first().evaluate((el) => {
+        const probe = document.createElement('span');
+        probe.style.color = 'var(--intergalactic-chart-grid-line)';
+        document.body.append(probe);
+        const tokenColor = getComputedStyle(probe).color;
+        probe.remove();
+
+        const computed = getComputedStyle(el);
+
+        return {
+          dashArray: computed.strokeDasharray,
+          lineCap: computed.strokeLinecap,
+          stroke: computed.stroke,
+          tokenColor,
+        };
+      });
+
+      expect(style.dashArray.replace(/px/g, '').split(/[\s,]+/).filter(Boolean)).toEqual(['0', '6']);
+      expect(style.lineCap).toBe('round');
+      expect(style.stroke).toBe(style.tokenColor);
+    });
+
+    test('Verify tick labels use tabular figures', {
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart',
+        '@bar-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, GRID_AXIS_EXAMPLE, 'en');
+      await locators.plot(page).waitFor({ state: 'visible' });
+
+      const numeric = await locators
+        .axisTicks(page)
+        .first()
+        .evaluate((el) => getComputedStyle(el).fontVariantNumeric);
+
+      expect(numeric).toContain('tabular-nums');
+    });
+  });
+
+  test.describe('Tick links', () => {
+    const LINKS_EXAMPLE = 'stories/components/d3-chart/docs/examples/bar-chart/links.tsx';
+
+    test('Verify axisXValueFormatter renders links in the X tick labels', {
+      tag: [TAG.PRIORITY_HIGH, '@d3-chart',
+        '@bar-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, LINKS_EXAMPLE, 'en');
+      await locators.plot(page).waitFor({ state: 'visible' });
+
+      const links = locators.axisTicks(page).locator('a');
+
+      await expect(links).toHaveCount(3);
+      await expect(links.nth(0)).toHaveAttribute('href', 'https://www.semrush.com');
+      await expect(links.nth(1)).toHaveAttribute('href', '#legend-and-pattern-fill');
+      await expect(links.nth(2)).toHaveAttribute(
+        'href',
+        '/intergalactic/data-display/area-chart/area-chart',
+      );
+    });
+
+    test('Verify a tick holding a link is exposed while a plain tick stays hidden', {
+      tag: [TAG.PRIORITY_HIGH, '@d3-chart',
+        '@bar-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, LINKS_EXAMPLE, 'en');
+      await locators.plot(page).waitFor({ state: 'visible' });
+
+      const ticks = locators.axisTicks(page);
+      const count = await ticks.count();
+      expect(count).toBeGreaterThan(0);
+
+      let exposed = 0;
+      let hidden = 0;
+
+      for (let i = 0; i < count; i++) {
+        const tick = ticks.nth(i);
+        const hasLink = (await tick.locator('a').count()) > 0;
+        const ariaHidden = await tick.getAttribute('aria-hidden');
+
+        if (hasLink) {
+          expect(ariaHidden).toBeNull();
+          exposed++;
+        } else {
+          expect(ariaHidden).toBe('true');
+          hidden++;
+        }
+      }
+
+      expect(exposed).toBe(3);
+      expect(hidden).toBeGreaterThan(0);
+    });
+
+    test('Verify tick links can be reached with the keyboard', {
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@d3-chart',
+        '@bar-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, LINKS_EXAMPLE, 'en');
+      await locators.plot(page).waitFor({ state: 'visible' });
+
+      const firstLink = locators.axisTicks(page).locator('a').first();
+      await firstLink.focus();
+
+      await expect(firstLink).toBeFocused();
+    });
+
+    test('Verify a tick link keeps the tick label font size', {
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart',
+        '@bar-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, LINKS_EXAMPLE, 'en');
+      await locators.plot(page).waitFor({ state: 'visible' });
+
+      const ticks = locators.axisTicks(page);
+      const linkSize = await ticks
+        .locator('a')
+        .first()
+        .evaluate((el) => getComputedStyle(el).fontSize);
+
+      const plainTick = ticks.filter({ hasNot: page.locator('a') }).first();
+      const tickSize = await plainTick.evaluate((el) => getComputedStyle(el).fontSize);
+
+      // The link is styled as a link, but it must not grow or shrink the label.
+      expect(linkSize).toBe(tickSize);
+    });
   });
 
   test.describe('Pattern fills, dots and lines', () => {
     test('Verify pattern styles', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart',
-        '@area-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/pattern-fill.tsx', 'en');
 
-      const patterns = page.locator('pattern');
+      const patterns = page.locator('pattern[viewBox]');
 
-      const count = await patterns.count();
-
-      for (let i = 0; i < count; i++) {
-        const pattern = patterns.nth(i);
-        await expect(pattern).toHaveAttribute('patternUnits', 'userSpaceOnUse');
-        await expect(pattern).toHaveAttribute('width', '12');
-        await expect(pattern).toHaveAttribute('height', '12');
-        await expect(pattern).toHaveAttribute('x', '0');
-        await expect(pattern).toHaveAttribute('y', '0');
-      }
+      await expectEachToHaveAttribute(patterns, 'patternUnits', 'userSpaceOnUse');
+      await expectEachToHaveAttribute(patterns, 'width', '12');
+      await expectEachToHaveAttribute(patterns, 'height', '12');
 
       // The example draws no dots at rest (`showDots` is not set), so the hovered point is
       // the only one that renders. With patterns on, a dot is a `<use>` of the pattern
@@ -639,8 +770,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test.describe('Dots', () => {
     test('Verify dots radius', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@base-components', '@flex-box', '@typography',
-        '@line-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/tooltip.tsx', 'en');
 
@@ -657,10 +787,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify hovered dot grows to the active radius', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@line-chart',
-        '@base-components',
-        '@flex-box',
-        '@typography'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@line-chart'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/tooltip.tsx', 'en');
 
@@ -677,11 +804,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(activeDots).toHaveCount(1);
     });
 
-    /**
-     * `showDots` no longer gates the dots on or off, it is forwarded as `display`:
-     * `showDots={false}` hides the resting dots but the hovered point is still drawn,
-     * while `showDots` renders every dot. Both examples below plot two series.
-     */
     ([
       ['Chart.Line', LINE_CHART_EXAMPLE, '[data-ui-name="Line.Dots"]'],
       ['Chart.Area', AREA_CHART_EXAMPLE, '[data-ui-name="Area.Dots"]'],
@@ -731,9 +853,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Hovered tick', () => {
     (['Line', 'Rect'] as const).forEach((hoverType) => {
       test(`Verify hideTickHover removes the tick pill for Hover${hoverType}`, {
-        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
-          '@bar-chart',
-          '@line-chart'],
+        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
       }, async ({ page }) => {
         await loadPage(page, HOVERED_TICK_EXAMPLE, 'en', { hoverType, hideTickHover: true });
 
@@ -744,9 +864,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       test(`Verify the tick pill is rendered on hover for Hover${hoverType}`, {
-        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
-          '@bar-chart',
-          '@line-chart'],
+        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
       }, async ({ page }) => {
         await loadPage(page, HOVERED_TICK_EXAMPLE, 'en', { hoverType });
 
@@ -758,9 +876,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify the tick pill stays inside the plot on the first and the last tick', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
-        '@bar-chart',
-        '@line-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -794,9 +910,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify the hover line renders notch caps on both ends', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart',
-        '@bar-chart',
-        '@line-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -854,10 +968,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify Chart.Bar hovers with a rect and gets no caps', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
-        '@bar-chart',
-        '@base-components',
-        '@flex-box'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, BAR_CHART_EXAMPLE, 'en', { duration: 0 });
 
@@ -870,9 +981,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify hideHoverLine removes the hover line and the tick pill', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart',
-        '@bar-chart',
-        '@line-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -888,9 +997,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify hovering the axis area below the plot keeps the tooltip open', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
-        '@bar-chart',
-        '@line-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -910,6 +1017,64 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await expect(locators.hoveredTickText(page)).toHaveCount(1);
     });
+
+    (
+      [
+        ['no axis at all', { showXAxis: false, showYAxis: false }],
+        ['only the Y axis', { showXAxis: false }],
+      ] as const
+    ).forEach(([name, axisProps]) => {
+      test(`Verify hovering a chart with ${name} renders no pill and raises no error`, {
+        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
+          '@line-chart'],
+      }, async ({ page }) => {
+        const pageErrors: string[] = [];
+        page.on('pageerror', (error) => pageErrors.push(error.message));
+
+        await loadPage(page, LINE_CHART_EXAMPLE, 'en', { ...axisProps, duration: 0 });
+        await locators.plot(page).first().waitFor({ state: 'visible' });
+
+        await hoverPlotCenter(page);
+
+        await expect(locators.hoveredTick(page)).toHaveCount(0);
+        expect(pageErrors).toEqual([]);
+      });
+    });
+
+    (['bottom', 'top'] as const).forEach((xPosition) => {
+      test(`Verify the tick pill sits on the ${xPosition} side when the X axis is there`, {
+        tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart',
+          '@bar-chart'],
+      }, async ({ page }) => {
+        await loadPage(
+          page,
+          'stories/components/d3-chart/tests/examples/d3-chart/grid-axis-props.tsx',
+          'en',
+          { xPosition, hoverType: 'line' },
+        );
+
+        const plot = locators.plot(page).first();
+        await plot.waitFor({ state: 'visible' });
+
+        await hoverPlotCenter(page);
+
+        const pill = locators.hoveredTick(page).first();
+        await expect(pill).toHaveAttribute('position', xPosition);
+
+        const plotBox = await plot.boundingBox();
+        const pillBox = await pill.boundingBox();
+        if (!plotBox || !pillBox) throw new Error('Bounding box not found');
+
+        const plotCenterY = plotBox.y + plotBox.height / 2;
+        const pillCenterY = pillBox.y + pillBox.height / 2;
+
+        if (xPosition === 'top') {
+          expect(pillCenterY).toBeLessThan(plotCenterY);
+        } else {
+          expect(pillCenterY).toBeGreaterThan(plotCenterY);
+        }
+      });
+    });
   });
 
   /**
@@ -926,10 +1091,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
    */
   test.describe('Tooltip percent delta', () => {
     test('Verify upward deltas render with the DiffUp icon', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
-        '@area-chart',
-        '@base-components',
-        '@flex-box'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', deltaProps);
 
@@ -942,10 +1104,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify downward deltas render with the DiffDown icon', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
-        '@area-chart',
-        '@base-components',
-        '@flex-box'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', deltaProps);
 
@@ -966,30 +1125,19 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
      * that survives a palette tweak but still catches the two being swapped.
      */
     test('Verify the diff is green upwards, red downwards and muted when stable', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
-        '@area-chart',
-        '@base-components',
-        '@flex-box'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', deltaProps);
 
-      const readTrendColours = () =>
-        page.locator('[class*="STooltipDeltaWrapper"]').evaluateAll((els) =>
-          els.map((el) => ({
-            trend: Array.from(el.classList).find((c) => c.includes('_trend_'))?.match(/_trend_(\w+?)_/)?.[1],
-            color: getComputedStyle(el).color,
-          })),
-        );
-
       // Jan 16: both series grow. Jan 6: one grows, the other stays put.
       await hoverAreaPoint(page, 3, 'Tuesday, January 16, 2024');
-      const upward = await readTrendColours();
+      const upward = await readTrendColours(page);
 
       await hoverAreaPoint(page, 6, 'Wednesday, January 31, 2024');
-      const downward = await readTrendColours();
+      const downward = await readTrendColours(page);
 
       await hoverAreaPoint(page, 1, 'Saturday, January 6, 2024');
-      const stable = (await readTrendColours()).find((d) => d.trend === 'stable');
+      const stable = (await readTrendColours(page)).find((d) => d.trend === 'stable');
 
       expect(upward.every((d) => d.trend === 'upward')).toBe(true);
       expect(downward.every((d) => d.trend === 'downward')).toBe(true);
@@ -1003,9 +1151,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       expect(hueOf(downward[0].color)).toBeLessThan(60);
 
       // A stable diff is not coloured like a trend, it uses the tooltip's secondary text.
-      const titleColour = await page
-        .locator('[data-ui-name="HoverLine.Tooltip.Title"]')
-        .evaluate((el) => getComputedStyle(el).color);
+      const titleColour = await readTooltipTitleColour(page);
 
       expect(stable!.color).toBe(titleColour);
       expect(stable!.color).not.toBe(upward[0].color);
@@ -1013,20 +1159,107 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     /**
-     * Pins the behaviour of the awkward inputs, all read off the edge-case example.
-     * None of these is a crash, but two of them are judgement calls worth noticing if
-     * they ever change: a sub-0.05% move shows as "0.0%" yet still points upward, and a
-     * negative baseline keeps growth green because the formula divides by `Math.abs(prev)`.
+     * `deltaPercentGrowthColor='critical'` is for metrics where growing is the bad outcome
+     * — bounce rate, error rate, cost. It swaps the two trend colours and nothing else.
      *
-     * Both the grouping separator and the decimal place come from `defaultTooltipFormatter`,
-     * which runs `Intl.NumberFormat` under the chart's `locale` — these expectations are
-     * written for `en` and would need adjusting for a locale with other separators.
+     * Rather than naming the colours, the test reads both modes and asserts they are each
+     * other's mirror: whatever `success` paints a decline is what `critical` has to paint
+     * growth. That needs no knowledge of the palette, so a theme change cannot break it,
+     * and it fails the moment the swap stops happening or starts leaking a third colour.
      */
-    test('Verify how the diff handles extreme and awkward values', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart',
-        '@bar-chart',
+    test('Verify deltaPercentGrowthColor=critical swaps the two trend colours', {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
+        '@area-chart',
         '@base-components',
         '@flex-box'],
+    }, async ({ page }) => {
+      const readBothTrends = async (deltaPercentGrowthColor: 'success' | 'critical') => {
+        await loadPage(page, AREA_CHART_EXAMPLE, 'en', { ...deltaProps, deltaPercentGrowthColor });
+
+        // Jan 16: both series grow. Jan 31: both decline.
+        await hoverAreaPoint(page, 3, 'Tuesday, January 16, 2024');
+        const upward = await readTrendColours(page);
+
+        await hoverAreaPoint(page, 6, 'Wednesday, January 31, 2024');
+        const downward = await readTrendColours(page);
+
+        return { upward, downward };
+      };
+
+      const success = await readBothTrends('success');
+      const critical = await readBothTrends('critical');
+
+      // The direction is untouched — only the colour carries the new meaning.
+      expect(critical.upward.every((d) => d.trend === 'upward')).toBe(true);
+      expect(critical.downward.every((d) => d.trend === 'downward')).toBe(true);
+
+      expect(critical.upward[0].color).toBe(success.downward[0].color);
+      expect(critical.downward[0].color).toBe(success.upward[0].color);
+      expect(critical.upward[0].color).not.toBe(success.upward[0].color);
+    });
+
+    test('Verify deltaPercentGrowthColor=critical keeps the icons and the printed values', {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
+        '@area-chart',
+        '@base-components',
+        '@flex-box'],
+    }, async ({ page }) => {
+      await loadPage(page, AREA_CHART_EXAMPLE, 'en', {
+        ...deltaProps,
+        deltaPercentGrowthColor: 'critical',
+      });
+
+      await hoverAreaPoint(page, 3, 'Tuesday, January 16, 2024');
+
+      await expect(locators.diffUp(page)).toHaveCount(2);
+      await expect(locators.diffDown(page)).toHaveCount(0);
+      await expect(page.getByText('100%', { exact: true })).toBeVisible();
+      await expect(page.getByText('33.3%', { exact: true })).toBeVisible();
+
+      await hoverAreaPoint(page, 6, 'Wednesday, January 31, 2024');
+
+      await expect(locators.diffDown(page)).toHaveCount(2);
+      await expect(locators.diffUp(page)).toHaveCount(0);
+      // Still printed through `Math.abs`, so still no minus sign.
+      await expect(page.getByText('14.3%', { exact: true })).toBeVisible();
+      await expect(page.getByText('-14.3%', { exact: true })).toHaveCount(0);
+    });
+
+    /**
+     * A `stable` delta has no direction to reinterpret, so `critical` must leave it on the
+     * muted secondary colour instead of pulling it into either trend palette.
+     */
+    test('Verify deltaPercentGrowthColor=critical leaves a stable delta muted', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart',
+        '@area-chart',
+        '@base-components',
+        '@flex-box'],
+    }, async ({ page }) => {
+      await loadPage(page, AREA_CHART_EXAMPLE, 'en', {
+        ...deltaProps,
+        deltaPercentGrowthColor: 'critical',
+      });
+
+      // Jan 6: `line` grows while `line2` stays put, so both cases are in one tooltip.
+      await hoverAreaPoint(page, 1, 'Saturday, January 6, 2024');
+      const deltas = await readTrendColours(page);
+      const stable = deltas.find((d) => d.trend === 'stable');
+      const upward = deltas.find((d) => d.trend === 'upward');
+
+      expect(stable).toBeDefined();
+      expect(upward).toBeDefined();
+      expect(stable!.color).toBe(await readTooltipTitleColour(page));
+      expect(stable!.color).not.toBe(upward!.color);
+    });
+
+    /**
+     * Pins the behaviour of the awkward inputs, all read off the edge-case example.
+     * None of these is a crash, but two of them are judgement calls worth noticing if
+     * they ever change: a sub-0.05% move collapses into a stable "0", and a negative
+     * baseline turns growth into a red decline because the formula divides by it.
+     */
+    test('Verify how the diff handles extreme and awkward values', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, DELTA_EDGE_CASES_EXAMPLE, 'en', {});
 
@@ -1058,31 +1291,28 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Growth beyond 100% keeps its full value', async () => {
         expect(diffAfter('overHundred')).toMatchObject({ text: '400%', trend: 'upward' });
-        expect(diffAfter('huge')).toMatchObject({ text: '9,900%', trend: 'upward' });
+        expect(diffAfter('huge')).toMatchObject({ text: '9900%', trend: 'upward' });
       });
 
       await test.step('Fractions keep one decimal place', async () => {
         expect(diffAfter('fraction')).toMatchObject({ text: '0.5%', trend: 'upward' });
       });
 
-      await test.step('A move below 0.05% rounds to zero but keeps its direction', async () => {
-        // 10000 -> 10004 is +0.04%. Rounding happens on the way to the screen, not in the
-        // delta itself, so the number reads "0.0%" while the trend is still computed from
-        // the raw 0.04 and keeps the upward icon — a tiny move no longer passes for "no
-        // change", which it did while the delta was rounded with `toFixed(1)` first.
-        expect(diffAfter('roundsToZero')).toMatchObject({ text: '0.0%', trend: 'upward' });
+      await test.step('A move below 0.05% collapses into a stable zero', async () => {
+        // 10000 -> 10004 is +0.04%, which rounds away and reads as no change at all.
+        // A stable delta still carries the percent sign, it just loses the icon.
+        expect(diffAfter('roundsToZero')).toMatchObject({ text: '0%', trend: 'stable' });
       });
 
       await test.step('A negative baseline keeps the sign of the actual move', async () => {
+        // -10 -> -5 is an improvement, and dividing by |prev| keeps it a green +50%
+        // instead of flipping it into a red decline.
         expect(diffAfter('negativeBase')).toMatchObject({ text: '50%', trend: 'upward' });
       });
     });
 
     test('Verify an unchanged value renders a stable delta without an icon', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart',
-        '@area-chart',
-        '@base-components',
-        '@flex-box'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', deltaProps);
 
@@ -1094,10 +1324,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify the first data point renders no delta column', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart',
-        '@area-chart',
-        '@base-components',
-        '@flex-box'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', deltaProps);
 
@@ -1116,10 +1343,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
      * is 0) while `line2` does, which is exactly the mixed case that would break.
      */
     test('Verify rows stay aligned when only some series have a delta', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart',
-        '@area-chart',
-        '@base-components',
-        '@flex-box'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', { ...deltaProps, withZeroValue: true });
 
@@ -1145,15 +1369,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         });
 
       expect(grid.columns).toBe(3);
+      // A partially filled row would leave a hole, and the cell count would stop being a
+      // whole number of rows with everything after it shifted one column to the left.
       expect(grid.cellCount % grid.columns).toBe(0);
+      // Both series labels must still start their own row.
       expect(grid.firstColumnTexts).toEqual(['line', 'line2']);
     });
 
     test('Verify no delta is rendered when showDeltaPercentInTooltip is off', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart',
-        '@area-chart',
-        '@base-components',
-        '@flex-box'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', {
         ...deltaProps,
@@ -1194,10 +1418,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     };
 
     test('Verify HoverLine highlights a value the axis does not label', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
-        '@base-components',
-        '@flex-box',
-        '@line-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, LINE_CHART_EXAMPLE, 'en', { duration: 0 });
 
@@ -1211,37 +1432,38 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify HoverLine formats the value the same way the axis does', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
-        '@area-chart',
-        '@base-components',
-        '@flex-box'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', { duration: 0 });
 
       // Jan 21 is both a data point and an axis label, so the two have to agree.
       await hoverDot(page, '[data-ui-name="Area.Dots"]', 4);
 
-      await expect(locators.hoveredTickText(page)).toHaveText('1/21/2024');
+      await expect(locators.hoveredTickText(page)).toHaveText('Jan 21');
 
       const labels = await readXAxisLabels(page);
-      expect(labels).toContain('1/21/2024');
+      expect(labels).toContain('Jan 21');
     });
 
     test('Verify HoverRect highlights the hovered category', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
-        '@bar-chart',
-        '@base-components',
-        '@flex-box'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, BAR_CHART_EXAMPLE, 'en', { duration: 0 });
 
       await hoverPlotCenter(page);
 
+      // Bar charts hover through HoverRect, which has to highlight the tick all the same.
       await expect(page.locator('[data-ui-name="Tooltip.Trigger"]').first()).toHaveJSProperty('tagName', 'rect');
       await expect(locators.hoveredTickText(page)).toHaveText('Category 2');
     });
   });
 
+  /**
+   * The tooltip is inverted, and `chart-palette-order-1` is a dark neutral that matches
+   * its background, so the 1px ring is the only thing separating the two. The unit tests
+   * cover which offset each colour is given; these check the other half of the chain —
+   * that the rule applies and the relative colour actually resolves in the browser.
+   */
   test.describe('Tooltip dot ring', () => {
     const readDotRings = (page: Page) =>
       page.locator('[class*="SDotCircle"]').evaluateAll((els) =>
@@ -1259,10 +1481,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       );
 
     test('Verify each dot is ringed by a lighter shade of its own colour', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
-        '@base-components',
-        '@flex-box',
-        '@line-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, LINE_CHART_EXAMPLE, 'en', { duration: 0 });
 
@@ -1285,10 +1504,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test.describe('Tooltip default formatting', () => {
     test('Verify a Date group key is formatted through Intl for the given locale', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
-        '@base-components',
-        '@flex-box',
-        '@line-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -1312,10 +1528,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify the default date carries the full weekday and month and no time', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
-        '@base-components',
-        '@flex-box',
-        '@line-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -1355,10 +1568,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     for (const [titleFormat, expected] of titleFormats) {
       test(`Verify tooltipTitleFormatter renders the ${titleFormat} title`, {
-        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
-          '@base-components',
-          '@flex-box',
-          '@line-chart'],
+        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
       }, async ({ page }) => {
         await loadPage(
           page,
@@ -1374,10 +1584,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }
 
     test('Verify tooltipTitleFormatter leaves the series values alone', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
-        '@base-components',
-        '@flex-box',
-        '@line-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(
         page,

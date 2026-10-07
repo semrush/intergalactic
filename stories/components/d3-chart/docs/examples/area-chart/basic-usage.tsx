@@ -19,6 +19,9 @@ const Demo = () => {
       data={data}
       plotWidth={500}
       plotHeight={200}
+      marginX={40}
+      xTicksCount={5}
+      yTicksCount={4}
       tooltipValueFormatter={formatDate}
       aria-label='Area chart'
     />

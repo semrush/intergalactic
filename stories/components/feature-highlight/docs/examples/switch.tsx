@@ -13,7 +13,7 @@ const Demo = () => (
         Medium switch
         <Box
           tag={SummaryAI}
-          color='--intergalactic-icon-primary-feature-highlight'
+          color='--intergalactic-feature-highlight-icon-primary'
           ml={2}
           style={{ verticalAlign: 'middle' }}
         />
@@ -34,7 +34,7 @@ const Demo = () => (
         Large switch
         <Box
           tag={SummaryAI}
-          color='--intergalactic-icon-primary-feature-highlight'
+          color='--intergalactic-feature-highlight-icon-primary'
           ml={2}
           style={{ verticalAlign: -3 }}
         />
