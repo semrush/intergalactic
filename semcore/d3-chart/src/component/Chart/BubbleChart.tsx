@@ -33,6 +33,8 @@ class BubbleChartComponent extends AbstractChart<
     locale: 'en',
   } as const;
 
+  protected plotPadding = 8;
+
   protected get dataKeys(): string[] {
     const { data } = this.props;
 

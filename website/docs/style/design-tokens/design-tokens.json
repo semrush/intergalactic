@@ -505,7 +505,7 @@
   {
     "name": "--intergalactic-border-accent",
     "value": "oklch(0.23 0.009 245)",
-    "description": "Accent border for the active and selected states..",
+    "description": "Accent border for the active and selected states.",
     "components": [
       "accordion"
     ]
@@ -526,7 +526,6 @@
     "components": [
       "card",
       "color-picker",
-      "d3-chart",
       "data-table",
       "date-picker",
       "dropdown",
@@ -748,7 +747,7 @@
   },
   {
     "name": "--intergalactic-chart-grid-line",
-    "value": "oklch(0.95 0.006 232.7)",
+    "value": "oklch(0.7 0.021 242)",
     "description": "Grid and axis guide lines for charts.",
     "components": [
       "d3-chart"
@@ -3003,7 +3002,6 @@
     "description": "Supplementary helper text near controls (short guidance), distinct from placeholder text inside inputs.",
     "components": [
       "button",
-      "d3-chart",
       "typography"
     ]
   },
