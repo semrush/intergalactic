@@ -756,6 +756,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expectEachToHaveAttribute(patterns, 'width', '12');
       await expectEachToHaveAttribute(patterns, 'height', '12');
 
+      // The example draws no dots at rest (`showDots` is not set), so the hovered point is
+      // the only one that renders. With patterns on, a dot is a `<use>` of the pattern
+      // symbol rather than a circle.
       await hoverPlotCenter(page);
 
       const patternDots = page.locator('use[data-ui-name="Area.Dots"]');
