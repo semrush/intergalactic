@@ -5,95 +5,76 @@ import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 /**
- * Tooltip stretches its portalled wrapper to the full viewport width. `100vw` includes the scroll
- * bar, so the wrapper has to be compensated by `useScrollBarWidth` — otherwise it overflows the
- * viewport and the page gets a horizontal scroll bar (UIK-5995).
- *
- * The readout below reports the measurement the hook is expected to make, so the compensation can
- * be checked without opening DevTools.
+ * UIK-5995: an open tooltip must not cause a horizontal page scroll
+ * when a vertical scroll bar appears on the page after the tooltip was opened.
  */
-const readMetrics = () => {
+const readPage = () => {
   const root = document.documentElement;
 
   return {
-    innerWidth: window.innerWidth,
-    clientWidth: root.clientWidth,
     scrollBarWidth: window.innerWidth - root.clientWidth,
-    hasHorizontalOverflow: root.scrollWidth > root.clientWidth,
+    horizontalScroll: root.scrollWidth > root.clientWidth,
   };
 };
 
 const Demo = () => {
-  const [tallContent, setTallContent] = React.useState(false);
   const [tooltipVisible, setTooltipVisible] = React.useState(true);
-  const [metrics, setMetrics] = React.useState(readMetrics);
+  const [longPage, setLongPage] = React.useState(false);
+  const [page, setPage] = React.useState(readPage);
 
   React.useEffect(() => {
-    const timer = setInterval(() => setMetrics(readMetrics()), 250);
+    const root = document.documentElement;
+    const observer = new ResizeObserver(() => setPage(readPage()));
 
-    return () => clearInterval(timer);
+    // Storybook reserves space for the scroll bar (`scrollbar-gutter: stable`),
+    // which hides the bug, so the reservation is turned off for this example.
+    root.style.scrollbarGutter = 'auto';
+    observer.observe(root);
+
+    return () => {
+      observer.disconnect();
+      root.style.scrollbarGutter = '';
+    };
   }, []);
 
   return (
-    <Flex gap={4} direction='column'>
-      <Flex gap={4} alignItems='center'>
-        <Tooltip
-          title='The wrapper of this tooltip must stay inside the viewport.'
-          visible={tooltipVisible}
-          tag={Button}
-        >
-          Tooltip anchor
-        </Tooltip>
-
-        <Button onClick={() => setTooltipVisible((visible) => !visible)}>
-          {tooltipVisible ? 'Hide tooltip' : 'Show tooltip'}
-        </Button>
-
-        <Button onClick={() => setTallContent((tall) => !tall)}>
-          {tallContent ? 'Remove tall content' : 'Add tall content'}
-        </Button>
-      </Flex>
-
-      <Flex gap={1} direction='column'>
-        <Text tag='p'>
-          {'window.innerWidth: '}
-          {metrics.innerWidth}
-        </Text>
-        <Text tag='p'>
-          {'documentElement.clientWidth: '}
-          {metrics.clientWidth}
-        </Text>
-        <Text tag='p'>
-          {'measured scroll bar width: '}
-          {metrics.scrollBarWidth}
-        </Text>
-        <Text tag='p' color={metrics.hasHorizontalOverflow ? 'text-critical' : 'text-success'}>
-          {'horizontal overflow: '}
-          {metrics.hasHorizontalOverflow ? 'yes — scroll bar is not compensated' : 'no'}
-        </Text>
-      </Flex>
-
+    <Flex gap={4} direction='column' alignItems='flex-start'>
       <Text tag='p'>
-        1. Keep the tooltip visible and press &quot;Add tall content&quot; — a vertical scroll bar
-        appears after the tooltip mounted, and the wrapper must shrink to
-        {' '}
-        <code>calc(100vw - scrollBarWidth)</code>
-        {' '}
-        instead of staying at
-        {' '}
-        <code>100vw</code>
-        .
+        Press &quot;Make page long&quot; while the tooltip is open, then try it with the tooltip
+        hidden and show it again.
         <br />
-        2. Hide the tooltip, resize the window, then show it again — the re-mounted tooltip must use
-        the fresh measurement, not the one taken on the very first mount.
-        <br />
-        3. In every case &quot;horizontal overflow&quot; must stay
-        {' '}
-        <b>no</b>
-        .
+        In both cases the page must not get a horizontal scroll bar.
       </Text>
 
-      {tallContent && <Box h={3000} />}
+      <Flex gap={4}>
+        <Tooltip title='Tooltip' visible={tooltipVisible} tag={Button}>
+          Tooltip trigger
+        </Tooltip>
+        <Button w={120} onClick={() => setTooltipVisible((visible) => !visible)}>
+          {tooltipVisible ? 'Hide tooltip' : 'Show tooltip'}
+        </Button>
+        <Button w={140} onClick={() => setLongPage((long) => !long)}>
+          {longPage ? 'Make page short' : 'Make page long'}
+        </Button>
+      </Flex>
+
+      <Text tag='p' color={page.horizontalScroll ? 'text-critical' : 'text-success'}>
+        {page.horizontalScroll ? 'Horizontal scroll: yes (bug)' : 'Horizontal scroll: no (OK)'}
+      </Text>
+
+      {longPage && page.scrollBarWidth === 0 && (
+        <Text tag='p' color='text-secondary'>
+          Your system hides scroll bars, so the bug cannot show up. On macOS set System Settings →
+          Appearance → Show scroll bars → Always.
+        </Text>
+      )}
+
+      {longPage && (
+        <>
+          <Box h={3000} />
+          <Text tag='p'>End of the long page</Text>
+        </>
+      )}
     </Flex>
   );
 };
