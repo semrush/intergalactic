@@ -100,20 +100,22 @@ export class Changelog {
       }
 
       body.forEach((token: Token) => {
-        if (token.type === 'heading' && token.level === 3 && token.raw && allAllowedScopes.has(token.raw.slice(9).toLowerCase())) { // slice(9) for remove @semcore scope
+        if (token.type === 'heading' && token.level === 3 && token.raw) { // slice(9) for remove @semcore scope
           traversingComponent = null;
           traversingBaseComponent = null;
           traversingType = null;
 
-          traversingComponent = token.raw.toLowerCase();
+          if (allAllowedScopes.has(token.raw.slice(9).toLowerCase())) {
+            traversingComponent = token.raw.toLowerCase();
 
-          if (traversingComponent !== '@semcore/ellipsis' && semcoreBaseComponents.includes(traversingComponent.slice(9))) {
-            traversingBaseComponent = traversingComponent;
-            traversingComponent = '@semcore/base-components';
-          }
+            if (traversingComponent !== '@semcore/ellipsis' && semcoreBaseComponents.includes(traversingComponent.slice(9))) {
+              traversingBaseComponent = traversingComponent;
+              traversingComponent = '@semcore/base-components';
+            }
 
-          if (!this.changelogs.components[traversingComponent]) {
-            this.changelogs.components[traversingComponent] = { incrementType: 'patch', changelog: [] };
+            if (!this.changelogs.components[traversingComponent]) {
+              this.changelogs.components[traversingComponent] = { incrementType: 'patch', changelog: [] };
+            }
           }
         }
         if (token.type === 'heading' && token.level === 4 && token.raw && this.isType(token.raw) && traversingComponent !== null) {
