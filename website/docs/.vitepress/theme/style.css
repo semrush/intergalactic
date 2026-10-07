@@ -587,7 +587,7 @@ video {
   overflow: auto;
 }
 
-.open-codesandbox {
+.open-stackblitz {
   color: white;
   right: 64px;
   direction: ltr;
@@ -608,15 +608,15 @@ video {
   transition: border-color 0.25s, background-color 0.25s, opacity 0.25s;
 }
 
-.open-codesandbox:hover,
-.open-codesandbox:focus,
-.open-codesandbox:active {
+.open-stackblitz:hover,
+.open-stackblitz:focus,
+.open-stackblitz:active {
   opacity: 1;
   border-color: var(--vp-code-copy-code-hover-border-color);
   background-color: var(--vp-code-copy-code-hover-bg);
 }
 
-.code-wrapper:hover .open-codesandbox,
+.code-wrapper:hover .open-stackblitz,
 .code-wrapper:hover .copy.copy.copy.copy {
   opacity: 1;
 }
