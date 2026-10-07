@@ -1,5 +1,5 @@
 SPopper {
-  padding: var(--intergalactic-spacing-content-padding-large, undefined);
+  padding: var(--intergalactic-spacing-4x, 16px);
 
   &::-moz-focus-inner {
     border: none;
@@ -50,16 +50,18 @@ SButton {
 
 SSingleDateInput {
   SInputMask {
-    padding-right: 0;
-  }
-  SValue {
-    padding-right: 0;
+    padding-right: var(--intergalactic-spacing-3x, 12px);
+
+    &:has(SHumanizedDate) {
+      padding-right: var(--intergalactic-spacing-2x, 8px);
+    }
   }
 }
 
 SInputMask {
   color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
   line-height: normal;
+  padding-right: var(--intergalactic-spacing-2x, 8px);
   transition: width calc(var(--intergalactic-duration-medium, 300) * 1ms) ease, min-width calc(var(--intergalactic-duration-medium, 300) * 1ms) ease;
 }
 
@@ -109,11 +111,6 @@ SMask {
   letter-spacing: 0;
   white-space: nowrap;
   overflow: hidden;
-}
-
-SSingleDateInput,
-SDateRange {
-  padding-right: var(--intergalactic-spacing-3x, 12px);
 }
 
 SSingleDateInput SValue,
