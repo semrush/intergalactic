@@ -51,10 +51,6 @@ SButton {
 SSingleDateInput {
   SInputMask {
     padding-right: var(--intergalactic-spacing-3x, 12px);
-
-    &:has(SHumanizedDate) {
-      padding-right: var(--intergalactic-spacing-2x, 8px);
-    }
   }
 }
 
