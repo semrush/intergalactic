@@ -7,6 +7,7 @@ import React from 'react';
 
 import { makeDataHintsHandlers, makeDataHintsContainer } from './a11y/hints';
 import { PlotA11yModule } from './a11y/PlotA11yModule';
+import { ChartMetaData } from './ChartMetaData';
 import style from './style/plot.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import { eventToPoint, uniqueId } from './utils';
@@ -18,6 +19,8 @@ class PlotRoot extends Component {
   constructor(props) {
     super(props);
     this.eventEmitter = props.eventEmitter || new EventEmitter();
+
+    this.meta = new ChartMetaData();
   }
 
   static defaultProps = () => ({
@@ -84,6 +87,7 @@ class PlotRoot extends Component {
         patterns,
         duration,
         plotId: this.plotId,
+        meta: this.meta,
       },
     };
   }

@@ -6,6 +6,7 @@ import BasicUsageExample from './examples/bar-chart/basic-usage';
 import DateFormatExample from './examples/bar-chart/date-format';
 import GroupedBarsExample from './examples/bar-chart/grouped-bars';
 import LegendAndPatternFillExample from './examples/bar-chart/legend-and-pattern-fill';
+import LinksExample from './examples/bar-chart/links';
 import NegativeValuesExample from './examples/bar-chart/negative-values';
 import TooltipExample from './examples/bar-chart/tooltip';
 import TrendLineExample from './examples/bar-chart/trend-line';
@@ -50,4 +51,8 @@ export const TrendLine: StoryObj = {
 
 export const LegendAndPatternFill: StoryObj = {
   render: LegendAndPatternFillExample,
+};
+
+export const Links: StoryObj = {
+  render: LinksExample,
 };

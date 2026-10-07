@@ -31,8 +31,8 @@ class TooltipRoot extends Component {
   handlerCancel = () => false;
 
   getTriggerProps() {
-    const { x, y, hideHoverLine } = this.asProps;
-    return { x, y, hideHoverLine };
+    const { x, y, hideHoverLine, hideTickHover } = this.asProps;
+    return { x, y, hideHoverLine, hideTickHover };
   }
 
   getPopperProps() {
