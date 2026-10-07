@@ -94,7 +94,7 @@ abstract class AbstractPickerInput extends Component<PickerInputProps, [], {}, {
     const { styles, step, onSelect, time, size, disabled, onVisibleChange, ariaLabel, ...other } = this.asProps;
     const { dirtyValue, visible } = this.state;
     const value = dirtyValue === undefined ? time : dirtyValue;
-    const offset = size === 'm' ? [-12, 9] : [-13, 13];
+    const offset: [number, number] = size === 'm' ? [-12, 9] : [-13, 13];
 
     return sstyled(styles)(
       <SPickerInputWrapper>
