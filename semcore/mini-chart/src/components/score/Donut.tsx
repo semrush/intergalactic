@@ -39,7 +39,7 @@ class DonutRoot extends Component<
     const {
       value,
       styles,
-      baseBgColor = 'chart-grid-bar-chart-base-bg',
+      baseBgColor = 'chart-grid-bar-base-bg',
       color = 'chart-palette-order-1',
       resolveColor,
       isSemiDonut,

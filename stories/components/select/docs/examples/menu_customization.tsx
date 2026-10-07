@@ -22,8 +22,8 @@ const Demo = () => (
             </Select.Option>
           ))}
         </Select.List>
-        <Select.Notice px={3}>
-          <Select.Notice.Content aria-live='polite'>Woooop, it's simple magic!</Select.Notice.Content>
+        <Select.Notice px={3} aria-live='polite'>
+          <Select.Notice.Text>Woooop, it's simple magic!</Select.Notice.Text>
         </Select.Notice>
       </Select.Popper>
     </Select>

@@ -17,16 +17,16 @@ SFullscreenOverlay {
 
   SClose {
     position: absolute;
-    top: var(--intergalactic-spacing-content-padding-large, 16px);
-    right: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
+    top: var(--intergalactic-spacing-4x, 16px);
+    right: var(--intergalactic-spacing-10x, 40px);
   }
 
   SBack {
     cursor: pointer;
     position: absolute;
     z-index: 1;
-    top: var(--intergalactic-spacing-content-padding-small, 8px);
-    left: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
+    top: var(--intergalactic-spacing-2x, 8px);
+    left: var(--intergalactic-spacing-10x, 40px);
   }
 
   STitle,
@@ -38,29 +38,29 @@ SFullscreenOverlay {
     font-size: var(--intergalactic-fs-500, 24px);
     line-height: var(--intergalactic-lh-500, 1.1667);
     font-weight: var(--intergalactic-semi-bold, 600);
-    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
   }
 
   SHeader {
     display: flex;
     flex-direction: column;
-    gap: var(--intergalactic-spacing-content-gap-large, 8px);
+    gap: var(--intergalactic-spacing-2x, 8px);
     align-items: flex-start;
 
-    padding-left: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
-    padding-bottom: var(--intergalactic-spacing-content-padding-large, 16px);
+    padding-left: var(--intergalactic-spacing-10x, 40px);
+    padding-bottom: var(--intergalactic-spacing-4x, 16px);
     padding-right: 72px;
-    padding-top: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
-    border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+    padding-top: var(--intergalactic-spacing-10x, 40px);
+    border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
   }
 
   SFooter {
     min-height: 52px;
-    border-top: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
-    padding: var(--intergalactic-spacing-content-padding-medium, 12px) var(--intergalactic-spacing-content-padding-xxlarge, 40px);
+    border-top: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
+    padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-10x, 40px);
     justify-content: center;
     align-items: center;
-    gap: var(--intergalactic-spacing-content-gap-xlarge, 12px);
+    gap: var(--intergalactic-spacing-3x, 12px);
   }
 
   SBody {
@@ -70,10 +70,10 @@ SFullscreenOverlay {
   }
 
   SSection {
-    padding-top: var(--intergalactic-spacing-content-padding-xlarge-extended, 24px);
-    padding-bottom: var(--intergalactic-spacing-content-padding-xlarge-extended, 24px);
-    padding-left: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
-    padding-right: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
+    padding-top: var(--intergalactic-spacing-6x, 24px);
+    padding-bottom: var(--intergalactic-spacing-6x, 24px);
+    padding-left: var(--intergalactic-spacing-10x, 40px);
+    padding-right: var(--intergalactic-spacing-10x, 40px);
     flex: 1 1 auto;
   }
 
