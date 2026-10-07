@@ -2,6 +2,20 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.4.0] - 2026-10-07
+
+### Changed
+
+- Gray shades become more cold and mint-ish.
+- Gray is used for a focus semantics now.
+- Removed opacity from the `text-primary`for better contrast.
+- Updated `bg` for hover and active `bg` for `CheckboxButton` and `DropdownMenu` item.
+
+### Added
+
+- 81 new semantic variables.
+- fallbacks for 12 renamed variables.
+
 ## [2.3.1] - 2026-09-09
 
 ### Fixed
