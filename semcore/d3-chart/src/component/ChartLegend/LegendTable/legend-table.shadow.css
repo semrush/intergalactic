@@ -3,11 +3,11 @@ SLegendTable[additions-count] {
   display: grid;
   align-items: center;
   grid-column-gap: var(--intergalactic-spacing-2x, 8px);
-  grid-row-gap: var(--intergalactic-spacing-2x, 8px);
 
   &[additions-direction='columns'] {
     grid-template-columns: auto repeat(var(--additions-count), 0.2fr);
     height: fit-content;
+    grid-row-gap: var(--intergalactic-spacing-2x, 8px);
 
     & > SColumnItem {
       text-align: right;
@@ -16,6 +16,7 @@ SLegendTable[additions-count] {
   &[additions-direction='rows'] {
     grid-template-rows: auto repeat(var(--additions-count), 0.2fr);
     grid-auto-flow: column;
+    grid-row-gap: var(--intergalactic-spacing-1x, 4px);
   }
 }
 
