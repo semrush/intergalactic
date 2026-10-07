@@ -122,7 +122,7 @@ Note that for ChartLegend `patterns` property works only with default `shape={'C
 
 ## Links in tick labels
 
-Tick labels on the X axis can be rendered as links — for example, to lead from a category to its detailed report. 
+Tick labels on the X axis can be rendered as links — for example, to lead from a category to its detailed report.
 
 ::: sandbox
 
