@@ -54,16 +54,12 @@ const Demo = () => {
             theme='warning'
             style={{ borderTopLeftRadius: 0, borderTopRightRadius: 0 }}
             icon={<WarningIcon />}
+            title='Warning'
           >
-            <Dropdown.Notice.Content>
-              <Flex mb={1}>
-                <Dropdown.Notice.Title>
-                  Warning
-                </Dropdown.Notice.Title>
-              </Flex>
+            <Dropdown.Notice.Text>
               If you change your location, all previously collected data for this article will be
               lost.
-            </Dropdown.Notice.Content>
+            </Dropdown.Notice.Text>
           </Dropdown.Notice>
         </DateRangeComparator.Popper>
       </DateRangeComparator>

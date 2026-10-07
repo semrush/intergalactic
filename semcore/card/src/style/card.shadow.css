@@ -20,7 +20,7 @@ SCard {
     margin: 0 0 var(--intergalactic-spacing-1x, 4px) 0;
     font-size: var(--intergalactic-fs-200, 14px);
     line-height: var(--intergalactic-lh-200, 1.4286);
-    color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
+    color: var(--intergalactic-text-secondary, oklch(0.182 0.045 244.8 / 0.593));
   }
 
   SHeader {
