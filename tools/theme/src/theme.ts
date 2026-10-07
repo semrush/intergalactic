@@ -2387,11 +2387,6 @@ export const theme: Theme = {
         },
       },
     },
-    badge: {
-      'feature-highlight': {
-        accent: { value: '{featureHighlight.feature-highlight.badge.accent}' },
-      },
-    },
     bg: {
       primary: {
         'feature-highlight': {
@@ -3665,9 +3660,6 @@ type Deprecates = {
       'outline': { invert: Value };
       'feature-highlight': { DEFAULT: Value; outline: Value };
     };
-  };
-  badge: {
-    'feature-highlight': { accent: Value };
   };
   bg: {
     primary: {

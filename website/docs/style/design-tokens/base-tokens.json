@@ -897,10 +897,6 @@
     "value": "oklch(0.82 0.15 170)"
   },
   {
-    "name": "--intergalactic-badge-feature-highlight-accent",
-    "value": "oklch(0.22 0.008 245)"
-  },
-  {
     "name": "--intergalactic-bg-primary-feature-highlight",
     "value": "oklch(1 0 0)"
   },
