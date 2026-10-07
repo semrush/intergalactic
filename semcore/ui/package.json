@@ -483,30 +483,6 @@
       "import": "./core/lib/utils/use/useScrollBarWidth.mjs",
       "require": "./core/lib/utils/use/useScrollBarWidth.cjs"
     },
-    "./core/lib/theme/themes/auto.css": {
-      "require": "./core/lib/theme/themes/auto.css",
-      "import": "./core/lib/theme/themes/auto.css"
-    },
-    "./core/lib/theme/themes/dark.css": {
-      "require": "./core/lib/theme/themes/dark.css",
-      "import": "./core/lib/theme/themes/dark.css"
-    },
-    "./core/lib/theme/themes/default.css": {
-      "require": "./core/lib/theme/themes/default.css",
-      "import": "./core/lib/theme/themes/default.css"
-    },
-    "./core/lib/theme/themes/highlights-dark.css": {
-      "require": "./core/lib/theme/themes/highlights-dark.css",
-      "import": "./core/lib/theme/themes/highlights-dark.css"
-    },
-    "./core/lib/theme/themes/highlights-light.css": {
-      "require": "./core/lib/theme/themes/highlights-light.css",
-      "import": "./core/lib/theme/themes/highlights-light.css"
-    },
-    "./core/lib/theme/themes/light.css": {
-      "require": "./core/lib/theme/themes/light.css",
-      "import": "./core/lib/theme/themes/light.css"
-    },
     "./counter": {
       "types": "./counter/index.d.ts",
       "import": "./counter/index.mjs",
