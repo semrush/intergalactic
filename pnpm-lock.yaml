@@ -1130,15 +1130,6 @@ importers:
       '@semcore/typography':
         specifier: ^17.2.1
         version: link:../typography
-      final-form:
-        specifier: 4.20.7
-        version: 4.20.7
-      final-form-focus:
-        specifier: 1.1.2
-        version: 1.1.2(final-form@4.20.7)
-      react-final-form:
-        specifier: 6.5.9
-        version: 6.5.9(final-form@4.20.7)(react@18.3.1)
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -1155,6 +1146,15 @@ importers:
       '@types/final-form-focus':
         specifier: 1.1.7
         version: 1.1.7
+      final-form:
+        specifier: 4.20.7
+        version: 4.20.7
+      final-form-focus:
+        specifier: 1.1.2
+        version: 1.1.2(final-form@4.20.7)
+      react-final-form:
+        specifier: 6.5.9
+        version: 6.5.9(final-form@4.20.7)(react@18.3.1)
 
   semcore/flags:
     dependencies:
@@ -19615,7 +19615,7 @@ snapshots:
       sirv: 3.0.2
       tinyglobby: 0.2.17
       tinyrainbow: 2.0.0
-      vitest: 3.2.4(@types/debug@4.1.13)(@types/node@25.5.2)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@9.20.3)(jsdom@22.1.0)(lightningcss@1.31.1)(sass@1.100.0)(sugarss@5.0.1(postcss@8.5.15))(terser@5.48.0)(yaml@2.8.3)
+      vitest: 3.2.4(@types/debug@4.1.13)(@types/node@25.5.2)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@9.20.3)(jsdom@22.1.0)(lightningcss@1.31.1)(sass@1.100.0)(sugarss@5.0.1(postcss@8.5.14))(terser@5.48.0)(yaml@2.8.3)
 
   '@vitest/utils@3.2.4':
     dependencies:

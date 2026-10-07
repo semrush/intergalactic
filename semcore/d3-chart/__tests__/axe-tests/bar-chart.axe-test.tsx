@@ -39,6 +39,12 @@ test.describe(`@d3-chart @bar-chart ${TAG.ACCESSIBILITY}`, () => {
     expect(violations).toEqual([]);
   });
 
+  test('links', async ({ page }) => {
+    await loadPage(page, 'stories/components/d3-chart/docs/examples/bar-chart/links.tsx', 'en');
+    const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
+
   test('negative-values', async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/bar-chart/negative-values.tsx', 'en');
     const violations = await getAccessibilityViolations({ page });
