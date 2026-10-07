@@ -17,7 +17,7 @@ SLegendItem[transparent] {
 
 SPointShape[color] {
   background-color: var(--color);
-  margin-right: var(--intergalactic-spacing-content-gap-medium, 6px);
+  margin-right: var(--intergalactic-spacing-1-5x, 6px);
   flex-shrink: 0;
 }
 
@@ -25,32 +25,32 @@ SPointShape[shape='Circle'][size='l'] {
   width: 16px;
   height: 16px;
   border-radius: 8px;
-  margin-top: var(--intergalactic-spacing-content-gap-small, 4px);
+  margin-top: var(--intergalactic-spacing-1x, 4px);
 }
 
 SPointShape[shape='Circle'][size='m'] {
   width: 12px;
   height: 12px;
   border-radius: 6px;
-  margin-top: var(--intergalactic-spacing-content-gap-small, 4px);
+  margin-top: var(--intergalactic-spacing-1x, 4px);
 }
 
 SPointShape[shape='Pattern'] {
   background-color: transparent;
-  margin-right: var(--intergalactic-spacing-content-gap-small, 4px);
+  margin-right: var(--intergalactic-spacing-1x, 4px);
 }
 
 SIcon {
   line-height: 0;
-  margin-right: var(--intergalactic-spacing-content-gap-small, 4px);
+  margin-right: var(--intergalactic-spacing-1x, 4px);
 }
 
 SIcon[size='l'] {
-  margin-top: var(--intergalactic-spacing-content-gap-small, 4px);
+  margin-top: var(--intergalactic-spacing-1x, 4px);
 }
 
 SIcon[size='m'] {
-  margin-top: var(--intergalactic-spacing-content-gap-xsmall, 2px);
+  margin-top: var(--intergalactic-spacing-05x, 2px);
 }
 
 SLabel {
@@ -73,7 +73,7 @@ SCount[size='m'] {
 
 SAdditionalLabel,
 SCount {
-  margin-left: var(--intergalactic-spacing-content-gap-small, 4px);
+  margin-left: var(--intergalactic-spacing-1x, 4px);
 }
 
 SAdditionalLabel {
@@ -85,11 +85,11 @@ SAdditionalLabel {
 SAdditionalLabel::before {
   content: '';
   display: inline-block;
-  background-color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
+  background-color: var(--intergalactic-text-secondary, oklch(0.182 0.045 244.8 / 0.593));
   height: 4px;
   width: 4px;
   border-radius: 2px;
-  margin-right: var(--intergalactic-spacing-content-gap-small, 4px);
+  margin-right: var(--intergalactic-spacing-1x, 4px);
 }
 
 SAdditionalLabel[size='l']::before {

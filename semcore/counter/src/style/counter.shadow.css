@@ -9,7 +9,7 @@ SCounter {
   border-radius: var(--intergalactic-counter-rounded, 12px);
   font-weight: var(--intergalactic-medium, 500);
 
-  color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
+  color: var(--intergalactic-text-secondary, oklch(0.182 0.045 244.8 / 0.593));
   background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
   border: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
 }
@@ -18,21 +18,21 @@ SCounter[size='s'] {
   height: 16px;
   min-width: 16px;
   font-size: var(--intergalactic-fs-50, 10px);
-  padding: var(--intergalactic-spacing-content-padding-xsmall, 4px);
+  padding: var(--intergalactic-spacing-1x, 4px);
 }
 
 SCounter[size='m'] {
   height: 20px;
   min-width: 20px;
   font-size: var(--intergalactic-fs-100, 12px);
-  padding: var(--intergalactic-spacing-content-padding-xxsmall, 2px) var(--intergalactic-spacing-content-padding-xsmall-extended, 6px);
+  padding: var(--intergalactic-spacing-05x, 2px) var(--intergalactic-spacing-1-5x, 6px);
 }
 
 SCounter[size='l'] {
   height: 24px;
   min-width: 24px;
   font-size: var(--intergalactic-fs-200, 14px);
-  padding: var(--intergalactic-spacing-content-padding-xxsmall, 2px) var(--intergalactic-spacing-content-padding-xsmall-extended, 6px);
+  padding: var(--intergalactic-spacing-05x, 2px) var(--intergalactic-spacing-1-5x, 6px);
 }
 
 SCounter[theme] {

@@ -1,5 +1,5 @@
 SPopper {
-  padding: var(--intergalactic-spacing-content-padding-large, 16px);
+  padding: var(--intergalactic-spacing-content-padding-large, undefined);
 
   &::-moz-focus-inner {
     border: none;
@@ -30,14 +30,14 @@ STitle {
 
 SToday {
   display: flex;
-  margin-top: var(--intergalactic-spacing-content-gap-xlarge, 12px);
+  margin-top: var(--intergalactic-spacing-content-gap-xlarge, undefined);
   justify-content: center;
 }
 
 SPeriod {
   display: flex;
   flex-direction: column;
-  margin-bottom: var(--intergalactic-spacing-content-gap-large, 8px);
+  margin-bottom: var(--intergalactic-spacing-content-gap-large, undefined);
 }
 
 SButton {
@@ -76,7 +76,7 @@ SInputMask SValue {
 }
 
 SIndicator {
-  color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
+  color: var(--intergalactic-text-secondary, oklch(0.182 0.045 244.8 / 0.593));
 }
 
 SRangeIndicator {
@@ -113,7 +113,7 @@ SMask {
 
 SSingleDateInput,
 SDateRange {
-  padding-right: var(--intergalactic-spacing-content-padding-medium, 12px);
+  padding-right: var(--intergalactic-spacing-content-padding-medium, undefined);
 }
 
 SSingleDateInput SValue,
@@ -163,24 +163,24 @@ SDateRange:focus-within SRangeSep {
 
 SRangeComparatorHeader {
   border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
-  padding: var(--intergalactic-spacing-content-padding-large, 16px);
+  padding: var(--intergalactic-spacing-content-padding-large, undefined);
 }
 
 SRangeCalendar {
-  padding: var(--intergalactic-spacing-content-padding-large, 16px);
+  padding: var(--intergalactic-spacing-content-padding-large, undefined);
 }
 
 SFooter {
   border-top: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
-  padding: var(--intergalactic-spacing-content-padding-large, 16px);
+  padding: var(--intergalactic-spacing-content-padding-large, undefined);
 }
 
 SPeriodsList {
-  padding: var(--intergalactic-spacing-content-padding-large, 16px);
+  padding: var(--intergalactic-spacing-content-padding-large, undefined);
 }
 
 STooltip {
-  padding: var(--intergalactic-spacing-content-padding-medium, 12px);
+  padding: var(--intergalactic-spacing-content-padding-medium, undefined);
 }
 
 SCompareToggle {
