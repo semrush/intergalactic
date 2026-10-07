@@ -69,10 +69,10 @@ SBack {
 }
 
 SHeader {
-  padding-left: var(--intergalactic-spacing-6x, undefined);
-  padding-bottom: var(--intergalactic-spacing-1x, undefined);
+  padding-left: var(--intergalactic-spacing-6x, 24px);
+  padding-bottom: var(--intergalactic-spacing-1x, 4px);
   padding-right: var(--intergalactic-spacing-14x, 56px);
-  padding-top: var(--intergalactic-spacing-1x, undefined);
+  padding-top: var(--intergalactic-spacing-1x, 4px);
   min-height: calc(var(--intergalactic-spacing-10x, 40px) + var(--intergalactic-spacing-3x, 12px));
   border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
   box-sizing: border-box;

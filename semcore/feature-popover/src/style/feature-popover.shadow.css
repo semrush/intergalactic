@@ -1,8 +1,8 @@
 SFeaturePopover {
-  padding-top: var(--intergalactic-spacing-4x, undefined);
-  padding-right: var(--intergalactic-spacing-10x, undefined);
-  padding-bottom: var(--intergalactic-spacing-4x, undefined);
-  padding-left: var(--intergalactic-spacing-4x, undefined);
+  padding-top: var(--intergalactic-spacing-4x, 16px);
+  padding-right: var(--intergalactic-spacing-10x, 40px);
+  padding-bottom: var(--intergalactic-spacing-4x, 16px);
+  padding-left: var(--intergalactic-spacing-4x, 16px);
   border-radius: var(--intergalactic-popper-rounded, 6px);
   box-sizing: border-box;
   box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.324 0.077 242.1 / 0.079));
