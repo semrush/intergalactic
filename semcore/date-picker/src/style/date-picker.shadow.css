@@ -30,14 +30,14 @@ STitle {
 
 SToday {
   display: flex;
-  margin-top: var(--intergalactic-spacing-content-gap-xlarge, undefined);
+  margin-top: var(--intergalactic-spacing-3x, 12px);
   justify-content: center;
 }
 
 SPeriod {
   display: flex;
   flex-direction: column;
-  margin-bottom: var(--intergalactic-spacing-content-gap-large, undefined);
+  margin-bottom: var(--intergalactic-spacing-2x, 8px);
 }
 
 SButton {
@@ -113,7 +113,7 @@ SMask {
 
 SSingleDateInput,
 SDateRange {
-  padding-right: var(--intergalactic-spacing-content-padding-medium, undefined);
+  padding-right: var(--intergalactic-spacing-3x, 12px);
 }
 
 SSingleDateInput SValue,
@@ -163,24 +163,24 @@ SDateRange:focus-within SRangeSep {
 
 SRangeComparatorHeader {
   border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
-  padding: var(--intergalactic-spacing-content-padding-large, undefined);
+  padding: var(--intergalactic-spacing-4x, 16px);
 }
 
 SRangeCalendar {
-  padding: var(--intergalactic-spacing-content-padding-large, undefined);
+  padding: var(--intergalactic-spacing-4x, 16px);
 }
 
 SFooter {
   border-top: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
-  padding: var(--intergalactic-spacing-content-padding-large, undefined);
+  padding: var(--intergalactic-spacing-4x, 16px);
 }
 
 SPeriodsList {
-  padding: var(--intergalactic-spacing-content-padding-large, undefined);
+  padding: var(--intergalactic-spacing-4x, 16px);
 }
 
 STooltip {
-  padding: var(--intergalactic-spacing-content-padding-medium, undefined);
+  padding: var(--intergalactic-spacing-3x, 12px);
 }
 
 SCompareToggle {
