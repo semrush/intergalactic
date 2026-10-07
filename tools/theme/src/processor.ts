@@ -38,7 +38,7 @@ const warning = !process.argv.includes('--no-warning');
 const packageDirname = resolvePath(fileURLToPath(import.meta.url), '..', '..');
 const semcorePath = resolvePath(packageDirname, '..', '..', 'semcore');
 
-const { baseTokens, semanticTokens, highlightsTokens } = processTokens(
+const { baseTokens, semanticTokens, highlightsTokens, deprecates } = processTokens(
   config,
   PREFIX,
 );
@@ -46,10 +46,10 @@ const { baseTokens, semanticTokens, highlightsTokens } = processTokens(
 for (const theme of themes) {
   await writeIfChanged(
     `lib/${theme}.css`,
-    tokensToCss([...baseTokens, ...semanticTokens]),
+    tokensToCss([...baseTokens, ...semanticTokens, ...deprecates]),
   );
-  await writeIfChanged(`lib/${theme}.ts`, tokensToJs([...baseTokens, ...semanticTokens]));
-  await writeIfChanged(`lib/${theme}.js`, tokensToJs([...baseTokens, ...semanticTokens]));
+  await writeIfChanged(`lib/${theme}.ts`, tokensToJs([...baseTokens, ...semanticTokens, ...deprecates]));
+  await writeIfChanged(`lib/${theme}.js`, tokensToJs([...baseTokens, ...semanticTokens, ...deprecates]));
 
   if (highlightsTokens.length > 0) {
     await writeIfChanged(

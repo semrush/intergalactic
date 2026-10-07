@@ -27,7 +27,7 @@ export const StackBarProps: StoryObj = {
     barRadius: { control: { type: 'number', min: 0, max: 20, step: 1 } },
     barHMin: { control: { type: 'number', min: 0, max: 50, step: 1 } },
     barTransparent: { control: 'boolean' },
-    maxBarSize: { control: { type: 'number', min: 10, max: 100, step: 5 } },
+    maxBarSize: { control: { type: 'number', min: 0, max: 100, step: 1 } },
     duration: { control: { type: 'number', min: 0, max: 2000, step: 100 } },
   },
   args: StackBarPropsDefaultProps,
@@ -37,6 +37,7 @@ export const BasicUsage = {
   render: BasicUsageExample,
   argTypes: getChartArgTypes({
     type: { control: 'select', options: ['stack', 'group'] },
+    maxBarSize: { control: { type: 'number', min: 0, max: 100, step: 1 } },
   }),
   args: BasicUsageProps,
 };
