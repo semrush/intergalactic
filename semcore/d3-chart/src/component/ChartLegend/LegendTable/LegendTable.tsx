@@ -27,7 +27,7 @@ class LegendTableRoot extends BaseLegend<LegendTableProps, [], LegendTableDefaul
     const additionsCount = ('columns' in items[0]) ? items[0]?.columns.length : items[0]?.rows.length;
 
     return sstyled(styles)(
-      <SLegendTable render={Box} additions-count={additionsCount} role='group' additions-direction={direction}>
+      <SLegendTable render={Box} additions-count={additionsCount} role='group' additions-direction={direction} items-count={items.length}>
         {items.map((legendItem, _index) => {
           const id = legendItem.id;
           const additions = ('columns' in legendItem) ? legendItem.columns : legendItem.rows;
