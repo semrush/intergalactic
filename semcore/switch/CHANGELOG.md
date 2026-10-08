@@ -2,6 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- New theme applied.
+
+### Changed
+
+- Updated switch colors, handle dimensions, animation, and label
+typography; enlarged the medium toggle from 20×12px to 28×16px.
+- Increased font size for text labels in all switch sizes.
+
+### Fixed
+
+- Passed the switch size to its value and toggle to apply size-specific
+styling consistently.
+
 ## [17.2.1] - 2026-06-26
 
 ### Fixed

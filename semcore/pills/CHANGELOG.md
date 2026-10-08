@@ -2,6 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- Removed `NeighborLocation` props, including `controlsLength`, from the
+public API. Item grouping is now handled internally.
+- Added item wrappers and a selection indicator to the DOM. Update
+custom CSS that depends on direct child buttons.
+- New theme applied.
+
+### Changed
+
+- Redesigned pills as a segmented control with separators and an
+animated selection indicator that adjusts to item resizing.
+- Changed `Pills.Item.Text` to use `Typography.Text`, including its
+typography props.
+
 ## [17.2.1] - 2026-06-26
 
 ### Fixed
