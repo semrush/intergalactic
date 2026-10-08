@@ -72,6 +72,10 @@ module.exports = {
         exclude: /node_modules/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
+      {
+        test: /[\\/]@semcore[\\/]/,
+        sideEffects: true,
+      },
     ],
   },
   plugins: [
