@@ -2,6 +2,21 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- New theme applied.
+
+### Changed
+
+- Changed the default width to fit the content, capped at the parent
+width; added content-based input sizing in supporting browsers.
+- Replaced the bottom border and invalid-state pattern with a dotted
+text underline, hover background, and focus outline.
+- Hid confirm and cancel controls while the input is unfocused and not
+loading.
+
 ## [17.3.0] - 2026-09-10
 
 ### Added

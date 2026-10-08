@@ -2,6 +2,30 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- Replaced the predefined `dark` theme with `invert`. Use `default`,
+`invert`, or `brand`; `dark` no longer selects the previous built-in
+appearance.
+- New theme applied.
+
+### Added
+
+- Added the `brand` theme.
+
+### Changed
+
+- Changed the default theme from `invert` to `default`; updated track
+colors and stripe gradients.
+- Deprecated custom themes on `ProgressBar.Value` in favor of predefined
+themes.
+
+### Fixed
+
+- Stopped the value stripe animation after progress reaches 100%.
+
 ## [17.2.2] - 2026-09-10
 
 ### Fixed

@@ -2,6 +2,21 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- New theme applied.
+
+### Added
+
+- Added `DropdownMenu.Notice` for notifications inside a menu.
+
+### Changed
+
+- Updated item spacing and increased the default list maximum height to
+246px for `m` and 306px for `l`.
+
 ## [17.3.1] - 2026-07-10
 
 ### Fixed
