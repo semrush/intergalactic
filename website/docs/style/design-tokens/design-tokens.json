@@ -1714,7 +1714,7 @@
   },
   {
     "name": "--intergalactic-dropdown-menu-item",
-    "value": "transparent",
+    "value": "#ffffff",
     "description": "Default background color for the list item in the dropdown-menu.",
     "components": [
       "dropdown"

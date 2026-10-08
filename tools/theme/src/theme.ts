@@ -1233,7 +1233,7 @@ export const theme: Theme = {
         description: 'Text color of the Dot.',
       },
       dropdown_menu_item_DEFAULT: {
-        value: '{semanticTokens.colors.control_tertiary_neutral_DEFAULT}',
+        value: '{baseTokens.colors.gray.white}',
         description: 'Default background color for the list item in the dropdown-menu.',
       },
       dropdown_menu_item_hover: {
