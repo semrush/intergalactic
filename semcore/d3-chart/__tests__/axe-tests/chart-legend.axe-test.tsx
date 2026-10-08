@@ -4,7 +4,7 @@ import { TAG } from '@semcore/testing-utils/shared/tags';
 
 test.describe(`@d3-chart @chart-legend ${TAG.ACCESSIBILITY}`, () => {
   test('custom-shape-as-legenditem', async ({ page }) => {
-    await loadPage(page, 'stories/components/d3-chart/docs/examples/chart-legend/custom-shape-as-legenditem.tsx', 'en');
+    await loadPage(page, 'stories/components/d3-chart/tests/examples/chart-legend/custom-shape-as-legenditem.tsx', 'en');
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
   });

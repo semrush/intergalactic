@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import CustomShapeAsLegendItemExample from './examples/chart-legend/custom-shape-as-legenditem';
 import CustomizableLegendExample, { defaultProps as args } from './examples/chart-legend/customizable_legend';
 import LegendTableDataExample, { defaultProps as legendTableArgs } from './examples/chart-legend/legend-table-data';
 import LegendWithMetricsExample, { defaultProps as legendWithMetricsArgs } from './examples/chart-legend/legend-with-metrics';
@@ -10,6 +11,10 @@ const meta: Meta = {
 };
 
 export default meta;
+
+export const CustomShapeAsLegendItem: StoryObj = {
+  render: CustomShapeAsLegendItemExample,
+};
 
 export const LegendTableData: StoryObj<typeof legendTableArgs> = {
   render: LegendTableDataExample,

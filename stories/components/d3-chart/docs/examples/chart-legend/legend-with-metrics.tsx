@@ -5,6 +5,28 @@ import React from 'react';
 
 import LineChartMockData from '../../../__mocks__/line';
 
+const metricData = [
+  {
+    value: '15%',
+    diffValue: '1%',
+    diffUse: 'good',
+    diffIcon: DiffUp,
+    href: '/some-report',
+  },
+  {
+    value: '3.5K',
+    diffValue: '0.5',
+    diffUse: 'bad',
+    diffIcon: DiffDown,
+  },
+  {
+    value: '12.3',
+    diffValue: 'no change',
+    diffUse: 'neutral',
+    href: '/some-report',
+  },
+];
+
 const data = LineChartMockData.ThreeLines;
 const legendItems = Object.keys(data[0])
   .filter((key) => key !== 'x')
@@ -14,11 +36,11 @@ const legendItems = Object.keys(data[0])
       rows: [
         <Metric
           key={1}
-          value={`${(42 * (index + 3)) / 10}%`}
-          diffValue='12'
-          href={index === 1 ? '/some-report' : undefined}
-          diffIcon={index === 2 ? DiffDown : index === 1 ? DiffUp : undefined}
-          diffUse={index === 1 ? 'good' : index === 2 ? 'bad' : 'neutral'}
+          value={metricData[index].value}
+          diffValue={metricData[index].diffValue}
+          href={metricData[index].href}
+          diffIcon={metricData[index].diffIcon}
+          diffUse={metricData[index].diffUse}
         />,
       ],
     };
