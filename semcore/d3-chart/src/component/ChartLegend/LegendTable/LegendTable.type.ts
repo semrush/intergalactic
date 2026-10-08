@@ -7,9 +7,9 @@ import type { LegendItem, LegendItemType } from '../LegendItem/LegendItem.type';
 
 export type LegendTableProps = Intergalactic.InternalTypings.EfficientOmit<LegendProps, 'items'> & {
   /**
-   * Legend items
+   * Legend items. Passing a column or a row will result in a different layout.
    */
-  items: Array<LegendItem & { columns: Array<React.ReactNode> }>;
+  items: Array<LegendItem & ({ columns: Array<React.ReactNode> } | { rows: Array<React.ReactNode> })>;
 };
 
 export type LegendTableDefaultProps = {

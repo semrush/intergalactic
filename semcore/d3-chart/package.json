@@ -21,6 +21,7 @@
     "@semcore/checkbox": "^17.2.1",
     "@semcore/divider": "^17.2.1",
     "@semcore/typography": "^17.2.1",
+    "@semcore/link": "^17.2.2",
     "@types/d3-shape": "3.1.7",
     "@upsetjs/venn.js": "2.0.0",
     "d3-array": "3.1.6",

@@ -29,7 +29,7 @@ import type { LegendTableProps } from '../ChartLegend/LegendTable/LegendTable.ty
 type TooltipPercentDeltaTrend = 'upward' | 'downward' | 'stable' | 'unknown';
 
 export type ChartState = {
-  dataDefinitions: Array<LegendItem & { columns: React.ReactNode[] }>;
+  dataDefinitions: Array<LegendItem & ({ columns: React.ReactNode[] } | { rows: React.ReactNode[] })>;
   highlightedItem: number;
   withTrend: boolean;
 
@@ -109,19 +109,19 @@ export abstract class AbstractChart<
     return this.asProps.plotHeight ?? this.state.plotHeight;
   }
 
-  protected getDefaultDataDefinitions(): Array<LegendItem & { columns: React.ReactNode[] }> {
+  protected getDefaultDataDefinitions(): Array<LegendItem & ({ columns: React.ReactNode[] } | { rows: React.ReactNode[] })> {
     const { data, legendProps } = this.props;
 
     return this.dataKeys.map((key, index) => {
       const legendData = legendProps?.legendMap?.[key];
 
-      const dataDefinition: LegendItem & { columns: React.ReactNode[] } = {
+      // @ts-expect-error will fill columns or rows later
+      const dataDefinition: LegendItem & ({ columns: Array<React.ReactNode> } | { rows: Array<React.ReactNode> }) = {
         id: key,
         label: legendData?.label ?? key,
         icon: legendData?.icon ?? undefined,
         checked: legendData?.defaultChecked ?? true,
         color: this.resolveColor(key, index),
-        columns: [],
       };
 
       if (legendData?.additionalInfo || legendData?.count) {
@@ -132,9 +132,11 @@ export abstract class AbstractChart<
             : undefined;
       }
 
-      if (legendData && 'columns' in legendData) {
+      if (legendData && 'rows' in legendData && !('columns' in dataDefinition)) {
+        dataDefinition.rows = legendData.rows || [];
+      } else if (legendData && 'columns' in legendData && !('rows' in dataDefinition)) {
         dataDefinition.columns = legendData.columns || [];
-      } else if (!Array.isArray(data)) {
+      } else if (!Array.isArray(data) && !('rows' in dataDefinition)) {
         let value: number | undefined = undefined;
         let dataValue = data[key];
 
