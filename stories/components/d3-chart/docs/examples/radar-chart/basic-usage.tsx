@@ -1,4 +1,4 @@
-import { Chart, colors } from '@semcore/ui/d3-chart';
+import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
 import RadarMockData from '../../../__mocks__/radar';
