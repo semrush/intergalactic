@@ -2,6 +2,22 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- Changed the default theme for `use="tertiary"` from `info` to `muted`.
+Set `theme="info"` explicitly to retain the previous theme.
+- New theme applied.
+
+### Changed
+
+- Increased button heights from 28px to 32px for `m` and from 40px to
+44px for `l`; made icon-only buttons square and updated addon spacing.
+- Updated button colors and interaction states; changed the secondary
+`ButtonLink` underline from dashed to dotted.
+- Default theme for tertiary `button` is now `muted`.
+
 ## [17.2.2] - 2026-09-10
 
 ### Changed

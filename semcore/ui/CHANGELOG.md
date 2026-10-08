@@ -1,3 +1,542 @@
+## [18.0.0] - 2026-10-08
+
+### @semcore/illustration
+
+- **BREAK** New theme applied.
+
+### @semcore/ellipsis
+
+- **BREAK** New theme applied.
+
+### @semcore/base-components
+
+- **BREAK** **animation**: New theme applied.
+- **BREAK** **breakpoints**: New theme applied.
+- **BREAK** **flex-box**: New theme applied.
+- **BREAK** **grid**: New theme applied.
+- **BREAK** **hint**: New theme applied.
+- **BREAK** **neighbor-location**: New theme applied.
+- **BREAK** **outside-click**: New theme applied.
+- **BREAK** **popper**: New theme applied.
+- **BREAK** **portal**: New theme applied.
+- **BREAK** **scroll-area**: New theme applied.
+
+### @semcore/add-filter
+
+- **BREAK** New theme applied.
+
+### @semcore/wizard
+
+- **Changed** Updated stepper layout, colors, typography, spacing, and completed
+step icon alignment.
+- **Changed** Changed navigation buttons to the muted tertiary theme.
+- **BREAK** New theme applied.
+
+### @semcore/widget-empty
+
+- **Changed** Updated title and description colors to the new palette.
+- **BREAK** New theme applied.
+
+### @semcore/typography
+
+- **Added** Added text size `350` (18px).
+- **Changed** Updated text colors, heading margins, and formatted list indentation.
+- **Changed** Deprecated `NSBlockquote.Component`, scheduled for removal in v19.
+- **BREAK** New theme applied.
+
+### @semcore/tooltip
+
+- **Changed** Updated tooltip text, background, border, and shadow colors to the new
+palette.
+- **BREAK** New theme applied.
+
+### @semcore/time-picker
+
+- **Changed** Redesigned the format control and separator; updated field padding and
+dropdown offsets for each size.
+- **Fixed** Aligned format separator heights with the input controls.
+- **Fixed** Disabled pointer interactions on the disabled picker container.
+- **BREAK** New theme applied.
+
+### @semcore/textarea
+
+- **Changed** Set minimum heights to 32px for `m` and 44px for `l`; updated padding,
+colors, and focus styling.
+- **BREAK** New theme applied.
+
+### @semcore/tag
+
+- **Added** Added `invert` for displaying tags and their clear buttons on dark
+backgrounds.
+- **Changed** Updated primary, secondary, and additional tag appearances and clear
+button borders.
+- **BREAK** Restricted `color` to `theme="primary"`. Remove `color` from secondary
+and additional tags or switch to the primary theme.
+- **BREAK** New theme applied.
+
+### @semcore/tab-panel
+
+- **Changed** Updated tab colors, horizontal padding, and addon spacing; aligned
+medium tab height with the shared 32px control token.
+- **BREAK** New theme applied.
+
+### @semcore/tab-line
+
+- **Changed** Updated tab colors, item and addon spacing, and active indicator
+styling.
+- **Changed** Increased tab heights from 28px to 32px for `m` and from 40px to 44px
+for `l`.
+- **BREAK** New theme applied.
+
+### @semcore/switch
+
+- **Changed** Updated switch colors, handle dimensions, animation, and label
+typography; enlarged the medium toggle from 20×12px to 28×16px.
+- **Fixed** Passed the switch size to its value and toggle to apply size-specific
+styling consistently.
+- **BREAK** New theme applied.
+
+### @semcore/spin-container
+
+- **Changed** Changed the default theme from `dark` to `default` and updated overlay
+colors; retained the legacy `dark` overlay selector.
+- **BREAK** New theme applied.
+
+### @semcore/spin
+
+- **Changed** Redesigned the spinner as a stroked circle with an animated arc and
+size-specific stroke widths.
+- **Changed** Changed the default theme from `dark` to `default`; deprecated `dark`
+and custom color themes in favor of `default` and `invert`.
+- **BREAK** Restricted supported layout props to margins and `centered`. Use
+`size` for spinner dimensions and a wrapper for other layout
+customization.
+- **BREAK** Replaced the SVG path with a circle. Update CSS overrides that target
+the previous path or fill.
+- **BREAK** New theme applied.
+
+### @semcore/slider
+
+- **Changed** Updated slider colors and option spacing; enlarged the knob on hover
+and active interaction.
+- **BREAK** New theme applied.
+
+### @semcore/skeleton
+
+- **Changed** Updated chart placeholders to use masks and theme-dependent colors.
+- **BREAK** Changed the supported themes to `default` and `invert`, with `default`
+selected by default. Migrate previous `invert` usage to `default` and
+previous `dark` usage to `invert`.
+- **BREAK** Removed `NSSkeleton.Ctx`, `SkeletonCtx`, and the `gradientUrl` context
+value. Update custom skeleton rendering that depends on this context.
+- **BREAK** New theme applied.
+
+### @semcore/side-panel
+
+- **Changed** Changed the header to a flex column and updated header, footer, and
+close button spacing.
+- **Changed** Deprecated `SidePanel.Back` in favor of `ButtonLink`.
+- **BREAK** New theme applied.
+
+### @semcore/select
+
+- **Added** Added `Select.Notice` for notifications inside the option list.
+- **Changed** Updated checkbox indicators, addon spacing, and search input padding.
+- **BREAK** New theme applied.
+
+### @semcore/radio-cards
+
+- **Added** Added `RadioCards` and `RadioCards.Item` for card-based single
+selection with controlled and uncontrolled values, disabled states, and
+keyboard interaction.
+- **Added** Added item titles, descriptions, icons, text addons, accessible dot
+indicators, and addon loading skeletons.
+
+### @semcore/radio
+
+- **Changed** Updated radio colors and size-specific label spacing.
+- **BREAK** New theme applied.
+
+### @semcore/progress-bar
+
+- **Added** Added the `brand` theme.
+- **Changed** Changed the default theme from `invert` to `default`; updated track
+colors and stripe gradients.
+- **Changed** Deprecated custom themes on `ProgressBar.Value` in favor of predefined
+themes.
+- **Fixed** Stopped the value stripe animation after progress reaches 100%.
+- **BREAK** Replaced the predefined `dark` theme with `invert`. Use `default`,
+`invert`, or `brand`; `dark` no longer selects the previous built-in
+appearance.
+- **BREAK** New theme applied.
+
+### @semcore/product-head
+
+- **Changed** Updated title and supplementary text colors to the new palette.
+- **BREAK** New theme applied.
+
+### @semcore/pills
+
+- **Changed** Redesigned pills as a segmented control with separators and an
+animated selection indicator that adjusts to item resizing.
+- **Changed** Changed `Pills.Item.Text` to use `Typography.Text`, including its
+typography props.
+- **BREAK** Removed `NeighborLocation` props, including `controlsLength`, from the
+public API. Item grouping is now handled internally.
+- **BREAK** Added item wrappers and a selection indicator to the DOM. Update
+custom CSS that depends on direct child buttons.
+- **BREAK** New theme applied.
+
+### @semcore/pagination
+
+- **Changed** Updated pagination colors and the last-page link appearance.
+- **Fixed** Corrected page input padding by adjusting its default neighboring
+control count.
+- **Fixed** Incorrect padding in input.
+- **BREAK** New theme applied.
+
+### @semcore/notice-bubble
+
+- **Changed** Increased the default notice width from 300px to 320px; updated
+padding, icon alignment, and spacing.
+- **BREAK** New theme applied.
+
+### @semcore/notice
+
+- **Added** Added mutually exclusive `icon` and `illustration` props to `Notice`.
+- **Changed** Updated notice colors, content spacing, icon alignment, and action
+layout.
+- **Changed** Deprecated `Notice.Label` and `NoticeSmart.label` in favor of the new
+visual props.
+- **BREAK** Removed custom color theme rendering. Use a predefined theme (`info`,
+`danger`, `warning`, `success`, or `muted`) and theme tokens for
+customization.
+- **BREAK** New theme applied.
+
+### @semcore/modal
+
+- **Changed** Updated modal colors, increased title spacing before the close button,
+and aligned close button dimensions with the new control sizes.
+- **BREAK** New theme applied.
+
+### @semcore/mini-chart
+
+- **Added** Exported the `NSMiniChart` namespace for score and trend component
+types.
+- **Changed** Deprecated `SegmentColor` in favor of
+`NSMiniChart.Score.Line.Segment.Color`.
+- **Changed** Updated `ScoreLine` custom children typing to accept React nodes.
+- **BREAK** New theme applied.
+- **BREAK** Update `MiniChart.Score` typings to enforce either `value`/`color`
+props or custom `children`, preventing unsupported prop combinations.
+
+### @semcore/link
+
+- **Added** Added `default`, `light`, `accent`, and `invert` themes; deprecated
+`use` in favor of `theme`.
+- **Added** Added external link detection, an external link icon, and a localized
+screen reader description. Use `isExternal` to override detection or
+mark external links during server rendering.
+- **Added** Added `Link.ExternalIcon` for custom link content.
+- **Changed** Detected external links now open in a new tab by default. Set
+`isExternal={false}` to disable automatic external link treatment.
+- **BREAK** Removed the deprecated `inline` prop. Use layout props such as
+`display` when needed.
+- **BREAK** New theme applied.
+
+### @semcore/input-tags
+
+- **Changed** Increased minimum heights from 28px to 32px for `m` and from 40px to
+44px for `l`.
+- **Changed** Centered tags vertically, updated container padding and tag margins,
+and removed fixed value heights.
+- **Changed** Updated the focus border and outline colors.
+- **BREAK** New theme applied.
+
+### @semcore/input-number
+
+- **Changed** Updated increment and decrement control colors and hover states.
+- **BREAK** New theme applied.
+
+### @semcore/input-mask
+
+- **Changed** Updated mask text and placeholder colors to the new palette.
+- **BREAK** New theme applied.
+
+### @semcore/input
+
+- **Changed** Increased input heights from 28px to 32px for `m` and from 40px to
+44px for `l`; updated value and addon padding.
+- **Changed** Updated text, border, and focus colors.
+- **Fixed** Corrected input value line height and alignment.
+- **BREAK** New theme applied.
+
+### @semcore/inline-input
+
+- **Changed** Changed the default width to fit the content, capped at the parent
+width; added content-based input sizing in supporting browsers.
+- **Changed** Replaced the bottom border and invalid-state pattern with a dotted
+text underline, hover background, and focus outline.
+- **Changed** Hid confirm and cancel controls while the input is unfocused and not
+loading.
+- **BREAK** New theme applied.
+
+### @semcore/inline-edit
+
+- **Changed** Added rounded corners to the view state.
+- **BREAK** New theme applied.
+
+### @semcore/icon
+
+- **Added** Added `DiffUp` and `DiffDown` icons in `m` and `l` sizes.
+- **BREAK** New theme applied.
+
+### @semcore/fullscreen-modal
+
+- **Changed** Updated header padding and navigation control positioning; changed
+titles to semibold and descriptions to 14px secondary text.
+- **BREAK** New theme applied.
+
+### @semcore/flags
+
+- **Changed** Updated fallback flag backgrounds and country abbreviation colors to
+the new palette.
+- **BREAK** New theme applied.
+
+### @semcore/feedback-form
+
+- **Changed** Updated rating and checkbox button colors and interaction states.
+- **BREAK** Moved `final-form`, `final-form-focus`, and `react-final-form` to peer
+dependencies. Ensure your application provides compatible versions:
+`^4.20.7`, `^1.1.2`, and `^6.5.9`, respectively.
+- **Changed** Moved forms from dependencies to peer dependencies.
+- **BREAK** New theme applied.
+
+### @semcore/feature-popover
+
+- **Changed** Updated accent and neutral popover colors and spot indicators;
+switched to dedicated feature popover text and background tokens.
+- **BREAK** New theme applied.
+
+### @semcore/feature-highlight
+
+- **Changed** Redesigned highlighted controls with the new feature highlight tokens;
+replaced the notice gradient border with a solid background and
+decorative pattern.
+- **Changed** Preserved custom content support in `FeatureHighlight.Badge`
+independently of the predefined `Badge` types.
+- **Fixed** Applied feature highlight styles to the root `TabLine` component.
+- **BREAK** New theme applied.
+
+### @semcore/errors
+
+- **Changed** Updated text colors and increased spacing above the error description.
+- **BREAK** New theme applied.
+
+### @semcore/dropdown-menu
+
+- **Added** Added `DropdownMenu.Notice` for notifications inside a menu.
+- **Changed** Updated item spacing and increased the default list maximum height to
+246px for `m` and 306px for `l`.
+- **BREAK** New theme applied.
+
+### @semcore/dropdown
+
+- **Added** Added `Dropdown.Notice` with a title, icon, text, and actions for
+notifications inside a dropdown.
+- **Changed** Updated item padding, selection indicators, checkbox alignment, and
+status item spacing.
+- **Fixed** Corrected sticky menu item background colors.
+- **BREAK** New theme applied.
+
+### @semcore/drag-and-drop
+
+- **Changed** Updated drag handle and drop preview colors and the keyboard dragging
+shadow.
+- **BREAK** New theme applied.
+
+### @semcore/dot
+
+- **Changed** Updated default dot colors to the new palette.
+- **BREAK** New theme applied.
+
+### @semcore/divider
+
+- **Changed** Changed secondary dividers from dashed to dotted and updated default
+and inverted colors.
+- **BREAK** New theme applied.
+
+### @semcore/date-picker
+
+- **Changed** Updated calendar colors, cell rounding, spacing, and comparison range
+outlines.
+- **Fixed** Corrected previous and next navigation button alignment.
+- **Fixed** Corrected date input padding for the large size.
+- **Fixed** Padding for month picker with size `l`.
+- **Fixed** `Prev/Next` buttons alignment.
+- **BREAK** New theme applied.
+
+### @semcore/data-table
+
+- **Added** Added `LinkAction` for a cell link with one or two adjacent button or
+link actions.
+- **Changed** Updated table colors and expanded-row indicators; emphasized sorted
+column and group headings.
+- **Fixed** Displayed sort indicators for externally sorted columns even when
+`sortable` is disabled.
+- **Fixed** Kept accordion content aligned with the visible table viewport during
+horizontal scrolling and preserved expanded cell styling during collapse
+animation.
+- **BREAK** New theme applied.
+
+### @semcore/d3-chart
+
+- **Added** Added forecast and potential segments for line and area charts,
+configured with `DATA_TYPE`, `FORECAST`, and `POTENTIAL`.
+- **Added** Added highlighted data points configured with `HIGHLIGHT_DOT`, `GOOD`,
+`BAD`, and `INSIGHTFUL`.
+- **Added** Added percentage changes to supported chart tooltips with
+`showDeltaPercentInTooltip`, custom `getPercentDelta`, and
+`deltaPercentGrowthColor`.
+- **Added** Added `locale` and `tooltipTitleFormatter`; axis value formatters now
+accept React nodes, including links.
+- **Added** Added `maxBarSize` to `Chart.Bar` to limit bar thickness.
+- **Added** Added `Metric` and row-based layouts in table legends for displaying
+values and differences.
+- **Added** Added `hideTickHover` to hover components and tooltips.
+- **Changed** Redesigned chart grids, axes, hover indicators, tooltips, and legends;
+added end caps to reference lines and gradient fills to area charts.
+- **Changed** Changed the default donut thickness to 16px and reduced the hover
+expansion from 8px to 4px. Set `innerRadius` explicitly when a specific
+thickness is required.
+- **Changed** Changed default tooltip formatting to localized dates and numbers,
+with non-integer numbers rounded to one decimal place. Use custom
+formatters to retain application-specific formatting.
+- **Changed** Limited `Chart.Bar` thickness to 12px by default; histogram bars
+retain their independent sizing.
+- **Fixed** Preserved highlighted dots during hover and rendered hovered dots when
+`showDots` is disabled.
+- **Fixed** Kept tooltips visible when hovering the axis area below the plot.
+- **BREAK** Removed the deprecated `colors` export. Use chart palette tokens or an
+explicit `colorMap`.
+- **BREAK** Changed `Chart.Area` to stacked mode by default. Set `stacked={false}`
+explicitly for the previous unstacked behavior; the `stacked` prop is
+deprecated.
+- **BREAK** Removed `Line` and `Square` legend shapes. Use `Checkbox`, `Circle`,
+`Pattern`, or a custom shape renderer.
+- **BREAK** Made `multilineXTicks`, `multilineYTicks`, and axis ticks' `multiline`
+ineffective; these props are deprecated.
+- **BREAK** Narrowed `ObjectData` values from `unknown` to supported chart value
+types. Update data typings that contain arbitrary objects or other
+unsupported values.
+- **Added** `maxBarSize` prop for `Chart.Bar`.
+- **Changed** Default `Donut` thickness to 12.
+- **Added** `deltaPercentGrowthColor` prop to define color for delta growth.
+- **Changed** Default `Donut` thickness to `12`.
+- **BREAK** New theme applied.
+
+### @semcore/counter
+
+- **Changed** Updated default text and border colors to the new palette.
+- **BREAK** New theme applied.
+
+### @semcore/core
+
+- **BREAK** Raised the `@semcore/theme` peer dependency requirement from `^2.2.0`
+to `^2.4.0`.
+- **BREAK** Renamed feature highlight CSS variables to the
+`--intergalactic-feature-highlight-*` convention. Update custom themes
+and overrides, for example
+`--intergalactic-icon-primary-feature-highlight` to
+`--intergalactic-feature-highlight-icon-primary`.
+- **BREAK** New theme applied.
+
+### @semcore/color-picker
+
+- **Added** Added support for CSS token values in palette items and the default
+trigger.
+- **Changed** Enlarged palette swatches to 32px and updated palette spacing and the
+custom color input layout.
+- **BREAK** Changed the default palette from hexadecimal colors to CSS token names
+such as `--blue-400`. Update code that compares or stores default
+palette values as hex strings, or supply an explicit hex palette.
+- **BREAK** New theme applied.
+
+### @semcore/checkbox
+
+- **Changed** Updated checkbox colors, checkmark assets, indeterminate indicators,
+and label spacing.
+- **BREAK** New theme applied.
+
+### @semcore/carousel
+
+- **Changed** Updated slide and preview rounding; redesigned active indicators with
+wider shapes and animated transitions.
+- **BREAK** New theme applied.
+
+### @semcore/card
+
+- **Changed** Removed the default card shadow and updated header and content
+spacing.
+- **Changed** Changed the default title to 18px semibold text.
+- **BREAK** New theme applied.
+
+### @semcore/button
+
+- **Changed** Increased button heights from 28px to 32px for `m` and from 40px to
+44px for `l`; made icon-only buttons square and updated addon spacing.
+- **Changed** Updated button colors and interaction states; changed the secondary
+`ButtonLink` underline from dashed to dotted.
+- **BREAK** Changed the default theme for `use="tertiary"` from `info` to `muted`.
+Set `theme="info"` explicitly to retain the previous theme.
+- **Changed** Default theme for tertiary `button` is now `muted`.
+- **BREAK** New theme applied.
+
+### @semcore/bulk-textarea
+
+- **Changed** Updated input padding, line indentation, and validation marker
+alignment for both sizes.
+- **BREAK** New theme applied.
+
+### @semcore/breadcrumbs
+
+- **Changed** Updated text colors and spacing between breadcrumb items and
+separators.
+- **BREAK** New theme applied.
+
+### @semcore/base-trigger
+
+- **Changed** Increased trigger heights from 28px to 32px for `m` and from 40px to
+44px for `l`; updated padding and addon spacing.
+- **Changed** Redesigned `FilterTrigger` with a shared outline and an animated
+separator between the trigger and clear button.
+- **Changed** `FilterTrigger.Addon` color.
+- **BREAK** New theme applied.
+
+### @semcore/badge
+
+- **Added** Added `theme="light"` alongside the default and inverted appearances.
+- **Changed** Increased badge height to 16px and font size to 12px; updated colors
+and corner rounding.
+- **BREAK** Made `type` required and removed custom `children`, `bg`, and `color`
+props. Use a predefined badge type and its localized label.
+- **BREAK** Replaced `inverted` with `theme="invert"`.
+- **BREAK** New theme applied.
+- **BREAK** Added new property `theme`: `default | light | invert`.
+- **BREAK** Removed outdated flag `inverted`.
+
+### @semcore/accordion
+
+- **Changed** Redesigned primary items with rounded backgrounds, a selection
+indicator, and a chevron on the right; updated secondary item spacing
+and collapse padding.
+- **Changed** Added DOM containers for the accordion, its items, and collapse
+content. Review custom CSS and layouts that depend on the previous DOM
+structure.
+- **Fixed** Prevented change events bubbling from accordion content from
+triggering the accordion's `onChange` callback.
+- **BREAK** New theme applied.
+
 ## [17.6.0] - 2026-09-10
 
 ### @semcore/drag-and-drop

@@ -2,6 +2,63 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- Removed the deprecated `colors` export. Use chart palette tokens or an
+explicit `colorMap`.
+- Changed `Chart.Area` to stacked mode by default. Set `stacked={false}`
+explicitly for the previous unstacked behavior; the `stacked` prop is
+deprecated.
+- Removed `Line` and `Square` legend shapes. Use `Checkbox`, `Circle`,
+`Pattern`, or a custom shape renderer.
+- Made `multilineXTicks`, `multilineYTicks`, and axis ticks' `multiline`
+ineffective; these props are deprecated.
+- Narrowed `ObjectData` values from `unknown` to supported chart value
+types. Update data typings that contain arbitrary objects or other
+unsupported values.
+- New theme applied.
+
+### Added
+
+- Added forecast and potential segments for line and area charts,
+configured with `DATA_TYPE`, `FORECAST`, and `POTENTIAL`.
+- Added highlighted data points configured with `HIGHLIGHT_DOT`, `GOOD`,
+`BAD`, and `INSIGHTFUL`.
+- Added percentage changes to supported chart tooltips with
+`showDeltaPercentInTooltip`, custom `getPercentDelta`, and
+`deltaPercentGrowthColor`.
+- Added `locale` and `tooltipTitleFormatter`; axis value formatters now
+accept React nodes, including links.
+- Added `maxBarSize` to `Chart.Bar` to limit bar thickness.
+- Added `Metric` and row-based layouts in table legends for displaying
+values and differences.
+- Added `hideTickHover` to hover components and tooltips.
+- `maxBarSize` prop for `Chart.Bar`.
+- `deltaPercentGrowthColor` prop to define color for delta growth.
+
+### Changed
+
+- Redesigned chart grids, axes, hover indicators, tooltips, and legends;
+added end caps to reference lines and gradient fills to area charts.
+- Changed the default donut thickness to 16px and reduced the hover
+expansion from 8px to 4px. Set `innerRadius` explicitly when a specific
+thickness is required.
+- Changed default tooltip formatting to localized dates and numbers,
+with non-integer numbers rounded to one decimal place. Use custom
+formatters to retain application-specific formatting.
+- Limited `Chart.Bar` thickness to 12px by default; histogram bars
+retain their independent sizing.
+- Default `Donut` thickness to 12.
+- Default `Donut` thickness to `12`.
+
+### Fixed
+
+- Preserved highlighted dots during hover and rendered hovered dots when
+`showDots` is disabled.
+- Kept tooltips visible when hovering the axis area below the plot.
+
 ## [17.3.1] - 2026-09-10
 
 ### Fixed

@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- New theme applied.
+
+### Changed
+
+- Updated slide and preview rounding; redesigned active indicators with
+wider shapes and animated transitions.
+
 ## [17.2.3] - 2026-07-24
 
 ### Fixed

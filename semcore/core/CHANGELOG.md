@@ -2,6 +2,19 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- Raised the `@semcore/theme` peer dependency requirement from `^2.2.0`
+to `^2.4.0`.
+- Renamed feature highlight CSS variables to the
+`--intergalactic-feature-highlight-*` convention. Update custom themes
+and overrides, for example
+`--intergalactic-icon-primary-feature-highlight` to
+`--intergalactic-feature-highlight-icon-primary`.
+- New theme applied.
+
 ## [17.3.1] - 2026-09-10
 
 ### Fixed

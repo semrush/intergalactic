@@ -2,6 +2,22 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- New theme applied.
+
+### Changed
+
+- Redesigned the format control and separator; updated field padding and
+dropdown offsets for each size.
+
+### Fixed
+
+- Aligned format separator heights with the input controls.
+- Disabled pointer interactions on the disabled picker container.
+
 ## [17.2.4] - 2026-09-10
 
 ### Fixed

@@ -2,6 +2,26 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- New theme applied.
+
+### Added
+
+- Added `Dropdown.Notice` with a title, icon, text, and actions for
+notifications inside a dropdown.
+
+### Changed
+
+- Updated item padding, selection indicators, checkbox alignment, and
+status item spacing.
+
+### Fixed
+
+- Corrected sticky menu item background colors.
+
 ## [17.3.0] - 2026-06-26
 
 ### Fixed

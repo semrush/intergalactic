@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- New theme applied.
+
+### Changed
+
+- Updated calendar colors, cell rounding, spacing, and comparison range
+outlines.
+
+### Fixed
+
+- Corrected previous and next navigation button alignment.
+- Corrected date input padding for the large size.
+- Padding for month picker with size `l`.
+- `Prev/Next` buttons alignment.
+
 ## [17.2.1] - 2026-06-26
 
 ### Fixed

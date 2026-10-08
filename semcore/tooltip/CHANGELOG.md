@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- New theme applied.
+
+### Changed
+
+- Updated tooltip text, background, border, and shadow colors to the new
+palette.
+
 ## [17.2.1] - 2026-06-26
 
 ### Fixed

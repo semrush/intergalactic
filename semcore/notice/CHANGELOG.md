@@ -2,6 +2,26 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- Removed custom color theme rendering. Use a predefined theme (`info`,
+`danger`, `warning`, `success`, or `muted`) and theme tokens for
+customization.
+- New theme applied.
+
+### Added
+
+- Added mutually exclusive `icon` and `illustration` props to `Notice`.
+
+### Changed
+
+- Updated notice colors, content spacing, icon alignment, and action
+layout.
+- Deprecated `Notice.Label` and `NoticeSmart.label` in favor of the new
+visual props.
+
 ## [17.2.2] - 2026-07-10
 
 ### Fixed

@@ -2,6 +2,20 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- New theme applied.
+
+### Changed
+
+- Increased minimum heights from 28px to 32px for `m` and from 40px to
+44px for `l`.
+- Centered tags vertically, updated container padding and tag margins,
+and removed fixed value heights.
+- Updated the focus border and outline colors.
+
 ## [17.2.2] - 2026-09-10
 
 ### Changed
