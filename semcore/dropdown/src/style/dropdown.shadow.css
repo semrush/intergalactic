@@ -177,11 +177,11 @@ SDropdownPopper {
   SDropdownItemContainer[sticky] {
     position: sticky;
     top: 0;
-    background-color: var(--intergalactic-dropdown-menu-item, transparent);
+    background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
     z-index: 2;
 
     &:hover {
-      background-color: var(--intergalactic-dropdown-menu-item, transparent);
+      background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
     }
   }
 }
