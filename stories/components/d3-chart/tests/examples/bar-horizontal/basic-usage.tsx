@@ -32,6 +32,7 @@ export const defaultProps = getChartProps<BarChartProps>({
   groupKey: 'category',
   data,
   invertAxis: true,
+  maxBarSize: 12,
 });
 
 Demo.defaultProps = defaultProps;

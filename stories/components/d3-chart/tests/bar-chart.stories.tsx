@@ -22,7 +22,7 @@ export const BarProps: StoryObj = {
     hMin: { control: { type: 'number', min: 0, max: 50, step: 1 } },
     hide: { control: 'boolean' },
     transparent: { control: 'boolean' },
-    maxBarSize: { control: { type: 'number', min: 10, max: 100, step: 5 } },
+    maxBarSize: { control: { type: 'number', min: 0, max: 100, step: 1 } },
     duration: { control: { type: 'number', min: 0, max: 2000, step: 100 } },
   },
   args: BarPropsDefaultProps,
@@ -32,6 +32,7 @@ export const BasicUsage = {
   render: BasicUsageExample,
   argTypes: getChartArgTypes({
     type: { control: 'select', options: ['stack', 'group'] },
+    maxBarSize: { control: { type: 'number', min: 0, max: 100, step: 1 } },
   }),
   args: BasicUsageProps,
 };

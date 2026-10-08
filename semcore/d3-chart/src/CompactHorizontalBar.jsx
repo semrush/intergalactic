@@ -15,7 +15,7 @@ import { roundedPath, scaleToBand, eventToPoint } from './utils';
 
 export const MIN_WIDTH = 4;
 
-const barHeight = 20;
+const barHeight = 12;
 const hoverOffset = 6;
 
 class CompactHorizontalBarRoot extends Component {
