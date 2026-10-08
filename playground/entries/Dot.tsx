@@ -18,19 +18,11 @@ function getJSX(props: DotJSXProps) {
   return (
     <Button aria-describedby={dotProps.hidden ? undefined : 'dot'}>
       <Button.Text textAlign='center'>Notifications</Button.Text>
-      {dotProps.up
-        ? (
-            <Dot {...dotProps} aria-label={Number.isInteger(value) ? undefined : 'New'} id='dot'>
-              {value}
-            </Dot>
-          )
-        : (
-            <Button.Addon>
-              <Dot {...dotProps} aria-label={Number.isInteger(value) ? undefined : 'New'} id='dot'>
-                {value}
-              </Dot>
-            </Button.Addon>
-          )}
+      <Button.Addon mr={dotProps.up ? '4px' : undefined}>
+        <Dot {...dotProps} aria-label={Number.isInteger(value) ? undefined : 'New'} id='dot'>
+          {value}
+        </Dot>
+      </Button.Addon>
     </Button>
   );
 }
