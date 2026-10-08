@@ -55,16 +55,11 @@ SInputTags STag:focus-visible, SInputTags STagContainerClose:focus-visible {
   }
 }
 
-STagContainer[size='m'] {
-  margin: var(--intergalactic-spacing-05x, 2px) var(--intergalactic-spacing-05x, 2px) var(--intergalactic-spacing-05x, 2px) 0;
-}
-
-STagContainer[size='l'] {
-  margin: var(--intergalactic-spacing-05x, 2px) var(--intergalactic-spacing-05x, 2px) var(--intergalactic-spacing-05x, 2px) 0;
-}
-
+STagContainer[size='m'],
+STagContainer[size='l'],
 STagContainer[size='xl'] {
-  margin: var(--intergalactic-spacing-05x, 2px) var(--intergalactic-spacing-05x, 2px) var(--intergalactic-spacing-05x, 2px) 0;
+  margin: var(--intergalactic-spacing-05x, 2px) 0;
+  padding: 0 var(--intergalactic-spacing-05x, 2px);
 }
 
 STagContainer[editable] {

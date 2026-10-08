@@ -115,9 +115,11 @@ test.describe(`${TAG.VISUAL} `, () => {
         await test.step('Verify InputTags.Tag styles', async () => {
           await testHelpers.verifyCSSForAll(locators.tag(page), {
             'margin-top': '2px',
-            'margin-right': '2px',
+            'margin-right': '0px',
             'margin-bottom': '2px',
             'margin-left': '0px',
+            'padding-left': '2px',
+            'padding-right': '2px',
           });
         });
 
