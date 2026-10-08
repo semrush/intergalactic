@@ -231,7 +231,7 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
   }
   );
 
-type LegendDataMap<T extends 'Flex' | 'Table'> = Record<
+export type LegendDataMap<T extends 'Flex' | 'Table'> = Record<
   LegendItemKey,
   {
     /**

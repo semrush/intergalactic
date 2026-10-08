@@ -1,6 +1,6 @@
 import DiffDown from '@semcore/icon/DiffDown/m';
 import DiffUp from '@semcore/icon/DiffUp/m';
-import { Chart, Metric, type LegendItem } from '@semcore/ui/d3-chart';
+import { Chart, Metric, type LegendDataMap } from '@semcore/ui/d3-chart';
 import React from 'react';
 
 import LineChartMockData from '../../../__mocks__/line';
@@ -8,12 +8,9 @@ import LineChartMockData from '../../../__mocks__/line';
 const data = LineChartMockData.ThreeLines;
 const legendItems = Object.keys(data[0])
   .filter((key) => key !== 'x')
-  .reduce<Record<string, LegendItem & { rows: React.ReactNode[] }>>((acc, item, index) => {
+  .reduce<LegendDataMap<'Table'>>((acc, item, index) => {
     acc[item] = {
-      id: item,
       label: `Item ${index + 1}`,
-      checked: true,
-      color: `chart-palette-order-${index + 1}`,
       rows: [
         <Metric
           key={1}
