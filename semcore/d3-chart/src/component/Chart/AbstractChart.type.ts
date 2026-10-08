@@ -136,7 +136,7 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
    * Use `critical` when an increase isn't a positive change.
    * @default success
    */
-  deltaPercentGrowthColor?: 'success' | 'critical';
+  deltaPercentGrowthColor?: 'good' | 'bad';
   /**
    * Scale for xAxis (see more in d3-scale)
    */
@@ -231,7 +231,7 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
   }
   );
 
-type LegendDataMap<T extends 'Flex' | 'Table'> = Record<
+export type LegendDataMap<T extends 'Flex' | 'Table'> = Record<
   LegendItemKey,
   {
     /**
@@ -254,5 +254,5 @@ type LegendDataMap<T extends 'Flex' | 'Table'> = Record<
      * Flag for uncheck some items by default
      */
     defaultChecked?: boolean;
-  } & (T extends 'Table' ? { columns?: React.ReactNode[] } : { columns?: never })
+  } & (T extends 'Table' ? ({ columns?: React.ReactNode[] } | { rows?: React.ReactNode[] }) : { columns?: never; rows?: never })
 >;

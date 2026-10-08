@@ -32,7 +32,7 @@ class BarChartComponent extends AbstractChart<
     showTooltip: true,
     maxBarSize: 12,
     locale: 'en',
-    deltaPercentGrowthColor: 'success',
+    deltaPercentGrowthColor: 'good',
   } as const;
 
   get xScale() {

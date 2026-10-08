@@ -30,7 +30,7 @@ export function FormCards({ columnStyle, contentReady }: FormCardsProps) {
             </Card.Title>
           </Card.Header>
           <Card.Body tag={Flex} direction='column' gap={6}>
-            <CardBodySkeleton contentReady={contentReady} h={560}>
+            <CardBodySkeleton contentReady={contentReady} h={700}>
               <ArticleLaunchForm />
             </CardBodySkeleton>
           </Card.Body>

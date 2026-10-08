@@ -40,7 +40,7 @@ export type BarChartDefaultProps = {
   showYAxis: true;
   showTooltip: true;
   locale: 'en';
-  deltaPercentGrowthColor: 'success';
+  deltaPercentGrowthColor: 'good';
 };
 
 export type BarChartType = Intergalactic.Component<typeof Flex, BarChartProps & AriaNameProps>;
