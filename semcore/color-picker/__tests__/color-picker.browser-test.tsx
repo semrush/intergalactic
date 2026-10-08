@@ -319,6 +319,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await page.keyboard.press('Enter');
     await locators.color(page, 0).waitFor({ state: 'visible' });
+    await locators.color(page, 4).hover();
     await page.getByText('var(--violet-400)').waitFor({ state: 'visible' });
 
     await expect(page).toHaveScreenshot();
