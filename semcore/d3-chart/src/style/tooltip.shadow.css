@@ -1,5 +1,3 @@
-@import './var.css';
-
 STooltip {
   font-size: var(--intergalactic-fs-100, 12px);
   line-height: var(--intergalactic-lh-100, 1.3334);
