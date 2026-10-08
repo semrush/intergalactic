@@ -7,7 +7,6 @@
   "type": "module",
   "scripts": {
     "build": "node --experimental-transform-types src/processor.ts && tsc",
-    "check": "node --experimental-transform-types src/checker.ts",
     "watch": "chokidar \"src/**/*.ts\" -c \"node --experimental-transform-types src/processor.ts --watch\""
   },
   "exports": {

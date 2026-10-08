@@ -81,7 +81,7 @@ Each component is published as a distinct npm package with `@semcore` scope, whi
 
 ### Default theme
 
-We rely on a [set of design tokens](https://www.figma.com/community/file/1274028958101796491/Semrush---Design-Tokens) to generate CSS variables (refer to `semcore/core/src/theme/themes/default.css`). Although all components use these variables, for users it's not mandatory to declare them at the root level of the page. For proper component display, CSS variables' default theme is always included as a fallback value in the `var` function (for example, `color: var(--intergalactic-text-secondary, #6c6e79);`). After modifying the name of any CSS variable in component styles, running the `pnpm process-theme` command is necessary. This command updates the fallback value in `var` function and is integrated into the pre-commit hook.
+We rely on a [set of design tokens](https://www.figma.com/community/file/1274028958101796491/Semrush---Design-Tokens) to generate CSS variables (refer to `@semcore/theme`). Although all components use these variables, for users it's not mandatory to declare them at the root level of the page. For proper component display, CSS variables' default theme is always included as a fallback value in the `var` function (for example, `color: var(--intergalactic-text-secondary, #6c6e79);`). After modifying the name of any CSS variable in component styles, running the `pnpm process-theme` command is necessary. This command updates the fallback value in `var` function and is integrated into the pre-commit hook.
 
 ### Implicit code transformations
 
