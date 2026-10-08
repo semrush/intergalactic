@@ -852,11 +852,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/week_picker.tsx', 'en');
+      const input = page.locator('input[data-ui-name="DateRangePicker.Trigger"]').first();
+
       await page.keyboard.press('Tab');
       await page.keyboard.type('05012020');
 
       await page.keyboard.press('Enter');
       await locators.button(page, 'Previous month').waitFor({ state: 'visible' });
+      await expect(locators.popper(page)).toBeFocused();
 
       await page.keyboard.press('Tab');
       await expect(locators.button(page, 'Previous month')).toBeFocused();
@@ -871,9 +874,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await page.keyboard.press('Space'); // enter doesn't work
       await locators.button(page, 'Previous month').waitFor({ state: 'hidden' });
+      await expect(input).toBeFocused();
 
       await page.keyboard.press('Enter');
       await locators.button(page, 'Previous month').waitFor({ state: 'visible' });
+      await expect(locators.popper(page)).toBeFocused();
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await expect(locators.button(page, 'Next month')).toBeFocused();

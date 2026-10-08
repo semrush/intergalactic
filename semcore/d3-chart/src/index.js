@@ -37,7 +37,6 @@ export {
   calculateBubbleDomain,
   PlotEventEmitter,
 } from './utils';
-export { colors } from './color';
 
 export { makeDataHintsContainer } from './a11y/hints';
 
