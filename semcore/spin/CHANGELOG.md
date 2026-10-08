@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- Restricted supported layout props to margins and `centered`. Use
+`size` for spinner dimensions and a wrapper for other layout
+customization.
+- Replaced the SVG path with a circle. Update CSS overrides that target
+the previous path or fill.
+- New theme applied.
+
+### Changed
+
+- Redesigned the spinner as a stroked circle with an animated arc and
+size-specific stroke widths.
+- Changed the default theme from `dark` to `default`; deprecated `dark`
+and custom color themes in favor of `default` and `invert`.
+
 ## [17.2.1] - 2026-06-26
 
 ### Fixed

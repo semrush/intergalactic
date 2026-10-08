@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- Restricted `color` to `theme="primary"`. Remove `color` from secondary
+and additional tags or switch to the primary theme.
+- New theme applied.
+
+### Added
+
+- Added `invert` for displaying tags and their clear buttons on dark
+backgrounds.
+
+### Changed
+
+- Updated primary, secondary, and additional tag appearances and clear
+button borders.
+
 ## [17.2.1] - 2026-06-26
 
 ### Fixed

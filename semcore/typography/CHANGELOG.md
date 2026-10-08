@@ -2,6 +2,21 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- New theme applied.
+
+### Added
+
+- Added text size `350` (18px).
+
+### Changed
+
+- Updated text colors, heading margins, and formatted list indentation.
+- Deprecated `NSBlockquote.Component`, scheduled for removal in v19.
+
 ## [17.2.1] - 2026-06-26
 
 ### Fixed

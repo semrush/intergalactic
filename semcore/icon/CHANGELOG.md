@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- New theme applied.
+
+### Added
+
+- Added `DiffUp` and `DiffDown` icons in `m` and `l` sizes.
+
 ## [17.3.0] - 2026-09-10
 
 ### Added

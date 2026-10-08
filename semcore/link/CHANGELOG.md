@@ -2,6 +2,28 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- Removed the deprecated `inline` prop. Use layout props such as
+`display` when needed.
+- New theme applied.
+
+### Added
+
+- Added `default`, `light`, `accent`, and `invert` themes; deprecated
+`use` in favor of `theme`.
+- Added external link detection, an external link icon, and a localized
+screen reader description. Use `isExternal` to override detection or
+mark external links during server rendering.
+- Added `Link.ExternalIcon` for custom link content.
+
+### Changed
+
+- Detected external links now open in a new tab by default. Set
+`isExternal={false}` to disable automatic external link treatment.
+
 ## [17.2.2] - 2026-09-10
 
 ### Changed
