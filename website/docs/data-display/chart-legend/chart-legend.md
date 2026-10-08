@@ -54,7 +54,7 @@ Table: Chart legend placement examples
 
 ## Legend items
 
-Legend items can be either interactive or static. Use `Checkbox` for interactive legend items and choose from a list of default SVG shapes (`Circle`, `Square`, `Line`) for static legend items. You can also set a custom shape if needed.
+Legend items can be either interactive (checkbox) or static (circle).
 
 The colors of the checkboxes or shapes correspond to the data on the chart.
 
@@ -66,20 +66,19 @@ Table: Legend item shapes
 | ------------------------ | ------------------------------------ |
 | `Checkbox` (interactive) | ![](static/checkbox.png)             |
 | `Circle` (static)        | ![](static/static-legend-circle.png) |
-| `Square` (static)        | ![](static/static-legend-square.png) |
-| `Line` (static)          | ![](static/static-legend-line.png)   |
 
 ### Optional legend item elements
 
-A legend item can include an icon, additional text, a counter, or a combination of these.
+A legend item can include an icon, additional text, a counter, or a combination of these. Legend items can also include metrics with diffs.
 
 Table: Optional legend item elements
 
-| Element       | Appearance example    | Styles   |
-| ------------- | --------------------- | -------- |
-| Leading icon  | ![](static/items-icon.png)      | Icon has M size and `--icon-non-interactive` color.   |
-| Additional information | ![](static/items-info.png) | For additional information, use text with 14px size (`--fs-200`) and `--text-secondary` token for color. |
-| Counter      | ![](static/items-counter.png)   | For a counter, use text with 14px size (`--fs-200`) and `--text-secondary` token for color.  |
+| Element                | Appearance example            | Styles                                                                                                   |
+| ---------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Leading icon           | ![](static/items-icon.png)    | Icon has M size and `--icon-non-interactive` color.                                                      |
+| Additional information | ![](static/items-info.png)    | For additional information, use text with 14px size (`--fs-200`) and `--text-secondary` token for color. |
+| Counter                | ![](static/items-counter.png) | For a counter, use text with 14px size (`--fs-200`) and `--text-secondary` token for color.              |
+| Metric with diff       | ![](static/items-metrics.png) | Metric can be plain text or a link. [Live example](./chart-legend-code#legend-with-metrics).             |
 
 Example of a combination of the elements above:
 
