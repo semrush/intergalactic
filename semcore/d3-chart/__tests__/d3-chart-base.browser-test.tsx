@@ -1173,7 +1173,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@base-components',
         '@flex-box'],
     }, async ({ page }) => {
-      const readBothTrends = async (deltaPercentGrowthColor: 'success' | 'critical') => {
+      const readBothTrends = async (deltaPercentGrowthColor: 'good' | 'bad') => {
         await loadPage(page, AREA_CHART_EXAMPLE, 'en', { ...deltaProps, deltaPercentGrowthColor });
 
         // Jan 16: both series grow. Jan 31: both decline.
@@ -1206,7 +1206,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', {
         ...deltaProps,
-        deltaPercentGrowthColor: 'critical',
+        deltaPercentGrowthColor: 'bad',
       });
 
       await hoverAreaPoint(page, 3, 'Tuesday, January 16, 2024');
@@ -1237,7 +1237,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', {
         ...deltaProps,
-        deltaPercentGrowthColor: 'critical',
+        deltaPercentGrowthColor: 'bad',
       });
 
       // Jan 6: `line` grows while `line2` stays put, so both cases are in one tooltip.

@@ -5,7 +5,7 @@ import DonutPropsExample, {
   defaultProps as donutPropsExampleProps,
 } from './examples/donut-chart/donut-props';
 import OnClickPieExample from './examples/donut-chart/on-click-pie';
-import { getChartArgTypes } from './examples/stories_props_helper';
+import { getChartArgTypes, legendTypeControl } from './examples/stories_props_helper';
 
 const meta: Meta = {
   title: 'Components/d3Charts/Tests/Donut-Chart',
@@ -15,7 +15,7 @@ export default meta;
 
 export const BasicUsage = {
   render: BasicUsageExample,
-  argTypes: getChartArgTypes(),
+  argTypes: getChartArgTypes(legendTypeControl),
   args: basicUsageProps,
 };
 

@@ -14,7 +14,7 @@ import BasicUsageExample, {
   dataNA,
 
 } from './examples/cigarette-chart/basic-usage';
-import { getChartArgTypes } from './examples/stories_props_helper';
+import { getChartArgTypes, legendTypeControl } from './examples/stories_props_helper';
 const dataVariations = {
   default: basicUsageProps.data,
   tinyValue: dataTinyValue,
@@ -35,6 +35,7 @@ export default meta;
 export const BasicUsage = {
   render: BasicUsageExample,
   argTypes: getChartArgTypes({
+    ...legendTypeControl,
     showPercentValueInTooltip: { control: { type: 'boolean' } },
     tooltipTitle: { control: { type: 'text' } },
     tooltipViewType: { control: { type: 'select' }, options: ['all', 'single'] },

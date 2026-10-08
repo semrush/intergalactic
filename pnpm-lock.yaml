@@ -694,6 +694,9 @@ importers:
       '@semcore/divider':
         specifier: ^17.2.1
         version: link:../divider
+      '@semcore/link':
+        specifier: ^17.2.2
+        version: link:../link
       '@semcore/typography':
         specifier: ^17.2.1
         version: link:../typography
