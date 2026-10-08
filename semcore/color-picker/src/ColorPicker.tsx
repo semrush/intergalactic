@@ -15,17 +15,17 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 const defaultColors = [
   null,
-  '--blue-400',
-  '--green-300',
-  '--violet-300',
-  '--yellow-200',
-  '--red-300',
-  '--blue-200',
-  '--pink-300',
-  '--salad-300',
-  '--blue-500',
-  '--green-200',
-  '--violet-400',
+  'oklch(0.58 0.168 278.2)',
+  'oklch(0.74 0.17 170)',
+  'oklch(0.74 0.17 303)',
+  'oklch(0.82 0.18 80)',
+  'oklch(0.74 0.19 22)',
+  'oklch(0.82 0.088 272.1)',
+  'oklch(0.74 0.225 330)',
+  'oklch(0.74 0.23 146)',
+  'oklch(0.53 0.157 279.2)',
+  'oklch(0.82 0.15 170)',
+  'oklch(0.64 0.223 299.3)',
 ];
 
 class ColorPickerRoot extends Component<
