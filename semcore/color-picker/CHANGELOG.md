@@ -2,6 +2,25 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- Changed the default palette from hexadecimal colors to CSS token names
+such as `--blue-400`. Update code that compares or stores default
+palette values as hex strings, or supply an explicit hex palette.
+- New theme applied.
+
+### Added
+
+- Added support for CSS token values in palette items and the default
+trigger.
+
+### Changed
+
+- Enlarged palette swatches to 32px and updated palette spacing and the
+custom color input layout.
+
 ## [17.2.1] - 2026-06-26
 
 ### Fixed

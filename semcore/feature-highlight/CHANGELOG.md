@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- New theme applied.
+
+### Changed
+
+- Redesigned highlighted controls with the new feature highlight tokens;
+replaced the notice gradient border with a solid background and
+decorative pattern.
+- Preserved custom content support in `FeatureHighlight.Badge`
+independently of the predefined `Badge` types.
+
+### Fixed
+
+- Applied feature highlight styles to the root `TabLine` component.
+
 ## [17.2.2] - 2026-07-24
 
 ### Changed
