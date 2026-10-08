@@ -77,7 +77,7 @@ type SerializeType = {
 };
 
 type Tree = {
-  types: Record<string, SerializeType>;
+  types?: Record<string, SerializeType>;
   ns?: {
     [key: string]: Tree;
   };
@@ -90,7 +90,7 @@ function getValueFromNamespace(root: Tree, key: string) {
   while (rest.length !== 0) {
     const [firstPart, ...restParts] = rest;
 
-    if (value.types[firstPart] && restParts.length === 0) {
+    if (value.types?.[firstPart] && restParts.length === 0) {
       return value.types[firstPart];
     } else if (value.ns?.[firstPart]) {
       value = value.ns[firstPart];
