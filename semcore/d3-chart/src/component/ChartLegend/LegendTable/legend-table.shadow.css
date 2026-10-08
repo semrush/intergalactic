@@ -18,7 +18,7 @@ SLegendTable[additions-count] {
     grid-auto-flow: column;
     grid-row-gap: var(--intergalactic-spacing-1x, 4px);
     grid-column-gap: var(--intergalactic-spacing-14x, 56px);
-    grid-template-columns: repeat(var(--items-count), min-content);
+    grid-template-columns: repeat(var(--items-count), max-content);
   }
 }
 
