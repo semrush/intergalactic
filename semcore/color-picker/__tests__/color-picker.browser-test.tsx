@@ -319,6 +319,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await page.keyboard.press('Enter');
     await locators.color(page, 0).waitFor({ state: 'visible' });
+    await page.getByText('var(--violet-400)').waitFor({ state: 'visible' });
 
     await expect(page).toHaveScreenshot();
   });
@@ -579,7 +580,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await expect(locators.trigger(page)).toHaveAttribute(
       'aria-label',
-      'Color field, current color is --yellow-200',
+      'Color field, current color is oklch(0.82 0.18 80)',
     );
 
     await page.keyboard.press('Space');
