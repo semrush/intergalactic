@@ -6,7 +6,7 @@ import LineChartMockData from '../../../__mocks__/line';
 const data = LineChartMockData.ThreeLines;
 const legendItems = Object.keys(data[0])
   .filter((key) => key !== 'x')
-  .reduce<Record<string, LegendItem & { columns: React.ReactNode[] }>>((acc, item, index) => {
+  .reduce<Record<string, LegendItem & ({ columns: React.ReactNode[] } | { rows: React.ReactNode[] })>>((acc, item, index) => {
     acc[item] = {
       id: item,
       label: `Item ${index + 1}`,
