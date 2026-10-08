@@ -9,20 +9,20 @@ const metricData = [
   {
     value: '15%',
     diffValue: '1%',
-    diffUse: 'good',
+    diffUse: 'good' as const,
     diffIcon: DiffUp,
     href: '/some-report',
   },
   {
     value: '3.5K',
     diffValue: '0.5',
-    diffUse: 'bad',
+    diffUse: 'bad' as const,
     diffIcon: DiffDown,
   },
   {
     value: '12.3',
     diffValue: 'no change',
-    diffUse: 'neutral',
+    diffUse: 'neutral' as const,
     href: '/some-report',
   },
 ];
