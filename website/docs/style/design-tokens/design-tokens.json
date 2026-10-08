@@ -1714,11 +1714,9 @@
   },
   {
     "name": "--intergalactic-dropdown-menu-item",
-    "value": "#ffffff",
+    "value": "transparent",
     "description": "Default background color for the list item in the dropdown-menu.",
-    "components": [
-      "dropdown"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-dropdown-menu-item-hover",
