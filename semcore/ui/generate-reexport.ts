@@ -150,21 +150,6 @@ const GENERATOR = {
         require: `./${name}/${utilNameWithoutExtention}.cjs`,
       };
     }
-
-    const themesDistPath = path.join(utilsMain, '..', 'theme');
-    const themes = glob.sync('**/*.+(css)', { cwd: themesDistPath });
-
-    for (const theme of themes) {
-      await fs.outputFile(
-        `./core/lib/theme/${theme}`,
-        `@import '@semcore/core/lib/theme/${theme}';`,
-      );
-
-      packageJsonExports[`./core/lib/theme/${theme}`] = {
-        require: `./core/lib/theme/${theme}`,
-        import: `./core/lib/theme/${theme}`,
-      };
-    }
   },
   ICONS: async (dependency: string, name: string) => {
     const require = createRequire(import.meta.url);
