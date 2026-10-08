@@ -4,6 +4,10 @@ SInputTags {
   align-items: center;
   /* reset for ScrollArea because cut box-shadow */
   overflow: initial;
+
+  li:first-of-type {
+    padding-left: var(--intergalactic-spacing-05x, 2px);
+  }
 }
 
 SInputTags[disabled] {
@@ -40,12 +44,20 @@ SInputTags[size='m'] {
   min-height: var(--intergalactic-form-control-m, 32px);
   height: auto;
   padding: var(--intergalactic-spacing-05x, 2px) var(--intergalactic-spacing-3x, 12px);
+
+  &:has(ul:not(:empty)) {
+    padding-left: calc(var(--intergalactic-spacing-3x, 12px) - var(--intergalactic-spacing-05x, 2px));
+  }
 }
 
 SInputTags[size='l'] {
   min-height: var(--intergalactic-form-control-l, 44px);
   height: auto;
   padding: var(--intergalactic-spacing-1x, 4px) var(--intergalactic-spacing-3x, 12px);
+
+  &:has(ul:not(:empty)) {
+    padding-left: calc(var(--intergalactic-spacing-3x, 12px) - var(--intergalactic-spacing-05x, 2px));
+  }
 }
 
 SInputTags STag:focus-visible, SInputTags STagContainerClose:focus-visible {
