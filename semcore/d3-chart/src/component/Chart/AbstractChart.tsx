@@ -683,8 +683,8 @@ export abstract class AbstractChart<
           locale={locale}
           {...extractedAriaProps}
         >
-          {!showTooltip ? null : this.renderTooltip()}
           {this.renderAxis()}
+          {!showTooltip ? null : this.renderTooltip()}
           {this.renderChart()}
         </Plot>
       </SChart>,
