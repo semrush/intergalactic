@@ -53,7 +53,7 @@ const Demo = () => {
         <ReferenceLine title='Right data' position='right' value={dataBar[1].category} />
         <ReferenceLine title='Top data' position='top' value={9} />
         <ReferenceLine position='bottom' value={3}>
-          <ReferenceLine.Title> ReferenceLine.Title</ReferenceLine.Title>
+          <ReferenceLine.Title value={3}>ReferenceLine.Title</ReferenceLine.Title>
         </ReferenceLine>
         <ReferenceBackground value={dataBar[2].category} endValue={dataBar[4].category} />
       </Plot>
