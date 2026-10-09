@@ -3,6 +3,7 @@ import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import Dropdown from '@semcore/dropdown';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
 import React from 'react';
@@ -15,17 +16,17 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 const defaultColors = [
   null,
-  'oklch(0.58 0.168 278.2)',
-  'oklch(0.74 0.17 170)',
-  'oklch(0.74 0.17 303)',
-  'oklch(0.82 0.18 80)',
-  'oklch(0.74 0.19 22)',
-  'oklch(0.82 0.088 272.1)',
-  'oklch(0.74 0.225 330)',
-  'oklch(0.74 0.23 146)',
-  'oklch(0.53 0.157 279.2)',
-  'oklch(0.82 0.15 170)',
-  'oklch(0.64 0.223 299.3)',
+  '--blue-400',
+  '--green-300',
+  '--violet-300',
+  '--yellow-200',
+  '--red-300',
+  '--blue-200',
+  '--pink-300',
+  '--salad-300',
+  '--blue-500',
+  '--green-200',
+  '--violet-400',
 ];
 
 class ColorPickerRoot extends Component<
@@ -39,7 +40,7 @@ class ColorPickerRoot extends Component<
   static displayName = 'ColorPicker';
 
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages)] as const;
+  static enhance = [i18nEnhance(localizedMessages), resolveColorEnhance()] as const;
 
   static defaultProps = () => ({
     defaultVisible: false,
@@ -79,11 +80,12 @@ class ColorPickerRoot extends Component<
   }
 
   getColorsProps() {
-    const { colors, getI18nText } = this.asProps;
+    const { colors, getI18nText, resolveColor } = this.asProps;
 
     return {
       colors,
       getI18nText,
+      resolveColor,
     };
   }
 
@@ -185,7 +187,7 @@ function Popper(
 function Colors(
   props: Intergalactic.InternalTypings.InferChildComponentProps<NSColorPicker.Colors.Component, typeof ColorPickerRoot, 'Colors'>,
 ) {
-  const { Children, styles, colors, getI18nText } = props;
+  const { Children, styles, colors, getI18nText, resolveColor } = props;
   const SColors = Root;
 
   return sstyled(styles)(
@@ -202,7 +204,7 @@ function Colors(
         : (
             // TODO: Re-think the component structure.
             // @ts-ignore
-            colors?.map((color) => <ColorPicker.Item value={color} key={color} />)
+            colors?.map((color) => <ColorPicker.Item resolveColor={resolveColor} value={color} key={color} />)
           )}
     </SColors>,
   );
