@@ -238,9 +238,6 @@ const HOVERED_TICK_PADDING_X = 12;
 function HoveredTick(props) {
   const { tickFormatter, value, isFirstTick = false, isLastTick = false, styles, x, yRange, size, position } = props;
 
-  const contentRef = React.useRef(null);
-  const [interactive, setInteractive] = React.useState(false);
-
   const formattedValue = tickFormatter(value);
 
   const isMightBeInteractive = formattedValue !== null && typeof formattedValue === 'object';
@@ -281,9 +278,9 @@ function HoveredTick(props) {
       data-is-first={isFirstTick}
       data-is-last={isLastTick}
       position={position}
-      aria-hidden={interactive ? undefined : true}
+      data-hovered-tick
     >
-      <SHoveredTickContent ref={contentRef}>
+      <SHoveredTickContent inert=''>
         <SHoveredTick>{formattedValue}</SHoveredTick>
       </SHoveredTickContent>
     </SHoveredTickWrapper>,
