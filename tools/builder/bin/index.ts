@@ -43,7 +43,6 @@ const makeCommand: Record<string, (...args: any[]) => string> = {
     pnpm babel ${workingDir}/src/core-types --out-dir ${workingDir}/lib/core-types ${babelArgs} &&
     pnpm babel ${workingDir}/src/enhancement --out-dir ${workingDir}/lib/enhancement ${babelArgs} &&
     pnpm babel ${workingDir}/src/styled --out-dir ${workingDir}/lib/styled ${babelArgs} &&
-    pnpm babel ${workingDir}/src/theme --out-dir ${workingDir}/lib/theme ${babelArgs} &&
     pnpm babel ${workingDir}/src/register.tsx --out-dir ${workingDir}/lib ${babelArgs} &&
     pnpm babel ${workingDir}/src/LastInteractionType.ts --out-dir ${workingDir}/lib ${babelArgs}`;
   },

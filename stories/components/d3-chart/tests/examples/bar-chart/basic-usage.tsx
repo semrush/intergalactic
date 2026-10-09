@@ -37,6 +37,7 @@ export const defaultProps = getChartProps<BarChartProps>({
   groupKey: 'category',
   type: 'group',
   data,
+  maxBarSize: 12,
   trend: {
     bar: [
       { x: 'Category 0' as string, y: 2 as number },

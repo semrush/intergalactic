@@ -2,6 +2,25 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- New theme applied.
+- Update `MiniChart.Score` typings to enforce either `value`/`color`
+props or custom `children`, preventing unsupported prop combinations.
+
+### Added
+
+- Exported the `NSMiniChart` namespace for score and trend component
+types.
+
+### Changed
+
+- Deprecated `SegmentColor` in favor of
+`NSMiniChart.Score.Line.Segment.Color`.
+- Updated `ScoreLine` custom children typing to accept React nodes.
+
 ## [17.2.2] - 2026-09-10
 
 ### Fixed

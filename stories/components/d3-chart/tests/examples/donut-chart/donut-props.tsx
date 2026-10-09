@@ -26,7 +26,7 @@ const Demo = (props: DonutPropsWithLabel) => {
   return (
     <Plot width={300} height={300} data={data}>
       <Donut
-        innerRadius={innerRadius}
+        {...(innerRadius !== undefined ? { innerRadius } : {})}
         outerRadius={outerRadius}
         paddingAngle={paddingAngle}
         duration={duration}
@@ -72,7 +72,6 @@ const defaultData = {
 };
 
 export const defaultProps: DonutPropsWithLabel = {
-  innerRadius: 0,
   outerRadius: undefined,
   paddingAngle: 0,
   duration: 500,

@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- New theme applied.
+
+### Changed
+
+- Updated header padding and navigation control positioning; changed
+titles to semibold and descriptions to 14px secondary text.
+
 ## [17.2.2] - 2026-07-10
 
 ### Fixed

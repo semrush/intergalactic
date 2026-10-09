@@ -78,7 +78,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-    await page.getByText('--yellow-200').waitFor({ state: 'visible' });
+    await page.getByText('oklch(0.82 0.18 80)').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 
@@ -263,7 +263,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     await test.step('Verify hover on text color ', async () => {
       const items = locators.dialog(page, 1).getByRole('option');
       await items.nth(1).hover();
-      await page.getByText('--blue-400').waitFor({ state: 'visible' });
+      await page.getByText('oklch(0.58 0.168 278.2)').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 
@@ -319,6 +319,8 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await page.keyboard.press('Enter');
     await locators.color(page, 0).waitFor({ state: 'visible' });
+    await locators.color(page, 4).hover();
+    await page.getByText('var(--violet-400)').waitFor({ state: 'visible' });
 
     await expect(page).toHaveScreenshot();
   });
@@ -515,7 +517,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await locators.trigger(page, 0).click();
     await locators.color(page, 4).click();
     await locators.color(page, 0).waitFor({ state: 'visible' });
-    await expect(locators.trigger(page, 0)).toHaveAttribute('aria-label', 'Color field, current color is --yellow-200');
+    await expect(locators.trigger(page, 0)).toHaveAttribute('aria-label', 'Color field, current color is oklch(0.82 0.18 80)');
 
     await locators.trigger(page, 0).click();
     await locators.color(page, 0).click();
@@ -579,7 +581,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await expect(locators.trigger(page)).toHaveAttribute(
       'aria-label',
-      'Color field, current color is --yellow-200',
+      'Color field, current color is oklch(0.82 0.18 80)',
     );
 
     await page.keyboard.press('Space');

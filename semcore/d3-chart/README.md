@@ -41,7 +41,6 @@ import {
   HoverLine,
   HoverRect,
   minMax,
-  colors,
 } from '@semcore/d3-chart';
 ```
 

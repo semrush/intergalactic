@@ -72,6 +72,14 @@ module.exports = {
         exclude: /node_modules/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
+      /*
+        CSS files virtually created by processCssWebpackPlugin are incorrectly treated as side-effect-free.
+        However, these files can have side effects that affect the final build output, so they should be handled accordingly.
+      */
+      {
+        test: /[\\/]@semcore[\\/]/,
+        sideEffects: true,
+      },
     ],
   },
   plugins: [

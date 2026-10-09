@@ -2,6 +2,20 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- New theme applied.
+
+### Added
+
+- Added `Select.Notice` for notifications inside the option list.
+
+### Changed
+
+- Updated checkbox indicators, addon spacing, and search input padding.
+
 ## [17.4.2] - 2026-09-10
 
 ### Fixed

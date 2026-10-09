@@ -10,7 +10,7 @@ export interface IDonutProps extends DonutProps, UnknownProperties {}
 export type DonutProps = Context & {
   /** Inner radius
    * @default 0
-   * */
+   */
   innerRadius?: number;
   /** Outer radius
    * @default calculated by the formula from width, height

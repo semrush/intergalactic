@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- New theme applied.
+
+### Changed
+
+- Updated stepper layout, colors, typography, spacing, and completed
+step icon alignment.
+- Changed navigation buttons to the muted tertiary theme.
+
 ## [17.3.2] - 2026-09-10
 
 ### Changed

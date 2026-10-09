@@ -1,7 +1,7 @@
 {
   "name": "@semcore/core",
   "description": "Semrush Core Component",
-  "version": "17.3.1",
+  "version": "18.0.0",
   "main": "lib/index.js",
   "module": "lib/index.mjs",
   "typings": "lib/index.d.ts",
@@ -20,26 +20,6 @@
     "./src": {
       "types": "./src/index.ts",
       "import": "./src/index.ts"
-    },
-    "./lib/theme/themes/default.css": {
-      "import": "./lib/theme/themes/default.css",
-      "require": "./lib/theme/themes/default.css"
-    },
-    "./lib/theme/themes/light.css": {
-      "import": "./lib/theme/themes/light.css",
-      "require": "./lib/theme/themes/light.css"
-    },
-    "./lib/theme/themes/dark.css": {
-      "import": "./lib/theme/themes/dark.css",
-      "require": "./lib/theme/themes/dark.css"
-    },
-    "./lib/theme/themes/auto.css": {
-      "import": "./lib/theme/themes/auto.css",
-      "require": "./lib/theme/themes/auto.css"
-    },
-    "./lib/theme/themes/highlights-light.css": {
-      "import": "./lib/theme/themes/highlights-light.css",
-      "require": "./lib/theme/themes/highlights-light.css"
     },
     "./lib/utils/focus-lock/getFocusableIn": {
       "types": "./lib/utils/focus-lock/getFocusableIn.d.ts",
@@ -322,7 +302,7 @@
   "peerDependencies": {
     "react": "16.8 - 19",
     "react-dom": "16.8 - 19",
-    "@semcore/theme": "^2.2.0"
+    "@semcore/theme": "^2.4.0"
   },
   "repository": {
     "type": "git",

@@ -2,6 +2,30 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- New theme applied.
+
+### Added
+
+- Added `LinkAction` for a cell link with one or two adjacent button or
+link actions.
+
+### Changed
+
+- Updated table colors and expanded-row indicators; emphasized sorted
+column and group headings.
+
+### Fixed
+
+- Displayed sort indicators for sorted columns even when
+`sortable` is disabled.
+- Kept accordion content aligned with the visible table viewport during
+horizontal scrolling and preserved expanded cell styling during collapse
+animation.
+
 ## [17.3.0] - 2026-09-10
 
 ### Fixed

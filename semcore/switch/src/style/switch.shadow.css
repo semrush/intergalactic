@@ -134,7 +134,7 @@ SSlider {
     ease-in-out;
   box-shadow: var(--intergalactic-box-shadow-control-elevated, 0px 0px 1px 0px oklch(0.324 0.077 242.1 / 0.079), 0px 1px 3px 0px oklch(0.324 0.077 242.1 / 0.079));
   border-radius: 50%;
-  
+
 
   position: absolute;
   width: var(--global-slider-width);

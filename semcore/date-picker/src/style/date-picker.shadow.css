@@ -48,6 +48,12 @@ SButton {
   }
 }
 
+SSingleDateInput {
+  SInputMask {
+    padding-right: var(--intergalactic-spacing-3x, 12px);
+  }
+}
+
 SInputMask {
   color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
   line-height: normal;

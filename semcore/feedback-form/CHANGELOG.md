@@ -2,6 +2,20 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- Moved `final-form`, `final-form-focus`, and `react-final-form` to peer
+dependencies. Ensure your application provides compatible versions:
+`^4.20.7`, `^1.1.2`, and `^6.5.9`, respectively.
+- New theme applied.
+
+### Changed
+
+- Updated rating and checkbox button colors and interaction states.
+- Moved forms from dependencies to peer dependencies.
+
 ## [17.2.3] - 2026-09-10
 
 ### Fixed
