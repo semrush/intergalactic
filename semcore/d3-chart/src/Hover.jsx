@@ -266,8 +266,9 @@ function HoveredTick(props) {
       data-is-last={isLastTick}
       position={position}
       data-hovered-tick
+      aria-hidden='true'
     >
-      <SHoveredTickContent inert=''>
+      <SHoveredTickContent>
         <SHoveredTick>{formattedValue}</SHoveredTick>
       </SHoveredTickContent>
     </SHoveredTickWrapper>,
