@@ -62,7 +62,7 @@ class CigaretteBarRoot extends Component<any, [], { hovered: boolean }> {
   };
 
   getPath() {
-    const { x, y, width, height, r: radius, direction, index, hovered } = this.asProps;
+    const { x, y, width, height, r: radius, direction, hovered } = this.asProps;
 
     let xV = x;
     let yV = y;

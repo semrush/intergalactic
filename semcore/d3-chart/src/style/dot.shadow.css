@@ -1,5 +1,3 @@
-@import './var.css';
-
 SDots {
   & SDot {
     transition-duration: var(--duration);
@@ -37,7 +35,7 @@ SDotHighlight {
   &[transparent] {
     opacity: 0.12;
   }
-} 
+}
 
 SDotBorder {
   fill: none;

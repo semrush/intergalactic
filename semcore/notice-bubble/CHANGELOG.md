@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- New theme applied.
+
+### Changed
+
+- Increased the default notice width from 300px to 320px; updated
+padding, icon alignment, and spacing.
+
 ## [17.2.2] - 2026-09-10
 
 ### Changed

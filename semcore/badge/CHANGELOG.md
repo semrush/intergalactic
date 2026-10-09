@@ -2,6 +2,26 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- Made `type` required and removed custom `children`, `bg`, and `color`
+props. Use a predefined badge type and its localized label.
+- Replaced `inverted` with `theme="invert"`.
+- New theme applied.
+- Added new property `theme`: `default | light | invert`.
+- Removed outdated flag `inverted`.
+
+### Added
+
+- Added `theme="light"` alongside the default and inverted appearances.
+
+### Changed
+
+- Increased badge height to 16px and font size to 12px; updated colors
+and corner rounding.
+
 ## [17.2.2] - 2026-07-10
 
 ### Fixed

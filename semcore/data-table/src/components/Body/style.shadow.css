@@ -356,7 +356,6 @@ SCollapseRow {
   }
 }
 
-
 SCellWrapper[fixed][shadowVertical] {
   &:after {
     content: '';

@@ -14,13 +14,6 @@ export { PlotEventEmitter };
 
 export { makeDataHintsContainer } from './a11y/hints';
 
-// Color
-/**
- * @deprecated
- * This export will be removed in the next major release.
- */
-export declare const colors: { [key: string]: string };
-
 export { default as Plot } from './Plot';
 export * from './Plot';
 
@@ -91,6 +84,11 @@ export * from './component/ChartLegend/LegendFlex/LegendFlex.type';
 export * from './component/ChartLegend/LegendTable/LegendTable.type';
 // @ts-ignore
 export * from './component/ChartLegend/LegendItem/LegendItem.type';
+
+// @ts-ignore
+export * from './component/Metric/Metric.type';
+// @ts-ignore
+export { default as Metric } from './component/Metric/Metric';
 
 // @ts-ignore
 export * from './Pattern';

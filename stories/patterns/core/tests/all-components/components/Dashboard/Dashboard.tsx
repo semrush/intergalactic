@@ -23,6 +23,9 @@ import CigaretteMockData from '../../../../../../components/d3-chart/__mocks__/c
 import DonutMockData from '../../../../../../components/d3-chart/__mocks__/donut';
 import ScatterplotMockData from '../../../../../../components/d3-chart/__mocks__/scatterplot';
 import VennMockData from '../../../../../../components/d3-chart/__mocks__/venn';
+import AreaChartBasicExample from '../../../../../../components/d3-chart/docs/examples/area-chart/basic-usage';
+import LegendWithMetricsExample
+  from '../../../../../../components/d3-chart/docs/examples/chart-legend/legend-with-metrics';
 import FeedbackRatingFormExample
   from '../../../../../ux-patterns/feedback-rating/docs/examples/feedback_rating_form';
 import PrimaryTable from '../Tables/PrimaryTable';
@@ -386,7 +389,6 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
                     plotWidth={120}
                     plotHeight={120}
                     aria-label='Donut chart'
-                    innerRadius={30}
                   />
                 </Box>
               </Card.Body>
@@ -674,6 +676,36 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
                   </Box>
                 )}
               </ChartBox>
+            </Card.Body>
+          </Card>
+        </Flex>
+
+        <Flex gap={2} flexWrap alignItems='stretch' mb={4} style={{ width: '100%', boxSizing: 'border-box' }}>
+          <Card tag='section' style={cardSectionStyle('1 1 calc(50% - 8px)')}>
+            <Card.Header>
+              <Flex justifyContent='space-between' alignItems='center' w='100%'>
+                <Card.Title tag='h3'>Area base</Card.Title>
+                <Button addonLeft={FileExportM} aria-label='Export'>
+                  Export
+                </Button>
+              </Flex>
+            </Card.Header>
+            <Card.Body>
+              <AreaChartBasicExample />
+            </Card.Body>
+          </Card>
+
+          <Card tag='section' style={cardSectionStyle('1 1 calc(50% - 8px)')}>
+            <Card.Header>
+              <Flex justifyContent='space-between' alignItems='center' w='100%'>
+                <Card.Title tag='h3'>Legend with metrics</Card.Title>
+                <Button addonLeft={FileExportM} aria-label='Export'>
+                  Export
+                </Button>
+              </Flex>
+            </Card.Header>
+            <Card.Body>
+              <LegendWithMetricsExample />
             </Card.Body>
           </Card>
         </Flex>

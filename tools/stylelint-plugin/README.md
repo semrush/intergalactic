@@ -35,7 +35,7 @@ npm install @semcore
 
 - `include` - adds custom design tokens to the list of allowed tokens.
 - `exclude` - removes design tokens from the list of allowed tokens.
-- `tokensSource` - path to the file with design tokens. Default is `node_modules/@semcore/core/lib/theme/themes/default.mjs`.
+- `tokensSource` - path to the file with design tokens. Default is `node_modules/@semcore/theme/lib/light.js`.
 - `tokensPrefix` - design tokens (default is `--intergalactic-`). Only CSS variables with this prefix are considered as design tokens.
 
 ## 👤 Author

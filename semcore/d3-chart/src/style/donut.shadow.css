@@ -1,5 +1,3 @@
-@import './var.css';
-
 SPie {
   stroke: var(--intergalactic-chart-grid-border, #ffffff);
   fill: var(--intergalactic-chart-palette-order-1, oklch(0.23 0.009 245));

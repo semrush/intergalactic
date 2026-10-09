@@ -30,6 +30,8 @@ export type BarChartProps = BaseChartProps<BarChartData> & {
   onClickHoverRect?: (index: number, e: React.SyntheticEvent) => void;
   /** Handle click by Bar. */
   onClickBar?: (barItem: number, barKey: BarKey, e: React.SyntheticEvent) => void;
+  /** The maximum width of a bar */
+  maxBarSize?: number;
 };
 
 export type BarChartDefaultProps = {
@@ -38,7 +40,7 @@ export type BarChartDefaultProps = {
   showYAxis: true;
   showTooltip: true;
   locale: 'en';
-  deltaPercentGrowthColor: 'success';
+  deltaPercentGrowthColor: 'good';
 };
 
 export type BarChartType = Intergalactic.Component<typeof Flex, BarChartProps & AriaNameProps>;

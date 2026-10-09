@@ -154,7 +154,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify custom shape as legend item', {
       tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/d3-chart/docs/examples/chart-legend/custom-shape-as-legenditem.tsx', 'en');
+      await loadPage(page, 'stories/components/d3-chart/tests/examples/chart-legend/custom-shape-as-legenditem.tsx', 'en');
 
       await expect(page).toHaveScreenshot();
     });

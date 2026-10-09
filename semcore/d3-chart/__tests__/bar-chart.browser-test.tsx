@@ -1,4 +1,4 @@
-import type { Page } from '@semcore/testing-utils/playwright';
+import type { Locator, Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
@@ -53,6 +53,29 @@ export const locators = {
     return typeof index === 'number' ? base.nth(index) : base;
   },
   tooltip: (page: Page) => page.locator('[data-ui-name="Bar.Tooltip"], [data-ui-name="HoverLine.Tooltip"], [data-ui-name="HoverRect.Tooltip"]'),
+};
+
+const getBarBoxes = async (locator: Locator, axis: 'x' | 'y' = 'x') => {
+  const boxes = await locator.evaluateAll((elements) =>
+    elements.map((element) => {
+      const { x, y, width, height } = (element as unknown as SVGGraphicsElement).getBBox();
+      return { x, y, width, height };
+    }),
+  );
+
+  return boxes.sort((a, b) => a[axis] - b[axis]);
+};
+
+/** Gaps between neighbouring bars along the given axis. */
+const getGaps = (
+  boxes: Array<{ x: number; y: number; width: number; height: number }>,
+  axis: 'x' | 'y' = 'x',
+) => {
+  const size = axis === 'x' ? 'width' : 'height';
+
+  return boxes
+    .slice(1)
+    .map((box, index) => Number((box[axis] - (boxes[index][axis] + boxes[index][size])).toFixed(2)));
 };
 
 /* =====================================================
@@ -1340,6 +1363,209 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       for (const bar of bars) {
         await expect(bar.first()).toHaveAttribute('aria-hidden', 'true');
+      }
+    });
+  });
+
+  const MAX_BAR_SIZE = 12;
+
+  const groupedData = [
+    { category: 'Category 0', bar1: 4, bar2: 7 },
+    { category: 'Category 1', bar1: 3, bar2: 5 },
+    { category: 'Category 2', bar1: 8, bar2: 2 },
+  ];
+
+  const maxBarSizeVariations = [
+    {
+      name: 'single series (vertical)',
+      locator: locators.groupBarBar,
+      axis: 'x' as const,
+      props: {
+        groupKey: 'category',
+        data: [
+          { category: 'Category 0', bar: 4 },
+          { category: 'Category 1', bar: 3 },
+          { category: 'Category 2', bar: 8 },
+        ],
+      },
+    },
+    {
+      name: 'grouped bars (vertical)',
+      locator: locators.groupBarBar,
+      axis: 'x' as const,
+      props: { groupKey: 'category', type: 'group', data: groupedData },
+    },
+    {
+      name: 'grouped bars (horizontal)',
+      locator: locators.groupBarHorizontalBar,
+      axis: 'y' as const,
+      // Needs a taller plot: at plotHeight 300 the group band is already thinner than 12px,
+      // so the cap would never kick in and the assertion would test nothing.
+      props: {
+        groupKey: 'category',
+        type: 'group',
+        invertAxis: true,
+        plotHeight: 500,
+        data: groupedData,
+      },
+    },
+    {
+      name: 'stacked bars (vertical)',
+      locator: locators.stackBarBar,
+      axis: 'x' as const,
+      props: { groupKey: 'category', type: 'stack', data: groupedData },
+    },
+    {
+      name: 'stacked bars (horizontal)',
+      locator: locators.stackBarHorizontalBar,
+      axis: 'y' as const,
+      props: { groupKey: 'category', type: 'stack', invertAxis: true, data: groupedData },
+    },
+  ];
+
+  maxBarSizeVariations.forEach((variant) => {
+    test(`Verify default maxBarSize limits ${variant.name} to ${MAX_BAR_SIZE}px`, {
+      tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart'],
+    }, async ({ page }) => {
+      await loadPage(
+        page,
+        'stories/components/d3-chart/tests/examples/bar-chart/basic-usage.tsx',
+        'en',
+        { ...variant.props, trend: undefined, duration: 0, maxBarSize: undefined },
+      );
+
+      await locators.plot(page).first().waitFor({ state: 'visible' });
+
+      await test.step(`Verify every bar is at most ${MAX_BAR_SIZE}px thick`, async () => {
+        const boxes = await getBarBoxes(variant.locator(page), variant.axis);
+        expect(boxes.length).toBeGreaterThan(0);
+
+        const sizes = boxes.map((box) => (variant.axis === 'x' ? box.width : box.height));
+
+        for (const size of sizes) {
+          expect(size).toBeLessThanOrEqual(MAX_BAR_SIZE);
+        }
+
+        // The plot is wide enough for the cap to actually kick in, not just to fit by chance.
+        expect(Math.max(...sizes)).toBeCloseTo(MAX_BAR_SIZE, 1);
+      });
+    });
+  });
+
+  test('Verify custom maxBarSize overrides the default', {
+    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/tests/examples/bar-chart/basic-usage.tsx',
+      'en',
+      {
+        groupKey: 'category',
+        type: 'group',
+        data: groupedData,
+        trend: undefined,
+        duration: 0,
+        maxBarSize: 6,
+      },
+    );
+
+    await locators.plot(page).first().waitFor({ state: 'visible' });
+
+    await test.step('Verify bars respect the explicitly passed value', async () => {
+      const boxes = await getBarBoxes(locators.groupBarBar(page));
+      expect(boxes.length).toBeGreaterThan(0);
+
+      for (const box of boxes) {
+        expect(box.width).toBeCloseTo(6, 1);
+      }
+    });
+  });
+
+  test('Verify bars stay thinner than maxBarSize when the group has no room', {
+    tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/tests/examples/bar-chart/basic-usage.tsx',
+      'en',
+      {
+        groupKey: 'category',
+        type: 'group',
+        plotWidth: 400,
+        trend: undefined,
+        duration: 0,
+        data: [
+          { category: 'Category 0', bar1: 4, bar2: 7, bar3: 3, bar4: 5, bar5: 6, bar6: 2 },
+          { category: 'Category 1', bar1: 3, bar2: 5, bar3: 8, bar4: 2, bar5: 4, bar6: 7 },
+          { category: 'Category 2', bar1: 8, bar2: 2, bar3: 5, bar4: 6, bar5: 3, bar6: 4 },
+        ],
+      },
+    );
+
+    await locators.plot(page).first().waitFor({ state: 'visible' });
+
+    await test.step('Verify bars shrink below the cap instead of overflowing the group', async () => {
+      const boxes = await getBarBoxes(locators.groupBarBar(page));
+      expect(boxes.length).toBe(18);
+
+      for (const box of boxes) {
+        expect(box.width).toBeGreaterThan(0);
+        expect(box.width).toBeLessThan(MAX_BAR_SIZE);
+      }
+    });
+  });
+
+  test('Verify histogram bar width is not limited by the bar chart default', {
+    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@histogram-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/docs/examples/histogram-chart/basic-usage.tsx',
+      'en',
+    );
+
+    await locators.plot(page).first().waitFor({ state: 'visible' });
+
+    await test.step('Verify histogram bars keep their band width', async () => {
+      const boxes = await getBarBoxes(locators.bar(page));
+      expect(boxes.length).toBeGreaterThan(0);
+
+      // Histogram is explicitly excluded from the 12px cap - bars stay band-wide.
+      expect(Math.max(...boxes.map((box) => box.width))).toBeGreaterThan(MAX_BAR_SIZE);
+    });
+  });
+
+  test.fixme('Verify the gap between bars inside a group is 2px', {
+    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    // Known issue (UIK-5880): GroupBar keeps paddingInner hardcoded to 0.1, so the gap is
+    // a share of the band step instead of a fixed 2px. Measured: 3.74px at plotWidth 500
+    // and ~28px at plotWidth 800.
+    await loadPage(
+      page,
+      'stories/components/d3-chart/tests/examples/bar-chart/basic-usage.tsx',
+      'en',
+      {
+        groupKey: 'category',
+        type: 'group',
+        data: groupedData,
+        trend: undefined,
+        duration: 0,
+      },
+    );
+
+    await locators.plot(page).first().waitFor({ state: 'visible' });
+
+    await test.step('Verify gaps within every group equal 2px', async () => {
+      const boxes = await getBarBoxes(locators.groupBarBar(page));
+      expect(boxes.length).toBe(6);
+
+      // 2 bars per group: even indexes are gaps inside a group, odd ones are between groups.
+      const gaps = getGaps(boxes);
+      const withinGroup = gaps.filter((_, index) => index % 2 === 0);
+
+      for (const gap of withinGroup) {
+        expect(gap).toBeCloseTo(2, 1);
       }
     });
   });

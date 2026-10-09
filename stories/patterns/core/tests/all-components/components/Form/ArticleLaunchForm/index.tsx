@@ -8,6 +8,7 @@ import React from 'react';
 
 import InlineNumberInput from '../../../../../../../components/inline-input/docs/examples/number-only_input';
 import InputNumberDemo from '../../../../../../../components/input-number/docs/examples/range_of_values';
+import RadioCardsBasic from '../../../../../../../components/radio-cards/docs/examples/basic';
 
 export function ArticleLaunchForm() {
   const [distribution, setDistribution] = React.useState('site');
@@ -44,6 +45,13 @@ export function ArticleLaunchForm() {
           <Radio value='site-newsletter' label='Website + newsletter' />
         </Flex>
       </RadioGroup>
+
+      <Flex direction='column' gap={2}>
+        <Text size={300} semibold>
+          Audience segment
+        </Text>
+        <RadioCardsBasic />
+      </Flex>
 
       <Flex direction='column' gap={2}>
         <Text tag='label' size={300} semibold htmlFor='article-hero-accent'>

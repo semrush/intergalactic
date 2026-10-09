@@ -1,9 +1,9 @@
+import defaultDesignThemeJson from '@semcore/theme/light';
 import React from 'react';
 
 import { useContextTokens } from './ThemeProvider';
-import defaultDesignThemeJson from '../theme/themes/default';
-const defaultDesignThemeTokens = defaultDesignThemeJson as Record<string, string>;
 
+const defaultDesignThemeTokens: Record<string, string> = defaultDesignThemeJson;
 const zIndexStackingContext = React.createContext(0);
 
 export type ZIndexDesignTokens =

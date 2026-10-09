@@ -2,6 +2,26 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.0] - 2026-10-08
+
+### BREAK
+
+- New theme applied.
+
+### Changed
+
+- Redesigned primary items with rounded backgrounds, a selection
+indicator, and a chevron on the right; updated secondary item spacing
+and collapse padding.
+- Added DOM containers for the accordion, its items, and collapse
+content. Review custom CSS and layouts that depend on the previous DOM
+structure.
+
+### Fixed
+
+- Prevented change events bubbling from accordion content from
+triggering the accordion's `onChange` callback.
+
 ## [17.2.1] - 2026-06-26
 
 ### Fixed

@@ -265,7 +265,7 @@ export const serializeTsNode = (
             traverse(typeName.left),
             '.',
             traverse(typeName.right),
-          ].flat().join('');
+          ].flat(10).join('');
 
           if (hideGenerics[reference] && typeArguments) {
             const maxArgLength = hideGenerics[reference];
@@ -287,7 +287,7 @@ export const serializeTsNode = (
           if (typeName.left && typeName.right) {
             name = [traverse(typeName.left), '.', traverse(typeName.right)];
           }
-          const stringifiedName = name.flat().join('');
+          const stringifiedName = name.flat(10).join('');
           if (hideGenerics[stringifiedName]) {
             const maxArgLength = hideGenerics[stringifiedName];
             const result = [];
