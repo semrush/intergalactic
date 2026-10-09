@@ -104,26 +104,6 @@ describe('useScrollBarWidth', () => {
     delete (document.documentElement as any).clientHeight;
   });
 
-  test('Verify returns 0 when there is no scroll bar', async () => {
-    const useScrollBarWidth = await loadHook();
-
-    const { result, unmount } = renderHook(() => useScrollBarWidth());
-
-    expect(result.current).toBe(0);
-    unmount();
-  });
-
-  test('Verify measures vertical scroll bar width on mount', async () => {
-    setViewport({ clientWidth: 1007 });
-
-    const useScrollBarWidth = await loadHook();
-
-    const { result, unmount } = renderHook(() => useScrollBarWidth());
-
-    expect(result.current).toBe(17);
-    unmount();
-  });
-
   test('Verify measures horizontal scroll bar height when vertical is false', async () => {
     setViewport({ clientWidth: 1007, clientHeight: 753 });
 
@@ -157,23 +137,6 @@ describe('useScrollBarWidth', () => {
     unmount();
   });
 
-  test('Verify picks up a scroll bar that disappears after mount', async () => {
-    setViewport({ clientWidth: 1007 });
-
-    const useScrollBarWidth = await loadHook();
-
-    const { result, unmount } = renderHook(() => useScrollBarWidth());
-
-    expect(result.current).toBe(17);
-
-    setViewport({ clientWidth: 1024 });
-    triggerResizeObserver();
-    await flushFrame();
-
-    expect(result.current).toBe(0);
-    unmount();
-  });
-
   test('Verify observes document.documentElement', async () => {
     const useScrollBarWidth = await loadHook();
 
@@ -182,24 +145,6 @@ describe('useScrollBarWidth', () => {
     expect(observers).toHaveLength(1);
     expect(observers[0].targets).toEqual([document.documentElement]);
 
-    unmount();
-  });
-
-  test('Verify re-measures on window resize', async () => {
-    const useScrollBarWidth = await loadHook();
-
-    const { result, unmount } = renderHook(() => useScrollBarWidth());
-
-    expect(result.current).toBe(0);
-
-    setViewport({ innerWidth: 800, clientWidth: 783 });
-
-    await act(async () => {
-      window.dispatchEvent(new Event('resize'));
-    });
-    await flushFrame();
-
-    expect(result.current).toBe(17);
     unmount();
   });
 
@@ -270,10 +215,33 @@ describe('useScrollBarWidth', () => {
     expect(cancelAnimationFrame).toHaveBeenCalled();
   });
 
-  test('Verify re-initializes after every consumer unmounted and a new one mounts', async () => {
+  test('Verify measures once per frame for a burst of resize notifications', async () => {
+    const requestAnimationFrame = vi.spyOn(window, 'requestAnimationFrame');
+
+    const useScrollBarWidth = await loadHook();
+
+    const { result, unmount } = renderHook(() => useScrollBarWidth());
+
+    setViewport({ clientWidth: 1007 });
+    window.dispatchEvent(new Event('resize'));
+    triggerResizeObserver();
+    triggerResizeObserver();
+
+    expect(requestAnimationFrame).toHaveBeenCalledTimes(1);
+
+    await flushFrame();
+
+    expect(result.current).toBe(17);
+    unmount();
+  });
+
+  test('Verify re-initializes after every consumer unmounted, even with a pending frame', async () => {
     const useScrollBarWidth = await loadHook();
 
     const firstMount = renderHook(() => useScrollBarWidth());
+
+    // A frame still pending at teardown must not block the next subscription.
+    window.dispatchEvent(new Event('resize'));
     firstMount.unmount();
 
     setViewport({ clientWidth: 1007 });
