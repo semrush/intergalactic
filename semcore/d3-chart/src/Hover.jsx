@@ -1,9 +1,7 @@
 import { Component, sstyled, Root } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
-import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
-import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
 import React from 'react';
 
 import createElement from './createElement';
@@ -238,21 +236,7 @@ const HOVERED_TICK_PADDING_X = 12;
 function HoveredTick(props) {
   const { tickFormatter, value, isFirstTick = false, isLastTick = false, styles, x, yRange, size, position } = props;
 
-  const contentRef = React.useRef(null);
-  const [interactive, setInteractive] = React.useState(false);
-
   const formattedValue = tickFormatter(value);
-
-  const isMightBeInteractive = formattedValue !== null && typeof formattedValue === 'object';
-
-  useEnhancedEffect(() => {
-    if (!isMightBeInteractive || !contentRef.current) {
-      setInteractive(false);
-      return;
-    }
-
-    setInteractive(getFocusableIn(contentRef.current).length > 0);
-  });
 
   if (size?.width === undefined || size?.height === undefined || position === null) return null;
 
@@ -281,9 +265,10 @@ function HoveredTick(props) {
       data-is-first={isFirstTick}
       data-is-last={isLastTick}
       position={position}
-      aria-hidden={interactive ? undefined : true}
+      data-hovered-tick
+      aria-hidden='true'
     >
-      <SHoveredTickContent ref={contentRef}>
+      <SHoveredTickContent>
         <SHoveredTick>{formattedValue}</SHoveredTick>
       </SHoveredTickContent>
     </SHoveredTickWrapper>,
