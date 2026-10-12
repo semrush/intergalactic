@@ -18,7 +18,7 @@ SScoreSegments {
 SScoreSegment {
   flex: 1 1 0;
   height: 100%;
-  background-color: var(--segment-color, var(--intergalactic-chart-palette-order-1, oklch(0.23 0.01 140)));
+  background-color: var(--segment-color, var(--intergalactic-chart-palette-order-1, oklch(0.23 0.009 245)));
 
   &:first-child {
     border-top-left-radius: var(--intergalactic-chart-rounded, 2px);
