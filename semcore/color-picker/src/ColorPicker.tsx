@@ -251,6 +251,6 @@ const ColorPicker = createComponent<
   Item,
 });
 
-export { defaultColors, defaultColorsMap };
+export { defaultColors };
 
 export default ColorPicker;
