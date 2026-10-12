@@ -14,7 +14,6 @@ import Input from '@semcore/input';
 import React from 'react';
 
 import ColorPicker from './ColorPicker';
-import Item from './components/Item';
 import type { ItemProps } from './components/Item.type';
 import type { NSPaletteManager } from './PaletteManager.type';
 import style from './style/color-picker.shadow.css';
@@ -156,9 +155,15 @@ export function Colors(
               <Children />
             )
           : (
-              // TODO: Re-think the component structure.
-              // @ts-ignore
-              colors.map((color) => <PaletteManager.Item resolveColor={resolveColor} value={color} key={color} />)
+              colors.map((color) => (
+                // TODO: Re-think the component structure.
+                // @ts-ignore
+                <PaletteManager.Item
+                  key={color}
+                  color={color}
+                  value={resolveColor(color)}
+                />
+              ))
             )}
       </SColors>
       <SPlusButton onClick={onPlusButtonClick} role='button' aria-label={getI18nText('addColor')}>
@@ -234,8 +239,6 @@ class InputColor extends Component<
 
     const SPaletteManager = Box;
     const SInputValue = Root;
-    const SInput = 'div';
-    const SInputContainer = 'div';
     const SConfirmColor = Input.Addon;
     const SClearConfirm = Input.Addon;
     const SItemColor = Box;

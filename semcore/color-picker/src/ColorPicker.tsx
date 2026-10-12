@@ -14,20 +14,35 @@ import type { ItemProps } from './components/Item.type';
 import style from './style/color-picker.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-const defaultColors = [
-  null,
-  '--blue-400',
-  '--green-300',
-  '--violet-300',
-  '--yellow-200',
-  '--red-300',
-  '--blue-200',
-  '--pink-300',
-  '--salad-300',
-  '--blue-500',
-  '--green-200',
-  '--violet-400',
-];
+// @ts-ignore
+const defaultColorsMap: Record<string, string> = preval`
+  const theme = require('@semcore/theme/light').default;
+
+  const tokens = [
+    '--blue-400',
+    '--green-300',
+    '--violet-300',
+    '--yellow-200',
+    '--red-300',
+    '--blue-200',
+    '--pink-300',
+    '--salad-300',
+    '--blue-500',
+    '--green-200',
+    '--violet-400',
+  ];
+
+  module.exports = tokens.reduce((acc, token) => {
+    if (!theme[token]) {
+      throw new Error('[color-picker] Token ' + token + ' is not found in @semcore/theme/light');
+    }
+
+    acc[token] = theme[token];
+    return acc;
+  }, {});
+`;
+
+const defaultColors = [null, ...Object.keys(defaultColorsMap)];
 
 class ColorPickerRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSColorPicker.Component>,
@@ -45,7 +60,6 @@ class ColorPickerRoot extends Component<
   static defaultProps = () => ({
     defaultVisible: false,
     defaultValue: null,
-    colors: defaultColors,
     i18n: localizedMessages,
     locale: 'en',
     children: (
@@ -79,11 +93,13 @@ class ColorPickerRoot extends Component<
     };
   }
 
-  getColorsProps() {
+  getColorsProps(props: NSColorPicker.Colors.Props) {
+    const { colors: componentColorsProp } = props;
     const { colors, getI18nText, resolveColor } = this.asProps;
 
     return {
-      colors,
+      colors: colors ?? defaultColors,
+      isCustomColors: colors !== undefined || componentColorsProp !== undefined,
       getI18nText,
       resolveColor,
     };
@@ -187,7 +203,7 @@ function Popper(
 function Colors(
   props: Intergalactic.InternalTypings.InferChildComponentProps<NSColorPicker.Colors.Component, typeof ColorPickerRoot, 'Colors'>,
 ) {
-  const { Children, styles, colors, getI18nText, resolveColor } = props;
+  const { Children, styles, colors, getI18nText, resolveColor, isCustomColors } = props;
   const SColors = Root;
 
   return sstyled(styles)(
@@ -202,9 +218,19 @@ function Colors(
             <Children />
           )
         : (
+            colors?.map((color) => (
             // TODO: Re-think the component structure.
             // @ts-ignore
-            colors?.map((color) => <ColorPicker.Item resolveColor={resolveColor} value={color} key={color} />)
+              <ColorPicker.Item
+                key={color}
+                color={color}
+                value={
+                  isCustomColors
+                    ? resolveColor(color, defaultColorsMap[color ?? ''])
+                    : defaultColorsMap[color ?? '']
+                }
+              />
+            ))
           )}
     </SColors>,
   );
@@ -225,6 +251,6 @@ const ColorPicker = createComponent<
   Item,
 });
 
-export { defaultColors };
+export { defaultColors, defaultColorsMap };
 
 export default ColorPicker;

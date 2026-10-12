@@ -5,6 +5,7 @@ import React from 'react';
 
 type ItemAsProps = {
   styles?: React.CSSProperties;
+  color?: string;
   value?: string;
   displayLabel?: boolean;
   editable?: boolean;
@@ -27,7 +28,7 @@ const interaction = {
 };
 
 export default function Item(props: ItemAsProps) {
-  const { Children, styles, value, displayLabel, editable, selected, onRemove, getI18nText, uid, resolveColor } = props as any;
+  const { Children, styles, color, value, displayLabel, editable, selected, onRemove, getI18nText, uid } = props as any;
   const SItemContainer = Root;
   const SLabel = Box;
   const SCloseIcon = Box;
@@ -40,8 +41,6 @@ export default function Item(props: ItemAsProps) {
       onRemove?.(event);
     }
   }, []);
-
-  const resolvedColor = resolveColor(value);
 
   return sstyled(styles)(
     <>
@@ -56,9 +55,8 @@ export default function Item(props: ItemAsProps) {
         onKeyDown={handleKeydown}
         timeout={[250, 50]}
         tabIndex={0}
-        use:value={resolvedColor}
       >
-        {displayLabel && <SLabel data-value={resolvedColor || '#6C6E79'}>A</SLabel>}
+        {displayLabel && <SLabel data-value={value || '#6C6E79'}>A</SLabel>}
         <Children />
         {editable && (
           <>
@@ -71,7 +69,7 @@ export default function Item(props: ItemAsProps) {
           </>
         )}
       </SItemContainer>
-      <Hint triggerRef={triggerRef}>{value ?? getI18nText('clearColor')}</Hint>
+      <Hint triggerRef={triggerRef}>{color ?? getI18nText('clearColor')}</Hint>
     </>,
   );
 }
