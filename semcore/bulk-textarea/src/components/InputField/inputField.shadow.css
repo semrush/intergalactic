@@ -71,7 +71,7 @@ SInputField>ol {
 
   &:has(li:nth-child(n + 100)) {
     >li {
-      padding-left: var(--intergalactic-spacing-8x, 32px);
+      padding-left: var(--intergalactic-spacing-10x, 40px);
     }
 
     >li:nth-child(-n + 9)::before {
