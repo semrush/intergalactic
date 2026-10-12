@@ -68,8 +68,6 @@ class LineRoot extends Component<
       uid,
     } = this.asProps;
 
-    if (value === undefined) return null;
-
     if (loading) {
       return sstyled(styles)(
         <SLineGauge render={Box}>
@@ -92,6 +90,8 @@ class LineRoot extends Component<
         </SLineGauge>,
       );
     }
+
+    if (value === undefined) return null;
 
     const { segments } = this.asProps;
 
