@@ -16,11 +16,12 @@ export const renderComponentChangelog = (tokenList: any[], index: number) => {
 
       const baseChangelogPath = (componentNameParts[0] === 'base-components' && componentNameParts.length > 1) ? resolvePath(__dirname, '..', '..', '..', 'semcore', 'base-components', 'CHANGELOG.md') : null;
       const changelogPath = baseChangelogPath
-        ? baseChangelogPath
+        ? resolvePath(__dirname, '..', '..', '..', 'semcore', 'base-components', 'src', 'components', component, 'CHANGELOG.md')
         : resolvePath(execSync(`pnpm --filter @semcore/${component} exec pwd`, { encoding: 'utf8' }).trim(), 'CHANGELOG.md');
 
       let changelogBody = changelogsCache[changelogPath];
       let baseChangelogBody = baseChangelogPath ? changelogsCache[baseChangelogPath] : undefined;
+
       if (!changelogBody) {
         try {
           const componentLogFile = fs.readFileSync(changelogPath, 'utf-8');
