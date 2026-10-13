@@ -2,7 +2,7 @@
 
 SLineGauge {
   height: 8px;
-  background-color: var(--chart-grid-bar-base-bg);
+  background-color: var(--intergalactic-chart-grid-bar-base-bg, oklch(0.92 0.008 233.5));
 }
 
 SScoreSegments {
