@@ -3,7 +3,7 @@ import type { NSMiniChart } from '@semcore/ui/mini-chart';
 import MiniChart from '@semcore/ui/mini-chart';
 import React from 'react';
 
-type ScoreLinesProps = NSMiniChart.Score.Line.Props;
+type ScoreLinesProps = Extract<NSMiniChart.Score.Line.Props, { value: number }>;
 
 type DemoComponent = ((props: ScoreLinesProps) => React.ReactElement) & {
   defaultProps: ScoreLinesProps;
