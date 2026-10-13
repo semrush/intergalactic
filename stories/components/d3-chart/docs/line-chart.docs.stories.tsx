@@ -8,6 +8,7 @@ import InterpolationExample from './examples/line-chart/interpolation';
 import LegendAndSymbolsForDotExample from './examples/line-chart/legend-and-symbols-for-dots';
 import LineExample from './examples/line-chart/line';
 import LineWithAreaExample from './examples/line-chart/line-with-area';
+import LineWithReferenceExample from './examples/line-chart/line-with-reference';
 import TimeExample from './examples/line-chart/time';
 import TooltipExample from './examples/line-chart/tooltip';
 
@@ -55,4 +56,8 @@ export const Time: StoryObj = {
 
 export const Tooltip: StoryObj = {
   render: TooltipExample,
+};
+
+export const LineWithReference: StoryObj = {
+  render: LineWithReferenceExample,
 };

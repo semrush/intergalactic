@@ -6,12 +6,18 @@ import type { IntergalacticD3Component } from './Plot';
 /** @deprecated **/
 export interface IReferenceLineProps extends ReferenceLineProps, UnknownProperties {}
 export type ReferenceLineProps = Context & {
-  /** The position of the title relative reference line
-   * @default 'left' */
+  /**
+   * The position of the title relative reference line
+   * @default 'left'
+   * @deprecated use ReferenceArea if you need a title.
+   */
   position?: 'top' | 'right' | 'bottom' | 'left';
   /** Value element of data */
   value?: any;
-  /** Reference line title */
+  /**
+   * Reference line title
+   * @deprecated use ReferenceArea if you need title.
+   */
   title?: string;
 };
 

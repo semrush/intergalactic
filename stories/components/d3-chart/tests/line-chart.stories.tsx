@@ -59,6 +59,13 @@ export const BasicUsage = {
       options: ['off', 'custom', 'divideByZero', 'includesFirstPoint'],
       ...storyKnob,
     },
+
+    withReferenceLine: { control: 'boolean' },
+    referenceLineArea: { control: 'number', if: { arg: 'withReferenceLine' } },
+
+    withReferenceArea: { control: 'boolean' },
+    referenceAreaUse: { control: 'select', if: { arg: 'withReferenceArea' }, options: ['neutral', 'good', 'bad', 'insight'] },
+    referenceAreaWithTitles: { control: 'boolean', if: { arg: 'withReferenceArea' } },
   }),
   args: BasicUsageProps,
 };

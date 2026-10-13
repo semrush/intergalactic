@@ -6,11 +6,11 @@ SReferenceLine {
 STitle {
   font-size: var(--intergalactic-fs-100, 12px);
   fill: var(--intergalactic-chart-grid-text-label, oklch(from oklch(0.182 0.045 244.8 / 0.593) l c h / 0.4));
-  transform-origin: var(--transform-origin);
+  /*transform-origin: var(--transform-origin);*/
 }
 
 STitle[position='top'] {
-  text-anchor: middle;
+  dominant-baseline: hanging;
 }
 
 STitle[position='bottom'] {
@@ -30,14 +30,12 @@ STitle[position='left'] {
   dominant-baseline: middle;
 }
 
-SBackground {
-  fill: var(--intergalactic-chart-grid-period-bg, oklch(0.96 0.005 232.5));
-}
-SStripes {
-  fill: var(--fill);
+SSubTitle {
+  font-size: var(--intergalactic-fs-100, 12px);
+  fill: var(--intergalactic-chart-grid-text-label-accent, oklch(0.102 0.021 230.9 / 0.9));
+  font-weight: bold;
 }
 
-SStripesPatternPath {
-  stroke: var(--intergalactic-chart-grid-period-pattern, oklch(0.95 0.006 232.7));
-  stroke-width: 1px;
+SBackground {
+  fill: var(--intergalactic-chart-grid-period-bg, oklch(0.96 0.005 232.5));
 }

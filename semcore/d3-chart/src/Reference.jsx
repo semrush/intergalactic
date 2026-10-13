@@ -2,6 +2,7 @@ import { Component, sstyled } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import React from 'react';
 
+import { SvgElement } from './component/SvgElement';
 import createElement from './createElement';
 import style from './style/reference.shadow.css';
 import { scaleOfBandwidth } from './utils';
@@ -144,12 +145,28 @@ class ReferenceLineRoot extends Component {
 
   render() {
     const SReferenceLine = this.Element;
-    const { title, scale, position, value, color, resolveColor, styles } = this.asProps;
+    const SArea = SvgElement;
+    const { title, scale, position, value, color, resolveColor, styles, uid, area } = this.asProps;
     const positionProps = lineDirection2props[side2direction[position]];
     const { notchFirst, notchLast, ...line } = positionProps(scale, value);
+    const patternId = `${uid}-pattern`;
 
     return sstyled(styles)(
       <>
+        <g>
+          <defs>
+            <linearGradient id={patternId} x1='0%' y1='0%' x2='0%' y2='100%'>
+              {getColorByUse('neutral')}
+            </linearGradient>
+          </defs>
+
+          <SArea
+            tag='path'
+            d={getReferenceAreaPath({ x: line.x1 - area / 2, y: line.y2, width: area, height: line.y1 - line.y2 })}
+            // childrenPosition='inside'
+            fill={`url(#${patternId})`}
+          />
+        </g>
         <SReferenceLine
           render='g'
           __excludeProps={['data', 'scale', 'format', 'value', 'color']}
@@ -157,7 +174,7 @@ class ReferenceLineRoot extends Component {
         >
           <line {...notchFirst} />
           <line {...line} />
-          <line {...notchLast} />
+          {!area && (<line {...notchLast} />)}
         </SReferenceLine>
         {title && <ReferenceLine.Title>{title}</ReferenceLine.Title>}
       </>,
@@ -186,42 +203,104 @@ function Title(props) {
     />,
   );
 }
-function Background(props) {
-  const { Element: SBackground, styles, scale, position = 'left', value, endValue } = props;
-  const positionProps = rectDirection2props[side2direction[position]];
 
-  return sstyled(styles)(
-    <SBackground
-      render='rect'
-      childrenPosition='inside'
-      {...positionProps(scale, value, endValue)}
-    />,
-  );
+function getColorByUse(use) {
+  switch (use) {
+    case 'bad': {
+      return (
+        <>
+          <stop offset='0%' stopColor='var(--red-300)' stopOpacity='0.8' />
+          <stop offset='12.68%' stopColor='#FF8786' stopOpacity='0.9' />
+          <stop offset='87.98%' stopColor='#FF8786' stopOpacity='0.1' />
+        </>
+      );
+    }
+    case 'good': {
+      return (
+        <>
+          <stop offset='0%' stopColor='var(--green-200)' stopOpacity='0.5' />
+          <stop offset='12.68%' stopColor='rgba(89, 221, 170, 0.9)' stopOpacity='0.3' />
+          <stop offset='87.98%' stopColor='rgba(89, 221, 170, 0.1)' stopOpacity='0.1' />
+        </>
+      );
+    }
+    case 'insight': {
+      return (
+        <>
+          <stop offset='0%' stopColor='var(--violet-300)' stopOpacity='0.8' />
+          <stop offset='12.68%' stopColor='var(--violet-300)' stopOpacity='0.9' />
+          <stop offset='87.98%' stopColor='rgba(198, 149, 255, 0.01)' stopOpacity='0.1' />
+        </>
+      );
+    }
+    default: {
+      return (
+        <>
+          <stop offset='0%' stopColor='var(--gray-50)' stopOpacity='0.8' />
+          <stop offset='41.83%' stopColor='var(--gray-50)' stopOpacity='0.5' />
+          <stop offset='87.98%' stopColor='rgba(255, 255, 255, 0.00)' stopOpacity='0.2' />
+        </>
+      );
+    }
+  }
 }
-Background.style = style;
 
-const diagonalGap = 8;
-const gap = Math.sqrt(diagonalGap ** 2 + diagonalGap ** 2);
-const gap12 = gap * (1 / 2);
-const gap32 = gap * (3 / 2);
-const path = `M-${gap},-${gap12} L${gap},${gap32} M-${gap12},-${gap} L${gap32},${gap}`;
+function getReferenceAreaPath({ x, y, width, height }) {
+  const r = 12;
+
+  const path = `M ${x},${y + r} Q ${x},${y} ${x + r},${y} H ${x + width - r} Q ${x + width},${y} ${x + width},${y + r} V ${y + height} H ${x} Z`;
+
+  return path;
+}
+
 function Stripes(props) {
-  const { Element: SStripes, styles, scale, position = 'left', value, endValue, uid } = props;
-  const SStripesPatternPath = 'path';
-  const positionProps = rectDirection2props[side2direction[position]];
+  const { Element: SStripes, styles, scale, position = 'left', value, endValue, uid, use = 'neutral', title, subTitle } = props;
+  const positionProps = rectDirection2props[side2direction[position]](scale, value, endValue);
   const patternId = `${uid}-pattern`;
+  const STitle = SvgElement;
+  const SSubTitle = SvgElement;
+
+  const textX = positionProps.x + 4;
+  const textY = positionProps.y + 4;
 
   return sstyled(styles)(
     <g>
+      <defs>
+        <linearGradient id={patternId} x1='0%' y1='0%' x2='0%' y2='100%'>
+          {getColorByUse(use)}
+        </linearGradient>
+      </defs>
+
       <SStripes
-        render='rect'
+        render='path'
+        d={getReferenceAreaPath(positionProps)}
         childrenPosition='inside'
         fill={`url(#${patternId})`}
-        {...positionProps(scale, value, endValue)}
       />
-      <pattern id={patternId} patternUnits='userSpaceOnUse' width={gap} height={gap}>
-        <SStripesPatternPath d={path} />
-      </pattern>
+
+      {title && (
+        <STitle
+          tag='text'
+          childrenPosition='inside'
+          position='top'
+          x={textX}
+          y={textY}
+        >
+          {title}
+        </STitle>
+      )}
+
+      {subTitle && (
+        <SSubTitle
+          tag='text'
+          childrenPosition='inside'
+          position='top'
+          x={textX}
+          y={textY + 26}
+        >
+          {subTitle}
+        </SSubTitle>
+      )}
     </g>,
   );
 }
@@ -230,9 +309,9 @@ Stripes.enhance = [uniqueIDEnhancement()];
 
 export const ReferenceLine = createElement(ReferenceLineRoot, {
   Title,
-  Background,
+  Background: Stripes,
   Stripes,
 });
 
-export const ReferenceBackground = createElement(Background);
+export const ReferenceBackground = createElement(Stripes);
 export const ReferenceStripes = createElement(Stripes);

@@ -15,6 +15,37 @@ type AreaItem = {
 
 export type LineChartData = Array<Record<string, string | number | typeof interpolateValue | Date>>;
 
+type ReferenceLine = {
+  /**
+   * Simple reference line.
+   */
+  value: string;
+
+  /**
+   * Size of area near line
+   */
+  area?: number;
+};
+
+type ReferenceArea = {
+  /**
+   * Reference line with area.
+   */
+  value: [string, string];
+  /**
+   * @default neutral.
+   */
+  use?: 'neutral' | 'insight' | 'good' | 'bad';
+  /**
+   * Title of the area.
+   */
+  title?: string;
+  /**
+   * Custom subtitle with data.
+   */
+  subTitle?: string;
+};
+
 export type LineChartProps = BaseChartProps<LineChartData> & {
   /**  Field name that groups the data points */
   groupKey: string;
@@ -32,6 +63,14 @@ export type LineChartProps = BaseChartProps<LineChartData> & {
   areaCurve?: CurveFactory;
   /** Callback triggered when a user clicks on a line */
   onClickLine?: (index: number, event: React.SyntheticEvent) => void;
+  /**
+   * Settings for render reference line.
+   */
+  referenceLine?: ReferenceLine;
+  /**
+   * Settings for render reference area.
+   */
+  referenceArea?: ReferenceArea;
 };
 
 export type LineChartDefaultProps = {
