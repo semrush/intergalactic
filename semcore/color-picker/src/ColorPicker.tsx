@@ -227,7 +227,7 @@ function Colors(
                 value={
                   isCustomColors
                     ? resolveColor(color, defaultColorsMap[color ?? ''])
-                    : defaultColorsMap[color ?? '']
+                    : defaultColorsMap[color ?? ''] ?? null
                 }
               />
             ))
