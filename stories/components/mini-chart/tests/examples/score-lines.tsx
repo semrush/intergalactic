@@ -5,19 +5,25 @@ import React from 'react';
 
 type ScoreLinesProps = NSMiniChart.Score.Line.Props;
 
-const Demo = ({
-  value = 4,
-  loading,
-  segments,
-  color,
-  baseBgColor,
-  animate,
-}: ScoreLinesProps) => {
+type DemoComponent = ((props: ScoreLinesProps) => React.ReactElement) & {
+  defaultProps: ScoreLinesProps;
+};
+
+const Demo: DemoComponent = (props: ScoreLinesProps) => {
   return (
     <Box w='700px'>
-      <MiniChart.ScoreLine value={value} w='250px' segments={segments} loading={loading} animate={animate} color={color} baseBgColor={baseBgColor} aria-hidden />
+      <MiniChart.ScoreLine {...props} w='250px' aria-hidden />
     </Box>
   );
 };
+
+export const defaultScoreLinesProps: ScoreLinesProps = {
+  value: 4,
+  loading: false,
+  animate: true,
+};
+
+Demo.defaultProps = defaultScoreLinesProps;
+
 export type { ScoreLinesProps };
 export default Demo;
