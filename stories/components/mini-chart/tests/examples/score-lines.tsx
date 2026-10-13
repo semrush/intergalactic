@@ -15,7 +15,7 @@ const Demo = ({
 }: ScoreLinesProps) => {
   return (
     <Box w='700px'>
-      <MiniChart.ScoreLine value={value} w='250px' segments={segments} loading={loading} animate={animate} color={color} baseBgColor={baseBgColor} />
+      <MiniChart.ScoreLine value={value} w='250px' segments={segments} loading={loading} animate={animate} color={color} baseBgColor={baseBgColor} aria-hidden />
     </Box>
   );
 };

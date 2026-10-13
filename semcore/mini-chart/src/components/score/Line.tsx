@@ -1,6 +1,7 @@
 import { Box, Flex } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
@@ -46,6 +47,7 @@ class LineRoot extends Component<
     const { resolveColor } = this.asProps;
 
     return {
+      'flex': `${Math.max(segmentProps.value, 0)} 1 0`,
       'segment-color': resolveColor(segmentProps.color),
     };
   }
@@ -58,7 +60,7 @@ class LineRoot extends Component<
       value,
       styles,
       color = 'chart-palette-order-1',
-      baseBgColor = 'chart-grid-bar-chart-base-bg',
+      baseBgColor = 'chart-grid-bar-base-bg',
       resolveColor,
       loading,
       children,
@@ -68,10 +70,12 @@ class LineRoot extends Component<
       uid,
     } = this.asProps;
 
+    const { __excludeProps, extractedAriaProps } = extractAriaProps(this.asProps);
+
     if (loading) {
       return sstyled(styles)(
-        <SLineGauge render={Box}>
-          <svg width='100%' height='100%' fill='none' role='img' display='block'>
+        <SLineGauge render={Box} __excludeProps={__excludeProps}>
+          <svg width='100%' height='100%' fill='none' role='img' display='block' {...extractedAriaProps}>
             <rect width='100%' height='100%' rx={CORNER_RADIUS} fill={resolveColor('skeleton-bg')} />
           </svg>
         </SLineGauge>,
@@ -125,8 +129,8 @@ class LineRoot extends Component<
     const baseMaskId = `${uid}-base-mask`;
 
     return sstyled(styles)(
-      <SLineGauge render={Box}>
-        <svg width='100%' height='100%' fill='none' role='img' display='block'>
+      <SLineGauge render={Box} __excludeProps={__excludeProps}>
+        <svg width='100%' height='100%' fill='none' role='img' display='block' {...extractedAriaProps}>
           <defs>
             {hasValue && (
               <mask id={baseMaskId} maskUnits='userSpaceOnUse' x={0} y={0} width='100%' height='100%'>

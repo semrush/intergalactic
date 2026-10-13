@@ -13,6 +13,7 @@ const Demo = () => {
         w={120}
         color='chart-palette-order-1'
         baseBgColor='blue-200'
+        aria-hidden
       />
 
       <MiniChart.ScoreLine
