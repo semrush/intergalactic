@@ -85,7 +85,7 @@ class LineRoot extends Component<
 
     if (children !== undefined) {
       return sstyled(styles)(
-        <SLineGauge render={Box}>
+        <SLineGauge render={Box} segments>
           <SScoreSegments
             // @ts-ignore
             animate={animate && !loading}
