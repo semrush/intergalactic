@@ -665,7 +665,7 @@ export const theme: Theme = {
         description: 'Critical data color for charts.',
       },
       chart_data_success: {
-        value: colors.salad['200'].value,
+        value: colors.green['300'].value,
         description: 'Success data color for charts.',
       },
       chart_data_warning: {
