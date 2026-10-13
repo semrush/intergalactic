@@ -724,7 +724,8 @@
     "value": "oklch(0.92 0.008 233.5)",
     "description": "Default background color of a bar in the BarChart.",
     "components": [
-      "d3-chart"
+      "d3-chart",
+      "mini-chart"
     ]
   },
   {
