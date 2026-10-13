@@ -2,6 +2,7 @@
 
 SLineGauge {
   height: 8px;
+  background-color: var(--chart-grid-bar-base-bg);
 }
 
 SScoreSegments {

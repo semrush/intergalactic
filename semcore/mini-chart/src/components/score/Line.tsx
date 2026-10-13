@@ -44,11 +44,12 @@ class LineRoot extends Component<
   } as const;
 
   getSegmentProps(segmentProps: NSMiniChart.Score.Line.Segment.Props) {
+    const { value, color } = segmentProps;
     const { resolveColor } = this.asProps;
 
     return {
-      'flex': `${Math.max(segmentProps.value, 0)} 1 0`,
-      'segment-color': resolveColor(segmentProps.color),
+      'flex': `${Math.max(value, 0)} 1 0`,
+      'segment-color': resolveColor(color),
     };
   }
 
@@ -185,8 +186,10 @@ class LineRoot extends Component<
 function Segment(
   props: Intergalactic.InternalTypings.InferChildComponentProps<NSMiniChart.Score.Line.Segment.Component, typeof LineRoot, 'Segment'>,
 ) {
-  const { styles } = props;
+  const { styles, value } = props;
   const SScoreSegment = Root;
+
+  if (!value) return null;
 
   return sstyled(styles)(<SScoreSegment render={Box} />);
 }
