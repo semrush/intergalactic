@@ -71,6 +71,9 @@ class LineRoot extends Component<
       uid,
     } = this.asProps;
 
+    const segmentColor = resolveColor(color);
+    const baseColor = resolveColor(baseBgColor);
+
     const { __excludeProps, extractedAriaProps } = extractAriaProps(this.asProps);
 
     if (loading) {
@@ -85,7 +88,7 @@ class LineRoot extends Component<
 
     if (children !== undefined) {
       return sstyled(styles)(
-        <SLineGauge render={Box} segments>
+        <SLineGauge render={Box} advancedMode base-color={baseColor}>
           <SScoreSegments
             // @ts-ignore
             animate={animate && !loading}
@@ -101,11 +104,8 @@ class LineRoot extends Component<
     const { segments } = this.asProps;
 
     if (segments) {
-      const segmentColor = resolveColor(color);
-      const segmentBaseColor = resolveColor(baseBgColor);
-
       return sstyled(styles)(
-        <SLineGauge render={Box}>
+        <SLineGauge render={Box} base-color={baseColor}>
           <SScoreSegments
             // @ts-ignore
             animate={animate && !loading}
@@ -114,7 +114,7 @@ class LineRoot extends Component<
               sstyled(styles)(
                 <SScoreSegment
                   key={i}
-                  segment-color={i < value ? segmentColor : segmentBaseColor}
+                  segment-color={i < value ? segmentColor : baseColor}
                 />,
               ))}
           </SScoreSegments>

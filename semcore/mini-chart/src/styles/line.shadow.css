@@ -4,8 +4,8 @@ SLineGauge {
   height: 8px;
   border-radius: var(--intergalactic-chart-rounded, 2px);
   
-  &[segments] {
-    background-color: var(--intergalactic-chart-grid-bar-base-bg, oklch(0.92 0.008 233.5));
+  &[advancedMode] {
+    background-color: var(--base-color, var(--intergalactic-chart-grid-bar-base-bg, oklch(0.92 0.008 233.5)));
   }
 
   &:has(SScoreSegment) {
