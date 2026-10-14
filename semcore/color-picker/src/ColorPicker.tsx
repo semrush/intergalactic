@@ -44,6 +44,11 @@ const defaultColorsMap: Record<string, string> = preval`
 
 const defaultColors = [null, ...Object.keys(defaultColorsMap)];
 
+const defaultColorsMapInverted = Object.assign(
+  {},
+  ...Object.entries(defaultColorsMap).map(([key, value]) => ({ [value]: key })),
+);
+
 class ColorPickerRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSColorPicker.Component>,
   typeof ColorPickerRoot.enhance,
@@ -159,7 +164,7 @@ function Trigger(
       return getI18nText('emptyColor');
     }
 
-    return getI18nText('currentColor', { color: value });
+    return getI18nText('currentColor', { color: defaultColorsMapInverted[value] ?? value });
   }, [value]);
 
   return (

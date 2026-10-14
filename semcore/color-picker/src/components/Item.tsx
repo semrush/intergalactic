@@ -50,7 +50,7 @@ export default function Item(props: ItemAsProps) {
         role='option'
         aria-selected={selected}
         ref={triggerRef}
-        aria-label={value ?? getI18nText('clearColor')}
+        aria-label={color ?? getI18nText('clearColor')}
         aria-describedby={editable ? deleteDescriber : undefined}
         onKeyDown={handleKeydown}
         timeout={[250, 50]}
