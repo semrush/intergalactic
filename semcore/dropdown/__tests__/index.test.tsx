@@ -35,7 +35,7 @@ describe('Dropdown.StatusItem', () => {
     const status = screen.getByRole('status');
     expect(status).toHaveAttribute('aria-live', 'polite');
     await waitFor(() => {
-      expect(status).toHaveTextContent('2 results found');
+      expect(status.textContent).toContain('2 results found');
     });
   });
 
@@ -43,7 +43,7 @@ describe('Dropdown.StatusItem', () => {
     render(<Dropdown.StatusItem id='search-result' itemsCount={1} />);
 
     await waitFor(() => {
-      expect(screen.getByRole('status')).toHaveTextContent('1 result found');
+      expect(screen.getByRole('status').textContent).toContain('1 result found');
     });
   });
 
