@@ -86,4 +86,32 @@ test.describe(`@typography ${TAG.ACCESSIBILITY}`, () => {
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
   });
+
+  test('Verify additional information have no Axe issues', async ({ page }) => {
+    await loadPage(page, 'stories/components/typography/docs/examples/additional-information.tsx', 'en');
+
+    const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
+
+  test('Verify font size and line height have no Axe issues', async ({ page }) => {
+    await loadPage(page, 'stories/components/typography/docs/examples/font-size-and-line-height.tsx', 'en');
+
+    const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
+
+  test('Verify native typography tags have no Axe issues', async ({ page }) => {
+    await loadPage(page, 'stories/components/typography/docs/examples/native-typography-tags.tsx', 'en');
+
+    const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
+
+  test('Verify paragraph margins have no Axe issues', async ({ page }) => {
+    await loadPage(page, 'stories/components/typography/docs/examples/paragraph-margins.tsx', 'en');
+
+    const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
 });

@@ -217,7 +217,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
       await page.keyboard.press('Enter');
       await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
 
-      if (browserName == 'firefox') {
+      if (browserName === 'firefox') {
         await page.keyboard.press('Tab');
       }
       await page.keyboard.press('Tab');
@@ -349,7 +349,7 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
-      if (browserName == 'firefox') {
+      if (browserName === 'firefox') {
         await page.keyboard.press('Tab');
       }
       await page.keyboard.press('Tab');
@@ -364,7 +364,7 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify ESC closes modal after leaving iframe', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Escape');
-      await expect(locators.modal(page)).not.toBeVisible();
+      await expect(locators.modal(page)).toBeHidden();
     });
   });
 
@@ -395,7 +395,7 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Escape');
-      await expect(locators.modal(page)).not.toBeVisible();
+      await expect(locators.modal(page)).toBeHidden();
       await expect(locators.button(page, 'Open modal')).toBeFocused();
     });
   });
@@ -609,7 +609,7 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
   test('Verify modal with focusable input inside by mouse', {
     tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@modal', '@input'],
   }, async ({ page, browserName }) => {
-    if (browserName == 'webkit') test.skip(); // works unstable in playwright webkit
+    test.skip(browserName === 'webkit', 'Focus after opening by mouse is unstable in Playwright WebKit');
     await loadPage(page, 'stories/components/modal/advanced/examples/modal_with_auto_focus_input', 'en');
 
     await test.step('Verify input focused', async () => {
@@ -623,8 +623,7 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
 
   test('Verify modal with focusable input inside by keyboard', {
     tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@modal', '@input'],
-  }, async ({ page, browserName }) => {
-    if (browserName === 'webkit' || browserName === 'chromium') test.skip(); // works unstable in playwright webkit and chromium
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/modal/advanced/examples/modal_with_auto_focus_input', 'en');
 
     await test.step('Verify input focused', async () => {

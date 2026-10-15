@@ -47,11 +47,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.input(page)).toHaveAttribute('min', '1');
       await expect(locators.input(page)).toHaveAttribute('max', '122360');
 
-      const id = await locators.input(page).getAttribute('id');
-      expect(id).toContain('pagination-input');
-
-      const classAttr = await locators.inputWrapper(page).getAttribute('class');
-      expect(classAttr).not.toContain('focused');
+      await expect(locators.input(page)).toHaveAttribute('id', /pagination-input/);
+      await expect(locators.inputWrapper(page)).not.toHaveClass(/focused/);
 
       await expect(locators.totalPages(page)).not.toHaveAttribute('disabled', '');
       await expect(locators.totalPages(page)).toHaveAttribute('type', 'button');
@@ -77,7 +74,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test('Verify Keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@pagination'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/pagination/docs/examples/basic_usage.tsx', 'en');
 
     await test.step('Verify navigation by tab', async () => {
@@ -89,33 +86,42 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.totalPages(page)).toBeFocused();
     });
 
-    await test.step('Verify change pages by buttons interaction', async () => {
+    await test.step('Verify next page by Space', async () => {
       await page.keyboard.press('Shift+Tab');
       await expect(locators.input(page)).toBeFocused();
       await page.keyboard.press('Shift+Tab');
       await expect(locators.nextPage(page)).toBeFocused();
       await page.keyboard.press('Space');
       await expect(locators.input(page)).toHaveAttribute('value', '2');
+    });
 
+    await test.step('Verify previous page by Enter moves focus to next page button', async () => {
       await page.keyboard.press('Shift+Tab');
       await expect(locators.prevPage(page)).toBeFocused();
       await page.keyboard.press('Enter');
       await expect(locators.input(page)).toHaveAttribute('value', '1');
-
       await expect(locators.nextPage(page)).toBeFocused();
+    });
+
+    await test.step('Verify first page by Enter', async () => {
       await page.keyboard.press('Enter');
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Shift+Tab');
       await expect(locators.firstPage(page)).toBeFocused();
       await page.keyboard.press('Enter');
       await expect(locators.input(page)).toHaveAttribute('value', '1');
+    });
+
+    await test.step('Verify last page by Enter moves focus to previous page button', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await expect(locators.totalPages(page)).toBeFocused();
       await page.keyboard.press('Enter');
       await expect(locators.prevPage(page)).toBeFocused();
       await expect(locators.input(page)).toHaveAttribute('value', '122,360');
+    });
 
+    await test.step('Verify first page from the last page by Enter', async () => {
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Enter');
       await expect(locators.input(page)).toHaveAttribute('value', '1');
@@ -125,7 +131,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test('Verify pages input by keyboard', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@pagination'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/pagination/docs/examples/basic_usage.tsx', 'en');
 
     await test.step('Verify 1 saves when entering value > total pages and press tab', async () => {
@@ -163,7 +169,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.input(page)).toHaveAttribute('value', '1');
     });
 
-    await test.step('Verify total set  when entering value > total pages and press enter', async () => {
+    await test.step('Verify total set when entering value > total pages and press enter', async () => {
       await locators.input(page).fill('9999999');
       await page.keyboard.press('Enter');
 
@@ -192,8 +198,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test('Verify pages input by mouse', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@pagination',
+  test('Verify pages input with select page button', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@pagination',
       '@base-components',
       '@button',
       '@button-link',
@@ -203,20 +209,20 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     const icon = page.getByTestId('selectPageButton');
 
-    await test.step('Verify 1 saves when entering value <min pages and activating input', async () => {
+    await test.step('Verify 1 saves when entering value < min pages and pressing Enter', async () => {
       await locators.input(page).fill('0');
       await page.keyboard.press('Enter');
       await expect(locators.input(page)).toHaveAttribute('value', '1');
     });
 
-    await test.step('Verify 1 saves when pressing backspace and activating input', async () => {
+    await test.step('Verify 1 saves when clearing input by Backspace and pressing Enter', async () => {
       await locators.input(page).click();
       await page.keyboard.press('Backspace');
       await page.keyboard.press('Enter');
       await expect(locators.input(page)).toHaveAttribute('value', '1');
     });
 
-    await test.step('Verify total set when entering value > total pages and activating input', async () => {
+    await test.step('Verify total set when entering value > total pages and pressing Enter', async () => {
       await locators.input(page).fill('9999999');
       await page.keyboard.press('Enter');
       await expect(locators.input(page)).toHaveAttribute('value', '100');
@@ -229,9 +235,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.input(page)).toHaveAttribute('value', '100');
     });
 
-    // disabled for firefox and webskit because test example works unstable
-    if (browserName !== 'chromium') return;
-    await test.step('Verify correct page is set when entering and activate input', async () => {
+    const chromiumStep = browserName === 'chromium' ? test.step : test.step.skip;
+    await chromiumStep('Verify page is set by select page button (story is unstable in Firefox and WebKit)', async () => {
       await locators.input(page).fill('33');
       await icon.click();
       await expect(locators.input(page)).toHaveAttribute('value', '33');
@@ -240,21 +245,27 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test('Verify mouse interactions', {
     tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@pagination'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/pagination/docs/examples/basic_usage.tsx', 'en');
 
-    await test.step('Verify change pages by buttons interaction', async () => {
+    await test.step('Verify next page by click', async () => {
       await locators.nextPage(page).click();
       await expect(locators.input(page)).toHaveAttribute('value', '2');
+    });
 
+    await test.step('Verify previous page by click', async () => {
       await locators.nextPage(page).click();
       await locators.prevPage(page).click();
       await expect(locators.input(page)).toHaveAttribute('value', '2');
+    });
 
+    await test.step('Verify first page by click', async () => {
       await locators.nextPage(page).click();
       await locators.firstPage(page).click();
       await expect(locators.input(page)).toHaveAttribute('value', '1');
+    });
 
+    await test.step('Verify last page by click', async () => {
       await locators.totalPages(page).click();
       await expect(locators.input(page)).toHaveAttribute('value', '122,360');
     });
@@ -267,16 +278,19 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify pagination base states after Keyboard interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@pagination'],
-  }, async ({ page, browserName }) => {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@pagination'],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/pagination/docs/examples/basic_usage.tsx', 'en');
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await locators.totalPages(page).hover();
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify focused and hovered last page button', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await locators.totalPages(page).hover();
+      await expect(page).toHaveScreenshot();
+    });
   });
+
   test('Verify custom view when buttons and inputs have addons', {
     tag: [TAG.PRIORITY_HIGH, '@pagination',
       '@base-components',
