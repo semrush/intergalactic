@@ -2,6 +2,8 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
+const EDGE_VALUES = [0.5, 99.6];
+
 /* =====================================================
   @visual
   Visual states, hover and focus styles, paddings, margins, and snapshots.
@@ -18,11 +20,10 @@ test.describe(`${TAG.VISUAL} `, () => {
       { value: 99.6, color: 'chart-palette-order-7', baseBgColor: 'chart-palette-order-14', animate: false },
       { value: 100, color: undefined, baseBgColor: undefined, animate: false },
       { value: 120, color: undefined, baseBgColor: undefined, animate: false },
-
     ];
     ScoreDonut.forEach((item) => {
-      test(`Verify with value=${item.value}  color=${item.color} baseBgColor=${item.baseBgColor}`, {
-        tag: [TAG.PRIORITY_HIGH,
+      test(`Verify with value=${item.value} color=${item.color} baseBgColor=${item.baseBgColor}`, {
+        tag: [EDGE_VALUES.includes(item.value) ? TAG.PRIORITY_LOW : TAG.PRIORITY_HIGH,
           '@mini-chart',
           '@base-components',
           '@flex-box'],
@@ -75,7 +76,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     ];
     LoadingScoreDonut.forEach((item) => {
       test(`Verify loading=${item.loading} with value=${item.value} color=${item.color} baseBgColor=${item.baseBgColor}`, {
-        tag: [TAG.PRIORITY_HIGH,
+        tag: [TAG.PRIORITY_MEDIUM,
           '@mini-chart',
           '@base-components',
           '@flex-box'],
@@ -88,7 +89,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test.describe('Score Lines', () => {
     const ScoreLineNoSegments = [
-      { value: 0, color: undefined, baseBgColor: undefined },
+      { value: 0, color: undefined, baseBgColor: undefined, animate: false },
       { value: 0.5, color: 'chart-palette-order-2', baseBgColor: 'chart-palette-order-16', animate: false },
       { value: 1, color: 'chart-palette-order-3', baseBgColor: 'chart-palette-order-15', animate: false },
       { value: 33, color: 'chart-palette-order-4', baseBgColor: undefined, animate: false },
@@ -97,11 +98,10 @@ test.describe(`${TAG.VISUAL} `, () => {
       { value: 99.6, color: 'chart-palette-order-7', baseBgColor: 'chart-palette-order-13', animate: false },
       { value: 100, color: undefined, baseBgColor: undefined, animate: false },
       { value: 120, color: undefined, baseBgColor: undefined, animate: false },
-
     ];
     ScoreLineNoSegments.forEach((item) => {
       test(`Verify without segments with value=${item.value} color=${item.color} baseBgColor=${item.baseBgColor}`, {
-        tag: [TAG.PRIORITY_HIGH,
+        tag: [EDGE_VALUES.includes(item.value) ? TAG.PRIORITY_LOW : TAG.PRIORITY_HIGH,
           '@mini-chart',
           '@base-components',
           '@flex-box'],
@@ -130,8 +130,20 @@ test.describe(`${TAG.VISUAL} `, () => {
         await test.step('Verify base rect', async () => {
           await expect(scoreLine.locator('svg > g > rect')).toHaveCount(normalizedValue < 100 ? 1 : 0);
           await expect(scoreLine.locator('svg > defs > mask')).toHaveCount(normalizedValue > 0 ? 1 : 0);
-          await expect(scoreLine.locator('svg > defs > pattern > rect').first())
-            .toHaveAttribute('fill', new RegExp(`--intergalactic-${baseBgColor},`));
+
+          if (item.baseBgColor) {
+            await expect(scoreLine.locator('svg > defs > pattern')).toHaveCount(0);
+            if (normalizedValue < 100) {
+              await expect(scoreLine.locator('svg > g > rect'))
+                .toHaveAttribute('fill', new RegExp(`--intergalactic-${baseBgColor},`));
+            }
+          } else {
+            await expect(scoreLine.locator('svg > defs > pattern > rect').first())
+              .toHaveAttribute('fill', new RegExp(`--intergalactic-${baseBgColor},`));
+            if (normalizedValue < 100) {
+              await expect(scoreLine.locator('svg > g > rect')).toHaveAttribute('fill', /^url\(#.+-base-pattern\)$/);
+            }
+          }
         });
 
         await expect(page).toHaveScreenshot();
@@ -143,8 +155,8 @@ test.describe(`${TAG.VISUAL} `, () => {
       { value: 100, loading: true, color: undefined, baseBgColor: undefined },
     ];
     ScoreLineNoSegmentsLoading.forEach((item) => {
-      test(`Verify loading=${item.loading} without segments with value=${item.value}  color=${item.color} baseBgColor=${item.baseBgColor}`, {
-        tag: [TAG.PRIORITY_HIGH,
+      test(`Verify loading=${item.loading} without segments with value=${item.value} color=${item.color} baseBgColor=${item.baseBgColor}`, {
+        tag: [TAG.PRIORITY_MEDIUM,
           '@mini-chart',
           '@base-components',
           '@flex-box'],
@@ -161,7 +173,6 @@ test.describe(`${TAG.VISUAL} `, () => {
       { value: 33, segments: 10, color: 'chart-palette-order-4', baseBgColor: undefined, animate: false },
       { value: 3, segments: 10, color: undefined, baseBgColor: 'chart-palette-order-5', animate: false },
       { value: 49, segments: 50, color: 'chart-palette-order-6', baseBgColor: 'chart-palette-order-14', animate: false },
-
     ];
 
     ScoreLineWithSegments.forEach((item) => {
@@ -207,8 +218,8 @@ test.describe(`${TAG.VISUAL} `, () => {
     ];
 
     ScoreLineWithSegmentsLoading.forEach((item) => {
-      test(`Verify loading=${item.loading} Score Lines with ${item.segments} segments with value=${item.value}  color=${item.color} baseBgColor=${item.baseBgColor}`, {
-        tag: [TAG.PRIORITY_HIGH,
+      test(`Verify loading=${item.loading} Score Lines with ${item.segments} segments with value=${item.value} color=${item.color} baseBgColor=${item.baseBgColor}`, {
+        tag: [TAG.PRIORITY_MEDIUM,
           '@mini-chart',
           '@base-components',
           '@flex-box'],
@@ -225,14 +236,13 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   test.describe('Score Lines Segments', () => {
-    const ScoreLineNoSegments = [
+    const ScoreLineSegments = [
       { value1: 0, value2: 0, color1: 'chart-palette-order-2', color2: 'chart-palette-order-3', baseBgColor: undefined, animate: false },
       { value1: 30, value2: 70, color1: 'chart-palette-order-2', color2: 'chart-palette-order-3', baseBgColor: undefined, animate: false },
       { value1: 0, color1: undefined, baseBgColor: 'chart-palette-order-14', animate: false },
       { value1: 0, value2: 100, color1: 'chart-palette-order-5', color2: 'chart-palette-order-16', baseBgColor: 'chart-palette-order-14', animate: false },
-
     ];
-    ScoreLineNoSegments.forEach((item) => {
+    ScoreLineSegments.forEach((item) => {
       test(`Verify with value1=${item.value1} value2=${item.value2} color1=${item.color1} color2=${item.color2} baseBgColor=${item.baseBgColor}`, {
         tag: [TAG.PRIORITY_HIGH,
           '@mini-chart'],
@@ -270,7 +280,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     });
 
     test('Verify Loading state', {
-      tag: [TAG.PRIORITY_HIGH,
+      tag: [TAG.PRIORITY_MEDIUM,
         '@mini-chart'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/mini-chart/tests/examples/score-line-segments.tsx', 'en', { loading: true, animate: false });
@@ -282,10 +292,9 @@ test.describe(`${TAG.VISUAL} `, () => {
     const TrendBars = [
       { loading: true, animate: false },
       { loading: false, animate: false },
-
     ];
     TrendBars.forEach((item) => {
-      test(`Verify loading=${item.loading} `, {
+      test(`Verify loading=${item.loading}`, {
         tag: [TAG.PRIORITY_HIGH,
           '@mini-chart',
           '@base-components',
@@ -299,16 +308,15 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   test.describe('Trend Lines', () => {
-    const TrendBars = [
+    const TrendLines = [
       { lastPointRadius: undefined, lastPointColor: undefined, color: undefined, animate: false },
-      { lastPointRadius: 5, lastPointColor: undefined, color: 'chart-palette-order-14', animate: false },
+      { lastPointRadius: 5, lastPointColor: 'chart-palette-order-4', color: 'chart-palette-order-14', animate: false },
       { lastPointRadius: 0, lastPointColor: 'chart-palette-order-14', color: 'chart-palette-order-14', animate: false },
       { lastPointRadius: undefined, lastPointColor: 'chart-palette-order-4', color: undefined, animate: false },
       { lastPointRadius: 7, lastPointColor: 'chart-palette-order-6', color: 'chart-palette-order-9', animate: false },
-
     ];
-    TrendBars.forEach((item) => {
-      test(`VerifylastPointRadius=${item.lastPointRadius} lastPointColor=${item.lastPointColor} color=${item.color} `, {
+    TrendLines.forEach((item) => {
+      test(`Verify lastPointRadius=${item.lastPointRadius} lastPointColor=${item.lastPointColor} color=${item.color}`, {
         tag: [TAG.PRIORITY_HIGH,
           '@mini-chart',
           '@base-components',
@@ -319,14 +327,13 @@ test.describe(`${TAG.VISUAL} `, () => {
       });
     });
 
-    const TrendBarsLoading = [
+    const TrendLinesLoading = [
       { loading: true, lastPointRadius: undefined, lastPointColor: undefined, color: undefined, animate: false },
       { loading: true, lastPointRadius: 7, lastPointColor: 'chart-palette-order-6', color: 'chart-palette-order-9', animate: false },
-
     ];
-    TrendBarsLoading.forEach((item) => {
-      test(`Verify loading with lastPointRadius=${item.lastPointRadius} lastPointColor=${item.lastPointColor} color=${item.color} `, {
-        tag: [TAG.PRIORITY_HIGH,
+    TrendLinesLoading.forEach((item) => {
+      test(`Verify loading with lastPointRadius=${item.lastPointRadius} lastPointColor=${item.lastPointColor} color=${item.color}`, {
+        tag: [TAG.PRIORITY_MEDIUM,
           '@mini-chart',
           '@base-components',
           '@flex-box'],

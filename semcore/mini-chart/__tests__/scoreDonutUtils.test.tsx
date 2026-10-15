@@ -6,14 +6,13 @@ import { ScoreDonutUtils } from '../src/utils/ScoreDonutUtils';
 const MIN_ANGLE = 0.25;
 const ANIMATION_FRAMES = 60;
 
-const buildArc = (endAngle: number, padAngle = 0.1) =>
+const buildArc = (endAngle: number) =>
   arc<void>()
     .innerRadius(8)
     .outerRadius(12)
     .startAngle(0)
     .endAngle(endAngle)
-    .cornerRadius(1)
-    .padAngle(padAngle)() ?? '';
+    .cornerRadius(1)() ?? '';
 
 describe('Score Donut Functions', () => {
   describe.each([true, false])('when isSemiDonut = %s', (isSemiDonut) => {
@@ -40,8 +39,8 @@ describe('Score Donut Functions', () => {
       expect(scoreDonut.hasBase).toBe(hasBase);
     });
 
-    it('Verify basePath is a full arc without pad angle regardless of value', () => {
-      const expected = buildArc(totalAngle, 0);
+    it('Verify basePath is a full arc regardless of value', () => {
+      const expected = buildArc(totalAngle);
 
       expect(new ScoreDonutUtils(0, isSemiDonut).basePath).toBe(expected);
       expect(new ScoreDonutUtils(50, isSemiDonut).basePath).toBe(expected);
