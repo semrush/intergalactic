@@ -80,9 +80,9 @@ const Demo = () => {
             { value: 10 },
             { value: 20 },
             { value: 50 },
-            { value: 80, color: 'chart-palette-order-3' },
+            { value: 80, color: 'chart-palette-order-1' },
             { value: 45 },
-            { value: 66, color: 'chart-palette-order-6' },
+            { value: 66, color: 'chart-palette-order-2' },
           ]}
           animate={false}
           aria-hidden
