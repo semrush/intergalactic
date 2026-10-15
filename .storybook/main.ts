@@ -13,6 +13,7 @@ const config: StorybookConfig = {
   typescript: {
     // reactDocgen: 'react-docgen-typescript',
   },
+  staticDirs: [{ from: '../tools/theme/lib', to: '/assets/theme' }],
   viteFinal(config) {
     return mergeConfig(config, {
       build: {
