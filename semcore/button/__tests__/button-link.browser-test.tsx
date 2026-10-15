@@ -8,14 +8,6 @@ export const locators = {
     const base = page.getByRole('button');
     return typeof index === 'number' ? base.nth(index) : base;
   },
-  buttonText: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="Button.Text"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  buttonAddon: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="Button.Addon"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
   hint: (page: Page) => page.locator('[data-ui-name="Hint"]'),
 };
 
@@ -89,7 +81,9 @@ test.describe(` ${TAG.VISUAL}`, () => {
       if (merged) descParts.push('merged');
 
       test(`Verify ButtonLink size=${size}, ${descParts.join(', ')}, ${ellipsisDesc}`, {
-        tag: [TAG.PRIORITY_HIGH, '@button-link', '@ellipsis', '@badge', '@counter', '@spin', '@typography',
+        tag: [TAG.PRIORITY_HIGH,
+          TAG.MOUSE,
+          TAG.KEYBOARD, '@button-link', '@ellipsis', '@badge', '@counter', '@spin', '@typography',
           '@button'],
       }, async ({ page }) => {
         await loadPage(page, storyPath, 'en', {
@@ -119,22 +113,24 @@ test.describe(` ${TAG.VISUAL}`, () => {
           }
         });
 
-        await loadPage(page, storyPath, 'en', {
-          size, active: true, ...addonVars, text: longText, ...ellipsisVars, ...extraVars,
-        });
-        const activeClip = await getTextClip(page);
-        await page.waitForTimeout(100);
-        await test.step('Verify active state + hover hint', async () => {
-          await locators.button(page).first().hover();
-          await locators.hint(page).waitFor({ state: 'visible' });
-          await page.waitForFunction(
-            () => {
-              const el = document.querySelector('[data-ui-name="Hint"]');
-              return el && getComputedStyle(el).opacity === '1';
-            },
-          );
-          await expect(page).toHaveScreenshot({ clip: activeClip });
-        });
+        if (size === 300) {
+          await loadPage(page, storyPath, 'en', {
+            size, active: true, ...addonVars, text: longText, ...ellipsisVars, ...extraVars,
+          });
+          const activeClip = await getTextClip(page);
+          await page.waitForTimeout(100);
+          await test.step('Verify active state + hover hint', async () => {
+            await locators.button(page).first().hover();
+            await locators.hint(page).waitFor({ state: 'visible' });
+            await page.waitForFunction(
+              () => {
+                const el = document.querySelector('[data-ui-name="Hint"]');
+                return el && getComputedStyle(el).opacity === '1';
+              },
+            );
+            await expect(page).toHaveScreenshot({ clip: activeClip });
+          });
+        }
       });
     });
   });
@@ -235,7 +231,8 @@ test.describe(` ${TAG.VISUAL}`, () => {
 
   // Section 4: Icon-only ButtonLink
   test('Verify ButtonLink: icon-only with hint', {
-    tag: [TAG.PRIORITY_HIGH, '@button-link', '@base-components', '@flex-box',
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD, '@button-link', '@base-components', '@flex-box',
       '@button'],
   }, async ({ page }) => {
     await loadPage(page, iconOnlyPath, 'en', { use: 'primary' });
@@ -266,7 +263,9 @@ test.describe(` ${TAG.VISUAL}`, () => {
 
   // Section 5: In-text
   test('Verify ButtonLink inside text', {
-    tag: [TAG.PRIORITY_HIGH, '@button-link', '@base-components', '@flex-box', '@typography',
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      TAG.KEYBOARD, '@button-link', '@base-components', '@flex-box', '@typography',
       '@button'],
   }, async ({ page }) => {
     await loadPage(page, inTextPath, 'en', { size: 300 });

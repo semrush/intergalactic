@@ -2,16 +2,16 @@ import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe(`@carousel  ${TAG.ACCESSIBILITY}`, () => {
+test.describe(`@carousel ${TAG.ACCESSIBILITY}`, () => {
   test('Default indicators', async ({ page }) => {
     await loadPage(page, 'stories/components/carousel/docs/examples/carousel_with_default_indicators.tsx', 'en');
 
-    {
+    await test.step('Check initial state', async () => {
       const violations = await getAccessibilityViolations({ page });
 
       expect(violations).toEqual([]);
-    }
-    {
+    });
+    await test.step('Check zoom mode opened by Enter', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
@@ -19,7 +19,7 @@ test.describe(`@carousel  ${TAG.ACCESSIBILITY}`, () => {
       const violations = await getAccessibilityViolations({ page });
 
       expect(violations).toEqual([]);
-    }
+    });
   });
   test('Indicators only', async ({ page }) => {
     await loadPage(page, 'stories/components/carousel/docs/examples/carousel_with_indicators_only.tsx', 'en');
@@ -31,12 +31,12 @@ test.describe(`@carousel  ${TAG.ACCESSIBILITY}`, () => {
   test('Preview indicators', async ({ page }) => {
     await loadPage(page, 'stories/components/carousel/docs/examples/carousel_with_preview_indicators.tsx', 'en');
 
-    {
+    await test.step('Check initial state', async () => {
       const violations = await getAccessibilityViolations({ page });
 
       expect(violations).toEqual([]);
-    }
-    {
+    });
+    await test.step('Check zoom mode opened by Enter', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
@@ -44,7 +44,7 @@ test.describe(`@carousel  ${TAG.ACCESSIBILITY}`, () => {
       const violations = await getAccessibilityViolations({ page });
 
       expect(violations).toEqual([]);
-    }
+    });
   });
   test('Without modal', async ({ page }) => {
     await loadPage(page, 'stories/components/carousel/docs/examples/carousel_without_modal_window.tsx', 'en');

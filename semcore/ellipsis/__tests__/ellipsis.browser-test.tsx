@@ -131,7 +131,8 @@ test.describe(`${TAG.VISUAL} `, () => {
         TAG.MOUSE,
         '@ellipsis',
         '@data-table',
-        '@link'],
+        '@link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/ellipsis/test/examples/in_table_with_link.tsx', 'en', item);
 

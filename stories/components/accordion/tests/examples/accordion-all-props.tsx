@@ -4,24 +4,15 @@ import { Flex } from '@semcore/ui/base-components';
 import React from 'react';
 
 type ExampleProps = NSAccordion.Props & {
-  /** Per-Collapse animation duration. Omitted by default so the root duration applies. */
   collapseDuration?: number;
-
-  /** Accordion.Item.Toggle */
-  toggleTag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-
-  /** Accordion.Item.Chevron */
-  chevronSize: 'm' | 'l';
-
-  /** Accordion.Item.Collapse */
+  toggleTag: NonNullable<NSAccordion.Item.Toggle.Props['tag']>;
+  chevronSize: NonNullable<NSAccordion.Item.Chevron.Props['size']>;
   initialAnimation: boolean;
   timingFunction: 'ease-out' | 'ease-in' | 'ease-in-out' | 'linear' | 'cubic-bezier(0.5, 0, 0, 1.12)';
   animationsDisabled: boolean;
   overflowHidden: boolean;
-  defaultHeight: 'auto' | '100%';
+  defaultHeight: NonNullable<NSAccordion.Item.Collapse.Props['defaultHeight']>;
   preserveNode: boolean;
-
-  /** Per-item content, editable from the Storybook panel */
   item1Label: string;
   item1Content: string;
   item1Disabled: boolean;

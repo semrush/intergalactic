@@ -63,7 +63,7 @@ export const defaultButtonNeighborProps: ExampleProps = {
   use: 'primary',
   theme: 'info',
   hintPlacement: 'top',
-  style: undefined, // this prop is needed for barckground to verofy some button themes (primary invert for instance)
+  style: undefined, // this prop is needed for barckground to verify some button themes (primary invert for instance)
 
 };
 

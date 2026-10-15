@@ -56,6 +56,7 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 test.describe(`${TAG.VISUAL} `, () => {
   test('Verify Keyboard navigation when No palette', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
       TAG.KEYBOARD,
       '@color-picker',
       '@base-components',
@@ -84,6 +85,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify input validation in palette manager', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
       '@color-picker',
       '@base-components',
       '@flex-box',
@@ -107,6 +109,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify base styles', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
       '@color-picker',
       '@base-components',
       '@flex-box',
@@ -162,6 +165,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     });
 
     await test.step('Verify color items styles', async () => {
+      await expect(locators.color(page)).not.toHaveCount(0);
       const count = await locators.color(page).count();
       for (let i = 0; i < count; i++) {
         const item = locators.color(page, i);
@@ -185,8 +189,8 @@ test.describe(`${TAG.VISUAL} `, () => {
       await expect(clearIcon).toHaveAttribute('height', '16');
     });
 
-    if (browserName === 'firefox') return; //  hover doesn't work well in playwright browsers
-    await test.step('Verify palette manager color styles', async () => {
+    const hoverStep = browserName === 'firefox' ? test.step.skip : test.step;
+    await hoverStep('Verify Add color button hover/active and palette item sizes (Firefox drops synthetic hover)', async () => {
       const addButton = page.getByRole('button').first();
       const hoverBackgroundColor = await getCssVarColor(
         '--intergalactic-control-tertiary-neutral-hover',
@@ -241,6 +245,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify default item states for active and background colors', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
       '@color-picker',
       '@base-components',
       '@flex-box'],
@@ -253,28 +258,29 @@ test.describe(`${TAG.VISUAL} `, () => {
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify hover on No background color ', async () => {
+    await test.step('Verify hover on No background color', async () => {
       const items = locators.dialog(page, 0).getByRole('option');
       await items.first().hover();
       await page.getByText('Clear color').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify hover on text color ', async () => {
+    await test.step('Verify hover on text color', async () => {
       const items = locators.dialog(page, 1).getByRole('option');
       await items.nth(1).hover();
       await page.getByText('oklch(0.58 0.168 278.2)').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify hover on Add color button ', async () => {
+    await test.step('Verify hover on Add color button', async () => {
       await locators.button(page, 'Add color').first().hover();
       await expect(page).toHaveScreenshot();
     });
   });
 
-  test('Verify predefined palette ', {
+  test('Verify predefined palette', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
       '@color-picker',
       '@base-components',
       '@flex-box',
@@ -291,7 +297,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify active state of Palette custom color ', async () => {
+    await test.step('Verify active state of Palette custom color', async () => {
       await locators.paletteItem(page).first().click();
       await locators.color(page, 0).waitFor({ state: 'hidden' });
       await expect(page).toHaveScreenshot();
@@ -302,8 +308,10 @@ test.describe(`${TAG.VISUAL} `, () => {
     });
   });
 
-  test('Verify ColorPicker.Colors', {
+  test('Verify colors, displayLabel and defaultValue props', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      TAG.MOUSE,
       '@color-picker',
       '@base-components',
       '@flex-box',
@@ -325,8 +333,9 @@ test.describe(`${TAG.VISUAL} `, () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify ColorPicker.Item PaletteManager.Item and ColorPicker.Input', {
+  test('Verify PaletteManager.Item and ColorPicker.Input', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
       TAG.KEYBOARD,
       '@color-picker',
       '@base-components',
@@ -348,8 +357,10 @@ test.describe(`${TAG.VISUAL} `, () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify trigger variations keyboards interactions', {
+  test('Verify trigger variations keyboard interactions visual', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      TAG.MOUSE,
       '@color-picker',
       '@input',
       '@tag',
@@ -377,6 +388,7 @@ We verify states, visibility, and attributes.
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Roles and attributes', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
       '@color-picker',
       '@base-components',
       '@flex-box',
@@ -644,17 +656,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await locators.addColor(page).click();
     await expect(locators.palette(page)).not.toBeEmpty();
-    await expect(locators.palette(page).locator('[data-ui-name="PaletteManager.Item"]')).toHaveCount(1);
+    await expect(locators.paletteItem(page)).toHaveCount(1);
     await expect(locators.inputColor(page)).toBeEmpty();
 
     await locators.inputColor(page).fill('666');
     await locators.addColor(page).click();
-    await expect(locators.palette(page).locator('[data-ui-name="PaletteManager.Item"]')).toHaveCount(2);
+    await expect(locators.paletteItem(page)).toHaveCount(2);
 
     await page.locator('[data-name="Close"]').nth(1).click();
-    await expect(locators.palette(page).locator('[data-ui-name="PaletteManager.Item"]')).toHaveCount(1);
+    await expect(locators.paletteItem(page)).toHaveCount(1);
 
-    await locators.palette(page).locator('[data-ui-name="PaletteManager.Item"]').click();
+    await locators.paletteItem(page).click();
     await locators.color(page, 0).waitFor({ state: 'hidden' });
     await expect(locators.trigger(page, 0)).toHaveAttribute('value', '#999');
   });
@@ -673,6 +685,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await page.keyboard.press('Enter');
     await locators.color(page, 0).waitFor({ state: 'visible' });
 
+    await expect(locators.color(page)).not.toHaveCount(0);
     const count = await locators.color(page).count();
 
     for (let i = 0; i < count; i++) {
@@ -696,14 +709,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await page.keyboard.press('Enter');
     await expect(locators.inputColor(page)).toHaveAttribute('aria-invalid', 'false');
     await expect(locators.palette(page)).not.toBeEmpty();
-    await expect(locators.palette(page).locator('[data-ui-name="PaletteManager.Item"]')).toHaveCount(1);
+    await expect(locators.paletteItem(page)).toHaveCount(1);
     await expect(locators.inputColor(page)).toBeEmpty();
 
     await locators.inputColor(page).fill('111');
     await page.waitForTimeout(200);
     await page.keyboard.press('Enter');
     await locators.addColor(page).click();
-    await expect(locators.palette(page).locator('[data-ui-name="PaletteManager.Item"]')).toHaveCount(2);
+    await expect(locators.paletteItem(page)).toHaveCount(2);
 
     await locators.inputColor(page).fill('++');
     await page.waitForTimeout(200);
@@ -714,7 +727,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await page.keyboard.press('Enter');
     await expect(locators.inputColor(page)).toBeFocused();
-    await expect(locators.palette(page).locator('[data-ui-name="PaletteManager.Item"]')).toHaveCount(2);
+    await expect(locators.paletteItem(page)).toHaveCount(2);
 
     await expect(locators.inputColor(page)).toBeFocused();
 
@@ -731,8 +744,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await expect(locators.trigger(page, 0)).toHaveAttribute('value', '#111');
   });
 
-  test('Verify Colors and Palette.Manager props', {
+  test('Verify Colors and PaletteManager props', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
       TAG.KEYBOARD,
       '@color-picker',
       '@base-components',
@@ -740,7 +754,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/tests/examples/colors-and-palette-manager-colors-props.tsx', 'en');
 
-    await test.step('Verify paletter manager when colors defaultColors and onColorsChange pre set', async () => {
+    await test.step('Verify palette manager when colors defaultColors and onColorsChange pre set', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.color(page, 0).waitFor({ state: 'visible' });
@@ -787,7 +801,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await locators.paletteItem(page).nth(2).waitFor({ state: 'hidden' });
     });
 
-    await test.step('Verify paletter manager when defaultColors and onColorsChange pre set', async () => {
+    await test.step('Verify palette manager when defaultColors and onColorsChange pre set', async () => {
       await locators.trigger(page, 1).click();
       await locators.color(page, 0).waitFor({ state: 'visible' });
 
@@ -847,11 +861,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/tests/examples/triggers.tsx', 'en');
 
-    await test.step('Verify mouse interaction with tag trigger', async () => {
-      locators.trigger(page, 0).click();
+    await test.step('Verify mouse interaction with input addon trigger', async () => {
+      await locators.trigger(page, 0).click();
       await locators.color(page, 0).waitFor({ state: 'visible' });
 
-      locators.trigger(page, 0).click();
+      await locators.trigger(page, 0).click();
       await locators.color(page, 0).waitFor({ state: 'hidden' });
 
       await page.locator('[data-ui-name="Input.Value"]').click();
@@ -859,9 +873,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     await test.step('Verify mouse interaction with button trigger', async () => {
-      locators.trigger(page, 1).click();
+      await locators.trigger(page, 1).click();
       await locators.color(page, 0).waitFor({ state: 'visible' });
-      locators.trigger(page, 1).click();
+      await locators.trigger(page, 1).click();
       await locators.color(page, 0).waitFor({ state: 'hidden' });
       await expect(locators.dialog(page)).not.toBeVisible();
     });
@@ -869,7 +883,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test('Verify trigger variations keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
-      TAG.FUNCTIONAL,
+      TAG.KEYBOARD,
       '@color-picker',
       '@input',
       '@tag',
@@ -882,7 +896,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/tests/examples/triggers.tsx', 'en');
 
-    await test.step('Verify keyboard interaction with tag trigger', async () => {
+    await test.step('Verify keyboard interaction with input addon trigger', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.trigger(page, 0)).toBeFocused();
 
@@ -901,7 +915,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.dialog(page)).not.toBeVisible();
     });
 
-    await test.step('Verify mouse interaction with button trigger', async () => {
+    await test.step('Verify keyboard interaction with button trigger', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.trigger(page, 1)).toBeFocused();
       await page.keyboard.press('Enter');
