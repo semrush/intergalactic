@@ -633,6 +633,9 @@ importers:
       '@semcore/testing-utils':
         specifier: workspace:*
         version: link:../../tools/testing-utils
+      '@semcore/theme':
+        specifier: workspace:*
+        version: link:../../tools/theme
 
   semcore/core:
     dependencies:
