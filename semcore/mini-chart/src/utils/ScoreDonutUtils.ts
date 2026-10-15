@@ -49,8 +49,7 @@ export class ScoreDonutUtils {
       .outerRadius(OUTER_RADIUS)
       .startAngle(0)
       .endAngle(this.valueAngle)
-      .cornerRadius(CORNER_RADIUS)
-      .padAngle(0.1)() ?? '';
+      .cornerRadius(CORNER_RADIUS)() ?? '';
   }
 
   public get basePath() {
@@ -68,8 +67,7 @@ export class ScoreDonutUtils {
       .outerRadius(OUTER_RADIUS)
       .startAngle(0)
       .endAngle(angle)
-      .cornerRadius(CORNER_RADIUS)
-      .padAngle(0.1)();
+      .cornerRadius(CORNER_RADIUS)();
   }
 
   private get animationAngles() {

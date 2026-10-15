@@ -54,6 +54,8 @@ class LineRoot extends Component<
   }
 
   render() {
+    const defaultBaseBgColor = 'chart-grid-bar-base-bg';
+
     const SLineGauge = Root;
     const SScoreSegments = Flex;
     const SScoreSegment = Box;
@@ -61,7 +63,7 @@ class LineRoot extends Component<
       value,
       styles,
       color = 'chart-palette-order-1',
-      baseBgColor = 'chart-grid-bar-base-bg',
+      baseBgColor = defaultBaseBgColor,
       resolveColor,
       loading,
       children,
@@ -129,6 +131,8 @@ class LineRoot extends Component<
     const basePatternId = `${uid}-base-pattern`;
     const baseMaskId = `${uid}-base-mask`;
 
+    const shouldRenderPattern = baseBgColor === defaultBaseBgColor;
+
     return sstyled(styles)(
       <SLineGauge render={Box} __excludeProps={__excludeProps}>
         <svg width='100%' height='100%' fill='none' role='img' display='block' {...extractedAriaProps}>
@@ -151,16 +155,18 @@ class LineRoot extends Component<
                 </rect>
               </mask>
             )}
-            <pattern
-              id={basePatternId}
-              patternUnits='userSpaceOnUse'
-              width={STRIPE_PERIOD}
-              height={STRIPE_PERIOD}
-              patternTransform={`rotate(${STRIPE_ANGLE})`}
-            >
-              <rect width={STRIPE_PERIOD} height={STRIPE_PERIOD} fill={resolveColor(baseBgColor)} />
-              <rect width={STRIPE_WIDTH} height={STRIPE_PERIOD} fill={resolveColor('bg-primary-neutral')} fillOpacity={0.4} />
-            </pattern>
+            {shouldRenderPattern && (
+              <pattern
+                id={basePatternId}
+                patternUnits='userSpaceOnUse'
+                width={STRIPE_PERIOD}
+                height={STRIPE_PERIOD}
+                patternTransform={`rotate(${STRIPE_ANGLE})`}
+              >
+                <rect width={STRIPE_PERIOD} height={STRIPE_PERIOD} fill={resolveColor(baseBgColor)} />
+                <rect width={STRIPE_WIDTH} height={STRIPE_PERIOD} fill={resolveColor('bg-primary-neutral')} fillOpacity={0.4} />
+              </pattern>
+            )}
           </defs>
           {hasValue && (
             <rect width={valueWidth} height='100%' rx={CORNER_RADIUS} fill={resolveColor(color)}>
@@ -173,7 +179,7 @@ class LineRoot extends Component<
                 width='100%'
                 height='100%'
                 rx={CORNER_RADIUS}
-                fill={`url(#${basePatternId})`}
+                fill={shouldRenderPattern ? `url(#${basePatternId})` : resolveColor(baseBgColor)}
               />
             </g>
           )}
