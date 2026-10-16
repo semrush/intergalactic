@@ -56,7 +56,9 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     const chromiumStep = browserName === 'chromium' ? test.step : test.step.skip;
     await chromiumStep('Verify hovered colored cell (chromium only)', async () => {
-      await locators.row(page, 4).locator('[aria-colindex="1"]').hover();
+      const box = await locators.row(page, 4).locator('[aria-colindex="1"]').boundingBox();
+      expect(box).toBeTruthy();
+      await page.mouse.move(box!.x + box!.width / 2, box!.y + box!.height / 2);
       await expect(page).toHaveScreenshot();
     });
   });

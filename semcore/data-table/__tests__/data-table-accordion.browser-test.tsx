@@ -446,10 +446,12 @@ test.describe(`${TAG.VISUAL}`, () => {
           });
         }
       });
-      await skipStepIf(browserName === 'firefox')('Verify hovered state (skipped in Firefox)', async () => {
+      await test.step('Collapse row', async () => {
         await locators.toggle(page).click();
-        await locators.toggle(page).hover();
         await locators.collapse(page).waitFor({ state: 'hidden' });
+      });
+      await skipStepIf(browserName === 'firefox')('Verify hovered state (skipped in Firefox)', async () => {
+        await locators.toggle(page).hover();
         for (const [index, cell] of (await cells.all()).entries()) {
           await checkStyles(cell, {
             'background-color': stylesActiveHovered[index],
@@ -464,10 +466,9 @@ test.describe(`${TAG.VISUAL}`, () => {
           await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
         }
 
-        for (let i = 0; i < cellCount; i++) {
-          const cell = cells.nth(i);
+        for (const [index, cell] of (await cells.all()).entries()) {
           await checkStyles(cell, {
-            'background-color': stylesNotActive[i],
+            'background-color': stylesNotActive[index],
           });
         }
       });

@@ -937,8 +937,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/borders.tsx', 'en');
 
-      const headGroup = page.locator('[data-ui-name="Head.Group"]');
-      const headGroupColumns = headGroup.nth(0).locator('[data-ui-name="Head.Column"]');
+      const headGroup = page.locator('[data-ui-name="Head.Group"]').first();
+      const headGroupColumns = headGroup.locator('..').locator('[data-ui-name="Head.Column"]');
 
       await expect(headGroupColumns).not.toHaveCount(0);
       for (const [index, column] of (await headGroupColumns.all()).entries()) {
