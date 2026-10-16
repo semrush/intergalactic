@@ -1,11 +1,20 @@
 import { Box, Flex } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import React from 'react';
 
 import style from '../../styles/line.shadow.css';
 import type { NSMiniChart } from '../../types';
+
+const STRIPE_WIDTH = 2;
+const STRIPE_PERIOD = 4;
+const STRIPE_ANGLE = 60;
+const JUNCTION_GAP = 2;
+const CORNER_RADIUS = 2;
 
 class LineRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSMiniChart.Score.Line.Component>,
@@ -15,7 +24,17 @@ class LineRoot extends Component<
   {},
   NSMiniChart.Score.Line.DefaultProps
 > {
-  static enhance = [resolveColorEnhance()] as const;
+  static enhance = [
+    cssVariableEnhance({
+      variable: '--intergalactic-duration-extra-slow',
+      fallback: '500',
+      map: (v: string) => Number.parseInt(v, 10).toString(),
+      prop: 'duration',
+    }),
+    resolveColorEnhance(),
+    uniqueIDEnhancement(),
+  ] as const;
+
   static displayName = 'ScoreLine';
 
   static style = style;
@@ -25,48 +44,59 @@ class LineRoot extends Component<
   } as const;
 
   getSegmentProps(segmentProps: NSMiniChart.Score.Line.Segment.Props) {
-    const { children, resolveColor } = this.asProps;
-
-    let sum = 0;
-    React.Children.forEach(children, (child) => {
-      if (React.isValidElement<NSMiniChart.Score.Line.Segment.Props>(child)) {
-        sum = sum + child.props.value;
-      }
-    });
-
-    const width = sum > 0 ? (100 * segmentProps.value) / sum : 0;
+    const { value, color } = segmentProps;
+    const { resolveColor } = this.asProps;
 
     return {
-      'w': `${width}%`,
-      'use:color': resolveColor(segmentProps.color),
+      'flex': `${Math.max(value, 0)} 1 0`,
+      'segment-color': resolveColor(color),
     };
   }
 
   render() {
+    const defaultBaseBgColor = 'chart-grid-bar-base-bg';
+
     const SLineGauge = Root;
-    const SLineValue = Box;
-    const SAnimationLine = Box;
-    const SLineGaugeSegment = Flex;
-    const SLineSegmentItem = Box;
+    const SScoreSegments = Flex;
+    const SScoreSegment = Box;
     const {
       value,
       styles,
       color = 'chart-palette-order-1',
-      baseBgColor,
+      baseBgColor = defaultBaseBgColor,
       resolveColor,
       loading,
       children,
       Children,
       animate,
+      duration,
+      uid,
     } = this.asProps;
+
+    const segmentColor = resolveColor(color);
+    const baseColor = resolveColor(baseBgColor);
+
+    const { __excludeProps, extractedAriaProps } = extractAriaProps(this.asProps);
+
+    if (loading) {
+      return sstyled(styles)(
+        <SLineGauge render={Box} __excludeProps={__excludeProps}>
+          <svg width='100%' height='100%' fill='none' role='img' display='block' {...extractedAriaProps}>
+            <rect width='100%' height='100%' rx={CORNER_RADIUS} fill={resolveColor('skeleton-bg')} />
+          </svg>
+        </SLineGauge>,
+      );
+    }
 
     if (children !== undefined) {
       return sstyled(styles)(
-        <SLineGauge render={Box} segments base-bg-color={resolveColor(baseBgColor)}>
-          <SLineGaugeSegment>
+        <SLineGauge render={Box} advancedMode base-color={baseColor}>
+          <SScoreSegments
+            // @ts-ignore
+            animate={animate && !loading}
+          >
             <Children />
-          </SLineGaugeSegment>
-          {animate && <SAnimationLine />}
+          </SScoreSegments>
         </SLineGauge>,
       );
     }
@@ -75,35 +105,85 @@ class LineRoot extends Component<
 
     const { segments } = this.asProps;
 
-    const SegmentItems = [];
-
     if (segments) {
-      for (let i = 0; i < segments; i++) {
-        const width = `calc((100% - ${segments - 1}px) / ${segments})`;
-
-        SegmentItems.push(
-          sstyled(styles)(
-            <SLineSegmentItem
-              key={i}
-              color={i < value ? resolveColor(color) : undefined}
-              w={width}
-            />,
-          ),
-        );
-      }
+      return sstyled(styles)(
+        <SLineGauge render={Box} base-color={baseColor}>
+          <SScoreSegments
+            // @ts-ignore
+            animate={animate && !loading}
+          >
+            {Array(segments).fill(null).map((_, i) =>
+              sstyled(styles)(
+                <SScoreSegment
+                  key={i}
+                  segment-color={i < value ? segmentColor : baseColor}
+                />,
+              ))}
+          </SScoreSegments>
+        </SLineGauge>,
+      );
     }
 
-    let percent = `${value}%`;
+    const normalizedValue = Math.max(Math.min(value, 100), 0);
+    const valueWidth = `${normalizedValue}%`;
+    const hasValue = normalizedValue > 0;
+    const hasBase = normalizedValue < 100;
+    const basePatternId = `${uid}-base-pattern`;
+    const baseMaskId = `${uid}-base-mask`;
 
-    if (segments) {
-      percent = `${(value / segments) * 100}%`;
-    }
+    const shouldRenderPattern = baseBgColor === defaultBaseBgColor;
 
     return sstyled(styles)(
-      <SLineGauge render={Box} base-bg-color={resolveColor(baseBgColor)}>
-        {!loading && <SLineValue w={percent} color={resolveColor(color)} />}
-        {Boolean(SegmentItems.length) && <SLineGaugeSegment>{SegmentItems}</SLineGaugeSegment>}
-        {animate && <SAnimationLine />}
+      <SLineGauge render={Box} __excludeProps={__excludeProps}>
+        <svg width='100%' height='100%' fill='none' role='img' display='block' {...extractedAriaProps}>
+          <defs>
+            {hasValue && (
+              <mask id={baseMaskId} maskUnits='userSpaceOnUse' x={0} y={0} width='100%' height='100%'>
+                <rect width='100%' height='100%' fill='white' />
+                <rect
+                  width={valueWidth}
+                  height='100%'
+                  rx={CORNER_RADIUS}
+                  fill='black'
+                  stroke='black'
+                  strokeWidth={JUNCTION_GAP * 2}
+                  strokeLinejoin='round'
+                >
+                  {animate && (
+                    <animate attributeName='width' from='0%' to={valueWidth} dur={duration + 'ms'} />
+                  )}
+                </rect>
+              </mask>
+            )}
+            {shouldRenderPattern && (
+              <pattern
+                id={basePatternId}
+                patternUnits='userSpaceOnUse'
+                width={STRIPE_PERIOD}
+                height={STRIPE_PERIOD}
+                patternTransform={`rotate(${STRIPE_ANGLE})`}
+              >
+                <rect width={STRIPE_PERIOD} height={STRIPE_PERIOD} fill={resolveColor(baseBgColor)} />
+                <rect width={STRIPE_WIDTH} height={STRIPE_PERIOD} fill={resolveColor('bg-primary-neutral')} fillOpacity={0.4} />
+              </pattern>
+            )}
+          </defs>
+          {hasValue && (
+            <rect width={valueWidth} height='100%' rx={CORNER_RADIUS} fill={resolveColor(color)}>
+              {animate && <animate attributeName='width' from='0%' to={valueWidth} dur={duration + 'ms'} />}
+            </rect>
+          )}
+          {hasBase && (
+            <g mask={hasValue ? `url(#${baseMaskId})` : undefined}>
+              <rect
+                width='100%'
+                height='100%'
+                rx={CORNER_RADIUS}
+                fill={shouldRenderPattern ? `url(#${basePatternId})` : resolveColor(baseBgColor)}
+              />
+            </g>
+          )}
+        </svg>
       </SLineGauge>,
     );
   }
@@ -112,10 +192,12 @@ class LineRoot extends Component<
 function Segment(
   props: Intergalactic.InternalTypings.InferChildComponentProps<NSMiniChart.Score.Line.Segment.Component, typeof LineRoot, 'Segment'>,
 ) {
-  const { styles } = props;
-  const SLineSegmentItem = Root;
+  const { styles, value } = props;
+  const SScoreSegment = Root;
 
-  return sstyled(styles)(<SLineSegmentItem render={Box} />);
+  if (!value) return null;
+
+  return sstyled(styles)(<SScoreSegment render={Box} />);
 }
 
 /**

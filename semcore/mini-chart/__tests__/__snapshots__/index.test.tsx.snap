@@ -16,7 +16,12 @@ exports[`MiniCharts > Verify data-ui-name for ScoreDonut 1`] = `
                       "uiName": null,
                     },
                     {
-                      "children": [],
+                      "children": [
+                        {
+                          "children": [],
+                          "uiName": null,
+                        },
+                      ],
                       "uiName": null,
                     },
                   ],
@@ -28,7 +33,29 @@ exports[`MiniCharts > Verify data-ui-name for ScoreDonut 1`] = `
                       "children": [],
                       "uiName": null,
                     },
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
                   ],
+                  "uiName": null,
+                },
+              ],
+              "uiName": null,
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": null,
+                },
+              ],
+              "uiName": null,
+            },
+            {
+              "children": [
+                {
+                  "children": [],
                   "uiName": null,
                 },
               ],
@@ -59,10 +86,6 @@ exports[`MiniCharts > Verify data-ui-name for ScoreLine 1`] = `
           ],
           "uiName": "Flex",
         },
-        {
-          "children": [],
-          "uiName": "Box",
-        },
       ],
       "uiName": "MiniChart.ScoreLine",
     },
@@ -87,7 +110,12 @@ exports[`MiniCharts > Verify data-ui-name for ScoreSemiDonut 1`] = `
                       "uiName": null,
                     },
                     {
-                      "children": [],
+                      "children": [
+                        {
+                          "children": [],
+                          "uiName": null,
+                        },
+                      ],
                       "uiName": null,
                     },
                   ],
@@ -99,7 +127,29 @@ exports[`MiniCharts > Verify data-ui-name for ScoreSemiDonut 1`] = `
                       "children": [],
                       "uiName": null,
                     },
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
                   ],
+                  "uiName": null,
+                },
+              ],
+              "uiName": null,
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": null,
+                },
+              ],
+              "uiName": null,
+            },
+            {
+              "children": [
+                {
+                  "children": [],
                   "uiName": null,
                 },
               ],
@@ -123,6 +173,28 @@ exports[`MiniCharts > Verify data-ui-name for TrendArea 1`] = `
       "children": [
         {
           "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": null,
+                },
+              ],
+              "uiName": null,
+            },
             {
               "children": [],
               "uiName": null,

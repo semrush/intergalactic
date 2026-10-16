@@ -1,15 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import ScoreDonutsExample from './examples/score-donuts';
-import type { ScoreDonutsProps } from './examples/score-donuts';
-import ScoreLineSegments from './examples/score-line-segments';
-import type { ScoreLineProps } from './examples/score-line-segments';
-import ScoreLinesExample from './examples/score-lines';
-import type { ScoreLinesProps } from './examples/score-lines';
-import TrendBarsExample from './examples/trend-bars';
-import type { TrendBarsProps } from './examples/trend-bars';
-import TrendLinesExample from './examples/trend-lines';
-import type { TrendLinesProps } from './examples/trend-lines';
+import ScoreDonutsExample, { defaultScoreDonutsProps } from './examples/score-donuts';
+import ScoreLineSegments, { defaultScoreLineSegmentsProps } from './examples/score-line-segments';
+import ScoreLinesExample, { defaultScoreLinesProps } from './examples/score-lines';
+import TrendBarsExample, { defaultTrendBarsProps } from './examples/trend-bars';
+import TrendLinesExample, { defaultTrendLinesProps } from './examples/trend-lines';
 
 const meta: Meta = {
   title: 'Components/MiniChart/Tests',
@@ -26,55 +21,69 @@ const baseControls = {
 
 const colorControl = {
   control: { type: 'select' },
-  options: chartPaletteOptions,
+  options: [undefined, ...chartPaletteOptions],
 } as const;
 
-export const ScoreDonuts: StoryObj<ScoreDonutsProps> = {
+const baseBgColorControl = {
+  control: { type: 'select' },
+  options: [undefined, 'chart-grid-bar-base-bg', ...chartPaletteOptions],
+} as const;
+
+export const ScoreDonuts: StoryObj<typeof defaultScoreDonutsProps> = {
   render: ScoreDonutsExample,
   argTypes: {
     value: { control: 'number' },
     ...baseControls,
     color: colorControl,
-    baseBgColor: colorControl,
+    baseBgColor: baseBgColorControl,
   },
+  args: defaultScoreDonutsProps,
 };
 
-export const ScoreLines: StoryObj<ScoreLinesProps> = {
+export const ScoreLines: StoryObj<typeof defaultScoreLinesProps> = {
   render: ScoreLinesExample,
   argTypes: {
     value: { control: 'number' },
     segments: { control: 'number' },
     ...baseControls,
     color: colorControl,
-    baseBgColor: colorControl,
+    baseBgColor: baseBgColorControl,
   },
+  args: defaultScoreLinesProps,
 };
 
-export const TrendBars: StoryObj<TrendBarsProps> = {
+export const TrendBars: StoryObj<typeof defaultTrendBarsProps> = {
   render: TrendBarsExample,
   argTypes: {
     ...baseControls,
   },
+  args: defaultTrendBarsProps,
 };
 
-export const TrendLines: StoryObj<TrendLinesProps> = {
+export const TrendLines: StoryObj<typeof defaultTrendLinesProps> = {
   render: TrendLinesExample,
   argTypes: {
+    chartType: {
+      control: { type: 'select' },
+      options: ['line', 'area'],
+    },
     lastPointRadius: { control: 'number' },
     ...baseControls,
     lastPointColor: colorControl,
     color: colorControl,
   },
+  args: defaultTrendLinesProps,
 };
 
-export const ScoreLineSegmenets: StoryObj<ScoreLineProps> = {
+export const ScoreLineSegmenets: StoryObj<typeof defaultScoreLineSegmentsProps> = {
   render: ScoreLineSegments,
   argTypes: {
     value1: { control: 'number' },
     value2: { control: 'number' },
     ...baseControls,
-    color1: colorControl,
-    color2: colorControl,
-    baseBgColor: colorControl,
+    color1: { control: { type: 'select' }, options: chartPaletteOptions },
+    color2: { control: { type: 'select' }, options: chartPaletteOptions },
+    baseBgColor: baseBgColorControl,
   },
+  args: defaultScoreLineSegmentsProps,
 };

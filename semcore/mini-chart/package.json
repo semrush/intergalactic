@@ -25,8 +25,12 @@
     "directory": "semcore/mini-chart"
   },
   "devDependencies": {
-    "@semcore/core": "workspace:*",
     "@semcore/base-components": "workspace:*",
-    "@semcore/testing-utils": "workspace:*"
+    "@semcore/core": "workspace:*",
+    "@semcore/testing-utils": "workspace:*",
+    "@types/d3-shape": "^3.2.0"
+  },
+  "dependencies": {
+    "d3-shape": "^3.2.0"
   }
 }

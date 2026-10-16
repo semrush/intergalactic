@@ -8,7 +8,7 @@ const Demo = () => {
   return (
     <Flex gap='40px'>
       <Box w='300px'>
-        <MiniChart.ScoreLine value={value} w='120px' />
+        <MiniChart.ScoreLine value={value} w='120px' aria-hidden />
         <br />
         <MiniChart.ScoreLine segments={5} value={5} w='80px' color='chart-palette-order-2' />
         <br />
@@ -80,9 +80,9 @@ const Demo = () => {
             { value: 10 },
             { value: 20 },
             { value: 50 },
-            { value: 80, color: 'chart-palette-order-3' },
+            { value: 80, color: 'chart-palette-order-1' },
             { value: 45 },
-            { value: 66, color: 'chart-palette-order-6' },
+            { value: 66, color: 'chart-palette-order-2' },
           ]}
           animate={false}
           aria-hidden
