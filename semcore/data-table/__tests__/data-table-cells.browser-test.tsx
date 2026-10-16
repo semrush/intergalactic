@@ -54,14 +54,11 @@ test.describe(`${TAG.VISUAL}`, () => {
     await page.keyboard.press('ArrowDown');
     await expect(page).toHaveScreenshot();
 
-    if (browserName !== 'chromium') test.skip();
-    const cell = locators.row(page, 4).locator('[aria-colindex="1"]');
-    const box = await cell.boundingBox();
-
-    if (box) {
-      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
-    }
-    await expect(page).toHaveScreenshot();
+    const chromiumStep = browserName === 'chromium' ? test.step : test.step.skip;
+    await chromiumStep('Verify hovered colored cell (chromium only)', async () => {
+      await locators.row(page, 4).locator('[aria-colindex="1"]').hover();
+      await expect(page).toHaveScreenshot();
+    });
   });
 });
 

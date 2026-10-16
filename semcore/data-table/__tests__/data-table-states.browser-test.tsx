@@ -24,6 +24,8 @@ const waitForHint = async (page: Page) => {
   });
 };
 
+const skipStepIf = (condition: boolean) => (condition ? test.step.skip : test.step);
+
 /* =====================================================
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
@@ -48,9 +50,11 @@ test.describe(`${TAG.VISUAL}`, () => {
         await expect(page).toHaveScreenshot();
       });
 
-      await test.step('Verify focus when loading ', async () => {
+      await test.step('Verify focus when loading', async () => {
         await page.keyboard.press('Shift+Tab');
-        if (browserName != 'webkit') await expect(page.getByRole('row', { name: 'Loading…' })).toBeFocused();
+        await skipStepIf(browserName === 'webkit')('Verify loading row is focused (skipped in WebKit)', async () => {
+          await expect(page.getByRole('row', { name: 'Loading…' })).toBeFocused();
+        });
       });
     });
 
@@ -335,7 +339,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/limited-mode/accordion.tsx', 'en', { rowsLimit: 1, columnsLimit: 2 });
 
-      await test.step('Verify availabe accordion expands and visible ', async () => {
+      await test.step('Verify available accordion expands and visible', async () => {
         await page.keyboard.press('Tab');
         await expect(locators.toggle(page).nth(0)).toBeFocused();
         await page.keyboard.press('Enter');
@@ -350,9 +354,9 @@ test.describe(`${TAG.VISUAL}`, () => {
         await page.getByText('Nothing found').waitFor({ state: 'visible' });
         await page.waitForTimeout(300);
         await page.keyboard.press('ArrowDown');
-        if (browserName !== 'webkit') {
+        await skipStepIf(browserName === 'webkit')('Verify focused overlay screenshot (skipped in WebKit)', async () => {
           await expect(page).toHaveScreenshot();
-        }
+        });
         await page.keyboard.press('ArrowDown');
         await expect(locators.toggle(page).nth(3)).toBeFocused();
       });
@@ -559,7 +563,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@data-table'],
     }, async ({ page, browserName }) => {
-      if (browserName == 'firefox') test.skip();
+      test.skip(browserName === 'firefox', 'Skipped in Firefox, reason not documented');
 
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/merged-row-for-multi-level-header.tsx', 'en');
 
@@ -632,33 +636,26 @@ test.describe(`${TAG.VISUAL}`, () => {
       await checkStyles(locators.getCell(page, 3, 4), { 'background-color': cellSelectedBg });
       await expect(page).toHaveScreenshot();
 
-      if (browserName == 'firefox') return;
-      const cell22 = locators.getCell(page, 2, 1);
-      const box22 = await cell22.boundingBox();
-      if (box22) {
-        await page.mouse.move(box22.x + box22.width / 2, box22.y + box22.height / 2);
-      }
+      await skipStepIf(browserName === 'firefox')('Verify hovered selected rows background (skipped in Firefox)', async () => {
+        await locators.getCell(page, 2, 1).hover();
 
-      await checkStyles(locators.getCell(page, 2, 1), { 'background-color': cellSelectedHoverBg });
-      await checkStyles(locators.getCell(page, 2, 2), { 'background-color': cellSelectedHoverBg });
-      await checkStyles(locators.getCell(page, 2, 3), { 'background-color': cellSelectedHoverBg });
-      await checkStyles(locators.getCell(page, 2, 4), { 'background-color': cellSelectedHoverBg });
-      await checkStyles(locators.getCell(page, 3, 2), { 'background-color': cellSelectedHoverBg });
-      await checkStyles(locators.getCell(page, 3, 3), { 'background-color': cellSelectedHoverBg });
-      await checkStyles(locators.getCell(page, 3, 4), { 'background-color': cellSelectedHoverBg });
+        await checkStyles(locators.getCell(page, 2, 1), { 'background-color': cellSelectedHoverBg });
+        await checkStyles(locators.getCell(page, 2, 2), { 'background-color': cellSelectedHoverBg });
+        await checkStyles(locators.getCell(page, 2, 3), { 'background-color': cellSelectedHoverBg });
+        await checkStyles(locators.getCell(page, 2, 4), { 'background-color': cellSelectedHoverBg });
+        await checkStyles(locators.getCell(page, 3, 2), { 'background-color': cellSelectedHoverBg });
+        await checkStyles(locators.getCell(page, 3, 3), { 'background-color': cellSelectedHoverBg });
+        await checkStyles(locators.getCell(page, 3, 4), { 'background-color': cellSelectedHoverBg });
 
-      const cell23 = locators.getCell(page, 2, 3);
-      const box23 = await cell23.boundingBox();
-      if (box23) {
-        await page.mouse.move(box23.x + box23.width / 2, box23.y + box23.height / 2);
-      }
-      await checkStyles(locators.getCell(page, 2, 1), { 'background-color': cellSelectedHoverBg });
-      await checkStyles(locators.getCell(page, 2, 2), { 'background-color': cellSelectedHoverBg });
-      await checkStyles(locators.getCell(page, 2, 3), { 'background-color': cellSelectedHoverBg });
-      await checkStyles(locators.getCell(page, 2, 4), { 'background-color': cellSelectedHoverBg });
-      await checkStyles(locators.getCell(page, 3, 2), { 'background-color': cellSelectedBg });
-      await checkStyles(locators.getCell(page, 3, 3), { 'background-color': cellSelectedBg });
-      await checkStyles(locators.getCell(page, 3, 4), { 'background-color': cellSelectedBg });
+        await locators.getCell(page, 2, 3).hover();
+        await checkStyles(locators.getCell(page, 2, 1), { 'background-color': cellSelectedHoverBg });
+        await checkStyles(locators.getCell(page, 2, 2), { 'background-color': cellSelectedHoverBg });
+        await checkStyles(locators.getCell(page, 2, 3), { 'background-color': cellSelectedHoverBg });
+        await checkStyles(locators.getCell(page, 2, 4), { 'background-color': cellSelectedHoverBg });
+        await checkStyles(locators.getCell(page, 3, 2), { 'background-color': cellSelectedBg });
+        await checkStyles(locators.getCell(page, 3, 3), { 'background-color': cellSelectedBg });
+        await checkStyles(locators.getCell(page, 3, 4), { 'background-color': cellSelectedBg });
+      });
     });
   });
 
@@ -673,8 +670,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@typography',
         '@animation'],
     }, async ({ page, browserName }) => {
+      test.skip(browserName === 'firefox', 'Skipped in Firefox, reason not documented');
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
-      if (browserName == 'firefox') return;
       const cellSelectedHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-selected-hover');
       const firstRowCheckbox = locators.getCell(page, 2, 1).locator('label');
       await firstRowCheckbox.click();
@@ -752,7 +749,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@typography',
         '@animation'],
     }, async ({ page, browserName }) => {
-      if (browserName === 'firefox') test.skip();
+      test.skip(browserName === 'firefox', 'Skipped in Firefox, reason not documented');
 
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { mergedRows: true, reactive: false });
 
@@ -882,12 +879,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         const headerBox = (await header.boundingBox())!;
         const spinBox = (await spinContainer.boundingBox())!;
 
-        // spinner spans the whole table width and does not overflow it
-        expect(Math.abs(spinBox.x - tableBox.x)).toBeLessThanOrEqual(1);
-        expect(Math.abs(spinBox.width - tableBox.width)).toBeLessThanOrEqual(1);
+        expect(Math.abs(spinBox.x - tableBox.x), 'spinner spans the whole table width').toBeLessThanOrEqual(1);
+        expect(Math.abs(spinBox.width - tableBox.width), 'spinner does not overflow the table').toBeLessThanOrEqual(1);
 
-        // spinner starts below the header and stays inside the table
-        expect(spinBox.y).toBeGreaterThanOrEqual(headerBox.y + headerBox.height - 1);
+        expect(spinBox.y, 'spinner starts below the header').toBeGreaterThanOrEqual(headerBox.y + headerBox.height - 1);
         expect(spinBox.y + spinBox.height).toBeLessThanOrEqual(tableBox.y + tableBox.height + 1);
         expect(spinBox.height).toBeGreaterThan(0);
       });
@@ -1009,14 +1004,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(collapse).toBeHidden();
         await expect(selectedRowsCount).toBeHidden();
         await expect(selectAllCheckbox).not.toBeChecked();
-        for (let i = 0; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).not.toBeChecked();
+        for (const checkbox of await rowCheckboxes.all())
+          await expect(checkbox).not.toBeChecked();
       });
 
-      await test.step('Verify each checkbox in cell has aria-labelledby ', async () => {
-        const count = await firstColumnCells.count();
-        for (let i = 0; i < count; i++) {
-          const firstColumnCell = firstColumnCells.nth(i);
+      await test.step('Verify each checkbox in cell has aria-labelledby', async () => {
+        for (const item of await firstColumnCells.all()) {
+          const firstColumnCell = item;
           const checkbox = firstColumnCell.locator('input');
           await expect(checkbox).toHaveAttribute('aria-labelledby');
         }
@@ -1054,9 +1048,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(selectAllCheckbox).not.toBeChecked();
       });
 
-      // the example is configured with maxAvailableCount: 7, so a cross-page select all
-      // stops at 7 of the 23 rows instead of selecting every row on the page
-      await test.step('Verify select all on the next page stops at maxAvailableCount', async () => {
+      await test.step('Verify select all on the next page stops at maxAvailableCount (7 of 23 rows)', async () => {
         await selectAllCheckbox.click();
 
         await expect(selectedRowsCount).toHaveText('7');
@@ -1138,7 +1130,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
       const rowCheckboxes = page.locator('[data-ui-name="DataTable.Body"] [data-ui-name="Checkbox"]');
-      // the native input carries checked/disabled; it is visually hidden, so clicks go to the wrapper
       const selectAllInput = selectAllCheckbox.locator('input');
       const rowInput = (index: number) => rowCheckboxes.nth(index).locator('input');
 
@@ -1361,7 +1352,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(selectAllCheckbox).not.toBeChecked();
       });
 
-      await test.step('Verify all checkoxes checked by activating header ', async () => {
+      await test.step('Verify all checkboxes checked by activating header', async () => {
         await page.keyboard.press('Space');
         await page.getByRole('button', { name: 'Deselect all' }).waitFor({ state: 'visible' });
 
@@ -1369,8 +1360,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(selectedRowsCount).toHaveText('5');
         await expect(selectAllCheckbox).toBeChecked();
 
-        for (let i = 0; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).toBeChecked();
+        for (const checkbox of await rowCheckboxes.all())
+          await expect(checkbox).toBeChecked();
       });
       await test.step('Verify panel state when next page opened', async () => {
         await page.keyboard.press('Tab');
@@ -1379,12 +1370,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(collapse).toBeVisible();
         await expect(selectedRowsCount).toHaveText('5');
         await expect(selectAllCheckbox).not.toBeChecked();
-        for (let i = 0; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).not.toBeChecked();
+        for (const checkbox of await rowCheckboxes.all())
+          await expect(checkbox).not.toBeChecked();
       });
-      // the example is configured with maxAvailableCount: 7, so activating select all on the
-      // second page tops the selection up to 7 instead of checking every row on the page
-      await test.step('Verify activating Select all on the next page stops at maxAvailableCount', async () => {
+      await test.step('Verify activating Select all on the next page stops at maxAvailableCount (7)', async () => {
         await page.keyboard.press('Shift+Tab');
         await page.keyboard.press('Shift+Tab');
         await page.keyboard.press('Shift+Tab');
@@ -1404,9 +1393,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         }
       });
 
-      if (browserName === 'webkit') return; // because of pagination bug in safari
+      const notWebkitStep = skipStepIf(browserName === 'webkit');
 
-      await test.step('Verify the previous page keeps its selection', async () => {
+      await notWebkitStep('Verify the previous page keeps its selection (skipped in WebKit: pagination bug in Safari)', async () => {
         await prevButton.focus();
         await page.keyboard.press('Enter');
 
@@ -1416,11 +1405,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           await expect(rowCheckboxes.nth(i).locator('input')).toBeChecked();
       });
 
-      await test.step('Verify the header checkbox is operable again on a fully selected page', async () => {
+      await notWebkitStep('Verify the header checkbox is operable again on a fully selected page (skipped in WebKit: pagination bug in Safari)', async () => {
         await expect(selectAllCheckbox.locator('input')).toBeEnabled();
       });
 
-      await test.step('Verify panel hides when Deselect all is activated', async () => {
+      await notWebkitStep('Verify panel hides when Deselect all is activated (skipped in WebKit: pagination bug in Safari)', async () => {
         await deselectAllButton.focus();
         await page.keyboard.press('Enter');
 
@@ -1670,9 +1659,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await selectAllCheckbox.click();
         await expect(selectAllCheckbox).toBeChecked();
 
-        const count = await rowCheckboxes.count();
-        for (let i = 0; i < count; i++) {
-          await expect(rowCheckboxes.nth(i)).toBeChecked();
+        for (const item of await rowCheckboxes.all()) {
+          await expect(item).toBeChecked();
         }
       });
 
@@ -1680,9 +1668,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await selectAllCheckbox.click();
         await expect(selectAllCheckbox).not.toBeChecked();
 
-        const count = await rowCheckboxes.count();
-        for (let i = 0; i < count; i++) {
-          await expect(rowCheckboxes.nth(i)).not.toBeChecked();
+        for (const item of await rowCheckboxes.all()) {
+          await expect(item).not.toBeChecked();
         }
       });
 
@@ -1721,9 +1708,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Space');
 
         await expect(selectAllCheckbox).toBeChecked();
-        const count = await rowCheckboxes.count();
-        for (let i = 0; i < count; i++) {
-          await expect(rowCheckboxes.nth(i)).toBeChecked();
+        for (const item of await rowCheckboxes.all()) {
+          await expect(item).toBeChecked();
         }
       });
 
@@ -1731,9 +1717,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Space');
 
         await expect(selectAllCheckbox).not.toBeChecked();
-        const count = await rowCheckboxes.count();
-        for (let i = 0; i < count; i++) {
-          await expect(rowCheckboxes.nth(i)).not.toBeChecked();
+        for (const item of await rowCheckboxes.all()) {
+          await expect(item).not.toBeChecked();
         }
       });
 
@@ -1844,13 +1829,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await expect(collapse).toBeHidden();
         await expect(selectAllCheckbox).not.toBeChecked();
-        for (let i = 0; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).not.toBeChecked();
+        for (const checkbox of await rowCheckboxes.all())
+          await expect(checkbox).not.toBeChecked();
 
         await nextButton.click();
         await expect(selectAllCheckbox).not.toBeChecked();
-        for (let i = 0; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).not.toBeChecked();
+        for (const checkbox of await rowCheckboxes.all())
+          await expect(checkbox).not.toBeChecked();
       });
     });
 
@@ -1880,8 +1865,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(collapse).toBeVisible();
         await expect(selectedRowsCount).toHaveText('5');
         await expect(selectAllCheckbox).toBeChecked();
-        for (let i = 0; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).toBeChecked();
+        for (const checkbox of await rowCheckboxes.all())
+          await expect(checkbox).toBeChecked();
       });
 
       await test.step('Verify navigate to next page', async () => {
@@ -1891,8 +1876,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(collapse).toBeVisible();
         await expect(selectedRowsCount).toHaveText('5');
         await expect(selectAllCheckbox).not.toBeChecked();
-        for (let i = 0; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).not.toBeChecked();
+        for (const checkbox of await rowCheckboxes.all())
+          await expect(checkbox).not.toBeChecked();
       });
 
       await test.step('Verify select all on second page', async () => {
@@ -1903,8 +1888,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Space');
         await expect(selectedRowsCount).toHaveText('10');
         await expect(selectAllCheckbox).toBeChecked();
-        for (let i = 0; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).toBeChecked();
+        for (const checkbox of await rowCheckboxes.all())
+          await expect(checkbox).toBeChecked();
       });
 
       await test.step('Verify uncheck single row', async () => {
@@ -1913,22 +1898,22 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Space');
         await expect(rowCheckboxes.nth(0)).toBeChecked();
         await expect(rowCheckboxes.nth(1)).not.toBeChecked();
-        for (let i = 2; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).toBeChecked();
+        for (const checkbox of (await rowCheckboxes.all()).slice(2))
+          await expect(checkbox).toBeChecked();
         await expect(selectedRowsCount).toHaveText('9');
         await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
       });
 
-      if (browserName === 'webkit') return;
+      const notWebkitStep = skipStepIf(browserName === 'webkit');
 
-      await test.step('Verify deselect all via keyboard', async () => {
+      await notWebkitStep('Verify deselect all via keyboard (skipped in WebKit)', async () => {
         await page.keyboard.press('Shift+Tab');
         await page.keyboard.press('Space');
 
         await expect(collapse).toBeHidden();
         await expect(selectAllCheckbox).not.toBeChecked();
-        for (let i = 0; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).not.toBeChecked();
+        for (const checkbox of await rowCheckboxes.all())
+          await expect(checkbox).not.toBeChecked();
       });
     });
 
@@ -2051,18 +2036,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.getByRole('button', { name: 'Deselect all' }).waitFor({ state: 'visible' });
 
         await expect(selectAllCheckbox).toBeChecked();
-        const count = await rowCheckboxes.count();
-        for (let i = 0; i < count; i++) {
-          await expect(rowCheckboxes.nth(i)).toBeChecked();
+        for (const item of await rowCheckboxes.all()) {
+          await expect(item).toBeChecked();
         }
       });
 
       await test.step('Verify deselect all with merged rows', async () => {
         await selectAllCheckbox.click();
         await expect(selectAllCheckbox).not.toBeChecked();
-        const count = await rowCheckboxes.count();
-        for (let i = 0; i < count; i++) {
-          await expect(rowCheckboxes.nth(i)).not.toBeChecked();
+        for (const item of await rowCheckboxes.all()) {
+          await expect(item).not.toBeChecked();
         }
       });
     });
@@ -2241,8 +2224,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           }
         });
 
-        await test.step('Verify overlay style', async () => {
-          if (browserName === 'webkit') return; // skipped because the style does not apply for older webkit versions
+        await skipStepIf(browserName === 'webkit')('Verify overlay style (skipped in WebKit: backdrop-filter is not applied in older versions)', async () => {
           const cssValue = await limitedContent.evaluate((el) =>
             window.getComputedStyle(el).getPropertyValue('backdrop-filter'),
           );
@@ -2378,8 +2360,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           }
         });
 
-        await test.step('Verify overlay style', async () => {
-          if (browserName === 'webkit') return; // skipped because the style does not apply for older webkit versions
+        await skipStepIf(browserName === 'webkit')('Verify overlay style (skipped in WebKit: backdrop-filter is not applied in older versions)', async () => {
           const cssValue = await limitedContent.evaluate((el) =>
             window.getComputedStyle(el).getPropertyValue('backdrop-filter'),
           );
@@ -2524,8 +2505,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           }
         });
 
-        await test.step('Verify overlay style', async () => {
-          if (browserName === 'webkit') return; // skipped because the style does not apply for older webkit versions
+        await skipStepIf(browserName === 'webkit')('Verify overlay style (skipped in WebKit: backdrop-filter is not applied in older versions)', async () => {
           const cssValue = await limitedContent.evaluate((el) =>
             window.getComputedStyle(el).getPropertyValue('backdrop-filter'),
           );
@@ -2547,7 +2527,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/limited-mode.tsx', 'en', { rowsLimit: 2, columnsLimit: 1 });
 
-      await test.step('Verify focus on onteractive element on overlay and back from rows ', async () => {
+      await test.step('Verify focus on interactive element on overlay and back from rows', async () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('ArrowRight');
 
@@ -2570,7 +2550,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.row(page, 3).getByRole('gridcell').nth(1)).toBeFocused();
       });
 
-      await test.step('Verify focus on onteractive element on overlay and back from column ', async () => {
+      await test.step('Verify focus on interactive element on overlay and back from column', async () => {
         await page.keyboard.press('ArrowLeft');
 
         await expect(locators.row(page, 3).getByRole('gridcell').nth(0)).toBeFocused();
@@ -2681,7 +2661,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       test.skip(browserName === 'webkit', 'Flaky focus handling in webkit');
       await loadPage(page, 'stories/components/data-table/tests/examples/limited-mode/accordion.tsx', 'en', { rowsLimit: 1, columnsLimit: 2 });
 
-      await test.step('Verify availabe accordion expands and visible ', async () => {
+      await test.step('Verify available accordion expands and visible', async () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');
         await locators.rowTableInTable(page, 2, 4).waitFor({ state: 'visible' });

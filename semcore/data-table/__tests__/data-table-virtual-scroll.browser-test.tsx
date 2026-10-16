@@ -96,8 +96,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     const gridTemplateRows = await locators.dataTable(page).evaluate(
       (el) => getComputedStyle(el).gridTemplateRows,
     );
-    // If bracket was missing in repeat(), browser ignores the rule and returns 'none'
-    expect(gridTemplateRows).not.toBe('none');
+    expect(gridTemplateRows, 'a missing bracket in repeat() makes the browser ignore the rule').not.toBe('none');
     expect(gridTemplateRows).toMatch(/\d+px/);
   });
 

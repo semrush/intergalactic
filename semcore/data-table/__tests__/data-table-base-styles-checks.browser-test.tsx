@@ -23,6 +23,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     const header = page.locator('[data-ui-name="Head.Column"]');
     const firstCell = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
+    const hoverCheckStep = browserName === 'firefox' ? test.step.skip : test.step;
 
     await test.step('Verify header cell styles', async () => {
       await checkStyles(header, {
@@ -34,41 +35,37 @@ test.describe(`${TAG.VISUAL}`, () => {
       });
     });
 
-    await test.step('Verify hovered header cell styles', async () => {
-      await header.first().hover();
-      if (browserName !== 'firefox')
-        await checkStyles(header.first(), {
-          'font-size': '12px',
-          'border-bottom': borderPrimary,
-          'color': textSecondary,
-          'background-color': thPrimaryCellBg,
-          'padding': '12px',
-        });
+    await header.first().hover();
+    await hoverCheckStep('Verify hovered header cell styles (skipped in Firefox)', async () => {
+      await checkStyles(header.first(), {
+        'font-size': '12px',
+        'border-bottom': borderPrimary,
+        'color': textSecondary,
+        'background-color': thPrimaryCellBg,
+        'padding': '12px',
+      });
     });
 
-    await test.step('Verify body cell styles', async () => {
-      await firstCell.first().hover();
-      if (browserName !== 'firefox')
-        await checkStyles(firstCell, {
-          'font-size': '14px',
-          'border-bottom': borderSecondary,
-          'color': textPrimary,
-          'background-color': cellHoverBg,
-        });
+    await firstCell.first().hover();
+    await hoverCheckStep('Verify hovered body cell styles (skipped in Firefox)', async () => {
+      await checkStyles(firstCell, {
+        'font-size': '14px',
+        'border-bottom': borderSecondary,
+        'color': textPrimary,
+        'background-color': cellHoverBg,
+      });
+    });
 
+    await test.step('Verify focused table', async () => {
       await page.keyboard.press('Tab');
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify overflow=hidden on the CellWrapper', async () => {
-      const cellWrapper = page.locator('[class*="CellWrapper"]');
-      const count = await cellWrapper.count();
-      for (let i = 0; i < count; i++) {
-        const overflow = await cellWrapper.nth(i).evaluate((el) => {
-          return window.getComputedStyle(el).overflow;
-        });
-
-        await expect(overflow).toBe('hidden');
+      const cellWrappers = page.locator('[class*="CellWrapper"]');
+      await expect(cellWrappers).not.toHaveCount(0);
+      for (const cellWrapper of await cellWrappers.all()) {
+        await expect(cellWrapper).toHaveCSS('overflow', 'hidden');
       }
     });
   });
@@ -85,53 +82,30 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       const cellsFirstColumn = page.locator('[aria-colindex="1"]');
       const cellsMiddleColumn = page.locator('[aria-colindex="3"]');
-      const cellsMLastColumn = page.locator('[aria-colindex="5"]');
-      if (item.use === 'primary') {
-        await test.step('Verify first column padding', async () => {
-          await checkStyles(cellsFirstColumn, {
-            'padding-top': '12px',
-            'padding-right': '12px',
-            'padding-bottom': '12px',
-            'padding-left': '20px',
-          });
-        });
+      const cellsLastColumn = page.locator('[aria-colindex="5"]');
+      const padding = item.use === 'primary' ? '12px' : '8px';
 
-        await test.step('Verify first column padding after update', async () => {
-          await checkStyles(cellsMLastColumn, {
-            'padding-top': '12px',
-            'padding-left': '12px',
-            'padding-bottom': '12px',
-            'padding-right': '20px',
-          });
+      await test.step('Verify first column has wide left padding', async () => {
+        await checkStyles(cellsFirstColumn, {
+          'padding-top': padding,
+          'padding-right': padding,
+          'padding-bottom': padding,
+          'padding-left': '20px',
         });
+      });
 
-        await test.step('Verify middle column padding', async () => {
-          await checkStyles(cellsMiddleColumn, { padding: '12px' });
+      await test.step('Verify last column has wide right padding', async () => {
+        await checkStyles(cellsLastColumn, {
+          'padding-top': padding,
+          'padding-left': padding,
+          'padding-bottom': padding,
+          'padding-right': '20px',
         });
-      }
-      if (item.use === 'secondary') {
-        await test.step('Verify first column padding', async () => {
-          await checkStyles(cellsFirstColumn, {
-            'padding-top': '8px',
-            'padding-right': '8px',
-            'padding-bottom': '8px',
-            'padding-left': '20px',
-          });
-        });
+      });
 
-        await test.step('Verify first column padding after update', async () => {
-          await checkStyles(cellsMLastColumn, {
-            'padding-top': '8px',
-            'padding-left': '8px',
-            'padding-bottom': '8px',
-            'padding-right': '20px',
-          });
-        });
-
-        await test.step('Verify middle column padding', async () => {
-          await checkStyles(cellsMiddleColumn, { padding: '8px' });
-        });
-      }
+      await test.step('Verify middle column padding', async () => {
+        await checkStyles(cellsMiddleColumn, { padding });
+      });
     });
   });
 
@@ -186,7 +160,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     const cellHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-hover');
 
     const header = page.locator('[data-ui-name="Head.Column"]');
-    /* The actively sorted column is highlighted, so it is checked apart from the rest. */
+    const hoverCheckStep = browserName === 'firefox' ? test.step.skip : test.step;
     const sortedHeader = page.locator('[data-ui-name="Head.Column"][aria-sort]');
     const unsortedHeader = page.locator('[data-ui-name="Head.Column"]:not([aria-sort])');
     const firstCell = page.locator('[data-ui-name="Row.Cell"]').first();
@@ -211,7 +185,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     await header.first().hover();
-    if (browserName !== 'firefox') {
+    await hoverCheckStep('Verify header styles on hover (skipped in Firefox)', async () => {
       await checkStyles(unsortedHeader, {
         ...headerBaseStyles,
         'color': textSecondary,
@@ -223,7 +197,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         'color': textPrimary,
         'font-weight': '700',
       });
-    }
+    });
 
     await checkStyles(firstCell, {
       'font-size': '14px',
@@ -234,12 +208,14 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     await firstCell.hover();
-    if (browserName !== 'firefox')
+    await hoverCheckStep('Verify hovered body cell background (skipped in Firefox)', async () => {
       await expect(firstCell).toHaveCSS('background-color', cellHoverBg);
+    });
 
     await page.keyboard.press('Tab');
-    if (browserName !== 'firefox')
+    await hoverCheckStep('Verify focused body cell background (skipped in Firefox)', async () => {
       await expect(firstCell).toHaveCSS('background-color', cellHoverBg);
+    });
     await expect(page).toHaveScreenshot();
   });
 });
@@ -255,7 +231,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     { use: 'secondary' },
   ];
   variantUse.forEach((item) => {
-    test(`Verify keyboard interaction when use=${item.use} `, {
+    test(`Verify keyboard interaction when use=${item.use}`, {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@data-table'],
@@ -280,9 +256,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Tab');
       await expect(secondCell).not.toBeFocused();
 
-      if (browserName === 'firefox') test.skip();
-      await page.keyboard.press('Shift+Tab');
-      await expect(secondCellSecondRow).toBeFocused();
+      const shiftTabStep = browserName === 'firefox' ? test.step.skip : test.step;
+      await shiftTabStep('Verify Shift+Tab returns focus to the last focused cell (skipped in Firefox)', async () => {
+        await page.keyboard.press('Shift+Tab');
+        await expect(secondCellSecondRow).toBeFocused();
+      });
     });
   });
 
@@ -291,7 +269,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     { use: 'secondary', defaultGridTemplateColumnWidth: '1fr' },
   ];
   variant1fr.forEach((item) => {
-    test(`Verify defaultGridTemplateColumnWidth=${item.defaultGridTemplateColumnWidth} use=${item.use} `, {
+    test(`Verify defaultGridTemplateColumnWidth=${item.defaultGridTemplateColumnWidth} use=${item.use}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@data-table'],
     }, async ({ page }) => {
@@ -309,7 +287,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     { use: 'secondary', defaultGridTemplateColumnWidth: 'auto' },
   ];
   variantAuto.forEach((item) => {
-    test(`Verify defaultGridTemplateColumnWidth=${item.defaultGridTemplateColumnWidth} use=${item.use} `, {
+    test(`Verify defaultGridTemplateColumnWidth=${item.defaultGridTemplateColumnWidth} use=${item.use}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@data-table'],
     }, async ({ page }) => {
