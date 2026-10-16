@@ -2,83 +2,25 @@ import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
+const examples = [
+  { title: 'Basic', story: 'basic_example' },
+  { title: 'Access to internal components', story: 'access_to_internal_components' },
+  { title: 'Advanced', story: 'advanced_example' },
+  { title: 'Disabling overlay', story: 'disabling_overlay', props: { closable: false } },
+  { title: 'Placement', story: 'placement', props: { closable: false } },
+  { title: 'Portals', story: 'portals', props: { closable: false } },
+];
+
 test.describe(`${TAG.ACCESSIBILITY} @side-panel`, () => {
-  test('Basic', async ({ page }) => {
-    await loadPage(page, 'stories/components/side-panel/docs/examples/basic_example.tsx', 'en');
+  examples.forEach(({ title, story, props }) => {
+    test(title, async ({ page }) => {
+      await loadPage(page, `stories/components/side-panel/docs/examples/${story}.tsx`, 'en', props);
 
-    const showButton = page.getByRole('button', { name: 'Show SidePanel' });
-    const sidePanel = page.getByRole('dialog');
+      await page.getByRole('button', { name: 'Show SidePanel' }).click();
+      await page.getByRole('dialog').waitFor({ state: 'visible' });
 
-    await showButton.click();
-    await sidePanel.waitFor({ state: 'visible' });
-
-    const violations = await getAccessibilityViolations({ page });
-
-    expect(violations).toEqual([]);
-  });
-  test('Access to internal components', async ({ page }) => {
-    await loadPage(page, 'stories/components/side-panel/docs/examples/access_to_internal_components.tsx', 'en');
-
-    const showButton = page.getByRole('button', { name: 'Show SidePanel' });
-    const sidePanel = page.getByRole('dialog');
-
-    await showButton.click();
-    await sidePanel.waitFor({ state: 'visible' });
-
-    const violations = await getAccessibilityViolations({ page });
-
-    expect(violations).toEqual([]);
-  });
-  test('Advanced', async ({ page }) => {
-    await loadPage(page, 'stories/components/side-panel/docs/examples/advanced_example.tsx', 'en');
-
-    const showButton = page.getByRole('button', { name: 'Show SidePanel' });
-    const sidePanel = page.getByRole('dialog');
-
-    await showButton.click();
-    await sidePanel.waitFor({ state: 'visible' });
-
-    const violations = await getAccessibilityViolations({ page });
-
-    expect(violations).toEqual([]);
-  });
-  test('Disabling overlay', async ({ page }) => {
-    await loadPage(page, 'stories/components/side-panel/docs/examples/disabling_overlay.tsx', 'en', { closable: false });
-
-    const showButton = page.getByRole('button', { name: 'Show SidePanel' });
-    const sidePanel = page.getByRole('dialog');
-
-    await showButton.click();
-    await sidePanel.waitFor({ state: 'visible' });
-
-    const violations = await getAccessibilityViolations({ page });
-
-    expect(violations).toEqual([]);
-  });
-  test('Placement', async ({ page }) => {
-    await loadPage(page, 'stories/components/side-panel/docs/examples/placement.tsx', 'en', { closable: false });
-
-    const showButton = page.getByRole('button', { name: 'Show SidePanel' });
-    const sidePanel = page.getByRole('dialog');
-
-    await showButton.click();
-    await sidePanel.waitFor({ state: 'visible' });
-
-    const violations = await getAccessibilityViolations({ page });
-
-    expect(violations).toEqual([]);
-  });
-  test('Portals', async ({ page }) => {
-    await loadPage(page, 'stories/components/side-panel/docs/examples/portals.tsx', 'en', { closable: false });
-
-    const showButton = page.getByRole('button', { name: 'Show SidePanel' });
-    const sidePanel = page.getByRole('dialog');
-
-    await showButton.click();
-    await sidePanel.waitFor({ state: 'visible' });
-
-    const violations = await getAccessibilityViolations({ page });
-
-    expect(violations).toEqual([]);
+      const violations = await getAccessibilityViolations({ page });
+      expect(violations).toEqual([]);
+    });
   });
 });

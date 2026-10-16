@@ -22,6 +22,7 @@ export const locators = {
   counter: (page: Page) => locators.trigger(page, 0).locator('[data-ui-name="FilterTrigger.Counter"]'),
   input: (page: Page) => page.locator('[data-ui-name="Input.Value"]'),
   conditionLegend: (page: Page) => page.locator('legend'),
+  conditionRow: (page: Page, index = 1) => page.getByRole('group', { name: `Condition #${index}` }).locator('..'),
 
 };
 /* =====================================================
@@ -170,6 +171,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await page.keyboard.press('Enter');
       await expect(locators.button(page, 'Add condition')).not.toBeFocused();
       await expect(locators.button(page, 'Clear all')).toBeHidden();
+      await expect(locators.conditionRow(page)).toBeFocused();
 
       await page.keyboard.press('Tab');
       await expect(page.getByLabel('Rule')).toBeFocused();
@@ -199,6 +201,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
       await page.keyboard.press('Space');
       await expect(locators.button(page, 'Clear all')).toBeHidden();
+      await expect(locators.conditionRow(page)).toBeFocused();
 
       await page.keyboard.press('Tab');
       await expect(page.getByLabel('Rule')).toBeFocused();

@@ -46,7 +46,7 @@ describe('Radio', () => {
     expect((getByTestId('input') as HTMLInputElement).name).toBe('radio');
   });
 
-  test('Verify state  changes to "checked" by click on label', async () => {
+  test('Verify state changes to "checked" by click on label', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Radio data-testid='label'>
