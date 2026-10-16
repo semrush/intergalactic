@@ -213,10 +213,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       await test.step('Verify days attributes', async () => {
-        const cellCount = await locators.cells(page).count();
-
-        for (let i = 0; i < cellCount; i++) {
-          const cell = locators.cells(page).nth(i);
+        for (const cell of await locators.cells(page).all()) {
           const ariaLabel = await cell.getAttribute('aria-label');
           if (!ariaLabel) continue;
 

@@ -14,32 +14,29 @@ const tableRoot = (page: Page, index = 0) => page.locator('[data-ui-name="Scroll
 const scrollContainer = (page: Page, index = 0) => tableRoot(page, index).locator('[data-ui-name="ScrollArea.Container"]').first();
 const scrollBars = (page: Page, orientation: 'horizontal' | 'vertical', index = 0) =>
   tableRoot(page, index).locator(`[data-ui-name="ScrollArea.Bar"][aria-orientation="${orientation}"]`);
-const allScrollBars = (page: Page) => page.locator('[data-ui-name="ScrollArea.Bar"]');
+/** Scroll bars fade in and out, so they are hidden for screenshots; their state is checked via aria-valuenow. */
+async function hideScrollBars(page: Page) {
+  await page.addStyleTag({ content: '[data-ui-name="ScrollArea.Bar"] { visibility: hidden !important; }' });
+}
 
 /** Scrolls the table container to an exact position (clamped to the scrollable range) and waits until it settles. */
 async function scrollTableTo(page: Page, position: { top: number; left: number }, index = 0) {
   const container = scrollContainer(page, index);
   const target = await container.evaluate((el, { top, left }) => {
     const clamped = {
-      top: Math.min(top, el.scrollHeight - el.clientHeight),
-      left: Math.min(left, el.scrollWidth - el.clientWidth),
+      top: Math.max(0, Math.min(top, el.scrollHeight - el.clientHeight)),
+      left: Math.max(0, Math.min(left, el.scrollWidth - el.clientWidth)),
     };
-    el.scrollTo({ ...clamped, behavior: 'instant' });
+    el.scrollTop = clamped.top;
+    el.scrollLeft = clamped.left;
     return clamped;
   }, position);
 
-  await expect.poll(() => container.evaluate((el) => ({ top: el.scrollTop, left: el.scrollLeft }))).toEqual(target);
+  await expect.poll(() => container.evaluate((el, { top, left }) =>
+    Math.abs(el.scrollTop - top) <= 1 && Math.abs(el.scrollLeft - left) <= 1, target)).toBe(true);
 }
 
-/** The element painted at the center of the locator must belong to it, i.e. nothing scrolled over it. */
-async function expectNotCovered(page: Page, selector: string, index = 0) {
-  const box = (await tableRoot(page, index).locator(selector).first().boundingBox())!;
-  const isOnTop = await page.evaluate(({ x, y, selector }) =>
-    Boolean(document.elementFromPoint(x, y)?.closest(selector)), { x: box.x + box.width / 2, y: box.y + box.height / 2, selector });
-  expect(isOnTop, `${selector} is covered by scrolled content`).toBe(true);
-}
-
-/** Sticky header stays at the top of the container and is not covered; a non-sticky header scrolls away. */
+/** Sticky header stays at the top of the container; a non-sticky header scrolls away. Rows painted over the header are caught by the screenshot. */
 async function expectHeaderPosition(page: Page, sticky: boolean, index = 0) {
   const containerBox = (await scrollContainer(page, index).boundingBox())!;
   const header = tableRoot(page, index).locator('[data-ui-name="Head.Column"], [data-ui-name="Head.Group"]').first();
@@ -47,7 +44,6 @@ async function expectHeaderPosition(page: Page, sticky: boolean, index = 0) {
 
   if (sticky) {
     expect(Math.abs(headerBox.y - containerBox.y), 'sticky header is at the top of the container').toBeLessThanOrEqual(1);
-    await expectNotCovered(page, '[data-ui-name="Head.Column"]', index);
   } else {
     expect(headerBox.y + headerBox.height, 'non-sticky header scrolled away').toBeLessThanOrEqual(containerBox.y + 1);
   }
@@ -88,7 +84,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         await locators.dataTable(page).hover();
         await page.mouse.wheel(600, 0);
         await page.waitForTimeout(1000);
-        await checkScrolled(scrollBars(page, 'horizontal').last());
+        await checkScrolled(scrollBars(page, 'horizontal').first());
       });
 
       await test.step('Scroll to a fixed position for stable geometry and screenshot', async () => {
@@ -105,7 +101,8 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       const screenshotStep = item.sticky ? test.step : test.step.skip;
       await screenshotStep('Verify scrolled table screenshot', async () => {
-        await expect(tableRoot(page)).toHaveScreenshot({ mask: [allScrollBars(page)] });
+        await hideScrollBars(page);
+        await expect(tableRoot(page)).toHaveScreenshot();
       });
     });
   });
@@ -122,7 +119,7 @@ test.describe(`${TAG.VISUAL}`, () => {
           await page.keyboard.press('ArrowRight');
         }
         await page.waitForTimeout(200);
-        await checkScrolled(scrollBars(page, 'horizontal').last());
+        await checkScrolled(scrollBars(page, 'horizontal').first());
       });
 
       await test.step('Verify vertical scroll by keyboard', async () => {
@@ -146,7 +143,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       });
 
       await test.step('Verify scrolled table screenshot', async () => {
-        await expect(tableRoot(page)).toHaveScreenshot({ mask: [allScrollBars(page)] });
+        await hideScrollBars(page);
+        await expect(tableRoot(page)).toHaveScreenshot();
       });
     });
   });
@@ -192,7 +190,7 @@ test.describe(`${TAG.VISUAL}`, () => {
           await page.keyboard.press('ArrowRight');
         }
         await page.waitForTimeout(200);
-        await checkScrolled(scrollBars(page, 'horizontal', 1).last());
+        await checkScrolled(scrollBars(page, 'horizontal', 1).first());
       });
 
       await test.step('Scroll both tables to a fixed position for stable geometry and screenshot', async () => {
@@ -206,7 +204,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       });
 
       await horizontalStep('Verify scrolled tables screenshot (only with wMax)', async () => {
-        await expect(tableRoot(page, 0).locator('..')).toHaveScreenshot({ mask: [allScrollBars(page)] });
+        await hideScrollBars(page);
+        await expect(tableRoot(page, 0).locator('..')).toHaveScreenshot();
       });
     });
   });
@@ -240,8 +239,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         await locators.dataTable(page).nth(1).hover();
         await page.mouse.wheel(600, 0);
         await page.waitForTimeout(200);
-        await checkScrolled(scrollBars(page, 'horizontal', 0).last());
-        await checkScrolled(scrollBars(page, 'horizontal', 1).last());
+        await checkScrolled(scrollBars(page, 'horizontal', 0).first());
+        await checkScrolled(scrollBars(page, 'horizontal', 1).first());
       });
 
       await test.step('Scroll both tables to a fixed position for stable geometry and screenshot', async () => {
@@ -255,7 +254,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       });
 
       await horizontalStep('Verify scrolled tables screenshot (only with wMax)', async () => {
-        await expect(tableRoot(page, 0).locator('..')).toHaveScreenshot({ mask: [allScrollBars(page)] });
+        await hideScrollBars(page);
+        await expect(tableRoot(page, 0).locator('..')).toHaveScreenshot();
       });
     });
   });

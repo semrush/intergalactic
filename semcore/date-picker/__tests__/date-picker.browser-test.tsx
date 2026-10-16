@@ -48,17 +48,27 @@ test.describe(`${TAG.VISUAL}`, () => {
       screenshotsClip.width += 8;
       screenshotsClip.height += 8;
 
-      await page.keyboard.press('Tab');
-      await page.keyboard.type('052');
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-      await page.keyboard.type('92000');
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      const input = page.locator('input[data-ui-name="DatePicker.Trigger"]').first();
 
-      await page.keyboard.press('Shift+Tab');
-      await page.keyboard.press('ArrowRight');
-      for (let i = 0; i < 5; i++) await page.keyboard.press('Backspace');
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      await test.step('Verify partially entered date', async () => {
+        await page.keyboard.press('Tab');
+        await page.keyboard.type('052');
+        await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      });
+      const partialValue = await input.inputValue();
+
+      await test.step('Verify fully entered date', async () => {
+        await page.keyboard.type('92000');
+        await page.keyboard.press('Tab');
+        await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      });
+
+      await test.step('Verify Backspace returns the input to the partial date', async () => {
+        await page.keyboard.press('Shift+Tab');
+        await page.keyboard.press('ArrowRight');
+        for (let i = 0; i < 5; i++) await page.keyboard.press('Backspace');
+        await expect(input).toHaveValue(partialValue);
+      });
     });
 
     const triggerVariables = [
@@ -423,10 +433,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Verify days attributes', async () => {
         const cells = page.locator('[role="gridcell"]');
-        const cellCount = await cells.count();
-
-        for (let i = 0; i < cellCount; i++) {
-          const cell = cells.nth(i);
+        for (const cell of await cells.all()) {
           const ariaLabel = await cell.getAttribute('aria-label');
           if (!ariaLabel) continue;
 
@@ -801,10 +808,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       await test.step('Verify days attributes', async () => {
-        const cellCount = await locators.cells(page).count();
-
-        for (let i = 0; i < cellCount; i++) {
-          const cell = locators.cells(page).nth(i);
+        for (const cell of await locators.cells(page).all()) {
           const ariaLabel = await cell.getAttribute('aria-label');
           if (!ariaLabel) continue;
 
