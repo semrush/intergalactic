@@ -4,6 +4,7 @@ import type { Intergalactic } from '@semcore/core';
 import { Component, sstyled, createComponent, Root } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import uniqueIdEnhance from '@semcore/core/lib/utils/uniqueID';
 import Divider from '@semcore/divider';
 import CheckM from '@semcore/icon/Check/m';
@@ -13,7 +14,6 @@ import Input from '@semcore/input';
 import React from 'react';
 
 import ColorPicker from './ColorPicker';
-import Item from './components/Item';
 import type { ItemProps } from './components/Item.type';
 import type { NSPaletteManager } from './PaletteManager.type';
 import style from './style/color-picker.shadow.css';
@@ -34,7 +34,7 @@ class PaletteManagerRoot extends Component<
   static displayName = 'PaletteManager';
 
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages), uniqueIdEnhance()] as const;
+  static enhance = [i18nEnhance(localizedMessages), uniqueIdEnhance(), resolveColorEnhance()] as const;
 
   static defaultProps = {
     defaultColors: [],
@@ -76,13 +76,14 @@ class PaletteManagerRoot extends Component<
   };
 
   getColorsProps() {
-    const { colors } = this.asProps;
+    const { colors, resolveColor } = this.asProps;
 
     return {
       colors,
       editable: true,
       onPlusButtonClick: this.bindHandlerButtonClick(),
       getI18nText: this.asProps.getI18nText,
+      resolveColor,
     };
   }
 
@@ -136,7 +137,7 @@ class PaletteManagerRoot extends Component<
 export function Colors(
   props: Intergalactic.InternalTypings.InferChildComponentProps<NSPaletteManager.Colors.Component, typeof PaletteManagerRoot, 'Colors'>,
 ) {
-  const { Children, styles, colors, onPlusButtonClick, getI18nText } = props;
+  const { Children, styles, colors, onPlusButtonClick, getI18nText, resolveColor } = props;
   const SColors = Root;
   const SColorsContainer = Flex;
   const SPlusButton = 'div';
@@ -154,9 +155,15 @@ export function Colors(
               <Children />
             )
           : (
-              // TODO: Re-think the component structure.
-              // @ts-ignore
-              colors.map((color) => <PaletteManager.Item value={color} key={color} />)
+              colors.map((color) => (
+                // TODO: Re-think the component structure.
+                // @ts-ignore
+                <PaletteManager.Item
+                  key={color}
+                  color={color}
+                  value={resolveColor(color)}
+                />
+              ))
             )}
       </SColors>
       <SPlusButton onClick={onPlusButtonClick} role='button' aria-label={getI18nText('addColor')}>
@@ -232,8 +239,6 @@ class InputColor extends Component<
 
     const SPaletteManager = Box;
     const SInputValue = Root;
-    const SInput = 'div';
-    const SInputContainer = 'div';
     const SConfirmColor = Input.Addon;
     const SClearConfirm = Input.Addon;
     const SItemColor = Box;
