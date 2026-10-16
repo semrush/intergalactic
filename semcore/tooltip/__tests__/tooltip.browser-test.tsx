@@ -537,19 +537,19 @@ test.describe(TAG.FUNCTIONAL, () => {
       const options = locators.option(page);
       const tooltip = locators.tooltipRole(page);
 
-      await test.step('Verify options have no aria-labelledby before hover', async () => {
+      await test.step('Verify options have no aria-describedby before hover', async () => {
         await locators.selectTrigger(page).click();
         await options.first().waitFor({ state: 'visible' });
         for (const option of await options.all()) {
-          await expect(option).not.toHaveAttribute('aria-labelledby');
+          await expect(option).not.toHaveAttribute('aria-describedby');
         }
       });
 
-      await test.step('Verify singleton tooltip on hover labels options', async () => {
+      await test.step('Verify singleton tooltip on hover describes options', async () => {
         await options.nth(2).hover();
         await tooltip.waitFor({ state: 'visible' });
         for (const option of await options.all()) {
-          await expect(option).toHaveAttribute('aria-labelledby');
+          await expect(option).toHaveAttribute('aria-describedby');
         }
         await expect(tooltip).toHaveCount(1);
       });
