@@ -56,48 +56,23 @@ test.describe(`${TAG.VISUAL}`, () => {
   variables.forEach((item) => {
     test(`Verify size=${item.size} state=${item.state} theme=${item.theme} color=${item.color} disabled=${item.disabled} checked=${item.checked} indeterminate=${item.indeterminate}`, {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
         '@checkbox', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/checkbox/tests/examples/states.tsx', 'en', item);
 
-      // verify L checkbox styles
-      if (item.size == 'l') {
-        await expect(locators.valueCheckmark(page)).toHaveCSS(
-          'height',
-          '20px',
-        );
-        await expect(locators.valueCheckmark(page)).toHaveCSS(
-          'width',
-          '20px',
-        );
-        await expect(locators.checkboxText(page)).toHaveCSS(
-          'margin-left',
-          '8px',
-        );
-        await expect(locators.checkboxText(page)).toHaveCSS(
-          'font-size',
-          '16px',
-        );
-      } else { // verify M checkbox styles
-        await expect(locators.valueCheckmark(page)).toHaveCSS(
-          'height',
-          '16px',
-        );
-        await expect(locators.valueCheckmark(page)).toHaveCSS(
-          'width',
-          '16px',
-        );
-        await expect(locators.checkboxText(page)).toHaveCSS(
-          'margin-left',
-          '6px',
-        );
-        await expect(locators.checkboxText(page)).toHaveCSS(
-          'font-size',
-          '14px',
-        );
-      }
-      await page.keyboard.press('Tab');
-      await expect(page.locator('[data-test-id="checkbox"]')).toHaveScreenshot();
+      await test.step(`Verify size ${item.size} checkmark and label styles`, async () => {
+        const isL = item.size === 'l';
+        await expect(locators.valueCheckmark(page)).toHaveCSS('height', isL ? '20px' : '16px');
+        await expect(locators.valueCheckmark(page)).toHaveCSS('width', isL ? '20px' : '16px');
+        await expect(locators.checkboxText(page)).toHaveCSS('margin-left', isL ? '8px' : '6px');
+        await expect(locators.checkboxText(page)).toHaveCSS('font-size', isL ? '16px' : '14px');
+      });
+
+      await test.step('Verify focused state snapshot', async () => {
+        await page.keyboard.press('Tab');
+        await expect(page.locator('[data-test-id="checkbox"]')).toHaveScreenshot();
+      });
     });
   });
 
@@ -168,26 +143,13 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/docs/examples/checkbox_with_other_components.tsx', 'en');
 
-    await test.step('Verify Focusable element focused after checkbox', async () => {
+    await test.step('Navigate through checkboxes and focusable elements and snapshot the focus on the element after 2nd checkbox', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-    });
-
-    await test.step('Verify interactions with Focusable element not check checkbox', async () => {
       await page.keyboard.press('Space');
-
       await page.keyboard.press('Escape');
-    });
-
-    await test.step('Verify focus on 2nd checkbox by tab', async () => {
       await page.keyboard.press('Tab');
-    });
-
-    await test.step('Verify focus on prev by shift+tab', async () => {
       await page.keyboard.press('Shift+Tab');
-    });
-
-    await test.step('Verify focus on element after 2nd checkbox', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await expect(page).toHaveScreenshot();
@@ -200,7 +162,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   Keyboard and mouse interactions - no snapshots here.
   We verify states, visibility, and attributes.
   ===================================================== */
-test.describe(`${TAG.FUNCTIONAL} `, () => {
+test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Checkbox group mouse interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
@@ -208,14 +170,14 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/docs/examples/basic_usage.tsx', 'en');
 
-    await test.step('Verify checkbox checked when clicking on label ', async () => {
+    await test.step('Verify checkbox checked when clicking on label', async () => {
       await locators.checkboxText(page).first().click();
       await expect(locators.checkbox(page).first()).toHaveClass(/checked/);
-      await expect(locators.checkbox(page).first()).toHaveClass(/checked/);
+      await expect(locators.checkboxValue(page).first()).toHaveClass(/checked/);
       await expect(locators.valueCheckmark(page).first()).toHaveClass(/checked/);
     });
 
-    await test.step('Verify checkbox checked when clicking on checkbox ', async () => {
+    await test.step('Verify checkbox checked when clicking on checkbox', async () => {
       await locators.valueCheckmark(page).nth(1).click();
       await expect(locators.checkbox(page).first()).toHaveClass(/checked/);
       await expect(locators.checkboxValue(page).first()).toHaveClass(/checked/);
@@ -225,7 +187,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.valueCheckmark(page).nth(1)).toHaveClass(/checked/);
     });
 
-    await test.step('Verify checkbox unchecked when clicking on label ', async () => {
+    await test.step('Verify checkbox unchecked when clicking on label', async () => {
       await locators.checkboxText(page).first().click();
       await expect(locators.checkbox(page).first()).not.toHaveClass(/checked/);
       await expect(locators.checkboxValue(page).first()).not.toHaveClass(/checked/);
@@ -235,7 +197,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.valueCheckmark(page).nth(1)).toHaveClass(/checked/);
     });
 
-    await test.step('Verify checkbox unchecked when clicking on checkbox ', async () => {
+    await test.step('Verify checkbox unchecked when clicking on checkbox', async () => {
       await locators.valueCheckmark(page).nth(1).click();
       await expect(locators.checkbox(page).first()).not.toHaveClass(/checked/);
       await expect(locators.checkboxValue(page).first()).not.toHaveClass(/checked/);
@@ -253,7 +215,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/docs/examples/basic_usage.tsx', 'en');
 
-    await test.step('Verify focus on 1st checkbox by tab ', async () => {
+    await test.step('Verify focus on 1st checkbox by tab', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.checkboxValue(page).first()).toBeFocused();
     });
@@ -273,12 +235,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.checkboxValue(page).first()).toBeFocused();
     });
 
-    await test.step('Verify focus on 2nd checkbox by tab ', async () => {
+    await test.step('Verify focus on 2nd checkbox by tab', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.checkboxValue(page).nth(1)).toBeFocused();
     });
 
-    await test.step('Verify checkbox checked when pressing Space ', async () => {
+    await test.step('Verify checkbox checked when pressing Space', async () => {
       await page.keyboard.press('Space');
       await expect(locators.checkbox(page).nth(1)).toHaveClass(/checked/);
       await expect(locators.checkboxValue(page).nth(1)).toHaveClass(/checked/);
@@ -310,6 +272,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await test.step('Verify all checkboxes checked when clicking on group label', async () => {
       await locators.checkboxText(page).first().click();
 
+      await expect(locators.checkboxText(page)).not.toHaveCount(0);
       const count1 = await locators.checkboxText(page).count();
       for (let i = 0; i < count1; i++) {
         await expect(locators.checkbox(page).nth(i)).toHaveClass(/checked/);
@@ -318,9 +281,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       }
     });
 
-    await test.step('Verify all checkboxes unchecked when clicking on group label', async () => {
+    await test.step('Verify all checkboxes unchecked when clicking on group checkbox', async () => {
       await locators.valueCheckmark(page).first().click();
 
+      await expect(locators.checkboxText(page)).not.toHaveCount(0);
       const count1 = await locators.checkboxText(page).count();
       for (let i = 0; i < count1; i++) {
         await expect(locators.checkbox(page).nth(i)).not.toHaveClass(/checked/);
@@ -341,9 +305,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.valueCheckmark(page).nth(2)).toHaveClass(/checked/);
     });
 
-    await test.step('Verify all checkboxes checked when clicking indeterminate on group label', async () => {
+    await test.step('Verify all checkboxes checked when clicking on indeterminate group checkbox', async () => {
       await locators.valueCheckmark(page).first().click();
 
+      await expect(locators.checkboxText(page)).not.toHaveCount(0);
       const count1 = await locators.checkboxText(page).count();
       for (let i = 0; i < count1; i++) {
         await expect(locators.checkbox(page).nth(i)).toHaveClass(/checked/);
@@ -376,6 +341,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
 
+      await expect(locators.checkboxText(page)).not.toHaveCount(0);
       const count1 = await locators.checkboxText(page).count();
       for (let i = 0; i < count1; i++) {
         await expect(locators.checkbox(page).nth(i)).toHaveClass(/checked/);
@@ -386,6 +352,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await test.step('Verify all checkboxes unchecked when pressing group', async () => {
       await page.keyboard.press('Space');
+      await expect(locators.checkboxText(page)).not.toHaveCount(0);
       const count1 = await locators.checkboxText(page).count();
       for (let i = 0; i < count1; i++) {
         await expect(locators.checkbox(page).nth(i)).not.toHaveClass(/checked/);
@@ -408,11 +375,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.valueCheckmark(page).nth(2)).toHaveClass(/checked/);
     });
 
-    await test.step('Verify all checkboxes checked when clicking indeterminate on group label', async () => {
+    await test.step('Verify all checkboxes checked when pressing Space on indeterminate group checkbox', async () => {
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Space');
 
+      await expect(locators.checkboxText(page)).not.toHaveCount(0);
       const count1 = await locators.checkboxText(page).count();
       for (let i = 0; i < count1; i++) {
         await expect(locators.checkbox(page).nth(i)).toHaveClass(/checked/);
@@ -435,7 +403,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     });
   });
 
-  test('Verify Checkbox with onther elements keyboard interactions', {
+  test('Verify Checkbox with other elements keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@checkbox',
@@ -486,7 +454,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     });
   });
 
-  test('Verify Checkbox with onther elements mouse interactions', {
+  test('Verify Checkbox with other elements mouse interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@checkbox',
@@ -502,6 +470,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await test.step('Verify clicking on Focusable element not activate checkbox', async () => {
       await descriptionTooltipTrigger.click();
 
+      await expect(locators.checkboxText(page)).not.toHaveCount(0);
       const count1 = await locators.checkboxText(page).count();
       for (let i = 0; i < count1; i++) {
         await expect(locators.checkbox(page).nth(i)).not.toHaveClass(/checked/);
