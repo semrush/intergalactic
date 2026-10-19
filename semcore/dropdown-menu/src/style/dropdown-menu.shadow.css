@@ -16,14 +16,24 @@ SDropdownMenuList {
     SShadowHorizontal {
       &:before,
       &:after {
-        border-radius: var(--intergalactic-control-rounded, 6px);
+        /* disable-tokens-validator */
+        border-top-left-radius: 4.5px;
+        border-top-right-radius: var(--intergalactic-control-rounded, 6px);
+        /* disable-tokens-validator */
+        border-bottom-left-radius:  4.5px;
+        border-bottom-right-radius:  var(--intergalactic-control-rounded, 6px);
       }
     }
 
     SShadowVertical {
       &:before,
       &:after {
-        border-radius: var(--intergalactic-control-rounded, 6px);
+        /* disable-tokens-validator */
+        border-top-left-radius: 4.5px;
+        /* disable-tokens-validator */
+        border-top-right-radius: 4.5px;
+        border-bottom-left-radius:  var(--intergalactic-control-rounded, 6px);
+        border-bottom-right-radius:  var(--intergalactic-control-rounded, 6px);
       }
     }
   }
