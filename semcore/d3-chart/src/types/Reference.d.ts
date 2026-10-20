@@ -53,23 +53,34 @@ export type ReferenceStripesProps = Context & {
   /** Value of the background end */
   endValue?: number | string;
 };
-
+/**
+ * @deprecated use `referenceArea` property on Chart.Line.
+ */
 export declare const ReferenceLine: IntergalacticD3Component<
   'line',
   ReferenceLineProps,
   Context
 > & {
+  /**
+   * @deprecated use `referenceArea` property on Chart.Line with title propertry
+   */
   Title: IntergalacticD3Component<'text', ReferenceLineTitleProps, Context>;
   /**
    * @deprecated use `ReferenceBackground` instead.
    */
   Background: IntergalacticD3Component<'rect', ReferenceLineBackgroundProps, Context>;
 };
+/**
+ * @deprecated use `referenceArea` property on Chart.Line.
+ */
 export declare const ReferenceBackground: IntergalacticD3Component<
   'rect',
   ReferenceLineBackgroundProps,
   Context
 >;
+/**
+ * @deprecated use `referenceArea` property on Chart.Line.
+ */
 export declare const ReferenceStripes: IntergalacticD3Component<
   'rect',
   ReferenceStripesProps,
