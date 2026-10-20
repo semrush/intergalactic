@@ -1,49 +1,65 @@
-import {
-  Plot,
-  ReferenceLine,
-  ReferenceStripes,
-  ReferenceBackground,
-  XAxis,
-  YAxis,
-} from '@semcore/ui/d3-chart';
-import { scaleLinear, scaleBand } from 'd3-scale';
+import { Plot, ReferenceLine, ReferenceStripes, XAxis, YAxis } from '@semcore/ui/d3-chart';
+import { scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
-import BarMockData from '../../../__mocks__/bar';
+import LineMockData from '../../../__mocks__/line';
+
+const data = LineMockData.Months;
+const yTicks = [0, 10000, 20000, 30000];
+
+const monthCenter = (date: Date) => new Date(date.getFullYear(), date.getMonth(), 15);
+const nextMonth = (date: Date) => new Date(date.getFullYear(), date.getMonth() + 1, 1);
 
 const Demo = () => {
-  const MARGIN = 40;
+  const MARGIN = { top: 28, right: 48, bottom: 32, left: 16 };
   const width = 500;
-  const height = 300;
+  const height = 220;
+  const plotWidth = width - MARGIN.left - MARGIN.right;
+  const monthWidth = plotWidth / data.length;
+  const lastMonth = data[data.length - 1].time;
 
-  const xScale = scaleBand()
-    .range([MARGIN, width - MARGIN])
-    .domain(dataBar.map((d) => d.category))
-    .paddingInner(0.4)
-    .paddingOuter(0.2);
+  const xScale = scaleTime()
+    .range([MARGIN.left, width - MARGIN.right])
+    .domain([data[0].time, nextMonth(lastMonth)]);
 
   const yScale = scaleLinear()
-    .range([height - MARGIN, MARGIN])
-    .domain([0, 10]);
+    .range([height - MARGIN.bottom, MARGIN.top])
+    .domain([0, 30000]);
 
   return (
-    <Plot data={dataBar} scale={[xScale, yScale]} width={width} height={height}>
-      <ReferenceBackground value={dataBar[3].category} endValue={dataBar[4].category} />
-      <YAxis>
-        <YAxis.Ticks />
+    <Plot
+      data={data}
+      scale={[xScale, yScale]}
+      width={width}
+      height={height}
+      aria-label='Line chart'
+    >
+      <YAxis position='right' ticks={yTicks}>
+        <YAxis.Ticks>
+          {({ value }) => ({
+            children: value === 0 ? '0' : `${value / 1000}K`,
+          })}
+        </YAxis.Ticks>
+        <YAxis.Grid />
       </YAxis>
-      <XAxis>
-        <XAxis.Ticks />
+      <XAxis ticks={data.map((d) => monthCenter(d.time))}>
+        <XAxis.Ticks>
+          {({ value }) => ({
+            children: new Intl.DateTimeFormat('en', { month: 'short' }).format(value),
+          })}
+        </XAxis.Ticks>
       </XAxis>
-      <ReferenceLine title='Left data' value={dataBar[0].category} />
-      <ReferenceStripes value={dataBar[0].category} endValue={dataBar[1].category} />
-      <ReferenceLine title='Right data' position='right' value={dataBar[1].category} />
-      <ReferenceLine title='Top data' position='top' value={9} />
-      <ReferenceLine title='Bottom data' position='bottom' value={3} />
+      <ReferenceLine value={monthCenter(data[1].time)} />
+      <ReferenceLine value={monthCenter(data[2].time)} area={monthWidth} />
+      <ReferenceStripes
+        value={data[4].time}
+        endValue={nextMonth(data[4].time)}
+        use='good'
+        title='Wow!'
+        subTitle='+10%'
+      />
     </Plot>
   );
 };
-
-const dataBar = BarMockData.Default;
 
 export default Demo;
