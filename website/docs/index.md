@@ -14,7 +14,7 @@ hero:
       text: Explore Github
       link: https://github.com/semrush/intergalactic
   image:
-    src: /galaxy-whale.png
+    src: /halloween.png
     alt: Galaxy whale – mascot
 
 features:
