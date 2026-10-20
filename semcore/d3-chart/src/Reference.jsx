@@ -163,7 +163,6 @@ class ReferenceLineRoot extends Component {
           <SArea
             tag='path'
             d={getReferenceAreaPath({ x: line.x1 - area / 2, y: line.y2, width: area, height: line.y1 - line.y2 })}
-            // childrenPosition='inside'
             fill={`url(#${patternId})`}
           />
         </g>
