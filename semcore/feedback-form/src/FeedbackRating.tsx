@@ -15,7 +15,6 @@ import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubb
 import SpinContainer from '@semcore/spin-container';
 import Textarea from '@semcore/textarea';
 import { Text } from '@semcore/typography';
-import createFocusDecorator from 'final-form-focus';
 import React, { type ReactElement } from 'react';
 import { Field, Form } from 'react-final-form';
 
@@ -26,6 +25,7 @@ import { SubmitButton } from './component/submit-button/SubmitButton';
 import type { NSFeedbackRating } from './FeedbackRating.type';
 import style from './style/feedback-rating.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import { createFocusDecorator } from './utils/createFocusDecorator';
 
 class FeedbackRatingRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSFeedbackRating.Component>,
