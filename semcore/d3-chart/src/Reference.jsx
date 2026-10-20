@@ -148,7 +148,7 @@ class ReferenceLineRoot extends Component {
   render() {
     const SReferenceLine = this.Element;
     const SArea = SvgElement;
-    const { title, scale, position, value, color, resolveColor, styles, uid, area } = this.asProps;
+    const { title, scale, position, value, color, resolveColor, styles, uid, area = 0 } = this.asProps;
     const positionProps = lineDirection2props[side2direction[position]];
     const { notchFirst, notchLast, ...line } = positionProps(scale, value);
     const patternId = `${uid}-pattern`;
