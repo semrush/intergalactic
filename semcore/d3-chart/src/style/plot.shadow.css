@@ -15,6 +15,10 @@ foreignObject[data-aria-only] {
   pointer-events: none;
 }
 
+SPlot:has([data-tick-content] :focus-visible) foreignObject[data-hovered-tick] {
+  visibility: hidden;
+}
+
 SPlot:has(foreignObject[data-aria-only]:focus-within) {
   @mixin focus-outline-mixin;
   border-radius: var(--intergalactic-surface-rounded, 8px);

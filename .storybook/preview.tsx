@@ -2,15 +2,13 @@ import { PortalProvider } from '@semcore/base-components';
 import type { Preview } from '@storybook/react-vite';
 import React from 'react';
 
-import '@semcore/theme/light.css';
-
 type PreviewDecorator = NonNullable<Preview['decorators']>[number];
 
 type StorybookStory = Parameters<PreviewDecorator>[0];
 
 type StorybookDecoratorParams = Parameters<PreviewDecorator>[1] & {
   globals: Record<string, unknown> & {
-    theme?: 'new' | 'old';
+    theme?: 'tokens' | 'defaults';
     strictMode?: 'on' | 'off';
   };
   parameters: Record<string, unknown> & {
@@ -65,8 +63,17 @@ const withTheme = (
     });
   }
 
+  const stylesheet = 'assets/theme/light.css';
+  const stylesheetHighlight = 'assets/theme/highlights-light.css';
+
   return (
     <>
+      {params.globals.theme === 'tokens' && (
+        <>
+          <link rel='stylesheet' href={stylesheet} />
+          <link rel='stylesheet' href={stylesheetHighlight} />
+        </>
+      )}
       <Story />
     </>
   );
@@ -132,10 +139,31 @@ const preview: Preview = {
         dynamicTitle: true,
       },
     },
+    theme: {
+      description: 'Theme',
+      toolbar: {
+        title: 'Theme',
+        icon: 'mirror',
+        items: [
+          {
+            value: 'tokens',
+            icon: 'circle',
+            title: 'With tokens',
+          },
+          {
+            value: 'defaults',
+            icon: 'circle',
+            title: 'No tokens',
+          },
+        ],
+        dynamicTitle: true,
+      },
+    },
   },
 
   initialGlobals: {
     strictMode: 'off',
+    theme: 'tokens',
   },
   decorators: [
     withStrictMode,

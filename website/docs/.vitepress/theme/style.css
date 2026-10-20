@@ -1,7 +1,7 @@
 @import url('@semcore/theme/light.css');
 @import url('@semcore/theme/highlights-light.css');
-/* Second import for Halloween only
-@import url('./halloween/fonts.css'); */
+  /* Second import for Halloween only */
+@import url('./halloween/fonts.css');
 
 /**
  * Customize default theme styling by overriding CSS variables:
@@ -9,9 +9,11 @@
  */
 
  /* Here Halloween styles start  */
-/*
+
 :root {
-  --halloween-gradient: linear-gradient(180deg, #FF642D 78.4%, #E43016 78.41%, #B22012 79.8%, #9F0707 81.89%);
+  --halloween-ink: #181b1e;
+  --halloween-blood: #EB1000;
+  --halloween-gradient: linear-gradient(180deg, var(--halloween-ink) 56.8%, var(--halloween-blood) 56.8%);
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: var(--halloween-gradient);
   --vp-home-hero-image-background-image: var(--halloween-gradient);
@@ -19,36 +21,36 @@
 }
 
 .dark {
-  --halloween-gradient: linear-gradient(180deg, #FF642D 79.8%, #00FF1A 81.2%, #00FF1A 82.94%);
-  --vp-c-brand-1: #ff642d !important;
-  --vp-c-brand-2: #ff642d !important;
-  --vp-c-brand-3: #e15320 !important;
+  --halloween-ink: var(--vp-c-text-1);
+  --vp-c-brand-1: #C18DFF !important;
+  --vp-c-brand-2: #C18DFF !important;
+  --vp-c-brand-3: #A261FD !important;
 }
 
 .VPHero[data-ui-name], h1 {
-  font-family: 'Creepster', -apple-system, serif, Garamond !important;
+  font-family: 'Nosifer-Regular', -apple-system, serif, Garamond !important;
 }
 
 @media (min-width: 640px) {
     .main h1 .name {
-      font-size: 56px !important;
+      font-size: 40px !important;
     }
   }
 
   @media (min-width: 960px) {
     .main h1 .name {
-      font-size: 80px !important;
+      font-size: 48px !important;
     }
   }
 
 .page-title {
-    font-size: 48px !important;
-    line-height: 56px !important;
+    font-size: 32px !important;
+    line-height: 36px !important;
     background: var(--halloween-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-  } */
+  }
 
 /* Here Halloween styles end  */
 
@@ -111,7 +113,7 @@
 
  /* For Halloween you need to comment this root section */
 
-:root {
+/* :root {
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: var(--vp-c-brand-2);
 
@@ -121,7 +123,7 @@
 
 .dark {
   --vp-home-hero-name-background: var(--vp-c-brand-1);
-}
+} */
 
 .image-container {
   width: 240px !important;
@@ -587,7 +589,7 @@ video {
   overflow: auto;
 }
 
-.open-codesandbox {
+.open-stackblitz {
   color: white;
   right: 64px;
   direction: ltr;
@@ -608,15 +610,15 @@ video {
   transition: border-color 0.25s, background-color 0.25s, opacity 0.25s;
 }
 
-.open-codesandbox:hover,
-.open-codesandbox:focus,
-.open-codesandbox:active {
+.open-stackblitz:hover,
+.open-stackblitz:focus,
+.open-stackblitz:active {
   opacity: 1;
   border-color: var(--vp-code-copy-code-hover-border-color);
   background-color: var(--vp-code-copy-code-hover-bg);
 }
 
-.code-wrapper:hover .open-codesandbox,
+.code-wrapper:hover .open-stackblitz,
 .code-wrapper:hover .copy.copy.copy.copy {
   opacity: 1;
 }
@@ -837,12 +839,12 @@ h6[class] {
   --vp-c-bg-alt: #f4f5f9;
   --vp-c-bg-elv: #ffffff;
   --vp-c-bg-soft: #e0e1e94d;
-  --vp-c-black: #191b23;
+  --vp-c-black: rgba(24, 27, 30, 1);
   --vp-c-border: #e0e1e9;
   --vp-c-brand: var(--vp-c-brand-1);
-  --vp-c-brand-1: #5925ab;
-  --vp-c-brand-2: #8649e1;
-  --vp-c-brand-3: #A56EF5;
+  --vp-c-brand-1: rgba(162, 97, 253, 1);
+  --vp-c-brand-2: rgba(193, 141, 255, 1);
+  --vp-c-brand-3: rgba(56, 227, 181, 1);
   --vp-c-brand-soft: #5925ab24;
   --vp-c-danger-1: var(--vp-c-red-1);
   --vp-c-danger-2: var(--vp-c-red-2);
@@ -872,7 +874,7 @@ h6[class] {
   --vp-c-red-2: #ff4953;
   --vp-c-red-3: #ff8786;
   --vp-c-red-soft: #ff495324;
-  --vp-c-sponsor: #ff642d;
+  --vp-c-sponsor: rgba(162, 97, 253, 1);
   --vp-c-text-1: #191b23;
   --vp-c-text-2: #6c6e79;
   --vp-c-text-3: #8a8e9b;
@@ -911,7 +913,7 @@ h6[class] {
   --vp-button-brand-bg: var(--vp-c-brand-2);
   --vp-button-brand-hover-bg: var(--vp-c-brand-1);
   --vp-button-brand-hover-text: var(--vp-c-white);
-  --vp-button-brand-text: var(--vp-c-white);
+  --vp-button-brand-text: var(--vp-c-black);
   --vp-button-sponsor-active-border: var(--vp-c-sponsor);
   --vp-button-sponsor-active-text: var(--vp-c-sponsor);
   --vp-button-sponsor-border: var(--vp-c-text-2);
@@ -1026,7 +1028,7 @@ h6[class] {
   --vp-c-red-2: #ff4953;
   --vp-c-red-3: #d1002f;
   --vp-c-red-soft: #ff495333;
-  --vp-c-sponsor: #ff642d;
+  --vp-c-sponsor: rgba(56, 227, 181, 1);
   --vp-c-text-1: #e0e1e9;
   --vp-c-text-2: #e0e1e9b2;
   --vp-c-text-3: #c4c7cf;
@@ -1065,7 +1067,7 @@ h6[class] {
   --vp-button-brand-bg: var(--vp-c-brand-2);
   --vp-button-brand-hover-bg: var(--vp-c-brand-3);
   --vp-button-brand-hover-text: var(--vp-c-white);
-  --vp-button-brand-text: var(--vp-c-white);
+  --vp-button-brand-text: var(--vp-c-black);
   --vp-button-sponsor-active-border: var(--vp-c-sponsor);
   --vp-button-sponsor-active-text: var(--vp-c-sponsor);
   --vp-button-sponsor-border: var(--vp-c-text-2);

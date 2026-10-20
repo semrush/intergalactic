@@ -30,6 +30,7 @@
     "@semcore/core": "workspace:*",
     "@semcore/base-components": "workspace:*",
     "@semcore/icon": "workspace:*",
+    "@semcore/theme": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   },
   "repository": {

@@ -75,7 +75,7 @@ const makeDeprecationMessage = (color: string) =>
 export const useColorResolver = () => {
   const contextTheme = useContextTokens();
 
-  return (color?: string) => {
+  return (color?: string, fallbackColor?: string) => {
     if (!color) return undefined as any;
     if (color.startsWith('--')) {
       if (deprecatedPalette[color]) {
@@ -93,6 +93,10 @@ export const useColorResolver = () => {
 
       if (resolvedColor) {
         return `var(${color}, ${resolvedColor})`;
+      }
+
+      if (fallbackColor) {
+        return `var(${color}, ${fallbackColor})`;
       }
 
       return `var(${color})`;

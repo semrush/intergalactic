@@ -38,7 +38,6 @@ declare namespace NSColorPicker {
   type DefaultProps = {
     defaultVisible: false;
     defaultValue: null;
-    colors: Props['colors'];
     i18n: LocalizedMessages;
     locale: 'en';
     children: React.JSX.Element;

@@ -5,6 +5,7 @@ import React from 'react';
 
 type ItemAsProps = {
   styles?: React.CSSProperties;
+  color?: string;
   value?: string;
   displayLabel?: boolean;
   editable?: boolean;
@@ -27,8 +28,7 @@ const interaction = {
 };
 
 export default function Item(props: ItemAsProps) {
-  const { Children, styles, value, displayLabel, editable, selected, onRemove, getI18nText, uid } =
-    props as any;
+  const { Children, styles, color, value, displayLabel, editable, selected, onRemove, getI18nText, uid } = props as any;
   const SItemContainer = Root;
   const SLabel = Box;
   const SCloseIcon = Box;
@@ -42,24 +42,21 @@ export default function Item(props: ItemAsProps) {
     }
   }, []);
 
-  const colorValue = value?.startsWith('--') ? `var(${value})` : value;
-
   return sstyled(styles)(
     <>
       <SItemContainer
         render={Box}
         interaction={interaction}
-        use:value={colorValue}
         role='option'
         aria-selected={selected}
         ref={triggerRef}
-        aria-label={value ?? getI18nText('clearColor')}
+        aria-label={color ?? getI18nText('clearColor')}
         aria-describedby={editable ? deleteDescriber : undefined}
         onKeyDown={handleKeydown}
         timeout={[250, 50]}
         tabIndex={0}
       >
-        {displayLabel && <SLabel data-value={colorValue || '#6C6E79'}>A</SLabel>}
+        {displayLabel && <SLabel data-value={value || '#6C6E79'}>A</SLabel>}
         <Children />
         {editable && (
           <>
@@ -72,9 +69,7 @@ export default function Item(props: ItemAsProps) {
           </>
         )}
       </SItemContainer>
-      <Hint triggerRef={triggerRef}>
-        {value ?? getI18nText('clearColor')}
-      </Hint>
+      <Hint triggerRef={triggerRef}>{color ?? getI18nText('clearColor')}</Hint>
     </>,
   );
 }

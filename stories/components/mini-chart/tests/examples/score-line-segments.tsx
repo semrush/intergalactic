@@ -2,22 +2,21 @@ import type { NSMiniChart } from '@semcore/ui/mini-chart';
 import MiniChart from '@semcore/ui/mini-chart';
 import React from 'react';
 
-type ScoreLineProps = NSMiniChart.Score.Line.Props & {
-  value1: NSMiniChart.Score.Line.Props['value'];
-  value2: NSMiniChart.Score.Line.Props['value'];
-  color1: NSMiniChart.Score.Line.Props['color'];
-  color2: NSMiniChart.Score.Line.Props['color'];
+type ScoreLineProps = Pick<NSMiniChart.Score.Line.Props, 'loading' | 'animate' | 'baseBgColor'> & {
+  value1: NSMiniChart.Score.Line.Segment.Props['value'];
+  value2: NSMiniChart.Score.Line.Segment.Props['value'];
+  color1: NSMiniChart.Score.Line.Segment.Color;
+  color2: NSMiniChart.Score.Line.Segment.Color;
 };
 
 const Demo = ({
-  value1 = 70,
-  value2 = 30,
+  value1,
+  value2,
   loading,
   animate,
   baseBgColor,
-  color1 = 'chart-palette-order-7',
-  color2 = 'chart-palette-order-10',
-
+  color1,
+  color2,
 }: ScoreLineProps) => {
   return (
     <>
@@ -36,5 +35,17 @@ const Demo = ({
     </>
   );
 };
+
+export const defaultScoreLineSegmentsProps: ScoreLineProps = {
+  value1: 70,
+  value2: 30,
+  color1: 'chart-palette-order-7',
+  color2: 'chart-palette-order-10',
+  loading: false,
+  animate: true,
+};
+
+Demo.defaultProps = defaultScoreLineSegmentsProps;
+
 export type { ScoreLineProps };
 export default Demo;

@@ -153,6 +153,8 @@ const TimeCell = ({ value }: any) => {
 
 const removeProtocol = (url: string): string => url.replace(/^(http|https):\/\//, '');
 
+const urlWidth = (width: number) => width - 16;
+
 const UrlLinkCell = ({ value, headerRef }: any) => {
   const pageUrl = value?.toString?.() || '';
 
@@ -172,7 +174,7 @@ const UrlLinkCell = ({ value, headerRef }: any) => {
         ellipsis={Boolean(headerRef)}
         ellipsis:cropPosition='middle'
         ellipsis:containerElement={headerRef ?? undefined}
-        ellipsis:recalculateContainerWidth={(width: number) => width - 16}
+        ellipsis:recalculateContainerWidth={urlWidth}
       >
         {removeProtocol(pageUrl)}
       </Link.Text>
