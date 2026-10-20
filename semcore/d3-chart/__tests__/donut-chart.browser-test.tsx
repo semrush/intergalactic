@@ -16,6 +16,7 @@ export const locators = {
   legend: (page: Page) => page.getByLabel('Chart legend'),
   legendItem: (page: Page, text?: string) =>
     text ? page.getByText(text) : page.locator('[data-ui-name="Legend.Item"], [data-ui-name="LegendTable.LegendItem"], [data-ui-name="LegendFlex.LegendItem"]'),
+  tooltip: (page: Page) => page.locator('[data-ui-name="Donut.Tooltip"]'),
 };
 
 /**
@@ -74,9 +75,9 @@ test.describe(`${TAG.VISUAL}`, () => {
     },
   ];
 
-  variables.forEach((item) => {
+  variables.forEach((item, index) => {
     test(`Verify donut chart ${item.description}`, {
-      tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
+      tag: [index === 0 ? TAG.PRIORITY_HIGH : TAG.PRIORITY_MEDIUM, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -97,8 +98,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         await hoverPie(pies.nth(1));
 
         if (item.showTooltip) {
-          const tooltip = page.locator('[data-ui-name="Donut.Tooltip"]');
-          await tooltip.waitFor({ state: 'visible' });
+          await locators.tooltip(page).waitFor({ state: 'visible' });
         }
         await expect(page).toHaveScreenshot();
       });
@@ -134,7 +134,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   halfsizeVariables.forEach((item, index) => {
     test(`Verify semi-donut ${item.description}`, {
-      tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
+      tag: [index === 0 ? TAG.PRIORITY_HIGH : TAG.PRIORITY_MEDIUM, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -155,8 +155,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         await hoverPie(pies.nth(1));
 
         if (item.showTooltip) {
-          const tooltip = page.locator('[data-ui-name="Donut.Tooltip"]');
-          await tooltip.waitFor({ state: 'visible' });
+          await locators.tooltip(page).waitFor({ state: 'visible' });
         }
 
         await expect(page).toHaveScreenshot();
@@ -165,7 +164,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify donut controlled highlight interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -175,14 +174,13 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await test.step('Verify highlights by default in controlled mode', async () => {
       await locators.plot(page).waitFor({ state: 'visible' });
-      await page.waitForTimeout(500);// wait for animation
+      await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify added highlighted section by checkbox click', async () => {
-      const pie0 = page.getByText('Option C');
-      await pie0.click();
-      await page.waitForTimeout(200);// wait for animation
+      await page.getByText('Option C').click();
+      await page.waitForTimeout(200);
       await expect(page).toHaveScreenshot();
     });
   });
@@ -213,7 +211,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify looks good when all items unchecked', async () => {
+    await test.step('Verify all items unchecked state', async () => {
       const label2 = locators.legendItem(page).nth(1);
       const label3 = locators.legendItem(page).nth(2);
       await label3.click();
@@ -231,6 +229,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot();
     });
   });
+
   test('Verify semi-donut with labels', {
     tag: [TAG.PRIORITY_MEDIUM, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
@@ -272,50 +271,62 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  const showLegendCombinations = [
+  const showLegendCombinations: {
+    description: string;
+    showLegend?: boolean;
+    data: Record<string, number>;
+    expectedVisible: boolean;
+    priority: TAG;
+  }[] = [
     {
       description: 'legend shown when showLegend: undefined and >=2 items',
       showLegend: undefined,
       data: { a: 1, b: 2 },
       expectedVisible: true,
+      priority: TAG.PRIORITY_HIGH,
     },
     {
       description: 'legend hidden when showLegend: false and >=2 items',
       showLegend: false,
       data: { a: 1, b: 2 },
       expectedVisible: false,
+      priority: TAG.PRIORITY_MEDIUM,
     },
     {
       description: 'legend shown when showLegend: true and >=2 items',
       showLegend: true,
       data: { a: 1, b: 2 },
       expectedVisible: true,
+      priority: TAG.PRIORITY_MEDIUM,
     },
     {
       description: 'legend hidden when showLegend: undefined and 1 item',
       showLegend: undefined,
       data: { a: 1 },
       expectedVisible: false,
+      priority: TAG.PRIORITY_MEDIUM,
     },
     {
       description: 'legend hidden when showLegend: false and 1 item',
       showLegend: false,
       data: { a: 1 },
       expectedVisible: false,
+      priority: TAG.PRIORITY_LOW,
     },
     {
       description: 'legend visible when showLegend: true and 1 item',
       showLegend: true,
       data: { a: 1 },
       expectedVisible: true,
+      priority: TAG.PRIORITY_HIGH,
     },
   ];
 
   showLegendCombinations.forEach((item) => {
     test(`Verify showLegend prop: ${item.description}`, {
-      tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart', '@base-components', '@flex-box'],
+      tag: [item.priority, '@donut-chart', '@d3-chart', '@base-components', '@flex-box'],
     }, async ({ page }) => {
-      const testProps: any = {
+      const testProps: { data: Record<string, number>; showLegend?: boolean } = {
         data: item.data,
       };
 
@@ -340,7 +351,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify onClick callback in donut pie', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     const messages: string[] = [];
     page.on('console', (msg) => {

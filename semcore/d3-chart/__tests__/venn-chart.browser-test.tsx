@@ -42,7 +42,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify Venn usage', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@venn-chart', '@d3-chart', '@typography'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@venn-chart', '@d3-chart', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/venn-chart/venn.tsx', 'en');
 
@@ -58,14 +58,15 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify custom intersection styles', {
     tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@venn-chart', '@d3-chart'],
   }, async ({ page, browserName }) => {
+    const step = browserName === 'webkit' ? test.step.skip : test.step;
+
     await loadPage(
       page,
       'stories/components/d3-chart/docs/examples/venn-chart/custom-intersection-styles.tsx',
       'en',
     );
 
-    if (browserName == 'webkit') test.skip();
-    await test.step('Verify chart with custom styles on hover', async () => {
+    await step('Verify chart with custom styles on hover', async () => {
       await locators.plot(page).first().waitFor({ state: 'visible' });
       const chart = locators.plot(page).first();
       const box = await chart.boundingBox();
@@ -111,7 +112,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify legend and pattern fill hover styles', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@venn-chart', '@d3-chart', '@chart-legend', '@typography'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@venn-chart', '@d3-chart', '@chart-legend', '@typography'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -187,17 +188,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify no calls on render', async () => {
       await locators.plot(page).first().waitFor({ state: 'visible' });
-      expect(messages.length).toBe(0);
+      expect(messages).toHaveLength(0);
     });
 
     await test.step('Verify callback triggered on circle click', async () => {
       const box = await locators.circle(page).first().boundingBox();
-      if (box) {
-        await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
-        await page.waitForTimeout(100);
-      }
-      expect(messages.length).toBe(1);
-      expect(messages).toEqual(['I call on mount']);
+      if (!box) throw new Error('Bounding box not found');
+
+      await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+      await page.waitForTimeout(100);
+
+      await expect.poll(() => messages).toEqual(['I call on mount']);
     });
   });
 });

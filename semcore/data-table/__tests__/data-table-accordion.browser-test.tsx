@@ -113,6 +113,10 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('Enter');
       await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
       await page.waitForTimeout(500); // for chart animation is finished (webkit needs more time)
+      await expect(
+        page.getByRole('row').filter({ has: locators.chart(page, 'Chart') }),
+        'ArrowDown looks up the next row by aria-rowindex, which is recalculated in rAF after the accordion opens',
+      ).toHaveAttribute('aria-rowindex', '3');
 
       await page.keyboard.press('ArrowDown');
       await expect(locators.chart(page, 'Chart'), 'wait for focus on the chart cell, otherwise webkit captures the focus ring on the next row').toBeFocused();

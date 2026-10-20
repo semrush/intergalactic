@@ -23,6 +23,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   const variables = [
     {
       description: 'Standard: all features enabled, medium size',
+      priority: TAG.PRIORITY_HIGH,
       plotWidth: 500,
       plotHeight: 300,
       marginX: 40,
@@ -38,6 +39,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     },
     {
       description: 'Patterns: no axes, patterns enabled, large size',
+      priority: TAG.PRIORITY_MEDIUM,
       plotWidth: 700,
       plotHeight: 400,
       marginX: 20,
@@ -53,6 +55,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     },
     {
       description: 'Inverted: axis inversion, no tooltip, no legend',
+      priority: TAG.PRIORITY_MEDIUM,
       plotWidth: 600,
       plotHeight: 350,
       marginX: 80,
@@ -68,9 +71,9 @@ test.describe(`${TAG.VISUAL}`, () => {
     },
   ];
 
-  variables.forEach((vars, index) => {
+  variables.forEach(({ priority, ...vars }, index) => {
     test(`Verify scatterplot chart with config ${index + 1} (${vars.description})`, {
-      tag: [TAG.PRIORITY_HIGH, '@scatterplot-chart', '@d3-chart', '@base-components', '@flex-box'],
+      tag: [priority, '@scatterplot-chart', '@d3-chart', '@base-components', '@flex-box'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -117,7 +120,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify legend and pattern fill focus styles', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@scatterplot-chart', '@d3-chart', '@chart-legend'],
   }, async ({ page, browserName }) => {
-    if (browserName === 'webkit') return;
+    const step = browserName === 'webkit' ? test.step.skip : test.step;
 
     await loadPage(
       page,
@@ -125,7 +128,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       'en',
     );
 
-    await test.step('Verify keyboard interaction with legend items', async () => {
+    await step('Verify keyboard interaction with legend items', async () => {
       await locators.plot(page).first().waitFor({ state: 'visible' });
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
@@ -159,7 +162,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify no callbacks on render', async () => {
       await locators.plot(page).waitFor({ state: 'visible' });
-      expect(messages.length).toBe(0);
+      expect(messages).toHaveLength(0);
     });
 
     await test.step('Verify onClickScatterItem callback triggered on scatter item click', async () => {
@@ -167,8 +170,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await scatterItem.click();
       await page.waitForTimeout(100);
 
-      expect(messages.length).toBe(1);
-      expect(messages[0]).toBe('Clicked scatterplot item');
+      await expect.poll(() => messages).toEqual(['Clicked scatterplot item']);
     });
   });
 });
