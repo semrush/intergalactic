@@ -158,7 +158,7 @@ class ReferenceLineRoot extends Component {
         <g>
           <defs>
             <linearGradient id={patternId} x1='0%' y1='0%' x2='0%' y2='100%'>
-              {getColorByUse('neutral')}
+              {getColorByUse('neutral', resolveColor)}
             </linearGradient>
           </defs>
 
@@ -205,41 +205,41 @@ function Title(props) {
   );
 }
 
-function getColorByUse(use) {
+function getColorByUse(use, resolveColor) {
   switch (use) {
     case 'bad': {
       return (
         <>
-          <stop offset='0%' stopColor='var(--red-50)' stopOpacity='0.8' />
-          <stop offset='12.68%' stopColor='var(--red-50)' stopOpacity='0.5' />
-          <stop offset='87.98%' stopColor='var(--red-50)' stopOpacity='0.0' />
+          <stop offset='0%' stopColor={resolveColor('red-50')} stopOpacity='0.8' />
+          <stop offset='12.68%' stopColor={resolveColor('red-50')} stopOpacity='0.5' />
+          <stop offset='87.98%' stopColor={resolveColor('red-50')} stopOpacity='0.0' />
         </>
       );
     }
     case 'good': {
       return (
         <>
-          <stop offset='0%' stopColor='var(--green-50)' stopOpacity='0.8' />
-          <stop offset='12.68%' stopColor='var(--green-50)' stopOpacity='0.4' />
-          <stop offset='87.98%' stopColor='var(--green-50)' stopOpacity='0.0' />
+          <stop offset='0%' stopColor={resolveColor('green-50')} stopOpacity='0.8' />
+          <stop offset='12.68%' stopColor={resolveColor('green-50')} stopOpacity='0.4' />
+          <stop offset='87.98%' stopColor={resolveColor('green-50')} stopOpacity='0.0' />
         </>
       );
     }
     case 'insight': {
       return (
         <>
-          <stop offset='0%' stopColor='var(--violet-50)' stopOpacity='0.9' />
-          <stop offset='12.68%' stopColor='var(--violet-50)' stopOpacity='0.5' />
-          <stop offset='87.98%' stopColor='var(--violet-50)' stopOpacity='0.0' />
+          <stop offset='0%' stopColor={resolveColor('violet-50')} stopOpacity='0.9' />
+          <stop offset='12.68%' stopColor={resolveColor('violet-50')} stopOpacity='0.5' />
+          <stop offset='87.98%' stopColor={resolveColor('violet-50')} stopOpacity='0.0' />
         </>
       );
     }
     default: {
       return (
         <>
-          <stop offset='0%' stopColor='var(--gray-50)' stopOpacity='0.9' />
-          <stop offset='41.83%' stopColor='var(--gray-50)' stopOpacity='0.5' />
-          <stop offset='87.98%' stopColor='var(--gray-50)' stopOpacity='0.0' />
+          <stop offset='0%' stopColor={resolveColor('gray-50')} stopOpacity='0.9' />
+          <stop offset='41.83%' stopColor={resolveColor('gray-50')} stopOpacity='0.5' />
+          <stop offset='87.98%' stopColor={resolveColor('gray-50')} stopOpacity='0.0' />
         </>
       );
     }
@@ -255,7 +255,7 @@ function getReferenceAreaPath({ x, y, width, height }) {
 }
 
 function Stripes(props) {
-  const { Element: SStripes, styles, scale, position = 'left', value, endValue, uid, use = 'neutral', title, subTitle } = props;
+  const { Element: SStripes, styles, scale, position = 'left', value, endValue, uid, use = 'neutral', title, subTitle, resolveColor } = props;
   const positionProps = rectDirection2props[side2direction[position]](scale, value, endValue);
   const patternId = `${uid}-pattern`;
   const STitle = SvgElement;
@@ -268,7 +268,7 @@ function Stripes(props) {
     <g>
       <defs>
         <linearGradient id={patternId} x1='0%' y1='0%' x2='0%' y2='100%'>
-          {getColorByUse(use)}
+          {getColorByUse(use, resolveColor)}
         </linearGradient>
       </defs>
 
