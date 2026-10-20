@@ -211,7 +211,7 @@ function getColorByUse(use) {
         <>
           <stop offset='0%' stopColor='var(--red-50)' stopOpacity='0.8' />
           <stop offset='12.68%' stopColor='var(--red-50)' stopOpacity='0.5' />
-          <stop offset='87.98%' stopColor='rgba(255, 204, 209, 0.00)' stopOpacity='0.1' />
+          <stop offset='87.98%' stopColor='var(--red-50)' stopOpacity='0.0' />
         </>
       );
     }
@@ -220,7 +220,7 @@ function getColorByUse(use) {
         <>
           <stop offset='0%' stopColor='var(--green-50)' stopOpacity='0.8' />
           <stop offset='12.68%' stopColor='var(--green-50)' stopOpacity='0.4' />
-          <stop offset='87.98%' stopColor='rgba(89, 221, 170, 0.00)' stopOpacity='0.1' />
+          <stop offset='87.98%' stopColor='var(--green-50)' stopOpacity='0.0' />
         </>
       );
     }
@@ -229,7 +229,7 @@ function getColorByUse(use) {
         <>
           <stop offset='0%' stopColor='var(--violet-50)' stopOpacity='0.9' />
           <stop offset='12.68%' stopColor='var(--violet-50)' stopOpacity='0.5' />
-          <stop offset='87.98%' stopColor='rgba(198, 149, 255, 0.00)' stopOpacity='0.1' />
+          <stop offset='87.98%' stopColor='var(--violet-50)' stopOpacity='0.0' />
         </>
       );
     }
@@ -238,7 +238,7 @@ function getColorByUse(use) {
         <>
           <stop offset='0%' stopColor='var(--gray-50)' stopOpacity='0.9' />
           <stop offset='41.83%' stopColor='var(--gray-50)' stopOpacity='0.5' />
-          <stop offset='87.98%' stopColor='rgba(255, 255, 255, 0.00)' stopOpacity='0.1' />
+          <stop offset='87.98%' stopColor='var(--gray-50)' stopOpacity='0.0' />
         </>
       );
     }
