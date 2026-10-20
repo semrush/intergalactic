@@ -9,8 +9,7 @@ const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 const semcorePackages = fs
   .readdirSync(path.resolve(__dirname, '../../'), { withFileTypes: true })
   .filter((entry) => entry.isDirectory() && !['ui', 'icon', 'illustration', 'theme'].includes(entry.name))
-  .map((entry) => entry.name)
-  .map((pkg) => `@semcore/${pkg}`);
+  .map((entry) => `@semcore/${entry.name}`)
 
 const dependencyPackages = Object.keys(packageJson.dependencies || {}).filter((pkg) =>
   pkg.startsWith('@semcore/'),
