@@ -133,6 +133,8 @@ class ReferenceLineRoot extends Component {
     position: 'left',
   };
 
+  static enhance = [uniqueIDEnhancement()];
+
   getTitleProps() {
     const { position, value } = this.asProps;
     return { position, value };
