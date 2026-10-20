@@ -19,6 +19,18 @@ By default, the accordion has the `secondary` theme (`use` property).
 
 :::
 
+## Primary accordion
+
+Pass `use='primary'` to enable the primary theme for the accordion.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/accordion/docs/examples/primary_accordion.tsx';
+</script>
+
+:::
+
 ## One section opening
 
 `value` can take both values: single and array of values. By changing it, you change the behavior of the component.
@@ -39,18 +51,6 @@ By default, `Accordion.Item.Toggle` is set to an `h3` heading level, but you can
 
 <script lang="tsx">
   export Demo from 'stories/components/accordion/docs/examples/heading_tag.tsx';
-</script>
-
-:::
-
-## Primary accordion
-
-Pass `use='primary'` to enable the primary theme for the accordion.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/accordion/docs/examples/primary_accordion.tsx';
 </script>
 
 :::

@@ -4,7 +4,7 @@ import React from 'react';
 const Demo = () => {
   const [value, onChange] = React.useState(null); // or []
   return (
-    <Accordion value={value} onChange={onChange}>
+    <Accordion value={value} onChange={onChange} use='primary'>
       {[...new Array(3)].map((_, index) => (
         <Accordion.Item value={index} key={index} disabled={index === 2}>
           <Accordion.Item.Toggle>
