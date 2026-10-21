@@ -4,14 +4,8 @@ SRadio {
   cursor: pointer;
 
   SText {
-    margin-left: var(--intergalactic-spacing-1-5x, 6px);
+    margin-left: var(--intergalactic-spacing-2x, 8px);
     color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
-  }
-
-  &[size='l'] {
-    SText {
-      margin-left: var(--intergalactic-spacing-2x, 8px);
-    }
   }
 
   SText[color] {
@@ -29,8 +23,6 @@ SValue {
   padding: 0;
   outline: none;
   z-index: 0;
-
-  margin-top: var(--intergalactic-spacing-05x, 2px);
 
   &::before {
     content: '';
@@ -69,8 +61,8 @@ SValue[disabled] {
 }
 
 SValue[size='m'] {
-  width: 16px;
-  height: 16px;
+  width: var(--intergalactic-spacing-5x, 20px);
+  height: var(--intergalactic-spacing-5x, 20px);
 
   SInvalidPattern:before {
     width: 14px;
@@ -79,8 +71,8 @@ SValue[size='m'] {
 }
 
 SValue[size='l'] {
-  width: 20px;
-  height: 20px;
+  width: var(--intergalactic-spacing-6x, 24px);
+  height: var(--intergalactic-spacing-6x, 24px);
 
   SInvalidPattern:before {
     width: 18px;
