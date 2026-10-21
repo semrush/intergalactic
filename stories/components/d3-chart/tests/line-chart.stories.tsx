@@ -31,6 +31,11 @@ export const Lines: StoryObj = {
  */
 const storyKnob = { table: { category: 'Story data knobs' } } as const;
 
+/**
+ * Knobs that build the `referenceLine` / `referenceArea` objects passed to `LineChart`.
+ */
+const referenceKnob = { table: { category: 'Reference knobs' } } as const;
+
 export const BasicUsage = {
   render: BasicUsageExample,
   argTypes: getChartArgTypes({
@@ -38,7 +43,6 @@ export const BasicUsage = {
     hMin: { control: { type: 'number', min: 0, max: 600, step: 10 } },
     hMax: { control: { type: 'number', min: 0, max: 600, step: 10 } },
     showDots: { control: 'boolean' },
-
     useExplicitPlotWidth: { control: 'boolean', ...storyKnob },
     highlightDots: {
       control: 'select',
@@ -59,13 +63,20 @@ export const BasicUsage = {
       options: ['off', 'custom', 'divideByZero', 'includesFirstPoint'],
       ...storyKnob,
     },
-
-    withReferenceLine: { control: 'boolean' },
-    referenceLineArea: { control: 'number', if: { arg: 'withReferenceLine' } },
-
-    withReferenceArea: { control: 'boolean' },
-    referenceAreaUse: { control: 'select', if: { arg: 'withReferenceArea' }, options: ['neutral', 'good', 'bad', 'insight'] },
-    referenceAreaWithTitles: { control: 'boolean', if: { arg: 'withReferenceArea' } },
+    withReferenceLine: { control: 'boolean', ...referenceKnob },
+    referenceLineValue: { control: 'number', if: { arg: 'withReferenceLine' }, ...referenceKnob },
+    referenceLineArea: { control: 'number', if: { arg: 'withReferenceLine' }, ...referenceKnob },
+    withReferenceArea: { control: 'boolean', ...referenceKnob },
+    referenceAreaStart: { control: 'number', if: { arg: 'withReferenceArea' }, ...referenceKnob },
+    referenceAreaEnd: { control: 'number', if: { arg: 'withReferenceArea' }, ...referenceKnob },
+    referenceAreaUse: {
+      control: 'select',
+      if: { arg: 'withReferenceArea' },
+      options: ['neutral', 'good', 'bad', 'insight'],
+      ...referenceKnob,
+    },
+    referenceAreaTitle: { control: 'text', if: { arg: 'withReferenceArea' }, ...referenceKnob },
+    referenceAreaSubTitle: { control: 'text', if: { arg: 'withReferenceArea' }, ...referenceKnob },
   }),
   args: BasicUsageProps,
 };
