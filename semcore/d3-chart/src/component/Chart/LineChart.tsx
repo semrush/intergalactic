@@ -126,7 +126,11 @@ class LineChartComponent extends AbstractChart<
     return (
       <>
         {referenceLine && (
-          <ReferenceLine value={referenceLine.value} area={referenceLine.area} />
+          Array.isArray(referenceLine)
+            ? referenceLine.map((refLineItem) => {
+                return (<ReferenceLine key={refLineItem.value.toString()} value={refLineItem.value} area={refLineItem.area} />);
+              })
+            : (<ReferenceLine value={referenceLine.value} area={referenceLine.area} />)
         )}
 
         {referenceArea && (
