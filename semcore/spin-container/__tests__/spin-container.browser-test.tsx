@@ -46,7 +46,6 @@ export const locators = {
     const base = page.locator('[data-ui-name="FadeInOut"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
-  // areas of the examples, so screenshots stay scoped to the container itself
   area: (page: Page, testId: string) => page.locator(`[data-testid="${testId}"]`),
 };
 
@@ -82,7 +81,6 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     const sizes = Object.entries(SIZES);
 
-    // the example renders the full size scale twice: default theme, then invert theme
     for (const [themeIndex, theme] of ['default', 'invert'].entries()) {
       for (const [sizeIndex, [size, expectedPx]] of sizes.entries()) {
         const spinner = locators.spin(page, themeIndex * sizes.length + sizeIndex);
@@ -90,11 +88,9 @@ test.describe(`${TAG.VISUAL}`, () => {
         await test.step(`Verify size="${size}" (${theme} theme)`, async () => {
           await expect(spinner).toBeVisible();
 
-          expect(await computed(spinner, 'height')).toBe(expectedPx);
-          expect(await computed(spinner, 'width')).toBe(expectedPx);
-
-          const style = await spinner.getAttribute('style');
-          expect(style).toContain(`${theme};`);
+          await expect(spinner).toHaveCSS('height', expectedPx);
+          await expect(spinner).toHaveCSS('width', expectedPx);
+          await expect(spinner).toHaveAttribute('style', new RegExp(`${theme};`));
         });
       }
     }
@@ -115,7 +111,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     const overlay = locators.spinContainerOverlay(page, 0);
     await expect(overlay).toBeVisible();
-    expect(await computed(overlay, 'background-color')).not.toBe('rgba(0, 0, 0, 0)');
+    await expect(overlay).not.toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
 
     await expectStableSpinScreenshot(page, locators.area(page, 'spin-container-static'));
   });
@@ -129,9 +125,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { theme: 'invert' });
 
-    const spinner = locators.spin(page, 2);
-    const style = await spinner.getAttribute('style');
-    expect(style).toContain('invert');
+    await expect(locators.spin(page, 2)).toHaveAttribute('style', /invert/);
 
     await expectStableSpinScreenshot(page, locators.area(page, 'spin-container-invert-bg'));
   });
@@ -160,11 +154,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         await loadPage(page, BASE_EXAMPLE, 'en', { background });
 
         const overlay = locators.spinContainerOverlay(page, 0);
-        const style = await overlay.getAttribute('style');
-        expect(style).toContain(expectedInStyle);
-
-        // a custom background must win over the theme background
-        expect(await computed(overlay, 'background-color')).not.toBe(themeBackground);
+        await expect(overlay).toHaveAttribute('style', new RegExp(expectedInStyle));
+        await expect(overlay).not.toHaveCSS('background-color', themeBackground);
       });
     }
 
@@ -203,7 +194,6 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await expect(locators.spinContainerContent(page, 0)).toBeVisible();
     await expect(overlay).toContainText('Loading data…');
-    // custom children replace the default spinner
     await expect(overlay.locator('[data-ui-name="Spin"]')).toHaveCount(0);
 
     await expectStableSpinScreenshot(page, locators.area(page, 'spin-container-static'));
@@ -263,16 +253,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify size', async () => {
       await loadPage(page, BASE_EXAMPLE, 'en', { size: 'xs' });
 
-      const spinner = locators.spin(page, 0);
-      expect(await computed(spinner, 'width')).toBe('16px');
-      expect(await computed(spinner, 'height')).toBe('16px');
+      await expect(locators.spin(page, 0)).toHaveCSS('width', '16px');
+      await expect(locators.spin(page, 0)).toHaveCSS('height', '16px');
     });
 
     await test.step('Verify theme', async () => {
       await loadPage(page, BASE_EXAMPLE, 'en', { theme: 'invert' });
 
-      const style = await locators.spin(page, 0).getAttribute('style');
-      expect(style).toContain('invert');
+      await expect(locators.spin(page, 0)).toHaveAttribute('style', /invert/);
     });
   });
 
@@ -307,7 +295,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { duration: 1000 });
 
-    expect(await computed(locators.fadeInOut(page, 0), 'animation-duration')).toBe('1s');
+    await expect(locators.fadeInOut(page, 0)).toHaveCSS('animation-duration', '1s');
   });
 
   test('Verify box props', {
@@ -321,10 +309,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     const spinContainer = locators.spinContainer(page, 0);
 
-    expect(await computed(spinContainer, 'width')).toBe('250px');
-    expect(await computed(spinContainer, 'height')).toBe('250px');
-    expect(await computed(spinContainer, 'margin')).toBe('16px');
-    expect(await computed(spinContainer, 'padding')).toBe('16px');
+    await expect(spinContainer).toHaveCSS('width', '250px');
+    await expect(spinContainer).toHaveCSS('height', '250px');
+    await expect(spinContainer).toHaveCSS('margin', '16px');
+    await expect(spinContainer).toHaveCSS('padding', '16px');
   });
 
   test('Verify spin container attributes when loading and not loading', {

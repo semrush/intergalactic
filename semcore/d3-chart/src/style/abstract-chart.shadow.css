@@ -32,7 +32,7 @@ STooltipDeltaWrapper {
   justify-content: flex-end;
 
   &[trend='upward'] {
-    color: var(--intergalactic-chart-data-success, oklch(0.82 0.19 143));
+    color: var(--intergalactic-chart-data-success, oklch(0.74 0.17 170));
   }
 
   &[trend='downward'] {
@@ -49,7 +49,7 @@ STooltipDeltaWrapper {
     }
 
     &[trend='downward'] {
-      color: var(--intergalactic-chart-data-success, oklch(0.82 0.19 143));
+      color: var(--intergalactic-chart-data-success, oklch(0.74 0.17 170));
     }
   }
 

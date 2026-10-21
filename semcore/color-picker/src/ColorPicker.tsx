@@ -3,6 +3,7 @@ import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import Dropdown from '@semcore/dropdown';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
 import React from 'react';
@@ -13,20 +14,40 @@ import type { ItemProps } from './components/Item.type';
 import style from './style/color-picker.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-const defaultColors = [
-  null,
-  'oklch(0.58 0.168 278.2)',
-  'oklch(0.74 0.17 170)',
-  'oklch(0.74 0.17 303)',
-  'oklch(0.82 0.18 80)',
-  'oklch(0.74 0.19 22)',
-  'oklch(0.82 0.088 272.1)',
-  'oklch(0.74 0.225 330)',
-  'oklch(0.74 0.23 146)',
-  'oklch(0.53 0.157 279.2)',
-  'oklch(0.82 0.15 170)',
-  'oklch(0.64 0.223 299.3)',
-];
+// @ts-ignore
+const defaultColorsMap: Record<string, string> = preval`
+  const theme = require('@semcore/theme/light').default;
+
+  const tokens = [
+    '--blue-400',
+    '--green-300',
+    '--violet-300',
+    '--yellow-200',
+    '--red-300',
+    '--blue-200',
+    '--pink-300',
+    '--salad-300',
+    '--blue-500',
+    '--green-200',
+    '--violet-400',
+  ];
+
+  module.exports = tokens.reduce((acc, token) => {
+    if (!theme[token]) {
+      throw new Error('[color-picker] Token ' + token + ' is not found in @semcore/theme/light');
+    }
+
+    acc[token] = theme[token];
+    return acc;
+  }, {});
+`;
+
+const defaultColors = [null, ...Object.keys(defaultColorsMap)];
+
+const defaultColorsMapInverted = Object.assign(
+  {},
+  ...Object.entries(defaultColorsMap).map(([key, value]) => ({ [value]: key })),
+);
 
 class ColorPickerRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSColorPicker.Component>,
@@ -39,12 +60,11 @@ class ColorPickerRoot extends Component<
   static displayName = 'ColorPicker';
 
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages)] as const;
+  static enhance = [i18nEnhance(localizedMessages), resolveColorEnhance()] as const;
 
   static defaultProps = () => ({
     defaultVisible: false,
     defaultValue: null,
-    colors: defaultColors,
     i18n: localizedMessages,
     locale: 'en',
     children: (
@@ -78,12 +98,15 @@ class ColorPickerRoot extends Component<
     };
   }
 
-  getColorsProps() {
-    const { colors, getI18nText } = this.asProps;
+  getColorsProps(props: NSColorPicker.Colors.Props) {
+    const { colors: componentColorsProp } = props;
+    const { colors, getI18nText, resolveColor } = this.asProps;
 
     return {
-      colors,
+      colors: colors ?? defaultColors,
+      isCustomColors: colors !== undefined || componentColorsProp !== undefined,
       getI18nText,
+      resolveColor,
     };
   }
 
@@ -141,7 +164,7 @@ function Trigger(
       return getI18nText('emptyColor');
     }
 
-    return getI18nText('currentColor', { color: value });
+    return getI18nText('currentColor', { color: defaultColorsMapInverted[value] ?? value });
   }, [value]);
 
   return (
@@ -185,7 +208,7 @@ function Popper(
 function Colors(
   props: Intergalactic.InternalTypings.InferChildComponentProps<NSColorPicker.Colors.Component, typeof ColorPickerRoot, 'Colors'>,
 ) {
-  const { Children, styles, colors, getI18nText } = props;
+  const { Children, styles, colors, getI18nText, resolveColor, isCustomColors } = props;
   const SColors = Root;
 
   return sstyled(styles)(
@@ -200,9 +223,19 @@ function Colors(
             <Children />
           )
         : (
+            colors?.map((color) => (
             // TODO: Re-think the component structure.
             // @ts-ignore
-            colors?.map((color) => <ColorPicker.Item value={color} key={color} />)
+              <ColorPicker.Item
+                key={color}
+                color={color}
+                value={
+                  isCustomColors
+                    ? resolveColor(color, defaultColorsMap[color ?? ''])
+                    : defaultColorsMap[color ?? ''] ?? null
+                }
+              />
+            ))
           )}
     </SColors>,
   );

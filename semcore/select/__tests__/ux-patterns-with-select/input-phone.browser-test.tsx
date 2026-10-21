@@ -3,11 +3,9 @@ import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 const locators = {
-  menu: (page: Page) => page.getByRole('listbox'),
   options: (page: Page) => page.getByRole('option'),
   trigger: (page: Page) => page.getByRole('combobox'),
   textbox: (page: Page) => page.getByRole('textbox'),
-
 };
 
 /* =====================================================

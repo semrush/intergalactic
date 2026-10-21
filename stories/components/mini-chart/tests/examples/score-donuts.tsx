@@ -6,21 +6,27 @@ import React from 'react';
 type ScoreDonutsProps = NSMiniChart.Score.Donut.Props;
 
 const Demo = ({
-  value = 4,
+  value,
   loading,
   color,
   baseBgColor,
   animate,
 }: ScoreDonutsProps) => {
   return (
-
     <Flex flexWrap={true} alignItems='flex-end'>
       <MiniChart.ScoreDonut value={value} loading={loading} color={color} baseBgColor={baseBgColor} animate={animate} w='50px' aria-label='test' />
       <MiniChart.ScoreSemiDonut value={value} loading={loading} color={color} baseBgColor={baseBgColor} animate={animate} w='50px' aria-labelledby='mylabel' aria-hidden />
     </Flex>
-
   );
 };
+
+export const defaultScoreDonutsProps: ScoreDonutsProps = {
+  value: 4,
+  loading: false,
+  animate: true,
+};
+
+Demo.defaultProps = defaultScoreDonutsProps;
 
 export type { ScoreDonutsProps };
 export default Demo;

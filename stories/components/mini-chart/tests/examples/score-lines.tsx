@@ -3,21 +3,27 @@ import type { NSMiniChart } from '@semcore/ui/mini-chart';
 import MiniChart from '@semcore/ui/mini-chart';
 import React from 'react';
 
-type ScoreLinesProps = NSMiniChart.Score.Line.Props;
+type ScoreLinesProps = Extract<NSMiniChart.Score.Line.Props, { value: number }>;
 
-const Demo = ({
-  value = 4,
-  loading,
-  segments,
-  color,
-  baseBgColor,
-  animate,
-}: ScoreLinesProps) => {
+type DemoComponent = ((props: ScoreLinesProps) => React.ReactElement) & {
+  defaultProps: ScoreLinesProps;
+};
+
+const Demo: DemoComponent = (props: ScoreLinesProps) => {
   return (
     <Box w='700px'>
-      <MiniChart.ScoreLine value={value} w='250px' segments={segments} loading={loading} animate={animate} color={color} baseBgColor={baseBgColor} />
+      <MiniChart.ScoreLine {...props} w='250px' aria-hidden />
     </Box>
   );
 };
+
+export const defaultScoreLinesProps: ScoreLinesProps = {
+  value: 4,
+  loading: false,
+  animate: true,
+};
+
+Demo.defaultProps = defaultScoreLinesProps;
+
 export type { ScoreLinesProps };
 export default Demo;

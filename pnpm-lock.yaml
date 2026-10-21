@@ -633,6 +633,9 @@ importers:
       '@semcore/testing-utils':
         specifier: workspace:*
         version: link:../../tools/testing-utils
+      '@semcore/theme':
+        specifier: workspace:*
+        version: link:../../tools/theme
 
   semcore/core:
     dependencies:
@@ -1423,6 +1426,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/mini-chart:
+    dependencies:
+      d3-shape:
+        specifier: ^3.2.0
+        version: 3.2.0
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -1433,6 +1440,9 @@ importers:
       '@semcore/testing-utils':
         specifier: workspace:*
         version: link:../../tools/testing-utils
+      '@types/d3-shape':
+        specifier: ^3.2.0
+        version: 3.2.0
 
   semcore/modal:
     dependencies:
@@ -5941,6 +5951,9 @@ packages:
 
   '@types/d3-shape@3.1.7':
     resolution: {integrity: sha512-VLvUQ33C+3J+8p+Daf+nYSOsjB4GXp19/S/aGo60m9h1v6XaxjiT82lKVWJCfzhtuZ3yD7i/TPeC/fuKLLOSmg==}
+
+  '@types/d3-shape@3.2.0':
+    resolution: {integrity: sha512-kVd74ta9eof3eJOvbNd1vGKS/XERRyQbT26Og63hIsvDO84cjD5gEOhsXf26w3FSoNlPVz84DOFcKv/oou+fMw==}
 
   '@types/d3-time@3.0.4':
     resolution: {integrity: sha512-yuzZug1nkAAaBlBBikKZTgzCeA+k1uy4ZFwWANOfKw5z5LRhV0gNA7gNkKm7HoK+HRN0wX3EkxGk0fpbWhmB7g==}
@@ -18992,6 +19005,10 @@ snapshots:
   '@types/d3-selection@3.0.11': {}
 
   '@types/d3-shape@3.1.7':
+    dependencies:
+      '@types/d3-path': 3.1.1
+
+  '@types/d3-shape@3.2.0':
     dependencies:
       '@types/d3-path': 3.1.1
 

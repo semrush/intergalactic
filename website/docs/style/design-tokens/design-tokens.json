@@ -665,7 +665,7 @@
   },
   {
     "name": "--intergalactic-chart-data-success",
-    "value": "oklch(0.82 0.19 143)",
+    "value": "oklch(0.74 0.17 170)",
     "description": "Success data color for charts.",
     "components": [
       "d3-chart"
@@ -741,8 +741,7 @@
     "value": "#ffffff",
     "description": "Border for distinguishing data sets and chart dots on the chart grid.",
     "components": [
-      "d3-chart",
-      "mini-chart"
+      "d3-chart"
     ]
   },
   {
@@ -3674,7 +3673,6 @@
     "value": "6px",
     "description": "Use for rounding bars: ProgressBar, SliderBar, etc.",
     "components": [
-      "mini-chart",
       "progress-bar",
       "slider"
     ]

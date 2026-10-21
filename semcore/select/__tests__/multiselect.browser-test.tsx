@@ -8,12 +8,19 @@ export const locators = {
   selectTrigger: (page: Page) => page.getByRole('combobox'),
   label: (page: Page) => page.locator('label'),
   menu: (page: Page) => page.getByRole('listbox'),
-  list: (page: Page) => page.locator('[data-ui-name="Select.List"]'),
   options: (page: Page, index?: number) => {
     const base = page.getByRole('option');
     return typeof index === 'number' ? base.nth(index) : base;
   },
   triggerText: (page: Page) => page.locator('[data-ui-name="ButtonTrigger.Text"]'),
+  selectAll: (page: Page) => page.locator('[data-ui-name="Select.Option"][value="%all%"]'),
+  divider: (page: Page) => page.locator('[data-ui-name="Select.Divider"]'),
+};
+
+const expectAllOptionsSelectedExceptSelectAll = async (page: Page) => {
+  for (const option of (await locators.options(page).all()).slice(1)) {
+    await expect(option).toHaveClass(/selected/);
+  }
 };
 
 /* =====================================================
@@ -55,7 +62,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await page.keyboard.press('Space');
       await locators.options(page, 0).waitFor({ state: 'visible' });
       await page.mouse.move(0, 0);
-      await page.locator('[data-ui-name="Select.Divider"]').waitFor({ state: 'visible' });
+      await locators.divider(page).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
   });
@@ -64,7 +71,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@multiselect', '@select', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/render_function.tsx', 'en');
-    const option = page.locator('[data-ui-name="Select.Option"][value="%all%"]');
+    const option = locators.selectAll(page);
 
     await test.step('Verify activating Select all selects all items', async () => {
       await page.keyboard.press('Tab');
@@ -120,7 +127,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.options(page, 0)).toHaveClass(/highlighted/);
     });
 
-    await test.step('Verify tab not moves focus', async () => {
+    await test.step('Verify Tab does not move focus', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.select(page)).toBeFocused();
       await expect(locators.options(page, 0)).toHaveClass(/highlighted/);
@@ -147,7 +154,6 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await test.step('Verify first selected highlights when menu expanded', async () => {
       await page.keyboard.press('Enter');
       await locators.options(page, 0).waitFor({ state: 'visible' });
-      // Wait for the first option to be highlighted before proceeding
       await expect(locators.options(page, 0)).toHaveClass(/highlighted/);
       await page.waitForTimeout(200);
 
@@ -227,13 +233,16 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.triggerText(page)).toHaveText('5, 1, 3');
     });
 
-    await test.step('Verify items sorted on 2nd expand', async () => {
+    await test.step('Verify selected items sorted to the top above divider on 2nd expand', async () => {
       await page.keyboard.press('Escape');
       await locators.options(page, 0).waitFor({ state: 'hidden' });
       await page.keyboard.press('Space');
       await locators.options(page, 0).waitFor({ state: 'visible' });
-      // Verify that items are sorted by checking the first selected option
-      await expect(locators.options(page, 0)).toBeVisible();
+
+      for (const [index, value] of [1, 3, 5, 0].entries()) {
+        await expect(locators.options(page, index)).toHaveText(new RegExp(`option ${value}$`));
+      }
+      await expect(locators.divider(page)).toBeVisible();
     });
   });
 
@@ -241,7 +250,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@multiselect', '@select', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/render_function.tsx', 'en');
-    const option = page.locator('[data-ui-name="Select.Option"][value="%all%"]');
+    const option = locators.selectAll(page);
     const text = option.locator('[data-ui-name="Text"]');
 
     await test.step('Verify first option with checkbox focused when expanded', async () => {
@@ -252,7 +261,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.options(page, 1)).toHaveClass(/highlighted/);
     });
 
-    await test.step('Verify tab not moves focus', async () => {
+    await test.step('Verify Tab does not move focus', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.selectTrigger(page)).toBeFocused();
       await expect(locators.options(page, 1)).toHaveClass(/highlighted/);
@@ -282,10 +291,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await test.step('Verify activating Select all selects all items', async () => {
       await page.keyboard.press('Space');
       await expect(text).toHaveText('Deselect all');
-      const count = await locators.options(page).count();
-      for (let i = 1; i < count; i++) {
-        await expect(locators.options(page, i)).toHaveClass(/selected/);
-      }
+      await expectAllOptionsSelectedExceptSelectAll(page);
     });
   });
 
@@ -293,7 +299,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@multiselect', '@select', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/render_function.tsx', 'en');
-    const option = page.locator('[data-ui-name="Select.Option"][value="%all%"]');
+    const option = locators.selectAll(page);
     const text = option.locator('[data-ui-name="Text"]');
 
     await test.step('Verify selecting one item changes Select all to Deselect all', async () => {
@@ -315,10 +321,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await test.step('Verify clicking Select all selects all items', async () => {
       await option.click();
       await expect(text).toHaveText('Deselect all');
-      const count = await locators.options(page).count();
-      for (let i = 1; i < count; i++) {
-        await expect(locators.options(page, i)).toHaveClass(/selected/);
-      }
+      await expectAllOptionsSelectedExceptSelectAll(page);
     });
   });
 
