@@ -632,26 +632,19 @@ export const DefaultStrokePattern = (props: { id: string }) => {
   return (
     <defs>
       <pattern
-        id={props.id}
-        width='10'
-        height='8'
+        id={`${props.id}-pattern`}
+        width='6'
+        height='6'
         patternUnits='userSpaceOnUse'
         patternTransform='rotate(-117)'
       >
-        <rect
-          width='10'
-          height='8'
-          fill='transparent'
-        />
-        <line
-          x1='0'
-          y1='0'
-          x2='0'
-          y2='8'
-          stroke='#fff'
-          strokeWidth='8'
-        />
+        <rect width='6' height='6' fill='#fff' opacity={0.4}></rect>
+        <line x1='0' y1='0' x2='0' y2='8' stroke='#fff' strokeWidth='6'></line>
       </pattern>
+
+      <mask id={props.id}>
+        <rect width='100%' height='100%' x='-50%' y='-50%' fill={`url(#${props.id}-pattern)`} />
+      </mask>
     </defs>
   );
 };

@@ -20,7 +20,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 ## Donut with "other value"
 
-- You should add custom color (use `chart-palette-order-other-data` token) by key in your data for "other value". 
+- You should add custom color (use `chart-palette-order-other-data` token) by key in your data for "other value".
 
 ::: sandbox
 

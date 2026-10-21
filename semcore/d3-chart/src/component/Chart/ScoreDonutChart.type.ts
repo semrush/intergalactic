@@ -1,0 +1,45 @@
+import type { Flex } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
+import type { ScaleLinear } from 'd3-scale';
+import type React from 'react';
+
+import type { BaseChartProps } from './AbstractChart.type';
+
+export type DataKey = string;
+
+export type ScoreDonutChartData = {
+  /**
+   * Number is a percent value from 0 to 100.
+   */
+  value: number;
+};
+
+export type ScoreDonutChartProps = Intergalactic.InternalTypings.EfficientOmit<
+  BaseChartProps<ScoreDonutChartData>,
+  'showTotalInTooltip' | 'showDeltaPercentInTooltip' | 'getPercentDelta' | 'deltaPercentGrowthColor'
+> & {
+  /** Internal */
+  groupKey?: never;
+  /** Custom x-axis scale */
+  xScale?: ScaleLinear<any, any>;
+  /** Custom y-axis scale */
+  yScale?: ScaleLinear<any, any>;
+  /** Controls the inner radius of the donut */
+  innerRadius?: number;
+  /** Creates a semi-donut chart when enabled */
+  halfsize?: boolean;
+  /** Content displayed in the center of the donut */
+  innerLabel?: React.ReactNode;
+  /** Callback triggered when a user clicks on a pie */
+  onClickPie?: (key: DataKey, e: React.SyntheticEvent) => void;
+};
+
+export type ScoreDonutChartDefaultProps = {
+  direction: 'row-reverse';
+  alignItems: 'flex-start';
+  marginX: 0;
+  marginY: 0;
+  locale: 'en';
+};
+
+export type ScoreDonutChartType = Intergalactic.Component<typeof Flex, ScoreDonutChartProps>;
