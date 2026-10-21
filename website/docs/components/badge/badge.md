@@ -20,7 +20,15 @@ _For example, you've added a new tab to the report. In this case, you can highli
 
 ## Appearance
 
-Component has one size.
+Component has one size and three themes.
+
+Table: Badge themes
+
+| Theme     | Usage   | Example |
+|-----------|---------| ------- |
+| `default` | Use it with secondary controls, or when you need to add accent to the status.| ![badge example](static/buttons-default.png){width=240}  |
+| `light` | Use it on the light surfaces only.   | ![badge example](static/badge-light.png){width=240} |
+| `invert` | Use it on the dark and colored surfaces only, when you need to remove accent to the status.    | ![badge example](static/buttons-light.png){width=240}  |
 
 ### Types
 
@@ -30,12 +38,12 @@ Table: Badge types
 
 | Type                       | Usage                                                                                                                                                                                                                                                                                    |
 |----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ![admin](static/admin.png) | Use it with features that are only available for users with admin rights. The functionality with `admin` badge isn’t visible to the other users.                                                                                                                                         |
-| ![alpha](static/alpha.png) | Use it with features which are available only to admins and a limited number of users who have been granted access as `alpha` users. The functionality under this badge should be used without any guarantees, it's unstable, and may be changed significantly over time or be disabled. |
-| ![beta](static/beta.png)   | Use only for unstable functionality of a feature or product. A product/feature with this badge was released to test the product hypothesis, and it can have major changes in the future.                                                                                                 |
-| ![new](static/new.png)     | Use with products and features that are out of beta, and with new features that are available to all users. Use it to attract attention to a new product or feature.                                                                                                                     |
-| ![soon](static/soon.png)   | Place on products and features that aren't yet available and are displayed for collecting feedback.                                                                                                                                                                              |
-| ![unavailable](static/unavailable.png) | Use for products and features that are unavailable due to legal or other restrictions.|
+| ![admin](static/admin.png){width=200} | Use it with features that are only available for users with admin rights. The functionality with `admin` badge isn’t visible to the other users.                                                                                                                                         |
+| ![alpha](static/alpha.png){width=200}  | Use it with features which are available only to admins and a limited number of users who have been granted access as `alpha` users. The functionality under this badge should be used without any guarantees, it's unstable, and may be changed significantly over time or be disabled. |
+| ![beta](static/beta.png){width=200}    | Use only for unstable functionality of a feature or product. A product/feature with this badge was released to test the product hypothesis, and it can have major changes in the future.                                                                                                 |
+| ![new](static/new.png){width=200}      | Use with products and features that are out of beta, and with new features that are available to all users. Use it to attract attention to a new product or feature.                                                                                                                     |
+| ![soon](static/soon.png){width=200}    | Place on products and features that aren't yet available and are displayed for collecting feedback.                                                                                                                                                                              |
+| ![unavailable](static/unavailable.png){width=200}  | Use for products and features that are unavailable due to legal or other restrictions.|
 
 ### Usage on dark/colored background
 
@@ -49,17 +57,11 @@ The feature status can be shown inside most of the components and controls.
 
 ### Button
 
-![](static/button_primary.png)
-
-![](static/button_secondary.png)
+![badge example](static/buttons-default.png)
 
 ### Pills
 
 ![](static/pills.png)
-
-### Notification
-
-![](static/notice.png)
 
 ### Badge vs. Tag
 
@@ -69,15 +71,6 @@ Don’t confuse [Tag](/components/tag/tag) and Badge components. Tag is used for
 
 ## Placement
 
-Badge is usually placed to the right of the element. As an exception, in the [Notice](/components/notice/notice) component, badge is positioned to the left relative to the text. Badge's margins are always multiples of 4.
+Badge is usually placed to the right of the element.
 
-## Usage in UX/UI
-
-Table: Badge usage examples
-
-| Component/block     | Appearance example             |
-|---------------------|--------------------------------|
-| Product header      | ![](static/product-head.png)   |
-| Landing page header | ![](static/landing-header.png) |
-| Widget              | ![](static/widget.png)         |
-
+![](static/widget.png)

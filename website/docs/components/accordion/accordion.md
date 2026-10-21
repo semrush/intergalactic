@@ -83,6 +83,10 @@ If the accordion is used on a mobile device, then when scrolling the page we rec
 
 Keep your accordion labels short and clear. As a rule, choose nouns that capture the essence of the collapsed content tab.
 
+::: tip
+For the copy principles, refer to our [Content guidelines](/content/content-principles/content-principles).
+:::
+
 ### Accordion advantages
 
 Mostly, the advantages of the accordion relate to long pages that are loaded with content.
