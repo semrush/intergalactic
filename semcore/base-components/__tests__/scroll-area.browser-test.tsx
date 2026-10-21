@@ -16,8 +16,10 @@ async function checkAriaNowValue(scrollBar: any) {
   return value;
 }
 
-async function waitForScrollChange(scrollBar: any, timeout = 3000) {
+async function waitForScrollChange(scrollBar: any, scroll: () => Promise<void>, timeout = 3000) {
   const before = Number(await scrollBar.getAttribute('aria-valuenow'));
+
+  await scroll();
 
   await expect
     .poll(async () => {
@@ -55,11 +57,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await page.keyboard.press('Tab');
     await expect(scrollContainer).toBeFocused();
 
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-
-    await waitForScrollChange(scrollBar);
+    await waitForScrollChange(scrollBar, async () => {
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+    });
     const now = await checkAriaNowValue(scrollBar);
     expect(now).toBeLessThanOrEqual(maxValue);
   });
@@ -78,8 +80,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     const maxValue = await checkAriaMaxValue(scrollBar);
 
     await container.hover();
-    await page.mouse.wheel(0, 600);
-    await waitForScrollChange(scrollBar);
+    await waitForScrollChange(scrollBar, async () => {
+      await page.mouse.wheel(0, 600);
+    });
 
     const now = await checkAriaNowValue(scrollBar);
     expect(now).toBeLessThanOrEqual(maxValue);
@@ -115,11 +118,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await page.keyboard.press('Tab');
     await expect(mainContainer).toBeFocused();
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-
-    await waitForScrollChange(mainBar);
+    await waitForScrollChange(mainBar, async () => {
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+    });
     const nowMain = await checkAriaNowValue(mainBar);
     const nowReverse = await checkAriaNowValue(reverseBar);
     expect(nowReverse).toBeLessThan(await checkAriaMaxValue(reverseBar));
@@ -152,10 +155,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       .toBeGreaterThanOrEqual(initialMax);
 
     await grid.focus();
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await waitForScrollChange(scrollBar);
+    await waitForScrollChange(scrollBar, async () => {
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+    });
 
     const now = await checkAriaNowValue(scrollBar);
     expect(now).toBeGreaterThan(0);
@@ -225,8 +229,9 @@ test.describe(`${TAG.VISUAL}`, () => {
     await page.keyboard.press('Tab');
     await expect(scrollContainer).toBeFocused();
 
-    await page.keyboard.press('ArrowDown');
-    await waitForScrollChange(page.locator('[data-ui-name="ScrollArea.Bar"]'));
+    await waitForScrollChange(page.locator('[data-ui-name="ScrollArea.Bar"]'), async () => {
+      await page.keyboard.press('ArrowDown');
+    });
 
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
@@ -244,8 +249,9 @@ test.describe(`${TAG.VISUAL}`, () => {
     const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
 
     await container.hover();
-    await page.mouse.wheel(0, 600);
-    await waitForScrollChange(scrollBar);
+    await waitForScrollChange(scrollBar, async () => {
+      await page.mouse.wheel(0, 600);
+    });
 
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
@@ -323,12 +329,13 @@ test.describe(`${TAG.VISUAL}`, () => {
       const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
 
       await scrollContainer.hover();
-      if (item.orientation === 'vertical') {
-        await page.mouse.wheel(0, 300);
-      } else if (item.orientation === 'horizontal') {
-        await page.mouse.wheel(300, 0);
-      }
-      await waitForScrollChange(scrollBar);
+      await waitForScrollChange(scrollBar, async () => {
+        if (item.orientation === 'vertical') {
+          await page.mouse.wheel(0, 300);
+        } else if (item.orientation === 'horizontal') {
+          await page.mouse.wheel(300, 0);
+        }
+      });
 
       await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
     });
@@ -345,18 +352,19 @@ test.describe(`${TAG.VISUAL}`, () => {
       const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
 
       await page.keyboard.press('Tab');
-      if (item.orientation === 'horizontal') {
-        await page.keyboard.press('ArrowRight');
-        await page.keyboard.press('ArrowRight');
-        await page.keyboard.press('ArrowRight');
-        await page.keyboard.press('ArrowRight');
-      } else if (item.orientation === 'vertical') {
-        await page.keyboard.press('ArrowDown');
-        await page.keyboard.press('ArrowDown');
-        await page.keyboard.press('ArrowDown');
-        await page.keyboard.press('ArrowDown');
-      }
-      await waitForScrollChange(scrollBar);
+      await waitForScrollChange(scrollBar, async () => {
+        if (item.orientation === 'horizontal') {
+          await page.keyboard.press('ArrowRight');
+          await page.keyboard.press('ArrowRight');
+          await page.keyboard.press('ArrowRight');
+          await page.keyboard.press('ArrowRight');
+        } else if (item.orientation === 'vertical') {
+          await page.keyboard.press('ArrowDown');
+          await page.keyboard.press('ArrowDown');
+          await page.keyboard.press('ArrowDown');
+          await page.keyboard.press('ArrowDown');
+        }
+      });
       await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
     });
   });

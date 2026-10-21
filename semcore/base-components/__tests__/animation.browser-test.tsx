@@ -19,7 +19,7 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   variants.forEach(({ parent, duration, delay }) => {
-    test(`Check ${parent} duration=${duration}, delay=${delay}`, {
+    test(`Verify ${parent} animation styles with duration=${duration}, delay=${delay}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@animation',
         '@base-components',
@@ -45,26 +45,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       const parentLocator = button.locator(`xpath=ancestor::*[@data-ui-name="${parent}"]`);
       await expect(parentLocator).toBeVisible();
 
-      const animationStyles = await parentLocator.evaluate((el) => {
-        const style = getComputedStyle(el);
-        return {
-          animationDelay: style.animationDelay,
-          animationDuration: style.animationDuration,
-          animationTimingFunction: style.animationTimingFunction,
-          display: style.display,
-        };
-      });
-
-      const expectedDuration = `${duration / 1000}s`;
-      const expectedDelay = `${delay / 1000}s`;
-
-      await expect(animationStyles.animationDuration).toBe(expectedDuration);
-      await expect(animationStyles.animationDelay).toBe(expectedDelay);
-      await expect(animationStyles.animationTimingFunction).toBe('ease-out');
-      expect(animationStyles.display).toBe('block');
-
-      await button.click();
-      await expect(button).toBeVisible();
+      await expect(parentLocator).toHaveCSS('animation-duration', `${duration / 1000}s`);
+      await expect(parentLocator).toHaveCSS('animation-delay', `${delay / 1000}s`);
+      await expect(parentLocator).toHaveCSS('animation-timing-function', 'ease-out');
+      await expect(parentLocator).toHaveCSS('display', 'block');
     });
   });
 });

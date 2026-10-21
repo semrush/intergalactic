@@ -4,64 +4,33 @@ import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
-  addFilterBtn: (page: Page, index?: number): Locator => {
-    const base = page.getByRole('button', { name: 'Add filter' });
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-
+  addFilterBtn: (page: Page): Locator => page.getByRole('button', { name: 'Add filter' }),
   clearAllBtn: (page: Page): Locator => page.getByRole('button', { name: 'Clear filters' }),
-
-  addFilterMenuItem: (page: Page, name: string, index?: number): Locator => {
-    const base = page.getByRole('menuitem', { name });
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-
-  selectOption: (page: Page, name: string, index?: number): Locator => {
-    const base = page.getByRole('option', { name });
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-
-  input: (page: Page, placeholder?: string, index?: number): Locator => {
-    const base = placeholder
-      ? page.getByPlaceholder(placeholder)
-      : page.locator('[data-ui-name="Input.Value"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-
-  addFilterInput: (page: Page, placeholder?: string, index?: number): Locator => {
-    const base = placeholder
-      ? page.getByPlaceholder(placeholder)
-      : page.locator('[data-ui-name="AddFilterInput.Value"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-
-  selectTrigger: (page: Page, placeholder: string, index?: number): Locator => {
-    const base = page.locator(
-      `[data-ui-name="FilterTrigger.TriggerButton"][placeholder="${placeholder}"]`,
-    );
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-
-  selectTriggerFilled: (page: Page, placeholder: string, index?: number): Locator => {
-    const base = page.locator(
-      `[data-ui-name="FilterTrigger.Text"][placeholder="${placeholder}"]`,
-    );
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-
-  addFilterSelectInputSearch: (page: Page): Locator => page.locator('[data-ui-name="AddFilterSelect.InputSearch"]'),
-
+  applyBtn: (page: Page): Locator => page.getByRole('button', { name: 'Apply' }),
+  inputClearBtn: (page: Page): Locator => page.getByRole('button', { name: 'Clear', exact: true }),
+  addFilterMenuItem: (page: Page, name: string): Locator => page.getByRole('menuitem', { name }),
+  selectOption: (page: Page, name: string): Locator => page.getByRole('option', { name }),
+  input: (page: Page, placeholder: string): Locator => page.getByPlaceholder(placeholder),
+  rangeInput: (page: Page, placeholder: 'From' | 'To'): Locator => page.getByPlaceholder(placeholder, { exact: true }),
+  searchInput: (page: Page): Locator => page.locator('[data-ui-name="AddFilterSelect.InputSearch"]'),
+  dialog: (page: Page): Locator => page.getByRole('dialog'),
+  dialogWithFocus: (page: Page): Locator => page.locator('[role="dialog"]:focus-within'),
+  clearInput: (page: Page): Locator => page.locator('[data-ui-name="AddFilterInput.Clear"]'),
+  selectTrigger: (page: Page, placeholder?: string): Locator => page.locator(
+    placeholder
+      ? `[data-ui-name="FilterTrigger.TriggerButton"][placeholder="${placeholder}"]`
+      : '[data-ui-name="FilterTrigger.TriggerButton"]',
+  ),
+  filterValue: (page: Page, placeholder?: string): Locator => page.locator(
+    placeholder
+      ? `[data-ui-name="FilterTrigger.Text"][placeholder="${placeholder}"]`
+      : '[data-ui-name="FilterTrigger.Text"]',
+  ),
+  addFilterSelectTrigger: (page: Page): Locator => page.locator('[data-ui-name="AddFilterSelect.Trigger"]'),
   dropdownTrigger: (page: Page, placeholder: string): Locator =>
     page.locator(`[data-ui-name="AddFilterDropdown.Trigger"][placeholder="${placeholder}"]`),
-
-  dialog: (page: Page): Locator => page.getByRole('dialog'),
-
-  clearInput: (page: Page): Locator => page.locator('[data-ui-name="AddFilterInput.Clear"]'),
-
-  clearSelectButton: (page: Page, index?: number): Locator => {
-    const base = page.locator('[data-ui-name="FilterTrigger.ClearButton"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
+  clearSelectButton: (page: Page, index: number): Locator =>
+    page.locator('[data-ui-name="FilterTrigger.ClearButton"]').nth(index),
 };
 
 /* =====================================================
@@ -71,6 +40,7 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify base example with selects after mouse interactions', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
       '@add-filter',
       '@base-trigger',
       '@filter-trigger',
@@ -110,7 +80,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/docs/examples/add-filter-basic.tsx', 'en');
 
-    await test.step('Verify filter list expanded by click on Add filter', async () => {
+    await test.step('Verify filter list expanded by Enter on Add filter', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
@@ -125,7 +95,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 
-  test('Verify Add filter without Add filter button', {
+  test('Verify all filters added and Add filter button hidden', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@add-filter',
@@ -162,14 +132,15 @@ test.describe(`${TAG.VISUAL}`, () => {
       await locators.addFilterBtn(page).click();
       await locators.addFilterMenuItem(page, 'Keywords').waitFor({ state: 'visible' });
       await locators.addFilterMenuItem(page, 'Keywords').click();
-      await locators.addFilterInput(page, 'Keyword - broad match\n[Keyword] - exact match').fill('Test');
-      await page.getByRole('button', { name: 'Apply' }).click();
+      await locators.input(page, 'Keyword - broad match\n[Keyword] - exact match').fill('Test');
+      await locators.applyBtn(page).click();
       await expect(page).toHaveScreenshot();
     });
   });
 
-  test('Verify Add filter after activating Clear all by keyboard', {
+  test('Verify Clear filters focus state by keyboard', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
       '@add-filter',
       '@base-trigger',
       '@filter-trigger',
@@ -191,10 +162,11 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('Tab');
       await page.waitForTimeout(50);
     }
+    await expect(locators.clearAllBtn(page)).toBeFocused();
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify Select with range as filter after mouse interactions ', {
+  test('Verify Select with range as filter after mouse interactions', {
     tag: [TAG.PRIORITY_MEDIUM,
       TAG.MOUSE,
       '@add-filter',
@@ -233,27 +205,31 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'visible' });
-    await expect(locators.addFilterMenuItem(page, 'Range')).toHaveClass(/highlighted/);
+    await test.step('Verify select with search opened from filters list', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'visible' });
+      await expect(locators.addFilterMenuItem(page, 'Range')).toHaveClass(/highlighted/);
 
-    await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
 
-    await page.keyboard.press('Enter');
-    await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'hidden' });
-    await locators.selectOption(page, 'Banana').waitFor({ state: 'visible' });
+      await page.keyboard.press('Enter');
+      await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'hidden' });
+      await locators.selectOption(page, 'Banana').waitFor({ state: 'visible' });
 
-    await expect(page).toHaveScreenshot();
-    await locators.addFilterSelectInputSearch(page).fill('Banana');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Enter');
-    await locators.selectOption(page, 'Banana').waitFor({ state: 'hidden' });
-    await expect(page).toHaveScreenshot();
+      await expect(page).toHaveScreenshot();
+    });
+    await test.step('Verify option selected after search', async () => {
+      await locators.searchInput(page).fill('Banana');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Enter');
+      await locators.selectOption(page, 'Banana').waitFor({ state: 'hidden' });
+      await expect(page).toHaveScreenshot();
+    });
   });
 
-  test('Verify Input as filter after mouse interactions', {
+  test('Verify Input filter clear button hint on hover', {
     tag: [TAG.PRIORITY_MEDIUM,
       TAG.MOUSE,
       '@add-filter',
@@ -271,12 +247,12 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
-    await locators.addFilterInput(page, 'Filter by name').fill('Test');
-    await locators.addFilterInput(page, 'Filter by fullname').fill('Test');
+    await locators.input(page, 'Filter by name').fill('Test');
+    await locators.input(page, 'Filter by fullname').fill('Test');
     await locators.addFilterBtn(page).click();
     await locators.addFilterMenuItem(page, 'Position').waitFor({ state: 'visible' });
     await locators.addFilterMenuItem(page, 'Position').click();
-    await locators.addFilterInput(page, 'Filter by position').fill('Test');
+    await locators.input(page, 'Filter by position').fill('Test');
     await locators.clearInput(page).hover();
     await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(1);
     await expect(page).toHaveScreenshot();
@@ -337,14 +313,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/docs/examples/add-filter-basic.tsx', 'en');
 
-      await test.step('Verify filter list exapnded by click on Add filter', async () => {
+      await test.step('Verify filter list expanded by click on Add filter', async () => {
         await locators.addFilterBtn(page).click();
         await locators.addFilterMenuItem(page, 'Color').waitFor({ state: 'visible' });
         await locators.addFilterMenuItem(page, 'Color').click();
         await expect(locators.selectTrigger(page, 'Color')).toBeFocused();
       });
 
-      await test.step('Verify filter hidden and filters list exapnded when cliking on Add filter', async () => {
+      await test.step('Verify filter hidden and filters list expanded when clicking on Add filter', async () => {
         await locators.addFilterBtn(page).click();
         await expect(locators.selectTrigger(page, 'Color')).not.toBeVisible();
         await expect(locators.addFilterMenuItem(page, 'Color')).toBeVisible();
@@ -434,7 +410,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await locators.addFilterMenuItem(page, 'Position').waitFor({ state: 'visible' });
         await expect(locators.addFilterMenuItem(page, 'Device')).not.toBeVisible();
         await locators.addFilterMenuItem(page, 'Position').click();
-        await locators.addFilterInput(page, 'Filter by position').fill('Test');
+        await locators.input(page, 'Filter by position').fill('Test');
         await expect(locators.addFilterBtn(page)).toBeVisible();
       });
 
@@ -443,8 +419,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await locators.addFilterMenuItem(page, 'Keywords').waitFor({ state: 'visible' });
         await expect(locators.addFilterMenuItem(page, 'Position')).not.toBeVisible();
         await locators.addFilterMenuItem(page, 'Keywords').click();
-        await locators.addFilterInput(page, 'Keyword - broad match\n[Keyword] - exact match').fill('Test');
-        await page.getByRole('button', { name: 'Apply' }).click();
+        await locators.input(page, 'Keyword - broad match\n[Keyword] - exact match').fill('Test');
+        await locators.applyBtn(page).click();
       });
 
       await test.step('Verify that Add filter removed when all filters from the list added', async () => {
@@ -452,13 +428,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.addFilterBtn(page)).not.toBeVisible();
       });
 
-      await test.step('Verify Add filters appears when Select filter removed', async () => {
+      await test.step('Verify Add filter appears when Select filter removed', async () => {
         await locators.clearSelectButton(page, 0).click();
         await expect(locators.clearAllBtn(page)).toBeVisible();
         await expect(locators.addFilterBtn(page)).toBeVisible();
       });
 
-      await test.step('Verify Add filters appears when Input filter removed ', async () => {
+      await test.step('Verify Add filter appears when Input filter removed', async () => {
         await locators.addFilterBtn(page).click();
         await locators.addFilterMenuItem(page, 'Device').waitFor({ state: 'visible' });
         await locators.addFilterMenuItem(page, 'Device').click();
@@ -469,11 +445,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.addFilterBtn(page)).toBeVisible();
       });
 
-      await test.step('Vefity Add filters appear when clicking on Clear filters', async () => {
+      await test.step('Verify Add filter appears when clicking on Clear filters', async () => {
         await locators.addFilterBtn(page).click();
         await locators.addFilterMenuItem(page, 'Position').waitFor({ state: 'visible' });
         await locators.addFilterMenuItem(page, 'Position').click();
-        await locators.addFilterInput(page, 'Filter by position').fill('Test');
+        await locators.input(page, 'Filter by position').fill('Test');
         await locators.clearAllBtn(page).click();
         await expect(locators.clearAllBtn(page)).not.toBeVisible();
         await expect(locators.addFilterBtn(page)).toBeVisible();
@@ -482,7 +458,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     test('Verify Add filter button appearing and disappearing by keyboard', {
       tag: [TAG.PRIORITY_HIGH,
-        TAG.FUNCTIONAL,
+        TAG.KEYBOARD,
         '@add-filter',
         '@base-trigger',
         '@filter-trigger',
@@ -534,7 +510,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('ArrowDown');
         await page.keyboard.press('Enter');
         await locators.addFilterMenuItem(page, 'Keywords').waitFor({ state: 'hidden' });
-        await locators.addFilterInput(page, 'Filter by position').fill('Test');
+        await locators.input(page, 'Filter by position').fill('Test');
       });
 
       await test.step('Add DD filter and fill value', async () => {
@@ -548,25 +524,27 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await page.keyboard.press('Enter');
         await locators.addFilterMenuItem(page, 'Keywords').waitFor({ state: 'hidden' });
-        await locators.addFilterInput(page, 'Keyword - broad match\n[Keyword] - exact match').fill('Test');
+        await expect(locators.dialogWithFocus(page)).toBeVisible();
+        await locators.input(page, 'Keyword - broad match\n[Keyword] - exact match').fill('Test');
         await page.keyboard.press('Tab');
+        await expect(locators.applyBtn(page)).toBeFocused();
         await page.keyboard.press('Enter');
         await locators.dialog(page).waitFor({ state: 'hidden' });
       });
 
-      await test.step('Verofy Add filter removed when all filters added', async () => {
+      await test.step('Verify Add filter removed when all filters added', async () => {
         await expect(locators.clearAllBtn(page)).toBeVisible();
         await expect(locators.addFilterBtn(page)).not.toBeVisible();
       });
 
-      await test.step('Verify Add filter appears and focused when Input flter removed', async () => {
+      await test.step('Verify Add filter appears and focused when Input filter removed', async () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');
         await expect(locators.clearAllBtn(page)).toBeVisible();
         await expect(locators.addFilterBtn(page)).toBeFocused();
       });
 
-      await test.step('Verify Add filter appears and focused when Select flter removed', async () => {
+      await test.step('Verify Add filter appears and focused when Select filter removed', async () => {
         await page.keyboard.press('Enter');
         await locators.addFilterMenuItem(page, 'Keywords').waitFor({ state: 'visible' });
         await expect(locators.addFilterMenuItem(page, 'Keywords')).toHaveClass(/highlighted/);
@@ -574,8 +552,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Enter');
         await locators.dialog(page).waitFor({ state: 'visible' });
 
-        await locators.addFilterInput(page, 'Keyword - broad match\n[Keyword] - exact match').fill('Test');
+        await expect(locators.dialogWithFocus(page)).toBeVisible();
+        await locators.input(page, 'Keyword - broad match\n[Keyword] - exact match').fill('Test');
         await page.keyboard.press('Tab');
+        await expect(locators.applyBtn(page)).toBeFocused();
         await page.keyboard.press('Enter');
         await locators.dialog(page).waitFor({ state: 'hidden' });
 
@@ -584,9 +564,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.clearAllBtn(page)).toBeVisible();
         await expect(locators.addFilterBtn(page)).not.toBeFocused();
         await expect(
-          page.locator(
-            '[data-ui-name="FilterTrigger.TriggerButton"][placeholder="Exclude keywords"]',
-          ),
+          locators.selectTrigger(page, 'Exclude keywords'),
         ).toBeFocused();
       });
 
@@ -598,7 +576,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.addFilterMenuItem(page, 'Position')).toHaveClass(/highlighted/);
         await page.keyboard.press('Enter');
         await locators.addFilterMenuItem(page, 'Position').waitFor({ state: 'hidden' });
-        await locators.addFilterInput(page, 'Filter by position').fill('Test');
+        await locators.input(page, 'Filter by position').fill('Test');
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');
         await expect(locators.clearAllBtn(page)).toBeVisible();
@@ -630,8 +608,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.clearAllBtn(page)).not.toBeVisible();
         await locators.input(page, 'Filter by name').fill('Test');
         await expect(locators.clearAllBtn(page)).toBeVisible();
-        const clearButton = page.locator('button[data-ui-name="ButtonLink"][aria-label="Clear"]');
-        await clearButton.click();
+        await locators.inputClearBtn(page).click();
         await expect(locators.clearAllBtn(page)).not.toBeVisible();
       });
 
@@ -652,8 +629,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.clearAllBtn(page)).toBeVisible();
         await locators.clearAllBtn(page).click();
         await expect(locators.clearAllBtn(page)).not.toBeVisible();
-        await expect(locators.selectTriggerFilled(page, 'Device')).not.toBeVisible();
-        await expect(locators.input(page, 'Filter by name')).not.toHaveText('Test');
+        await expect(locators.filterValue(page, 'Device')).not.toBeVisible();
+        await expect(locators.input(page, 'Filter by name')).toHaveValue('');
       });
     });
 
@@ -704,15 +681,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Enter');
         await locators.selectOption(page, 'Desktop').waitFor({ state: 'hidden' });
 
-        await expect(locators.selectTriggerFilled(page, 'Device')).toBeVisible();
+        await expect(locators.filterValue(page, 'Device')).toBeVisible();
         await expect(
-          page.locator('[data-ui-name="FilterTrigger.TriggerButton"][placeholder="Device"]'),
+          locators.selectTrigger(page, 'Device'),
         ).toBeFocused();
         await expect(locators.clearAllBtn(page)).toBeVisible();
 
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');
         await expect(locators.clearAllBtn(page)).not.toBeVisible();
+        await expect(locators.addFilterBtn(page)).toBeFocused();
       });
 
       await test.step('Verify all filters removed and Clear filters button hidden when pressing Clear filters', async () => {
@@ -738,14 +716,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         }
         await page.keyboard.press('Enter');
         await expect(locators.clearAllBtn(page)).not.toBeVisible();
-        await expect(locators.selectTriggerFilled(page, 'Device')).not.toBeVisible();
-        await expect(locators.input(page, 'Filter by fullname')).not.toHaveText('Test');
+        await expect(locators.filterValue(page, 'Device')).not.toBeVisible();
+        await expect(locators.input(page, 'Filter by fullname')).toHaveValue('');
       });
     });
   });
 
   test.describe('Different filter types', () => {
-    test('Verify drodown as filter keyboard interactions', {
+    test('Verify Dropdown as filter keyboard interactions', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@add-filter',
@@ -763,39 +741,45 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
-      for (let i = 0; i < 6; i++) {
+      await test.step('Verify not applied Dropdown filter removed by Escape', async () => {
+        for (let i = 0; i < 6; i++) {
+          await page.keyboard.press('Tab');
+        }
+        await page.keyboard.press('Enter');
+        await locators.addFilterMenuItem(page, 'Keywords').waitFor({ state: 'visible' });
+        await expect(locators.addFilterMenuItem(page, 'Keywords')).toHaveClass(/highlighted/);
+
+        await page.keyboard.press('Enter');
+        await locators.dialog(page).waitFor({ state: 'visible' });
+        await locators.input(page, 'Keyword - broad match\n[Keyword] - exact match').fill('Test');
+        await page.keyboard.press('Escape');
+        await expect(locators.dropdownTrigger(page, 'Exclude keywords')).not.toBeVisible();
+        await expect(locators.addFilterBtn(page)).toBeFocused();
+      });
+
+      await test.step('Verify Dropdown filter value applied by keyboard', async () => {
+        await page.keyboard.press('Enter');
+        await locators.addFilterMenuItem(page, 'Keywords').waitFor({ state: 'visible' });
+        await expect(locators.addFilterMenuItem(page, 'Keywords')).toHaveClass(/highlighted/);
+        await page.keyboard.press('Enter');
+        await locators.dialog(page).waitFor({ state: 'visible' });
+
+        await expect(locators.dialogWithFocus(page)).toBeVisible();
+        await locators.input(page, 'Keyword - broad match\n[Keyword] - exact match').fill('Test');
         await page.keyboard.press('Tab');
-      }
-      await page.keyboard.press('Enter');
-      await locators.addFilterMenuItem(page, 'Keywords').waitFor({ state: 'visible' });
-      await expect(locators.addFilterMenuItem(page, 'Keywords')).toHaveClass(/highlighted/);
+        await expect(locators.applyBtn(page)).toBeFocused();
+        await page.keyboard.press('Enter');
+        await locators.dialog(page).waitFor({ state: 'hidden' });
 
-      await page.keyboard.press('Enter');
-      await locators.dialog(page).waitFor({ state: 'visible' });
-      await locators.addFilterInput(page, 'Keyword - broad match\n[Keyword] - exact match').fill('Test');
-      await page.keyboard.press('Escape');
-      await expect(locators.dropdownTrigger(page, 'Exclude keywords')).not.toBeVisible();
-      await expect(locators.addFilterBtn(page)).toBeFocused();
-
-      await page.keyboard.press('Enter');
-      await locators.addFilterMenuItem(page, 'Keywords').waitFor({ state: 'visible' });
-      await expect(locators.addFilterMenuItem(page, 'Keywords')).toHaveClass(/highlighted/);
-      await page.keyboard.press('Enter');
-      await locators.dialog(page).waitFor({ state: 'visible' });
-
-      await locators.addFilterInput(page, 'Keyword - broad match\n[Keyword] - exact match').fill('Test');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-      await locators.dialog(page).waitFor({ state: 'hidden' });
-
-      await expect(
-        page.locator('[data-ui-name="FilterTrigger.Text"][placeholder="Exclude keywords"]'),
-      ).toHaveText('Exclude: 1 keywords');
-      await expect(locators.clearAllBtn(page)).toBeVisible();
-      await expect(locators.addFilterBtn(page)).not.toBeFocused();
+        await expect(
+          locators.filterValue(page, 'Exclude keywords'),
+        ).toHaveText('Exclude: 1 keywords');
+        await expect(locators.clearAllBtn(page)).toBeVisible();
+        await expect(locators.addFilterBtn(page)).not.toBeFocused();
+      });
     });
 
-    test('Verify drodown as filter mouse interactions', {
+    test('Verify Dropdown as filter mouse interactions', {
       tag: [TAG.PRIORITY_MEDIUM,
         TAG.MOUSE,
         '@add-filter',
@@ -813,33 +797,34 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
-      await locators.addFilterBtn(page).click();
-      await locators.addFilterMenuItem(page, 'Keywords').waitFor({ state: 'visible' });
+      await test.step('Verify not applied Dropdown filter removed by click on its trigger', async () => {
+        await locators.addFilterBtn(page).click();
+        await locators.addFilterMenuItem(page, 'Keywords').waitFor({ state: 'visible' });
 
-      await locators.addFilterMenuItem(page, 'Keywords').click();
-      await locators.addFilterInput(page, 'Keyword - broad match\n[Keyword] - exact match').fill('Test');
-      const applyButton = page.locator('span[data-ui-name="Button.Text"]:has-text("Apply")');
-      await locators.dropdownTrigger(page, 'Exclude keywords').click();
-      await expect(locators.dropdownTrigger(page, 'Exclude keywords')).not.toBeVisible();
+        await locators.addFilterMenuItem(page, 'Keywords').click();
+        await locators.input(page, 'Keyword - broad match\n[Keyword] - exact match').fill('Test');
+        await locators.dropdownTrigger(page, 'Exclude keywords').click();
+        await expect(locators.dropdownTrigger(page, 'Exclude keywords')).not.toBeVisible();
+      });
 
-      await locators.addFilterBtn(page).click();
-      await locators.addFilterMenuItem(page, 'Keywords').waitFor({ state: 'visible' });
+      await test.step('Verify Dropdown filter value applied by Apply button', async () => {
+        await locators.addFilterBtn(page).click();
+        await locators.addFilterMenuItem(page, 'Keywords').waitFor({ state: 'visible' });
 
-      await locators.addFilterMenuItem(page, 'Keywords').click();
-      await locators.addFilterInput(page, 'Keyword - broad match\n[Keyword] - exact match').fill('Test');
-      await applyButton.click();
-      await expect(
-        page.locator('[data-ui-name="FilterTrigger.Text"][placeholder="Exclude keywords"]'),
-      ).toHaveText('Exclude: 1 keywords');
-      await expect(locators.clearAllBtn(page)).toBeVisible();
+        await locators.addFilterMenuItem(page, 'Keywords').click();
+        await locators.input(page, 'Keyword - broad match\n[Keyword] - exact match').fill('Test');
+        await locators.applyBtn(page).click();
+        await expect(
+          locators.filterValue(page, 'Exclude keywords'),
+        ).toHaveText('Exclude: 1 keywords');
+        await expect(locators.clearAllBtn(page)).toBeVisible();
+      });
     });
 
     test('Verify Select with range as filter keyboard interactions', {
       tag: [TAG.PRIORITY_MEDIUM,
         TAG.KEYBOARD,
         '@add-filter',
-        '@base-trigger',
-        '@filter-trigger',
         '@button',
         '@input',
         '@input-number',
@@ -852,50 +837,54 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-      await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'visible' });
-      await expect(locators.addFilterMenuItem(page, 'Range')).toHaveClass(/highlighted/);
-      await page.keyboard.press('Enter');
-      await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'hidden' });
+      await test.step('Verify empty filter removed by Escape on its trigger', async () => {
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+        await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'visible' });
+        await expect(locators.addFilterMenuItem(page, 'Range')).toHaveClass(/highlighted/);
+        await page.keyboard.press('Enter');
+        await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'hidden' });
 
-      await page.keyboard.press('Escape');
-      await expect(locators.selectTrigger(page, 'Range')).not.toBeVisible();
-      await expect(locators.addFilterBtn(page)).toBeFocused();
+        await page.keyboard.press('Escape');
+        await expect(locators.selectTrigger(page, 'Range')).not.toBeVisible();
+        await expect(locators.addFilterBtn(page)).toBeFocused();
+      });
 
-      await page.keyboard.press('Enter');
-      await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'visible' });
-      await expect(locators.addFilterMenuItem(page, 'Range')).toHaveClass(/highlighted/);
-      await page.keyboard.press('Enter');
-      await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'hidden' });
-      await locators.selectOption(page, '100,001+').waitFor({ state: 'visible' });
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Escape');
-      await locators.selectOption(page, '100,001+').waitFor({ state: 'hidden' });
-      await expect(locators.selectTrigger(page, 'Range')).not.toBeVisible();
-      await expect(locators.addFilterBtn(page)).toBeFocused();
+      await test.step('Verify empty filter removed by Escape inside the popper', async () => {
+        await page.keyboard.press('Enter');
+        await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'visible' });
+        await expect(locators.addFilterMenuItem(page, 'Range')).toHaveClass(/highlighted/);
+        await page.keyboard.press('Enter');
+        await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'hidden' });
+        await locators.selectOption(page, '100,001+').waitFor({ state: 'visible' });
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Escape');
+        await locators.selectOption(page, '100,001+').waitFor({ state: 'hidden' });
+        await expect(locators.selectTrigger(page, 'Range')).not.toBeVisible();
+        await expect(locators.addFilterBtn(page)).toBeFocused();
+      });
 
-      await page.keyboard.press('Enter');
-      await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'visible' });
-      await expect(locators.addFilterMenuItem(page, 'Range')).toHaveClass(/highlighted/);
-      await page.keyboard.press('Enter');
-      await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'hidden' });
-      await locators.selectOption(page, '100,001+').waitFor({ state: 'visible' });
+      await test.step('Verify custom range applied by Enter', async () => {
+        await page.keyboard.press('Enter');
+        await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'visible' });
+        await expect(locators.addFilterMenuItem(page, 'Range')).toHaveClass(/highlighted/);
+        await page.keyboard.press('Enter');
+        await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'hidden' });
+        await locators.selectOption(page, '100,001+').waitFor({ state: 'visible' });
 
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.locator('[data-ui-name="InputNumber.Value"][placeholder="To"]').fill('5');
-      await page.keyboard.press('Enter');
-      await expect(page.locator('[data-ui-name="FilterTrigger.Text"]')).toHaveText('Volume: 1-5');
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+        await locators.rangeInput(page, 'To').fill('5');
+        await page.keyboard.press('Enter');
+        await expect(locators.filterValue(page)).toHaveText('Volume: 1-5');
+      });
     });
 
     test('Verify Select with range as filter mouse interactions', {
       tag: [TAG.PRIORITY_MEDIUM,
         TAG.MOUSE,
         '@add-filter',
-        '@base-trigger',
-        '@filter-trigger',
         '@button',
         '@input',
         '@input-number',
@@ -908,38 +897,42 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
-      await locators.addFilterBtn(page).click();
-      await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'visible' });
-      await locators.addFilterMenuItem(page, 'Range').click();
-      await page.locator('[data-ui-name="AddFilterSelect.Option"][value="10,001-100,000"]').click();
-      await expect(page.locator('[data-ui-name="FilterTrigger.Text"]')).toHaveText(
-        'Volume: 10,001-100,000',
-      );
+      await test.step('Verify preset range selected', async () => {
+        await locators.addFilterBtn(page).click();
+        await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'visible' });
+        await locators.addFilterMenuItem(page, 'Range').click();
+        await locators.selectOption(page, '10,001-100,000').click();
+        await expect(locators.filterValue(page)).toHaveText(
+          'Volume: 10,001-100,000',
+        );
+      });
 
-      await locators.clearSelectButton(page, 0).click();
-      await locators.addFilterBtn(page).click();
-      await locators.addFilterMenuItem(page, 'Range').click();
+      await test.step('Verify custom range with From only', async () => {
+        await locators.clearSelectButton(page, 0).click();
+        await locators.addFilterBtn(page).click();
+        await locators.addFilterMenuItem(page, 'Range').click();
 
-      await page.locator('[data-ui-name="InputNumber.Value"][placeholder="From"]').fill('1');
-      await page.locator('[data-ui-name="Button.Text"]:has-text("Apply")').click();
-      await expect(page.locator('[data-ui-name="FilterTrigger.Text"]')).toHaveText('Volume: 1+');
+        await locators.rangeInput(page, 'From').fill('1');
+        await locators.applyBtn(page).click();
+        await expect(locators.filterValue(page)).toHaveText('Volume: 1+');
+      });
 
-      await locators.clearSelectButton(page, 0).click();
-      await locators.addFilterBtn(page).click();
-      await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'visible' });
-      await locators.addFilterMenuItem(page, 'Range').click();
-      await page.locator('[data-ui-name="InputNumber.Value"][placeholder="From"]').fill('1');
-      await page.locator('[data-ui-name="InputNumber.Value"][placeholder="To"]').fill('5');
-      await page.locator('[data-ui-name="Button.Text"]:has-text("Apply")').click();
-      await expect(page.locator('[data-ui-name="FilterTrigger.Text"]')).toHaveText('Volume: 1-5');
+      await test.step('Verify custom range with From and To', async () => {
+        await locators.clearSelectButton(page, 0).click();
+        await locators.addFilterBtn(page).click();
+        await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'visible' });
+        await locators.addFilterMenuItem(page, 'Range').click();
+        await locators.rangeInput(page, 'From').fill('1');
+        await locators.rangeInput(page, 'To').fill('5');
+        await locators.applyBtn(page).click();
+        await expect(locators.filterValue(page)).toHaveText('Volume: 1-5');
+      });
     });
 
-    test('Verify Select with search as filter keyboard interactions ', {
+    test('Verify Select with search as filter keyboard interactions', {
       tag: [TAG.PRIORITY_MEDIUM,
         TAG.KEYBOARD,
         '@add-filter',
-        '@base-trigger',
-        '@filter-trigger',
         '@button',
         '@input',
         '@input-number',
@@ -952,43 +945,45 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-      await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'visible' });
-      await expect(locators.addFilterMenuItem(page, 'Range')).toHaveClass(/highlighted/);
-      await page.keyboard.press('ArrowDown');
+      await test.step('Verify filter removed by Escape when search has no selection', async () => {
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+        await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'visible' });
+        await expect(locators.addFilterMenuItem(page, 'Range')).toHaveClass(/highlighted/);
+        await page.keyboard.press('ArrowDown');
 
-      await page.keyboard.press('Enter');
-      await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'hidden' });
+        await page.keyboard.press('Enter');
+        await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'hidden' });
 
-      await locators.addFilterSelectInputSearch(page).fill('abc');
-      await page.keyboard.press('Escape');
-      await expect(locators.selectTrigger(page, 'Select a fruit')).not.toBeVisible();
-      await expect(locators.addFilterBtn(page)).toBeFocused();
+        await locators.searchInput(page).fill('abc');
+        await page.keyboard.press('Escape');
+        await expect(locators.selectTrigger(page, 'Select a fruit')).not.toBeVisible();
+        await expect(locators.addFilterBtn(page)).toBeFocused();
+      });
 
-      await page.keyboard.press('Enter');
-      await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'visible' });
-      await expect(locators.addFilterMenuItem(page, 'Range')).toHaveClass(/highlighted/);
-      await page.keyboard.press('ArrowDown');
+      await test.step('Verify option selected after search and trigger focused', async () => {
+        await page.keyboard.press('Enter');
+        await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'visible' });
+        await expect(locators.addFilterMenuItem(page, 'Range')).toHaveClass(/highlighted/);
+        await page.keyboard.press('ArrowDown');
 
-      await page.keyboard.press('Enter');
-      await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'hidden' });
+        await page.keyboard.press('Enter');
+        await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'hidden' });
 
-      await locators.addFilterSelectInputSearch(page).fill('Banana');
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('Enter');
-      await locators.selectOption(page, 'Banana').waitFor({ state: 'hidden' });
-      await expect(page.locator('[data-ui-name="FilterTrigger.Text"]')).toHaveText('Fruit: Banana');
-      await expect(page.locator('[data-ui-name="FilterTrigger.TriggerButton"]')).toBeFocused();
+        await locators.searchInput(page).fill('Banana');
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('Enter');
+        await locators.selectOption(page, 'Banana').waitFor({ state: 'hidden' });
+        await expect(locators.filterValue(page)).toHaveText('Fruit: Banana');
+        await expect(locators.selectTrigger(page)).toBeFocused();
+      });
     });
 
     test('Verify Select with search as filter mouse interactions', {
       tag: [TAG.PRIORITY_MEDIUM,
         TAG.MOUSE,
         '@add-filter',
-        '@base-trigger',
-        '@filter-trigger',
         '@button',
         '@input',
         '@input-number',
@@ -1001,30 +996,31 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
-      await locators.addFilterBtn(page).click();
-      await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'visible' });
-      await locators.addFilterMenuItem(page, 'Select with search').click();
-      await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'hidden' });
-      const selectInputSearch = page.locator('[data-ui-name="AddFilterSelect.InputSearch"]');
-      await selectInputSearch.fill('abc');
-      await locators.selectTrigger(page, 'Select a fruit').click();
-      await expect(locators.selectTrigger(page, 'Select a fruit')).not.toBeVisible();
+      await test.step('Verify filter removed by click on trigger when search has no selection', async () => {
+        await locators.addFilterBtn(page).click();
+        await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'visible' });
+        await locators.addFilterMenuItem(page, 'Select with search').click();
+        await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'hidden' });
+        await locators.searchInput(page).fill('abc');
+        await locators.selectTrigger(page, 'Select a fruit').click();
+        await expect(locators.selectTrigger(page, 'Select a fruit')).not.toBeVisible();
+      });
 
-      await locators.addFilterBtn(page).click();
-      await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'visible' });
-      await locators.addFilterMenuItem(page, 'Select with search').click();
-      await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'hidden' });
-      await selectInputSearch.fill('Banana');
-      await page.locator('[data-ui-name="AddFilterSelect.Option"]:has-text("Banana")').click();
-      await expect(page.locator('[data-ui-name="FilterTrigger.Text"]')).toHaveText('Fruit: Banana');
+      await test.step('Verify option selected after search', async () => {
+        await locators.addFilterBtn(page).click();
+        await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'visible' });
+        await locators.addFilterMenuItem(page, 'Select with search').click();
+        await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'hidden' });
+        await locators.searchInput(page).fill('Banana');
+        await locators.selectOption(page, 'Banana').click();
+        await expect(locators.filterValue(page)).toHaveText('Fruit: Banana');
+      });
     });
 
     test('Verify Multiselect as filter keyboard interactions', {
       tag: [TAG.PRIORITY_MEDIUM,
         TAG.KEYBOARD,
         '@add-filter',
-        '@base-trigger',
-        '@filter-trigger',
         '@button',
         '@input',
         '@input-number',
@@ -1051,8 +1047,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Enter');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
-      await page.locator('[data-ui-name="AddFilterSelect.Trigger"]').click();
-      await expect(page.locator('[data-ui-name="FilterTrigger.Text"]')).toHaveText(
+      await locators.addFilterSelectTrigger(page).click();
+      await expect(locators.filterValue(page)).toHaveText(
         'Multiselect: 1, 2',
       );
     });
@@ -1061,8 +1057,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_MEDIUM,
         TAG.MOUSE,
         '@add-filter',
-        '@base-trigger',
-        '@filter-trigger',
         '@button',
         '@input',
         '@input-number',
@@ -1078,10 +1072,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await locators.addFilterBtn(page).click();
       await locators.addFilterMenuItem(page, 'Range').waitFor({ state: 'visible' });
       await locators.addFilterMenuItem(page, 'MultiSelect').click();
-      await page.getByText('Awesome option 0').click();
-      await page.getByText('Awesome option 2').click();
-      await page.locator('[data-ui-name="AddFilterSelect.Trigger"]').click();
-      await expect(page.locator('[data-ui-name="FilterTrigger.Text"]')).toHaveText(
+      await locators.selectOption(page, 'Awesome option 0').click();
+      await locators.selectOption(page, 'Awesome option 2').click();
+      await locators.addFilterSelectTrigger(page).click();
+      await expect(locators.filterValue(page)).toHaveText(
         'Multiselect: 0, 2',
       );
     });
@@ -1104,27 +1098,31 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
-      await page.keyboard.press('Tab');
-      await locators.addFilterInput(page, 'Filter by name').fill('Test');
-      await expect(locators.clearAllBtn(page)).toBeVisible();
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await locators.addFilterInput(page, 'Filter by fullname').fill('Test');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
+      await test.step('Fill pre-filled Input filters', async () => {
+        await page.keyboard.press('Tab');
+        await locators.input(page, 'Filter by name').fill('Test');
+        await expect(locators.clearAllBtn(page)).toBeVisible();
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+        await locators.input(page, 'Filter by fullname').fill('Test');
+      });
+      await test.step('Verify Add filter focused after added Input filter is cleared', async () => {
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
 
-      await page.keyboard.press('Enter');
-      await locators.addFilterMenuItem(page, 'Position').waitFor({ state: 'visible' });
-      await expect(locators.addFilterMenuItem(page, 'Keyword')).toHaveClass(/highlighted/);
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('Enter');
-      await locators.addFilterInput(page, 'Filter by position').fill('Test');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-      await expect(locators.addFilterBtn(page)).toBeFocused();
+        await page.keyboard.press('Enter');
+        await locators.addFilterMenuItem(page, 'Position').waitFor({ state: 'visible' });
+        await expect(locators.addFilterMenuItem(page, 'Keyword')).toHaveClass(/highlighted/);
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('Enter');
+        await locators.input(page, 'Filter by position').fill('Test');
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+        await expect(locators.addFilterBtn(page)).toBeFocused();
+      });
     });
   });
 
@@ -1149,17 +1147,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await locators.selectOption(page, 'Blue').click();
         await expect(locators.addFilterBtn(page)).not.toBeVisible();
         await expect(locators.clearAllBtn(page)).toBeVisible();
-        await expect(locators.selectTriggerFilled(page, 'Color')).toHaveText('Color: Blue');
+        await expect(locators.filterValue(page, 'Color')).toHaveText('Color: Blue');
       });
 
       await locators.clearAllBtn(page).click();
 
       await test.step('Add Color filter and fill value outside from addFilter component', async () => {
-        const cigaretteChartElement = page.locator(`div[data-ui-name="Cigarette.Bar"][aria-label="Colors"] path[color="blue-300"]`);
-        await cigaretteChartElement.click();
+        await page.locator('div[data-ui-name="Cigarette.Bar"][aria-label="Colors"] path[color="blue-300"]').click();
         await expect(locators.addFilterBtn(page)).not.toBeVisible();
         await expect(locators.clearAllBtn(page)).toBeVisible();
-        await expect(locators.selectTriggerFilled(page, 'Color')).toHaveText('Color: Yellow');
+        await expect(locators.filterValue(page, 'Color')).toHaveText('Color: Yellow');
         await page.waitForTimeout(100);
         await expect(locators.selectOption(page, 'Blue')).not.toBeVisible();
         await locators.clearAllBtn(page).click();

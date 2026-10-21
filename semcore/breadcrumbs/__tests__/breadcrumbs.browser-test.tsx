@@ -1,6 +1,29 @@
+import type { Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
+
+const expectBreadcrumbsStructure = async (page: Page, { ariaLabel, itemsCount }: { ariaLabel: string; itemsCount: number }) => {
+  const nav = page.locator('nav');
+
+  await test.step('Verify nav landmark', async () => {
+    await expect(nav).toHaveAttribute('data-ui-name', 'Breadcrumbs');
+    await expect(nav).toHaveAttribute('aria-label', ariaLabel);
+  });
+
+  await test.step('Verify ordered list items', async () => {
+    await expect(nav.locator(':scope > ol > li')).toHaveCount(itemsCount);
+  });
+
+  await test.step('Verify separators are hidden from assistive technologies', async () => {
+    const separators = nav.locator(':scope > ol > div');
+    await expect(separators).toHaveCount(itemsCount);
+    for (const separator of await separators.all()) {
+      await expect(separator).toHaveAttribute('aria-hidden', 'true');
+      await expect(separator.locator('svg')).toHaveAttribute('aria-hidden', 'true');
+    }
+  });
+};
 
 /* =====================================================
 @visual
@@ -9,67 +32,37 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify links and icons styles', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
       '@breadcrumbs',
       '@ellipsis'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/breadcrumbs/docs/examples/usage_example.tsx', 'en');
 
     const breadcrumbLinks = page.locator('a[data-ui-name="Breadcrumbs.Item"]');
-    const chevronIcons = page.locator('[data-ui-name="ChevronRight"]');
     const lastItem = page.locator('[aria-current="page"]');
 
-    const expectedLinkStyles = {
-      fontSize: '14px',
-      cursor: 'pointer',
-    };
-
-    const expectedHoverStyles = {
-      textDecoration: 'underline',
-    };
-
-    const expectedLastItemStyles = {
-      fontSize: '14px',
-      cursor: 'default',
-    };
-
     await test.step('Verify active item style', async () => {
-      const lastItemStyles = await lastItem.evaluate((el) => {
-        const styles = getComputedStyle(el);
-        return {
-          fontSize: styles.fontSize,
-          cursor: styles.cursor,
-        };
-      });
-      expect(lastItemStyles).toMatchObject(expectedLastItemStyles);
+      await expect(lastItem).toHaveCSS('font-size', '14px');
+      await expect(lastItem).toHaveCSS('cursor', 'default');
     });
 
-    await test.step('Verify links in normal and hover states', async () => {
-      const links = await breadcrumbLinks.all();
-      for (const link of links) {
-        const styles = await link.evaluate((el) => {
-          const computed = getComputedStyle(el);
-          return {
-            fontSize: computed.fontSize,
-            cursor: computed.cursor,
-          };
-        });
-        expect(styles).toMatchObject(expectedLinkStyles);
-
-        if (browserName !== 'firefox') {
-          // ff works weird on hover in non debug mode
-          await link.hover();
-          const hoverStyles = await link.evaluate((el) => {
-            const computed = getComputedStyle(el);
-            return {
-              textDecoration: computed.textDecorationLine || computed.textDecoration,
-            };
-          });
-          expect(hoverStyles).toMatchObject(expectedHoverStyles);
-        }
+    await test.step('Verify links in normal state', async () => {
+      for (const link of await breadcrumbLinks.all()) {
+        await expect(link).toHaveCSS('font-size', '14px');
+        await expect(link).toHaveCSS('cursor', 'pointer');
       }
+    });
 
+    const hoverStep = browserName === 'firefox' ? test.step.skip : test.step;
+    await hoverStep('Verify links are underlined on hover (Firefox drops synthetic hover before style read)', async () => {
+      for (const link of await breadcrumbLinks.all()) {
+        await link.hover();
+        await expect(link).toHaveCSS('text-decoration-line', 'underline');
+      }
+    });
+
+    await test.step('Verify hovered first link snapshot', async () => {
       await breadcrumbLinks.first().hover();
-
       await expect(page).toHaveScreenshot();
     });
   });
@@ -81,6 +74,8 @@ test.describe(`${TAG.VISUAL}`, () => {
   variables.forEach((item) => {
     test(`Verify base truncation and last item is active=${item.active}`, {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        TAG.MOUSE,
         '@breadcrumbs',
         '@ellipsis'],
     }, async ({ page }) => {
@@ -106,6 +101,8 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test(`Verify ellipsis in the middle and last item is active=${item.active}`, {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        TAG.MOUSE,
         '@breadcrumbs',
         '@ellipsis'],
     }, async ({ page }) => {
@@ -128,6 +125,8 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test('Verify ellipsis in the end', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      TAG.MOUSE,
       '@breadcrumbs',
       '@ellipsis'],
   }, async ({ page }) => {
@@ -150,6 +149,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test('Verify custom styles and separator', {
     tag: [TAG.PRIORITY_MEDIUM,
+      TAG.KEYBOARD,
       '@breadcrumbs'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/breadcrumbs/tests/examples/edge-cases.tsx', 'en');
@@ -171,7 +171,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify ellipsis truncation in the end', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      TAG.KEYBOARD,
       '@breadcrumbs',
       '@ellipsis'],
   }, async ({ page }) => {
@@ -235,69 +234,28 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/breadcrumbs/advanced/examples/trim_middle.tsx', 'en');
 
-      const nav = page.locator('nav');
-      await expect(nav).toHaveAttribute('data-ui-name', 'Breadcrumbs');
-      await expect(nav).toHaveAttribute('aria-label', 'Breadcrumbs');
+      await expectBreadcrumbsStructure(page, { ariaLabel: 'Breadcrumbs', itemsCount: 3 });
 
-      const separator = page.locator('nav > div');
-
-      const separatorCount = await separator.count();
-      for (let i = 0; i < separatorCount; i++) {
-        await expect(separator.nth(i)).toHaveAttribute('aria-hidden', 'true');
-        const svg = separator.nth(i).locator('svg');
-        await expect(svg).toHaveAttribute('aria-hidden', 'true');
-        await expect(svg).toHaveAttribute('tabindex', '-1');
-        await expect(svg).toHaveAttribute('hidden', '');
-      }
-
-      const list = page.locator('nav > li');
-
-      const listCount = await list.count();
-      for (let i = 0; i < listCount; i++) {
-        const item = list.nth(i);
-        await expect(item).toHaveAttribute('role', 'listitem');
-        await expect(item).toHaveAttribute('level', `${i + 1}`);
-      }
-
-      const currentItem = page.locator('nav ol > li').nth(2).locator('span').first();
-      await expect(currentItem).toHaveAttribute('tabindex', '-1');
+      await test.step('Verify current item is not focusable', async () => {
+        const currentItem = page.locator('nav ol > li').nth(2).locator('span').first();
+        await expect(currentItem).toHaveAttribute('tabindex', '-1');
+      });
     });
 
     test('Verify attributes when custom aria-label and items are links', {
       tag: [TAG.PRIORITY_MEDIUM,
-        TAG.MOUSE,
         '@breadcrumbs',
         '@link'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/breadcrumbs/docs/examples/redefining_a_tag.tsx', 'en');
 
-      const nav = page.locator('nav');
-      await expect(nav).toHaveAttribute('data-ui-name', 'Breadcrumbs');
-      await expect(nav).toHaveAttribute('aria-label', 'Redefining tag example');
+      await expectBreadcrumbsStructure(page, { ariaLabel: 'Redefining tag example', itemsCount: 3 });
 
-      const separator = page.locator('nav > div');
-
-      const separatorCount = await separator.count();
-      for (let i = 0; i < separatorCount; i++) {
-        await expect(separator.nth(i)).toHaveAttribute('aria-hidden', 'true');
-        const svg = separator.nth(i).locator('svg');
-        await expect(svg).toHaveAttribute('aria-hidden', 'true');
-        await expect(svg).toHaveAttribute('tabindex', '-1');
-        await expect(svg).toHaveAttribute('hidden', '');
-      }
-
-      const list = page.locator('nav > li');
-
-      const listCount = await list.count();
-      for (let i = 0; i < listCount; i++) {
-        const item = list.nth(i);
-        await expect(item).toHaveAttribute('role', 'listitem');
-        await expect(item).toHaveAttribute('level', `${i + 1}`);
-      }
-
-      const currentItem = page.locator('nav ol > li').nth(2).locator('span');
-      await expect(currentItem).toHaveAttribute('aria-current', 'page');
-      await expect(currentItem).toHaveAttribute('tabindex', '-1');
+      await test.step('Verify current item is marked as page and not focusable', async () => {
+        const currentItem = page.locator('nav ol > li').nth(2).locator('span');
+        await expect(currentItem).toHaveAttribute('aria-current', 'page');
+        await expect(currentItem).toHaveAttribute('tabindex', '-1');
+      });
     });
   });
 

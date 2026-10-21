@@ -10,12 +10,10 @@ import React from 'react';
 const Demo = (props: NSDot.Props) => {
   return (
     <Flex direction='row' gap={2} alignItems='center'>
-
       <Dot
         size={props.size}
         up={props.up}
         aria-label='Dot only'
-        data-test-id='dot'
       />
 
       <Button>
@@ -36,7 +34,7 @@ const Demo = (props: NSDot.Props) => {
         />
       </Link>
 
-      <LinkTrigger aria-label='link trigger' data-test-id='link-trigger-text'>
+      <LinkTrigger aria-label='link trigger'>
         <LinkTrigger.Text>BLink trigger</LinkTrigger.Text>
         <Dot
           size={props.size}
@@ -61,7 +59,7 @@ const Demo = (props: NSDot.Props) => {
 
 export const defaultDotProps: NSDot.Props = {
   size: 'm',
-  up: undefined,
+  up: false,
 };
 
 Demo.defaultProps = defaultDotProps;

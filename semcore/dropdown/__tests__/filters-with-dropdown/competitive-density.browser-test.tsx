@@ -1,11 +1,9 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import type { Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
-
   button: (page: Page, name?: string, index?: number) => {
     const base = page.getByRole('button', { name });
     return typeof index === 'number' ? base.nth(index) : base;
@@ -14,14 +12,8 @@ export const locators = {
     const base = page.getByRole('dialog');
     return typeof index === 'number' ? base.nth(index) : base;
   },
-
   trigger: (page: Page, index?: number) => {
     const base = page.getByRole('combobox');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-
-  checkbox: (page: Page, index?: number) => {
-    const base = page.getByRole('radio');
     return typeof index === 'number' ? base.nth(index) : base;
   },
   textbox: (page: Page, index?: number) => {
@@ -29,16 +21,13 @@ export const locators = {
     return typeof index === 'number' ? base.nth(index) : base;
   },
   triggerText: (page: Page) => page.locator('[data-ui-name="FilterTrigger.TriggerButton"]'),
-  input: (page: Page) => page.locator('[data-ui-name="Input.Value"]'),
-  conditionLegend: (page: Page) => page.locator('legend'),
-
 };
 
 /* =====================================================
   @visual
   Visual states, hover and focus styles, paddings, margins, and snapshots.
   ===================================================== */
-test.describe(`${TAG.VISUAL} `, () => {
+test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Competitive density pattern', {
     tag: [TAG.PRIORITY_HIGH,
       '@dropdown',
@@ -49,25 +38,29 @@ test.describe(`${TAG.VISUAL} `, () => {
       '@filter-trigger',
       '@flex-box',
       '@typography'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/filters/filter-custom-range/docs/examples/basic-example.tsx', 'en');
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await locators.popper(page).waitFor({ state: 'visible' });
+    await test.step('Verify opened dropdown', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.popper(page).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
 
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify filled range with focused Apply', async () => {
+      await page.keyboard.press('1');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('5');
+      await page.keyboard.press('Tab');
+      await expect(page).toHaveScreenshot();
+    });
 
-    await page.keyboard.press('1');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('5');
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
-
-    await page.keyboard.press('Enter');
-
-    await locators.popper(page).waitFor({ state: 'hidden' });
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify trigger with applied range', async () => {
+      await page.keyboard.press('Enter');
+      await locators.popper(page).waitFor({ state: 'hidden' });
+      await expect(page).toHaveScreenshot();
+    });
   });
 });
 
@@ -76,8 +69,8 @@ test.describe(`${TAG.VISUAL} `, () => {
 Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
-test.describe(`${TAG.FUNCTIONAL} `, () => {
-  test('Verify keyboard interactios', {
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@dropdown',
@@ -88,7 +81,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       '@filter-trigger',
       '@flex-box',
       '@typography'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/filters/filter-custom-range/docs/examples/basic-example.tsx', 'en');
 
     await test.step('Verify 1st textbox focused when dropdown opened', async () => {
@@ -114,7 +107,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.button(page, 'Apply')).toBeFocused();
     });
 
-    await test.step('Verify counter in trigger not added when textbox filled and ESC pressed', async () => {
+    await test.step('Verify trigger text not changed when Escape pressed', async () => {
       await page.keyboard.press('Escape');
       await locators.popper(page).waitFor({ state: 'hidden' });
 
@@ -123,7 +116,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.triggerText(page)).toContainText('Competitive Density');
     });
 
-    await test.step('Verify counter in trigger  added when textbox filled and Apply pressed', async () => {
+    await test.step('Verify trigger text updated when Apply pressed', async () => {
       await page.keyboard.press('Enter');
       await locators.button(page, 'Apply').waitFor({ state: 'visible' });
       await page.keyboard.press('Tab');
@@ -144,7 +137,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await page.getByText('Clear').waitFor({ state: 'hidden' });
     });
 
-    await test.step('Verify Clear all clears textbox', async () => {
+    await test.step('Verify Clear button resets trigger text', async () => {
       await page.keyboard.press('Space');
 
       await expect(locators.triggerText(page)).toContainText('Competitive Density');
@@ -162,7 +155,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       '@filter-trigger',
       '@flex-box',
       '@typography'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/filters/filter-custom-range/docs/examples/basic-example.tsx', 'en');
 
     await test.step('Verify 1st textbox focused when dropdown opened', async () => {
@@ -175,7 +168,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await locators.trigger(page).click();
       await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
       await expect(locators.triggerText(page)).toContainText('Competitive Density');
-      await expect(locators.button(page, 'Clear')).not.toBeVisible();
+      await expect(locators.button(page, 'Clear')).toBeHidden();
     });
 
     await test.step('Verify trigger text updated when pressing apply', async () => {
@@ -188,7 +181,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.button(page, 'Clear')).toBeVisible();
     });
 
-    await test.step('Verify Hint on hover Clear', async () => {
+    await test.step('Verify hint on hover Clear', async () => {
       await locators.button(page, 'Clear').hover();
       await page.getByText('Clear').waitFor({ state: 'visible' });
       await expect(page.getByText('Clear')).toHaveCount(1);
