@@ -8,22 +8,6 @@ export const locators = {
     const base = page.locator('blockquote');
     return typeof index === 'number' ? base.nth(index) : base;
   },
-  cite: (page: Page, index?: number) => {
-    const base = page.locator('cite');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  list: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="List"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  listItem: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="List.Item"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  listMarker: (page: Page, index?: number) => {
-    const base = page.locator('span[class*="SMarker"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
 };
 
 /* =====================================================
@@ -148,18 +132,11 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   const cases = [
-    // noWrap condition
     { noWrap: true, display: 'block', w: 100, size: 900 },
-
-    // textAlign condition
     { textAlign: 'left', display: 'block', inline: true, w: 200 },
     { textAlign: 'center', display: 'block', inline: true, w: 200 },
     { textAlign: 'right', display: 'block', inline: true, w: 200 },
-
-    // size and fontSize together
     { size: 100, fontSize: 20 },
-
-    // main coverage
     { bold: true, italic: false, size: 200, use: 'primary' },
     { bold: false, italic: true, size: 300 },
     { size: 350 },
@@ -220,28 +197,20 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/typography/tests/examples/paragraph-and-list-margins.tsx', 'en', { formatTags: true });
 
-    await test.step('Verify size=200 paragraph margins (should be 3x = 12px)', async () => {
-      // Size 200 paragraphs are the 5th and 6th p elements (indices 4, 5)
-      const size200P = page.locator('p').nth(4);
-      await expect(size200P).toHaveCSS('margin-bottom', '12px');
+    await test.step('Verify size=200 paragraph (5th p) margin-bottom is 12px', async () => {
+      await expect(page.locator('p').nth(4)).toHaveCSS('margin-bottom', '12px');
     });
 
-    await test.step('Verify size=300 paragraph margins (should be 4x = 16px)', async () => {
-      // Size 300 paragraphs are the 7th and 8th p elements (indices 6, 7)
-      const size300P = page.locator('p').nth(6);
-      await expect(size300P).toHaveCSS('margin-bottom', '16px');
+    await test.step('Verify size=300 paragraph (7th p) margin-bottom is 16px', async () => {
+      await expect(page.locator('p').nth(6)).toHaveCSS('margin-bottom', '16px');
     });
 
-    await test.step('Verify ul followed by p has matching margin (4x = 16px)', async () => {
-      // The second ul (index 1) is followed by a paragraph
-      const listFollowedByP = page.locator('ul').nth(1);
-      await expect(listFollowedByP).toHaveCSS('margin-bottom', '16px');
+    await test.step('Verify second ul followed by p has margin-bottom 16px', async () => {
+      await expect(page.locator('ul').nth(1)).toHaveCSS('margin-bottom', '16px');
     });
 
-    await test.step('Verify standalone ul has default margin (2x = 8px)', async () => {
-      // The first ul (index 0) is standalone
-      const standaloneList = page.locator('ul').first();
-      await expect(standaloneList).toHaveCSS('margin-bottom', '8px');
+    await test.step('Verify standalone first ul has margin-bottom 8px', async () => {
+      await expect(page.locator('ul').first()).toHaveCSS('margin-bottom', '8px');
     });
   });
 
@@ -262,9 +231,6 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 
-  // Nested list indentation must be driven only by nesting depth, not by whether
-  // the size prop happens to be passed. Text has no default size, so the base
-  // formatTags block and the size-specific blocks must stay in sync.
   const nestedListIndent = [
     { size: 'none', thirdLevel: '36px' },
     { size: '100', thirdLevel: '32px' },

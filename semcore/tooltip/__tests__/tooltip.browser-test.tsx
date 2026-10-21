@@ -1,4 +1,4 @@
-import type { Page } from '@semcore/testing-utils/playwright';
+import type { Locator, Page } from '@semcore/testing-utils/playwright';
 import { test, expect } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
@@ -53,6 +53,11 @@ export const locators = {
   },
 };
 
+const moveMouseToCenter = async (page: Page, locator: Locator) => {
+  const rect = (await locator.boundingBox())!;
+  await page.mouse.move(rect.x + rect.width / 2, rect.y + rect.height / 2, { steps: 5 });
+};
+
 /* =====================================================
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
@@ -73,17 +78,9 @@ test.describe(TAG.VISUAL, () => {
 
       await test.step('Verify tooltip appearance on focus and hover', async () => {
         const trigger = locators.tooltip(page);
-        const triggerRect = (await trigger.first().boundingBox())!;
-
         await page.keyboard.press('Tab');
 
-        await page.mouse.move(
-          triggerRect.x + triggerRect.width / 2,
-          triggerRect.y + triggerRect.height / 2,
-          {
-            steps: 5,
-          },
-        );
+        await moveMouseToCenter(page, trigger.first());
         await locators.tooltipRole(page).waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
       });
@@ -174,12 +171,7 @@ test.describe(TAG.VISUAL, () => {
         const tooltipPopper = locators.tooltipPopper(page);
 
         await test.step('Verify tooltip appearance', async () => {
-          const triggerRect = (await trigger.first().boundingBox())!;
-          await page.mouse.move(
-            triggerRect.x + triggerRect.width / 2,
-            triggerRect.y + triggerRect.height / 2,
-            { steps: 5 },
-          );
+          await moveMouseToCenter(page, trigger.first());
           await tooltipPopper.first().waitFor({ state: 'visible' });
           await expect(page).toHaveScreenshot();
         });
@@ -208,12 +200,7 @@ test.describe(TAG.VISUAL, () => {
         const tooltipPopper = locators.tooltipPopper(page);
 
         await test.step('Verify tooltip placement', async () => {
-          const triggerRect = (await trigger.first().boundingBox())!;
-          await page.mouse.move(
-            triggerRect.x + triggerRect.width / 2,
-            triggerRect.y + triggerRect.height / 2,
-            { steps: 5 },
-          );
+          await moveMouseToCenter(page, trigger.first());
           await tooltipPopper.first().waitFor({ state: 'visible' });
           await expect(page).toHaveScreenshot();
         });
@@ -324,12 +311,7 @@ test.describe(TAG.VISUAL, () => {
         const hintPopper = locators.hintPopper(page);
 
         await test.step('Verify hint appearance', async () => {
-          const triggerRect = (await trigger.first().boundingBox())!;
-          await page.mouse.move(
-            triggerRect.x + triggerRect.width / 2,
-            triggerRect.y + triggerRect.height / 2,
-            { steps: 5 },
-          );
+          await moveMouseToCenter(page, trigger.first());
           await hintPopper.first().waitFor({ state: 'visible' });
           await expect(page).toHaveScreenshot();
         });
@@ -361,15 +343,7 @@ test.describe(TAG.FUNCTIONAL, () => {
       const tooltip = locators.tooltipRole(page);
 
       await test.step('Verify tooltip shown on hover', async () => {
-        const triggerRect = (await trigger.first().boundingBox())!;
-
-        await page.mouse.move(
-          triggerRect.x + triggerRect.width / 2,
-          triggerRect.y + triggerRect.height / 2,
-          {
-            steps: 5,
-          },
-        );
+        await moveMouseToCenter(page, trigger.first());
         await tooltip.waitFor({ state: 'visible' });
         await expect(tooltip).toHaveCount(1);
       });
@@ -475,7 +449,7 @@ test.describe(TAG.FUNCTIONAL, () => {
         await expect(popper).toHaveCount(1);
       });
 
-      await test.step('Verify tooltip not close on mouse click', async () => {
+      await test.step('Verify tooltip not closed on mouse click', async () => {
         await trigger.click();
         await page.getByText('Hello, stranger!').waitFor({ state: 'visible' });
         await expect(buttonLink).toHaveAttribute('aria-describedby');
@@ -510,12 +484,7 @@ test.describe(TAG.FUNCTIONAL, () => {
 
         if (item.tooltipInteraction === 'hover') {
           await test.step('Verify tooltip shown on hover', async () => {
-            const triggerRect = (await trigger.first().boundingBox())!;
-            await page.mouse.move(
-              triggerRect.x + triggerRect.width / 2,
-              triggerRect.y + triggerRect.height / 2,
-              { steps: 5 },
-            );
+            await moveMouseToCenter(page, trigger.first());
             await tooltipPopper.first().waitFor({ state: 'visible' });
             await expect(tooltipPopper).toHaveCount(1);
           });
@@ -544,12 +513,7 @@ test.describe(TAG.FUNCTIONAL, () => {
           });
         } else if (item.tooltipInteraction === 'none') {
           await test.step('Verify tooltip not shown on hover', async () => {
-            const triggerRect = (await trigger.first().boundingBox())!;
-            await page.mouse.move(
-              triggerRect.x + triggerRect.width / 2,
-              triggerRect.y + triggerRect.height / 2,
-              { steps: 5 },
-            );
+            await moveMouseToCenter(page, trigger.first());
             await expect(tooltipPopper).toHaveCount(0);
           });
 
@@ -571,21 +535,21 @@ test.describe(TAG.FUNCTIONAL, () => {
       await loadPage(page, 'stories/components/tooltip/docs/examples/singleton.tsx', 'en');
 
       const options = locators.option(page);
-      const optionsCount = await options.count();
       const tooltip = locators.tooltipRole(page);
 
-      await test.step('Verify singleton tooltip on hover', async () => {
+      await test.step('Verify options have no aria-describedby before hover', async () => {
         await locators.selectTrigger(page).click();
         await options.first().waitFor({ state: 'visible' });
-        for (let i = 0; i < optionsCount; i++) {
-          await expect(options.nth(i)).not.toHaveAttribute('aria-labelledby');
+        for (const option of await options.all()) {
+          await expect(option).not.toHaveAttribute('aria-describedby');
         }
+      });
 
+      await test.step('Verify singleton tooltip on hover describes options', async () => {
         await options.nth(2).hover();
         await tooltip.waitFor({ state: 'visible' });
-
-        for (let i = 0; i < optionsCount; i++) {
-          await expect(options.nth(i)).toHaveAttribute('aria-labelledby');
+        for (const option of await options.all()) {
+          await expect(option).toHaveAttribute('aria-describedby');
         }
         await expect(tooltip).toHaveCount(1);
       });
@@ -677,7 +641,7 @@ test.describe(TAG.FUNCTIONAL, () => {
         await expect(popper).not.toBeVisible();
       });
 
-      await test.step('Verify Tab switch focus to next trigger', async () => {
+      await test.step('Verify Tab switches focus to next trigger', async () => {
         await page.keyboard.press('Tab');
 
         await expect(trigger.nth(1)).toBeFocused();
@@ -701,15 +665,7 @@ test.describe(TAG.FUNCTIONAL, () => {
       const linkPopper = locators.link(page);
 
       await test.step('Verify tooltip not shown on hover', async () => {
-        const triggerRect = (await trigger.first().boundingBox())!;
-
-        await page.mouse.move(
-          triggerRect.x + triggerRect.width / 2,
-          triggerRect.y + triggerRect.height / 2,
-          {
-            steps: 5,
-          },
-        );
+        await moveMouseToCenter(page, trigger.first());
         await expect(popper).not.toBeVisible();
       });
 
@@ -751,12 +707,7 @@ test.describe(TAG.FUNCTIONAL, () => {
 
         if (item.descriptionInteraction === 'hover') {
           await test.step('Verify description tooltip shown on hover', async () => {
-            const triggerRect = (await trigger.first().boundingBox())!;
-            await page.mouse.move(
-              triggerRect.x + triggerRect.width / 2,
-              triggerRect.y + triggerRect.height / 2,
-              { steps: 5 },
-            );
+            await moveMouseToCenter(page, trigger.first());
             await popper.first().waitFor({ state: 'visible' });
             await expect(popper).toBeVisible();
             await expect(popper).toHaveCount(1);
@@ -769,12 +720,7 @@ test.describe(TAG.FUNCTIONAL, () => {
           });
         } else if (item.descriptionInteraction === 'click') {
           await test.step('Verify description tooltip not shown on hover', async () => {
-            const triggerRect = (await trigger.first().boundingBox())!;
-            await page.mouse.move(
-              triggerRect.x + triggerRect.width / 2,
-              triggerRect.y + triggerRect.height / 2,
-              { steps: 5 },
-            );
+            await moveMouseToCenter(page, trigger.first());
             await expect(popper).not.toBeVisible();
           });
 
@@ -805,12 +751,7 @@ test.describe(TAG.FUNCTIONAL, () => {
           });
         } else if (item.descriptionInteraction === 'none') {
           await test.step('Verify description tooltip not shown on hover', async () => {
-            const triggerRect = (await trigger.first().boundingBox())!;
-            await page.mouse.move(
-              triggerRect.x + triggerRect.width / 2,
-              triggerRect.y + triggerRect.height / 2,
-              { steps: 5 },
-            );
+            await moveMouseToCenter(page, trigger.first());
             await expect(popper).toHaveCount(0);
           });
 
@@ -851,12 +792,7 @@ test.describe(TAG.FUNCTIONAL, () => {
         const hintPopper = locators.hintPopper(page);
 
         await test.step('Verify hint shown on hover', async () => {
-          const triggerRect = (await trigger.first().boundingBox())!;
-          await page.mouse.move(
-            triggerRect.x + triggerRect.width / 2,
-            triggerRect.y + triggerRect.height / 2,
-            { steps: 5 },
-          );
+          await moveMouseToCenter(page, trigger.first());
           await hintPopper.first().waitFor({ state: 'visible' });
           await expect(hintPopper).toBeVisible();
           await expect(hintPopper).toHaveCount(1);
@@ -870,7 +806,7 @@ test.describe(TAG.FUNCTIONAL, () => {
         });
       });
       test(`Verify hint=${item.hintTheme} keyboard interaction`, {
-        tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@tooltip', '@hint',
+        tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@tooltip', '@hint',
           '@base-components',
           '@button',
           '@button-link',
@@ -883,10 +819,9 @@ test.describe(TAG.FUNCTIONAL, () => {
 
         const hintPopper = locators.hintPopper(page);
 
-        await test.step('Verify hint shown focus', async () => {
+        await test.step('Verify hint shown on focus', async () => {
           await page.keyboard.press('Tab');
           await page.keyboard.press('Tab');
-
           await page.keyboard.press('Tab');
 
           await hintPopper.first().waitFor({ state: 'visible' });
@@ -897,7 +832,6 @@ test.describe(TAG.FUNCTIONAL, () => {
 
         await test.step('Verify hint closes on Esc', async () => {
           await page.keyboard.press('Escape');
-
           await hintPopper.first().waitFor({ state: 'hidden' });
           await expect(hintPopper).not.toBeVisible();
         });
