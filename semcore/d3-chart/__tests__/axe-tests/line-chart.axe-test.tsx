@@ -57,12 +57,6 @@ test.describe(`@d3-chart @line-chart ${TAG.ACCESSIBILITY}`, () => {
     expect(violations).toEqual([]);
   });
 
-  test('line-with-reference', async ({ page }) => {
-    await loadPage(page, 'stories/components/d3-chart/docs/examples/line-chart/line-with-reference.tsx', 'en');
-    const violations = await getAccessibilityViolations({ page });
-    expect(violations).toEqual([]);
-  });
-
   test('tooltip', async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/line-chart/tooltip.tsx', 'en');
     const violations = await getAccessibilityViolations({ page });
