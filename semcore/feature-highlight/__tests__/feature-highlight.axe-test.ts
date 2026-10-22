@@ -66,7 +66,7 @@ test.describe(`@feature-highlight ${TAG.ACCESSIBILITY}`, () => {
     expect(violations).toEqual([]);
   });
 
-  test('Verify Select has no Axe issues in closed state', async ({ page }) => {
+  test('Verify Select has no Axe issues', async ({ page }) => {
     await loadPage(page, 'stories/components/feature-highlight/docs/examples/select.tsx', 'en');
 
     await test.step('Verify closed state', async () => {

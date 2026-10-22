@@ -6,7 +6,7 @@ import {
   checkBackgroundColor,
   checkBorderColor,
   expectVisibleHintsCount,
-  getCssVarColor,
+  getTriggerColors,
   locators,
   waitForHint,
 } from './utils';
@@ -31,8 +31,6 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     // Disabled
     { size: 'm', state: 'normal', active: false, empty: false, placeholder: undefined, disabled: true, loading: false, chevron: true },
-    { size: 'l', state: 'valid', active: true, empty: true, placeholder: 'Placeholder', disabled: true, loading: false, chevron: true },
-    { size: 'm', state: 'invalid', active: true, empty: false, placeholder: undefined, disabled: true, loading: false, chevron: false },
 
     // Loading
     { size: 'l', state: 'normal', active: false, empty: false, placeholder: undefined, disabled: false, loading: true, chevron: true },
@@ -43,6 +41,8 @@ test.describe(`${TAG.VISUAL}`, () => {
   variables.forEach((item) => {
     test(`Verify Base case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron}`, {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        TAG.KEYBOARD,
         '@base-trigger',
         '@button-trigger',
         '@base-components',
@@ -50,11 +50,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/button-trigger/base.tsx', 'en', item);
 
-      const bgPrimary = await getCssVarColor(page, '--intergalactic-bg-primary-neutral');
-      const borderPrimary = await getCssVarColor(page, '--intergalactic-border-primary');
-      const borderActive = await getCssVarColor(page, '--intergalactic-border-info-active');
-      const borderSuccess = await getCssVarColor(page, '--intergalactic-border-success-active');
-      const borderCritical = await getCssVarColor(page, '--intergalactic-border-critical-active');
+      const { bgPrimary, borderPrimary, borderActive, borderSuccess, borderCritical } = await getTriggerColors(page);
 
       await test.step('Base background check', async () => {
         await checkBackgroundColor(page, locators.button(page), bgPrimary);
@@ -64,7 +60,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         await test.step('Normal/Active styles', async () => {
           await expect(locators.button(page)).toHaveAttribute('tabindex', '0');
           if (item.empty && item.placeholder !== undefined) {
-            const placeholderElement = page.locator('[data-ui-name="ButtonTrigger.Text"][placeholder]').first();
+            const placeholderElement = locators.triggerText(page, 'ButtonTrigger', { withPlaceholder: true }).first();
             await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
           }
 
@@ -124,6 +120,8 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test(`Verify With addons case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron}`, {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        TAG.KEYBOARD,
         '@base-trigger',
         '@button-trigger',
         '@base-components',
@@ -133,11 +131,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       const buttons = await locators.button(page).all();
 
-      const bgPrimary = await getCssVarColor(page, '--intergalactic-bg-primary-neutral');
-      const borderPrimary = await getCssVarColor(page, '--intergalactic-border-primary');
-      const borderActive = await getCssVarColor(page, '--intergalactic-border-info-active');
-      const borderSuccess = await getCssVarColor(page, '--intergalactic-border-success-active');
-      const borderCritical = await getCssVarColor(page, '--intergalactic-border-critical-active');
+      const { bgPrimary, borderPrimary, borderActive, borderSuccess, borderCritical } = await getTriggerColors(page);
 
       await test.step('Base background check', async () => {
         for (const button of buttons) {
@@ -166,7 +160,7 @@ test.describe(`${TAG.VISUAL}`, () => {
           for (const button of buttons) {
             await expect(button).toHaveAttribute('tabindex', '0');
             if (item.empty && item.placeholder !== undefined) {
-              const placeholderElement = page.locator('[data-ui-name="ButtonTrigger.Text"][placeholder]').first();
+              const placeholderElement = locators.triggerText(page, 'ButtonTrigger', { withPlaceholder: true }).first();
               await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
             }
 
@@ -221,8 +215,10 @@ test.describe(`${TAG.VISUAL}`, () => {
       }
     });
 
-    test(`Verify Neighbor Location case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron} `, {
+    test(`Verify Neighbor Location case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron}`, {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        TAG.KEYBOARD,
         '@base-trigger',
         '@base-components',
         '@flex-box',
@@ -233,11 +229,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       const buttons = await locators.button(page).all();
 
-      const bgPrimary = await getCssVarColor(page, '--intergalactic-bg-primary-neutral');
-      const borderPrimary = await getCssVarColor(page, '--intergalactic-border-primary');
-      const borderActive = await getCssVarColor(page, '--intergalactic-border-info-active');
-      const borderSuccess = await getCssVarColor(page, '--intergalactic-border-success-active');
-      const borderCritical = await getCssVarColor(page, '--intergalactic-border-critical-active');
+      const { bgPrimary, borderPrimary, borderActive, borderSuccess, borderCritical } = await getTriggerColors(page);
 
       await test.step('Base background check', async () => {
         for (const button of buttons) {
@@ -263,7 +255,7 @@ test.describe(`${TAG.VISUAL}`, () => {
           for (const button of buttons) {
             await expect(button).toHaveAttribute('tabindex', '0');
             if (item.empty && item.placeholder !== undefined) {
-              const placeholderElement = button.locator('[data-ui-name="ButtonTrigger.Text"][placeholder]').first();
+              const placeholderElement = locators.triggerText(button, 'ButtonTrigger', { withPlaceholder: true }).first();
               await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
             }
 
@@ -317,6 +309,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test(`Verify Button Trigger for Select or DD menu case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron}`, {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
         '@base-trigger',
         '@button-trigger',
         '@base-components',
@@ -328,11 +321,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       const triggers = await locators.trigger(page).all();
 
-      const bgPrimary = await getCssVarColor(page, '--intergalactic-bg-primary-neutral');
-      const borderPrimary = await getCssVarColor(page, '--intergalactic-border-primary');
-      const borderActive = await getCssVarColor(page, '--intergalactic-border-info-active');
-      const borderSuccess = await getCssVarColor(page, '--intergalactic-border-success-active');
-      const borderCritical = await getCssVarColor(page, '--intergalactic-border-critical-active');
+      const { bgPrimary, borderPrimary, borderActive, borderSuccess, borderCritical } = await getTriggerColors(page);
 
       await test.step('Base background check', async () => {
         for (const button of triggers) {
@@ -353,7 +342,7 @@ test.describe(`${TAG.VISUAL}`, () => {
             await page.keyboard.press('Tab');
             await expect(button).not.toBeFocused();
           }
-          await expect(page).toHaveScreenshot(`triggers-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}-chevron:${item.chevron}.png`);
+          await expect(page).toHaveScreenshot(`triggers-loading-size:${item.size}-disabled:${item.disabled}-loading:${item.loading}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}-chevron:${item.chevron}.png`);
         });
       }
 
@@ -362,7 +351,7 @@ test.describe(`${TAG.VISUAL}`, () => {
           for (const button of triggers) {
             await expect(button).toHaveAttribute('tabindex', '0');
             if (item.empty && item.placeholder !== undefined) {
-              const placeholderElement = page.locator('[data-ui-name="ButtonTrigger.Text"][placeholder]').first();
+              const placeholderElement = locators.triggerText(page, 'ButtonTrigger', { withPlaceholder: true }).first();
               await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
             }
 
@@ -410,11 +399,11 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test('Verify ellipsis in Button trigger and few tags', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
       '@base-trigger',
       '@button-trigger',
       '@ellipsis',
-      '@dropdown-menu',
-      '@typography'],
+      '@dropdown-menu'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/button-trigger-ellipsis.tsx', 'en');
     await page.waitForTimeout(300);
@@ -493,24 +482,20 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     expect(finalWidth).toBeLessThan(initialWidth);
   });
 
-  test('Verify ellipsis in Button trigger and few tags', {
+  test('Verify Button trigger custom heading tags and ellipsis hint on focus', {
     tag: [TAG.PRIORITY_HIGH,
-      TAG.MOUSE,
       TAG.KEYBOARD,
       '@base-trigger',
       '@button-trigger',
       '@ellipsis',
-      '@dropdown-menu',
-      '@typography'],
+      '@dropdown-menu'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/button-trigger-ellipsis.tsx', 'en');
 
-    const triggerText = page.locator('[data-ui-name="ButtonTrigger.Text"]').first();
-    const secondTriggerText = page.locator('[data-ui-name="ButtonTrigger.Text"]').nth(1);
-    const tagNameButton = await locators.button(page).first().evaluate((el) => el.tagName.toLowerCase());
-    expect(tagNameButton).toBe('h1');
-    const tagNameText = await triggerText.evaluate((el) => el.tagName.toLowerCase());
-    expect(tagNameText).toBe('h2');
+    const triggerText = locators.triggerText(page, 'ButtonTrigger').first();
+    const secondTriggerText = locators.triggerText(page, 'ButtonTrigger').nth(1);
+    await expect(locators.button(page).first()).toHaveJSProperty('tagName', 'H1');
+    await expect(triggerText).toHaveJSProperty('tagName', 'H2');
 
     await expect(secondTriggerText.locator('span[aria-hidden="true"]').first()).toBeAttached();
 

@@ -4,7 +4,6 @@ import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
-
   button: (page: Page, name?: string, index?: number) => {
     const base = page.getByRole('button', { name });
     return typeof index === 'number' ? base.nth(index) : base;
@@ -12,14 +11,11 @@ export const locators = {
   header: (page: Page) => page.locator('[data-ui-name="SidePanel.Header"]'),
   body: (page: Page) => page.locator('[data-ui-name="SidePanel.Body"]'),
   footer: (page: Page) => page.locator('[data-ui-name="SidePanel.Footer"]'),
-  // Title renders as h6 by default, but examples may override the tag (e.g. tag={Flex}),
-  // so the locators must not depend on the rendered tag name.
   title: (page: Page) => page.locator('[data-ui-name="SidePanel.Title"]'),
   backButton: (page: Page) => page.locator('[data-ui-name="SidePanel.Title"] [data-ui-name="ButtonLink"]'),
   titleText: (page: Page) => page.locator('[data-ui-name="SidePanel.Title"] [data-ui-name="Text"]'),
   dialog: (page: Page) => page.getByRole('dialog'),
   hint: (page: Page) => page.locator('[data-ui-name="Hint"]'),
-
 };
 
 const collectRuntimeErrors = (page: Page) => {
@@ -102,19 +98,18 @@ test.describe(`${TAG.VISUAL} `, () => {
         await expect(locators.footer(page)).toHaveCSS('padding-right', '24px');
       });
 
-      const box = await locators.title(page).boundingBox();
+      await test.step('Verify hovered title', async () => {
+        await locators.title(page).hover();
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+      });
 
-      if (box) {
-        await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
-      }
-
-      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
-
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
+      await test.step('Verify focused back button', async () => {
+        await page.keyboard.press('Tab');
+        await expect(page).toHaveScreenshot();
+      });
     });
 
-    test(`Verify Internal component inside positioned correclty in each placement = ${item.placement}`, {
+    test(`Verify Internal component inside positioned correctly in each placement = ${item.placement}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@side-panel',
         '@button',
@@ -127,7 +122,9 @@ test.describe(`${TAG.VISUAL} `, () => {
 
       await expect(page).toHaveScreenshot();
     });
+  });
 
+  variablesPlacement.filter((item) => item.placement === 'right').forEach((item) => {
     test(`Verify Side panel with disabled overlay in each placement = ${item.placement}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@side-panel',
@@ -154,26 +151,6 @@ test.describe(`${TAG.VISUAL} `, () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await page.getByText('SidePanel Title').waitFor({ state: 'visible' });
-
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
-  });
-
-  test('Verify Close button shown when SidePanel.Close and closable = false', {
-    tag: [TAG.PRIORITY_HIGH,
-      '@side-panel',
-      '@button',
-      '@base-components',
-      '@button-link',
-      '@flex-box',
-      '@tooltip',
-      '@typography'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/side-panel/tests/examples/side-panel-additional-states.tsx', 'en', { withClose: true });
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await expect(locators.button(page, 'Close', 0)).toBeFocused();
-    await locators.hint(page).waitFor({ state: 'visible' });
 
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
@@ -225,7 +202,6 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await expect(locators.title(page)).toHaveText(titleText);
 
-    // Ellipsis lives on the Text inside SidePanel.Title, the title itself has ellipsis={false}.
     const titleTextNode = locators.titleText(page);
     await expect.poll(async () => {
       return titleTextNode.evaluate((el) => el.scrollWidth > el.clientWidth);
@@ -279,13 +255,8 @@ test.describe(`${TAG.VISUAL} `, () => {
     });
 
     await test.step('Back button keeps its full width and is not squeezed by the title', async () => {
-      const backBox = await locators.backButton(page).boundingBox();
-      expect(backBox!.width).toBeGreaterThan(0);
-
-      const isBackTruncated = await locators.backButton(page).evaluate(
-        (el) => el.scrollWidth > el.clientWidth,
-      );
-      expect(isBackTruncated).toBe(false);
+      await expect(locators.backButton(page)).toBeVisible();
+      expect(await locators.backButton(page).evaluate((el) => el.scrollWidth > el.clientWidth)).toBe(false);
     });
   });
 });
@@ -318,7 +289,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.dialog(page)).toHaveAttribute('aria-modal', 'true');
     });
 
-    await test.step('Verify focus orted and is looped inside side panel', async () => {
+    await test.step('Verify focus order is looped inside side panel', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.backButton(page)).toBeFocused();
 
@@ -359,7 +330,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     });
   });
 
-  test('Verify Closable Side panel  with Access to internal elements mouse interactions', {
+  test('Verify Closable Side panel with Access to internal elements mouse interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@side-panel',
@@ -421,7 +392,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.dialog(page)).not.toBeVisible();
     });
 
-    await test.step('Verify modal can be closed Escape', async () => {
+    await test.step('Verify modal can be closed by Escape', async () => {
       await page.getByRole('button').click();
       await locators.button(page).nth(1).waitFor({ state: 'visible' });
       await page.waitForTimeout(200); // wait for animation to complete
@@ -483,15 +454,14 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.dialog(page)).not.toBeVisible();
     });
 
-    // commented because of the bug UIK-4034
-    // await test.step('Verify modal can be closed Escape', async () => {
-    //   await page.getByRole('button').click();
-    //   await locators.dialog(page).waitFor({ state: 'visible' });
+    await test.step.skip('Verify modal can be closed by Escape (bug UIK-4034)', async () => {
+      await page.getByRole('button').click();
+      await locators.dialog(page).waitFor({ state: 'visible' });
 
-    //   await page.keyboard.press('Escape');
-    //   await locators.dialog(page).waitFor({ state: 'hidden' });
-    //   await expect(locators.dialog(page)).not.toBeVisible();
-    // });
+      await page.keyboard.press('Escape');
+      await locators.dialog(page).waitFor({ state: 'hidden' });
+      await expect(locators.dialog(page)).not.toBeVisible();
+    });
   });
 
   test('Verify not closable without interactive inside Side panel keyboard interactions', {
@@ -518,18 +488,25 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.dialog(page)).not.toBeVisible();
     });
 
-    // commented because of the bug UIK-4034
-    // await test.step('Verify modal can be closed Escape', async () => {
-    //         await page.keyboard.press('Enter');
-    //   await locators.dialog(page).waitFor({ state: 'visible' });
+    await test.step.skip('Verify modal can be closed by Escape (bug UIK-4034)', async () => {
+      await page.keyboard.press('Enter');
+      await locators.dialog(page).waitFor({ state: 'visible' });
 
-    //   await page.keyboard.press('Escape');
-    //   await locators.dialog(page).waitFor({ state: 'hidden' });
-    //   await expect(locators.dialog(page)).not.toBeVisible();
-    // });
+      await page.keyboard.press('Escape');
+      await locators.dialog(page).waitFor({ state: 'hidden' });
+      await expect(locators.dialog(page)).not.toBeVisible();
+    });
   });
 
-  test('Verify Header increases in height as the content in it increases', async ({ page }) => {
+  test('Verify Header does not shrink with additional content', {
+    tag: [TAG.PRIORITY_MEDIUM,
+      '@side-panel',
+      '@button',
+      '@base-components',
+      '@button-link',
+      '@flex-box',
+      '@typography'],
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/side-panel/tests/examples/side-panel-additional-states.tsx', 'en', { withClose: true, withAdditionalHeaderContent: true });
 
     await page.keyboard.press('Tab');

@@ -1,9 +1,8 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe(`@errors ${TAG.ACCESSIBILITY} `, () => {
+test.describe(`@errors ${TAG.ACCESSIBILITY}`, () => {
   test('Custom error', async ({ page }) => {
     await loadPage(page, 'stories/components/errors/docs/examples/custom-error.tsx', 'en');
 
@@ -11,6 +10,7 @@ test.describe(`@errors ${TAG.ACCESSIBILITY} `, () => {
 
     expect(violations).toEqual([]);
   });
+
   test('Templates', async ({ page }) => {
     await loadPage(page, 'stories/components/errors/docs/examples/templates.tsx', 'en');
 
