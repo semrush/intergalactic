@@ -62,7 +62,7 @@ export declare const ReferenceLine: IntergalacticD3Component<
   Context
 > & {
   /**
-   * @deprecated use `referenceArea` property on Chart.Line with title propertry
+   * @deprecated use `referenceArea` property on Chart.Line with title property
    */
   Title: IntergalacticD3Component<'text', ReferenceLineTitleProps, Context>;
   /**
