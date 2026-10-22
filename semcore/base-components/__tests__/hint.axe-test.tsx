@@ -4,18 +4,10 @@ import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
-  trigger: (page: Page, index?: number) => {
-    const base = page.getByRole('button');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  hint: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="Hint"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  text: (page: Page) => page.getByText('Export to PDF'),
+  hint: (page: Page) => page.locator('[data-ui-name="Hint"]'),
 };
 
-test.describe(`@hint ${TAG.ACCESSIBILITY}`, () => {
+test.describe(`@base-components @hint ${TAG.ACCESSIBILITY}`, () => {
   test('Basic usage', async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/hint/docs/examples/basic-usage.tsx', 'en');
 

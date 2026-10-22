@@ -4,7 +4,6 @@ import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
-
   button: (page: Page, name?: string, index?: number) => {
     const base = page.getByRole('button', { name });
     return typeof index === 'number' ? base.nth(index) : base;
@@ -21,7 +20,7 @@ export const locators = {
   @visual
   Visual states, hover and focus styles, paddings, margins, and snapshots.
   ===================================================== */
-test.describe(`${TAG.VISUAL} `, () => {
+test.describe(`${TAG.VISUAL}`, () => {
   const variables = [
     { placement: false },
     { placement: 'top' },
@@ -40,19 +39,24 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@d3-chart',
         '@flex-box',
         '@typography'],
-    }, async ({ page, browserName }) => {
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/drag-and-drop/tests/examples/with-cards-all-props.tsx', 'en', item);
+      const moveStep = item.placement === 'top' ? test.step : test.step.skip;
 
-      await page.locator('[data-ui-name="Card.Header"]').nth(1).hover();
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Space');
-      await expect(page).toHaveScreenshot();
+      await test.step('Verify marker of grabbed item', async () => {
+        await page.locator('[data-ui-name="Card.Header"]').nth(1).hover();
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Space');
+        await expect(page).toHaveScreenshot();
+      });
 
-      await page.keyboard.press('ArrowRight');
-      await page.keyboard.press('ArrowRight');
-      await expect(page).toHaveScreenshot();
-      await page.keyboard.press('Space');
-      await expect(page).toHaveScreenshot();
+      await moveStep('Verify item moved and dropped (placement does not affect it)', async () => {
+        await page.keyboard.press('ArrowRight');
+        await page.keyboard.press('ArrowRight');
+        await expect(page).toHaveScreenshot();
+        await page.keyboard.press('Space');
+        await expect(page).toHaveScreenshot();
+      });
     });
   });
 
@@ -67,7 +71,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       '@button-link',
       '@flex-box',
       '@typography'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/drag-and-drop/docs/examples/with_dropdownmenu.tsx', 'en');
 
     await locators.button(page).click();
@@ -139,7 +143,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
-test.describe(`${TAG.FUNCTIONAL} `, () => {
+test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('With cards', () => {
     test('Verify mouse interactions with draggable cards', {
       tag: [TAG.PRIORITY_HIGH,
@@ -159,30 +163,24 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
       await test.step('Verify attributes', async () => {
         await expect(locators.dragAndDropContainer(page)).toHaveAttribute('role', 'group');
-        const dropCount = await locators.dropZone(page).count();
-        for (let i = 0; i < dropCount; i++) {
-          await expect(locators.dropZone(page).nth(i)).toHaveAttribute('role', 'group');
-          await expect(locators.dropZone(page).nth(i)).toHaveAttribute('draggable', 'false');
+        await expect(locators.dropZone(page)).not.toHaveCount(0);
+        for (const dropZone of await locators.dropZone(page).all()) {
+          await expect(dropZone).toHaveAttribute('role', 'group');
+          await expect(dropZone).toHaveAttribute('draggable', 'false');
         }
-        const dragCount = await locators.draggable(page).count();
-        for (let i = 0; i < dragCount; i++) {
-          await expect(locators.draggable(page).nth(i)).toHaveAttribute('role', 'group');
-          await expect(locators.draggable(page).nth(i)).toHaveAttribute('draggable', 'true');
-          await expect(locators.draggable(page).nth(i)).toHaveAttribute('tabindex', '0');
-          await expect(locators.draggable(page).nth(i)).toHaveAttribute('aria-describedby');
+        await expect(locators.draggable(page)).not.toHaveCount(0);
+        for (const draggable of await locators.draggable(page).all()) {
+          await expect(draggable).toHaveAttribute('role', 'group');
+          await expect(draggable).toHaveAttribute('draggable', 'true');
+          await expect(draggable).toHaveAttribute('tabindex', '0');
+          await expect(draggable).toHaveAttribute('aria-describedby');
         }
       });
 
-      await test.step('Verify graggable items can be moved to the drop zone', async () => {
+      await test.step('Verify draggable items can be moved to the drop zone', async () => {
         await draggableMarketTraffic.waitFor({ state: 'visible' });
         await draggableMarketTraffic.dragTo(locators.dropZone(page).nth(0));
-        // Wait for DOM to update after drag operation
-        await expect.poll(
-          async () => await allItems.first().getAttribute('data-ui-name'),
-          {
-            timeout: 3000,
-          },
-        ).toBe('DragAndDrop.Draggable');
+        await expect(allItems.first()).toHaveAttribute('data-ui-name', 'DragAndDrop.Draggable', { timeout: 3000 });
       });
     });
 
@@ -201,29 +199,33 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
       const allItems = locators.dragAndDropContainer(page).locator('> *');
 
-      await page.keyboard.press('Tab');
-      await expect(locators.dropZone(page).first()).toBeFocused();
-      await page.keyboard.press('Tab');
-      await page.waitForTimeout(200); // added timeout because of slow animation of this component
-      await expect(locators.draggable(page).first()).toBeFocused();
-      await test.step('Verify graggable items can be moved to the drop zone', async () => {
+      const notWebkitStep = browserName === 'webkit' ? test.step.skip : test.step;
+
+      await test.step('Verify focus order: drop zone, then draggable', async () => {
+        await page.keyboard.press('Tab');
+        await expect(locators.dropZone(page).first()).toBeFocused();
+        await page.keyboard.press('Tab');
+        await page.waitForTimeout(200); // added timeout because of slow animation of this component
+        await expect(locators.draggable(page).first()).toBeFocused();
+      });
+
+      await test.step('Verify draggable item is grabbed by Space', async () => {
         await page.keyboard.press('Space');
         await page.waitForTimeout(100);
-
         await expect(locators.draggable(page).first()).toHaveClass(/keyboardDragging/, { timeout: 200 });
         await expect(page.getByRole('alert')).toHaveCount(1);
+      });
+
+      await test.step('Verify item is dropped by ArrowLeft and Space and keeps focus', async () => {
         await page.keyboard.press('ArrowLeft');
         await page.waitForTimeout(100);
-
         await page.keyboard.press('Space');
         await page.waitForTimeout(200);
-
         await expect(locators.draggable(page).first()).toBeFocused();
+      });
 
-        // Skip this check on webkit - drag and drop doesn't work properly with keyboard navigation
-        if (browserName !== 'webkit') {
-          await expect(allItems.first()).toHaveAttribute('data-ui-name', 'DragAndDrop.Draggable');
-        }
+      await notWebkitStep('Verify moved item becomes first in the container (keyboard DnD is unreliable in WebKit)', async () => {
+        await expect(allItems.first()).toHaveAttribute('data-ui-name', 'DragAndDrop.Draggable');
       });
 
       await test.step('Verify Escape cancels moving', async () => {
@@ -315,15 +317,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
       await test.step('Verify items can be moved by keyboard', async () => {
         await page.keyboard.press('Space');
-
-        await expect.poll(
-          async () => {
-            return await locators.menuItems(page, 0).getAttribute('class');
-          },
-          {
-            timeout: 200,
-          },
-        ).toMatch(/keyboardDragging/);
+        await expect(locators.menuItems(page, 0)).toHaveClass(/keyboardDragging/, { timeout: 200 });
 
         for (let i = 0; i < 4; i++) {
           await page.keyboard.press('ArrowDown');
@@ -344,14 +338,14 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
         await expect(locators.menuItems(page).last()).toBeFocused();
       });
 
-      await test.step('Verify Focus order', async () => {
+      await test.step('Verify focus order', async () => {
         await page.keyboard.press('Tab');
         await expect(locators.button(page, 'Reset to default')).toBeFocused();
         await page.keyboard.press('Shift+Tab');
         await expect(locators.menuItems(page).last()).toBeFocused();
       });
 
-      await test.step('Verify Reset to default returns checkoxes in initial state', async () => {
+      await test.step('Verify Reset to default returns checkboxes in initial state', async () => {
         await page.keyboard.press('Tab');
         await expect(locators.button(page, 'Reset to default')).toBeFocused();
 
@@ -370,7 +364,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
         }
       });
 
-      await test.step('Verify Closing dd menu and opening again save order', async () => {
+      await test.step('Verify closing and reopening dropdown menu saves order', async () => {
         await page.keyboard.press('Escape');
         await locators.menuItems(page, 1).waitFor({ state: 'hidden' });
         await page.keyboard.press('Enter');
