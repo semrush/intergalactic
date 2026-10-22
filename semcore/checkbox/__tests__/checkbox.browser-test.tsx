@@ -64,11 +64,11 @@ test.describe(`${TAG.VISUAL}`, () => {
       if (item.size == 'l') {
         await expect(locators.valueCheckmark(page)).toHaveCSS(
           'height',
-          '20px',
+          '24px',
         );
         await expect(locators.valueCheckmark(page)).toHaveCSS(
           'width',
-          '20px',
+          '24px',
         );
         await expect(locators.checkboxText(page)).toHaveCSS(
           'margin-left',
@@ -81,15 +81,15 @@ test.describe(`${TAG.VISUAL}`, () => {
       } else { // verify M checkbox styles
         await expect(locators.valueCheckmark(page)).toHaveCSS(
           'height',
-          '16px',
+          '20px',
         );
         await expect(locators.valueCheckmark(page)).toHaveCSS(
           'width',
-          '16px',
+          '20px',
         );
         await expect(locators.checkboxText(page)).toHaveCSS(
           'margin-left',
-          '6px',
+          '8px',
         );
         await expect(locators.checkboxText(page)).toHaveCSS(
           'font-size',

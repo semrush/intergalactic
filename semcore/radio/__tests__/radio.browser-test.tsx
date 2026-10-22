@@ -79,15 +79,15 @@ test.describe(`${TAG.VISUAL}`, () => {
 
                 const markWidth = await mark.evaluate((el) => getComputedStyle(el).width);
                 const markHeight = await mark.evaluate((el) => getComputedStyle(el).height);
-                expect(markWidth).toBe('16px');
-                expect(markHeight).toBe('16px');
+                expect(markWidth).toBe('20px');
+                expect(markHeight).toBe('20px');
 
                 const styles = await labelText.evaluate((el) => {
                   const s = getComputedStyle(el);
                   return { fontSize: s.fontSize, marginLeft: s.marginLeft };
                 });
                 expect(styles.fontSize).toBe('14px');
-                expect(styles.marginLeft).toBe('6px');
+                expect(styles.marginLeft).toBe('8px');
               }
             });
           } else {
@@ -99,8 +99,8 @@ test.describe(`${TAG.VISUAL}`, () => {
 
                 const markWidth = await mark.evaluate((el) => getComputedStyle(el).width);
                 const markHeight = await mark.evaluate((el) => getComputedStyle(el).height);
-                expect(markWidth).toBe('20px');
-                expect(markHeight).toBe('20px');
+                expect(markWidth).toBe('24px');
+                expect(markHeight).toBe('24px');
 
                 const styles = await labelText.evaluate((el) => {
                   const s = getComputedStyle(el);
@@ -183,15 +183,15 @@ test.describe(`${TAG.VISUAL}`, () => {
 
                 const markWidth = await mark.evaluate((el) => getComputedStyle(el).width);
                 const markHeight = await mark.evaluate((el) => getComputedStyle(el).height);
-                expect(markWidth).toBe('16px');
-                expect(markHeight).toBe('16px');
+                expect(markWidth).toBe('20px');
+                expect(markHeight).toBe('20px');
 
                 const styles = await labelText.evaluate((el) => {
                   const s = getComputedStyle(el);
                   return { fontSize: s.fontSize, marginLeft: s.marginLeft };
                 });
                 expect(styles.fontSize).toBe('14px');
-                expect(styles.marginLeft).toBe('6px');
+                expect(styles.marginLeft).toBe('8px');
               }
             });
           } else {
@@ -203,8 +203,8 @@ test.describe(`${TAG.VISUAL}`, () => {
 
                 const markWidth = await mark.evaluate((el) => getComputedStyle(el).width);
                 const markHeight = await mark.evaluate((el) => getComputedStyle(el).height);
-                expect(markWidth).toBe('20px');
-                expect(markHeight).toBe('20px');
+                expect(markWidth).toBe('24px');
+                expect(markHeight).toBe('24px');
 
                 const styles = await labelText.evaluate((el) => {
                   const s = getComputedStyle(el);
