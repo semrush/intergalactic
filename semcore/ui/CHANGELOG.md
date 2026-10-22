@@ -5033,7 +5033,7 @@ on the page from different applications.
 
 - **Added** `Cigarette` chart.
 - **Fixed** Dot's size for line, aria and bar charts.
-- **Fixed** background color for Bar chart from `--intergalactic-chart-palette-order-other-data` to `--intergalactic-chart-grid-bar-chart-base-bg`.
+- **Fixed** background color for Bar chart from `--intergalactic-chart-data-other-value` to `--intergalactic-chart-grid-bar-chart-base-bg`.
 
 ### @semcore/data-table
 

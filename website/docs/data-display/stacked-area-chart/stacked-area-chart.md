@@ -59,7 +59,7 @@ For detailed tooltip information, see [Chart principles](/data-display/d3-chart/
 
 ### One value
 
-Display dots by default for charts with a single data point. The line is dashed and colored with `--chart-palette-order-other-data`.
+Display dots by default for charts with a single data point. The line is dashed and colored with `--chart-data-other-value`.
 
 ![one-dot](static/one-dot-stacked-area-chart.png)
 

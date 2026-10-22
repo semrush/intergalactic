@@ -690,6 +690,26 @@
     "components": []
   },
   {
+    "name": "--intergalactic-chart-data-null",
+    "value": "oklch(0.9 0.009 234)",
+    "description": "Use it to show null value on the chart.",
+    "components": [
+      "d3-chart"
+    ]
+  },
+  {
+    "name": "--intergalactic-chart-data-other-value",
+    "value": "oklch(0.82 0.016 237.4)",
+    "description": "Use it to indicate voids, missing or some other data on the chart.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-data-total-amount",
+    "value": "oklch(0.64 0.022 243.8)",
+    "description": "Use it to show total value on the chart.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-chart-data-intent-commercial",
     "value": "oklch(0.74 0.17 303)",
     "description": "Color for the commercial data intent on the chart.",
@@ -997,26 +1017,6 @@
     "name": "--intergalactic-chart-palette-order-24",
     "value": "oklch(0.64 0.16 64)",
     "description": "24 color in the default list of colors for charts.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-chart-palette-order-null",
-    "value": "oklch(0.9 0.009 234)",
-    "description": "Use it to show null value on the chart.",
-    "components": [
-      "d3-chart"
-    ]
-  },
-  {
-    "name": "--intergalactic-chart-palette-order-other-data",
-    "value": "oklch(0.82 0.016 237.4)",
-    "description": "Use it to indicate voids, missing or some other data on the chart.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-chart-palette-order-total-amount",
-    "value": "oklch(0.64 0.022 243.8)",
-    "description": "Use it to show total value on the chart.",
     "components": []
   },
   {

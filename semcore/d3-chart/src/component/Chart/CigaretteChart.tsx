@@ -275,7 +275,7 @@ class CigaretteChartComponent extends AbstractChart<
               hide={false}
               duration={duration}
               r={r}
-              color='--intergalactic-chart-palette-order-null'
+              color='--intergalactic-chart-data-null'
               patterns={patterns}
               direction={invertAxis ? 'horizontal' : 'vertical'}
               hovered={false}
