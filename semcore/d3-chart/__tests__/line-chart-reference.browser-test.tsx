@@ -4,6 +4,7 @@ import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 const BASIC_USAGE_STORY = 'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx';
+const TIME_AXIS_STORY = 'stories/components/d3-chart/docs/examples/d3-chart/reference-line.tsx';
 
 export const locators = {
   chart: (page: Page) => page.locator('[data-ui-name="Chart.Line"]').first(),
@@ -32,6 +33,13 @@ const expectEachToBeHiddenFromA11y = async (locator: Locator) => {
 
   expect(exposed).toEqual([]);
 };
+
+/** SVG user-space box; WebKit's `boundingBox()` is unreliable for `<text>`. */
+const getSvgBox = (locator: Locator) =>
+  locator.evaluate((element) => {
+    const { x, width } = (element as SVGGraphicsElement).getBBox();
+    return { x, width };
+  });
 
 const getBox = async (locator: Locator) => {
   const box = await locator.boundingBox();
@@ -148,6 +156,64 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     await test.step('Verify chart with reference line renders correctly', async () => {
+      await expect(locators.chart(page)).toHaveScreenshot();
+    });
+  });
+
+  test('Verify several reference lines passed as an array', {
+    tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@base-components', '@flex-box'],
+  }, async ({ page }) => {
+    await loadPage(page, BASIC_USAGE_STORY, 'en', {
+      duration: 0,
+      withReferenceLine: true,
+      referenceLineCount: 3,
+      referenceLineArea: 40,
+    });
+    await locators.plot(page).waitFor({ state: 'visible' });
+
+    await test.step('Every line is rendered with its own area', async () => {
+      await expect(locators.referenceLine(page)).toHaveCount(3);
+      await expect(locators.referenceLineArea(page)).toHaveCount(3);
+    });
+
+    await test.step('Every area has its own gradient', async () => {
+      const ids = await locators.gradients(page).evaluateAll((elements) => elements.map((gradient) => gradient.id));
+
+      expect(ids).toHaveLength(3);
+      expect(new Set(ids).size).toBe(3);
+    });
+
+    await test.step('Verify chart with several reference lines renders correctly', async () => {
+      await expect(locators.chart(page)).toHaveScreenshot();
+    });
+  });
+
+  test('Verify reference line and area on a time axis', {
+    tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(page, TIME_AXIS_STORY, 'en');
+    await locators.plot(page).waitFor({ state: 'visible' });
+
+    await test.step('Date values render both lines and the area', async () => {
+      await expect(locators.referenceLine(page)).toHaveCount(2);
+      await expect(locators.referenceLineArea(page)).toHaveCount(1);
+      await expect(locators.referenceArea(page)).toHaveCount(1);
+    });
+
+    await test.step('No reference geometry has NaN', async () => {
+      const ds = await locators.referenceShapes(page).evaluateAll((paths) =>
+        paths.map((path) => path.getAttribute('d') ?? ''),
+      );
+
+      expect(ds.filter((d) => d.includes('NaN'))).toEqual([]);
+    });
+
+    await test.step('Area texts are rendered', async () => {
+      await expect(locators.plotText(page, 'Wow!')).toHaveCount(1);
+      await expect(locators.plotText(page, SUB_TITLE)).toHaveCount(1);
+    });
+
+    await test.step('Verify time axis chart with references renders correctly', async () => {
       await expect(locators.chart(page)).toHaveScreenshot();
     });
   });
@@ -331,7 +397,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
       await locators.plot(page).waitFor({ state: 'visible' });
 
-      const area = await getBox(locators.referenceArea(page));
+      const area = await getSvgBox(locators.referenceArea(page));
 
       for (const [text, isSet] of [[SHORT_TITLE, Boolean(title)], [SUB_TITLE, Boolean(subTitle)]] as const) {
         await test.step(`"${text}" is ${isSet ? 'rendered inside the area' : 'not rendered'}`, async () => {
@@ -343,7 +409,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           }
 
           await expect(node).toHaveCount(1);
-          const box = await getBox(node);
+          const box = await getSvgBox(node);
           expect(box.x).toBeGreaterThanOrEqual(area.x);
           expect(box.x).toBeLessThan(area.x + area.width);
         });
@@ -412,5 +478,30 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       .evaluateAll((elements) => elements.filter((element) => element.hasAttribute('tabindex')).length);
 
     expect(focusable).toBe(0);
+  });
+
+  test('Verify a single-item array renders like a single reference line', {
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart', '@base-components', '@flex-box'],
+  }, async ({ page }) => {
+    const props = { duration: 0, withReferenceLine: true, referenceLineValue: 10, referenceLineArea: 40 };
+
+    await loadPage(page, BASIC_USAGE_STORY, 'en', props);
+    await locators.plot(page).waitFor({ state: 'visible' });
+    const objectArea = await getBox(locators.referenceLineArea(page));
+
+    await loadPage(page, BASIC_USAGE_STORY, 'en', { ...props, referenceLineCount: 1 });
+    await locators.plot(page).waitFor({ state: 'visible' });
+
+    await test.step('One line and one area are rendered', async () => {
+      await expect(locators.referenceLine(page)).toHaveCount(1);
+      await expect(locators.referenceLineArea(page)).toHaveCount(1);
+    });
+
+    await test.step('Area has the same position and size', async () => {
+      const arrayArea = await getBox(locators.referenceLineArea(page));
+
+      expect(Math.abs(arrayArea.x - objectArea.x)).toBeLessThanOrEqual(1);
+      expect(Math.abs(arrayArea.width - objectArea.width)).toBeLessThanOrEqual(1);
+    });
   });
 });

@@ -66,6 +66,8 @@ export const BasicUsage = {
     withReferenceLine: { control: 'boolean', ...referenceKnob },
     referenceLineValue: { control: 'number', if: { arg: 'withReferenceLine' }, ...referenceKnob },
     referenceLineArea: { control: 'number', if: { arg: 'withReferenceLine' }, ...referenceKnob },
+    referenceLineCount: { control: { type: 'number', min: 1, max: 3 }, if: { arg: 'withReferenceLine' }, ...referenceKnob },
+    referenceLinesOverlap: { control: 'boolean', if: { arg: 'withReferenceLine' }, ...referenceKnob },
     withReferenceArea: { control: 'boolean', ...referenceKnob },
     referenceAreaStart: { control: 'number', if: { arg: 'withReferenceArea' }, ...referenceKnob },
     referenceAreaEnd: { control: 'number', if: { arg: 'withReferenceArea' }, ...referenceKnob },

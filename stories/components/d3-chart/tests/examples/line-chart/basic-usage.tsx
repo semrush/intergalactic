@@ -38,6 +38,13 @@ type LineChartStoryProps = LineChartProps & {
 
   referenceLineValue?: number;
   referenceLineArea?: number;
+  /**
+   * Number of reference lines, passed as an array and spaced 5 points apart from
+   * `referenceLineValue`. Unset keeps the single-object form.
+   */
+  referenceLineCount?: number;
+  /** Puts every line from `referenceLineCount` on the same value instead of 5 points apart. */
+  referenceLinesOverlap?: boolean;
   referenceAreaStart?: number;
   referenceAreaEnd?: number;
   referenceAreaUse?: 'neutral' | 'insight' | 'good' | 'bad';
@@ -125,6 +132,8 @@ const Demo = (props: LineChartStoryProps) => {
     withReferenceArea,
     referenceLineValue,
     referenceLineArea,
+    referenceLineCount,
+    referenceLinesOverlap,
     referenceAreaStart,
     referenceAreaEnd,
     referenceAreaUse,
@@ -176,14 +185,19 @@ const Demo = (props: LineChartStoryProps) => {
   };
 
   if (withReferenceLine) {
-    responsiveChartProps.referenceLine = { value: String(referenceLineValue ?? 3), area: referenceLineArea || undefined };
+    const firstValue = referenceLineValue ?? 3;
+    const step = referenceLinesOverlap ? 0 : 5;
+
+    responsiveChartProps.referenceLine = referenceLineCount
+      ? Array.from({ length: referenceLineCount }, (_, i) => ({ value: firstValue + i * step, area: referenceLineArea }))
+      : { value: firstValue, area: referenceLineArea };
   }
 
   if (withReferenceArea) {
     const use = referenceAreaUse ?? 'insight' as const;
 
     responsiveChartProps.referenceArea = {
-      value: [String(referenceAreaStart ?? 12), String(referenceAreaEnd ?? 16)],
+      value: [referenceAreaStart ?? 12, referenceAreaEnd ?? 16],
       use,
       title: referenceAreaTitle || undefined,
       subTitle: referenceAreaSubTitle || undefined,
@@ -231,6 +245,7 @@ export const defaultProps = getChartProps<LineChartStoryProps>({
   withReferenceLine: false,
   withReferenceArea: false,
   referenceLineValue: 3,
+  referenceLinesOverlap: false,
   referenceAreaStart: 12,
   referenceAreaEnd: 16,
   referenceAreaTitle: '',
