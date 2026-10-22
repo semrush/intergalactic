@@ -1,4 +1,8 @@
-import { expect, describe } from '../../testing-utils/vitest';
+import { mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+
+import { expect, describe, beforeEach, afterEach } from '../../testing-utils/vitest';
 import { processCssVitePlugin } from '../src/index';
 
 // Helper to call transform hook
@@ -11,16 +15,21 @@ const callTransformInclude = (plugin: any, id: string) => {
   return plugin.transformInclude(id);
 };
 
+const createSourceCode = (css: string, isCommonJS: boolean = false) => `
+${isCommonJS ? 'const React = require(\'react\')' : 'import React from \'react\''};
+/*!__reshadow-styles__:"./style/button.shadow.css"*/
+const style = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*/"${css}",/*__inner_css_end__*/"hash"),
+/*__reshadow_css_end__*/
+{});
+`;
+
+const getImportPath = (code: string) => code.match(/import '([^']+)';/)?.[1];
+
 describe('process-css-unplugin', () => {
   describe('CSS extraction and transformation', (test) => {
     test('Verify CSS extraction from reshadow markers and virtual file creation', () => {
       const plugin = processCssVitePlugin({ virtualFilesPrefix: 'test' });
-
-      const sourceCode = `import React from 'react';
-/*!__reshadow-styles__:"./style/button.shadow.css"*/
-const style = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*/".button { color: red; }",/*__inner_css_end__*/"hash"),
-/*__reshadow_css_end__*/
-{});`;
+      const sourceCode = createSourceCode('.button { color: red; }');
 
       const id = '/node_modules/@semcore/button/lib/es6/Button.js';
       const result = callTransform(plugin, sourceCode, id);
@@ -35,12 +44,7 @@ const style = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*/
     test('Verify CommonJS require syntax', () => {
       const plugin = processCssVitePlugin({});
 
-      const sourceCode = `const React = require('react');
-/*!__reshadow-styles__:"./style/button.shadow.css"*/
-const style = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*/".button { color: green; }",/*__inner_css_end__*/"hash"),
-/*__reshadow_css_end__*/
-{});
-`;
+      const sourceCode = createSourceCode('.button { color: green; }', true);
 
       const id = '/node_modules/@semcore/button/lib/index.js';
       const result = callTransform(plugin, sourceCode, id);
@@ -146,13 +150,7 @@ const style2 = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*
     test('Verify isolationSuffix works correctly', () => {
       const plugin = processCssVitePlugin({});
 
-      const cssContent = '.button { content: "Hello"; }';
-      const sourceCode = `import React from 'react';
-/*!__reshadow-styles__:"./style/button.shadow.css"*/
-const style = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*/"${cssContent}",/*__inner_css_end__*/"hash"),
-/*__reshadow_css_end__*/
-{});
-`;
+      const sourceCode = createSourceCode('.button { content: "Hello"; }');
 
       const id = '/node_modules/@semcore/button/lib/index.js';
       const result = callTransform(plugin, sourceCode, id);
@@ -166,13 +164,7 @@ const style = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*/
     test('Verify creation and loading of virtual CSS files', () => {
       const plugin = processCssVitePlugin({});
 
-      const cssContent = '.test { color: red; }';
-      const sourceCode = `import React from 'react';
-/*!__reshadow-styles__:"./style/test.shadow.css"*/
-const style = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*/"${cssContent}",/*__inner_css_end__*/"hash"),
-/*__reshadow_css_end__*/
-{});
-`;
+      const sourceCode = createSourceCode('.test { color: red; }');
 
       const id = '/node_modules/@semcore/test/lib/index.js';
 
@@ -190,21 +182,9 @@ const style = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*/
     test('Verify generation of different virtual files for different content', () => {
       const plugin = processCssVitePlugin({});
 
-      const sourceCode1 = `
-        import React from 'react';
-        /*!__reshadow-styles__:"./style/button.shadow.css"*/
-        const style = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*/".button { color: red; }",/*__inner_css_end__*/"hash"),
-      /*__reshadow_css_end__*/
-        {});
-      `;
+      const sourceCode1 = createSourceCode('.button { color: red; }');
 
-      const sourceCode2 = `
-        import React from 'react';
-        /*!__reshadow-styles__:"./style/button.shadow.css"*/
-        const style = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*/".button { color: blue; }",/*__inner_css_end__*/"hash"),
-      /*__reshadow_css_end__*/
-        {});
-      `;
+      const sourceCode2 = createSourceCode('.button { color: blue; }');
 
       const id = '/node_modules/@semcore/button/lib/index.js';
       const result1 = callTransform(plugin, sourceCode1, id);
@@ -219,12 +199,7 @@ const style = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*/
     test('Verify generation of consistent results for same content', () => {
       const plugin = processCssVitePlugin({});
 
-      const sourceCode = `import React from 'react';
-/*!__reshadow-styles__:"./style/button.shadow.css"*/
-const style = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*/".button { color: red; }",/*__inner_css_end__*/"hash"),
-/*__reshadow_css_end__*/
-{});
-`;
+      const sourceCode = createSourceCode('.button { color: red; }');
 
       const id = '/node_modules/@semcore/button/lib/index.js';
       const result1 = callTransform(plugin, sourceCode, id);
@@ -232,18 +207,185 @@ const style = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*/
 
       expect(result1?.code).toBe(result2?.code);
     });
+
+    test('Verify same file name for identical CSS from different module ids', () => {
+      const plugin = processCssVitePlugin({});
+      const sourceCode = createSourceCode('.button { color: red; }');
+
+      const ids = [
+        '/node_modules/@semcore/button/lib/es6/index.js',
+        '/node_modules/@semcore/button/lib/es6/index.js?v=1a2b3c',
+        '/node_modules/.pnpm/@semcore+button@1.0.0/node_modules/@semcore/button/lib/es6/index.js?v=4d5e6f',
+      ];
+
+      const importPaths = ids.map((id) => getImportPath(callTransform(plugin, sourceCode, id).code));
+
+      expect(importPaths[0]).toBeDefined();
+      expect(new Set(importPaths).size).toBe(1);
+    });
+  });
+
+  describe('Vite cache directory', (test) => {
+    let cacheDir: string;
+
+    beforeEach(() => {
+      cacheDir = mkdtempSync(join(tmpdir(), 'process-css-unplugin-'));
+    });
+
+    afterEach(() => {
+      rmSync(cacheDir, { recursive: true, force: true });
+    });
+
+    test('Verify CSS is written to cacheDir and imported by absolute path', () => {
+      const plugin = processCssVitePlugin({ virtualFilesPrefix: 'test', isolationSuffix: '_team_' });
+      // @ts-expect-error
+      plugin.configResolved({ cacheDir });
+
+      const sourceCode = createSourceCode('.___SButton_abc_gg_ { color: red; }');
+      const result = callTransform(plugin, sourceCode, '/node_modules/@semcore/button/lib/es6/index.js');
+      const importPath = getImportPath(result.code)!;
+
+      const cssDir = join(cacheDir, 'semcore-css').replace(/\\/g, '/');
+      const files = readdirSync(cssDir);
+
+      expect(files).toHaveLength(1);
+      expect(files[0]).toMatch(/^test_\d+\.css$/);
+      expect(importPath).toBe(`${cssDir}/${files[0]}`);
+      expect(readFileSync(importPath, 'utf-8')).toBe('.___SButton_abc_team_ { color: red; }');
+    });
+
+    test('Verify no duplicate files for repeated transforms of the same CSS', () => {
+      const plugin = processCssVitePlugin({});
+      // @ts-expect-error
+      plugin.configResolved({ cacheDir });
+
+      const sourceCode = createSourceCode('.button { color: red; }');
+      callTransform(plugin, sourceCode, '/node_modules/@semcore/button/lib/es6/index.js');
+      callTransform(plugin, sourceCode, '/node_modules/@semcore/button/lib/es6/index.js?v=1a2b3c');
+      callTransform(plugin, sourceCode, '/node_modules/@semcore/button/lib/cjs/index.js');
+
+      expect(readdirSync(join(cacheDir, 'semcore-css'))).toHaveLength(1);
+    });
+
+    test('Verify written CSS files are not registered as virtual modules', () => {
+      const plugin = processCssVitePlugin({});
+      // @ts-expect-error
+      plugin.configResolved({ cacheDir });
+
+      const result = callTransform(
+        plugin,
+        createSourceCode('.button { color: red; }'),
+        '/node_modules/@semcore/button/lib/es6/index.js',
+      );
+      const importPath = getImportPath(result.code)!;
+
+      expect(
+        // @ts-expect-error
+        plugin.resolveId(importPath),
+      ).toBeNull();
+      expect(
+        // @ts-expect-error
+        plugin.resolveId(importPath.split('/').pop()),
+      ).toBeNull();
+    });
+  });
+
+  describe('Dependency optimization', (test) => {
+    const sourceCode = createSourceCode('.button { color: red; }');
+
+    test('Verify Rolldown deps plugin is registered when rolldownVersion is present', () => {
+      const plugin = processCssVitePlugin({});
+      // @ts-expect-error
+      const config = plugin.config.call({ meta: { rolldownVersion: '1.0.0' } });
+
+      expect(config.optimizeDeps.esbuildOptions).toBeUndefined();
+      expect(config.optimizeDeps.rolldownOptions.plugins).toHaveLength(1);
+
+      const [depsPlugin] = config.optimizeDeps.rolldownOptions.plugins;
+
+      expect(depsPlugin.name).toBe('semcore-process-css-unplugin:deps');
+
+      const result = depsPlugin.transform(sourceCode, '/node_modules/@semcore/button/lib/es6/index.js');
+
+      expect(result.code).not.toContain('__reshadow_css_start__');
+      expect(getImportPath(result.code)).toMatch(/\.css$/);
+      expect(depsPlugin.transform(sourceCode, '/node_modules/other-lib/index.js')).toBeNull();
+    });
+
+    test('Verify esbuild deps plugin is registered without rolldownVersion', () => {
+      const plugin = processCssVitePlugin({});
+
+      for (const context of [undefined, { meta: { rollupVersion: '4.0.0' } }]) {
+        // @ts-expect-error
+        const config = plugin.config.call(context);
+
+        expect(config.optimizeDeps.rolldownOptions).toBeUndefined();
+        expect(config.optimizeDeps.esbuildOptions.plugins).toHaveLength(1);
+        expect(config.optimizeDeps.esbuildOptions.plugins[0].name).toBe('semcore-process-css-unplugin:deps');
+      }
+    });
+
+    test('Verify esbuild deps plugin filter matches only @semcore JS files', () => {
+      const plugin = processCssVitePlugin({});
+      // @ts-expect-error
+      const config = plugin.config.call(undefined);
+
+      let filter: RegExp | undefined;
+      config.optimizeDeps.esbuildOptions.plugins[0].setup({
+        onLoad: (options: { filter: RegExp }) => {
+          filter = options.filter;
+        },
+      });
+
+      expect(filter!.test('/app/node_modules/@semcore/button/lib/es6/index.js')).toBe(true);
+      expect(filter!.test('/app/node_modules/@semcore/button/lib/es6/index.mjs')).toBe(true);
+      expect(filter!.test('/app/node_modules/@semcore/button/lib/cjs/index.cjs')).toBe(true);
+      expect(filter!.test('C:\\app\\node_modules\\@semcore\\button\\lib\\es6\\index.js')).toBe(true);
+      expect(filter!.test('/app/node_modules/other-lib/index.js')).toBe(false);
+      expect(filter!.test('/app/node_modules/@semcore/button/style.css')).toBe(false);
+    });
+
+    test('Verify esbuild deps plugin transforms loaded files', async () => {
+      const tempDir = mkdtempSync(join(tmpdir(), 'process-css-unplugin-'));
+
+      try {
+        const plugin = processCssVitePlugin({});
+        // @ts-expect-error
+        plugin.configResolved({ cacheDir: join(tempDir, '.vite') });
+
+        // @ts-expect-error
+        const config = plugin.config.call(undefined);
+
+        let onLoadCallback: ((args: { path: string }) => Promise<{ contents: string; loader: string }>) | undefined;
+        config.optimizeDeps.esbuildOptions.plugins[0].setup({
+          onLoad: (_: unknown, callback: typeof onLoadCallback) => {
+            onLoadCallback = callback;
+          },
+        });
+
+        const packageDir = join(tempDir, 'node_modules', '@semcore', 'button', 'lib', 'es6');
+        const filePath = join(packageDir, 'index.js');
+        mkdirSync(packageDir, { recursive: true });
+        writeFileSync(filePath, sourceCode);
+
+        const result = await onLoadCallback!({ path: filePath });
+        const importPath = getImportPath(result.contents)!;
+
+        expect(result.loader).toBe('js');
+        expect(result.contents).not.toContain('__reshadow_css_start__');
+        expect(importPath).toContain('/.vite/semcore-css/');
+        expect(readFileSync(importPath, 'utf-8')).toBe('.button { color: red; }');
+      } finally {
+        rmSync(tempDir, { recursive: true, force: true });
+      }
+    });
   });
 
   describe('Edge cases', (test) => {
     test('Verify handling of @semcore/flags package specifically', () => {
       const plugin = processCssVitePlugin({});
 
-      const sourceCode = `const React = require('react');
-/*!__reshadow-styles__:"./style/flag.shadow.css"*/
-const style = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*/".flag { color: red; }",/*__inner_css_end__*/"hash"),
-/*__reshadow_css_end__*/
-{});
-`;
+      const sourceCode = createSourceCode('.flag { color: red; }');
 
       const id = '/node_modules/@semcore/flags/lib/index.js';
       const result = callTransform(plugin, sourceCode, id);
@@ -274,8 +416,14 @@ export default Button;
     test('Verify plugin works without options and has correct metadata', () => {
       const plugin = processCssVitePlugin({});
       expect(plugin).toBeDefined();
-      expect((plugin as any).name).toBe('semcore-process-css-unplugin');
-      expect((plugin as any).enforce).toBe('pre');
+      expect(
+        // @ts-expect-error
+        plugin.name,
+      ).toBe('semcore-process-css-unplugin');
+      expect(
+        // @ts-expect-error
+        plugin.enforce,
+      ).toBe('pre');
     });
   });
 });
