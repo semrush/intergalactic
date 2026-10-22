@@ -92,21 +92,22 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     });
   };
 
-  handleRef = (index: number, row: DTRow<UniqKeyType>) => (node: HTMLElement | null) => {
-    if (node) {
-      this.rowsHeightMap.set(index, [0, 0, node]);
-      this.setRowHeight(index, row);
-    }
-  };
+  handleComponentRef = (index: number, row: DTRow<UniqKeyType>, component: RowRoot<Data, UniqKeyType> | null) => {
+    const id = row[UNIQ_ROW_KEY];
+    if (component) {
+      if (this.asProps.virtualScroll) {
+        const node = component.rowElementRef.current;
 
-  handleComponentRef = (row: DTRow<UniqKeyType>) => (component: RowRoot<Data, UniqKeyType> | null) => {
-    requestAnimationFrame(() => {
-      if (component) {
-        this.rowsComponentsMap.set(row[UNIQ_ROW_KEY], component);
-      } else {
-        this.rowsComponentsMap.delete(row[UNIQ_ROW_KEY]);
+        if (node) {
+          this.rowsHeightMap.set(index, [0, 0, node]);
+          this.setRowHeight(index, row);
+        }
       }
-    });
+
+      this.rowsComponentsMap.set(id, component);
+    } else {
+      this.rowsComponentsMap.delete(id);
+    }
   };
 
   getPropsToRow = (props: { row: DTRow<UniqKeyType>; mergedRow?: boolean }): DataTableRowProps<Data, UniqKeyType> => {
@@ -380,7 +381,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
                 startIndex={this.startIndex}
                 rowIndex={index}
                 shadowVertical={shadowVertical}
-                handleRef={this.handleRef}
                 handleComponentRef={this.handleComponentRef}
                 getPropsToRow={this.getPropsToRow}
               />
@@ -391,8 +391,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
             <Row
               key={row[UNIQ_ROW_KEY]?.toString()}
               {...this.getPropsToRow({ row })}
-              ref={virtualScroll ? this.handleRef(this.startIndex + index, row) : undefined}
-              componentRef={this.handleComponentRef(row)}
+              componentRef={this.handleComponentRef}
             />
           );
         })}
