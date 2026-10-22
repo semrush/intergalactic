@@ -36,9 +36,20 @@ type LineChartStoryProps = LineChartProps & {
   withReferenceLine?: boolean;
   withReferenceArea?: boolean;
 
+  referenceLineValue?: number;
   referenceLineArea?: number;
+  /**
+   * Number of reference lines, passed as an array and spaced 5 points apart from
+   * `referenceLineValue`. Unset keeps the single-object form.
+   */
+  referenceLineCount?: number;
+  /** Puts every line from `referenceLineCount` on the same value instead of 5 points apart. */
+  referenceLinesOverlap?: boolean;
+  referenceAreaStart?: number;
+  referenceAreaEnd?: number;
   referenceAreaUse?: 'neutral' | 'insight' | 'good' | 'bad';
-  referenceAreaWithTitles?: boolean;
+  referenceAreaTitle?: string;
+  referenceAreaSubTitle?: string;
 };
 
 /**
@@ -119,9 +130,15 @@ const Demo = (props: LineChartStoryProps) => {
     withInterpolatedGaps,
     withReferenceLine,
     withReferenceArea,
+    referenceLineValue,
     referenceLineArea,
+    referenceLineCount,
+    referenceLinesOverlap,
+    referenceAreaStart,
+    referenceAreaEnd,
     referenceAreaUse,
-    referenceAreaWithTitles,
+    referenceAreaTitle,
+    referenceAreaSubTitle,
     ...chartProps
   } = getPropsToChart(props);
 
@@ -168,17 +185,22 @@ const Demo = (props: LineChartStoryProps) => {
   };
 
   if (withReferenceLine) {
-    responsiveChartProps.referenceLine = { value: '3', area: referenceLineArea || undefined };
+    const firstValue = referenceLineValue ?? 3;
+    const step = referenceLinesOverlap ? 0 : 5;
+
+    responsiveChartProps.referenceLine = referenceLineCount
+      ? Array.from({ length: referenceLineCount }, (_, i) => ({ value: firstValue + i * step, area: referenceLineArea }))
+      : { value: firstValue, area: referenceLineArea };
   }
 
   if (withReferenceArea) {
     const use = referenceAreaUse ?? 'insight' as const;
 
     responsiveChartProps.referenceArea = {
-      value: ['12', '16'],
+      value: [referenceAreaStart ?? 12, referenceAreaEnd ?? 16],
       use,
-      title: referenceAreaWithTitles ? 'Good' : undefined,
-      subTitle: referenceAreaWithTitles ? '+10%' : undefined,
+      title: referenceAreaTitle || undefined,
+      subTitle: referenceAreaSubTitle || undefined,
     };
   }
 
@@ -222,7 +244,12 @@ export const defaultProps = getChartProps<LineChartStoryProps>({
   deltaOverride: 'off',
   withReferenceLine: false,
   withReferenceArea: false,
-  referenceAreaWithTitles: false,
+  referenceLineValue: 3,
+  referenceLinesOverlap: false,
+  referenceAreaStart: 12,
+  referenceAreaEnd: 16,
+  referenceAreaTitle: '',
+  referenceAreaSubTitle: '',
 });
 
 Demo.defaultProps = defaultProps;
