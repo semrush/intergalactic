@@ -54,7 +54,7 @@ export type ReferenceStripesProps = Context & {
   endValue?: number | string;
 };
 /**
- * @deprecated use `referenceArea` property on Chart.Line.
+ * @deprecated use `referenceLine` property on Chart.Line.
  */
 export declare const ReferenceLine: IntergalacticD3Component<
   'line',
