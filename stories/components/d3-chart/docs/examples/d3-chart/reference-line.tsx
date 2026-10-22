@@ -1,17 +1,23 @@
-import { Plot, ReferenceLine, ReferenceStripes, XAxis, YAxis } from '@semcore/ui/d3-chart';
+import { Chart } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
 import LineMockData from '../../../__mocks__/line';
 
 const data = LineMockData.Months;
-const yTicks = [0, 10000, 20000, 30000];
 
 const monthCenter = (date: Date) => new Date(date.getFullYear(), date.getMonth(), 15);
-const nextMonth = (date: Date) => new Date(date.getFullYear(), date.getMonth() + 1, 1);
+
+const valueFormatter = (value: unknown) => {
+  if (typeof value === 'number') {
+    return value === 0 ? '0' : `${value / 1000}K`;
+  }
+
+  return null;
+};
 
 const Demo = () => {
-  const MARGIN = { top: 28, right: 48, bottom: 32, left: 16 };
+  const MARGIN = { top: 28, right: 0, bottom: 32, left: 46 };
   const width = 500;
   const height = 220;
   const plotWidth = width - MARGIN.left - MARGIN.right;
@@ -20,45 +26,29 @@ const Demo = () => {
 
   const xScale = scaleTime()
     .range([MARGIN.left, width - MARGIN.right])
-    .domain([data[0].time, nextMonth(lastMonth)]);
+    .domain([data[0].time, lastMonth]);
 
   const yScale = scaleLinear()
     .range([height - MARGIN.bottom, MARGIN.top])
     .domain([0, 30000]);
 
   return (
-    <Plot
+    <Chart.Line
       data={data}
-      scale={[xScale, yScale]}
-      width={width}
-      height={height}
+      plotWidth={width}
+      plotHeight={height}
+      xScale={xScale}
+      yScale={yScale}
+      yTicksCount={4}
+      groupKey='time'
       aria-label='Line chart'
-    >
-      <YAxis position='right' ticks={yTicks}>
-        <YAxis.Ticks>
-          {({ value }) => ({
-            children: value === 0 ? '0' : `${value / 1000}K`,
-          })}
-        </YAxis.Ticks>
-        <YAxis.Grid />
-      </YAxis>
-      <XAxis ticks={data.map((d) => monthCenter(d.time))}>
-        <XAxis.Ticks>
-          {({ value }) => ({
-            children: new Intl.DateTimeFormat('en', { month: 'short' }).format(value),
-          })}
-        </XAxis.Ticks>
-      </XAxis>
-      <ReferenceLine value={monthCenter(data[1].time)} />
-      <ReferenceLine value={monthCenter(data[2].time)} area={monthWidth} />
-      <ReferenceStripes
-        value={data[4].time}
-        endValue={nextMonth(data[4].time)}
-        use='good'
-        title='Wow!'
-        subTitle='+10%'
-      />
-    </Plot>
+      axisYValueFormatter={valueFormatter}
+      referenceLine={[
+        { value: monthCenter(data[0].time) },
+        { value: monthCenter(data[1].time), area: monthWidth },
+      ]}
+      referenceArea={{ value: [data[3].time, data[4].time], use: 'good', title: 'Wow!', subTitle: '+10%' }}
+    />
   );
 };
 

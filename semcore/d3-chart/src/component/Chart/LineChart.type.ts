@@ -19,7 +19,7 @@ type ReferenceLine = {
   /**
    * Simple reference line.
    */
-  value: string;
+  value: string | number | Date;
 
   /**
    * Size of area near line
@@ -31,7 +31,7 @@ type ReferenceArea = {
   /**
    * Reference line with area.
    */
-  value: [string, string];
+  value: [string | number | Date, string | number | Date];
   /**
    * @default neutral.
    */
@@ -66,7 +66,7 @@ export type LineChartProps = BaseChartProps<LineChartData> & {
   /**
    * Settings for render reference line.
    */
-  referenceLine?: ReferenceLine;
+  referenceLine?: ReferenceLine | ReferenceLine[];
   /**
    * Settings for render reference area.
    */

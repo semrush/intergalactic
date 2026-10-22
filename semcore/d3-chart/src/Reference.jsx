@@ -148,26 +148,28 @@ class ReferenceLineRoot extends Component {
   render() {
     const SReferenceLine = this.Element;
     const SArea = SvgElement;
-    const { title, scale, position, value, color, resolveColor, styles, uid, area = 0 } = this.asProps;
+    const { title, scale, position, value, color, resolveColor, styles, uid, area } = this.asProps;
     const positionProps = lineDirection2props[side2direction[position]];
     const { notchFirst, notchLast, ...line } = positionProps(scale, value);
     const patternId = `${uid}-pattern`;
 
     return sstyled(styles)(
       <>
-        <g>
-          <defs>
-            <linearGradient id={patternId} x1='0%' y1='0%' x2='0%' y2='100%'>
-              {getColorByUse('neutral', resolveColor)}
-            </linearGradient>
-          </defs>
+        {area && (
+          <g>
+            <defs>
+              <linearGradient id={patternId} x1='0%' y1='0%' x2='0%' y2='100%'>
+                {getColorByUse('neutral', resolveColor)}
+              </linearGradient>
+            </defs>
 
-          <SArea
-            tag='path'
-            d={getReferenceAreaPath({ x: line.x1 - area / 2, y: line.y2, width: area, height: line.y1 - line.y2 })}
-            fill={`url(#${patternId})`}
-          />
-        </g>
+            <SArea
+              tag='path'
+              d={getReferenceAreaPath({ x: line.x1 - area / 2, y: line.y2, width: area, height: line.y1 - line.y2 })}
+              fill={`url(#${patternId})`}
+            />
+          </g>
+        )}
         <SReferenceLine
           render='g'
           __excludeProps={['data', 'scale', 'format', 'value', 'color']}
