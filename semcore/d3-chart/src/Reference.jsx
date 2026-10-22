@@ -156,7 +156,7 @@ class ReferenceLineRoot extends Component {
     return sstyled(styles)(
       <>
         {area && (
-          <g>
+          <g aria-hidden={true}>
             <defs>
               <linearGradient id={patternId} x1='0%' y1='0%' x2='0%' y2='100%'>
                 {getColorByUse('neutral', resolveColor)}
