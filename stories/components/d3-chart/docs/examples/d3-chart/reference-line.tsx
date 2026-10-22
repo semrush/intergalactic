@@ -1,49 +1,55 @@
-import {
-  Plot,
-  ReferenceLine,
-  ReferenceStripes,
-  ReferenceBackground,
-  XAxis,
-  YAxis,
-} from '@semcore/ui/d3-chart';
-import { scaleLinear, scaleBand } from 'd3-scale';
+import { Chart } from '@semcore/ui/d3-chart';
+import { scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
-import BarMockData from '../../../__mocks__/bar';
+import LineMockData from '../../../__mocks__/line';
 
-const Demo = () => {
-  const MARGIN = 40;
-  const width = 500;
-  const height = 300;
+const data = LineMockData.Months;
 
-  const xScale = scaleBand()
-    .range([MARGIN, width - MARGIN])
-    .domain(dataBar.map((d) => d.category))
-    .paddingInner(0.4)
-    .paddingOuter(0.2);
+const monthCenter = (date: Date) => new Date(date.getFullYear(), date.getMonth(), 15);
 
-  const yScale = scaleLinear()
-    .range([height - MARGIN, MARGIN])
-    .domain([0, 10]);
+const valueFormatter = (value: unknown) => {
+  if (typeof value === 'number') {
+    return value === 0 ? '0' : `${value / 1000}K`;
+  }
 
-  return (
-    <Plot data={dataBar} scale={[xScale, yScale]} width={width} height={height}>
-      <ReferenceBackground value={dataBar[3].category} endValue={dataBar[4].category} />
-      <YAxis>
-        <YAxis.Ticks />
-      </YAxis>
-      <XAxis>
-        <XAxis.Ticks />
-      </XAxis>
-      <ReferenceLine title='Left data' value={dataBar[0].category} />
-      <ReferenceStripes value={dataBar[0].category} endValue={dataBar[1].category} />
-      <ReferenceLine title='Right data' position='right' value={dataBar[1].category} />
-      <ReferenceLine title='Top data' position='top' value={9} />
-      <ReferenceLine title='Bottom data' position='bottom' value={3} />
-    </Plot>
-  );
+  return null;
 };
 
-const dataBar = BarMockData.Default;
+const Demo = () => {
+  const MARGIN = { top: 28, right: 0, bottom: 32, left: 46 };
+  const width = 500;
+  const height = 220;
+  const plotWidth = width - MARGIN.left - MARGIN.right;
+  const monthWidth = plotWidth / data.length;
+  const lastMonth = data[data.length - 1].time;
+
+  const xScale = scaleTime()
+    .range([MARGIN.left, width - MARGIN.right])
+    .domain([data[0].time, lastMonth]);
+
+  const yScale = scaleLinear()
+    .range([height - MARGIN.bottom, MARGIN.top])
+    .domain([0, 30000]);
+
+  return (
+    <Chart.Line
+      data={data}
+      plotWidth={width}
+      plotHeight={height}
+      xScale={xScale}
+      yScale={yScale}
+      yTicksCount={4}
+      groupKey='time'
+      aria-label='Line chart'
+      axisYValueFormatter={valueFormatter}
+      referenceLine={[
+        { value: monthCenter(data[0].time) },
+        { value: monthCenter(data[1].time), area: monthWidth },
+      ]}
+      referenceArea={{ value: [data[3].time, data[4].time], use: 'good', title: 'Wow!', subTitle: '+10%' }}
+    />
+  );
+};
 
 export default Demo;
