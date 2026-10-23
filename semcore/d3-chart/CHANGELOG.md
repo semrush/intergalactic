@@ -672,7 +672,7 @@ implemented within `Checkbox` component.
 
 ### Fixed
 
-- background color for Bar chart from `--intergalactic-chart-data-other-value` to `--intergalactic-chart-grid-bar-chart-base-bg`.
+- background color for Bar chart from `--intergalactic-chart-palette-order-other-data` to `--intergalactic-chart-grid-bar-chart-base-bg`.
 
 ## [3.37.2] - 2024-04-12
 
