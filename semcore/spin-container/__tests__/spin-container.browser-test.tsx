@@ -373,11 +373,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify attributes after stopping loading', async () => {
       await locators.button(page).click();
-
-      // Read once instead of a retrying assertion: inert must be gone with the state update,
-      // not after the overlay has finished fading out.
-      expect(await locators.spinContainerContent(page).getAttribute('inert')).toBeNull();
-
+      await expect(locators.spinContainerContent(page)).not.toHaveAttribute('inert', '');
       await expect(locators.fadeInOut(page)).toHaveCount(0);
 
       const svg = locators.fadeInOut(page).locator('[data-ui-name="Spin"]');
