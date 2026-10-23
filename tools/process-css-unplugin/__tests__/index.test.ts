@@ -235,22 +235,45 @@ const style = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*/
   });
 
   describe('Edge cases', (test) => {
-    test('Verify handling of @semcore/flags package specifically', () => {
+    test('Verify valid code for babel builds without extra parentheses', () => {
       const plugin = processCssVitePlugin({});
 
-      const sourceCode = `const React = require('react');
-/*!__reshadow-styles__:"./style/flag.shadow.css"*/
-const style = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*/".flag { color: red; }",/*__inner_css_end__*/"hash"),
+      const sourceCode = `import React from 'react';
+/*!__reshadow-styles__:"./style/flags.shadow.css"*/
+var styles = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*/".flag { color: red; }",/*__inner_css_end__*/"hash"),
 /*__reshadow_css_end__*/
 {});
 `;
 
-      const id = '/node_modules/@semcore/flags/lib/index.js';
+      const id = '/node_modules/@semcore/flags/lib/es6/Flags.js';
       const result = callTransform(plugin, sourceCode, id);
 
-      expect(result).toBeDefined();
-      // @semcore/flags should use different replacement logic
-      expect(result?.code).toContain('undefined');
+      expect(result?.code).toContain('var styles = (undefined, ');
+      expect(() => new Function(result!.code.replace(/^import .*$/gm, ''))).not.toThrow();
+    });
+
+    test('Verify valid code for vite builds with extra parentheses', () => {
+      const plugin = processCssVitePlugin({});
+
+      const sourceCode = `import React from 'react';
+/*!__reshadow-styles__:"./style/flags.shadow.css"*/
+var styles = (
+  /*__reshadow_css_start__*/
+  (sstyled.insert(
+    /*__inner_css_start__*/
+    ".flag { color: red; }",
+    /*__inner_css_end__*/
+    "hash"
+  ), /*__reshadow_css_end__*/
+  {})
+);
+`;
+
+      const id = '/node_modules/@semcore/flags/lib/esm/Flags.mjs';
+      const result = callTransform(plugin, sourceCode, id);
+
+      expect(result?.code).toContain('(undefined, ');
+      expect(() => new Function(result!.code.replace(/^import .*$/gm, ''))).not.toThrow();
     });
 
     test('Verify preservation of code that is not CSS-related', () => {
