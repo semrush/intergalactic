@@ -3549,6 +3549,61 @@
     "components": []
   },
   {
+    "name": "--intergalactic-spacing-control-padding-small",
+    "value": "4px",
+    "description": "Padding for the small controls.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-spacing-control-padding-medium",
+    "value": "12px",
+    "description": "Padding for the medium controls.",
+    "components": [
+      "base-trigger",
+      "button",
+      "input",
+      "input-tags",
+      "pills"
+    ]
+  },
+  {
+    "name": "--intergalactic-spacing-control-padding-large",
+    "value": "12px",
+    "description": "Padding for the large controls.",
+    "components": [
+      "button",
+      "input"
+    ]
+  },
+  {
+    "name": "--intergalactic-spacing-control-content-gap-small",
+    "value": "2px",
+    "description": "Gap between elements in the small controls.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-spacing-control-content-gap-medium",
+    "value": "6px",
+    "description": "Gap between elements in the medium controls.",
+    "components": [
+      "base-trigger",
+      "button",
+      "input",
+      "pills",
+      "radio",
+      "tab-line",
+      "tab-panel"
+    ]
+  },
+  {
+    "name": "--intergalactic-spacing-control-content-gap-large",
+    "value": "6px",
+    "description": "Gap between elements in the large controls.",
+    "components": [
+      "button"
+    ]
+  },
+  {
     "name": "--intergalactic-addon-rounded",
     "value": "4px",
     "description": "Use for rounding addons and small controls like Checkbox.",

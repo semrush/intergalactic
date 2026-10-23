@@ -5,6 +5,7 @@ STimePickerWrapper {
     position: relative;
     width: auto;
     outline: none;
+    gap: 0;
 
     SPickerInput {
       box-sizing: content-box;

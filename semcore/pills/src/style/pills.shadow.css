@@ -50,8 +50,8 @@ SPill {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  gap: var(--intergalactic-spacing-1-5x, 6px);
-  padding: 0 var(--intergalactic-spacing-3x, 12px);
+  gap: var(--intergalactic-spacing-control-content-gap-medium, 6px);
+  padding: 0 var(--intergalactic-spacing-control-padding-medium, 12px);
 
   border-style: solid;
   border-color: transparent;

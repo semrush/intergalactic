@@ -2171,6 +2171,38 @@ export const theme: Theme = {
           },
         },
       },
+      control: {
+        padding: {
+          small: {
+            value: `${SCALE_INDENT}px`,
+            description: 'Padding for the small controls.',
+          },
+          medium: {
+            value: `${SCALE_INDENT * 3}px`,
+            description: 'Padding for the medium controls.',
+          },
+          large: {
+            value: `${SCALE_INDENT * 3}px`,
+            description: 'Padding for the large controls.',
+          },
+        },
+        content: {
+          gap: {
+            small: {
+              value: `${SCALE_INDENT * 0.5}px`,
+              description: 'Gap between elements in the small controls.',
+            },
+            medium: {
+              value: `${SCALE_INDENT * 1.5}px`,
+              description: 'Gap between elements in the medium controls.',
+            },
+            large: {
+              value: `${SCALE_INDENT * 1.5}px`,
+              description: 'Gap between elements in the large controls.',
+            },
+          },
+        },
+      },
     },
     radii: {
       'addon': {
@@ -2552,6 +2584,20 @@ export type SemanticTokens = {
       padding: {
         desktop: Value;
         mobile: Value;
+      };
+    };
+    control: {
+      padding: {
+        small: Value;
+        medium: Value;
+        large: Value;
+      };
+      content: {
+        gap: {
+          small: Value;
+          medium: Value;
+          large: Value;
+        };
       };
     };
   };
