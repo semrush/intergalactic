@@ -372,7 +372,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify the placeholder uses the null palette color', async () => {
       await expect(locators.barItem(page, 0)).toHaveAttribute(
         'color',
-        '--intergalactic-chart-palette-order-null',
+        '--intergalactic-chart-data-null',
       );
     });
 
