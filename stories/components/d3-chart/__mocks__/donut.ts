@@ -9,4 +9,10 @@ export default {
     b: 0,
     c: 0,
   },
+  WithOther: {
+    a: 5,
+    b: 8,
+    c: 4,
+    other: 2,
+  },
 };

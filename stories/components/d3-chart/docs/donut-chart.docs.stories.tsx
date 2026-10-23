@@ -13,7 +13,7 @@ const meta: Meta = {
 
 export default meta;
 
-export const Donut: StoryObj = {
+export const DonutWithOther: StoryObj = {
   render: DonutExample,
 };
 

@@ -18,11 +18,9 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 :::
 
-## Advanced usage
+## Donut with "other value"
 
-- You can draw donut and pie charts with the `Donut` component.
-- `Pie` is a separate sector.
-- `Label` is a text label inside the chart.
+- You should add custom color (use `chart-palette-order-other-data` token) by key in your data for "other value".
 
 ::: sandbox
 

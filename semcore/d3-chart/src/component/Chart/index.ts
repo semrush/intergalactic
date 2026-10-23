@@ -9,6 +9,7 @@ import { HistogramChart } from './HistogramChart';
 import { LineChart } from './LineChart';
 import { RadarChart } from './RadarChart';
 import { ScatterPlotChart } from './ScatterPlotChart';
+import { ScoreDonutChart } from './ScoreDonutChart';
 import { VennChart } from './VennChart';
 
 export default {
@@ -19,6 +20,7 @@ export default {
   Area: AreaChart,
   Bubble: BubbleChart,
   Donut: DonutChart,
+  ScoreDonut: ScoreDonutChart,
   Venn: VennChart,
   Radar: RadarChart,
   Cigarette: CigaretteChart,
