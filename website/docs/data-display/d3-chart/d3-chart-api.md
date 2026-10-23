@@ -90,6 +90,10 @@ type Pattern = {
 
 ## ReferenceLine
 
+::: warning
+`ReferenceLine`, `ReferenceBackground` and `ReferenceStripes` are deprecated. Use the `referenceLine` and `referenceArea` properties of `Chart.Line`.
+:::
+
 ```js
 import { ReferenceLine } from '@semcore/ui/d3-chart';
 ```
