@@ -4,6 +4,8 @@ import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 const ALL_SIZES_EXAMPLE = 'stories/components/spin-container/advanced/examples/all-sizes.tsx';
+const AUTOFOCUS_EXAMPLE =
+  'stories/components/spin-container/tests/examples/spin-container-with-autofocus-input.tsx';
 const BASE_EXAMPLE = 'stories/components/spin-container/tests/examples/spin-container-base.tsx';
 const CONTENT_EXAMPLE = 'stories/components/spin-container/docs/examples/usage_in_content.tsx';
 
@@ -243,6 +245,36 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await expect(locators.input(page, 0)).toBeFocused();
   });
 
+  test('Verify autofocused content gets focus as soon as loading ends', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@spin-container',
+      '@base-components',
+      '@button',
+      '@input',
+      '@typography'],
+  }, async ({ page }) => {
+    await loadPage(page, AUTOFOCUS_EXAMPLE, 'en');
+
+    const input = page.getByRole('textbox', { name: 'Input' });
+
+    await test.step('Verify content is inert while loading', async () => {
+      await expect(locators.spinContainerContent(page)).toHaveAttribute('inert', '');
+      await expect(input).toHaveCount(0);
+    });
+
+    await test.step('Verify autofocused input is focused once loading stops', async () => {
+      await page.getByRole('button', { name: 'Stop loading' }).click();
+
+      await expect(input).toBeFocused();
+    });
+
+    await test.step('Verify content becomes inert again when loading restarts', async () => {
+      await page.getByRole('button', { name: 'Start loading' }).click();
+
+      await expect(locators.spinContainerContent(page)).toHaveAttribute('inert', '');
+      await expect(input).toHaveCount(0);
+    });
+  });
+
   test('Verify size and theme are forwarded to the nested Spin', {
     tag: [TAG.PRIORITY_HIGH, '@spin-container',
       '@base-components',
@@ -341,7 +373,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify attributes after stopping loading', async () => {
       await locators.button(page).click();
-      await expect(locators.spinContainerContent(page)).not.toHaveAttribute('inert', '');
+
+      // Read once instead of a retrying assertion: inert must be gone with the state update,
+      // not after the overlay has finished fading out.
+      expect(await locators.spinContainerContent(page).getAttribute('inert')).toBeNull();
+
       await expect(locators.fadeInOut(page)).toHaveCount(0);
 
       const svg = locators.fadeInOut(page).locator('[data-ui-name="Spin"]');

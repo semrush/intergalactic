@@ -22,4 +22,17 @@ describe('SpinContainer', () => {
     const { container } = render(spinContainer);
     expect(extractUIName(container)).toMatchSnapshot();
   });
+
+  test('Verify Overlay falls back to Spin when children are explicitly undefined', () => {
+    const { container } = render(
+      <SpinContainer loading>
+        <SpinContainer.Content>Content</SpinContainer.Content>
+        <SpinContainer.Overlay>{undefined}</SpinContainer.Overlay>
+      </SpinContainer>,
+    );
+
+    const overlay = container.querySelector('[data-ui-name="SpinContainer.Overlay"]');
+
+    expect(overlay?.querySelector('[data-ui-name="Spin"]')).not.toBeNull();
+  });
 });

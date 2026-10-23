@@ -6,37 +6,25 @@ import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
-  const spinContainerRef = React.useRef<HTMLDivElement>(null);
-  const [isLoading, setIsLoading] = React.useState(true);
-
-  React.useEffect(() => {
-    setTimeout(() => {
-      spinContainerRef.current?.focus();
-    });
-  }, []);
-
-  const handleClick = React.useCallback(() => {
-    if (isLoading === false) {
-      spinContainerRef.current?.focus();
-    }
-    setIsLoading(!isLoading);
-  }, [isLoading]);
+  const [loading, setLoading] = React.useState(true);
 
   return (
     <Flex direction='column' gap={2}>
-      <Button onClick={handleClick} w={200}>change loading</Button>
+      <Button onClick={() => setLoading(!loading)} w={200}>
+        {loading ? 'Stop loading' : 'Start loading'}
+      </Button>
 
-      <SpinContainer loading={isLoading} ref={spinContainerRef} aria-live='polite' role='status'>
-        <Flex direction='column' gap={2} w={150} h={300}>
-          <Text htmlFor='spin-container-input' size={200} tag='label'>
-            Input
-          </Text>
-          {!isLoading && (
+      <SpinContainer loading={loading} w={200} h={150} aria-live='polite' role='status'>
+        {!loading && (
+          <Flex direction='column' gap={2}>
+            <Text htmlFor='spin-container-input' size={200} tag='label'>
+              Input
+            </Text>
             <Input>
-              <Input.Value id='spin-container-input' autoFocus={true} />
+              <Input.Value id='spin-container-input' autoFocus />
             </Input>
-          )}
-        </Flex>
+          </Flex>
+        )}
       </SpinContainer>
     </Flex>
   );
