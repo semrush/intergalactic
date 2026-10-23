@@ -139,6 +139,14 @@ export default {
     { time: new Date(2025, 1, 9), line: 0 },
     { time: new Date(2025, 1, 14), line: 5 },
   ],
+  Months: [
+    { time: new Date(2025, 0, 1), line: 8000 },
+    { time: new Date(2025, 1, 1), line: 14000 },
+    { time: new Date(2025, 2, 1), line: 11000 },
+    { time: new Date(2025, 3, 1), line: 19000 },
+    { time: new Date(2025, 4, 1), line: 22000 },
+    { time: new Date(2025, 5, 1), line: 16000 },
+  ],
   Area: [
     { x: 0, y: 2, y0: 4, y1: 0 },
     { x: 1, y: 4, y0: 6, y1: 2 },

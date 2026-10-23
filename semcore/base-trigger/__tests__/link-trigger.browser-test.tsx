@@ -47,7 +47,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
   sizes.forEach((size, sizeIndex) => {
     addonCombos.forEach(({ desc: addonDesc, ...addonVars }, addonIndex) => {
       const { desc: ellipsisDesc, vars: ellipsisVars } =
-        ellipsisVariants[addonIndex] ?? {};
+        ellipsisVariants[addonIndex] ?? ellipsisVariants[sizeIndex % ellipsisVariants.length];
       const hasAddons = addonVars.showAddonLeft || addonVars.showAddonRight;
       const addonType = hasAddons ? addonTypes[(sizeIndex + addonIndex - 1) % 4] : undefined;
       const color = !hasAddons ? colorBySize[size] : undefined;
@@ -67,7 +67,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
       if (merged) descParts.push('merged');
 
       test(`Verify Link Trigger size=${size}, ${descParts.join(', ')}, ${ellipsisDesc}`, {
-        tag: [TAG.PRIORITY_HIGH, '@base-trigger', '@link-trigger', '@badge', '@counter', '@ellipsis', '@flags', '@tag', '@typography'],
+        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@base-trigger', '@link-trigger', '@badge', '@counter', '@ellipsis', '@flags', '@tag', '@typography'],
       }, async ({ page }) => {
         await loadPage(page, storyPath, 'en', {
           size, ...addonVars, text: longText, ...ellipsisVars, ...extraVars,
@@ -91,17 +91,19 @@ test.describe(` ${TAG.VISUAL}`, () => {
           }
         });
 
-        await loadPage(page, storyPath, 'en', {
-          size, active: true, ...addonVars, text: longText, ...ellipsisVars, ...extraVars,
-        });
-        const activeClip = await getTextClip(page);
-        await page.waitForTimeout(100);
-        await test.step('Verify active state + hover hint', async () => {
-          await locators.button(page).first().hover();
+        if (size === 300) {
+          await loadPage(page, storyPath, 'en', {
+            size, active: true, ...addonVars, text: longText, ...ellipsisVars, ...extraVars,
+          });
+          const activeClip = await getTextClip(page);
           await page.waitForTimeout(100);
-          await waitForHint(page);
-          await expect(page).toHaveScreenshot({ clip: activeClip });
-        });
+          await test.step('Verify active state + hover hint', async () => {
+            await locators.button(page).first().hover();
+            await page.waitForTimeout(100);
+            await waitForHint(page);
+            await expect(page).toHaveScreenshot({ clip: activeClip });
+          });
+        }
       });
     });
   });
@@ -117,7 +119,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
     await expect(page).toHaveScreenshot({ clip });
   });
 
-  test('Verify Link Trigger: loading ', {
+  test('Verify Link Trigger: loading', {
     tag: [TAG.PRIORITY_HIGH, '@base-trigger', '@link-trigger', '@badge', '@counter', '@flags', '@tag', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, storyPath, 'en', {

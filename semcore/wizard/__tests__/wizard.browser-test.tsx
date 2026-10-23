@@ -30,6 +30,12 @@ export const locators = {
   },
 };
 
+const expectSelectedStep = async (page: Page, selectedIndex: number) => {
+  for (const index of [0, 1, 2]) {
+    await expect(locators.stepperTabs(page).nth(index)).toHaveAttribute('aria-selected', String(index === selectedIndex));
+  }
+};
+
 const getCssVarBorderRadius = async (page: Page, varName: string, fallback: string) => {
   return page.evaluate(({ varName, fallback }) => {
     const element = document.createElement('div');
@@ -131,7 +137,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         await expect(page).toHaveScreenshot();
       });
 
-      await test.step('Verify focus doesnt go on disabled element', async () => {
+      await test.step('Verify focus does not go on disabled element', async () => {
         for (let i = 0; i < 7; i++) {
           await page.keyboard.press('ArrowDown');
           await page.waitForTimeout(200);
@@ -224,7 +230,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         await expect(page).toHaveScreenshot();
       });
 
-      await test.step('Verify focus doesnt go on disabled element', async () => {
+      await test.step('Verify focus does not go on disabled element', async () => {
         for (let i = 0; i < 6; i++) {
           await page.keyboard.press('ArrowDown');
           await page.waitForTimeout(200);
@@ -288,26 +294,12 @@ test.describe(`${TAG.VISUAL}`, () => {
       'calc(12px + 2px)',
     );
 
-    const {
-      topLeft,
-      bottomLeft,
-      topRight,
-      bottomRight,
-    } = await locators.contentPanel(page).evaluate((el) => {
-      const style = getComputedStyle(el);
-      return {
-        topLeft: style.borderTopLeftRadius,
-        bottomLeft: style.borderBottomLeftRadius,
-        topRight: style.borderTopRightRadius,
-        bottomRight: style.borderBottomRightRadius,
-      };
-    });
+    const content = locators.contentPanel(page);
 
-    expect(topLeft).toBe('0px');
-    expect(bottomLeft).toBe('0px');
-
-    expect(topRight).toBe(modalRounded);
-    expect(bottomRight).toBe(modalRounded);
+    await expect(content).toHaveCSS('border-top-left-radius', '0px');
+    await expect(content).toHaveCSS('border-bottom-left-radius', '0px');
+    await expect(content).toHaveCSS('border-top-right-radius', modalRounded);
+    await expect(content).toHaveCSS('border-bottom-right-radius', modalRounded);
   });
 
   test('Verify z index in content', {
@@ -323,9 +315,9 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@typography'],
   },
   async ({ page, browserName }) => {
+    test.skip(browserName === 'firefox', 'Skipped in Firefox since UIK-4360, reason not documented');
     await loadPage(page, 'stories/components/wizard/docs/examples/custom_step.tsx', 'en');
 
-    if (browserName == 'firefox') test.skip();
     await page.setViewportSize({ width: 800, height: 600 });
 
     await page.keyboard.press('Tab');
@@ -369,7 +361,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(firstChild).toHaveJSProperty('tagName', 'H2');
       });
 
-      await test.step('Verify stepper fist and last tabs initial attributes', async () => {
+      await test.step('Verify stepper tabs initial attributes', async () => {
         await expect(locators.stepperTabs(page).first()).toHaveAttribute('aria-selected', 'true');
         await expect(locators.stepperTabs(page).first()).not.toHaveAttribute('aria-disabled', 'true');
         await expect(locators.stepperTabs(page).first()).toHaveAttribute('tabindex', '0');
@@ -390,13 +382,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       await test.step('Switch to middle step and check stepper attributes', async () => {
-        await (locators.stepperTabs(page).nth(1)).click();
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'true');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'false');
+        await locators.stepperTabs(page).nth(1).click();
+        await expectSelectedStep(page, 1);
       });
 
-      await test.step('Verify content panel attrubutes for the middle step', async () => {
+      await test.step('Verify content panel attributes for the middle step', async () => {
         await expect(locators.modal(page)).toHaveAttribute('step', '2');
       });
 
@@ -413,28 +403,23 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         );
       });
 
-      await test.step('Click on Prev button on middle step and verify 1st step  ', async () => {
+      await test.step('Click on Prev button on middle step and verify 1st step', async () => {
         await locators.button(page, 'Location').click();
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'true');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'false');
+        await expectSelectedStep(page, 0);
         await expect(locators.button(page, 'Keywords')).toBeVisible();
       });
 
-      await test.step('Click on Next button ang go to last step ', async () => {
+      await test.step('Click on Next button and go to last step', async () => {
         await locators.button(page, 'Keywords').click();
         await locators.button(page, 'Schedule').click();
         await expect(locators.button(page, 'Keywords')).toBeVisible();
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'true');
+        await expectSelectedStep(page, 2);
       });
 
       await test.step('Click on Prev button on last step', async () => {
         await locators.button(page, 'Keywords').click();
         await expect(locators.button(page, 'Keywords')).not.toBeVisible();
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'true');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'false');
+        await expectSelectedStep(page, 1);
       });
 
       await test.step('Verify selected step saved when Close and reopen modal', async () => {
@@ -447,16 +432,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Click on 1st step on stepper and check content', async () => {
         await locators.stepperTabs(page).nth(0).click();
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'true');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'false');
+        await expectSelectedStep(page, 0);
         await expect(locators.button(page, 'Keywords')).toBeVisible();
       });
 
       await test.step('Click on last step on stepper and check content', async () => {
         await locators.stepperTabs(page).nth(2).click();
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'true');
+        await expectSelectedStep(page, 2);
         await expect(locators.button(page, 'Keywords')).toBeVisible();
       });
     });
@@ -504,9 +486,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.button(page, 'Close')).toBeFocused();
         await page.keyboard.press('Tab');
         await expect(locators.stepperTabs(page).nth(0)).toBeFocused();
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'true');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'false');
+        await expectSelectedStep(page, 0);
         await page.keyboard.press('Tab');
         await expect(locators.button(page, 'Keywords')).toBeFocused();
         await page.keyboard.press('Tab');
@@ -516,40 +496,28 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify keyboard navigation by Arrows in Sidebar', async () => {
         await page.keyboard.press('Tab');
         await expect(locators.stepperTabs(page).nth(0)).toBeFocused();
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'true');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'false');
+        await expectSelectedStep(page, 0);
 
         await page.keyboard.press('ArrowUp');
         await expect(locators.stepperTabs(page).nth(0)).toBeFocused();
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'true');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'false');
+        await expectSelectedStep(page, 0);
 
         await page.keyboard.press('ArrowDown');
         await expect(locators.stepperTabs(page).nth(1)).toBeFocused();
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'true');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'false');
+        await expectSelectedStep(page, 0);
 
         await page.keyboard.press('ArrowDown');
         await expect(locators.stepperTabs(page).nth(2)).toBeFocused();
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'true');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'false');
+        await expectSelectedStep(page, 0);
 
         await page.keyboard.press('ArrowDown');
         await expect(locators.stepperTabs(page).nth(2)).toBeFocused();
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'true');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'false');
+        await expectSelectedStep(page, 0);
       });
 
-      await test.step('Verify navigation between pages by pressing Steps in sidebar ', async () => {
+      await test.step('Verify navigation between pages by pressing Steps in sidebar', async () => {
         await page.keyboard.press('Enter');
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'true');
+        await expectSelectedStep(page, 2);
         await expect(locators.button(page, 'Keywords')).toBeFocused();
 
         await page.keyboard.press('Tab');
@@ -578,9 +546,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify navigation between pages by pressing Next and Prev buttons', async () => {
         await page.keyboard.press('Enter');
         await expect(locators.button(page, 'Keywords')).toBeFocused();
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'true');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'false');
+        await expectSelectedStep(page, 0);
 
         await page.keyboard.press('Enter');
         await expect(locators.button(page, 'Location')).toBeFocused();
@@ -591,15 +557,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.button(page, 'Location')).toBeFocused();
         await page.keyboard.press('Tab');
         await expect(locators.button(page, 'Schedule')).toBeFocused();
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'true');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'false');
+        await expectSelectedStep(page, 1);
 
         await page.keyboard.press('Space');
         await expect(locators.button(page, 'Keywords')).toBeFocused();
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'true');
+        await expectSelectedStep(page, 2);
 
         await page.keyboard.press('Space');
         await expect(locators.button(page, 'Location')).toBeFocused();
@@ -644,13 +606,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.button(page, 'Close')).toBeFocused();
         await page.keyboard.press('Tab');
         await expect(locators.stepperTabs(page).nth(0)).toBeFocused();
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'true');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'false');
+        await expectSelectedStep(page, 0);
 
         await page.keyboard.press('Tab');
         await expect(locators.input(page, 'Keyword 1')).toBeFocused();
-        // await expect(page).toHaveScreenshot();
         await locators.input(page, 'Keyword 1').fill('Test');
         await page.keyboard.press('Tab');
         await expect(locators.input(page, 'Keyword 2')).toBeFocused();
@@ -661,14 +620,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.button(page, 'Close')).toBeFocused();
       });
 
-      await test.step('Verify navigation between pages by pressing Steps in sidebar ', async () => {
+      await test.step('Verify navigation between pages by pressing Steps in sidebar', async () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('ArrowDown');
         await expect(locators.stepperTabs(page).nth(1)).toBeFocused();
         await page.keyboard.press('Enter');
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'true');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'false');
+        await expectSelectedStep(page, 1);
 
         await expect(locators.button(page, 'Keywords')).toBeFocused();
         await page.keyboard.press('Enter');
@@ -703,22 +660,18 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.input(page, 'Keyword 2')).toBeFocused();
       });
 
-      await test.step('Verify navigation between pages by pressing Steps in sidebar ', async () => {
+      await test.step('Verify navigation between pages by pressing Steps in sidebar', async () => {
         await locators.stepperTabs(page).nth(1).click();
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'true');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'false');
+        await expectSelectedStep(page, 1);
 
         await expect(locators.button(page, 'Keywords')).toBeVisible();
         await expect(locators.button(page, 'Schedule')).toBeVisible();
       });
 
-      await test.step('Verify navigation between pages by pressing Prev/Next steps ', async () => {
+      await test.step('Verify navigation between pages by pressing Prev/Next steps', async () => {
         await locators.button(page, 'Schedule').click();
         await expect(locators.button(page, 'Location')).toBeVisible();
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'true');
+        await expectSelectedStep(page, 2);
         await locators.button(page, 'Location').click();
         await expect(locators.button(page, 'Keywords')).toBeVisible();
         await expect(locators.button(page, 'Schedule')).toBeVisible();
@@ -726,9 +679,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Back to 1st step and check focus', async () => {
         await locators.stepperTabs(page).nth(0).click();
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'true');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'false');
+        await expectSelectedStep(page, 0);
         await expect(locators.input(page, 'Keyword 1')).toBeFocused();
         await expect(locators.input(page, 'Keyword 2')).not.toBeFocused();
       });

@@ -1,4 +1,4 @@
-import type { Page } from '@semcore/testing-utils/playwright';
+import type { Locator, Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
@@ -8,8 +8,15 @@ export const locators = {
   pillsItem: (page: Page) => page.locator('[data-ui-name="Pills.Item"]'),
   pillsItemAddon: (page: Page) => page.locator('[data-ui-name="Pills.Item.Addon"]'),
   pillsItemText: (page: Page) => page.locator('[data-ui-name="Pills.Item.Text"]'),
-  sizeM: (page: Page) => page.locator('[data-ui-name="Pills"][class*="size_m"]'),
-  sizeL: (page: Page) => page.locator('[data-ui-name="Pills"][class*="size_l"]'),
+};
+
+const itemHeight = { m: '28px', l: '40px' };
+
+const expectEachItem = async (page: Page, check: (item: Locator) => Promise<void>) => {
+  await expect(locators.pillsItem(page)).not.toHaveCount(0);
+  for (const item of await locators.pillsItem(page).all()) {
+    await check(item);
+  }
 };
 
 /* =====================================================
@@ -23,7 +30,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   ];
   variables.forEach((item) => {
     test(`Verify Pills with different addons and size=${item.size}`, {
-      tag: [TAG.PRIORITY_HIGH, '@pills',
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@pills',
         '@badge',
         '@base-components',
         '@flex-box',
@@ -32,29 +39,25 @@ test.describe(`${TAG.VISUAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/pills/tests/examples/basic_example.tsx', 'en', item);
 
-      await test.step('Verify hover and focus states', async () => {
+      await test.step('Verify hover on the first item', async () => {
         await locators.pillsItem(page).first().hover();
         await expect(page).toHaveScreenshot();
+      });
 
+      await test.step('Verify focus on the checked item', async () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Tab');
         await expect(page).toHaveScreenshot();
+      });
 
+      await test.step('Verify focus moved by ArrowRight with hover on the second item', async () => {
         await page.keyboard.press('ArrowRight');
         await locators.pillsItem(page).nth(1).hover();
         await expect(page).toHaveScreenshot();
       });
 
-      await test.step('Verify pills sizes styles', async () => {
-        if ((await locators.sizeM(page).count()) > 0) {
-          const count = await locators.pillsItem(page).count();
-          for (let i = 0; i < count; i++)
-            await expect(locators.pillsItem(page).nth(i)).toHaveCSS('height', '28px');
-        } else if ((await locators.sizeL(page).count()) > 0) {
-          const count = await locators.pillsItem(page).count();
-          for (let i = 0; i < count; i++)
-            await expect(locators.pillsItem(page).nth(i)).toHaveCSS('height', '40px');
-        }
+      await test.step(`Verify item height for size ${item.size}`, async () => {
+        await expectEachItem(page, (pill) => expect(pill).toHaveCSS('height', itemHeight[item.size as keyof typeof itemHeight]));
       });
     });
   });
@@ -79,7 +82,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify pills with tab panel', {
-    tag: [TAG.PRIORITY_HIGH, '@pills',
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@pills',
       '@base-components',
       '@flex-box',
       '@typography'],
@@ -105,6 +108,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test('Verify pills with counter', {
     tag: [TAG.PRIORITY_HIGH, '@pills',
+      '@counter',
       '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/counter/docs/examples/counter_in_pills.tsx', 'en');
@@ -119,7 +123,7 @@ Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
-  test('Verify manual behavior when swicthing between tabs by keyboard', {
+  test('Verify manual behavior when switching between tabs by keyboard', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@pills',
       '@badge',
       '@base-components',
@@ -136,7 +140,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.pillsItem(page).nth(1)).toHaveAttribute('aria-selected', 'true');
     });
 
-    await test.step('Verify arrows switch to the next tab but not activate them', async () => {
+    await test.step('Verify arrows move focus to the next tab without activating it', async () => {
       await page.keyboard.press('ArrowRight');
       await expect(locators.pillsItem(page).nth(2)).toBeFocused();
       await expect(locators.pillsItem(page).nth(2)).toHaveAttribute('aria-selected', 'false');
@@ -158,13 +162,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.pillsItem(page).nth(0)).toHaveAttribute('aria-selected', 'true');
     });
 
-    await test.step('Verify arrow switched from fisrt to last and disabled is not focused', async () => {
+    await test.step('Verify ArrowLeft moves from the first to the last item skipping disabled', async () => {
       await page.keyboard.press('ArrowLeft');
       await expect(locators.pillsItem(page).nth(5)).toBeFocused();
     });
   });
 
-  test('Verify manual behavior when swicthing between tabs by mouse', {
+  test('Verify manual behavior when switching between tabs by mouse', {
     tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@pills',
       '@base-components',
       '@flex-box',
@@ -186,11 +190,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     await test.step('Verify pills attributes', async () => {
-      const count = await locators.pillsItem(page).count();
-      for (let i = 0; i < count; i++) {
-        await expect(locators.pillsItem(page).nth(i)).toHaveAttribute('type', 'button');
-        await expect(locators.pillsItem(page).nth(i)).toHaveAttribute('role', 'tab');
-      }
+      await expectEachItem(page, async (pill) => {
+        await expect(pill).toHaveAttribute('type', 'button');
+        await expect(pill).toHaveAttribute('role', 'tab');
+      });
       await expect(locators.pillsItem(page).nth(0)).toHaveAttribute('tabindex', '0');
       await expect(locators.pillsItem(page).nth(1)).toHaveAttribute('tabindex', '-1');
       await expect(locators.pillsItem(page).nth(2)).toHaveAttribute('tabindex', '-1');
@@ -199,7 +202,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test('Verify auto behavior when swicthing between tabs by keyboard', {
+  test('Verify auto behavior when switching between tabs by keyboard', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@pills',
       '@badge',
       '@base-components',
@@ -216,14 +219,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.pillsItem(page).nth(1)).toHaveAttribute('aria-checked', 'true');
     });
 
-    await test.step('Verify arrows switch to the next tab and not activate them', async () => {
+    await test.step('Verify arrows move focus to the next item and activate it', async () => {
       await page.keyboard.press('ArrowRight');
       await expect(locators.pillsItem(page).nth(2)).toBeFocused();
       await expect(locators.pillsItem(page).nth(2)).toHaveAttribute('aria-checked', 'true');
       await expect(locators.pillsItem(page).nth(1)).toHaveAttribute('aria-checked', 'false');
     });
 
-    await test.step('Verify arrow switched from fisrt to last and activetes it  and disabled is not focused', async () => {
+    await test.step('Verify ArrowLeft moves from the first to the last item, activates it and skips disabled', async () => {
       await page.keyboard.press('ArrowLeft');
       await page.keyboard.press('ArrowLeft');
       await page.keyboard.press('ArrowLeft');
@@ -232,7 +235,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test('Verify auto behavior when swicthing between tabs by mouse', {
+  test('Verify auto behavior when switching between tabs by mouse', {
     tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@pills',
       '@base-components',
       '@flex-box',
@@ -240,24 +243,23 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/pills/docs/examples/basic_example.tsx', 'en', { behavior: 'auto' });
 
-    await test.step('Verify tablist roles and attributes', async () => {
+    await test.step('Verify radiogroup roles and attributes', async () => {
       await expect(locators.pills(page)).toHaveAttribute('role', 'radiogroup');
       await expect(locators.pills(page)).toHaveAttribute('tabindex', '0');
       await expect(locators.pills(page)).toHaveAttribute('aria-labelledby');
     });
 
-    await test.step('Verify arrows switch to the next tab and not activate them', async () => {
+    await test.step('Verify item selected by mouse click', async () => {
       await locators.pillsItem(page).nth(2).click();
       await expect(locators.pillsItem(page).nth(2)).toHaveAttribute('aria-checked', 'true');
       await expect(locators.pillsItem(page).nth(1)).toHaveAttribute('aria-checked', 'false');
     });
 
     await test.step('Verify pills attributes', async () => {
-      const count = await locators.pillsItem(page).count();
-      for (let i = 0; i < count; i++) {
-        await expect(locators.pillsItem(page).nth(i)).toHaveAttribute('type', 'button');
-        await expect(locators.pillsItem(page).nth(i)).toHaveAttribute('role', 'radio');
-      }
+      await expectEachItem(page, async (pill) => {
+        await expect(pill).toHaveAttribute('type', 'button');
+        await expect(pill).toHaveAttribute('role', 'radio');
+      });
       await expect(locators.pillsItem(page).nth(0)).toHaveAttribute('tabindex', '-1');
       await expect(locators.pillsItem(page).nth(1)).toHaveAttribute('tabindex', '-1');
       await expect(locators.pillsItem(page).nth(2)).toHaveAttribute('tabindex', '0');

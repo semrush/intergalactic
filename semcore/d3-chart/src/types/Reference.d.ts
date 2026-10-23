@@ -6,12 +6,18 @@ import type { IntergalacticD3Component } from './Plot';
 /** @deprecated **/
 export interface IReferenceLineProps extends ReferenceLineProps, UnknownProperties {}
 export type ReferenceLineProps = Context & {
-  /** The position of the title relative reference line
-   * @default 'left' */
+  /**
+   * The position of the title relative reference line
+   * @default 'left'
+   * @deprecated use ReferenceArea if you need a title.
+   */
   position?: 'top' | 'right' | 'bottom' | 'left';
   /** Value element of data */
   value?: any;
-  /** Reference line title */
+  /**
+   * Reference line title
+   * @deprecated use ReferenceArea if you need title.
+   */
   title?: string;
 };
 
@@ -47,23 +53,34 @@ export type ReferenceStripesProps = Context & {
   /** Value of the background end */
   endValue?: number | string;
 };
-
+/**
+ * @deprecated use `referenceLine` property on Chart.Line.
+ */
 export declare const ReferenceLine: IntergalacticD3Component<
   'line',
   ReferenceLineProps,
   Context
 > & {
+  /**
+   * @deprecated use `referenceArea` property on Chart.Line with title property
+   */
   Title: IntergalacticD3Component<'text', ReferenceLineTitleProps, Context>;
   /**
    * @deprecated use `ReferenceBackground` instead.
    */
   Background: IntergalacticD3Component<'rect', ReferenceLineBackgroundProps, Context>;
 };
+/**
+ * @deprecated use `referenceArea` property on Chart.Line.
+ */
 export declare const ReferenceBackground: IntergalacticD3Component<
   'rect',
   ReferenceLineBackgroundProps,
   Context
 >;
+/**
+ * @deprecated use `referenceArea` property on Chart.Line.
+ */
 export declare const ReferenceStripes: IntergalacticD3Component<
   'rect',
   ReferenceStripesProps,

@@ -9,7 +9,6 @@ type Props = {
   loading?: boolean;
   withHeaderScrollBar?: boolean;
   topOffset?: number;
-  withAnimation: boolean;
   scrollBarInstanceRef: React.RefObject<NSScrollArea.Bar.Instance>;
 };
 
@@ -18,7 +17,7 @@ const SCROLL_BAR_HEIGHT = 12;
 export class ScrollBars extends React.PureComponent<Props> {
   render() {
     const SScrollAreaBarInHeader = ScrollArea.Bar;
-    const { loading, topOffset, withHeaderScrollBar, withAnimation, scrollBarInstanceRef } = this.props;
+    const { loading, topOffset, withHeaderScrollBar, scrollBarInstanceRef } = this.props;
 
     return sstyled(styles)(
       <>
@@ -27,8 +26,6 @@ export class ScrollBars extends React.PureComponent<Props> {
             orientation='horizontal'
             top={topOffset - SCROLL_BAR_HEIGHT}
             zIndex={20}
-            // @ts-ignore
-            withAnimation={withAnimation}
           />
         )}
 

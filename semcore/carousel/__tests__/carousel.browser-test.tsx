@@ -20,7 +20,8 @@ export const locators = {
   tab: (page: Page, index?: number) => {
     const base = page.getByRole('tab');
     return typeof index === 'number' ? base.nth(index) : base;
-  }, region: (page: Page, index?: number) => {
+  },
+  region: (page: Page, index?: number) => {
     const base = page.getByRole('region');
     return typeof index === 'number' ? base.nth(index) : base;
   },
@@ -28,8 +29,7 @@ export const locators = {
     const base = page.getByRole('tablist');
     return typeof index === 'number' ? base.nth(index) : base;
   },
-  img: (page: Page, index?: number) =>
-    page.locator('div[role="tabpanel"] img[role="button"]'),
+  img: (page: Page) => page.locator('div[role="tabpanel"] img[role="button"]'),
 };
 
 /* =====================================================
@@ -40,12 +40,14 @@ test.describe(`${TAG.VISUAL} `, () => {
   const indicators = [
     { indicators: 'default', zoomWidth: 300, defaultIndex: undefined, index: undefined },
     { indicators: 'hide', zoomWidth: 300, defaultIndex: undefined, index: 1 },
-    { indicators: 'preview', zoomWidth: 500, defaultIndex: 2, undefined: undefined },
+    { indicators: 'preview', zoomWidth: 500, defaultIndex: 2, index: undefined },
 
   ];
   indicators.forEach((item) => {
     test(`Verify Carousel with indicators= ${item.indicators}, zoomiWidth= ${item.zoomWidth} and defaultIndex=${item.defaultIndex} or index = =${item.index}`, {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        TAG.KEYBOARD,
         '@carousel',
         '@base-components',
         '@flex-box'],
@@ -71,10 +73,8 @@ test.describe(`${TAG.VISUAL} `, () => {
         await expect(page).toHaveScreenshot();
       });
 
-      await test.step('Verify Carousel area focus', async () => {
+      await test.step('Verify Carousel area focus (Prev hint hidden, hovered Next hint stays)', async () => {
         await page.keyboard.press('Tab');
-        // Prev button loses focus and hides its Hint, the hovered Next slide Hint stays.
-        // Wait for that settled state, otherwise the fading out Hint leaks into the snapshot.
         await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(1);
         await page.waitForFunction(() => {
           const els = document.querySelectorAll('[data-ui-name="Hint"]');
@@ -83,7 +83,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         await expect(page).toHaveScreenshot();
       });
 
-      if (await locators.tablist(page).isVisible()) {
+      if (item.indicators !== 'hide') {
         await test.step('Verify Tabs hover and focus styles', async () => {
           await page.keyboard.press('Tab');
           await page.keyboard.press('Tab');
@@ -122,11 +122,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         await page.keyboard.press('Tab');
 
         const tab = page.getByRole('tab');
-        if (await locators.tablist(page).count() === 2) {
-          await tab.nth(5).hover();
-        } else {
-          await tab.nth(2).hover();
-        }
+        await tab.nth(item.indicators === 'hide' ? 2 : 5).hover();
 
         await expect(page).toHaveScreenshot();
       });
@@ -141,6 +137,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   bounded.forEach((item) => {
     test(`Verify Carousel prev and next buttons when indicators= ${item.indicators}, bounded= ${item.bounded}`, {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
         '@carousel',
         '@base-components',
         '@flex-box'],
@@ -153,7 +150,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         await expect(page).toHaveScreenshot();
       });
 
-      await test.step('VerifyPrev and Next buttons when one is disabled in zoom mode', async () => {
+      await test.step('Verify Prev and Next buttons when one is disabled in zoom mode', async () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Tab');
         await page.keyboard.press('Space');
@@ -381,7 +378,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.tabpanel(page, 5)).toHaveAttribute('tabindex', '0');
     });
 
-    await test.step('Verify indicators in zoom mode focused by Tab and switch tabs by Arrows', async () => {
+    await test.step('Verify Zoom mode closed by Enter on Close button', async () => {
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Enter');
@@ -390,7 +387,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test('Verify mouse interactions with Carousel with  indicators and zoom', {
+  test('Verify mouse interactions with Carousel with indicators and zoom', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@carousel',
@@ -459,7 +456,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.modal(page)).not.toBeVisible();
     });
 
-    await test.step('Verify tabs switch by click on Prev button im zoom mode', async () => {
+    await test.step('Verify tabs switch by click on Prev button in zoom mode', async () => {
       await locators.tabpanel(page, 2).click();
       await locators.modal(page).waitFor({ state: 'visible' });
 
@@ -475,7 +472,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.tabpanel(page, 5)).toHaveAttribute('tabindex', '-1');
     });
 
-    await test.step('Verify tabs switch by click on Next button im zoom mode', async () => {
+    await test.step('Verify tabs switch by click on Next button in zoom mode', async () => {
       await locators.button(page, 'Next slide').nth(1).click();
 
       await expect(locators.tabpanel(page, 3)).toHaveAttribute('aria-current', 'false');
@@ -526,16 +523,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     await test.step('Verify Modal not opened by mouse click', async () => {
-      const box = await locators.tabpanel(page, 0).boundingBox();
-      if (box) {
-        await page.mouse.click(box.x + 10, box.y + 10);
-      }
+      const box = (await locators.tabpanel(page, 0).boundingBox())!;
+      await page.mouse.click(box.x + 10, box.y + 10);
       await expect(locators.modal(page)).not.toBeVisible();
     });
   });
 
   test('Verify keyboard interactions when Carousel with indicators only', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
       TAG.KEYBOARD,
       '@carousel',
       '@base-components',
@@ -610,13 +606,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       const indicator = locators.tab(page, 0);
 
-      // Wait for the transition to settle instead.
       await expect(indicator).toHaveCSS('width', '150px');
       await expect(indicator).toHaveCSS('height', '150px');
 
       const box = await indicator.boundingBox();
 
-      // the size  overridden
       expect(box?.width).toBeCloseTo(150, 0);
       expect(box?.height).toBeCloseTo(150, 0);
     });

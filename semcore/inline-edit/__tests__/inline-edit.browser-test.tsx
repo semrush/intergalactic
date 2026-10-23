@@ -1,17 +1,26 @@
-import { platform } from 'os';
-
 import type { Page } from '@semcore/testing-utils/playwright';
 import { test, expect } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-// Helper functions
+export const locators = {
+  inlineEdit: (page: Page) => page.locator('[data-ui-name="InlineEdit"]'),
+  inlineEditView: (page: Page) => page.locator('[data-ui-name="InlineEdit.View"]'),
+  inlineEditEdit: (page: Page) => page.locator('[data-ui-name="InlineEdit.Edit"]'),
+  editInput: (page: Page) => page.locator('[data-ui-name="InlineEdit.Edit"] input'),
+  editIcon: (page: Page) => page.locator('[data-ui-name="InlineEdit.View"] svg'),
+  button: (page: Page, name: string, index?: number) => {
+    const base = page.getByLabel(name);
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  tagContainer: (page: Page) => page.locator('[data-ui-name="TagContainer.Tag"]'),
+  tagContainerClose: (page: Page) => page.locator('[data-ui-name="TagContainer.Close"]'),
+  spin: (page: Page) => page.locator('[data-ui-name="Spin"]'),
+  textSpan: (page: Page) => page.locator('span[data-ui-name="Text"]'),
+};
+
 const selectAllText = async (page: Page) => {
-  if (platform() === 'darwin') {
-    await page.keyboard.press('Meta+A');
-  } else {
-    await page.keyboard.press('Control+A');
-  }
+  await page.keyboard.press('ControlOrMeta+A');
 };
 
 const assertEditModeOpen = async (page: Page) => {
@@ -22,21 +31,6 @@ const assertEditModeOpen = async (page: Page) => {
 const assertEditModeClosed = async (page: Page) => {
   await expect(locators.inlineEditView(page)).not.toHaveAttribute('aria-hidden', 'true');
   await expect(locators.inlineEditEdit(page)).toHaveCount(0);
-};
-
-export const locators = {
-  inlineEdit: (page: Page) => page.locator('[data-ui-name="InlineEdit"]'),
-  inlineEditView: (page: Page) => page.locator('[data-ui-name="InlineEdit.View"]'),
-  inlineEditEdit: (page: Page) => page.locator('[data-ui-name="InlineEdit.Edit"]'),
-  editIcon: (page: Page) => page.locator('[data-ui-name="InlineEdit.View"] svg'),
-  button: (page: Page, name: string, index?: number) => {
-    const base = page.getByLabel(name);
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  tagContainer: (page: Page) => page.locator('[data-ui-name="TagContainer.Tag"]'),
-  tagContainerClose: (page: Page) => page.locator('[data-ui-name="TagContainer.Close"]'),
-  spin: (page: Page) => page.locator('[data-ui-name="Spin"]'),
-  textSpan: (page: Page) => page.locator('span[data-ui-name="Text"]'),
 };
 
 /* =====================================================
@@ -129,61 +123,64 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     const text = 'TestText123';
 
-    // Verify initial attributes and focus
-    await expect(locators.inlineEditView(page)).toHaveAttribute('aria-label', 'Edit: Martin Eden');
-    await page.keyboard.press('Tab');
-    await expect(locators.inlineEditView(page)).toBeFocused();
+    await test.step('Verify initial attributes and focus', async () => {
+      await expect(locators.inlineEditView(page)).toHaveAttribute('aria-label', 'Edit: Martin Eden');
+      await page.keyboard.press('Tab');
+      await expect(locators.inlineEditView(page)).toBeFocused();
+    });
 
-    // Verify Enter activates edit mode
-    await page.keyboard.press('Enter');
-    await assertEditModeOpen(page);
+    await test.step('Verify Enter opens and Escape closes edit mode', async () => {
+      await page.keyboard.press('Enter');
+      await assertEditModeOpen(page);
+      await page.keyboard.press('Escape');
+      await assertEditModeClosed(page);
+    });
 
-    // Verify ESC closes edit mode
-    await page.keyboard.press('Escape');
-    await assertEditModeClosed(page);
+    await test.step('Verify Space opens edit mode and Escape does not save text', async () => {
+      await page.keyboard.press('Space');
+      await assertEditModeOpen(page);
+      await selectAllText(page);
+      await locators.editInput(page).fill(text);
+      await page.keyboard.press('Escape');
+      await assertEditModeClosed(page);
+      await expect(locators.inlineEditView(page)).toHaveAttribute('aria-label', 'Edit: Martin Eden');
+    });
 
-    // Verify Space activates edit mode
-    await page.keyboard.press('Space');
-    await assertEditModeOpen(page);
+    await test.step('Verify Enter saves text', async () => {
+      await page.keyboard.press('Space');
+      await selectAllText(page);
+      await locators.editInput(page).fill(text);
+      await page.keyboard.press('Enter');
+      await assertEditModeClosed(page);
+      await expect(locators.inlineEditView(page)).toHaveAttribute('aria-label', `Edit: ${text}`);
+    });
 
-    // Verify ESC does not save text
-    await selectAllText(page);
-    await locators.inlineEditEdit(page).locator('input').fill(text);
-    await page.keyboard.press('Escape');
-    await assertEditModeClosed(page);
-    await expect(locators.inlineEditView(page)).toHaveAttribute('aria-label', 'Edit: Martin Eden');
+    await test.step('Verify Save button saves text', async () => {
+      await page.keyboard.press('Space');
+      await locators.editInput(page).fill('NewValue');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await assertEditModeClosed(page);
+      await expect(locators.inlineEditView(page)).toHaveAttribute('aria-label', 'Edit: NewValue');
+    });
 
-    // Verify Enter saves text
-    await page.keyboard.press('Space');
-    await selectAllText(page);
-    await locators.inlineEditEdit(page).locator('input').fill(text);
-    await page.keyboard.press('Enter');
-    await assertEditModeClosed(page);
-    await expect(locators.inlineEditView(page)).toHaveAttribute('aria-label', `Edit: ${text}`);
+    await test.step('Verify Cancel button does not save text', async () => {
+      await page.keyboard.press('Space');
+      await locators.editInput(page).fill('TempValue');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await assertEditModeClosed(page);
+      await expect(locators.inlineEditView(page)).toHaveAttribute('aria-label', 'Edit: NewValue');
+    });
 
-    // Verify confirm button saves and returns focus
-    await page.keyboard.press('Space');
-    await locators.inlineEditEdit(page).locator('input').fill('NewValue');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await assertEditModeClosed(page);
-    await expect(locators.inlineEditView(page)).toHaveAttribute('aria-label', 'Edit: NewValue');
-
-    // Verify cancel button does not save
-    await page.keyboard.press('Space');
-    await locators.inlineEditEdit(page).locator('input').fill('TempValue');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await assertEditModeClosed(page);
-    await expect(locators.inlineEditView(page)).toHaveAttribute('aria-label', 'Edit: NewValue');
-
-    // Verify empty state
-    await page.keyboard.press('Space');
-    await locators.inlineEditEdit(page).locator('input').fill('');
-    await page.keyboard.press('Enter');
-    await assertEditModeClosed(page);
-    await expect(locators.inlineEditView(page)).toHaveAttribute('aria-label', 'Edit: ');
+    await test.step('Verify empty value can be saved', async () => {
+      await page.keyboard.press('Space');
+      await locators.editInput(page).fill('');
+      await page.keyboard.press('Enter');
+      await assertEditModeClosed(page);
+      await expect(locators.inlineEditView(page)).toHaveAttribute('aria-label', 'Edit: ');
+    });
   });
 
   test('Verify base example mouse interactions', {
@@ -208,7 +205,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await assertEditModeOpen(page);
     });
 
-    await test.step('Verify click on Cancel not saves text updates', async () => {
+    await test.step('Verify click on Cancel does not save text updates', async () => {
       await selectAllText(page);
       await page.keyboard.type(text);
       await locators.button(page, 'Cancel').click();
@@ -251,15 +248,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await page.mouse.wheel(0, 1000);
 
     const randomText = Math.random().toString().substring(2);
-    const initialText = await locators.inlineEdit(page).textContent();
 
     await locators.inlineEdit(page).click();
-    await locators.inlineEditEdit(page).locator('input').fill(randomText);
+    await locators.editInput(page).fill(randomText);
     await locators.button(page, 'Cancel').click();
     await assertEditModeClosed(page);
-
-    const textContent = await locators.inlineEdit(page).textContent();
-    expect(textContent?.replace(/\s+SaveCancel$/, '').trim()).toBe(initialText?.trim());
+    await expect(locators.inlineEditView(page)).toHaveAttribute('aria-label', 'Edit: Martin Eden');
   });
 
   test('Verify editable tag keyboard interactions', {
@@ -291,24 +285,24 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.tagContainer(page)).toBeFocused();
     });
 
-    await test.step('Verify enter on tag activated edit mode', async () => {
+    await test.step('Verify Enter on tag activates edit mode', async () => {
       await page.keyboard.press('Enter');
       await assertEditModeOpen(page);
     });
 
-    await test.step('Verify edit mode skipped by ESC', async () => {
+    await test.step('Verify Escape closes edit mode', async () => {
       await page.keyboard.press('Escape');
       await assertEditModeClosed(page);
     });
 
-    await test.step('Verify space activated edit mode', async () => {
+    await test.step('Verify Space activates edit mode', async () => {
       await page.keyboard.press('Space');
       await assertEditModeOpen(page);
     });
 
-    await test.step('Verify escape not saves text updates', async () => {
+    await test.step('Verify Escape does not save text updates', async () => {
       await selectAllText(page);
-      await page.keyboard.type('randomText');
+      await page.keyboard.type(randomText);
       await page.keyboard.press('Escape');
       await assertEditModeClosed(page);
       await expect(locators.inlineEditView(page)).toHaveAttribute('aria-label', 'Edit: Default tag');
@@ -346,17 +340,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.tagContainer(page)).toBeFocused();
     });
 
-    if (browserName === 'chromium')
-      await test.step('Verify tab removes from edit mode', async () => {
-        await page.keyboard.press('Space');
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
-        await assertEditModeClosed(page);
-        await expect(locators.tagContainer(page)).toBeFocused();
-        await page.keyboard.press('Tab');
-        await expect(locators.tagContainerClose(page)).toBeFocused();
-      });
+    const chromiumStep = browserName === 'chromium' ? test.step : test.step.skip;
+    await chromiumStep('Verify Tab out of edit mode closes it (chromium only)', async () => {
+      await page.keyboard.press('Space');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await assertEditModeClosed(page);
+      await expect(locators.tagContainer(page)).toBeFocused();
+      await page.keyboard.press('Tab');
+      await expect(locators.tagContainerClose(page)).toBeFocused();
+    });
   });
 
   test('Verify editable tag mouse interactions', {
@@ -373,7 +367,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await assertEditModeOpen(page);
     });
 
-    await test.step('Verify click on Cancel not saves text updates', async () => {
+    await test.step('Verify click on Cancel does not save text updates', async () => {
       await selectAllText(page);
       await page.keyboard.type(randomText);
       await locators.button(page, 'Cancel').click();
@@ -415,10 +409,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify spin is shown on outside text click', async () => {
       await locators.inlineEdit(page).click();
-      const target = await locators.textSpan(page).boundingBox();
-      if (target) {
-        await page.mouse.click(target.x + 5, target.y + 5);
-      }
+      const target = (await locators.textSpan(page).boundingBox())!;
+      await page.mouse.click(target.x + 5, target.y + 5);
       await expect(locators.spin(page)).toBeVisible({ timeout: 1500 });
       await expect(locators.spin(page)).toBeHidden({ timeout: 5000 });
     });
@@ -457,11 +449,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.spin(page)).toBeHidden({ timeout: 1500 });
     });
 
-    await test.step('Verify spin is shown on Enter', async () => {
-      // The Edit region is wrapped in FadeInOut and stays mounted for its exit
-      // animation (~200ms) after closing. Reopening before it unmounts skips the
-      // input's autoFocus (no remount), leaving focus on the view. Wait for the
-      // previous edit to fully close so reopening focuses the input, then save.
+    await test.step('Verify spin is shown on Enter after previous edit fully closed (FadeInOut unmount)', async () => {
       await assertEditModeClosed(page);
       await page.keyboard.press('Enter');
       await expect(page.locator('[aria-label="Article title"]')).toBeFocused({ timeout: 2000 });
@@ -477,22 +465,26 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-edit/tests/examples/test_use.tsx', 'en');
 
-    await test.step('Verify no edit when edit disabled', async () => {
+    await test.step('Verify only editable=true example is in edit mode initially', async () => {
+      await expect(locators.inlineEditEdit(page)).toHaveCount(1);
+    });
+
+    await test.step('Verify click on view with editable=false does not open edit', async () => {
       await locators.inlineEditView(page).first().click();
       await expect(locators.inlineEditEdit(page)).toHaveCount(1);
     });
 
-    await test.step('Verify edit shown when edit enabled', async () => {
+    await test.step('Verify click on view opens edit', async () => {
       await locators.inlineEditView(page).nth(1).click();
       await expect(locators.inlineEditEdit(page)).toHaveCount(2);
     });
 
-    await test.step('Verify edit shown when has styles', async () => {
+    await test.step('Verify click on view with custom edit styles opens edit', async () => {
       await locators.inlineEditView(page).nth(2).click();
       await expect(locators.inlineEditEdit(page)).toHaveCount(3);
     });
 
-    await test.step('Verify edit hidden when view enabled', async () => {
+    await test.step('Verify click inside edit keeps it open', async () => {
       await locators.inlineEditEdit(page).nth(2).click();
       await expect(locators.inlineEditEdit(page)).toHaveCount(3);
     });

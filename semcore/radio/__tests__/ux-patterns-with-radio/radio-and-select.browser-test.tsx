@@ -8,23 +8,6 @@ export const locators = {
     const base = page.getByRole('radio');
     return typeof index === 'number' ? base.nth(index) : base;
   },
-  radio: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="Radio"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  radioMark: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="Value.RadioMark"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  radioText: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="Radio.Text"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  textLabel: (page: Page, text: string) => page.locator('label', { hasText: text }),
-  status: (page: Page, index?: number) => {
-    const base = page.getByRole('status');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
   radioGroup: (page: Page, index?: number) => {
     const base = page.getByRole('group');
     return typeof index === 'number' ? base.nth(index) : base;
@@ -78,7 +61,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.radios(page, 0)).toHaveAttribute('checked');
     });
 
-    await test.step('Verify select interaction', async () => {
+    await test.step('Verify Space opens select and arrows move highlight', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.selectTrigger(page)).toBeFocused();
       await page.keyboard.press('Space');
@@ -87,13 +70,18 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await page.keyboard.press('ArrowDown');
       await expect(locators.options(page, 1)).toHaveClass(/highlighted/);
+    });
 
+    await test.step('Verify selecting option checks related radio', async () => {
       await page.keyboard.press('Space');
       await locators.options(page, 0).waitFor({ state: 'hidden' });
 
       await expect(locators.selectTrigger(page)).toHaveAttribute('value', '500');
       await expect(locators.radioGroup(page)).toHaveAttribute('value', 'first');
       await expect(locators.radios(page, 2)).toBeChecked();
+    });
+
+    await test.step('Verify focus order after selection', async () => {
       await page.keyboard.press('Shift+Tab');
       await expect(locators.radios(page, 2)).toBeFocused();
 

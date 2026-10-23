@@ -61,9 +61,11 @@ const Demo = () => {
         {10}
       </Box>
 
-      <Box inline scaleIndent={4} style={styleBox} py={10}>
+      <Box inline scaleIndent={5} style={styleBox} py={10}>
         py=
         {10}
+        , scaleIndent=
+        {5}
       </Box>
     </div>
   );
