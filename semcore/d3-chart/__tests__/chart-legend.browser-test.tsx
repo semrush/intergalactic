@@ -35,10 +35,15 @@ export const locators = {
    * modifier name rather than a `transparent` attribute.
    */
   dimmed: (page: Page) => page.locator('[class*="_transparent_"]'),
+  metric: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="Metric"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
 };
 
 const FLEX_EXAMPLE = 'stories/components/d3-chart/tests/examples/chart-legend/customizable_legend.tsx';
 const TABLE_EXAMPLE = 'stories/components/d3-chart/tests/examples/chart-legend/legend-table-data.tsx';
+const METRICS_EXAMPLE = 'stories/components/d3-chart/tests/examples/chart-legend/legend-with-metrics.tsx';
 
 /**
  * Pairwise set for LegendFlex.
@@ -119,6 +124,35 @@ const tablePairwiseCases = [
   },
 ];
 
+/**
+ * Pairwise set for LegendTable with metrics.
+ *
+ * Factors: diffIcon (none|up|down|mixed), diffUse (good|bad|neutral|mixed),
+ * metricLink (none|single|all), metricsPerItem (1|2), size (m|l).
+ * The two 4-value factors put the lower bound at 16 cases.
+ */
+const metricsPairwiseCases = [
+  ['none', 'good', 'none', 1, 'm'],
+  ['none', 'bad', 'single', 2, 'l'],
+  ['none', 'neutral', 'all', 1, 'm'],
+  ['none', 'mixed', 'none', 2, 'l'],
+  ['up', 'good', 'single', 2, 'm'],
+  ['up', 'bad', 'all', 1, 'l'],
+  ['up', 'neutral', 'none', 2, 'm'],
+  ['up', 'mixed', 'single', 1, 'l'],
+  ['down', 'good', 'all', 1, 'l'],
+  ['down', 'bad', 'none', 2, 'm'],
+  ['down', 'neutral', 'single', 1, 'l'],
+  ['down', 'mixed', 'all', 2, 'm'],
+  ['mixed', 'good', 'none', 2, 'l'],
+  ['mixed', 'bad', 'single', 1, 'm'],
+  ['mixed', 'neutral', 'all', 2, 'l'],
+  ['mixed', 'mixed', 'none', 1, 'm'],
+].map(([diffIcon, diffUse, metricLink, metricsPerItem, size], i) => ({
+  name: `#${i + 1} icon-${diffIcon}, ${diffUse}, link-${metricLink}, ${metricsPerItem}-per-item, ${size}`,
+  props: { diffIcon, diffUse, metricLink, metricsPerItem, legendProps: { size } },
+}));
+
 /* =====================================================
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
@@ -163,6 +197,65 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/d3-chart/docs/examples/chart-legend/table-view.tsx', 'en');
+
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  test.describe('Legend with metrics', () => {
+    metricsPairwiseCases.forEach((c) => {
+      test(`Verify pairwise ${c.name}`, {
+        tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@chart-legend', '@line-chart', '@link'],
+      }, async ({ page }) => {
+        await loadPage(page, METRICS_EXAMPLE, 'en', c.props);
+
+        await locators.legendTable(page).waitFor({ state: 'visible' });
+        await expect(page).toHaveScreenshot();
+      });
+    });
+
+    test('Verify boundary empty diffValue', {
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@line-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, METRICS_EXAMPLE, 'en', { diffValue: '' });
+
+      await locators.legendTable(page).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
+
+    test('Verify boundary long diffValue', {
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@line-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, METRICS_EXAMPLE, 'en', { diffValue: '1,234,567,890.12', metricsPerItem: 2 });
+
+      await locators.legendTable(page).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
+
+    test('Verify boundary patterns', {
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@line-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, METRICS_EXAMPLE, 'en', { patterns: true });
+
+      await locators.legendTable(page).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
+
+    test('Verify a hovered metric row keeps the other rows dimmed', {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@chart-legend', '@line-chart', '@link'],
+    }, async ({ page }) => {
+      await loadPage(page, METRICS_EXAMPLE, 'en', { metricLink: 'all' });
+
+      const items = locators.tableItem(page);
+      await locators.metric(page, 0).hover();
+
+      await test.step('Verify only the hovered row stays opaque', async () => {
+        await expect(items.nth(0)).not.toHaveClass(/_transparent_/);
+        const total = await items.count();
+        for (let i = 1; i < total; i++) {
+          await expect(items.nth(i)).toHaveClass(/_transparent_/);
+        }
+      });
 
       await expect(page).toHaveScreenshot();
     });
