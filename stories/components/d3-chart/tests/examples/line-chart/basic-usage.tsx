@@ -32,6 +32,24 @@ type LineChartStoryProps = LineChartProps & {
    */
   deltaOverride?: 'off' | keyof typeof deltaOverrides;
   withInterpolatedGaps?: boolean;
+
+  withReferenceLine?: boolean;
+  withReferenceArea?: boolean;
+
+  referenceLineValue?: number;
+  referenceLineArea?: number;
+  /**
+   * Number of reference lines, passed as an array and spaced 5 points apart from
+   * `referenceLineValue`. Unset keeps the single-object form.
+   */
+  referenceLineCount?: number;
+  /** Puts every line from `referenceLineCount` on the same value instead of 5 points apart. */
+  referenceLinesOverlap?: boolean;
+  referenceAreaStart?: number;
+  referenceAreaEnd?: number;
+  referenceAreaUse?: 'neutral' | 'insight' | 'good' | 'bad';
+  referenceAreaTitle?: string;
+  referenceAreaSubTitle?: string;
 };
 
 /**
@@ -110,6 +128,17 @@ const Demo = (props: LineChartStoryProps) => {
     titleFormat,
     deltaOverride,
     withInterpolatedGaps,
+    withReferenceLine,
+    withReferenceArea,
+    referenceLineValue,
+    referenceLineArea,
+    referenceLineCount,
+    referenceLinesOverlap,
+    referenceAreaStart,
+    referenceAreaEnd,
+    referenceAreaUse,
+    referenceAreaTitle,
+    referenceAreaSubTitle,
     ...chartProps
   } = getPropsToChart(props);
 
@@ -155,6 +184,26 @@ const Demo = (props: LineChartStoryProps) => {
     ...(getPercentDelta ? { getPercentDelta } : {}),
   };
 
+  if (withReferenceLine) {
+    const firstValue = referenceLineValue ?? 3;
+    const step = referenceLinesOverlap ? 0 : 5;
+
+    responsiveChartProps.referenceLine = referenceLineCount
+      ? Array.from({ length: referenceLineCount }, (_, i) => ({ value: firstValue + i * step, area: referenceLineArea }))
+      : { value: firstValue, area: referenceLineArea };
+  }
+
+  if (withReferenceArea) {
+    const use = referenceAreaUse ?? 'insight' as const;
+
+    responsiveChartProps.referenceArea = {
+      value: [referenceAreaStart ?? 12, referenceAreaEnd ?? 16],
+      use,
+      title: referenceAreaTitle || undefined,
+      subTitle: referenceAreaSubTitle || undefined,
+    };
+  }
+
   const showResponsiveInfo = aspect || hMin || hMax || useExplicitPlotWidth;
 
   return (
@@ -193,6 +242,14 @@ export const defaultProps = getChartProps<LineChartStoryProps>({
   withInterpolatedGaps: false,
   titleFormat: 'off',
   deltaOverride: 'off',
+  withReferenceLine: false,
+  withReferenceArea: false,
+  referenceLineValue: 3,
+  referenceLinesOverlap: false,
+  referenceAreaStart: 12,
+  referenceAreaEnd: 16,
+  referenceAreaTitle: '',
+  referenceAreaSubTitle: '',
 });
 
 Demo.defaultProps = defaultProps;

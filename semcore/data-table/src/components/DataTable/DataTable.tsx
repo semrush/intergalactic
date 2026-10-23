@@ -371,7 +371,7 @@ class DataTableRoot<
       shadowVertical,
       scrollDirection: this.scrollDirection,
       isDataEmpty: this.isDataEmpty,
-      withAnimation: this.withAnimation && this.scrollDirection === 'horizontal' && !this.isDataEmpty,
+      withAnimation: this.scrollDirection === 'horizontal' && !this.isDataEmpty,
       headerNodesMap: this.headerNodesMap,
     };
   }
@@ -1044,7 +1044,6 @@ class DataTableRoot<
           loading={loading}
           topOffset={topOffset}
           withHeaderScrollBar={headerProps?.withScrollBar}
-          withAnimation={this.withAnimation}
           scrollBarInstanceRef={this.scrollBarInstanceRef}
         />
 

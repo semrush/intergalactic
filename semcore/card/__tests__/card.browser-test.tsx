@@ -56,7 +56,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await expect(header).toHaveCSS('padding-left', '20px');
       await expect(header).toHaveCSS('padding-right', '20px');
       await expect(header).toHaveCSS('padding-top', '20px');
-      await expect(header).toHaveCSS('padding-bottom', '12px');
+      await expect(header).toHaveCSS('padding-bottom', '0px');
     });
 
     await test.step('Verify title styles', async () => {
