@@ -65,8 +65,8 @@ SValue[size='m'] {
   height: var(--intergalactic-spacing-5x, 20px);
 
   SInvalidPattern:before {
-    width: 14px;
-    height: 14px;
+    width: 18px;
+    height: 18px;
   }
 }
 
@@ -75,8 +75,8 @@ SValue[size='l'] {
   height: var(--intergalactic-spacing-6x, 24px);
 
   SInvalidPattern:before {
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 22px;
   }
 }
 
