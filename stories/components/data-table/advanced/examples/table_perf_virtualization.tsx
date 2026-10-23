@@ -1,4 +1,4 @@
-import { DataTable, ACCORDION } from '@semcore/ui/data-table';
+import { DataTable } from '@semcore/ui/data-table';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 import { IntlProvider } from 'react-intl';
@@ -9,6 +9,7 @@ import { accordionInsideTableDefaultProps, cols, componentsMap, DEFAULT_LOCALE, 
 const data2 = Array.from({ length: 1000 }, (_, r) => {
   const index = r % data.length;
 
+  // Object.entries skips symbol keys, so [ACCORDION] is dropped: accordion is not supported with fixed rowHeight
   const d = Object.entries(data[index]).reduce<Record<string, any>>((acc, [key, value]) => {
     if (key === 'payment_intent_id') {
       acc[key] = `${r}__${value}`;
@@ -42,15 +43,6 @@ const Demo = (demoProps: AccordionInTableProps) => {
         headerProps={{ sticky: true }}
         virtualScroll={{ rowHeight: 45 }}
         renderCell={(props) => {
-          const parentRowIndex = props.rowIndex;
-
-          if (parentRowIndex === 0 && props.columnName === ACCORDION) {
-            return {
-              p: 0, // set empty paddings for the first accordion
-              children: props.defaultRender(),
-            };
-          }
-
           if (props.dataKey === 'description_ellipsis') {
             return {
               children: (
