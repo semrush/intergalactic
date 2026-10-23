@@ -54,7 +54,7 @@ export type DataTableRowProps<Data extends DataTableData, UniqKeyType> = {
   'accordionRowIndex'?: DataTableCellProps<Data, UniqKeyType>['accordionRowIndex'];
   'isNonInteractive'?: boolean;
 
-  'componentRef'?: (component: RowRoot<Data, UniqKeyType> | null) => void;
+  'componentRef'?: (index: number, row: DTRow<UniqKeyType>, component: RowRoot<Data, UniqKeyType> | null) => void;
 
   'accordionIndex'?: number;
 

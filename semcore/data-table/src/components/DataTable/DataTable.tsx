@@ -970,7 +970,7 @@ class DataTableRoot<
     let gridTemplateRows: string | undefined = undefined;
 
     if (virtualScroll && typeof virtualScroll !== 'boolean' && 'rowHeight' in virtualScroll) {
-      gridTemplateRows = `auto auto repeat(${this.totalRows}, minmax(${virtualScroll.rowHeight}px, auto))`;
+      gridTemplateRows = `${this.hasGroups ? 'auto auto' : 'auto'} repeat(${this.totalRows}, ${virtualScroll.rowHeight}px)`;
     }
 
     return sstyled(styles)(

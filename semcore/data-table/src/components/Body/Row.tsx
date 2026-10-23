@@ -49,7 +49,7 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   private openAccordionTimeout = 0;
   private readonly cellStyle = new Map<string, React.CSSProperties>();
 
-  rowElementRef = React.createRef<HTMLDivElement>();
+  public rowElementRef = React.createRef<HTMLDivElement>();
 
   state: State<UniqKeyType> = {
     expandedForAnimation: false,
@@ -66,8 +66,8 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   }
 
   componentDidMount() {
-    const { componentRef } = this.asProps;
-    componentRef?.(this);
+    const { rowIndex, componentRef, row } = this.asProps;
+    componentRef?.(rowIndex, row, this);
 
     this.setAccordion();
 
@@ -83,7 +83,8 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   }
 
   componentWillUnmount() {
-    this.asProps.componentRef?.(null);
+    const { rowIndex, componentRef, row } = this.asProps;
+    componentRef?.(rowIndex, row, null);
 
     this.cellStyle.clear();
   }
