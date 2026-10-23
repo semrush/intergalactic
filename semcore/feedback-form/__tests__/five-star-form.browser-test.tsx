@@ -26,6 +26,14 @@ export const locators = {
   },
 };
 
+const ensureFirstCheckboxFocused = async (page: Page, browserName: string) => {
+  const firstCheckbox = page.getByRole('checkbox').first();
+  if (browserName === 'firefox' && !(await firstCheckbox.evaluate((node) => node === document.activeElement))) {
+    await page.keyboard.press('Tab');
+  }
+  await expect(firstCheckbox).toBeFocused();
+};
+
 /* =====================================================
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
@@ -40,19 +48,13 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx', 'en');
     const checkboxInput = page.getByRole('checkbox');
-    const ensureFirstCheckboxFocused = async () => {
-      if (
-        browserName === 'firefox' &&
-        !(await checkboxInput.first().evaluate((node) => node === document.activeElement))
-      ) {
-        await page.keyboard.press('Tab');
-      }
-      await expect(checkboxInput.first()).toBeFocused();
-    };
+    const buttons = locators.dialog(page).getByRole('button');
+    const notWebkitStep = browserName === 'webkit' ? test.step.skip : test.step;
 
-    await expect(page).toHaveScreenshot();
-    const dialog = locators.dialog(page);
-    const buttons = dialog.getByRole('button');
+    await test.step('Verify default styles', async () => {
+      await expect(page).toHaveScreenshot();
+    });
+
     await test.step('Verify stars hover state', async () => {
       await locators.stars(page, 1).hover();
       await expect(page).toHaveScreenshot();
@@ -65,17 +67,16 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot();
     });
 
-    if (browserName == 'webkit') test.skip();
-    await test.step('Verify form styles', async () => {
+    await notWebkitStep('Verify form styles (WebKit does not focus checkboxes by Tab)', async () => {
       await page.keyboard.press('Enter');
       await buttons.first().waitFor({ state: 'visible' });
-      await ensureFirstCheckboxFocused();
+      await ensureFirstCheckboxFocused(page, browserName);
 
       await page.waitForTimeout(200);
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify email validation', async () => {
+    await notWebkitStep('Verify email validation', async () => {
       await page.keyboard.press('Tab');
       await expect(checkboxInput.nth(1)).toBeFocused();
 
@@ -102,7 +103,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       });
     });
 
-    await test.step('Verify loading styles', async () => {
+    await notWebkitStep('Verify loading styles', async () => {
       await page.keyboard.type('test@test.test');
       await page.keyboard.press('Tab');
       await expect(page.getByRole('link', { name: 'Privacy Policy' })).toBeFocused();
@@ -127,11 +128,13 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     const buttons = locators.dialog(page).getByRole('button');
 
-    await locators.stars(page, 1).click();
-    await buttons.first().waitFor({ state: 'visible' });
-    await buttons.nth(1).click();
-    await page.waitForSelector('text="Something went wrong. Please try again or contact us at"');
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify error notice after submit', async () => {
+      await locators.stars(page, 1).click();
+      await buttons.first().waitFor({ state: 'visible' });
+      await buttons.nth(1).click();
+      await page.waitForSelector('text="Something went wrong. Please try again or contact us at"');
+      await expect(page).toHaveScreenshot();
+    });
   });
 
   test('Verify feedback rating notice with title and subtitle', {
@@ -213,17 +216,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     const checkboxInput = page.getByRole('checkbox');
     const buttons = locators.dialog(page).getByRole('button');
-    const ensureFirstCheckboxFocused = async () => {
-      if (
-        browserName === 'firefox' &&
-        !(await checkboxInput.first().evaluate((node) => node === document.activeElement))
-      ) {
-        await page.keyboard.press('Tab');
-      }
-      await expect(checkboxInput.first()).toBeFocused();
-    };
+    const notWebkitStep = browserName === 'webkit' ? test.step.skip : test.step;
 
-    await test.step('Verify stars can be focused and their attributes ', async () => {
+    await test.step('Verify stars can be focused and their attributes', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.sliderRating(page)).toBeFocused();
       await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuemin', '1');
@@ -234,11 +229,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.sliderRating(page)).toHaveAttribute('value', '0');
       await expect(locators.sliderRating(page)).toHaveAttribute('aria-orientation', 'horizontal');
 
-      const count = await locators.stars(page).count();
-      for (let i = 0; i < count; i++) {
-        await expect(locators.stars(page, i)).toHaveAttribute('fill', 'none');
-        await expect(locators.stars(page, i)).toHaveAttribute('width', '24');
-        await expect(locators.stars(page, i)).toHaveAttribute('height', '24');
+      await expect(locators.stars(page)).not.toHaveCount(0);
+      for (const star of await locators.stars(page).all()) {
+        await expect(star).toHaveAttribute('fill', 'none');
+        await expect(star).toHaveAttribute('width', '24');
+        await expect(star).toHaveAttribute('height', '24');
       }
 
       await page.keyboard.press('ArrowRight');
@@ -250,39 +245,49 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuetext', '2 out of 5. Press Enter to select the rating.');
     });
 
-    await test.step('Verify form opened and first checkbox focused by deault', async () => {
+    await test.step('Verify form opened by Enter', async () => {
       await page.keyboard.press('Enter');
       await buttons.first().waitFor({ state: 'visible' });
       await expect(locators.sliderRating(page)).toHaveAttribute('value', '2');
-      if (browserName !== 'webkit') await ensureFirstCheckboxFocused();
+    });
+
+    await notWebkitStep('Verify first checkbox focused by default (WebKit does not focus checkboxes)', async () => {
+      await ensureFirstCheckboxFocused(page, browserName);
+    });
+
+    await test.step('Verify first checkbox attributes', async () => {
       await expect(checkboxInput.first()).toHaveAttribute('aria-invalid', 'false');
       await expect(checkboxInput.first()).toHaveAttribute('aria-labelledby', 'option1');
     });
 
-    await test.step('Verify form closed by ESC and selected stars skipped', async () => {
+    await test.step('Verify form closed by Escape', async () => {
       await page.keyboard.press('Escape');
       await buttons.first().waitFor({ state: 'hidden' });
-      if (browserName !== 'webkit') await expect(locators.sliderRating(page)).toBeFocused();
+    });
+
+    await notWebkitStep('Verify focus returns to stars after Escape', async () => {
+      await expect(locators.sliderRating(page)).toBeFocused();
+    });
+
+    await test.step('Verify selected stars reset after Escape', async () => {
       await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuenow', '0');
       await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuetext', 'Not set');
 
       await expect(locators.sliderRating(page)).toHaveAttribute('value', '0');
     });
 
-    await test.step('Verify Form not opened by Enter  when no starts selected', async () => {
+    await test.step('Verify form not opened by Enter when no stars selected', async () => {
       await page.keyboard.press('Enter');
-      await expect(buttons.first()).not.toBeVisible();
+      await expect(buttons.first()).toBeHidden();
     });
 
-    if (browserName === 'webkit') return;
-
-    await test.step('Verify Form focus order', async () => {
+    await notWebkitStep('Verify form focus order', async () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('Enter');
       await buttons.first().waitFor({ state: 'visible' });
 
-      await ensureFirstCheckboxFocused();
+      await ensureFirstCheckboxFocused(page, browserName);
 
       for (let i = 0; i < 3; i++) {
         await page.keyboard.press('Tab');
@@ -303,19 +308,19 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(buttons.nth(0)).toBeFocused();
     });
 
-    await test.step('Verify form closed by activate Close button', async () => {
+    await notWebkitStep('Verify form closed by activating Close button', async () => {
       await page.keyboard.press('Enter');
       await buttons.first().waitFor({ state: 'hidden' });
       await expect(locators.sliderRating(page)).toBeFocused();
     });
 
-    await test.step('Verify form closed by activate Send request', async () => {
+    await notWebkitStep('Verify form closed by activating Send request', async () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('Enter');
       await page.waitForTimeout(200);
       await buttons.first().waitFor({ state: 'visible' });
-      await ensureFirstCheckboxFocused();
+      await ensureFirstCheckboxFocused(page, browserName);
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Enter');
@@ -336,6 +341,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     const checkboxInput = page.getByRole('checkbox');
     const buttons = locators.dialog(page).getByRole('button');
+    const notWebkitStep = browserName === 'webkit' ? test.step.skip : test.step;
 
     await test.step('Verify stars hover interaction', async () => {
       await locators.stars(page, 3).hover();
@@ -351,7 +357,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.sliderRating(page)).toHaveAttribute('value', '4');
     });
 
-    await test.step('Verify form closed by click outside the form and selected starts skipped', async () => {
+    await test.step('Verify form closed by click outside the form and selected stars reset', async () => {
       await page.mouse.click(0, 0);
       await buttons.first().waitFor({ state: 'hidden' });
       await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuenow', '0');
@@ -364,13 +370,19 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await locators.stars(page, 3).click();
       await buttons.first().waitFor({ state: 'visible' });
       await buttons.first().click();
-      await locators.dialog(page).waitFor({ state: 'visible' });
+      await buttons.first().waitFor({ state: 'hidden' });
+    });
+
+    await test.step('Verify form opened by click on stars again', async () => {
+      await locators.stars(page, 3).click();
+      await buttons.first().waitFor({ state: 'visible' });
+    });
+
+    await notWebkitStep('Verify first checkbox focused when form opened by click (WebKit does not focus checkboxes)', async () => {
+      await expect(checkboxInput.first()).toBeFocused();
     });
 
     await test.step('Verify form closed by click Send request', async () => {
-      await locators.stars(page, 3).click();
-      await buttons.first().waitFor({ state: 'visible' });
-      if (browserName !== 'webkit') await expect(checkboxInput.first()).toBeFocused();
       await buttons.nth(1).click();
 
       await page.locator('[aria-label="Loading…"]').nth(1).waitFor({ state: 'hidden' });

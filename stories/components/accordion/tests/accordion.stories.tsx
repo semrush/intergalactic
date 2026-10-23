@@ -1,4 +1,4 @@
-import Accrordion from '@semcore/ui/accordion';
+import Accordion from '@semcore/ui/accordion';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AccordionAllPropsExample, { defaultAccordionAllProps } from './examples/accordion-all-props';
@@ -6,13 +6,13 @@ import AccordionAnimationExample from './examples/accordion-collapse-duration';
 import ButtonsOnToggleExample from './examples/button-on-toggle';
 import ValuesExample from './examples/values';
 
-const meta: Meta<typeof Accrordion> = {
+const meta: Meta<typeof Accordion> = {
   title: 'Components/Accordion/Tests',
-  component: Accrordion,
+  component: Accordion,
 };
 
 export default meta;
-type Story = StoryObj<typeof Accrordion>;
+type Story = StoryObj<typeof Accordion>;
 
 export const ButtonsOnToggle: Story = {
   render: ButtonsOnToggleExample,
@@ -22,7 +22,7 @@ export const Values: Story = {
   render: ValuesExample,
 };
 
-export const AccordionAnimation: StoryObj = {
+export const AccordionAnimation: Story = {
   render: AccordionAnimationExample,
 };
 

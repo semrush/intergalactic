@@ -24,8 +24,10 @@ import DonutMockData from '../../../../../../components/d3-chart/__mocks__/donut
 import ScatterplotMockData from '../../../../../../components/d3-chart/__mocks__/scatterplot';
 import VennMockData from '../../../../../../components/d3-chart/__mocks__/venn';
 import AreaChartBasicExample from '../../../../../../components/d3-chart/docs/examples/area-chart/basic-usage';
+import BarChartLinksExample from '../../../../../../components/d3-chart/docs/examples/bar-chart/links';
 import LegendWithMetricsExample
   from '../../../../../../components/d3-chart/docs/examples/chart-legend/legend-with-metrics';
+import ReferenceLineExample from '../../../../../../components/d3-chart/docs/examples/d3-chart/reference-line';
 import FeedbackRatingFormExample
   from '../../../../../ux-patterns/feedback-rating/docs/examples/feedback_rating_form';
 import PrimaryTable from '../Tables/PrimaryTable';
@@ -706,6 +708,34 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
             </Card.Header>
             <Card.Body>
               <LegendWithMetricsExample />
+            </Card.Body>
+          </Card>
+
+          <Card tag='section' style={cardSectionStyle('1 1 calc(50% - 8px)')}>
+            <Card.Header>
+              <Flex justifyContent='space-between' alignItems='center' w='100%'>
+                <Card.Title tag='h3'>Line with reference</Card.Title>
+                <Button addonLeft={FileExportM} aria-label='Export'>
+                  Export
+                </Button>
+              </Flex>
+            </Card.Header>
+            <Card.Body>
+              <ReferenceLineExample />
+            </Card.Body>
+          </Card>
+
+          <Card tag='section' style={cardSectionStyle('1 1 calc(50% - 8px)')}>
+            <Card.Header>
+              <Flex justifyContent='space-between' alignItems='center' w='100%'>
+                <Card.Title tag='h3'>Bar with links</Card.Title>
+                <Button addonLeft={FileExportM} aria-label='Export'>
+                  Export
+                </Button>
+              </Flex>
+            </Card.Header>
+            <Card.Body>
+              <BarChartLinksExample />
             </Card.Body>
           </Card>
         </Flex>

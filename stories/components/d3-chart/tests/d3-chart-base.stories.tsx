@@ -57,7 +57,12 @@ export const GridAxisProps: StoryObj<typeof BasicUsageProps> = {
   args: BasicUsageProps,
 };
 
+/**
+ * Covers only deprecated `Reference*` components. Use `referenceLine` / `referenceArea`
+ * on `Chart.Line` instead.
+ */
 export const ReferenceLineProps: StoryObj = {
+  name: 'Reference Line Props (deprecated)',
   render: ReferenceLinePropsExample,
 };
 

@@ -12,6 +12,8 @@ export const selectOption = async (page: Page): Promise<void> => {
   await locators.options(page).first().waitFor({ state: 'hidden' });
 };
 
+type TriggerName = 'BaseTrigger' | 'ButtonTrigger' | 'FilterTrigger';
+
 export const locators = {
   button: (page: Page, index?: number) => {
     const base = page.getByRole('button');
@@ -27,6 +29,9 @@ export const locators = {
   ),
   dialog: (page: Page): Locator => page.getByRole('dialog'),
   hint: (page: Page) => page.locator('[data-ui-name="Hint"]'),
+  triggerText: (scope: Page | Locator, trigger: TriggerName, { withPlaceholder = false } = {}): Locator =>
+    scope.locator(`[data-ui-name="${trigger}.Text"]${withPlaceholder ? '[placeholder]' : ''}`),
+  filterCounter: (scope: Page | Locator): Locator => scope.locator('[data-ui-name="FilterTrigger.Counter"]'),
 };
 
 // Hint can stay mounted while fading out, so wait for a fully opaque instance.
@@ -69,7 +74,15 @@ export const getCssVarColor = async (page: Page, varName: string) => {
   }, { name: varName, fallback: cssVarColorFallbacks[varName] });
 };
 
-export async function checkBackgroundColor(page: any, selectorOrLocator: string | Locator, expectedColor: string) {
+export const getTriggerColors = async (page: Page) => ({
+  bgPrimary: await getCssVarColor(page, '--intergalactic-bg-primary-neutral'),
+  borderPrimary: await getCssVarColor(page, '--intergalactic-border-primary'),
+  borderActive: await getCssVarColor(page, '--intergalactic-border-info-active'),
+  borderSuccess: await getCssVarColor(page, '--intergalactic-border-success-active'),
+  borderCritical: await getCssVarColor(page, '--intergalactic-border-critical-active'),
+});
+
+export async function checkBackgroundColor(page: Page, selectorOrLocator: string | Locator, expectedColor: string) {
   const element = typeof selectorOrLocator === 'string'
     ? page.locator(selectorOrLocator)
     : selectorOrLocator;
@@ -81,7 +94,7 @@ export async function checkBackgroundColor(page: any, selectorOrLocator: string 
   expect(backgroundColor).toBe(expectedColor);
 }
 
-export async function checkBorderColor(page: any, selectorOrLocator: string | Locator, expectedColor: string) {
+export async function checkBorderColor(page: Page, selectorOrLocator: string | Locator, expectedColor: string) {
   const element = typeof selectorOrLocator === 'string'
     ? page.locator(selectorOrLocator)
     : selectorOrLocator;

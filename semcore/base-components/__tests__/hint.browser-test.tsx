@@ -4,7 +4,7 @@ import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
-  triggerBth: (page: Page, index?: number) => {
+  triggerBtn: (page: Page, index?: number) => {
     const base = page.getByRole('button');
     return typeof index === 'number' ? base.nth(index) : base;
   },
@@ -18,6 +18,13 @@ export const locators = {
   },
   text: (page: Page) => page.getByText('Export to PDF'),
 };
+
+const waitForHintOpaque = (page: Page) => page.waitForFunction(
+  () => {
+    const el = document.querySelector('[data-ui-name="Hint"]');
+    return el && getComputedStyle(el).opacity === '1';
+  },
+);
 
 /* =====================================================
 @visual
@@ -40,20 +47,15 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   ];
   placementVariants.forEach((variant) => {
-    test(`Verify hint with placement= ${variant.placement}`, {
+    test(`Verify hint with placement=${variant.placement}`, {
       tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@hint', '@base-components', '@button'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/hint/tests/examples/base-example-props.tsx', 'en', variant);
 
       await test.step('Hover trigger and verify hint appears', async () => {
-        await locators.triggerBth(page).hover();
+        await locators.triggerBtn(page).hover();
         await locators.hint(page).waitFor({ state: 'visible' });
-        await page.waitForFunction(
-          () => {
-            const el = document.querySelector('[data-ui-name="Hint"]');
-            return el && getComputedStyle(el).opacity === '1';
-          },
-        );
+        await waitForHintOpaque(page);
         await expect(page).toHaveScreenshot();
       });
     });
@@ -67,15 +69,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await test.step('Focus on button', async () => {
       await page.keyboard.press('Tab');
-      await expect(locators.triggerBth(page)).toBeFocused();
+      await expect(locators.triggerBtn(page)).toBeFocused();
       await expect(locators.hint(page)).toHaveCount(1);
       await locators.hint(page).waitFor({ state: 'visible' });
-      await page.waitForFunction(
-        () => {
-          const el = document.querySelector('[data-ui-name="Hint"]');
-          return el && getComputedStyle(el).opacity === '1';
-        },
-      );
+      await waitForHintOpaque(page);
       await expect(page).toHaveScreenshot();
     });
 
@@ -85,12 +82,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(locators.triggerLink(page)).toBeFocused();
       await expect(locators.hint(page)).toHaveCount(1);
       await locators.hint(page).waitFor({ state: 'visible' });
-      await page.waitForFunction(
-        () => {
-          const el = document.querySelector('[data-ui-name="Hint"]');
-          return el && getComputedStyle(el).opacity === '1';
-        },
-      );
+      await waitForHintOpaque(page);
       await expect(page).toHaveScreenshot();
     });
   });
@@ -105,12 +97,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       const box = await link.boundingBox();
       await link.hover({ position: { x: box!.width / 6, y: box!.height / 2 } });
       await locators.hint(page).waitFor({ state: 'visible' });
-      await page.waitForFunction(
-        () => {
-          const el = document.querySelector('[data-ui-name="Hint"]');
-          return el && getComputedStyle(el).opacity === '1';
-        },
-      );
+      await waitForHintOpaque(page);
       await expect(page).toHaveScreenshot();
     });
   });
@@ -125,12 +112,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       const box = await link.boundingBox();
       await link.hover({ position: { x: box!.width / 6, y: box!.height / 2 } });
       await locators.hint(page).waitFor({ state: 'visible' });
-      await page.waitForFunction(
-        () => {
-          const el = document.querySelector('[data-ui-name="Hint"]');
-          return el && getComputedStyle(el).opacity === '1';
-        },
-      );
+      await waitForHintOpaque(page);
       await expect(page).toHaveScreenshot();
     });
   });
@@ -152,7 +134,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     await test.step('Hover trigger - hint should appear', async () => {
-      await locators.triggerBth(page).hover();
+      await locators.triggerBtn(page).hover();
       await expect(locators.hint(page)).toHaveCount(1);
     });
 
@@ -168,7 +150,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await loadPage(page, 'stories/components/base-components/hint/docs/examples/basic-usage.tsx', 'en');
 
     await page.getByRole('button').waitFor({ state: 'visible' });
-    await test.step('Hint shown when bth focused', async () => {
+    await test.step('Hint shown when button focused', async () => {
       await page.keyboard.press('Tab');
       await locators.hint(page).waitFor({ state: 'visible' });
       await expect(locators.hint(page)).toHaveCount(1);
@@ -196,16 +178,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify hint hides on blur', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@hint', '@base-components', '@flex-box', '@button', '@link'],
   }, async ({ page, browserName }) => {
+    test.skip(browserName === 'firefox', 'Firefox moves focus out of the page on Tab from the last element without a blur event');
     await loadPage(page, 'stories/components/base-components/hint/docs/examples/basic-usage.tsx', 'en');
-    if (browserName == 'firefox') test.skip();
-    await test.step('Show hint by focusing trigger', async () => {
+    await test.step('Show hint by focusing the link', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await locators.hint(page).waitFor({ state: 'visible' });
       await expect(locators.hint(page)).toHaveCount(1);
     });
 
-    await test.step('Press Escape - hint should hide', async () => {
+    await test.step('Move focus away by Tab - hint should hide', async () => {
       await page.keyboard.press('Tab');
       await locators.hint(page).waitFor({ state: 'hidden' });
       await expect(locators.hint(page)).toHaveCount(0);
@@ -213,12 +195,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify custom timeout delays', {
-    tag: [TAG.PRIORITY_MEDIUM, '@hint', '@base-components', '@button'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@hint', '@base-components', '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/hint/tests/examples/base-example-props.tsx', 'en', { timeout: 1000 });
 
     await test.step('Hover and verify hint respects custom show delay', async () => {
-      await locators.triggerBth(page).hover();
+      await locators.triggerBtn(page).hover();
 
       await page.waitForTimeout(500);
       await expect(locators.hint(page)).toHaveCount(0);
@@ -229,22 +211,21 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify hint z-index stacking', {
-    tag: [TAG.PRIORITY_MEDIUM, '@hint', '@base-components', '@flex-box', '@button', '@link'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@hint', '@base-components', '@flex-box', '@button', '@link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/hint/docs/examples/basic-usage.tsx', 'en');
 
     await test.step('Show hint', async () => {
-      await locators.triggerBth(page).hover();
+      await locators.triggerBtn(page).hover();
       await expect(locators.hint(page)).toBeVisible({ timeout: 1000 });
     });
 
-    await test.step('Verify hint has proper z-index', async () => {
+    await test.step('Verify hint is placed on a positive z-index layer', async () => {
       const hint = locators.hint(page);
       const zIndex = await hint.evaluate((el) => {
         return window.getComputedStyle(el).zIndex;
       });
 
-      // Hint should have high z-index for tooltip layer
       expect(parseInt(zIndex)).toBeGreaterThan(0);
     });
   });

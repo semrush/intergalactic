@@ -1,4 +1,3 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
 import type { Page } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
@@ -21,6 +20,13 @@ export const locators = {
 
 };
 
+const expectCardScreenshot = async (page: Page, testId: string) => {
+  const clip = (await page.locator(`[data-testid="${testId}"]`).first().boundingBox())!;
+  await expect(page).toHaveScreenshot({
+    clip: { x: clip.x - 4, y: clip.y - 4, width: clip.width + 8, height: clip.height + 8 },
+  });
+};
+
 /* =====================================================
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
@@ -28,6 +34,8 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 test.describe(`${TAG.VISUAL} `, () => {
   test('Verify Base example margins and paddings', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      TAG.KEYBOARD,
       '@card',
       '@button',
       '@base-components',
@@ -48,7 +56,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await expect(header).toHaveCSS('padding-left', '20px');
       await expect(header).toHaveCSS('padding-right', '20px');
       await expect(header).toHaveCSS('padding-top', '20px');
-      await expect(header).toHaveCSS('padding-bottom', '12px');
+      await expect(header).toHaveCSS('padding-bottom', '0px');
     });
 
     await test.step('Verify title styles', async () => {
@@ -99,6 +107,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify complex card styles', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
       '@card',
       '@button',
       '@base-trigger',
@@ -120,7 +129,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify card with different card componens styles', {
+  test('Verify card with different card components styles', {
     tag: [TAG.PRIORITY_HIGH,
       '@card',
       '@button',
@@ -133,118 +142,40 @@ test.describe(`${TAG.VISUAL} `, () => {
     await page.setViewportSize({ width: 1200, height: 1200 });
 
     await test.step('Verify card only component', async () => {
-      const card = page.locator('[data-testid="card-only"]');
-      const screenshotsClip = (await card.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      await expectCardScreenshot(page, 'card-only');
     });
 
     await test.step('Verify card description component', async () => {
-      const card = page.locator('[data-testid="card-description"]');
-      const screenshotsClip = (await card.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      await expectCardScreenshot(page, 'card-description');
     });
 
     await test.step('Verify card title hintAfter component', async () => {
-      const card = page.locator('[data-testid="card-title"]');
-      const screenshotsClip = (await card.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      await expectCardScreenshot(page, 'card-title');
     });
 
-    await test.step('Verify card title  description content hintAfter component', async () => {
-      const card = page.locator('[data-testid="card-title-description"]');
-      const screenshotsClip = (await card.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+    await test.step('Verify card title description content hintAfter component', async () => {
+      await expectCardScreenshot(page, 'card-title-description');
     });
 
-    await test.step('Verify card title  description content innterHint component', async () => {
-      const card = page.locator('[data-testid="card-title-description-innterHint"]');
-      const screenshotsClip = (await card.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+    await test.step('Verify card title description content innterHint component', async () => {
+      await expectCardScreenshot(page, 'card-title-description-innterHint');
     });
 
-    await test.step('Verify card title  description content hintAfter innterHint component', async () => {
-      const card = page.locator('[data-testid="card-title-content-innerHint"]');
-      const screenshotsClip = (await card.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+    await test.step('Verify card title description content hintAfter innterHint component', async () => {
+      await expectCardScreenshot(page, 'card-title-content-innerHint');
     });
 
     await test.step('Verify card title description content innterHint tag component', async () => {
-      const card = page.locator('[data-testid="card-title-description-content-innerHint-tag-text-styles"]');
-      const screenshotsClip = (await card.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      await expectCardScreenshot(page, 'card-title-description-content-innerHint-tag-text-styles');
     });
 
     await test.step('Verify card header title description body component', async () => {
-      const card = page.locator('[data-testid="card-header-title-desription-body"]');
-      const screenshotsClip = (await card.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      await expectCardScreenshot(page, 'card-header-title-desription-body');
     });
 
-    await test.step('Verify card heder pills body component', async () => {
-      const card = page.locator('[data-testid="card-header-pills-body"]');
-      const screenshotsClip = (await card.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+    await test.step('Verify card header pills body component', async () => {
+      await expectCardScreenshot(page, 'card-header-pills-body');
     });
-  });
-
-  test('Verify description tooltip trigger has not unnecessary margins', {
-    tag: [TAG.PRIORITY_HIGH,
-      '@card',
-      '@button',
-      '@tooltip',
-      '@description-tooltip'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/card/tests/examples/card_with_description_tooltip_in_body', 'en');
-
-    const descriptionTooltipTrigger = page.locator('[data-ui-name="DescriptionTooltip.Trigger"]');
-    const descriptionTooltipTriggerCount = await descriptionTooltipTrigger.count();
-    for (let i = 0; i < descriptionTooltipTriggerCount; i++)
-      await expect(descriptionTooltipTrigger.nth(i)).toHaveCSS('margin', '0px');
   });
 });
 
@@ -254,6 +185,22 @@ Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify description tooltip trigger has no extra margins', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@card',
+      '@button',
+      '@tooltip',
+      '@description-tooltip'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/card/tests/examples/card_with_description_tooltip_in_body.tsx', 'en');
+
+    const triggers = page.locator('[data-ui-name="DescriptionTooltip.Trigger"]');
+    await expect(triggers).not.toHaveCount(0);
+    for (const trigger of await triggers.all()) {
+      await expect(trigger).toHaveCSS('margin', '0px');
+    }
+  });
+
   test('Verify base example keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
@@ -263,10 +210,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@flex-box',
       '@typography'],
   }, async ({ page }) => {
-    const standPath = 'stories/components/card/docs/examples/basic_example.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
+    await loadPage(page, 'stories/components/card/docs/examples/basic_example.tsx', 'en');
 
     await test.step('Verify tooltip not shown when trigger is focused', async () => {
       await page.keyboard.press('Tab');

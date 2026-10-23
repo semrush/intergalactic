@@ -53,8 +53,7 @@ export default defineConfig({
   resolve: vitestResolve,
   test: {
     projects: [
-      '!semcore/illustration',
-      'semcore/*',
+      'semcore/*/vitest.config.mts',
       'tools/process-css-unplugin',
     ],
     testTimeout: 60 * 1000,
