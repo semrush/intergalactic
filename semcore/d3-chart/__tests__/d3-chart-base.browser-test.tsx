@@ -218,11 +218,9 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test.describe('Reference Lines', () => {
     test('Verify attributes reference lines ', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart'],
+      tag: [TAG.PRIORITY_LOW, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/d3-chart/tests/examples/d3-chart/reference-line-props.tsx', 'en');
-
-      const svgs = page.locator('svg');
 
       const referenceLine = locators.referenceLine(page, 0);
       await expect(referenceLine).toHaveAttribute('aria-hidden', 'true');
@@ -232,7 +230,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(referenceTitle).toHaveAttribute('aria-hidden', 'true');
       await expect(referenceTitle).toHaveAttribute('value', 'Category 0');
 
-      const background = await svgs.first().locator('rect').nth(1);
+      const background = locators.plot(page, 0).locator('path[value="Category 3"]');
       await expect(background).toHaveAttribute('aria-hidden', 'true');
       await expect(background).toHaveAttribute('value', 'Category 3');
 
