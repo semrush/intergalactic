@@ -4,7 +4,7 @@ SRadio {
   cursor: pointer;
 
   SText {
-    margin-left: var(--intergalactic-spacing-1-5x, 6px);
+    margin-left: var(--intergalactic-spacing-control-content-gap-medium, 6px);
     color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
   }
 
