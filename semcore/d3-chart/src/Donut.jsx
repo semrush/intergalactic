@@ -195,7 +195,7 @@ class DonutRoot extends Component {
         data,
         selector: `#${this.id} ${selector}`,
         element,
-        duration: duration === 0 ? 0 : TRANSITION_RADIUS_DURATION,
+        duration: TRANSITION_RADIUS_DURATION,
         innerRadius,
         outerRadiusStartEnd,
         paddingAngle,
