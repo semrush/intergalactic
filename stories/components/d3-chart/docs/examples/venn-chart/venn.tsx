@@ -1,35 +1,38 @@
-import { Plot, Venn } from '@semcore/ui/d3-chart';
-import { Text } from '@semcore/ui/typography';
+import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
 import VennMockData from '../../../__mocks__/venn';
 
+const labels: Record<string, string> = {
+  G: 'Good',
+  F: 'Fast',
+  C: 'Cheap',
+};
+
+const formatTooltipTitle = (name: any) =>
+  String(name)
+    .split(' & ')
+    .map((key) => labels[key] ?? key)
+    .join(' & ');
+
+const colorMap = {
+  G: 'chart-palette-order-2',
+  F: 'chart-palette-order-3',
+  C: 'chart-palette-order-4',
+};
+
 const Demo = () => {
   return (
-    <Plot height={300} width={400} data={data}>
-      <Venn>
-        <Venn.Circle dataKey='G' name='Good' />
-        <Venn.Circle dataKey='F' name='Fast' />
-        <Venn.Circle dataKey='C' name='Cheap' />
-        <Venn.Intersection dataKey='G/F' name='Good & Fast' />
-        <Venn.Intersection dataKey='G/C' name='Good & Cheap' />
-        <Venn.Intersection dataKey='F/C' name='Fast & Cheap' />
-        <Venn.Intersection dataKey='G/F/C' name='Good & Fast & Cheap' />
-      </Venn>
-      <Venn.Tooltip>
-        {({ name, dataKey }) => {
-          return {
-            children: (
-              <>
-                <Venn.Tooltip.Title>{name}</Venn.Tooltip.Title>
-                {/* @ts-ignore */}
-                <Text bold>{data[dataKey]}</Text>
-              </>
-            ),
-          };
-        }}
-      </Venn.Tooltip>
-    </Plot>
+    <Chart.Venn
+      data={data}
+      plotWidth={400}
+      plotHeight={300}
+      colorMap={colorMap}
+      showLegend={false}
+      showTooltip
+      tooltipTitleFormatter={formatTooltipTitle}
+      aria-label='Venn chart'
+    />
   );
 };
 

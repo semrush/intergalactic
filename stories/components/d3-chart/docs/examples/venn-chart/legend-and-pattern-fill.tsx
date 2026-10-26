@@ -1,113 +1,33 @@
-import { Plot, Venn, ChartLegend } from '@semcore/ui/d3-chart';
-import { Text } from '@semcore/ui/typography';
+import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
 import VennMockData from '../../../__mocks__/venn';
 
+const legendProps = {
+  legendType: 'Flex' as const,
+  legendMap: {
+    G: { label: 'Good' },
+    F: { label: 'Fast' },
+    C: { label: 'Cheap' },
+  },
+};
+
 const Demo = () => {
-  const [legendItems, setLegendItems] = React.useState(() => defaultLegendItems);
-  const intersectionItems = defaultIntersections.filter((intersection) => {
-    const intersectionKeys = intersection.id.split('/');
-    const disabled = intersectionKeys.some((key: string) => {
-      return !legendItems.find((item) => item.id === key)?.checked;
-    });
-
-    return !disabled;
-  });
-
-  const handleChangeVisible = React.useCallback((id: string, isVisible: boolean) => {
-    setLegendItems((prevItems) => {
-      const newItems = prevItems.map((item) => {
-        if (item.id === id) {
-          item.checked = isVisible;
-        }
-
-        return item;
-      });
-
-      return newItems;
-    });
-  }, []);
-
   return (
-    <>
-      <ChartLegend
-        items={legendItems}
-        patterns
-        aria-label='Venn chart legend'
-        onChangeVisibleItem={handleChangeVisible}
-      />
-      <Plot height={300} width={400} data={data} patterns>
-        <Venn>
-          {legendItems.map(({ id, label, checked, color }) => {
-            return checked && <Venn.Circle key={id} dataKey={id} name={label} color={color} />;
-          })}
-          {intersectionItems.map(({ id, label }) => (
-            <Venn.Intersection key={id} dataKey={id} name={label} />
-          ))}
-        </Venn>
-        <Venn.Tooltip>
-          {({ name, dataKey }) => {
-            return {
-              children: (
-                <>
-                  <Venn.Tooltip.Title>{name}</Venn.Tooltip.Title>
-                  {/* @ts-ignore */}
-                  <Text bold>{data[dataKey]}</Text>
-                </>
-              ),
-            };
-          }}
-        </Venn.Tooltip>
-      </Plot>
-    </>
+    <Chart.Venn
+      data={data}
+      plotWidth={400}
+      plotHeight={300}
+      direction='column'
+      alignItems='stretch'
+      patterns
+      showTooltip
+      legendProps={legendProps}
+      aria-label='Venn chart'
+    />
   );
 };
 
 const data = VennMockData.Default;
-
-const defaultLegendItems = [
-  {
-    id: 'G',
-    label: 'Good',
-    checked: true,
-    color: 'chart-palette-order-1',
-  },
-  {
-    id: 'F',
-    label: 'Fast',
-    checked: true,
-    color: 'chart-palette-order-2',
-  },
-  {
-    id: 'C',
-    label: 'Cheap',
-    checked: true,
-    color: 'chart-palette-order-3',
-  },
-];
-
-const defaultIntersections = [
-  {
-    id: 'G/F',
-    label: 'Good & Fast',
-    visible: true,
-  },
-  {
-    id: 'G/C',
-    label: 'Good & Cheap',
-    visible: true,
-  },
-  {
-    id: 'F/C',
-    label: 'Fast & Cheap',
-    visible: true,
-  },
-  {
-    id: 'G/F/C',
-    label: 'Good & Fast & Cheap',
-    visible: true,
-  },
-];
 
 export default Demo;

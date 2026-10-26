@@ -1,43 +1,36 @@
 import { Flex } from '@semcore/ui/base-components';
-import { Plot, Radar } from '@semcore/ui/d3-chart';
+import { Chart } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
 import RadarMockData from '../../../__mocks__/radar';
 
 const Demo = () => {
-  const width = 250;
-  const height = 250;
-
   const scale_1 = scaleLinear().domain([0, 10]);
   const scale_2 = scaleLinear().domain([0, 20]);
 
   return (
     <Flex>
-      <Plot data={data} width={width} height={height}>
-        <Radar scale={scale_1}>
-          <Radar.Axis dataKey='categories'>
-            <Radar.Axis.Ticks />
-            <Radar.Axis.Labels />
-          </Radar.Axis>
-          <Radar.Polygon dataKey='data_1'>
-            <Radar.Polygon.Line />
-            <Radar.Polygon.Dots />
-          </Radar.Polygon>
-        </Radar>
-      </Plot>
-      <Plot data={data} width={width} height={height}>
-        <Radar scale={scale_2}>
-          <Radar.Axis dataKey='categories'>
-            <Radar.Axis.Ticks />
-            <Radar.Axis.Labels />
-          </Radar.Axis>
-          <Radar.Polygon dataKey='data_1'>
-            <Radar.Polygon.Line />
-            <Radar.Polygon.Dots />
-          </Radar.Polygon>
-        </Radar>
-      </Plot>
+      <Chart.Radar
+        data={data}
+        groupKey='categories'
+        plotWidth={250}
+        plotHeight={250}
+        scale={scale_1}
+        showDots
+        showTooltip={false}
+        aria-label='Radar chart'
+      />
+      <Chart.Radar
+        data={data}
+        groupKey='categories'
+        plotWidth={250}
+        plotHeight={250}
+        scale={scale_2}
+        showDots
+        showTooltip={false}
+        aria-label='Radar chart'
+      />
     </Flex>
   );
 };

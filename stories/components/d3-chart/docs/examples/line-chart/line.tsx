@@ -1,4 +1,4 @@
-import { Plot, Line, XAxis, YAxis, minMax } from '@semcore/ui/d3-chart';
+import { Chart, minMax } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
@@ -18,18 +18,17 @@ const Demo = () => {
     .domain([0, 10]);
 
   return (
-    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-      <YAxis>
-        <YAxis.Ticks />
-        <YAxis.Grid />
-      </YAxis>
-      <XAxis>
-        <XAxis.Ticks />
-      </XAxis>
-      <Line x='x' y='y'>
-        <Line.Dots display />
-      </Line>
-    </Plot>
+    <Chart.Line
+      groupKey='x'
+      data={data}
+      plotWidth={width}
+      plotHeight={height}
+      xScale={xScale}
+      yScale={yScale}
+      showDots
+      showTooltip={false}
+      aria-label='Line chart'
+    />
   );
 };
 
