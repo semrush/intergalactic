@@ -7,7 +7,7 @@ const Demo = () => {
   return (
     <div style={{ width: '460px' }}>
       <Chart.Donut
-        colorMap={{ other: 'chart-palette-order-other-data' }}
+        colorMap={{ other: 'chart-data-other-value' }}
         plotWidth={300}
         plotHeight={300}
         data={data}
