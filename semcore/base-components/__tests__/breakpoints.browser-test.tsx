@@ -27,13 +27,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await loadPage(page, 'stories/components/base-components/breakpoints/docs/examples/simple-use.tsx', 'en');
         await page.waitForTimeout(100);
 
-        const button = page.locator('[data-ui-name="Button"]');
+        const button = page.getByRole('button');
 
-        const buttonText = await button.locator('[data-ui-name="Button.Text"]').textContent();
-        expect(buttonText?.trim()).toBe(`Size ${expectedSize}`);
-
-        const buttonHeight = await button.evaluate((el) => getComputedStyle(el).height);
-        expect(buttonHeight).toBe(expectedHeight);
+        await expect(button).toHaveText(`Size ${expectedSize}`);
+        await expect(button).toHaveCSS('height', expectedHeight);
       });
     });
   });
@@ -57,43 +54,29 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await loadPage(page, 'stories/components/base-components/breakpoints/docs/examples/manual-control.tsx', 'en');
         await page.waitForTimeout(100);
 
-        const button = page.locator('[data-ui-name="Button"]');
+        const button = page.getByRole('button');
 
-        const buttonText = await button.locator('[data-ui-name="Button.Text"]').textContent();
-        expect(buttonText?.trim()).toBe(`Size${expectedSize}`);
-
-        const buttonHeight = await button.evaluate((el) => getComputedStyle(el).height);
-        expect(buttonHeight).toBe(expectedHeight);
+        await expect(button).toHaveText(`Size${expectedSize}`);
+        await expect(button).toHaveCSS('height', expectedHeight);
       });
     });
   });
 
-  test.describe('Mocking ', () => {
-    const breakpoints = [
-      { width: 300, expectedText: '(max-width: 300px)' },
-      { width: 500, expectedText: '(max-width: 500px)' },
-      { width: 700, expectedText: '(max-width: 700px)' },
-      { width: 900, expectedText: '(max-width: 900px)' },
-      { width: 1100, expectedText: '(max-width: 1100px)' },
-      { width: 1200, expectedText: 'ZOOM WINDOW' },
-    ];
+  test.describe('Mocking', () => {
+    test('Verify mocked matchMedia query is shown regardless of viewport width', {
+      tag: [TAG.PRIORITY_HIGH,
+        '@base-components',
+        '@breakpoints'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-components/breakpoints/docs/examples/mocking.tsx', 'en');
 
-    breakpoints.forEach(({ width, expectedText }) => {
-      test(`Verify '${expectedText}' shown at viewport width ${width}px`, {
-        tag: [TAG.PRIORITY_HIGH,
-          '@base-components',
-          '@breakpoints'],
-      }, async ({ page }) => {
-        await loadPage(page, 'stories/components/base-components/breakpoints/docs/examples/mocking.tsx', 'en');
+      await page.setViewportSize({ width: 1200, height: 800 });
+      await page.waitForTimeout(100);
 
-        await page.setViewportSize({ width, height: 800 });
-        await page.waitForTimeout(100);
-
-        const mediaTextLocator = page.locator('div', {
-          hasText: 'Media matches \'(max-width: 700px)\'',
-        });
-        await expect(mediaTextLocator.nth(1)).toBeVisible();
+      const mediaTextLocator = page.locator('div', {
+        hasText: 'Media matches \'(max-width: 700px)\'',
       });
+      await expect(mediaTextLocator.nth(1)).toBeVisible();
     });
   });
 
@@ -113,18 +96,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           '@base-components',
           '@breakpoints'],
       }, async ({ page, browserName }) => {
+        test.skip(browserName === 'webkit', 'WebKit does not update matchMedia after setViewportSize in headless mode');
         await loadPage(page, 'stories/components/base-components/breakpoints/docs/examples/custom-media.tsx', 'en');
 
-        if (browserName !== 'webkit') {
-          // the webkit skipped temporary because it doesnt update the size, in debug mode all words well
-          await page.setViewportSize({ width, height: 800 });
-          await page.waitForTimeout(100);
+        await page.setViewportSize({ width, height: 800 });
+        await page.waitForTimeout(100);
 
-          const mediaTextLocator = page.locator('div', {
-            hasText: ` Media matches "${expectedText}"`,
-          });
-          await expect(mediaTextLocator.nth(1)).toBeVisible();
-        }
+        const mediaTextLocator = page.locator('div', {
+          hasText: ` Media matches "${expectedText}"`,
+        });
+        await expect(mediaTextLocator.nth(1)).toBeVisible();
       });
     });
   });

@@ -1,13 +1,19 @@
+import type { Page } from '@semcore/testing-utils/playwright';
 import { test, expect } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
+
+export const locators = {
+  popper: (page: Page) => page.locator('[data-ui-name="Popper.Popper"]'),
+  buttonTriggerText: (page: Page) => page.locator('[data-ui-name="ButtonTrigger.Text"]'),
+};
 
 /* =====================================================
 @functional
 Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
-test.describe('@functional @popper', () => {
+test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Focus Lock', () => {
     test('Verify Focus lock without disablePortal', {
       tag: [TAG.PRIORITY_HIGH,
@@ -20,6 +26,7 @@ test.describe('@functional @popper', () => {
         '@dropdown-menu'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/dropdown-no-disable-portal.tsx', 'en');
+      await expect(page.getByTestId('popper')).toBeVisible();
 
       await page.mouse.click(1, 1);
 
@@ -42,10 +49,10 @@ test.describe('@functional @popper', () => {
         '@popper',
         '@base-trigger',
         '@button-trigger',
-        '@input',
         '@dropdown-menu'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/dropdown-disable-portal.tsx', 'en');
+      await expect(page.getByTestId('popper')).toBeVisible();
 
       await page.mouse.click(1, 1);
 
@@ -68,8 +75,8 @@ test.describe('@functional @popper', () => {
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/base-components/popper/tests/examples/cursor-anchoring.tsx', 'en');
 
-    const trigger = page.locator('[data-testid="trigger"]');
-    const popper = page.locator('[data-testid="popper"]');
+    const trigger = page.getByTestId('trigger');
+    const popper = page.getByTestId('popper');
 
     const triggerRect = (await trigger.boundingBox())!;
     const rightBottom = [triggerRect.x + triggerRect.width, triggerRect.y + triggerRect.height];
@@ -89,15 +96,11 @@ test.describe('@functional @popper', () => {
     await page.mouse.move(leftBottom[0] + 10, leftBottom[1] - 10, { steps: 10 });
     await popper.waitFor({ state: 'visible' });
 
-    const secondX = (await popper.boundingBox())?.x ?? 0;
-
-    // WebKit sometimes doesnt re-count coordinates
-    if (browserName === 'webkit') {
-      expect(secondX).toBeGreaterThan(0);
-    } else {
+    const leftPositionStep = browserName === 'webkit' ? test.step.skip : test.step;
+    await leftPositionStep('Verify popper follows the cursor to the left edge (WebKit does not recalculate coordinates)', async () => {
       await expect.poll(async () => (await popper.boundingBox())?.x ?? 0)
         .toBeLessThan(triggerRect.x + triggerRect.width * 0.2);
-    }
+    });
   });
 
   test.describe('Label', () => {
@@ -111,7 +114,7 @@ test.describe('@functional @popper', () => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/label-referenced.tsx', 'en');
 
       const options = page.getByRole('option');
-      const selectText = page.locator('[data-ui-name="ButtonTrigger.Text"]');
+      const selectText = locators.buttonTriggerText(page);
 
       await expect(options.nth(3)).toHaveCount(0);
 
@@ -135,7 +138,7 @@ test.describe('@functional @popper', () => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/label-wrapped.tsx', 'en');
 
       const options = page.getByRole('option');
-      const selectText = page.locator('[data-ui-name="ButtonTrigger.Text"]');
+      const selectText = locators.buttonTriggerText(page);
 
       await expect(options.nth(3)).toHaveCount(0);
 
@@ -159,7 +162,7 @@ test.describe('@functional @popper', () => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/label-wrapped-disable-portal.tsx', 'en');
 
       const options = page.getByRole('option');
-      const selectText = page.locator('[data-ui-name="ButtonTrigger.Text"]');
+      const selectText = locators.buttonTriggerText(page);
 
       await page.locator('label').click();
 
@@ -179,7 +182,7 @@ test.describe('@functional @popper', () => {
     });
   });
 
-  test('Verify popper display when OutsideClick', {
+  test('Verify popper closes by Escape and trigger click and stays open on clicks inside root', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       TAG.KEYBOARD,
@@ -190,7 +193,7 @@ test.describe('@functional @popper', () => {
     await loadPage(page, 'stories/components/base-components/popper/docs/examples/click-outside', 'en');
 
     const trigger = page.getByRole('button');
-    const popper = page.locator('[data-ui-name="Popper.Popper"]');
+    const popper = locators.popper(page);
     await trigger.click();
     await expect(popper).toHaveCount(1);
 
@@ -204,10 +207,7 @@ test.describe('@functional @popper', () => {
 
     await trigger.click();
 
-    const rootBox = await page.locator('div').first().boundingBox();
-    if (!rootBox) {
-      return;
-    }
+    const rootBox = (await page.locator('div').first().boundingBox())!;
 
     const clickX = rootBox.x + rootBox.width - 10;
     const clickY = rootBox.y + 10;
@@ -231,7 +231,7 @@ test.describe('@functional @popper', () => {
     const triggerControlled = page.getByRole('button', { name: 'Controlled', exact: true });
     const triggerUncontrolled = page.getByRole('button', { name: 'Uncontrolled', exact: true });
 
-    const attachedPoppers = page.locator('[data-ui-name="Popper.Popper"]', {
+    const attachedPoppers = locators.popper(page).filter({
       hasText: 'Attached content',
     });
 
@@ -354,7 +354,7 @@ test.describe('@functional @popper', () => {
       '@input'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/base-components/popper/tests/examples/disableEnforceFocus.tsx', 'en');
-    if (browserName === 'firefox') return; // skipped for ff because focus order is other
+    test.skip(browserName === 'firefox', 'Firefox has a different focus order');
 
     await page.keyboard.press('Tab');
 
@@ -423,7 +423,7 @@ test.describe('@functional @popper', () => {
         '@card'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/interaction-hover.tsx', 'en');
-      const popper = page.locator('[data-ui-name="Popper.Popper"]');
+      const popper = locators.popper(page);
 
       await test.step('Verify appears on hover Tooltip.Trigger as Text', async () => {
         const trigger = page.getByText('Trigger', { exact: true });
@@ -451,7 +451,7 @@ test.describe('@functional @popper', () => {
         await expect(popper).toHaveCount(0);
       });
 
-      await test.step('Verify appears by click Button', async () => {
+      await test.step('Verify appears when click on a button moves focus to the trigger', async () => {
         const buttonBeforeOnFocus = page.locator('[data-position="before-onFocus"]');
         const triggerOnFocus = page.getByTestId('popper-onFocus');
 
@@ -465,7 +465,7 @@ test.describe('@functional @popper', () => {
 
     test('Verify hover interaction appears by focus', {
       tag: [TAG.PRIORITY_HIGH,
-        TAG.MOUSE,
+        TAG.KEYBOARD,
         '@base-components',
         '@popper',
         '@flex-box',
@@ -475,7 +475,7 @@ test.describe('@functional @popper', () => {
         '@card'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/interaction-hover.tsx', 'en');
-      const popper = page.locator('[data-ui-name="Popper.Popper"]');
+      const popper = locators.popper(page);
       const buttonTrigger = page.getByTestId('button-hover');
 
       await test.step('Verify appears on focus Tooltip.Trigger as button', async () => {
@@ -522,7 +522,7 @@ test.describe('@functional @popper', () => {
         '@button',
         '@card'],
     }, async ({ page, browserName }) => {
-      if (browserName === 'chromium') test.skip(); // Chromium doesn’t simulate touch
+      test.skip(browserName === 'chromium', 'Chromium does not simulate touch');
       await loadPage(page, 'stories/components/base-components/popper/tests/examples/interaction-hover.tsx', 'en');
 
       const trigger = page.getByText('Trigger', { exact: true });
@@ -631,7 +631,6 @@ test.describe('@functional @popper', () => {
         '@base-components',
         '@popper',
         '@flex-box',
-        '@tooltip',
         '@button',
         '@card'],
     }, async ({ page, browserName }) => {
@@ -761,7 +760,7 @@ test.describe('@functional @popper', () => {
     const openButton = page.getByRole('button', { name: 'Open popper' });
     const closeButton = page.getByRole('button', { name: 'Close popper' });
     const attachTrigger = page.getByText('Attach trigger');
-    const popper = page.locator('[data-ui-name="Popper.Popper"]');
+    const popper = locators.popper(page);
 
     await test.step('Mouse: Open popper via button click', async () => {
       await expect(popper).toHaveCount(0);
@@ -814,14 +813,13 @@ test.describe('@functional @popper', () => {
       await expect(popper).toHaveCount(0);
     });
 
-    if (browserName === 'chromium') {
-      await test.step('Focus should return to open button in Chromium', async () => {
-        await expect(openButton).toBeFocused();
-      });
-    }
+    const focusReturnStep = browserName === 'chromium' ? test.step : test.step.skip;
+    await focusReturnStep('Verify focus returns to the open button (checked in Chromium only)', async () => {
+      await expect(openButton).toBeFocused();
+    });
   });
 
-  test('Verify popper dynamic and fixed position on page resize', {
+  test('Verify absolute and fixed poppers keep their position when page height changes', {
     tag: [TAG.PRIORITY_MEDIUM,
       TAG.MOUSE,
       '@base-components',
@@ -839,21 +837,39 @@ test.describe('@functional @popper', () => {
     await expect(poppers.first()).toBeVisible();
     await expect(poppers.nth(1)).toBeVisible();
 
-    const initialDynamicY = (await poppers.first().boundingBox())!.x;
-    const initialFixedY = (await poppers.nth(1).boundingBox())!.x;
+    const triggers = page.getByRole('button', { name: 'Trigger' });
+
+    await test.step('Wait for poppers to be positioned above their triggers', async () => {
+      for (const index of [0, 1]) {
+        await expect.poll(async () => {
+          const popperBox = await poppers.nth(index).boundingBox();
+          const triggerBox = await triggers.nth(index).boundingBox();
+          return Boolean(popperBox && triggerBox && popperBox.y + popperBox.height <= triggerBox.y + 1);
+        }).toBe(true);
+        let previous = '';
+        await expect.poll(async () => {
+          const current = JSON.stringify(await poppers.nth(index).boundingBox());
+          const isStable = current === previous;
+          previous = current;
+          return isStable;
+        }).toBe(true);
+      }
+    });
+
+    const initialBoxes = [(await poppers.first().boundingBox())!, (await poppers.nth(1).boundingBox())!];
 
     await resizeButton.click();
 
     await page.getByText('some dynamic block that is loaded').waitFor({ state: 'visible' });
 
-    const newDynamicY = (await poppers.first().boundingBox())!.x;
-    const newFixedY = (await poppers.nth(1).boundingBox())!.x;
-
-    const dynamicShift = Math.abs(newDynamicY - initialDynamicY);
-    const fixedShift = Math.abs(newFixedY - initialFixedY);
-
-    expect(dynamicShift).toBeGreaterThanOrEqual(0);
-    expect(fixedShift).toBeGreaterThanOrEqual(0);
+    await test.step('Verify absolute and fixed poppers did not move', async () => {
+      for (const index of [0, 1]) {
+        await expect.poll(async () => {
+          const box = (await poppers.nth(index).boundingBox())!;
+          return Math.max(Math.abs(box.x - initialBoxes[index].x), Math.abs(box.y - initialBoxes[index].y));
+        }).toBeLessThan(1);
+      }
+    });
   });
 });
 
@@ -862,7 +878,7 @@ test.describe('@functional @popper', () => {
 Visual states and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
-  test('Verify popper position with OffSet prop', {
+  test('Verify popper position with offset prop', {
     tag: [TAG.PRIORITY_MEDIUM,
       '@base-components',
       '@popper',
@@ -872,7 +888,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     const trigger = page.getByRole('button');
     await trigger.click();
-    await page.locator('[data-ui-name="Popper.Popper"]').waitFor({ state: 'visible' });
+    await locators.popper(page).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 

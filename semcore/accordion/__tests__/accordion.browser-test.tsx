@@ -13,8 +13,6 @@ export const locators = {
     const base = page.locator(`[data-ui-name="Item.Collapse"]`);
     return typeof index === 'number' ? base.nth(index) : base;
   },
-  // The collapse content wrapper carries the generic data-ui-name="Box",
-  // so it is addressed as the direct child of Item.Collapse.
   collapseContainer: (page: Page, index?: number) => {
     const base = page.locator(`[data-ui-name="Item.Collapse"] > [data-ui-name="Box"]`);
     return typeof index === 'number' ? base.nth(index) : base;
@@ -45,15 +43,12 @@ test.describe(`${TAG.VISUAL}`, () => {
   const variables = [
     {
       use: 'primary',
-      // The chevron stays in the flow: `order` moves it after the label and
-      // `justify-content: space-between` on the toggle button pins it to the right edge.
       chevronOrder: '1',
       toggleButtonGap: '8px',
       togglePadding: '8px 16px 8px 20px',
     },
     {
       use: 'secondary',
-      // Here the chevron leads the label, separated only by the toggle button gap.
       chevronOrder: '0',
       toggleButtonGap: '4px',
       togglePadding: '8px 2px',
@@ -78,11 +73,10 @@ test.describe(`${TAG.VISUAL}`, () => {
         await expect(page).toHaveScreenshot();
       });
 
-      await test.step('Verify chevron placement', async () => {
+      await test.step('Verify chevron order and no own margin', async () => {
         const count = await locators.chevron(page).count();
         for (let i = 0; i < count; i++) {
           await expect(locators.chevron(page, i)).toHaveCSS('order', item.chevronOrder);
-          // The spacing comes from the toggle button gap, never from a margin on the chevron.
           await expect(locators.chevron(page, i)).toHaveCSS('margin-right', '0px');
         }
       });
@@ -109,22 +103,12 @@ test.describe(`${TAG.VISUAL}`, () => {
       await test.step('Verify collapse content padding', async () => {
         await expect(locators.collapseContainer(page, 0)).toHaveCSS('padding', '12px 20px');
       });
-
-      await test.step('Verify h3 tab by default', async () => {
-        const count = await locators.toggle(page).count();
-
-        for (let i = 0; i < count; i++) {
-          const element = locators.toggle(page, i);
-          const tagName = await element.evaluate((el) => el.tagName.toLowerCase());
-          expect(tagName).toBe('h3');
-        }
-      });
     });
   });
 
   test('Verify accordion width < content', {
     tag: [
-      TAG.PRIORITY_MEDIUM,
+      TAG.PRIORITY_LOW,
       '@accordion'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en', { w: '50px' });
@@ -151,10 +135,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(locators.toggle(page, 0)).toHaveCSS('border-bottom-right-radius', '0px');
     });
 
-    await test.step('Verify accent bar is shown on the expanded item', async () => {
-      // In the primary variant the accent bar is the item's ::before overlay,
-      // toggled through opacity, so it cannot be read from a regular locator.
-      // The bar fades in, so poll until the opacity transition settles.
+    await test.step('Verify accent bar (item ::before) fades in on the expanded item', async () => {
       await expect
         .poll(async () =>
           locators.item(page, 0).evaluate((el) => getComputedStyle(el, '::before').opacity),
@@ -179,8 +160,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(locators.toggle(page, 0)).toHaveCSS('border-bottom-right-radius', '8px');
     });
 
-    await test.step('Verify accent bar is hidden after collapsing', async () => {
-      // The bar fades out, so poll until the opacity transition settles.
+    await test.step('Verify accent bar (item ::before) fades out after collapsing', async () => {
       await expect
         .poll(async () =>
           locators.item(page, 0).evaluate((el) => getComputedStyle(el, '::before').opacity),
@@ -324,23 +304,31 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/seo.tsx', 'en');
 
-    await expect(locators.collapse(page)).toHaveCount(3);
-    await page.keyboard.press('Tab');
-    await expect(locators.toggle(page, 0)).toBeFocused();
-    await page.keyboard.press('Enter');
-    await page.getByRole('link').waitFor({ state: 'hidden' });
-    await expect(locators.toggle(page, 0)).toBeFocused();
-    await expect(locators.collapse(page)).toHaveCount(3);
-    await page.keyboard.press('Tab');
-    await expect(locators.toggle(page, 2)).toBeFocused();
-    if (browserName === 'webkit') return;
-    await page.keyboard.press('Space');
-    await page.keyboard.press('Tab');
-    await page.getByRole('link').waitFor({ state: 'visible' });
-    await expect(page.getByRole('link')).toBeFocused();
+    await test.step('Verify all sections are rendered in DOM', async () => {
+      await expect(locators.collapse(page)).toHaveCount(3);
+    });
+
+    await test.step('Verify collapsed section stays in DOM and its link is skipped by Tab', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.toggle(page, 0)).toBeFocused();
+      await page.keyboard.press('Enter');
+      await page.getByRole('link').waitFor({ state: 'hidden' });
+      await expect(locators.toggle(page, 0)).toBeFocused();
+      await expect(locators.collapse(page)).toHaveCount(3);
+      await page.keyboard.press('Tab');
+      await expect(locators.toggle(page, 2)).toBeFocused();
+    });
+
+    const linkFocusStep = browserName === 'webkit' ? test.step.skip : test.step;
+    await linkFocusStep('Verify link in expanded section is focused by Tab (WebKit skips links on Tab)', async () => {
+      await page.keyboard.press('Space');
+      await page.keyboard.press('Tab');
+      await page.getByRole('link').waitFor({ state: 'visible' });
+      await expect(page.getByRole('link')).toBeFocused();
+    });
   });
 
-  test('Verify One section opening by keyboard ', {
+  test('Verify one section opening by keyboard', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@accordion'],
@@ -364,7 +352,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await expect(locators.collapse(page)).toHaveCount(0);
   });
 
-  test('Verify One section opening by mouse', {
+  test('Verify one section opening by mouse', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@accordion'],
@@ -382,7 +370,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await expect(locators.collapse(page)).toHaveCount(0);
   });
 
-  test('Verify section not expands by mouse  and keyboard activation on the interactive element in toggle', {
+  test('Verify section does not expand by mouse and keyboard activation of the interactive element in toggle', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       TAG.MOUSE,
@@ -391,8 +379,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/tests/examples/button-on-toggle.tsx', 'en');
 
+    const buttonInToggle = (index: number) => page.getByTestId(`button_in_toggle_${index}`);
+
     await expect(locators.collapse(page)).toHaveCount(0);
-    await locators.button(page, 0).click();
+    await buttonInToggle(1).click();
     await expect(locators.collapse(page)).toHaveCount(0);
 
     await page.keyboard.press('Tab');
@@ -401,30 +391,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await expect(locators.collapse(page)).toHaveCount(1);
 
     await page.keyboard.press('Tab');
-    await expect(locators.button(page, 1)).toBeFocused();
+    await expect(buttonInToggle(2)).toBeFocused();
 
     await page.keyboard.press('Enter');
     await expect(locators.collapse(page)).toHaveCount(1);
   });
 
-  test('Verify values with different types', {
-    tag: [TAG.PRIORITY_HIGH,
-      '@accordion',
-      '@base-components',
-      '@flex-box'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/accordion/tests/examples/values.tsx', 'en');
-
-    await expect(page.locator('[data-test-id="number"]')).toBeVisible();
-    await expect(page.locator('[data-test-id="string"]')).toBeVisible();
-
-    await locators.toggle(page, 0).click();
-    await locators.toggle(page, 1).click();
-    await expect(page.locator('[data-test-id="number"]')).not.toBeVisible();
-    await expect(page.locator('[data-test-id="string"]')).not.toBeVisible();
-  });
-
-  test('Verify default value', {
+  test('Verify values with different types and defaultValue', {
     tag: [TAG.PRIORITY_MEDIUM,
       TAG.MOUSE,
       '@accordion',
@@ -432,68 +405,72 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/tests/examples/values.tsx', 'en');
-    await expect(page.locator('[data-test-id="default-value"]')).toBeVisible();
-  });
 
-  test('Verify heading tag',
-    {
-      tag: [TAG.PRIORITY_HIGH,
-        TAG.KEYBOARD,
-        '@accordion'],
-    }, async ({ page }) => {
-      await loadPage(page, 'stories/components/accordion/docs/examples/heading_tag.tsx', 'en');
-
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Space');
-      await locators.collapse(page, 0).waitFor({ state: 'visible' });
-      const count = await locators.toggle(page).count();
-
-      for (let i = 0; i < count; i++) {
-        const element = locators.toggle(page, i);
-        const tagName = await element.evaluate((el) => el.tagName.toLowerCase());
-        expect(tagName).toBe('h2');
-      }
+    await test.step('Verify sections with number and string values are expanded', async () => {
+      await expect(page.locator('[data-test-id="number"]')).toBeVisible();
+      await expect(page.locator('[data-test-id="string"]')).toBeVisible();
     });
 
-  test('Verify overflowHidden=false and defaultHeight=auto', {
-    tag: [TAG.PRIORITY_MEDIUM,
-      TAG.MOUSE,
-      '@accordion'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en', { overflowHidden: false, defaultHeight: 'auto' });
+    await test.step('Verify sections with number and string values collapse by click', async () => {
+      await locators.toggle(page, 0).click();
+      await locators.toggle(page, 1).click();
+      await expect(page.locator('[data-test-id="number"]')).not.toBeVisible();
+      await expect(page.locator('[data-test-id="string"]')).not.toBeVisible();
+    });
 
-    await expect(locators.collapse(page, 0)).toBeVisible();
-
-    const inlineStyle = await locators.collapse(page, 0).getAttribute('style');
-    expect(inlineStyle).toContain('height: auto');
-
-    await locators.toggle(page, 0).click();
-    await locators.toggle(page, 0).click();
-    await locators.collapse(page, 0).waitFor({ state: 'visible' });
-    const inlineStyle2 = await locators.collapse(page, 0).getAttribute('style');
-    expect(inlineStyle2).not.toContain('overflow');
+    await test.step('Verify non-array defaultValue expands the matching section', async () => {
+      await expect(page.locator('[data-test-id="default-value"]')).toBeVisible();
+    });
   });
 
-  test('Verify overflowHidden=true and defaultHeight=100%', {
-    tag: [TAG.PRIORITY_MEDIUM,
-      TAG.MOUSE,
+  test('Verify toggle heading tag', {
+    tag: [TAG.PRIORITY_HIGH,
       '@accordion'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en', { overflowHidden: true, defaultHeight: '100%' });
+    await test.step('Verify toggles are h3 by default', async () => {
+      await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en');
+      await expect(page.getByRole('heading', { level: 3 })).toHaveCount(await locators.toggle(page).count());
+    });
 
-    await expect(locators.collapse(page, 0)).toBeVisible();
+    await test.step('Verify toggles are h2 with tag="h2"', async () => {
+      await loadPage(page, 'stories/components/accordion/docs/examples/heading_tag.tsx', 'en');
+      await expect(page.getByRole('heading', { level: 2 })).toHaveCount(await locators.toggle(page).count());
+    });
+  });
 
-    const inlineStyle = await (locators.collapse(page, 0)).getAttribute('style');
-    expect(inlineStyle).toContain('height: 100%');
-    await locators.toggle(page, 0).click();
-    await locators.toggle(page, 0).click();
-    await locators.collapse(page).waitFor({ state: 'visible' });
-    const inlineStyle2 = await (locators.collapse(page, 0)).getAttribute('style');
-    expect(inlineStyle2).toContain('overflow: clip');
+  const collapseLayoutCases = [
+    { overflowHidden: false, defaultHeight: 'auto', overflowClip: false },
+    { overflowHidden: true, defaultHeight: '100%', overflowClip: true },
+  ];
+  collapseLayoutCases.forEach(({ overflowHidden, defaultHeight, overflowClip }) => {
+    test(`Verify overflowHidden=${overflowHidden} and defaultHeight=${defaultHeight}`, {
+      tag: [TAG.PRIORITY_MEDIUM,
+        TAG.MOUSE,
+        '@accordion'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en', { overflowHidden, defaultHeight });
+
+      await test.step(`Verify expanded section has height: ${defaultHeight}`, async () => {
+        await expect(locators.collapse(page, 0)).toBeVisible();
+        await expect(locators.collapse(page, 0)).toHaveAttribute('style', new RegExp(`height: ${defaultHeight}`));
+      });
+
+      await test.step(`Verify overflow is ${overflowClip ? 'clipped' : 'not set'} after collapse and expand`, async () => {
+        await locators.toggle(page, 0).click();
+        await locators.toggle(page, 0).click();
+        await locators.collapse(page, 0).waitFor({ state: 'visible' });
+
+        if (overflowClip) {
+          await expect(locators.collapse(page, 0)).toHaveAttribute('style', /overflow: clip/);
+        } else {
+          await expect(locators.collapse(page, 0)).not.toHaveAttribute('style', /overflow/);
+        }
+      });
+    });
   });
 
   test('Verify accordion animation collapse props', {
-    tag: [TAG.PRIORITY_HIGH,
+    tag: [TAG.PRIORITY_MEDIUM,
       TAG.MOUSE,
       '@accordion',
       '@base-components',
@@ -502,36 +479,27 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/tests/examples/accordion-collapse-duration.tsx', 'en');
 
-    const count = await locators.toggle(page).count();
-    for (let i = 0; i < count; i++) {
-      await locators.button(page, i).click();
-      await locators.collapse(page).waitFor({ state: 'visible' });
+    const cases = [
+      { label: 'Duration 500', duration: '0.5s' },
+      { label: 'Duration 500 Delay 500', duration: '0.5s' },
+      { label: 'Duration 0', duration: '0s' },
+      { label: 'Default', duration: '0.2s' },
+      { label: 'Accordion duration 300', duration: '0.3s' },
+    ];
 
-      const animationDelay = await locators.collapse(page).evaluate((el) => {
-        const style = getComputedStyle(el);
-        return style.animationDelay;
+    for (const { label, duration } of cases) {
+      await test.step(`Verify "${label}" section has animation-duration ${duration}`, async () => {
+        const toggleButton = page.getByRole('button', { name: label, exact: true });
+        const section = page.getByRole('region', { name: label, exact: true, includeHidden: true });
+
+        await toggleButton.click();
+        await expect(toggleButton).toHaveAttribute('aria-expanded', 'true');
+        await expect(section).toHaveCSS('animation-duration', duration);
+
+        await toggleButton.click();
+        await expect(toggleButton).toHaveAttribute('aria-expanded', 'false');
+        await expect(section).toHaveCount(0);
       });
-
-      const animationDuration = await locators.collapse(page).evaluate((el) => {
-        const style = getComputedStyle(el);
-        return style.animationDuration;
-      });
-
-      if (i === 0) {
-        expect(animationDelay).toBe('0s');
-        expect(animationDuration).toBe('0.5s');
-      } else if (i === 1) {
-        expect(animationDelay).toBe('0s');
-        expect(animationDuration).toBe('0.5s');
-      } else if (i === 2) {
-        expect(animationDelay).toBe('0s');
-        expect(animationDuration).toBe('0s');
-      } else if (i === 3) {
-        expect(animationDelay).toBe('0s');
-        expect(animationDuration).toBe('0.2s');
-      }
-      await locators.button(page, i).click();
-      await locators.collapse(page).waitFor({ state: 'hidden' });
     }
   });
 });

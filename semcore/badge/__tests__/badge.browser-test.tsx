@@ -34,6 +34,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Enter');
     await page.getByRole('option').nth(0).waitFor({ state: 'hidden' });
+    await expect(page.getByText('Current locale: fr')).toBeVisible();
     await expect(page).toHaveScreenshot();
   });
 });

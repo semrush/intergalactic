@@ -1,26 +1,31 @@
-import { platform } from 'os';
-
 import { expect, test } from '@semcore/testing-utils/playwright';
 import type { Page } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
-
-  button: (page: Page, name?: string, index?: number) => {
-    const base = page.getByRole('button', { name });
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  menuItems: (page: Page, index?: number) => {
-    const base = page.getByRole('menuitemcheckbox');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
   inlineInput: (page: Page) => page.locator('[data-ui-name="InlineInput"]'),
   addon: (page: Page) => page.locator('[data-ui-name="InlineInput.Addon"]'),
   value: (page: Page) => page.locator('[data-ui-name="InlineInput.Value"]'),
   valueNumber: (page: Page) => page.locator('[data-ui-name="InlineInput.NumberValue"]'),
-
 };
+
+const selectAllText = async (page: Page) => {
+  await page.keyboard.press('ControlOrMeta+A');
+};
+
+const collectConsoleLogs = (page: Page) => {
+  const logs: string[] = [];
+  page.on('console', (msg) => {
+    if (msg.type() === 'log') {
+      logs.push(msg.text());
+    }
+  });
+  return logs;
+};
+
+const countLogs = (logs: string[], event: 'Confirm' | 'Cancel' | 'Change') =>
+  logs.filter((log) => log.includes(event)).length;
 
 /* =====================================================
   @visual
@@ -100,7 +105,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/inline-input/tests/examples/styles.tsx', 'en', item);
 
-      const flex = await page.locator('[data-testid="no-controls"]');
+      const flex = page.locator('[data-testid="no-controls"]');
       const value = flex.locator('[data-ui-name="InlineInput.Value"]');
       const input = flex.locator('[data-ui-name="InlineInput"]');
       await page.keyboard.press('Tab');
@@ -175,7 +180,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     const save = inlineInput.getByLabel('Save');
     const cancel = inlineInput.getByLabel('Cancel');
 
-    await test.step('Verify input focues when pressing Tab', async () => {
+    await test.step('Verify input focused when pressing Tab', async () => {
       await expect(value).toHaveAttribute('value', 'John Doe');
 
       await page.keyboard.press('Tab');
@@ -209,11 +214,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await expect(value).toBeFocused();
       await expect(locators.inlineInput(page)).toHaveCount(1);
 
-      if (platform() === 'darwin') {
-        await page.keyboard.press('Meta+A');
-      } else {
-        await page.keyboard.press('Control+A');
-      }
+      await selectAllText(page);
 
       await page.keyboard.type('Once upon a time in a distant galaxy far, far away, there existed a legendary creature known as the Intergalactic Whale.');
 
@@ -242,7 +243,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     const save = locators.inlineInput(page).getByLabel('Save');
 
-    await test.step('Verify input focues when pressing Tab and hint shown on Hover', async () => {
+    await test.step('Verify input focused when pressing Tab and hint shown on Hover', async () => {
       await expect(value).toHaveAttribute('value', '100');
       await page.keyboard.press('Tab');
       await save.hover();
@@ -263,7 +264,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
-test.describe(`${TAG.FUNCTIONAL} `, () => {
+test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify onBlurBehavior by mouse', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
@@ -277,23 +278,16 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     const cancel = page.locator('[data-testid="onBlurBehavior-cancel"]');
     const none = page.locator('[data-testid="onBlurBehavior-none"]');
 
-    const logs: string[] = [];
-    page.on('console', (msg) => {
-      if (msg.type() === 'log') {
-        logs.push(msg.text());
-      }
-    });
+    const logs = collectConsoleLogs(page);
 
     await test.step('Verify onBlurBehavior-confirm', async () => {
       await confirm.click();
       await cancel.click();
       await page.waitForTimeout(100);
 
-      const confirmLogs = logs.filter((log) => log.includes('Confirm'));
-      expect(confirmLogs.length).toBe(1);
+      expect(countLogs(logs, 'Confirm')).toBe(1);
 
-      const onChangeLogs = logs.filter((log) => log.includes('Change'));
-      expect(onChangeLogs.length).toBe(0);
+      expect(countLogs(logs, 'Change')).toBe(0);
     });
 
     await test.step('Verify onBlurBehavior-cancel', async () => {
@@ -301,11 +295,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
       await page.waitForTimeout(100);
 
-      const cancelLogs = logs.filter((log) => log.includes('Cancel'));
-      expect(cancelLogs.length).toBe(1);
+      expect(countLogs(logs, 'Cancel')).toBe(1);
 
-      const onChangeLogs = logs.filter((log) => log.includes('Change'));
-      expect(onChangeLogs.length).toBe(0);
+      expect(countLogs(logs, 'Change')).toBe(0);
     });
 
     await test.step('Verify onBlurBehavior-none', async () => {
@@ -314,14 +306,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
       await page.waitForTimeout(100);
 
-      const confirmLogs = logs.filter((log) => log.includes('Confirm'));
-      expect(confirmLogs.length).toBe(2);
+      expect(countLogs(logs, 'Confirm')).toBe(2);
 
-      const cancelLogs = logs.filter((log) => log.includes('Cancel'));
-      expect(cancelLogs.length).toBe(1);
+      expect(countLogs(logs, 'Cancel')).toBe(1);
 
-      const onChangeLogs = logs.filter((log) => log.includes('Change'));
-      expect(onChangeLogs.length).toBe(0);
+      expect(countLogs(logs, 'Change')).toBe(0);
     });
   });
 
@@ -334,15 +323,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-input/tests/examples/on-blur-behavior-test.tsx', 'en');
 
-    const logs: string[] = [];
-    page.on('console', (msg) => {
-      if (msg.type() === 'log') {
-        logs.push(msg.text());
-      }
-    });
+    const logs = collectConsoleLogs(page);
 
-    // Leaving the field with Tab/Shift+Tab always discards changes (onCancel),
-    // regardless of onBlurBehavior. onBlurBehavior governs mouse blur only.
     await test.step('Tab leaving onBlurBehavior="cancel" discards (onCancel)', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
@@ -351,14 +333,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
       await page.waitForTimeout(100);
 
-      const cancelLogs = logs.filter((log) => log.includes('Cancel'));
-      expect(cancelLogs.length).toBe(1);
+      expect(countLogs(logs, 'Cancel')).toBe(1);
 
-      const confirmLogs = logs.filter((log) => log.includes('Confirm'));
-      expect(confirmLogs.length).toBe(0);
+      expect(countLogs(logs, 'Confirm')).toBe(0);
 
-      const onChangeLogs = logs.filter((log) => log.includes('Change'));
-      expect(onChangeLogs.length).toBe(0);
+      expect(countLogs(logs, 'Change')).toBe(0);
     });
 
     await test.step('Tab leaving onBlurBehavior="confirm" also discards (onCancel), never confirms', async () => {
@@ -368,15 +347,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
       await page.waitForTimeout(100);
 
-      // Tab discards regardless of onBlurBehavior -> a second Cancel, still no Confirm.
-      const cancelLogs = logs.filter((log) => log.includes('Cancel'));
-      expect(cancelLogs.length).toBe(2);
+      expect(countLogs(logs, 'Cancel')).toBe(2);
 
-      const confirmLogs = logs.filter((log) => log.includes('Confirm'));
-      expect(confirmLogs.length).toBe(0);
+      expect(countLogs(logs, 'Confirm')).toBe(0);
 
-      const onChangeLogs = logs.filter((log) => log.includes('Change'));
-      expect(onChangeLogs.length).toBe(0);
+      expect(countLogs(logs, 'Change')).toBe(0);
     });
 
     await test.step('Shift+Tab leaving onBlurBehavior="none" still discards (onCancel)', async () => {
@@ -384,15 +359,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
       await page.waitForTimeout(100);
 
-      // Tab discard is unconditional, so even "none" fires onCancel on Tab.
-      const cancelLogs = logs.filter((log) => log.includes('Cancel'));
-      expect(cancelLogs.length).toBe(3);
+      expect(countLogs(logs, 'Cancel')).toBe(3);
 
-      const confirmLogs = logs.filter((log) => log.includes('Confirm'));
-      expect(confirmLogs.length).toBe(0);
+      expect(countLogs(logs, 'Confirm')).toBe(0);
 
-      const onChangeLogs = logs.filter((log) => log.includes('Change'));
-      expect(onChangeLogs.length).toBe(0);
+      expect(countLogs(logs, 'Change')).toBe(0);
     });
   });
 
@@ -409,28 +380,18 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     const save = confirm.locator('[data-ui-name="InlineInput.ConfirmControl"]');
     const cancel = confirm.locator('[data-ui-name="InlineInput.CancelControl"]');
 
-    const logs: string[] = [];
-    page.on('console', (msg) => {
-      if (msg.type() === 'log') {
-        logs.push(msg.text());
-      }
-    });
+    const logs = collectConsoleLogs(page);
 
-    await test.step('Verify onChange activates when entering new', async () => {
+    await test.step('Verify onChange fires when entering new value', async () => {
       await confirm.click();
 
-      if (platform() === 'darwin') {
-        await page.keyboard.press('Meta+A');
-      } else {
-        await page.keyboard.press('Control+A');
-      }
+      await selectAllText(page);
 
       await page.keyboard.type('Test');
 
       await page.waitForTimeout(100);
 
-      const onCahngeLogs = logs.filter((log) => log.includes('Change'));
-      expect(onCahngeLogs.length).toBe(4);
+      expect(countLogs(logs, 'Change')).toBe(4);
     });
 
     await test.step('Verify event sent on Save', async () => {
@@ -438,17 +399,15 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
       await page.waitForTimeout(100);
 
-      const cancelLogs = logs.filter((log) => log.includes('Confirm'));
-      expect(cancelLogs.length).toBe(1);
+      expect(countLogs(logs, 'Confirm')).toBe(1);
     });
 
-    await test.step('Verify event sent on Save', async () => {
+    await test.step('Verify event sent on Cancel', async () => {
       await cancel.click();
 
       await page.waitForTimeout(100);
 
-      const cancelLogs = logs.filter((log) => log.includes('Cancel'));
-      expect(cancelLogs.length).toBe(1);
+      expect(countLogs(logs, 'Cancel')).toBe(1);
     });
   });
 
@@ -463,75 +422,60 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     const confirm = page.locator('[data-testid="onBlurBehavior-confirm"]');
 
-    const logs: string[] = [];
-    page.on('console', (msg) => {
-      if (msg.type() === 'log') {
-        logs.push(msg.text());
-      }
-    });
+    const logs = collectConsoleLogs(page);
 
-    await test.step('Verify onChange activates when removinf data', async () => {
+    await test.step('Verify onChange fires when removing data', async () => {
       await page.keyboard.press('Tab');
 
-      if (platform() === 'darwin') {
-        await page.keyboard.press('Meta+A');
-      } else {
-        await page.keyboard.press('Control+A');
-      }
+      await selectAllText(page);
 
       await page.keyboard.press('Backspace');
 
       await page.waitForTimeout(100);
 
-      const onCahngeLogs = logs.filter((log) => log.includes('Change'));
-      expect(onCahngeLogs.length).toBe(1);
+      expect(countLogs(logs, 'Change')).toBe(1);
     });
 
-    await test.step('Verify onChange activates when entering data', async () => {
+    await test.step('Verify onChange fires when entering data', async () => {
       await page.keyboard.type('Test');
 
       await page.waitForTimeout(100);
 
-      const onCahngeLogs = logs.filter((log) => log.includes('Change'));
-      expect(onCahngeLogs.length).toBe(5);
+      expect(countLogs(logs, 'Change')).toBe(5);
     });
 
-    await test.step('Verify event sent on Enter', async () => {
+    await test.step('Verify Confirm sent on Enter', async () => {
       await page.keyboard.press('Enter');
 
       await page.waitForTimeout(100);
 
-      const cancelLogs = logs.filter((log) => log.includes('Confirm'));
-      expect(cancelLogs.length).toBe(1);
+      expect(countLogs(logs, 'Confirm')).toBe(1);
     });
 
-    await test.step('Verify event sent on Escape', async () => {
+    await test.step('Verify Escape does not send Confirm', async () => {
       await page.keyboard.press('Escape');
 
       await page.waitForTimeout(100);
 
-      const cancelLogs = logs.filter((log) => log.includes('Confirm'));
-      expect(cancelLogs.length).toBe(1);
+      expect(countLogs(logs, 'Confirm')).toBe(1);
     });
 
-    await test.step('Verify event sent on Save', async () => {
+    await test.step('Verify Confirm sent on Save', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
 
       await page.waitForTimeout(100);
 
-      const cancelLogs = logs.filter((log) => log.includes('Confirm'));
-      expect(cancelLogs.length).toBe(2);
+      expect(countLogs(logs, 'Confirm')).toBe(2);
     });
 
-    await test.step('Verify event sent on Cancel', async () => {
+    await test.step('Verify Cancel sent on Cancel button', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
 
       await page.waitForTimeout(100);
 
-      const cancelLogs = logs.filter((log) => log.includes('Cancel'));
-      expect(cancelLogs.length).toBe(2);
+      expect(countLogs(logs, 'Cancel')).toBe(2);
     });
   });
 
@@ -556,7 +500,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(cancel).toBeVisible();
     });
 
-    await test.step('Verify focuse removes when clicking on button', async () => {
+    await test.step('Verify focus removed when clicking on button', async () => {
       await save.click();
       await expect(locators.value(page)).not.toBeFocused();
     });
@@ -565,11 +509,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await locators.value(page).click();
       await expect(locators.value(page)).toBeFocused();
 
-      if (platform() === 'darwin') {
-        await page.keyboard.press('Meta+A');
-      } else {
-        await page.keyboard.press('Control+A');
-      }
+      await selectAllText(page);
 
       await page.keyboard.type('Test');
       await expect(locators.value(page)).toHaveAttribute('value', 'Test');
@@ -586,7 +526,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     const save = locators.inlineInput(page).getByLabel('Save');
     const cancel = locators.inlineInput(page).getByLabel('Cancel');
 
-    await test.step('Verify input focues when pressing Tab', async () => {
+    await test.step('Verify input focused when pressing Tab', async () => {
       await expect(locators.value(page)).toHaveAttribute('value', 'John Doe');
 
       await page.keyboard.press('Tab');
@@ -642,7 +582,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     const increment = page.locator('[aria-label="Increment number"]');
     const decrement = page.locator('[aria-label="Decrement number"]');
 
-    await test.step('Verify input focues when clicking on addon', async () => {
+    await test.step('Verify input focused when clicking on addon', async () => {
       await expect(locators.valueNumber(page)).toHaveAttribute('value', '100');
       await locators.addon(page).click();
       await expect(locators.valueNumber(page)).toBeFocused();
@@ -657,11 +597,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await locators.valueNumber(page).click();
       await expect(locators.valueNumber(page)).toBeFocused();
 
-      if (platform() === 'darwin') {
-        await page.keyboard.press('Meta+A');
-      } else {
-        await page.keyboard.press('Control+A');
-      }
+      await selectAllText(page);
 
       await page.keyboard.type('Test');
       await expect(locators.valueNumber(page)).toHaveAttribute('value', '100');
@@ -706,21 +642,25 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     const increment = numberInlineInput.getByLabel('increment');
     const decrement = numberInlineInput.getByLabel('decrement');
 
-    await expect(value).toHaveAttribute('value', '100');
-    await expect(controls).toBeVisible();
+    await test.step('Verify controls are visible', async () => {
+      await expect(value).toHaveAttribute('value', '100');
+      await expect(controls).toBeVisible();
+    });
 
-    await increment.click();
-    await expect(value).toBeFocused();
-    await expect(value).toHaveAttribute('value', '101');
+    await test.step('Verify increment by click and ArrowUp', async () => {
+      await increment.click();
+      await expect(value).toBeFocused();
+      await expect(value).toHaveAttribute('value', '101');
+      await page.keyboard.press('ArrowUp');
+      await expect(value).toHaveAttribute('value', '102');
+    });
 
-    await page.keyboard.press('ArrowUp');
-    await expect(value).toHaveAttribute('value', '102');
-
-    await decrement.click();
-    await expect(value).toHaveAttribute('value', '101');
-
-    await page.keyboard.press('ArrowDown');
-    await expect(value).toHaveAttribute('value', '100');
+    await test.step('Verify decrement by click and ArrowDown', async () => {
+      await decrement.click();
+      await expect(value).toHaveAttribute('value', '101');
+      await page.keyboard.press('ArrowDown');
+      await expect(value).toHaveAttribute('value', '100');
+    });
   });
 
   test('Verify Number-only input keyboard interactions', {
@@ -733,7 +673,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     const save = locators.inlineInput(page).getByLabel('Save');
 
-    await test.step('Verify input focues when pressing Tab', async () => {
+    await test.step('Verify input focused when pressing Tab', async () => {
       await expect(locators.valueNumber(page)).toHaveAttribute('value', '100');
 
       await page.keyboard.press('Tab');
@@ -780,24 +720,30 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-input/docs/examples/basic_usage.tsx', 'en');
 
-    const input = page.locator('[data-ui-name="InlineInput.Value"]');
+    const input = locators.value(page);
     const confirmControl = page.locator('[data-ui-name="InlineInput.ConfirmControl"] button');
     const cancelControl = page.locator('[data-ui-name="InlineInput.CancelControl"] button');
 
-    await page.keyboard.press('Tab');
-    await expect(input).toBeFocused();
-    await expect(confirmControl).not.toBeFocused();
-    await expect(cancelControl).not.toBeFocused();
+    await test.step('Verify input focused by first Tab', async () => {
+      await page.keyboard.press('Tab');
+      await expect(input).toBeFocused();
+      await expect(confirmControl).not.toBeFocused();
+      await expect(cancelControl).not.toBeFocused();
+    });
 
-    await page.keyboard.press('Tab');
-    await expect(input).not.toBeFocused();
-    await expect(confirmControl).toBeFocused();
-    await expect(cancelControl).not.toBeFocused();
+    await test.step('Verify Confirm focused by second Tab', async () => {
+      await page.keyboard.press('Tab');
+      await expect(input).not.toBeFocused();
+      await expect(confirmControl).toBeFocused();
+      await expect(cancelControl).not.toBeFocused();
+    });
 
-    await page.keyboard.press('Tab');
-    await expect(input).not.toBeFocused();
-    await expect(confirmControl).not.toBeFocused();
-    await expect(cancelControl).toBeFocused();
+    await test.step('Verify Cancel focused by third Tab', async () => {
+      await page.keyboard.press('Tab');
+      await expect(input).not.toBeFocused();
+      await expect(confirmControl).not.toBeFocused();
+      await expect(cancelControl).toBeFocused();
+    });
   });
 
   test('Verify that elements aren\'t focusable when disabled = true', {
@@ -807,18 +753,22 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-input/docs/examples/basic_usage.tsx', 'en', { disabled: true });
 
-    const input = page.locator('[data-ui-name="InlineInput.Value"]');
+    const input = locators.value(page);
     const confirmControl = page.locator('[data-ui-name="InlineInput.ConfirmControl"] button');
     const cancelControl = page.locator('[data-ui-name="InlineInput.CancelControl"] button');
 
-    for (let i = 0; i < 3; i++) {
-      await page.keyboard.press('Tab');
-      await expect(input).not.toBeFocused();
-      await expect(confirmControl).not.toBeFocused();
-      await expect(cancelControl).not.toBeFocused();
-    }
+    await test.step('Verify nothing focused by Tab', async () => {
+      for (let i = 0; i < 3; i++) {
+        await page.keyboard.press('Tab');
+        await expect(input).not.toBeFocused();
+        await expect(confirmControl).not.toBeFocused();
+        await expect(cancelControl).not.toBeFocused();
+      }
+    });
 
-    await input.click({ force: true });
-    await expect(input).not.toBeFocused();
+    await test.step('Verify input not focused by click', async () => {
+      await input.click({ force: true });
+      await expect(input).not.toBeFocused();
+    });
   });
 });

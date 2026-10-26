@@ -15,8 +15,6 @@ export const locators = {
 
   rows: (page: Page): Locator => page.locator(ROW_SELECTOR),
   row: (page: Page, index: number): Locator => page.locator(ROW_SELECTOR).nth(index),
-  contentDiv: (page: Page): Locator => page.locator(TEXTBOX_SELECTOR),
-  assertive: (page: Page): Locator => page.locator('[aria-live="assertive"]'),
   tooltip: (page: Page, text?: string): Locator => {
     const base = page.locator('[data-ui-name="Tooltip.Popper"]');
     return text ? base.getByText(text) : base;
@@ -25,7 +23,7 @@ export const locators = {
     const base = page.locator('[data-ui-name="Text"]').nth(1);
     return text ? base.getByText(text) : base;
   },
-  boxLocator: (page: Page, text?: string): Locator => page.locator('div[data-ui-name="Box"]').first(),
+  boxLocator: (page: Page): Locator => page.locator('div[data-ui-name="Box"]').first(),
 
 };
 
@@ -41,6 +39,14 @@ const pressRedo = async (page: Page) => {
 const pressRedoAlternative = async (page: Page) => {
   await page.keyboard.press(`${keyboardModifier}+y`);
 };
+const pasteText = (page: Page, text: string) => locators.textbox(page).evaluate((node, pasted) => {
+  const event = new Event('paste', { bubbles: true, cancelable: true });
+  (event as any).clipboardData = {
+    getData: (type: string) => (type === 'text/plain' ? pasted : ''),
+    types: ['text/plain'],
+  };
+  node.dispatchEvent(event);
+}, text);
 
 /* =====================================================
 @visual
@@ -64,7 +70,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   ];
   variables.forEach((item) => {
-    test(`Verify size=${item.size} placeholder=${item.placeholder}  w=${item.w} disabled=${item.disabled} readOnly=${item.readOnly} minRows=${item.minRows} maxRows=${item.maxRows} maxLines=${item.maxLines} autoFocus=${item.autoFocus}`, {
+    test(`Verify size=${item.size} placeholder=${item.placeholder} w=${item.w} disabled=${item.disabled} readOnly=${item.readOnly} minRows=${item.minRows} maxRows=${item.maxRows} maxLines=${item.maxLines} autoFocus=${item.autoFocus}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@bulk-textarea',
         '@base-components',
@@ -74,7 +80,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@tooltip'],
     },
     async ({ page }) => {
-      await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', item);
+      await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { ...item, readonly: item.readOnly });
       await test.step('Verify initial state', async () => {
         if (!item.autoFocus) {
           await page.keyboard.press('Tab');
@@ -123,6 +129,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Counter and Clear all', () => {
     test('Verify counter functionality', {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
         TAG.KEYBOARD,
         '@bulk-textarea',
         '@base-components',
@@ -174,10 +181,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       await test.step('Remove all content manually and verify counter', async () => {
-        const modifier = process.platform === 'darwin' ? 'Meta' : 'Control';
-        await page.keyboard.down(modifier);
-        await page.keyboard.press('A');
-        await page.keyboard.up(modifier);
+        await page.keyboard.press(`${keyboardModifier}+a`);
         await page.keyboard.press('Backspace');
         await expect(locators.counter(page)).toHaveText('0/15of 15 lines');
         const text =
@@ -228,6 +232,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     test('Verify Clear all by mouse when no validation', {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
         TAG.MOUSE,
         '@bulk-textarea',
         '@base-components',
@@ -237,7 +242,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15 });
 
-      await test.step('Removed when remove last character', async () => {
+      await test.step('Clear all is hidden after removing the last character', async () => {
         await locators.textbox(page).click();
         await page.keyboard.type('abc', { delay: 50 });
         await expect(locators.button(page, 'Clear all')).toBeVisible();
@@ -245,8 +250,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await locators.textbox(page).press('Backspace');
         await locators.textbox(page).press('Backspace');
         await expect(locators.button(page, 'Clear all')).not.toBeVisible();
-        const lineCount = await locators.rows(page).count();
-        await expect(lineCount).toBe(0);
+        await expect(locators.rows(page)).toHaveCount(0);
         await expect(locators.counter(page)).toHaveText('0/15of 15 lines');
       });
 
@@ -259,8 +263,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await locators.button(page, 'Clear all').click();
         await expect(locators.textbox(page)).toBeFocused();
         await expect(locators.button(page, 'Clear all')).not.toBeVisible();
-        const lineCount = await locators.rows(page).count();
-        await expect(lineCount).toBe(0);
+        await expect(locators.rows(page)).toHaveCount(0);
         await expect(locators.counter(page)).toHaveText('0/15of 15 lines');
       });
 
@@ -269,8 +272,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await locators.textbox(page).click();
         await page.keyboard.type('new text', { delay: 20 });
         await expect(locators.counter(page)).toHaveText('1/15of 15 lines');
-        const lineCount = await locators.rows(page).count();
-        await expect(lineCount).toBe(1);
+        await expect(locators.rows(page)).toHaveCount(1);
         await expect(locators.row(page, 0)).toHaveText('new text');
       });
     });
@@ -295,8 +297,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Enter');
         await expect(locators.textbox(page)).toBeFocused();
         await expect(locators.button(page, 'Clear all')).not.toBeVisible();
-        const lineCount = await locators.rows(page).count();
-        await expect(lineCount).toBe(0);
+        await expect(locators.rows(page)).toHaveCount(0);
         await expect(locators.counter(page)).toHaveText('0/10of 10 lines');
       });
     });
@@ -321,8 +322,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Enter');
         await expect(locators.textbox(page)).toBeFocused();
         await expect(locators.button(page, 'Clear all')).not.toBeVisible();
-        const lineCount = await locators.rows(page).count();
-        await expect(lineCount).toBe(0);
+        await expect(locators.rows(page)).toHaveCount(0);
         await expect(locators.counter(page)).toHaveText('0/10of 10 lines');
       });
     });
@@ -331,6 +331,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Undo and redo', () => {
     test('Verify text undo, redo and redo reset after new input', {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
         TAG.KEYBOARD,
         '@bulk-textarea',
         '@base-components',
@@ -368,6 +369,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     test('Verify undo and redo restore paragraph insertion with empty line', {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
         TAG.KEYBOARD,
         '@bulk-textarea',
         '@base-components',
@@ -407,6 +409,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     test('Verify undo restores caret position', {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
         TAG.KEYBOARD,
         '@bulk-textarea',
         '@base-components',
@@ -442,6 +445,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     test('Verify undo with paste lineProcessing restores processed empty row', {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
         TAG.KEYBOARD,
         '@bulk-textarea',
         '@base-components',
@@ -465,6 +469,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     test('Verify undo restores value before paste', {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
         TAG.KEYBOARD,
         '@bulk-textarea',
         '@base-components',
@@ -475,14 +480,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15 });
 
       await locators.textbox(page).click();
-      await locators.textbox(page).evaluate((node, text) => {
-        const event = new Event('paste', { bubbles: true, cancelable: true });
-        (event as any).clipboardData = {
-          getData: (type: string) => (type === 'text/plain' ? text : ''),
-          types: ['text/plain'],
-        };
-        node.dispatchEvent(event);
-      }, 'first\nsecond\nthird');
+      await pasteText(page, 'first\nsecond\nthird');
 
       await expect(locators.rows(page)).toHaveCount(3);
       await expect(locators.row(page, 0)).toHaveText('first');
@@ -501,6 +499,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     test('Verify undo and redo after Backspace', {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
         TAG.KEYBOARD,
         '@bulk-textarea',
         '@base-components',
@@ -524,6 +523,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     test('Verify undo and redo after Delete (forward)', {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
         TAG.KEYBOARD,
         '@bulk-textarea',
         '@base-components',
@@ -550,6 +550,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     test('Verify undo restores a range selection, not just the caret', {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
         TAG.KEYBOARD,
         '@bulk-textarea',
         '@base-components',
@@ -590,7 +591,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test('Verify instanceRef adds an empty row and sets its caret', {
     tag: [TAG.PRIORITY_HIGH,
-      TAG.KEYBOARD,
       '@bulk-textarea',
       '@base-components',
       '@flex-box',
@@ -627,6 +627,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Keyboard navigation', () => {
     test('Verify Home and first character on empty row stay in current row', {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
         TAG.KEYBOARD,
         '@bulk-textarea',
         '@base-components',
@@ -682,11 +683,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15 });
 
-      await test.step('Verify validation on blur not starts by entering new row', async () => {
+      await test.step('Verify validation on blur does not start on entering a new row', async () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Tab');
         await locators.textbox(page).press('[');
-        await page.waitForTimeout(100);// it is nessesary for stability in GitLab in Firefox
+        await page.waitForTimeout(100);// it is necessary for stability in GitLab in Firefox
         await page.keyboard.press('Enter');
         await page.waitForTimeout(100);
         await expect(locators.textbox(page)).not.toHaveAttribute('aria-invalid', 'true');
@@ -710,7 +711,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.button(page, 'Next error')).not.toBeVisible();
         await expect(locators.button(page, 'Previous error')).not.toBeVisible();
         await expect(locators.button(page, 'Clear all')).not.toBeVisible();
-        await expect(locators.contentDiv(page)).not.toHaveAttribute('aria-invalid', 'true');
+        await expect(locators.textbox(page)).not.toHaveAttribute('aria-invalid', 'true');
         await expect(locators.counter(page)).toHaveText('0/15of 15 lines');
       });
 
@@ -719,14 +720,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.waitForTimeout(100); // it is necessary for stability in GitLab in Firefox
         await page.keyboard.press('Enter');
         await page.waitForTimeout(100);
-        const boxBoundingBox = await locators.boxLocator(page).boundingBox();
-
-        if (boxBoundingBox) {
-          const rightTopX = boxBoundingBox.x + boxBoundingBox.width;
-          const rightTopY = boxBoundingBox.y;
-          await page.mouse.click(rightTopX, rightTopY);
-          await page.waitForTimeout(200);
-        }
+        const boxBoundingBox = (await locators.boxLocator(page).boundingBox())!;
+        const rightTopX = boxBoundingBox.x + boxBoundingBox.width;
+        const rightTopY = boxBoundingBox.y;
+        await page.mouse.click(rightTopX, rightTopY);
+        await page.waitForTimeout(200);
 
         await expect(locators.textbox(page)).toHaveAttribute('aria-invalid', 'true');
         await expect(locators.errorMessage(page, '1 error')).toBeVisible();
@@ -767,7 +765,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Tab');
         await page.keyboard.type('test[]]', { delay: 10 });
         await page.keyboard.press('Enter');
-        await page.waitForTimeout(100);// it is nessesary for stability in GitLab in Firefox
+        await page.waitForTimeout(100);// it is necessary for stability in GitLab in Firefox
         await expect(locators.textbox(page)).toHaveAttribute('aria-invalid', 'true');
         await expect(locators.errorMessage(page, '1 error')).toBeVisible();
         await expect(locators.button(page, 'Next error')).toBeVisible();
@@ -803,13 +801,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Enter');
         await page.keyboard.type('text\n[]\nttext', { delay: 10 });
         await page.waitForTimeout(100); // it is necessary for stability in GitLab in Firefox
-        const boxBoundingBox = await locators.boxLocator(page).boundingBox();
-
-        if (boxBoundingBox) {
-          const rightTopX = boxBoundingBox.x + boxBoundingBox.width;
-          const rightTopY = boxBoundingBox.y;
-          await page.mouse.click(rightTopX, rightTopY);
-        }
+        const boxBoundingBox = (await locators.boxLocator(page).boundingBox())!;
+        const rightTopX = boxBoundingBox.x + boxBoundingBox.width;
+        const rightTopY = boxBoundingBox.y;
+        await page.mouse.click(rightTopX, rightTopY);
         await expect(locators.textbox(page)).toHaveAttribute('aria-invalid', 'true');
         await expect(locators.errorMessage(page, '1 error')).toBeVisible();
         await expect(locators.button(page, 'Next error')).toBeVisible();
@@ -825,7 +820,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.errorMessage(page, '3 errors')).toBeVisible();
       });
 
-      await test.step('Verify focus order when validation starts ', async () => {
+      await test.step('Verify focus order when validation starts', async () => {
         await page.waitForTimeout(100); // it is necessary for stability in GitLab in Firefox
         await page.keyboard.press('Tab');
         await expect(locators.button(page, 'Next error')).toBeFocused();
@@ -838,7 +833,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     test('Verify Validation on Paste', {
       tag: [TAG.PRIORITY_HIGH,
-        TAG.KEYBOARD,
+        TAG.MOUSE,
         '@bulk-textarea',
         '@base-components',
         '@flex-box',
@@ -851,14 +846,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       await locators.textbox(page).click();
-      await locators.textbox(page).evaluate((node, text) => {
-        const event = new Event('paste', { bubbles: true, cancelable: true });
-        (event as any).clipboardData = {
-          getData: (type: string) => (type === 'text/plain' ? text : ''),
-          types: ['text/plain'],
-        };
-        node.dispatchEvent(event);
-      }, 'invalid[] value');
+      await pasteText(page, 'invalid[] value');
 
       await expect(locators.row(page, 0)).toHaveAttribute(
         'data-errormessage',
@@ -872,6 +860,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     test('Verify Validation on Submit', {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
         TAG.MOUSE,
         '@bulk-textarea',
         '@base-components',
@@ -881,7 +870,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/on-submit-example.tsx', 'en');
 
-      await test.step('Verify validation on blurRow starts by clicking submit', async () => {
+      await test.step('Verify validation starts by clicking submit', async () => {
         await page.keyboard.press('Tab');
         const text = 'Zoom in \nSecond[] row\n3 row';
         await page.keyboard.type(text, { delay: 10 });
@@ -912,27 +901,24 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify enter delimiter works', async () => {
         const text = 'Zoom in \nSecond line\n3 line\n4 line\n5 line';
         await page.keyboard.type(text, { delay: 10 });
-        const lineCount = await locators.rows(page).count();
-        await expect(lineCount).toBe(5);
+        await expect(locators.rows(page)).toHaveCount(5);
       });
       await test.step('Verify comma delimiter works', async () => {
         await page.keyboard.press('Enter');
         const text = 'Zoom in ,Second line,3 line,4 line,5 line';
         await page.keyboard.type(text, { delay: 10 });
-        const lineCount = await locators.rows(page).count();
-        await expect(lineCount).toBe(10);
+        await expect(locators.rows(page)).toHaveCount(10);
         await expect(locators.counter(page)).toHaveText('10/15of 15 lines');
         await locators.button(page, 'Clear all').click();
         await page.waitForTimeout(100);
       });
 
-      await test.step('Verify lines Processing works in 1st line ', async () => {
+      await test.step('Verify lines Processing works in 1st line', async () => {
         await page.waitForTimeout(100);
         await locators.textbox(page).click();
         await page.keyboard.type('http://', { delay: 10 });
         await page.keyboard.press('Enter');
-        const lineCount = await locators.rows(page).count();
-        await expect(lineCount).toBe(2);
+        await expect(locators.rows(page)).toHaveCount(2);
         await expect(locators.counter(page)).toHaveText('0/15of 15 lines');
         await page.keyboard.press('Backspace');
         await expect(locators.rows(page)).toHaveCount(0);
@@ -948,7 +934,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.rows(page)).toHaveCount(2);
         await expect(locators.counter(page)).toHaveText('1/15of 15 lines');
 
-        await expect(locators.row(page, 0)).not.toHaveText(/^http:\/\//);
+        await expect(locators.row(page, 0)).toHaveText('Test');
 
         await locators.button(page, 'Clear all').click();
         await page.waitForTimeout(100);
@@ -959,8 +945,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.waitForTimeout(100);
         await page.keyboard.type('Testhttp://', { delay: 100 });
         await page.keyboard.press('Enter');
-        const firstLineText = await locators.row(page, 0).textContent();
-        expect(firstLineText).not.toMatch(/^http:\/\//);
+        await expect(locators.row(page, 0)).toHaveText('Test');
       });
     });
   });
@@ -968,6 +953,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Common error OFF - Validation Delimiter LineProcessing', () => {
     test('Verify Validation on Blur', {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
         TAG.MOUSE,
         '@bulk-textarea',
         '@base-components',
@@ -975,7 +961,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@typography'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props', 'en', { maxLines: 15, showErrors: false });
+      await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15, showErrors: false });
 
       await test.step('Verify validation on blur starts by TAB', async () => {
         await page.keyboard.press('Tab');
@@ -999,14 +985,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.waitForTimeout(100);
         await page.keyboard.press('Enter');
         await page.waitForTimeout(200);
-        const boxBoundingBox = await locators.boxLocator(page).boundingBox();
-
-        if (boxBoundingBox) {
-          const rightTopX = boxBoundingBox.x + boxBoundingBox.width;
-          const rightTopY = boxBoundingBox.y;
-          await page.mouse.click(rightTopX, rightTopY);
-          await page.waitForTimeout(200);
-        }
+        const boxBoundingBox = (await locators.boxLocator(page).boundingBox())!;
+        const rightTopX = boxBoundingBox.x + boxBoundingBox.width;
+        const rightTopY = boxBoundingBox.y;
+        await page.mouse.click(rightTopX, rightTopY);
+        await page.waitForTimeout(200);
 
         await expect(locators.textbox(page)).toHaveAttribute('aria-invalid', 'true');
         await expect(locators.errorMessage(page, '1 error')).toBeVisible();
@@ -1072,13 +1055,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await locators.button(page, 'Clear all').click();
         await page.keyboard.type('text\n[]\nttext', { delay: 10 });
         await page.waitForTimeout(100);
-        const boxBoundingBox = await locators.boxLocator(page).boundingBox();
-
-        if (boxBoundingBox) {
-          const rightTopX = boxBoundingBox.x + boxBoundingBox.width;
-          const rightTopY = boxBoundingBox.y;
-          await page.mouse.click(rightTopX, rightTopY);
-        }
+        const boxBoundingBox = (await locators.boxLocator(page).boundingBox())!;
+        const rightTopX = boxBoundingBox.x + boxBoundingBox.width;
+        const rightTopY = boxBoundingBox.y;
+        await page.mouse.click(rightTopX, rightTopY);
         await expect(locators.textbox(page)).toHaveAttribute('aria-invalid', 'true');
         await expect(locators.errorMessage(page, '1 error')).toBeVisible();
         await expect(locators.button(page, 'Next error')).toBeVisible();
@@ -1096,6 +1076,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     test('Verify Delimiter and Rows Processing functionality', {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
         TAG.MOUSE,
         '@bulk-textarea',
         '@base-components',
@@ -1108,27 +1089,24 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify enter delimiter works', async () => {
         const text = 'Zoom in \nSecond row\n3 row\n4 row\n5 row';
         await page.keyboard.type(text, { delay: 10 });
-        const lineCount = await locators.rows(page).count();
-        await expect(lineCount).toBe(5);
+        await expect(locators.rows(page)).toHaveCount(5);
       });
       await test.step('Verify comma delimiter works', async () => {
         await page.keyboard.press('Enter');
         const text = 'Zoom in ,Second row,3 row,4 row,5 row';
         await page.keyboard.type(text, { delay: 10 });
-        const lineCount = await locators.rows(page).count();
-        expect(lineCount).toBe(10);
+        await expect(locators.rows(page)).toHaveCount(10);
         await expect(locators.counter(page)).toHaveText('10/10of 10 linesLimit reached');
         await locators.button(page, 'Clear all').click();
         await page.waitForTimeout(100);
       });
 
-      await test.step('Verify rows Processing works in 1st row ', async () => {
+      await test.step('Verify rows Processing works in 1st row', async () => {
         await page.waitForTimeout(100);
         await locators.textbox(page).click();
         await page.keyboard.type('http://', { delay: 10 });
         await page.keyboard.press('Enter');
-        const lineCount = await locators.rows(page).count();
-        expect(lineCount).toBe(2);
+        await expect(locators.rows(page)).toHaveCount(2);
         await expect(locators.counter(page)).toHaveText('0/10of 10 lines');
         await page.keyboard.press('Backspace');
         await expect(locators.rows(page)).toHaveCount(0);
@@ -1143,7 +1121,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.rows(page)).toHaveCount(2);
         await expect(locators.counter(page)).toHaveText('1/10of 10 lines');
 
-        await expect(locators.row(page, 0)).not.toHaveText(/^http:\/\//);
+        await expect(locators.row(page, 0)).toHaveText('Test');
 
         await locators.button(page, 'Clear all').click();
         await page.waitForTimeout(100);
@@ -1154,9 +1132,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.waitForTimeout(100);
         await page.keyboard.type('Testhttp://', { delay: 100 });
         await page.keyboard.press('Enter');
-        const firstLine = await page.locator('ol[contenteditable="true"] li').first();
-        const firstLineText = await firstLine.textContent();
-        expect(firstLineText).not.toMatch(/^http:\/\//);
+        await expect(locators.row(page, 0)).toHaveText('Test');
       });
     });
   });
@@ -1164,6 +1140,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Common error On - Error tooltips', () => {
     test('Verify tooltips by mouse hover and click', {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
         TAG.MOUSE,
         '@bulk-textarea',
         '@base-components',
@@ -1197,7 +1174,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await locators.row(page, 9).hover();
         await locators.tooltip(page, 'Please fix this value = another error').waitFor({ state: 'hidden' });
-        await expect(locators.tooltip(page)).toBeEmpty;
+        await expect(locators.tooltip(page)).toBeHidden();
 
         await locators.row(page, 10).click();
         await locators.tooltip(page, 'Please fix this value = another error').waitFor({ state: 'visible' });
@@ -1212,7 +1189,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.errorMessage(page)).toHaveText('3 errors');
       });
 
-      await test.step('Navigation between rows by clicking arrows', async () => {
+      await test.step('Navigate between errors with error navigation buttons', async () => {
         await locators.button(page, 'Next error').click();
         await locators.tooltip(page, 'Please remove one error value').waitFor({ state: 'visible' });
 
@@ -1236,7 +1213,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
     });
 
-    test('Verify tooltips by keyboard click and navigate by arrows', {
+    test('Verify tooltips by keyboard and navigate between errors', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@bulk-textarea',
@@ -1265,7 +1242,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await locators.tooltip(page, 'Please enter correct movie names.').waitFor({ state: 'visible' });
         await expect(locators.textbox(page)).toBeFocused();
-        await expect(locators.contentDiv(page)).toHaveAttribute('aria-invalid', 'true');
+        await expect(locators.textbox(page)).toHaveAttribute('aria-invalid', 'true');
         await expect(locators.errorMessage(page)).toHaveText('3 errors');
 
         await page.keyboard.press('ArrowUp');
@@ -1276,7 +1253,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await locators.tooltip(page, 'Please enter correct movie names.').waitFor({ state: 'visible' });
       });
 
-      await test.step('Navigation between rows by clicking arrows', async () => {
+      await test.step('Navigate between errors with error navigation buttons', async () => {
         await page.keyboard.press('Tab');
         await page.waitForTimeout(50);
         await page.keyboard.press('Enter');
@@ -1294,6 +1271,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     test('Verify tooltips when fixing errors', {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
         TAG.KEYBOARD,
         '@bulk-textarea',
         '@base-components',
@@ -1302,11 +1280,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@typography',
         '@tooltip'],
     }, async ({ page, browserName }) => {
-      if (browserName === 'webkit') test.skip();
+      test.skip(browserName === 'webkit', 'Unstable in WebKit, reason not documented: needs investigation');
 
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15 });
 
-      await test.step('Row Error on Focus', async () => {
+      await test.step('Row error tooltip after clicking a row', async () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Tab');
         const text =
@@ -1318,7 +1296,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await locators.textbox(page).click();
         await expect(locators.textbox(page)).toBeFocused();
         await locators.tooltip(page, 'Please enter correct movie names.').waitFor({ state: 'visible' });
-        await expect(locators.contentDiv(page)).toHaveAttribute('aria-invalid', 'true');
+        await expect(locators.textbox(page)).toHaveAttribute('aria-invalid', 'true');
         await expect(locators.errorMessage(page)).toHaveText('3 errors');
 
         await locators.row(page, 10).click();
@@ -1334,7 +1312,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.row(page, 10)).not.toHaveAttribute('data-errormessage', 'Please fix this value = another error');
       });
 
-      await test.step('Navigation between rows by clicking arrows', async () => {
+      await test.step('Navigate between errors with error navigation buttons', async () => {
         await page.keyboard.press('Tab');
         await page.waitForTimeout(200);
 
@@ -1347,7 +1325,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         for (let i = 0; i < 6; i++) await page.keyboard.press('Backspace');
         await locators.tooltip(page, 'Please enter correct movie names.').waitFor({ state: 'visible' });
-        await expect(locators.contentDiv(page)).toHaveAttribute('aria-invalid', 'true');
+        await expect(locators.textbox(page)).toHaveAttribute('aria-invalid', 'true');
 
         await locators.button(page, 'Next error').click();
 
@@ -1355,15 +1333,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.errorMessage(page)).toHaveText('Error 1 out of 1');
 
         await locators.row(page, 4).click();
-        await page.waitForTimeout(200); // wait for setting cursor, for forefox stability
+        await page.waitForTimeout(200); // wait for setting cursor, for Firefox stability
         for (let i = 0; i < 6; i++) await page.keyboard.press('Backspace');
-        await expect(locators.contentDiv(page)).not.toHaveAttribute('aria-invalid', 'true');
-        await expect(locators.tooltip(page)).toBeEmpty;
+        await expect(locators.textbox(page)).not.toHaveAttribute('aria-invalid', 'true');
+        await expect(locators.tooltip(page)).toBeHidden();
       });
     });
 
-    test('Verify tooltips when adding errors ', {
+    test('Verify tooltips when adding errors', {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
         TAG.KEYBOARD,
         '@bulk-textarea',
         '@base-components',
@@ -1371,10 +1350,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@typography',
         '@tooltip'],
-    }, async ({ page, browserName }) => {
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15 });
 
-      await test.step('Row Error on Focus', async () => {
+      await test.step('Row error tooltip after clicking a row', async () => {
         await locators.textbox(page).click();
         const text = '1 row[\n2[] row\n3 row\n4 ]]row\n5 row';
         await page.keyboard.type(text, { delay: 10 });
@@ -1393,6 +1372,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Common error Off - Error tooltips', () => {
     test('Verify tooltips by mouse hover and click', {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
         TAG.MOUSE,
         '@bulk-textarea',
         '@base-components',
@@ -1445,7 +1425,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.errorMessage(page)).toHaveText('3 errors');
       });
 
-      await test.step('Navigation between rows by clicking arrows', async () => {
+      await test.step('Navigate between errors with error navigation buttons', async () => {
         await locators.button(page, 'Next error').click();
         await locators.tooltip(page, 'Please remove invalid charsets from the movie name.').waitFor({ state: 'visible' });
 
@@ -1466,8 +1446,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
     });
 
-    test('Verify tooltips by keyboard click and navigate by arrows', {
+    test('Verify tooltips by keyboard and navigate between errors', {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
         TAG.KEYBOARD,
         '@bulk-textarea',
         '@base-components',
@@ -1484,7 +1465,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Tab');
       await page.waitForTimeout(500);
       await expect(locators.tooltip(page)).toHaveCount(0);
-      await expect(locators.contentDiv(page)).toHaveAttribute('aria-invalid', 'true');
+      await expect(locators.textbox(page)).toHaveAttribute('aria-invalid', 'true');
       await expect(locators.errorMessage(page)).toHaveText('3 errors');
 
       await locators.row(page, 1).click();
@@ -1530,8 +1511,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test.describe('lineProcessing cases', () => {
-    test('Verify lineProcessing when paste empty rows', {
+    test('Verify lineProcessing of empty rows when value is passed to another BulkTextarea', {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        TAG.KEYBOARD,
         '@bulk-textarea',
         '@base-components',
         '@flex-box',
@@ -1548,8 +1531,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.textbox(page).nth(1)).toBeEmpty();
     });
 
-    test('Verify lineProcessing when counts lines and index', {
+    test('Verify lineProcessing receives line count and index', {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        TAG.KEYBOARD,
         '@bulk-textarea',
         '@base-components',
         '@flex-box',
@@ -1573,8 +1558,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test.describe('Controlled errors', () => {
-    test('Verify error shows on manually errors set', {
+    test('Verify errors are shown when set manually', {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
         TAG.KEYBOARD,
         '@bulk-textarea',
         '@base-components',

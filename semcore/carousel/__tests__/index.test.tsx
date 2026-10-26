@@ -124,7 +124,7 @@ describe('Carousel.Indicators', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  test('Veerify right change index with Prev button', async () => {
+  test('Verify right change index with Prev button', async () => {
     const spy = vi.fn();
     const { getByLabelText, getByRole } = render(
       <Carousel onIndexChange={spy}>

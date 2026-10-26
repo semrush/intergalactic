@@ -151,6 +151,18 @@ const hoverPlotCenter = async (page: Page) => {
 };
 
 /**
+ * Hovers the plot column under the given tick, so the hovered tick pill shows the same
+ * content as that tick.
+ */
+const hoverTickColumn = async (page: Page, tick: ReturnType<Page['locator']>) => {
+  const plotBox = await locators.plot(page).first().boundingBox();
+  const tickBox = await tick.boundingBox();
+  if (!plotBox || !tickBox) throw new Error('Bounding box not found');
+
+  await page.mouse.move(tickBox.x + tickBox.width / 2, plotBox.y + plotBox.height / 2);
+};
+
+/**
  * Dots give the exact position of a data point, so the hovered index needs no
  * coordinate math. The first 10 dots belong to the first series, one per point.
  *
@@ -206,11 +218,9 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test.describe('Reference Lines', () => {
     test('Verify attributes reference lines ', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart'],
+      tag: [TAG.PRIORITY_LOW, '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/d3-chart/tests/examples/d3-chart/reference-line-props.tsx', 'en');
-
-      const svgs = page.locator('svg');
 
       const referenceLine = locators.referenceLine(page, 0);
       await expect(referenceLine).toHaveAttribute('aria-hidden', 'true');
@@ -220,7 +230,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(referenceTitle).toHaveAttribute('aria-hidden', 'true');
       await expect(referenceTitle).toHaveAttribute('value', 'Category 0');
 
-      const background = await svgs.first().locator('rect').nth(1);
+      const background = locators.plot(page, 0).locator('path[value="Category 3"]');
       await expect(background).toHaveAttribute('aria-hidden', 'true');
       await expect(background).toHaveAttribute('value', 'Category 3');
 
@@ -741,6 +751,37 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       // The link is styled as a link, but it must not grow or shrink the label.
       expect(linkSize).toBe(tickSize);
+    });
+
+    test('Verify the hovered tick hides while a tick link has keyboard focus', {
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@d3-chart',
+        '@bar-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, LINKS_EXAMPLE, 'en');
+      await locators.plot(page).waitFor({ state: 'visible' });
+
+      const tickLinks = locators.axisTicks(page).locator('a');
+      const pill = locators.hoveredTick(page);
+
+      await hoverTickColumn(page, tickLinks.first());
+      await expect(pill).toHaveCSS('visibility', 'visible');
+
+      await test.step('Focus the link with the keyboard', async () => {
+        // Focus arrives by Shift+Tab, so the link matches :focus-visible in every browser.
+        await tickLinks.nth(1).focus();
+        await page.keyboard.press('Shift+Tab');
+
+        await expect(tickLinks.first()).toBeFocused();
+        await expect(pill).toHaveCSS('visibility', 'hidden');
+      });
+
+      await test.step('Move focus off the tick links', async () => {
+        // The first link is the first tab stop, so Shift+Tab would leave the page.
+        await tickLinks.first().blur();
+
+        await expect(tickLinks.first()).not.toBeFocused();
+        await expect(pill).toHaveCSS('visibility', 'visible');
+      });
     });
   });
 

@@ -10,13 +10,16 @@ const locators = {
   apply: (page: Page) => page.getByRole('button', { name: 'Apply' }),
   options: (page: Page) => page.getByRole('option'),
   checkboxes: (page: Page) => page.locator('[data-ui-name="Select.Option.Checkbox"]'),
-  ellipsisHint: (page: Page) => page.locator('[data-ui-name="Hint"]'),
   clear: (page: Page) => page.getByRole('button', { name: 'Clear' }),
   loadingText: (page: Page) => page.getByText('Loading...'),
   errorText: (page: Page) => page.getByText('Something went wrong.').first(),
   clearSearchHint: (page: Page) => page.getByText('Clear search field'),
   optionByName: (page: Page, name: string) => page.getByRole('option', { name }),
-  textByContent: (page: Page, text: string) => page.getByText(text),
+};
+
+const featureCheckboxes = async (page: Page) => {
+  const optionsCount = await locators.options(page).count();
+  return (await locators.checkboxes(page).all()).slice(0, optionsCount - 2);
 };
 
 /* =====================================================
@@ -186,9 +189,8 @@ test.describe(TAG.FUNCTIONAL, () => {
       await page.keyboard.press('ArrowDown');
       await expect(locators.optionByName(page, 'Select all')).toHaveClass(/highlighted/);
       await page.keyboard.press('Space');
-      const count = await locators.options(page).count();
-      for (let i = 0; i < count - 2; i++) {
-        await expect(locators.checkboxes(page).nth(i)).toHaveClass(/selected/);
+      for (const checkbox of await featureCheckboxes(page)) {
+        await expect(checkbox).toHaveClass(/selected/);
       }
       await expect(locators.optionByName(page, 'None')).toHaveAttribute('disabled');
 
@@ -204,9 +206,8 @@ test.describe(TAG.FUNCTIONAL, () => {
       await page.keyboard.press('ArrowDown');
       await expect(locators.optionByName(page, 'Deselect all')).toHaveClass(/highlighted/);
       await page.keyboard.press('Space');
-      const count = await locators.options(page).count();
-      for (let i = 0; i < count - 2; i++) {
-        await expect(locators.checkboxes(page).nth(i)).not.toHaveClass(/selected/);
+      for (const checkbox of await featureCheckboxes(page)) {
+        await expect(checkbox).not.toHaveClass(/selected/);
       }
       await expect(locators.optionByName(page, 'None')).not.toHaveAttribute('disabled');
 
@@ -225,9 +226,8 @@ test.describe(TAG.FUNCTIONAL, () => {
       await page.keyboard.press('ArrowUp');
       await expect(locators.optionByName(page, 'None')).toHaveClass(/highlighted/);
       await page.keyboard.press('Space');
-      const count = await locators.options(page).count();
-      for (let i = 0; i < count - 2; i++) {
-        await expect(locators.checkboxes(page).nth(i)).toHaveAttribute('disabled');
+      for (const checkbox of await featureCheckboxes(page)) {
+        await expect(checkbox).toHaveAttribute('disabled');
       }
       await expect(locators.optionByName(page, 'None')).not.toHaveAttribute('disabled');
 

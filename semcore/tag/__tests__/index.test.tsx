@@ -45,7 +45,7 @@ describe('Tag', () => {
     expect(onClick).toHaveBeenCalledTimes(2);
   });
 
-  test('Verify calls keydwon callback once per key down', async () => {
+  test('Verify calls keydown callback once per key down', async () => {
     const onKeyDown = vi.fn();
     const { getByTestId } = render(
       <Tag interactive onKeyDown={onKeyDown} data-testid='tagKeyboardTest'>
@@ -146,7 +146,7 @@ describe('TagContainer', () => {
     expect(onClick).toHaveBeenCalledTimes(2);
   });
 
-  test('Verify calls keydwon callback once per key down', async () => {
+  test('Verify calls keydown callback once per key down', async () => {
     const onKeyDown = vi.fn();
     const { getByTestId } = render(
       <TagContainer>

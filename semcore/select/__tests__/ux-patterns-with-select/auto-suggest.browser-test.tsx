@@ -11,14 +11,6 @@ const locators = {
   // the "Loading..." text (data-ui-name="Box"), so a bare getByText would match 2 elements.
   loadingStatus: (page: Page) =>
     page.locator('[data-ui-name="Select.StatusItem"]').filter({ hasText: 'Loading...' }),
-  inputWrapper: (page: Page) => page.locator('[data-ui-name="AutoSuggest.Trigger"]'),
-  outline: (page: Page) =>
-    page.locator('[data-ui-name="AutoSuggest.Trigger"] div:not([data-ui-name])').first(),
-  addon: (page: Page) => page.locator('[data-ui-name="Input.Addon"]'),
-  loadingSpin: (page: Page) =>
-    page.locator('[data-ui-name="AutoSuggest.Trigger"] [data-ui-name="Spin"]'),
-  loadingAddon: (page: Page) =>
-    page.locator('[data-ui-name="AutoSuggest.Trigger"] [data-ui-name="Input.Addon"]').last(),
 };
 
 const examplePath = 'stories/patterns/ux-patterns/auto-suggest/tests/examples/autosuggest_test.tsx';
@@ -36,12 +28,9 @@ const expectOptionsToMatch = async (page: Page, query: string) => {
   }).toBeTruthy();
 
   await expect(locators.options(page).first()).toBeVisible();
-  const count = await locators.options(page).count();
-  expect(count).toBeGreaterThan(0);
-
-  for (let i = 0; i < count; i++) {
-    await expect(locators.options(page).nth(i)).toHaveAttribute('aria-selected', 'false');
-    await expect(locators.options(page).nth(i)).not.toHaveClass(/selected/);
+  for (const option of await locators.options(page).all()) {
+    await expect(option).toHaveAttribute('aria-selected', 'false');
+    await expect(option).not.toHaveClass(/selected/);
   }
 };
 
