@@ -8,8 +8,13 @@
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
+  "exports": {
+    "types": "./lib/types/index.d.ts",
+    "import": "./lib/esm/index.mjs",
+    "require": "./lib/cjs/index.js"
+  },
   "scripts": {
-    "build": "pnpm semcore-builder --source=js && tsm --require=../../.ci/tsm-filter-warnings.js ./generate.ts",
+    "build": "pnpm semcore-builder --source=js && pnpm vite build && tsm --require=../../.ci/tsm-filter-warnings.js ./generate.ts",
     "upload-static": "gcs-upload intergalactic-flags lib/sprites/*"
   },
   "dependencies": {
