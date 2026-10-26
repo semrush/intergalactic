@@ -1,6 +1,5 @@
 import { Component, Root, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
-import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { interpolate } from 'd3-interpolate';
@@ -21,9 +20,7 @@ function transitionAnglePie({
   duration,
   halfsize,
   d3Arc,
-  d3ArcOut,
   arcs,
-  activeIndexPie,
 }) {
   return transition()
     .selection()
@@ -48,37 +45,7 @@ function transitionAnglePie({
         d.startAngle = iStartAngle(t);
         d.endAngle = iEndAngle(t);
         self.arc = d;
-        return ind === activeIndexPie ? d3ArcOut(self.arc) : d3Arc(self.arc);
-      };
-    });
-}
-
-function transitionRadiusPie({
-  data,
-  selector,
-  element,
-  duration,
-  innerRadius,
-  outerRadiusStartEnd,
-  paddingAngle,
-}) {
-  return transition()
-    .selection()
-    .select(selector)
-    .interrupt()
-    .transition()
-    .duration(duration)
-    .attrTween('d', function () {
-      const [start, end] = outerRadiusStartEnd;
-      const iOuterRadius = interpolate(start, end);
-      return function (t) {
-        const outerRadiusPX = iOuterRadius(t);
-        element.dataset['currentRadius'] = outerRadiusPX;
-        const d3ArcOut = arc()
-          .innerRadius(innerRadius)
-          .outerRadius(outerRadiusPX)
-          .padAngle(paddingAngle);
-        return d3ArcOut(data);
+        return d3Arc(self.arc);
       };
     });
 }
@@ -109,11 +76,6 @@ class DonutRoot extends Component {
 
     const d3Arc = arc().outerRadius(radius).innerRadius(innerRadius).padAngle(paddingAngle);
 
-    const d3ArcOut = arc()
-      .outerRadius(radius + increaseFactor)
-      .innerRadius(innerRadius)
-      .padAngle(paddingAngle);
-
     let d3Pie = pie()
       .sort(null)
       .value(([, value]) => value);
@@ -125,11 +87,14 @@ class DonutRoot extends Component {
     return {
       d3Pie,
       d3Arc,
-      d3ArcOut,
       duration: 500,
       paddingAngle,
       innerRadius,
     };
+  };
+
+  state = {
+    active: null,
   };
 
   get id() {
@@ -137,13 +102,7 @@ class DonutRoot extends Component {
     return id || uid;
   }
 
-  virtualElement = canUseDOM() ? document.createElement('div') : {};
-  activeIndexPie = undefined;
   canAnimatedHover = false;
-
-  generateGetBoundingClientRect(x = 0, y = 0) {
-    return () => ({ width: 0, height: 0, top: y, right: x, bottom: y, left: x });
-  }
 
   getArcs() {
     const { Children, data, d3Pie } = this.asProps;
@@ -180,26 +139,6 @@ class DonutRoot extends Component {
     eventEmitter.emit(`setTooltipVisible_${plotId}`, visible);
   };
 
-  animationActivePie = ({ data, active, selector, element }) => {
-    const { duration, d3Arc, paddingAngle } = this.asProps;
-    const outerRadius = d3Arc.outerRadius()();
-    const innerRadius = d3Arc.innerRadius()();
-    const outerRadiusStartEnd = active
-      ? [+element.dataset['currentRadius'] || outerRadius, outerRadius + increaseFactor]
-      : [+element.dataset['currentRadius'] || outerRadius, outerRadius];
-    if (this.canAnimatedHover && duration > 0) {
-      transitionRadiusPie({
-        data,
-        selector: `#${this.id} ${selector}`,
-        element,
-        duration: duration === 0 ? 0 : 300,
-        innerRadius,
-        outerRadiusStartEnd,
-        paddingAngle,
-      });
-    }
-  };
-
   animationTimeout = null;
   animationUpdatePie = () => {
     clearTimeout(this.animationTimeout);
@@ -213,8 +152,6 @@ class DonutRoot extends Component {
           arcs: this.arcs,
           halfsize,
           d3Arc,
-          d3ArcOut,
-          activeIndexPie: this.activeIndexPie,
         }).on('end', () => {
           this.canAnimatedHover = true;
         });
@@ -237,56 +174,40 @@ class DonutRoot extends Component {
   }
 
   getPieProps(props, index) {
-    const { d3Arc, d3ArcOut, innerRadius, outerRadius, halfsize, resolveColor, uid, patterns } =
+    const { d3Arc, innerRadius, outerRadius, halfsize, resolveColor, patterns } =
       this.asProps;
-    const { active } = props;
+    const { transparent } = props;
     const data = this.arcs.find((arc) => arc.data[0] === props.dataKey);
-    if (active) {
-      this.activeIndexPie = index;
-    }
+
     const tooltipProps = {
       dataKey: props.dataKey,
       name: props.name,
       resolveColor,
       color: props.color || getChartDefaultColorName(index),
-      active: props.active,
       transparent: props.transparent,
       patterns,
     };
 
+    const pieId = `${this.id}-${index}`;
+
     return {
       data,
       d3Arc,
-      d3ArcOut,
       innerRadius,
       outerRadius,
-      uid: `${uid}-${index}`,
+      uid: pieId,
       patterns,
       halfsize,
       color: props.color || getChartDefaultColorName(index),
       resolveColor,
-      $animationActivePie: this.animationActivePie,
+      transparent: transparent ?? (this.state.active !== null && this.state.active !== pieId),
       onMouseMove: this.bindHandlerTooltip(true, props, tooltipProps),
       onMouseLeave: this.bindHandlerTooltip(false, props, tooltipProps),
       onMouseOver: (e) => {
-        if (!active) {
-          this.animationActivePie({
-            active: true,
-            data,
-            selector: `[d="${e.target.getAttribute('d')}"]`,
-            element: e.target,
-          });
-        }
+        this.setState({ active: pieId });
       },
       onMouseOut: (e) => {
-        if (!active) {
-          this.animationActivePie({
-            active: false,
-            data,
-            selector: `[d="${e.target.getAttribute('d')}"]`,
-            element: e.target,
-          });
-        }
+        this.setState({ active: null });
       },
       onClickPieRoot: this.handlerOnClick(props.dataKey),
     };
@@ -335,48 +256,17 @@ function Pie({
   d3Arc,
   data,
   color,
-  $animationActivePie,
-  active,
-  d3ArcOut,
   name,
   dataKey,
   dataHintsHandler,
   transparent,
-  innerRadius,
-  outerRadius,
   resolveColor,
-  halfsize,
   uid,
   patterns,
   onClick,
   onClickPieRoot,
-  ...other
 }) {
-  const [isMount, setIsMount] = React.useState(false);
   const pieRef = React.useRef(null);
-
-  React.useEffect(() => {
-    if (!pieRef.current) return;
-    pieRef.current.dataset['currentRadius'] = (active ? d3ArcOut : d3Arc).outerRadius()();
-
-    // do not run animation on first render
-    if (!isMount) {
-      setIsMount(true);
-      return;
-    }
-    if (active !== undefined && active !== null) {
-      $animationActivePie({
-        active,
-        data,
-        selector: `[name="${other.name}"]`,
-        element: pieRef.current,
-      });
-    }
-  }, [active, Boolean(data)]);
-  React.useEffect(() => {
-    if (!pieRef.current) return;
-    pieRef.current.dataset['currentRadius'] = (active ? d3ArcOut : d3Arc).outerRadius()();
-  }, [active, innerRadius, outerRadius, halfsize, Boolean(data)]);
 
   if (!data) return null;
 
@@ -391,7 +281,7 @@ function Pie({
           ref={pieRef}
           color={resolveColor(color)}
           pattern={patterns ? `url(#${uid}-pattern)` : undefined}
-          d={active ? d3ArcOut(data) : d3Arc(data)}
+          d={d3Arc(data)}
           transparent={transparent}
           use:onClick={callAllEventHandlers(onClickPieRoot, onClick)}
         />,

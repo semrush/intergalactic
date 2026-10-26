@@ -73,7 +73,13 @@ class DonutChartComponent extends AbstractChart<
               dataKey={item.id}
               name={item.label}
               color={item.color}
-              active={highlightedItem === index}
+              transparent={highlightedItem !== -1 && highlightedItem !== index}
+              onMouseOver={() => {
+                this.setState({ highlightedItem: index });
+              }}
+              onMouseOut={() => {
+                this.setState({ highlightedItem: -1 });
+              }}
             />
           );
         })}
