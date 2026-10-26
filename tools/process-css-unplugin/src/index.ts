@@ -88,7 +88,7 @@ const processCssUnplugin = createUnplugin<Options>((options = {}) => {
           importPaths.push(hashedFilePath);
         }
 
-        return id.includes('@semcore/flags') || !isES6Mode ? 'undefined, ' : '(undefined, ';
+        return codeBlock.trimStart().startsWith('(') ? '(undefined, ' : 'undefined, ';
       },
     ).replace(REGEXPS.RESHADOW_STYLES, () =>
       createImportStatement(importPaths.shift()!, isES6Mode),
