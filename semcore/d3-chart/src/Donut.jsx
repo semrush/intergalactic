@@ -3,6 +3,7 @@ import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { easeCubicOut } from 'd3-ease';
 import { interpolate } from 'd3-interpolate';
 import { arc, pie } from 'd3-shape';
 import { transition } from 'd3-transition';
@@ -15,6 +16,7 @@ import Tooltip from './Tooltip';
 import { getChartDefaultColorName } from './utils';
 
 const DEFAULT_INSTANCE = Symbol('DEFAULT_INSTANCE');
+const TRANSITION_RADIUS_DURATION = 150;
 
 function transitionAnglePie({
   selector,
@@ -68,6 +70,7 @@ function transitionRadiusPie({
     .interrupt()
     .transition()
     .duration(duration)
+    .ease(easeCubicOut)
     .attrTween('d', function () {
       const [start, end] = outerRadiusStartEnd;
       const iOuterRadius = interpolate(start, end);
@@ -192,7 +195,7 @@ class DonutRoot extends Component {
         data,
         selector: `#${this.id} ${selector}`,
         element,
-        duration: duration === 0 ? 0 : 300,
+        duration: duration === 0 ? 0 : TRANSITION_RADIUS_DURATION,
         innerRadius,
         outerRadiusStartEnd,
         paddingAngle,
