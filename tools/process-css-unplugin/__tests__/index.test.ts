@@ -243,7 +243,7 @@ const style2 = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*
 
       const sourceCode = createSourceCode('.___SButton_abc_gg_ { color: red; }');
       const result = callTransform(plugin, sourceCode, '/node_modules/@semcore/button/lib/es6/index.js');
-      const importPath = getImportPath(result.code)!;
+      const importPath = getImportPath(result.code) ?? '';
 
       const cssDir = join(cacheDir, 'semcore-css').replace(/\\/g, '/');
       const files = readdirSync(cssDir);
