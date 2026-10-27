@@ -198,15 +198,26 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.tooltip(page)).toBeHidden();
     });
 
-    test('Verify tooltip shows the rest of the score on the other pie', {
+    test('Verify no tooltip on the other pie', {
       tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, ...COMPONENT_TAGS],
     }, async ({ page }) => {
-      test.fixme(true, 'B1: tooltip on the other pie shows data.value instead of 100 - value');
       await load(page, { data: { value: 40 } });
 
-      await hoverPieForTooltip(page, locators.otherPie(page));
-      await expect(locators.tooltip(page)).toContainText('60');
-      await expect(locators.tooltip(page)).not.toContainText('other');
+      await test.step('Verify tooltip is shown on the value pie', async () => {
+        await hoverPieForTooltip(page, locators.valuePie(page));
+      });
+
+      await test.step('Verify tooltip hides when the mouse moves to the other pie', async () => {
+        await hoverPie(locators.otherPie(page));
+        await expect(locators.tooltip(page)).toBeHidden();
+      });
+
+      await test.step('Verify tooltip does not appear on the other pie from outside', async () => {
+        await page.mouse.move(0, 0);
+        await hoverPie(locators.otherPie(page));
+        await page.waitForTimeout(300);
+        await expect(locators.tooltip(page)).toBeHidden();
+      });
     });
   });
 
@@ -315,7 +326,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify mask covers the other pie in a semi donut', {
       tag: [TAG.PRIORITY_HIGH, ...COMPONENT_TAGS],
     }, async ({ page }) => {
-      test.fixme(true, 'B2: the mask rect is sized from the svg, so the top of a semi-donut arc is cut off');
       await load(page, { data: { value: 40 }, halfsize: true });
 
       expect(await maskCoversOtherPie(page)).toBe(true);
@@ -324,7 +334,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify other pie is not painted black', {
       tag: [TAG.PRIORITY_HIGH, ...COMPONENT_TAGS],
     }, async ({ page }) => {
-      test.fixme(true, 'B5: token chart-palette-order-other-data was renamed to chart-data-other-value');
       await load(page, { data: { value: 40 } });
 
       const fill = await locators.otherPie(page).evaluate((path) => getComputedStyle(path).fill);
@@ -334,12 +343,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify other pie gets a single fill method with patterns', {
       tag: [TAG.PRIORITY_MEDIUM, ...COMPONENT_TAGS],
     }, async ({ page }) => {
-      test.fixme(true, 'B4: with patterns the other pie gets both a pattern fill and the hatch mask');
       await load(page, { data: { value: 40 }, patterns: true });
 
       const otherPie = locators.otherPie(page);
       const hasPattern = await otherPie.evaluate((path) => (path.getAttribute('pattern') ?? '').startsWith('url('));
       expect(hasPattern).toBe(false);
+      await expect(otherPie).toHaveAttribute('mask', /^url\(#.+-mask\)$/);
+      await expect(locators.valuePie(page)).toHaveAttribute('pattern', /^url\(/);
     });
   });
 

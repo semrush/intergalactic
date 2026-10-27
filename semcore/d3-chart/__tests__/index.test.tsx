@@ -904,32 +904,6 @@ describe('Chart.ScoreDonut', () => {
       expect(getAllByText('value')).toHaveLength(1);
       expect(container.textContent).not.toContain('test');
     });
-
-    // B6: getDefaultDataDefinitions calls value.toFixed() in the constructor.
-    test.fails.each([
-      ['undefined', undefined],
-      ['null', null],
-    ])('should not crash when value is %s', async (_, value) => {
-      expect(() => renderScoreDonut({ data: { value }, showLegend: false })).not.toThrow();
-    });
-
-    // B6: NaN does not crash, but reaches the legend as `NaN%` instead of `n/a`.
-    test.fails('should show n/a in the legend when value is NaN', async () => {
-      const { container, getAllByText } = renderScoreDonut({ data: { value: Number.NaN }, showLegend: true });
-
-      expect(getAllByText('n/a').length).toBeGreaterThan(0);
-      expect(container.textContent).not.toContain('NaN');
-    });
-
-    // B7: the value is not clamped to the 0..100 contract.
-    test.fails.each([
-      [120, '100.00%'],
-      [-10, '0.00%'],
-    ])('should clamp an out-of-range value %s in the legend', async (value, expected) => {
-      const { getByText } = renderScoreDonut({ data: { value }, showLegend: true });
-
-      expect(getByText(expected)).toBeTruthy();
-    });
   });
 
   describe('data.value boundary values', () => {

@@ -628,7 +628,7 @@ const resolvePattern = (patternKey: string, patternsConfig: PatternsConfig = tru
   return patterns[patternIndex];
 };
 
-export const DefaultStrokePattern = (props: { id: string }) => {
+export const DefaultStrokePattern = (props: { id: string; halfsize?: boolean }) => {
   return (
     <defs>
       <pattern
@@ -643,7 +643,7 @@ export const DefaultStrokePattern = (props: { id: string }) => {
       </pattern>
 
       <mask id={props.id}>
-        <rect width='100%' height='100%' x='-50%' y='-50%' fill={`url(#${props.id}-pattern)`} />
+        <rect width='100%' height='100%' x='-50%' y={props.halfsize ? '-100%' : '-50%'} fill={`url(#${props.id}-pattern)`} />
       </mask>
     </defs>
   );
