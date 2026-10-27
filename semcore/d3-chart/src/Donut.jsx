@@ -308,8 +308,6 @@ function Pie({
 }
 
 function EmptyData({ Element: SEmptyData, styles, d3Arc, color, resolveColor, emptyData }) {
-  const data = emptyData ?? { a: 8, b: 12, c: 36 };
-
   return sstyled(styles)(
     <SEmptyData
       render='path'
