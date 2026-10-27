@@ -53,7 +53,7 @@ SPolygonDot {
 }
 
 SPolygonDot[transparent] {
-  opacity: 0.3;
+  opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
 }
 
 SPolygonDot[color] {
@@ -67,7 +67,7 @@ SPolygonLine {
 }
 
 SPolygonLine[transparent] {
-  opacity: 0.3;
+  opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
 }
 
 SPolygonLine[color] {

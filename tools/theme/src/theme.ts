@@ -700,6 +700,10 @@ export const theme: Theme = {
         value: colors.yellow['200'].value,
         description: 'Color for the transactional data intent on the chart.',
       },
+      chart_transparent_opacity: {
+        value: '0.3',
+        description: 'Opacity for inactive parts of charts.',
+      },
       chart_grid_bar_base_bg: {
         value: neutral.at(L_BG_MEDIUM),
         description: 'Default background color of a bar in the BarChart.',
@@ -3380,6 +3384,9 @@ type SemanticColors = {
     };
   };
   chart: {
+    transparent: {
+      opacity: Value;
+    };
     data: {
       success: Value;
       warning: Value;

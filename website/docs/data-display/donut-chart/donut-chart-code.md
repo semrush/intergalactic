@@ -32,18 +32,6 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 :::
 
-## Controlled highlight
-
-Use `active` property to control segments highlight.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/d3-chart/docs/examples/donut-chart/donut-controlled-highlight.tsx';
-</script>
-
-:::
-
 ## Semi-Donut
 
 To create a half-size chart, you need to specify the `halfsize` value and reduce the height of the chart by half.

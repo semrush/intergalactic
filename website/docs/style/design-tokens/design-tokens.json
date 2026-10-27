@@ -720,6 +720,14 @@
     "components": []
   },
   {
+    "name": "--intergalactic-chart-transparent-opacity",
+    "value": "0.3",
+    "description": "Opacity for inactive parts of charts.",
+    "components": [
+      "d3-chart"
+    ]
+  },
+  {
     "name": "--intergalactic-chart-grid-bar-base-bg",
     "value": "oklch(0.92 0.008 233.5)",
     "description": "Default background color of a bar in the BarChart.",

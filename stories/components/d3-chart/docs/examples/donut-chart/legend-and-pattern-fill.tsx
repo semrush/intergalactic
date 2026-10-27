@@ -7,8 +7,8 @@ import DonutMockData from '../../../__mocks__/donut';
 const dataHints = makeDataHintsContainer();
 
 const Demo = () => {
-  const width = 250;
-  const height = 250;
+  const width = 180;
+  const height = 180;
 
   const [legendItems, setLegendItems] = React.useState(
     Object.keys(data).map((item, index) => {

@@ -51,13 +51,12 @@ function transitionAnglePie({
     });
 }
 
-const increaseFactor = 4;
-const donutThickness = 16;
+const donutThickness = 12;
 
 function getOuterRadius({ size, halfsize }) {
   const [width, height] = size;
   const minORmax = halfsize ? Math.max : Math.min;
-  return minORmax(width - increaseFactor * 2, height - increaseFactor * 2) / 2;
+  return minORmax(width, height) / 2;
 }
 
 class DonutRoot extends Component {
@@ -335,7 +334,7 @@ function Label({
 
   return sstyled(styles)(
     <SLabel render='foreignObject' x={x ?? '-50%'} y={y ?? halfsize ? '-100%' : '-50%'} aria-hidden width='100%' height='100%'>
-      <Flex alignItems='center' justifyContent='center' h='100%' direction='column'>
+      <Flex alignItems='center' justifyContent={halfsize ? 'flex-end' : 'center'} h='100%' direction='column'>
         <Children />
       </Flex>
     </SLabel>,
