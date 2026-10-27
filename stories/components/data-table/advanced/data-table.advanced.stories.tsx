@@ -67,6 +67,11 @@ export const AccordionInMergedRows: StoryObj<typeof accordionMergedProps> = {
   render: AccordionInMergedRowsExample,
   argTypes: {
     loading: { control: 'boolean' },
+    accordionMode: {
+      control: 'radio',
+      options: [undefined, 'independent', 'toggle'],
+      description: '`toggle`: opening one accordion closes the others, including the accordion on merged rows.',
+    },
   },
   args: accordionMergedProps,
 };

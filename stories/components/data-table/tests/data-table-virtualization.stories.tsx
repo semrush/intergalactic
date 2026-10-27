@@ -140,5 +140,15 @@ export const VirtualScrollControls: StoryObj<VirtualScrollControlsProps> = {
         'If `rowsBuffer` is not set, defaults to 20.',
       if: { arg: 'mode', eq: 'rowHeight' },
     },
+    withAccordion: {
+      control: 'boolean',
+      description: 'Rows #3, #13, #23, ... get an accordion with a 300px component. Not supported in `rowHeight` mode.',
+      if: { arg: 'mode', neq: 'rowHeight' },
+    },
+    withMergedRows: {
+      control: 'boolean',
+      description: 'Rows #6, #16, #26, ... become a group of 3 rows with merged ID and Keyword cells.',
+      if: { arg: 'mode', neq: 'rowHeight' },
+    },
   },
 };
