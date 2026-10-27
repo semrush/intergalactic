@@ -131,6 +131,7 @@ class ScoreDonutChartComponent extends AbstractChart<
           color='chart-data-other-value'
           mask={`url(#${uid}-mask)`}
           uid={uid}
+          patterns={false}
         />
         {innerLabel && <Donut.Label>{innerLabel}</Donut.Label>}
       </Donut>
