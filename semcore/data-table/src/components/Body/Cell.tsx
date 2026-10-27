@@ -40,6 +40,14 @@ class CellRoot<Data extends DataTableData, UniqKeyType>
   handleClickCell = (e: React.SyntheticEvent<HTMLElement>) => {
     const { rowIndex, columnIndex, onClick, row, accordionRowIndex, orderedIndex } = this.asProps;
 
+    const rowElement = e.currentTarget.parentElement?.parentElement;
+    const ariaRowindex = Number(rowElement?.getAttribute('aria-rowindex'));
+    let rowIndexValue = accordionRowIndex === undefined ? rowIndex : rowIndex + 1 + accordionRowIndex;
+
+    if (!isNaN(ariaRowindex)) {
+      rowIndexValue = ariaRowindex - 2;
+    }
+
     const focusableChildren = Array.from(this.cellRef.current?.children ?? []).flatMap((node) =>
       getFocusableIn(node as HTMLElement),
     );
@@ -49,7 +57,7 @@ class CellRoot<Data extends DataTableData, UniqKeyType>
       this.lockedCell[1] = true;
     }
 
-    onClick?.(e, { rowIndex, orderedIndex, colIndex: columnIndex, row });
+    onClick?.(e, { rowIndex: rowIndexValue, orderedIndex, colIndex: columnIndex, row });
   };
 
   render() {
