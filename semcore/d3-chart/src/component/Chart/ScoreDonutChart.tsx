@@ -106,7 +106,7 @@ class ScoreDonutChartComponent extends AbstractChart<
   }
 
   renderChart() {
-    const { innerRadius, halfsize, innerLabel, onClickPie, data, uid } = this.asProps;
+    const { innerRadius, halfsize, innerLabel, onClickPie, uid } = this.asProps;
     const { dataDefinitions, highlightedItem } = this.state;
 
     const checkedLegendItems = dataDefinitions.filter((item) => item.checked);
@@ -125,10 +125,10 @@ class ScoreDonutChartComponent extends AbstractChart<
             />
           );
         })}
-        <DefaultStrokePattern id={`${uid}-mask`} />
+        <DefaultStrokePattern id={`${uid}-mask`} halfsize={halfsize} />
         <Donut.Pie
           dataKey='other'
-          color='chart-palette-order-other-data'
+          color='chart-data-other-value'
           mask={`url(#${uid}-mask)`}
           uid={uid}
         />
