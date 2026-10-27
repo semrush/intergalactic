@@ -146,6 +146,12 @@ class ScoreDonutChartComponent extends AbstractChart<
         {({ dataKey }: any) => {
           const title = dataDefinitions.find((item) => item.id === dataKey);
 
+          if (!title) {
+            return {
+              visible: false,
+            };
+          }
+
           return {
             children: (
               <>
