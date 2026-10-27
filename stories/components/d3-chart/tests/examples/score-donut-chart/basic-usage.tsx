@@ -1,6 +1,8 @@
-import { Box } from '@semcore/ui/base-components';
+import DiffUp from '@semcore/icon/DiffUp/m';
+import { Box, Flex } from '@semcore/ui/base-components';
 import type { ScoreDonutChartProps } from '@semcore/ui/d3-chart';
-import { Chart } from '@semcore/ui/d3-chart';
+import { Chart, Metric } from '@semcore/ui/d3-chart';
+import Divider from '@semcore/ui/divider';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -32,6 +34,12 @@ type ScoreDonutChartStoryProps = Omit<ScoreDonutChartProps, 'patterns'> & {
    * It is the only way to reach the `legendData.label` branch of `getDefaultDataDefinitions`.
    */
   legendLabel?: string;
+  /**
+   * Hides the legend and renders a `Metric` (value + diff), a description and a divider to the
+   * right of the donut, as in the "Donut chart + ChartLegend" Figma layout. The chart has no
+   * slot for it, so the story composes it next to the chart.
+   */
+  withSideMetric?: boolean;
 };
 
 /** Storybook args: the story props plus the flattened legend type the helper un-flattens. */
@@ -50,14 +58,17 @@ const Demo: DemoComponent = (props: ScoreDonutChartStoryArgs) => {
     withInnerLabel,
     useCustomValueFormatter,
     legendLabel,
+    withSideMetric,
     ...chartProps
   } = getPropsToChart<ScoreDonutChartStoryProps>(props);
 
   const typedChartProps = chartProps as ScoreDonutChartProps;
+  const { legendProps: _legendProps, ...chartPropsWithoutLegend } = typedChartProps;
   // A custom legend label is meaningful only with a visible legend, so the override also
   // pins `showLegend: true` — the branch of the props union that accepts `legendProps`.
-  const resolvedChartProps: ScoreDonutChartProps =
-    legendLabel && typedChartProps.showLegend !== false
+  const resolvedChartProps: ScoreDonutChartProps = withSideMetric
+    ? { ...chartPropsWithoutLegend, showLegend: false }
+    : legendLabel && typedChartProps.showLegend !== false
       ? {
           ...typedChartProps,
           showLegend: true,
@@ -71,6 +82,27 @@ const Demo: DemoComponent = (props: ScoreDonutChartStoryArgs) => {
     console.log('→ Event:', event);
   };
 
+  const chart = (
+    <Chart.ScoreDonut
+      data-testid='TEST'
+      {...resolvedChartProps}
+      aria-label='Score donut chart'
+      {...(withInnerLabel
+        ? {
+            innerLabel: (
+              <Text tag='tspan' fill='text-primary' size={400}>
+                {`${chartProps.data.value}%`}
+              </Text>
+            ),
+          }
+        : {})}
+      {...(useCustomValueFormatter ? { tooltipValueFormatter: formatValue } : {})}
+      // The Figma layout uses a 180×180 donut; in a row the chart cannot measure its own size.
+      {...(withSideMetric ? { plotWidth: 180, plotHeight: 180, w: 180, flex: 'none' } : {})}
+      onClickPie={onClickPieHandler}
+    />
+  );
+
   return (
     <Box
       border='1px solid #ddd'
@@ -80,22 +112,20 @@ const Demo: DemoComponent = (props: ScoreDonutChartStoryArgs) => {
       h={plotHeight}
       overflow='auto'
     >
-      <Chart.ScoreDonut
-        data-testid='TEST'
-        {...resolvedChartProps}
-        aria-label='Score donut chart'
-        {...(withInnerLabel
-          ? {
-              innerLabel: (
-                <Text tag='tspan' fill='text-primary' size={400}>
-                  {`${chartProps.data.value}%`}
+      {withSideMetric
+        ? (
+            <Flex gap={6} alignItems='flex-start'>
+              {chart}
+              <Box w={132} flex='none'>
+                <Metric value='71,286' diffValue='4.5%' diffUse='good' diffIcon={DiffUp} />
+                <Text tag='div' size={200} use='secondary'>
+                  value name
                 </Text>
-              ),
-            }
-          : {})}
-        {...(useCustomValueFormatter ? { tooltipValueFormatter: formatValue } : {})}
-        onClickPie={onClickPieHandler}
-      />
+                <Divider mt={2} />
+              </Box>
+            </Flex>
+          )
+        : chart}
     </Box>
   );
 };
@@ -112,6 +142,7 @@ export const defaultProps: ScoreDonutChartStoryArgs = {
     withInnerLabel: false,
     useCustomValueFormatter: false,
     legendLabel: '',
+    withSideMetric: false,
   }),
   // The component defaults to a Table legend; the helper's baseline is Flex.
   'legendProps.legendType': 'Table',

@@ -849,6 +849,321 @@ describe('Donut geometry', () => {
   });
 });
 
+const SCORE_DONUT_PLOT = { plotWidth: 300, plotHeight: 300, duration: 0 } as const;
+
+const renderScoreDonut = (props: Record<string, unknown> = {}) =>
+  render(
+    <Chart.ScoreDonut data={{ value: 40 }} aria-label='Score donut chart' {...SCORE_DONUT_PLOT} {...props} />,
+  );
+
+const scoreDonutPies = (container: HTMLElement) => queryAllByAttribute('data-ui-name', container, 'Donut.Pie');
+
+/** Angle (in degrees, clockwise from 12 o'clock) swept by the first arc command of a pie path. */
+const pieSweepDegrees = (pie: Element) => {
+  const d = pie.getAttribute('d') ?? '';
+  const start = d.match(/^M([-\d.e]+),([-\d.e]+)/);
+  const end = d.match(/A[\d.]+,[\d.]+,0,(\d),1,([-\d.e]+),([-\d.e]+)/);
+
+  if (!start || !end) return Number.NaN;
+
+  const angle = (x: number, y: number) => ((Math.atan2(x, -y) * 180) / Math.PI + 360) % 360;
+  const startAngle = angle(Number(start[1]), Number(start[2]));
+  let sweep = angle(Number(end[2]), Number(end[3])) - startAngle;
+
+  if (sweep <= 0) sweep += 360;
+
+  return sweep;
+};
+
+describe('Chart.ScoreDonut', () => {
+  beforeEach(cleanup);
+
+  describe('data.value equivalence classes', () => {
+    test('should split a valid value into value and other pies', async () => {
+      const { container } = renderScoreDonut({ data: { value: 40 } });
+      const [valuePie, otherPie] = scoreDonutPies(container);
+
+      expect(scoreDonutPies(container)).toHaveLength(2);
+      expect(pieSweepDegrees(valuePie)).toBeCloseTo(144, 0);
+      expect(pieSweepDegrees(otherPie)).toBeCloseTo(216, 0);
+      expect(otherPie.getAttribute('mask')).toMatch(/^url\(#.+-mask\)$/);
+      expect(valuePie.getAttribute('mask')).toBeNull();
+    });
+
+    test('should keep a fractional value proportional', async () => {
+      const { container } = renderScoreDonut({ data: { value: 33.33 } });
+      const [valuePie] = scoreDonutPies(container);
+
+      expect(pieSweepDegrees(valuePie)).toBeCloseTo(120, 0);
+    });
+
+    test('should ignore extra keys in data', async () => {
+      const { container, getAllByText } = renderScoreDonut({ data: { value: 40, test: 60 }, showLegend: true });
+
+      expect(scoreDonutPies(container)).toHaveLength(2);
+      expect(getAllByText('value')).toHaveLength(1);
+      expect(container.textContent).not.toContain('test');
+    });
+
+    // B6: getDefaultDataDefinitions calls value.toFixed() in the constructor.
+    test.fails.each([
+      ['undefined', undefined],
+      ['null', null],
+    ])('should not crash when value is %s', async (_, value) => {
+      expect(() => renderScoreDonut({ data: { value }, showLegend: false })).not.toThrow();
+    });
+
+    // B6: NaN does not crash, but reaches the legend as `NaN%` instead of `n/a`.
+    test.fails('should show n/a in the legend when value is NaN', async () => {
+      const { container, getAllByText } = renderScoreDonut({ data: { value: Number.NaN }, showLegend: true });
+
+      expect(getAllByText('n/a').length).toBeGreaterThan(0);
+      expect(container.textContent).not.toContain('NaN');
+    });
+
+    // B7: the value is not clamped to the 0..100 contract.
+    test.fails.each([
+      [120, '100.00%'],
+      [-10, '0.00%'],
+    ])('should clamp an out-of-range value %s in the legend', async (value, expected) => {
+      const { getByText } = renderScoreDonut({ data: { value }, showLegend: true });
+
+      expect(getByText(expected)).toBeTruthy();
+    });
+  });
+
+  describe('data.value boundary values', () => {
+    test('should render only the other pie for value 0', async () => {
+      const { container, getByText } = renderScoreDonut({ data: { value: 0 }, showLegend: true });
+      const pies = scoreDonutPies(container);
+
+      expect(pies).toHaveLength(1);
+      expect(pies[0].getAttribute('mask')).not.toBeNull();
+      expect(getByText('0.00%')).toBeTruthy();
+    });
+
+    test('should render only the value pie for value 100', async () => {
+      const { container } = renderScoreDonut({ data: { value: 100 } });
+      const pies = scoreDonutPies(container);
+
+      expect(pies).toHaveLength(1);
+      expect(pies[0].getAttribute('mask')).toBeNull();
+    });
+
+    test('should split value 50 into two equal halves', async () => {
+      const { container } = renderScoreDonut({ data: { value: 50 } });
+      const [valuePie, otherPie] = scoreDonutPies(container);
+
+      expect(pieSweepDegrees(valuePie)).toBeCloseTo(180, 0);
+      expect(pieSweepDegrees(otherPie)).toBeCloseTo(180, 0);
+    });
+
+    test.each([0.01, 0.99, 1, 1.01])(
+      'should keep a tiny value %s visible as about a 1%% slice',
+      async (value) => {
+        const { container } = renderScoreDonut({ data: { value } });
+        const [valuePie] = scoreDonutPies(container);
+
+        // Donut enlarges a slice below 1% of the total to 1% of it, i.e. ~0.99% of the new total.
+        expect(scoreDonutPies(container)).toHaveLength(2);
+        expect(pieSweepDegrees(valuePie)).toBeGreaterThan(3.5);
+      },
+    );
+
+    test.each([99, 99.99])('should keep a tiny other slice visible for value %s', async (value) => {
+      const { container } = renderScoreDonut({ data: { value } });
+      const [, otherPie] = scoreDonutPies(container);
+
+      expect(scoreDonutPies(container)).toHaveLength(2);
+      expect(pieSweepDegrees(otherPie)).toBeGreaterThan(3.5);
+    });
+  });
+
+  describe('innerRadius boundary values', () => {
+    test('should render a 16px ring by default', async () => {
+      const { container } = renderScoreDonut();
+      const [pie] = scoreDonutPies(container);
+
+      expect(getPieGeometry(pie).thickness).toBe(DONUT_THICKNESS);
+    });
+
+    test('should render a full pie for innerRadius 0', async () => {
+      const { container } = renderScoreDonut({ innerRadius: 0 });
+      const [pie] = scoreDonutPies(container);
+
+      expect(getPieGeometry(pie).innerRadius).toBe(0);
+    });
+
+    test('should render a 1px ring for innerRadius = outerRadius - 1', async () => {
+      const { container } = renderScoreDonut({ innerRadius: 145 });
+      const [pie] = scoreDonutPies(container);
+
+      expect(getPieGeometry(pie).thickness).toBe(1);
+    });
+
+    test('should not crash for innerRadius >= outerRadius', async () => {
+      expect(() => renderScoreDonut({ innerRadius: 200 })).not.toThrow();
+    });
+  });
+
+  describe('legend visibility (decision table)', () => {
+    test.each([
+      ['undefined', undefined, false],
+      ['true', true, true],
+      ['false', false, false],
+    ])('showLegend %s', async (_, showLegend, expectedVisible) => {
+      const { queryByLabelText, container } = renderScoreDonut(
+        showLegend === undefined ? {} : { showLegend },
+      );
+
+      expect(Boolean(queryByLabelText('Chart legend'))).toBe(expectedVisible);
+      expect(scoreDonutPies(container)).toHaveLength(2);
+    });
+  });
+
+  describe('legend item content (decision table)', () => {
+    const renderWithLegend = (legendMapValue?: Record<string, unknown>) =>
+      renderScoreDonut({
+        showLegend: true,
+        legendProps: { legendType: 'Table', ...(legendMapValue ? { legendMap: { value: legendMapValue } } : {}) },
+      });
+
+    test('should compute percent and value columns without legendMap', async () => {
+      const { getByText } = renderWithLegend();
+
+      expect(getByText('value')).toBeTruthy();
+      expect(getByText('40.00%')).toBeTruthy();
+      expect(getByText('40')).toBeTruthy();
+    });
+
+    test('should use a custom label and keep the computed columns', async () => {
+      const { getByText, queryByText } = renderWithLegend({ label: 'SEO score' });
+
+      expect(getByText('SEO score')).toBeTruthy();
+      expect(queryByText('value')).toBeNull();
+      expect(getByText('40.00%')).toBeTruthy();
+    });
+
+    test('should render count after the label', async () => {
+      const { getByText } = renderWithLegend({ count: 12 });
+
+      expect(getByText('(12)')).toBeTruthy();
+    });
+
+    test('should prefer additionalInfo over count', async () => {
+      const { getByText, queryByText } = renderWithLegend({ additionalInfo: 'of 100', count: 12 });
+
+      expect(getByText('of 100')).toBeTruthy();
+      expect(queryByText('(12)')).toBeNull();
+    });
+
+    test('should render given rows instead of computed columns', async () => {
+      const { getByText, queryByText } = renderWithLegend({ rows: [<span key='r'>custom row</span>] });
+
+      expect(getByText('custom row')).toBeTruthy();
+      expect(queryByText('40.00%')).toBeNull();
+    });
+
+    test('should render given columns instead of computed columns', async () => {
+      const { getByText, queryByText } = renderWithLegend({ columns: [<span key='c'>custom column</span>] });
+
+      expect(getByText('custom column')).toBeTruthy();
+      expect(queryByText('40.00%')).toBeNull();
+    });
+
+    test.each([['rows'], ['columns']])('should accept an empty %s array', async (key) => {
+      expect(() => renderWithLegend({ [key]: [] })).not.toThrow();
+    });
+
+    test('should start unchecked with defaultChecked false and not draw the value pie', async () => {
+      const { container } = renderWithLegend({ defaultChecked: false });
+      const masked = scoreDonutPies(container).filter((pie) => pie.getAttribute('mask'));
+
+      expect(scoreDonutPies(container)).toHaveLength(masked.length);
+    });
+  });
+
+  describe('state transitions', () => {
+    test('should update pies when value changes 40 -> 80 -> 0 -> 40', async () => {
+      const { container, rerender } = renderScoreDonut({ data: { value: 40 } });
+
+      const rerenderWith = (value: number) =>
+        rerender(<Chart.ScoreDonut data={{ value }} aria-label='Score donut chart' {...SCORE_DONUT_PLOT} />);
+
+      rerenderWith(80);
+      expect(pieSweepDegrees(scoreDonutPies(container)[0])).toBeCloseTo(288, 0);
+
+      rerenderWith(0);
+      expect(scoreDonutPies(container)).toHaveLength(1);
+
+      rerenderWith(40);
+      expect(scoreDonutPies(container)).toHaveLength(2);
+      expect(pieSweepDegrees(scoreDonutPies(container)[0])).toBeCloseTo(144, 0);
+    });
+
+    // B3: the other pie is drawn even when the value item is unchecked.
+    test.fails('should draw only the empty state when the value item is unchecked', async () => {
+      const { container, getByRole } = renderScoreDonut({ showLegend: true });
+
+      await userEvent.click(getByRole('checkbox'));
+
+      expect(queryByAttribute('data-ui-name', container, 'Donut.EmptyData')).not.toBeNull();
+      expect(scoreDonutPies(container)).toHaveLength(0);
+    });
+  });
+
+  describe('error guessing', () => {
+    test('should call onClickPie with value and other keys', async () => {
+      const onClickPie = vi.fn();
+      const { container } = renderScoreDonut({ onClickPie });
+      const [valuePie, otherPie] = scoreDonutPies(container);
+
+      await userEvent.click(valuePie);
+      await userEvent.click(otherPie);
+
+      expect(onClickPie.mock.calls.map(([key]) => key)).toEqual(['value', 'other']);
+    });
+
+    test('should give two charts on one page unique mask ids', async () => {
+      const { container } = render(
+        <>
+          <Chart.ScoreDonut data={{ value: 40 }} aria-label='First' {...SCORE_DONUT_PLOT} />
+          <Chart.ScoreDonut data={{ value: 60 }} aria-label='Second' {...SCORE_DONUT_PLOT} />
+        </>,
+      );
+      const maskIds = [...container.querySelectorAll('mask')].map((mask) => mask.id);
+      const references = scoreDonutPies(container)
+        .map((pie) => pie.getAttribute('mask'))
+        .filter(Boolean);
+
+      expect(maskIds).toHaveLength(2);
+      expect(new Set(maskIds).size).toBe(2);
+      references.forEach((reference, index) => expect(reference).toBe(`url(#${maskIds[index]})`));
+    });
+
+    test('should render innerLabel inside the donut', async () => {
+      const { container } = renderScoreDonut({ innerLabel: '40%' });
+
+      expect(queryByAttribute('data-ui-name', container, 'Donut.Label')?.textContent).toBe('40%');
+    });
+  });
+
+  describe('accessibility', () => {
+    test('should put role group on the root and aria-label on the plot', async () => {
+      const { container } = renderScoreDonut();
+
+      expect(container.querySelector('[role="group"]')).not.toBeNull();
+      expect(container.querySelector('svg[aria-label="Score donut chart"]')).not.toBeNull();
+    });
+
+    test('should hide pies from assistive technologies', async () => {
+      const { container } = renderScoreDonut();
+
+      scoreDonutPies(container).forEach((pie) => expect(pie.closest('[aria-hidden]')).not.toBeNull());
+    });
+  });
+});
+
 describe('Chart.Line', () => {
   beforeEach(cleanup);
 

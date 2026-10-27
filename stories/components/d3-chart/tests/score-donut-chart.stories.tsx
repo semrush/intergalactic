@@ -21,6 +21,7 @@ export const BasicUsage = {
     withInnerLabel: { control: { type: 'boolean' } },
     useCustomValueFormatter: { control: { type: 'boolean' } },
     legendLabel: { control: 'text' },
+    withSideMetric: { control: { type: 'boolean' } },
     // Omitted from ScoreDonutChartProps.
     showTotalInTooltip: hidden,
     showDeltaPercentInTooltip: hidden,
