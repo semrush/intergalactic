@@ -1,3 +1,4 @@
+import { Flex } from '@semcore/base-components';
 import { Component, Root, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
@@ -66,15 +67,16 @@ class DonutRoot extends Component {
 
   static defaultProps = ({
     innerRadius: innerRadiusProp,
-    paddingAngle = 0,
+    paddingAngle,
     outerRadius,
     halfsize = false,
     $rootProps: { size },
   }) => {
     const radius = outerRadius || getOuterRadius({ size, halfsize });
     const innerRadius = innerRadiusProp ?? Math.max(radius - donutThickness, 0);
+    const padAngle = paddingAngle ?? 2 / radius;
 
-    const d3Arc = arc().outerRadius(radius).innerRadius(innerRadius).padAngle(paddingAngle);
+    const d3Arc = arc().outerRadius(radius).innerRadius(innerRadius).padAngle(padAngle).cornerRadius(2);
 
     let d3Pie = pie()
       .sort(null)
@@ -220,6 +222,14 @@ class DonutRoot extends Component {
     };
   }
 
+  getLabelProps() {
+    const { halfsize } = this.asProps;
+
+    return {
+      halfsize,
+    };
+  }
+
   componentDidUpdate(prevProps) {
     const { data } = this.asProps;
     if (prevProps.$rootProps.data !== data) {
@@ -298,7 +308,9 @@ function Pie({
   );
 }
 
-function EmptyData({ Element: SEmptyData, styles, d3Arc, color, resolveColor }) {
+function EmptyData({ Element: SEmptyData, styles, d3Arc, color, resolveColor, emptyData }) {
+  const data = emptyData ?? { a: 8, b: 12, c: 36 };
+
   return sstyled(styles)(
     <SEmptyData
       render='path'
@@ -315,14 +327,17 @@ function Label({
   children,
   label,
   dataHintsHandler,
-  x = 0,
-  y = 0,
+  halfsize,
+  x,
+  y,
 }) {
   dataHintsHandler.setTitle('vertical', label || children);
 
   return sstyled(styles)(
-    <SLabel render='text' x={x} y={y} aria-hidden>
-      <Children />
+    <SLabel render='foreignObject' x={x ?? '-50%'} y={y ?? halfsize ? '-100%' : '-50%'} aria-hidden width='100%' height='100%'>
+      <Flex alignItems='center' justifyContent='center' h='100%' direction='column'>
+        <Children />
+      </Flex>
     </SLabel>,
   );
 }
