@@ -38,7 +38,7 @@ class CellRoot<Data extends DataTableData, UniqKeyType>
   };
 
   handleClickCell = (e: React.SyntheticEvent<HTMLElement>) => {
-    const { columnIndex, onClick, row, accordionRowIndex, orderedIndex } = this.asProps;
+    const { rowIndex, columnIndex, onClick, row, accordionRowIndex, orderedIndex } = this.asProps;
 
     const focusableChildren = Array.from(this.cellRef.current?.children ?? []).flatMap((node) =>
       getFocusableIn(node as HTMLElement),
@@ -49,7 +49,7 @@ class CellRoot<Data extends DataTableData, UniqKeyType>
       this.lockedCell[1] = true;
     }
 
-    onClick?.(e, { rowIndex: orderedIndex, colIndex: columnIndex, row });
+    onClick?.(e, { rowIndex, orderedIndex, colIndex: columnIndex, row });
   };
 
   render() {

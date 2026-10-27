@@ -119,6 +119,10 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
         }
       } else {
         this.rowsComponentsMap.delete(id);
+        const rowHeightData = this.rowsHeightMap.get(index);
+        if (rowHeightData) {
+          rowHeightData[2] = null;
+        }
       }
     });
   };

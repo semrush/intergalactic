@@ -186,9 +186,9 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
         (Array.isArray(row[ACCORDION]) ? Math.min(50 * row[ACCORDION].length, 200) : 200);
 
     setTimeout(() => {
-      setRowHeight(index, row);
+      setRowHeight(index);
       for (let i = index; i < rowsHeightMap.size; i++) {
-        setRowHeight(i, row);
+        setRowHeight(i);
       }
     }, openDuration + 100); // we need to calculate after expanding animation
 
@@ -286,9 +286,9 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     };
   }
 
-  handleClickCell = (e: React.SyntheticEvent<HTMLElement>, opt: { row: DTRow<UniqKeyType>; rowIndex: number }) => {
+  handleClickCell = (e: React.SyntheticEvent<HTMLElement>, opt: { row: DTRow<UniqKeyType>; orderedIndex: number }) => {
     if (!isInteractiveElement(e.target)) {
-      this.handleExpandRow(opt.row, opt.rowIndex);
+      this.handleExpandRow(opt.row, opt.orderedIndex);
     }
   };
 

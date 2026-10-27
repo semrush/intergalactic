@@ -31,7 +31,7 @@ export type DataTableCellProps<Data extends DataTableData, UniqKeyType> = Interg
   virtualScroll: boolean;
   tableRef: React.RefObject<HTMLDivElement>;
   accordionDuration?: number | [number, number];
-  onClick: (e: React.SyntheticEvent<HTMLElement>, opt: { rowIndex: number; colIndex: number; row?: DTRow<UniqKeyType> }) => void;
+  onClick: (e: React.SyntheticEvent<HTMLElement>, opt: { rowIndex: number; colIndex: number; row?: DTRow<UniqKeyType>; orderedIndex: number }) => void;
   flatRows: DTRow<UniqKeyType>[];
   shadowVertical?: BodyPropsInner<Data, UniqKeyType>;
   withoutBorder?: boolean;
