@@ -26,6 +26,13 @@ const Demo = () => {
   );
 };
 
+const longAccordionRows = Array.from({ length: 56 }, (_, i) => ({
+  keyword: `nested keyword ${i + 5}`,
+  kd: '10',
+  cpc: '$0.65',
+  vol: '47,354,640',
+}));
+
 const data = [
   {
     keyword: 'ebay buy',
@@ -57,6 +64,7 @@ const data = [
         cpc: '$0',
         vol: '21,644,290',
       },
+      ...longAccordionRows,
     ],
   },
   {
