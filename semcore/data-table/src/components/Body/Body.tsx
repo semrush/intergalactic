@@ -7,8 +7,7 @@ import * as React from 'react';
 
 import type { BodyPropsInner, DataTableBodyProps, DataTableBodyType } from './Body.types';
 import { MergedColumnsCell } from './MergedCells';
-import type { RowRoot } from './Row';
-import { Row } from './Row';
+import { RowRoot, Row } from './Row';
 import type { DataTableRowProps, DTRow } from './Row.types';
 import { RowGroup } from './RowGroup';
 import style from './style.shadow.css';
@@ -20,7 +19,7 @@ import {
 } from '../DataTable/DataTable';
 import type { DataTableData } from '../DataTable/DataTable.types';
 
-const ROWS_BUFFER = 20;
+const ROWS_BUFFER = 4;
 const APROX_ROWS_ON_PAGE = 20;
 export const INDEX_OFFSET = 2; // 1 - for header, 1 - because start not from 0, but from 1
 
@@ -28,7 +27,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   static displayName = 'Body';
   static style = style;
 
-  rowsHeightMap = new Map<number, [number, number, HTMLElement]>();
+  rowsHeightMap = new Map<number, [number, number, HTMLElement | null]>();
   rowsComponentsMap = new Map<UniqKeyType, RowRoot<Data, UniqKeyType>>();
 
   indexForDownIterate = 0;
@@ -92,25 +91,39 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     });
   };
 
-  handleComponentRef = (index: number, row: DTRow<UniqKeyType>, component: RowRoot<Data, UniqKeyType> | null) => {
+  handleComponentRef = (
+    index: number,
+    row: DTRow<UniqKeyType>,
+    component: RowRoot<Data, UniqKeyType> | RowGroup<Data, UniqKeyType> | null,
+  ) => {
     const id = row[UNIQ_ROW_KEY];
-    if (component) {
-      if (this.asProps.virtualScroll) {
-        const node = component.rowElementRef.current;
 
-        if (node) {
-          this.rowsHeightMap.set(index, [0, 0, node]);
-          this.setRowHeight(index, row);
+    requestAnimationFrame(() => {
+      if (component) {
+        if (this.asProps.virtualScroll) {
+          const node = component.rowElementRef.current;
+
+          if (node) {
+            this.rowsHeightMap.set(index, [0, 0, node]);
+            this.setRowHeight(index);
+          } else if (!node) {
+            const rowHeightData = this.rowsHeightMap.get(index);
+            if (rowHeightData) {
+              rowHeightData[2] = null;
+            }
+          }
         }
-      }
 
-      this.rowsComponentsMap.set(id, component);
-    } else {
-      this.rowsComponentsMap.delete(id);
-    }
+        if (component instanceof RowRoot) {
+          this.rowsComponentsMap.set(id, component);
+        }
+      } else {
+        this.rowsComponentsMap.delete(id);
+      }
+    });
   };
 
-  getPropsToRow = (props: { row: DTRow<UniqKeyType>; mergedRow?: boolean }): DataTableRowProps<Data, UniqKeyType> => {
+  getPropsToRow = (props: { row: DTRow<UniqKeyType>; mergedRow?: boolean; orderedIndex: number }): DataTableRowProps<Data, UniqKeyType> => {
     const {
       use,
       gridTemplateAreas,
@@ -159,6 +172,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       gridTemplateColumns,
       columns,
       rowIndex: index,
+      orderedIndex: props.orderedIndex,
       gridRowIndex,
       rows,
       onBackFromAccordion,
@@ -366,7 +380,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
 
     return sstyled(styles)(
       <SBody render={Box} __excludeProps={['data']} ref={this.bodyRef}>
-        {emptyRow && <Row {...this.getPropsToRow({ row: emptyRow })} isNonInteractive />}
+        {emptyRow && <Row {...this.getPropsToRow({ row: emptyRow, orderedIndex: 0 })} isNonInteractive />}
         {needMarginTop && rowMarginTop && <Box h={rowMarginTop} />}
         {rowsToRender.map((row, index) => {
           if (Array.isArray(row)) {
@@ -381,7 +395,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
                 startIndex={this.startIndex}
                 rowIndex={index}
                 shadowVertical={shadowVertical}
-                handleComponentRef={this.handleComponentRef}
+                componentRef={this.handleComponentRef}
                 getPropsToRow={this.getPropsToRow}
               />
             );
@@ -390,7 +404,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
           return (
             <Row
               key={row[UNIQ_ROW_KEY]?.toString()}
-              {...this.getPropsToRow({ row })}
+              {...this.getPropsToRow({ row, orderedIndex: this.startIndex + index })}
               componentRef={this.handleComponentRef}
             />
           );
@@ -417,16 +431,16 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     );
   }
 
-  private setRowHeight(index: number, row: DTRow<UniqKeyType>) {
-    const { expandedRows } = this.asProps;
+  private setRowHeight(index: number) {
     const node = this.rowsHeightMap.get(index)?.[2];
     const firstChild =
       node?.role === 'rowgroup' ? node?.children.item(0)?.children.item(0) : node?.children.item(0);
+
     if (node && firstChild instanceof HTMLElement) {
       const offset = firstChild.offsetTop - this.asProps.headerHeight;
       let height = firstChild.getBoundingClientRect().height;
 
-      if (expandedRows.has(row[UNIQ_ROW_KEY]) && node.nextSibling instanceof HTMLElement) {
+      if (node.nextSibling instanceof HTMLElement && node.nextSibling.role === 'rowgroup') {
         height = height + node.nextSibling.getBoundingClientRect().height;
       }
 

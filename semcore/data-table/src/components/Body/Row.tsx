@@ -66,8 +66,8 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   }
 
   componentDidMount() {
-    const { rowIndex, componentRef, row } = this.asProps;
-    componentRef?.(rowIndex, row, this);
+    const { orderedIndex, componentRef, row } = this.asProps;
+    componentRef?.(orderedIndex, row, this);
 
     this.setAccordion();
 
@@ -83,8 +83,8 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   }
 
   componentWillUnmount() {
-    const { rowIndex, componentRef, row } = this.asProps;
-    componentRef?.(rowIndex, row, null);
+    const { orderedIndex, componentRef, row } = this.asProps;
+    componentRef?.(orderedIndex, row, null);
 
     this.cellStyle.clear();
   }
@@ -280,10 +280,8 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
   handleClickRow(row: DTRow<UniqKeyType>) {
     return (e: React.SyntheticEvent) => {
-      const index = row[ROW_INDEX];
-
       if (!isInteractiveElement(e.target) && row[ACCORDION] && !this.asProps.mergedRow) {
-        this.handleExpandRow(row, index);
+        this.handleExpandRow(row, this.asProps.orderedIndex);
       }
     };
   }
@@ -305,8 +303,7 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       tableRef,
       onCellClick,
       rawData,
-      flatRows,
-      variant,
+      orderedIndex,
       isAccordionRow,
       accordionRowIndex,
       selectedRows,
@@ -342,6 +339,7 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       onClick: onCellClick,
       flatRows: this.asProps.flatRows,
       theme,
+      orderedIndex,
     };
 
     if (renderCell) {
@@ -394,10 +392,9 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       extraProps.expanded = expanded;
 
       const row = props.row;
-      const rowIndex = props.rowIndex;
 
       const handleClick = (e: React.SyntheticEvent<HTMLButtonElement>) => {
-        this.handleExpandRow(row, rowIndex);
+        this.handleExpandRow(row, orderedIndex);
       };
 
       if (value?.[ACCORDION] || (cellValue instanceof MergedRowsCell && cellValue.accordion)) {
@@ -703,6 +700,7 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
             componentsMap={componentsMap}
             calculateAriaRowIndex={calculateAriaRowIndex}
             hasGroups={hasGroups}
+            orderedIndex={NaN} // we don't use it in Accordion, just required becuause of Row types
           />
         )}
       </>,
@@ -725,7 +723,7 @@ type RowComponent = DataTableRowType & {
   Cell: any;
 };
 
-export type {
+export {
   RowRoot,
 };
 

@@ -13,6 +13,7 @@ export type DataTableCellProps<Data extends DataTableData, UniqKeyType> = Interg
   accordionId: string;
   row: DTRow<UniqKeyType>;
   rowIndex: number;
+  orderedIndex: number;
   column: DTColumn;
   columnIndex: number;
   gridRowIndex: number;

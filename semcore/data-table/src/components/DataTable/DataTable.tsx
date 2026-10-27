@@ -793,6 +793,11 @@ class DataTableRoot<
   handleScroll = trottle((e) => {
     if (this.asProps.virtualScroll) {
       const scrollTop = e.target.scrollTop;
+
+      if (scrollTop === this.state.scrollTop) {
+        return;
+      }
+
       const scrollDirection = scrollTop > this.state.scrollTop ? 'down' : 'up';
       this.setState({ scrollTop, scrollDirection });
     }

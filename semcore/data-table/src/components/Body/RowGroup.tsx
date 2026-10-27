@@ -19,11 +19,23 @@ type RowGroupProps<Data extends DataTableData, UniqKeyType> = {
   startIndex: number;
   rowIndex: number;
   shadowVertical?: '' | 'end' | 'start' | 'median';
-  handleComponentRef: (index: number, row: DTRow<UniqKeyType>, component: RowRoot<Data, UniqKeyType> | null) => void;
-  getPropsToRow: (props: { row: DTRow<UniqKeyType>; mergedRow?: boolean }) => DataTableRowProps<Data, UniqKeyType>;
+  componentRef: (index: number, row: DTRow<UniqKeyType>, component: RowRoot<Data, UniqKeyType> | RowGroup<Data, UniqKeyType> | null) => void;
+  getPropsToRow: (props: { row: DTRow<UniqKeyType>; mergedRow?: boolean; orderedIndex: number }) => DataTableRowProps<Data, UniqKeyType>;
 };
 
 export class RowGroup<Data extends DataTableData, UniqKeyType> extends React.PureComponent<RowGroupProps<Data, UniqKeyType>> {
+  public rowElementRef = React.createRef<HTMLDivElement>();
+
+  componentDidMount() {
+    const { startIndex, rowIndex, componentRef, rows } = this.props;
+    componentRef?.(startIndex + rowIndex, rows[0], this);
+  }
+
+  componentWillUnmount() {
+    const { startIndex, rowIndex, componentRef, rows } = this.props;
+    componentRef?.(startIndex + rowIndex, rows[0], null);
+  }
+
   render() {
     const SRowGroup = Box;
     const { rows, selectedRows, columns, startIndex, rowIndex, getPropsToRow, shadowVertical } = this.props;
@@ -43,13 +55,14 @@ export class RowGroup<Data extends DataTableData, UniqKeyType> extends React.Pur
       <SRowGroup
         role='rowgroup'
         key={`gg_${groupUniqKey}`}
+        ref={this.rowElementRef}
       >
         {rows.map((item, i) => {
           return (
             <Row
               key={item[UNIQ_ROW_KEY]?.toString() ?? `gg_${groupUniqKey}_row_${i}`}
-              componentRef={this.props.handleComponentRef}
-              {...getPropsToRow({ row: item, mergedRow: i > 0 ? true : false })}
+              {...getPropsToRow({ row: item, mergedRow: i > 0 ? true : false, orderedIndex: startIndex + rowIndex })}
+              componentRef={undefined}
               shadowVertical={shadowVertical}
             />
           );
