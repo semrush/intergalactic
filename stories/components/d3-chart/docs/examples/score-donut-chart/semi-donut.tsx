@@ -3,8 +3,8 @@ import React from 'react';
 
 const Demo = () => {
   return (
-    <div style={{ width: '450px' }}>
-      <Chart.ScoreDonut plotWidth={300} plotHeight={300} data={{ value: 0 }} aria-label='Score donut chart' halfsize />
+    <div style={{ width: '180px' }}>
+      <Chart.ScoreDonut plotWidth={180} plotHeight={90} data={{ value: 40 }} aria-label='Score donut chart' showTooltip={true} halfsize />
     </div>
   );
 };
