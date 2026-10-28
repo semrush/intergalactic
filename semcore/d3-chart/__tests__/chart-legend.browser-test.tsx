@@ -161,7 +161,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('LegendFlex', () => {
     flexPairwiseCases.forEach((c) => {
       test(`Verify pairwise ${c.name}`, {
-        tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@chart-legend'],
+        tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@chart-legend', '@checkbox'],
       }, async ({ page }) => {
         await loadPage(page, FLEX_EXAMPLE, 'en', c.props);
 
@@ -174,7 +174,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('LegendTable', () => {
     tablePairwiseCases.forEach((c) => {
       test(`Verify pairwise ${c.name}`, {
-        tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@chart-legend'],
+        tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@chart-legend', '@checkbox'],
       }, async ({ page }) => {
         await loadPage(page, TABLE_EXAMPLE, 'en', c.props);
 
@@ -194,7 +194,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify legend table view', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@typography'],
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@typography', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/d3-chart/docs/examples/chart-legend/table-view.tsx', 'en');
 
@@ -205,7 +205,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('Legend with metrics', () => {
     metricsPairwiseCases.forEach((c) => {
       test(`Verify pairwise ${c.name}`, {
-        tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@chart-legend', '@line-chart', '@link'],
+        tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@chart-legend', '@line-chart', '@link', '@checkbox'],
       }, async ({ page }) => {
         await loadPage(page, METRICS_EXAMPLE, 'en', c.props);
 
@@ -215,7 +215,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify boundary empty diffValue', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@line-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@line-chart', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, METRICS_EXAMPLE, 'en', { diffValue: '' });
 
@@ -224,7 +224,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify boundary long diffValue', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@line-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@line-chart', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, METRICS_EXAMPLE, 'en', { diffValue: '1,234,567,890.12', metricsPerItem: 2 });
 
@@ -233,7 +233,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify boundary patterns', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@line-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@line-chart', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, METRICS_EXAMPLE, 'en', { patterns: true });
 
@@ -242,7 +242,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify a hovered metric row keeps the other rows dimmed', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@chart-legend', '@line-chart', '@link'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@chart-legend', '@line-chart', '@link', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, METRICS_EXAMPLE, 'en', { metricLink: 'all' });
 
@@ -270,7 +270,7 @@ We verify states, visibility, and attributes.
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('LegendFlex', () => {
     test('Verify checkbox roles and attributes', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend'],
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, FLEX_EXAMPLE, 'en', { shape: 'Checkbox' });
 
@@ -278,7 +278,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify an item is toggled by its checkbox and by its label', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@chart-legend'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@chart-legend', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, FLEX_EXAMPLE, 'en', { shape: 'Checkbox' });
 
@@ -308,7 +308,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify highlightedItem dims every other item', {
-      tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@chart-legend'],
+      tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@chart-legend', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, FLEX_EXAMPLE, 'en', { highlightedItem: 0 });
 
@@ -323,7 +323,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify nothing is dimmed when highlightedItem is -1', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend'],
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, FLEX_EXAMPLE, 'en', { highlightedItem: -1 });
 
@@ -332,7 +332,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify the trend item renders next to the legend items', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend'],
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, FLEX_EXAMPLE, 'en', { withTrend: true, trendLabel: 'Trend line' });
 
@@ -340,7 +340,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify the suffix renders after the legend items', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend'],
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, FLEX_EXAMPLE, 'en', { withSuffix: true });
 
@@ -350,7 +350,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test.describe('LegendTable', () => {
     test('Verify the design data renders in both columns', {
-      tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@chart-legend'],
+      tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@chart-legend', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, TABLE_EXAMPLE, 'en', { columnsCount: 2 });
 
@@ -361,7 +361,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify a single value column renders one cell per row', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend'],
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, TABLE_EXAMPLE, 'en', { columnsCount: 1 });
 
@@ -370,7 +370,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify a row is toggled by its checkbox', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@chart-legend'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@chart-legend', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, TABLE_EXAMPLE, 'en', {});
 
@@ -382,7 +382,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify highlightedItem dims every other row label', {
-      tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@chart-legend'],
+      tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@chart-legend', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, TABLE_EXAMPLE, 'en', { highlightedItem: 0 });
 
@@ -402,7 +402,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
      * they are easy to let drift apart.
      */
     test('Verify the value columns of a dimmed row are dimmed as well', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend'],
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, TABLE_EXAMPLE, 'en', { highlightedItem: 0, columnsCount: 2 });
 

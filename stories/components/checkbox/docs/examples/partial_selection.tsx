@@ -29,7 +29,7 @@ const Demo = () => {
         />
       </Flex>
       {checked.map((value, index) => (
-        <Flex key={index} ml={6}>
+        <Flex key={index} ml={7}>
           <Checkbox
             mb={3}
             key={index}

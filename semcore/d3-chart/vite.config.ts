@@ -24,6 +24,7 @@ export default mergeConfig(
           'd3-time',
           'd3-time-format',
           'd3-transition',
+          'd3-ease',
           'hoist-non-react-statics',
           '@formatjs/intl',
           '@upsetjs/venn.js',
