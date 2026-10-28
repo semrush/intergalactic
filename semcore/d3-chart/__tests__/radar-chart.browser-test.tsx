@@ -29,7 +29,7 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify basic usage', {
-    tag: [TAG.PRIORITY_HIGH, '@radar-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@radar-chart', '@d3-chart', '@checkbox'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/radar-chart/basic-usage.tsx', 'en');
 
@@ -199,7 +199,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify legend and pattern fill', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@radar-chart', '@d3-chart', '@chart-legend'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@radar-chart', '@d3-chart', '@chart-legend', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -225,7 +225,7 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify aria-hidden attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@radar-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@radar-chart', '@d3-chart', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/radar-chart/basic-usage.tsx', 'en');
 
