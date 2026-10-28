@@ -123,7 +123,7 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 test.describe(`${TAG.VISUAL}`, () => {
   pairwiseCases.forEach((c) => {
     test(`Verify reference pairwise ${c.name}`, {
-      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@base-components', '@flex-box'],
+      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, BASIC_USAGE_STORY, 'en', toStoryProps(c));
       await locators.plot(page).waitFor({ state: 'visible' });
@@ -142,7 +142,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify reference line with area 52', {
-    tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@base-components', '@flex-box'],
+    tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(page, BASIC_USAGE_STORY, 'en', {
       duration: 0,
@@ -161,7 +161,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify several reference lines passed as an array', {
-    tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@base-components', '@flex-box'],
+    tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(page, BASIC_USAGE_STORY, 'en', {
       duration: 0,
@@ -226,7 +226,7 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify no reference is rendered without reference props', {
-    tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@base-components', '@flex-box'],
+    tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(page, BASIC_USAGE_STORY, 'en', { duration: 0 });
     await locators.plot(page).waitFor({ state: 'visible' });
@@ -238,7 +238,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   [40, 52].forEach((area) => {
     test(`Verify reference line with area ${area}`, {
-      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@base-components', '@flex-box'],
+      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, BASIC_USAGE_STORY, 'en', {
         duration: 0,
@@ -263,7 +263,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify reference line without area renders only the line', {
-    tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@base-components', '@flex-box'],
+    tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(page, BASIC_USAGE_STORY, 'en', { duration: 0, withReferenceLine: true });
     await locators.plot(page).waitFor({ state: 'visible' });
@@ -286,7 +286,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify reference area spans from start to end value', {
-    tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@base-components', '@flex-box'],
+    tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(page, BASIC_USAGE_STORY, 'en', {
       duration: 0,
@@ -324,7 +324,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     ['insight', 'violet-50'],
   ] as const).forEach(([use, token]) => {
     test(`Verify reference area gradient color for use=${use}`, {
-      tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart', '@base-components', '@flex-box'],
+      tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, BASIC_USAGE_STORY, 'en', {
         duration: 0,
@@ -344,7 +344,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify reference gradients have unique ids', {
-    tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@base-components', '@flex-box'],
+    tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(page, BASIC_USAGE_STORY, 'en', {
       duration: 0,
@@ -385,7 +385,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     { title: SHORT_TITLE, subTitle: SUB_TITLE },
   ]).forEach(({ title, subTitle }) => {
     test(`Verify reference area texts: title="${title}" subTitle="${subTitle}"`, {
-      tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart', '@base-components', '@flex-box'],
+      tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, BASIC_USAGE_STORY, 'en', {
         duration: 0,
@@ -418,7 +418,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify reference shapes are hidden from assistive technology', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.ACCESSIBILITY, '@line-chart', '@d3-chart', '@base-components', '@flex-box'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.ACCESSIBILITY, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(page, BASIC_USAGE_STORY, 'en', {
       duration: 0,
@@ -442,7 +442,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify tooltip appears when hovering inside the reference area', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@line-chart', '@d3-chart', '@base-components', '@flex-box'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(page, BASIC_USAGE_STORY, 'en', {
       duration: 0,
@@ -462,7 +462,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify reference elements are not focusable', {
-    tag: [TAG.PRIORITY_LOW, TAG.KEYBOARD, '@line-chart', '@d3-chart', '@base-components', '@flex-box'],
+    tag: [TAG.PRIORITY_LOW, TAG.KEYBOARD, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(page, BASIC_USAGE_STORY, 'en', {
       duration: 0,
@@ -481,7 +481,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify a single-item array renders like a single reference line', {
-    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart', '@base-components', '@flex-box'],
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     const props = { duration: 0, withReferenceLine: true, referenceLineValue: 10, referenceLineArea: 40 };
 

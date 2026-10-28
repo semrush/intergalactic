@@ -27,17 +27,19 @@ class LegendFlexRoot extends BaseLegend<
   } as const);
 
   renderTrend() {
+    const STrend = Checkbox;
+    const { styles } = this.asProps;
     const { onTrendIsVisibleChange, trendIsVisible, trendLabel, size, getI18nText } = this
       .asProps as unknown as TrendProps & LegendFlexProps & { getI18nText: (s: string) => string };
 
-    return (
-      <Checkbox
+    return sstyled(styles)(
+      <STrend
         checked={trendIsVisible}
         onChange={onTrendIsVisibleChange}
         theme='gray-400'
         label={trendLabel ?? getI18nText('trend')}
         size={size}
-      />
+      />,
     );
   }
 
