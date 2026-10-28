@@ -20,7 +20,7 @@ SBar[hide] {
 }
 
 SBar[transparent] {
-  opacity: var(--intergalactic-chart-data-transparent-opacity, undefined);
+  opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
 }
 
 SBar[onClick] {
