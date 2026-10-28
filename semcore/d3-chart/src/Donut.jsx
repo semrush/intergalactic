@@ -311,6 +311,7 @@ class DonutRoot extends Component {
   }
 
   render() {
+    this.activeIndexPie = undefined;
     const { halfsize, size } = this.asProps;
     this.asProps.dataHintsHandler.establishDataType('values-set');
     const [width, height] = size;
@@ -357,10 +358,10 @@ function Pie({
 
   React.useEffect(() => {
     if (!pieRef.current) return;
-    pieRef.current.dataset['currentRadius'] = (active ? d3ArcOut : d3Arc).outerRadius()();
 
     // do not run animation on first render
     if (!isMount) {
+      pieRef.current.dataset['currentRadius'] = (active ? d3ArcOut : d3Arc).outerRadius()();
       setIsMount(true);
       return;
     }
@@ -376,7 +377,7 @@ function Pie({
   React.useEffect(() => {
     if (!pieRef.current) return;
     pieRef.current.dataset['currentRadius'] = (active ? d3ArcOut : d3Arc).outerRadius()();
-  }, [active, innerRadius, outerRadius, halfsize, Boolean(data)]);
+  }, [innerRadius, outerRadius, halfsize, Boolean(data)]);
 
   if (!data) return null;
 
