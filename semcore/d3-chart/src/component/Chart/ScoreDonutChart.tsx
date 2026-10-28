@@ -137,7 +137,7 @@ class ScoreDonutChartComponent extends AbstractChart<
         <DefaultStrokePattern id={`${uid}-mask`} halfsize={halfsize} />
         <Donut.Pie
           dataKey='other'
-          color='chart-data-other-value'
+          color='chart-data-null'
           mask={`url(#${uid}-mask)`}
           uid={uid}
           patterns={false}

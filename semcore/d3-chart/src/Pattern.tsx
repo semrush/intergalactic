@@ -638,7 +638,7 @@ export const DefaultStrokePattern = (props: { id: string; halfsize?: boolean }) 
         patternUnits='userSpaceOnUse'
         patternTransform='rotate(-117)'
       >
-        <rect width='6' height='6' fill='#fff' opacity={0.4}></rect>
+        <rect width='6' height='6' fill='#fff' opacity={0.6}></rect>
         <line x1='0' y1='0' x2='0' y2='8' stroke='#fff' strokeWidth='6'></line>
       </pattern>
 
