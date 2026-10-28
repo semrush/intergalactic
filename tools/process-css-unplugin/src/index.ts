@@ -1,3 +1,7 @@
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
+
 import stringHash from 'string-hash';
 import type { UnpluginInstance } from 'unplugin';
 import { createUnplugin } from 'unplugin';
@@ -10,8 +14,8 @@ const REGEXPS = {
   ES6_IMPORT: /^import /m,
 } as const;
 
-const generateHashedFilePath = (path: string, code: string, prefix?: string): string => {
-  const hash = `${stringHash(path)}_${stringHash(code)}`;
+const generateHashedFilePath = (code: string, prefix?: string): string => {
+  const hash = stringHash(code);
   return prefix ? `${prefix}_${hash}.css` : `${hash}.css`;
 };
 
@@ -38,6 +42,17 @@ const replaceIsolationSuffix = (content: string, newSuffix: string): string => {
   return content.replace(suffixRegex, newSuffix);
 };
 
+const writeCssFile = (dir: string, fileName: string, css: string): string => {
+  const filePath = join(dir, fileName).replace(/\\/g, '/');
+
+  if (!existsSync(filePath)) {
+    mkdirSync(dir, { recursive: true });
+    writeFileSync(filePath, css);
+  }
+
+  return filePath;
+};
+
 type Options = {
   virtualFilesPrefix?: string;
   isolationSuffix?: string;
@@ -46,6 +61,45 @@ type Options = {
 const processCssUnplugin = createUnplugin<Options>((options = {}) => {
   const { virtualFilesPrefix, isolationSuffix } = options;
   const cssFiles = new Map<string, string>();
+
+  let cssDir: string | undefined;
+
+  const transformInclude = (id: string): boolean => id.includes('@semcore/');
+
+  const transform = (source: string, id: string) => {
+    const importPaths: string[] = [];
+    const isES6Mode = REGEXPS.ES6_IMPORT.test(source);
+
+    let transformedCode = source.replace(
+      REGEXPS.RESHADOW_CSS,
+      (_, codeBlock: string) => {
+        let css = extractCssFromCode(codeBlock);
+
+        if (isolationSuffix) {
+          css = replaceIsolationSuffix(css, isolationSuffix);
+        }
+
+        const hashedFilePath = generateHashedFilePath(css, virtualFilesPrefix);
+
+        if (cssDir) {
+          importPaths.push(writeCssFile(cssDir, hashedFilePath, css));
+        } else {
+          cssFiles.set(hashedFilePath, css);
+          importPaths.push(hashedFilePath);
+        }
+
+        return codeBlock.trimStart().startsWith('(') ? '(undefined, ' : 'undefined, ';
+      },
+    ).replace(REGEXPS.RESHADOW_STYLES, () =>
+      createImportStatement(importPaths.shift()!, isES6Mode),
+    );
+
+    if (isolationSuffix) {
+      transformedCode = replaceIsolationSuffix(transformedCode, isolationSuffix);
+    }
+
+    return { code: transformedCode };
+  };
 
   return {
     name: 'semcore-process-css-unplugin',
@@ -63,38 +117,55 @@ const processCssUnplugin = createUnplugin<Options>((options = {}) => {
       return cssFiles.get(id) ?? null;
     },
 
-    transformInclude(id) {
-      return id.includes('@semcore/');
-    },
+    transformInclude,
 
-    transform(source, id) {
-      const importPaths: string[] = [];
-      const isES6Mode = REGEXPS.ES6_IMPORT.test(source);
+    transform,
 
-      let transformedCode = source.replace(
-        REGEXPS.RESHADOW_CSS,
-        (_, codeBlock: string) => {
-          let css = extractCssFromCode(codeBlock);
+    vite: {
+      config() {
+        const isRolldown = Boolean(this?.meta && 'rolldownVersion' in this.meta);
 
-          if (isolationSuffix) {
-            css = replaceIsolationSuffix(css, isolationSuffix);
-          }
+        if (isRolldown) {
+          return {
+            optimizeDeps: {
+              rolldownOptions: {
+                plugins: [
+                  {
+                    name: 'semcore-process-css-unplugin:deps',
+                    transform(source: string, id: string) {
+                      return transformInclude(id) ? transform(source, id) : null;
+                    },
+                  },
+                ],
+              },
+            },
+          };
+        }
 
-          const hashedFilePath = generateHashedFilePath(id, css, virtualFilesPrefix);
-          cssFiles.set(hashedFilePath, css);
-          importPaths.push(hashedFilePath);
+        return {
+          optimizeDeps: {
+            esbuildOptions: {
+              plugins: [{
+                name: 'semcore-process-css-unplugin:deps',
+                setup(build) {
+                  build.onLoad({ filter: /@semcore[\\/].*\.[cm]?js$/ }, async ({ path }) => {
+                    const source = await readFile(path, 'utf-8');
 
-          return id.includes('@semcore/flags') || !isES6Mode ? 'undefined, ' : '(undefined, ';
-        },
-      ).replace(REGEXPS.RESHADOW_STYLES, () =>
-        createImportStatement(importPaths.shift()!, isES6Mode),
-      );
+                    return {
+                      contents: transform(source, path.replace(/\\/g, '/')).code,
+                      loader: 'js',
+                    };
+                  });
+                },
+              }],
+            },
+          },
+        };
+      },
 
-      if (isolationSuffix) {
-        transformedCode = replaceIsolationSuffix(transformedCode, isolationSuffix);
-      }
-
-      return { code: transformedCode };
+      configResolved(config) {
+        cssDir = join(config.cacheDir, 'semcore-css');
+      },
     },
   };
 });

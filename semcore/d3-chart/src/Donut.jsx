@@ -15,6 +15,7 @@ import Tooltip from './Tooltip';
 import { getChartDefaultColorName } from './utils';
 
 const DEFAULT_INSTANCE = Symbol('DEFAULT_INSTANCE');
+const TRANSITION_RADIUS_DURATION = 150;
 
 function transitionAnglePie({
   selector,
@@ -88,7 +89,7 @@ class DonutRoot extends Component {
     return {
       d3Pie,
       d3Arc,
-      duration: 500,
+      duration: TRANSITION_RADIUS_DURATION,
       paddingAngle,
       innerRadius,
     };
@@ -144,7 +145,7 @@ class DonutRoot extends Component {
   animationUpdatePie = () => {
     clearTimeout(this.animationTimeout);
     this.animationTimeout = setTimeout(() => {
-      const { duration, d3Arc, halfsize, d3ArcOut } = this.asProps;
+      const { duration, d3Arc, halfsize } = this.asProps;
       this.canAnimatedHover = false;
       if (duration > 0) {
         transitionAnglePie({

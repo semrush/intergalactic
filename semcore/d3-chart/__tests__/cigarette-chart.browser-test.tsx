@@ -52,7 +52,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify layouts and highlights on hover', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box', '@typography', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -76,7 +76,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify empty values', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@cigarette-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@cigarette-chart', '@d3-chart', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -103,7 +103,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify no tooltip when showTooltip=false', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -155,7 +155,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   tooltipViewTypeVariants.forEach((variant) => {
     test(`Verify tooltipViewType=${variant.name}`, {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -177,7 +177,8 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify empty state', {
     tag: [TAG.PRIORITY_MEDIUM, '@cigarette-chart', '@d3-chart',
       '@base-components',
-      '@flex-box'],
+      '@flex-box',
+      '@checkbox'],
   }, async ({ page }) => {
     await test.step('Verify horizontal empty state', async () => {
       await loadPage(
@@ -216,7 +217,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify custom tooltip title', {
     tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@cigarette-chart', '@d3-chart',
       '@base-components',
-      '@flex-box'],
+      '@flex-box',
+      '@checkbox'],
   }, async ({ page }) => {
     const tooltipTitle = 'Custom cigarette tooltip title';
 
@@ -259,7 +261,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify tiny value invisible at minimalBarWidth=0', {
-    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box'],
+    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -277,7 +279,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify tiny value visible at minimalBarWidth=10', {
-    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box'],
+    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -295,7 +297,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify multiple tiny values get minimalBarWidth from donor', {
-    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box'],
+    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -315,7 +317,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify equal values have equal width', {
-    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box'],
+    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -336,7 +338,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify zero value not in DOM', {
-    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box'],
+    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -353,7 +355,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify empty state when all values are zero', {
     tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@cigarette-chart', '@d3-chart',
       '@base-components',
-      '@flex-box'],
+      '@flex-box',
+      '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -372,7 +375,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify the placeholder uses the null palette color', async () => {
       await expect(locators.barItem(page, 0)).toHaveAttribute(
         'color',
-        '--intergalactic-chart-palette-order-null',
+        '--intergalactic-chart-data-null',
       );
     });
 
@@ -393,7 +396,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify all tiny values get minimalBarWidth without donors', {
-    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box'],
+    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,

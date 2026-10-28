@@ -680,6 +680,18 @@ export const theme: Theme = {
         value: colors.red['300'].value,
         description: 'Color for the "Lost" data on the chart.',
       },
+      chart_data_null: {
+        value: colors.gray['100'].value,
+        description: 'Use it to show null value on the chart.',
+      },
+      chart_data_other_value: {
+        value: colors.gray['200'].value,
+        description: 'Use it to indicate voids, missing or some other data on the chart.',
+      },
+      chart_data_total_amount: {
+        value: colors.gray['400'].value,
+        description: 'Use it to show total value on the chart.',
+      },
       chart_data_intent_commercial: {
         value: colors.violet['300'].value,
         description: 'Color for the commercial data intent on the chart.',
@@ -871,18 +883,6 @@ export const theme: Theme = {
       chart_palette_order_24: {
         value: colors.yellow['400'].value,
         description: '24 color in the default list of colors for charts.',
-      },
-      chart_palette_order_null: {
-        value: colors.gray['100'].value,
-        description: 'Use it to show null value on the chart.',
-      },
-      chart_palette_order_other_data: {
-        value: colors.gray['200'].value,
-        description: 'Use it to indicate voids, missing or some other data on the chart.',
-      },
-      chart_palette_order_total_amount: {
-        value: colors.gray['400'].value,
-        description: 'Use it to show total value on the chart.',
       },
       chart_x_axis_accent_data_start_tracking: {
         value: success.opaqueAt(L_BG_LIGHT),
@@ -3393,6 +3393,13 @@ type SemanticColors = {
       critical: Value;
       lost: Value;
       new: Value;
+      total: {
+        amount: Value;
+      };
+      other: {
+        value: Value;
+      };
+      null: Value;
       intent: {
         informational: Value;
         navigational: Value;
@@ -3427,13 +3434,6 @@ type SemanticColors = {
         22: Value;
         23: Value;
         24: Value;
-        total: {
-          amount: Value;
-        };
-        other: {
-          data: Value;
-        };
-        null: Value;
       };
     };
     grid: {

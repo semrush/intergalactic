@@ -21,7 +21,7 @@ SLine[transparent] {
 
 SNull {
   fill: transparent;
-  stroke: var(--intergalactic-chart-palette-order-null, oklch(0.9 0.009 234));
+  stroke: var(--intergalactic-chart-data-null, oklch(0.9 0.009 234));
   stroke-dasharray: 4;
 }
 
