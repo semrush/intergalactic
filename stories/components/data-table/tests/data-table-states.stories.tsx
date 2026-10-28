@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import EmptyStateSortableExample from './examples/table-states-tests/empty-sortable';
 import LoadingPaginationExample from './examples/table-states-tests/loading-in-pagination';
-import LoadingScrollExample from './examples/table-states-tests/loading-in-scroll';
+import LoadingScrollExample, { loadingInScrollProps } from './examples/table-states-tests/loading-in-scroll';
+import type { LoadingInScrollProps } from './examples/table-states-tests/loading-in-scroll';
 import LoadingWithScrollAndButtonExample from './examples/table-states-tests/loading-with-button-and-scroll';
 import LoadingWithSortAndScrollExample from './examples/table-states-tests/loading-with-sort-and-scroll';
 import NothingFoundWithFixedColumnWidthExample from './examples/table-states-tests/nothing-found-with-fixed-column-width';
@@ -50,6 +51,7 @@ export const LoadingPagination: Story = {
   render: LoadingPaginationExample,
 };
 
-export const LoadingScroll: Story = {
+export const LoadingScroll: StoryObj<LoadingInScrollProps> = {
   render: LoadingScrollExample,
+  args: loadingInScrollProps,
 };

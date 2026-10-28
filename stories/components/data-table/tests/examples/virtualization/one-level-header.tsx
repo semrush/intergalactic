@@ -1,13 +1,37 @@
-import type { DataTableSort } from '@semcore/ui/data-table';
+import InfoM from '@semcore/icon/Info/m';
+import LinkExternalM from '@semcore/icon/LinkExternal/m';
+import { Flex } from '@semcore/ui/base-components';
+import { ButtonLink } from '@semcore/ui/button';
+import type { DataTableProps, DataTableSort } from '@semcore/ui/data-table';
 import { DataTable } from '@semcore/ui/data-table';
+import Link from '@semcore/ui/link';
+import { DescriptionTooltip } from '@semcore/ui/tooltip';
 import React from 'react';
-type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
-const Demo = () => {
-  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['kd', 'asc']);
+type TableProps = DataTableProps<any, any, any>;
+
+export type OneLevelHeaderProps = {
+  use: 'primary' | 'secondary';
+  sticky: boolean;
+  h: number;
+  rowsCount: number;
+};
+
+export const oneLevelHeaderProps: OneLevelHeaderProps = {
+  use: 'secondary',
+  sticky: true,
+  h: 400,
+  rowsCount: 100,
+};
+
+type Row = typeof rows[0];
+type SortableColumn = Exclude<keyof Row, 'keyword'>;
+
+const Demo = (props: OneLevelHeaderProps) => {
+  const [sort, setSort] = React.useState<DataTableSort<keyof Row>>(['kd', 'asc']);
   const sortedData = React.useMemo(
     () =>
-      [...data].sort((aRow, bRow) => {
+      Array.from({ length: props.rowsCount }, (_, index) => rows[index % rows.length]).sort((aRow, bRow) => {
         const [prop, sortDirection] = sort;
         const a = aRow[prop as SortableColumn];
         const b = bRow[prop as SortableColumn];
@@ -15,37 +39,72 @@ const Demo = () => {
         if (sortDirection === 'asc') return a > b ? 1 : -1;
         else return a > b ? -1 : 1;
       }),
-    [sort],
-  );
-  const numberFormat = React.useMemo(() => new Intl.NumberFormat('en-US'), []);
-  const currencyFormat = React.useMemo(
-    () => new Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }),
-    [],
+    [sort, props.rowsCount],
   );
 
   return (
-
     <DataTable
+      virtualScroll
       data={sortedData}
-      use='secondary'
+      use={props.use}
       defaultGridTemplateColumnWidth='1fr'
-      aria-label='Secondary'
+      aria-label='One level header'
       sort={sort}
       onSortChange={setSort}
-      hMax={400}
-      virtualScroll
-      columns={[
-        { name: 'keyword', children: 'Keyword', sortable: true },
-        { name: 'kd', children: 'KD,%', sortable: 'asc' },
-        { name: 'cpc', children: 'CPC', sortable: 'desc' },
-        { name: 'vol', children: 'Vol.' },
-      ]}
+      h={props.h}
+      headerProps={{ sticky: props.sticky }}
+      columns={columns}
     />
-
   );
 };
 
-const data = [
+const columns: TableProps['columns'] = [
+  { name: 'keyword', children: 'Keyword', sortable: true },
+  {
+    name: 'kd',
+    sortable: 'asc',
+    children: (
+      <Flex alignItems='center'>
+        <DescriptionTooltip placement='right'>
+          KD,%
+          <DescriptionTooltip.Trigger
+            ml={1}
+            tag={ButtonLink}
+            size={100}
+            addonLeft={InfoM}
+            color='icon-secondary-neutral'
+            aria-label='About KD'
+            data-test-id='tooltip-with-interactive-el'
+          />
+          <DescriptionTooltip.Popper aria-label='About KD'>
+            Keyword difficulty.
+            {' '}
+            <Link>Learn more</Link>
+          </DescriptionTooltip.Popper>
+        </DescriptionTooltip>
+      </Flex>
+    ),
+  },
+  { name: 'cpc', children: 'CPC', sortable: 'desc' },
+  {
+    name: 'vol',
+    children: (
+      <Flex alignItems='center'>
+        Vol.
+        <ButtonLink
+          ml={1}
+          size={100}
+          addonLeft={LinkExternalM}
+          title='Go to our awesome article'
+          data-test-id='interactive-icon'
+          color='icon-secondary-neutral'
+        />
+      </Flex>
+    ),
+  },
+];
+
+const rows = [
   {
     keyword: 'ebay buy',
     kd: '77.8',

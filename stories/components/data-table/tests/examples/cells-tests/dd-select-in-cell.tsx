@@ -39,13 +39,23 @@ const CustomSelect = () => {
   );
 };
 
-const Demo = () => {
+export type DDSelectInCellProps = {
+  virtualScroll?: boolean;
+};
+
+export const ddSelectInCellProps: DDSelectInCellProps = {
+  virtualScroll: false,
+};
+
+const Demo = (props: DDSelectInCellProps) => {
   return (
     <>
       <DataTable
-        data={data}
+        data={props.virtualScroll ? manyRows : data}
         aria-label='Access to cells'
         hMax={200}
+        virtualScroll={props.virtualScroll}
+        headerProps={props.virtualScroll ? { sticky: true } : undefined}
         columns={[
           { name: 'keyword', children: 'Keyword' },
           { name: 'kd', children: 'KD,%' },
@@ -130,5 +140,8 @@ const data = [
     vol: '21,644,290',
   },
 ];
+
+// enough rows for virtual scroll
+const manyRows = Array.from({ length: 500 }, (_, index) => data[index % data.length]);
 
 export default Demo;

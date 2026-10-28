@@ -2,7 +2,15 @@ import Button from '@semcore/ui/button';
 import { DataTable } from '@semcore/ui/data-table';
 import React from 'react';
 
-const Demo = () => {
+export type LoadingInScrollProps = {
+  virtualScroll?: boolean;
+};
+
+export const loadingInScrollProps: LoadingInScrollProps = {
+  virtualScroll: false,
+};
+
+const Demo = (props: LoadingInScrollProps) => {
   const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
@@ -23,11 +31,12 @@ const Demo = () => {
     <>
       <Button>Click</Button>
       <DataTable
-        data={data}
+        data={props.virtualScroll ? manyRows : data}
         aria-label='Scroll inside'
         loading={loading}
         wMax={800}
         hMax={200}
+        virtualScroll={props.virtualScroll}
         columns={[
           {
             name: 'keyword',
@@ -63,5 +72,7 @@ const data = [
   { keyword: 'ebay buy', kd: '-', cpc: '$0', vol: 'n/a' },
   { keyword: 'ebay buy', kd: '75.89', cpc: '$0', vol: '21,644,290' },
 ];
+
+const manyRows = Array.from({ length: 500 }, (_, index) => data[index % data.length]);
 
 export default Demo;

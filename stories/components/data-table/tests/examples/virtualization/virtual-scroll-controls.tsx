@@ -12,6 +12,7 @@ export type VirtualScrollControlsProps = {
   rowHeight: number;
   withAccordion: boolean;
   withMergedRows: boolean;
+  withFixedColumns: boolean;
 };
 
 export const virtualScrollControlsDefaultProps: VirtualScrollControlsProps = {
@@ -22,6 +23,7 @@ export const virtualScrollControlsDefaultProps: VirtualScrollControlsProps = {
   rowHeight: 45,
   withAccordion: false,
   withMergedRows: false,
+  withFixedColumns: false,
 };
 
 declare global {
@@ -69,6 +71,23 @@ const getData = (withAccordion: boolean, withMergedRows: boolean) =>
       return row;
     });
 
+const columns = [
+  { name: 'id', children: 'ID', gtcWidth: '60px' },
+  { name: 'keyword', children: 'Keyword', gtcWidth: '200px' },
+  { name: 'kd', children: 'KD %' },
+  { name: 'cpc', children: 'CPC' },
+  { name: 'vol', children: 'Vol.' },
+];
+
+// columns of different widths, fixed on both sides, wider than the table
+const fixedColumns = [
+  { name: 'id', children: 'ID', gtcWidth: '60px', fixed: 'left' as const },
+  { name: 'keyword', children: 'Keyword', gtcWidth: '200px', fixed: 'left' as const },
+  { name: 'kd', children: 'KD %', gtcWidth: '300px' },
+  { name: 'cpc', children: 'CPC', gtcWidth: '150px' },
+  { name: 'vol', children: 'Vol.', gtcWidth: '120px', fixed: 'right' as const },
+];
+
 const Demo = ({
   mode,
   useCustomBuffer,
@@ -77,6 +96,7 @@ const Demo = ({
   rowHeight,
   withAccordion,
   withMergedRows,
+  withFixedColumns,
 }: VirtualScrollControlsProps = virtualScrollControlsDefaultProps) => {
   const data = React.useMemo(() => getData(withAccordion, withMergedRows), [withAccordion, withMergedRows]);
   const buffer = useCustomBuffer ? rowsBuffer : undefined;
@@ -96,15 +116,10 @@ const Demo = ({
       totalRows={data.length}
       aria-label='Virtual scroll controls'
       h={400}
+      wMax={withFixedColumns ? 700 : undefined}
       virtualScroll={virtualScroll}
       headerProps={{ sticky: true }}
-      columns={[
-        { name: 'id', children: 'ID', gtcWidth: '60px' },
-        { name: 'keyword', children: 'Keyword', gtcWidth: '200px' },
-        { name: 'kd', children: 'KD %' },
-        { name: 'cpc', children: 'CPC' },
-        { name: 'vol', children: 'Vol.' },
-      ]}
+      columns={withFixedColumns ? fixedColumns : columns}
       // counts row renders for data-table-performance browser tests
       renderCell={(props) => {
         if (props.columnName === 'id') {
