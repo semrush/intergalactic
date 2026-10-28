@@ -24,11 +24,16 @@ export const intergalacticI18nUnplugin: UnpluginInstance<Options> = createUnplug
       },
       async load(id) {
         const sameDirFiles: string[] = await fs.readdir(path.dirname(id));
+        const localeFiles: Record<string, string> = {};
         const allLocales = sameDirFiles.reduce<string[]>((acc, filename) => {
           if (filename.endsWith('.json.mjs')) {
-            acc.push(filename.substring(0, filename.length - '.json.mjs'.length));
+            const locale = filename.substring(0, filename.length - '.json.mjs'.length);
+            localeFiles[locale] = filename;
+            acc.push(locale);
           } else if (filename.endsWith('.json')) {
-            acc.push(filename.substring(0, filename.length - '.json'.length));
+            const locale = filename.substring(0, filename.length - '.json'.length);
+            localeFiles[locale] ??= filename;
+            acc.push(locale);
           }
 
           return acc;
@@ -69,11 +74,11 @@ export const intergalacticI18nUnplugin: UnpluginInstance<Options> = createUnplug
         const asyncLocales = filteredLocales.filter((locale) => !syncLocales.includes(locale));
 
         const imports = syncLocales
-          .map((locale) => `import ${locale} from "./${locale}.json";`)
+          .map((locale) => `import ${locale} from "./${localeFiles[locale]}";`)
           .join('\n');
         const prefix = 'export const localizedMessages = {';
         const loaders = asyncLocales.map(
-          (locale) => `["${locale}"]: () => import('./${locale}.json')`,
+          (locale) => `["${locale}"]: () => import('./${localeFiles[locale]}')`,
         );
 
         const postfix = '};';
