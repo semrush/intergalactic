@@ -112,6 +112,9 @@ class ScoreDonutChartComponent extends AbstractChart<
 
     const checkedLegendItems = dataDefinitions.filter((item) => item.checked);
 
+    this.dataHintsHandlers.establishDataType('values-set');
+    this.dataHintsHandlers.describeValueEntity('', '20%');
+
     return (
       <Donut onClick={onClickPie} halfsize={halfsize} innerRadius={innerRadius}>
         {checkedLegendItems.map((item, index) => {
@@ -122,6 +125,12 @@ class ScoreDonutChartComponent extends AbstractChart<
               name={item.label}
               color={item.color}
               active={highlightedItem === index}
+              dataHintsHandler={{
+                establishDataType: () => {
+                },
+                describeValueEntity: () => {
+                },
+              }}
             />
           );
         })}
@@ -132,6 +141,12 @@ class ScoreDonutChartComponent extends AbstractChart<
           mask={`url(#${uid}-mask)`}
           uid={uid}
           patterns={false}
+          dataHintsHandler={{
+            establishDataType: () => {
+            },
+            describeValueEntity: () => {
+            },
+          }}
         />
         {innerLabel && <Donut.Label>{innerLabel}</Donut.Label>}
       </Donut>
@@ -185,6 +200,7 @@ class ScoreDonutChartComponent extends AbstractChart<
           width={plotWidth}
           height={plotHeight}
           dataHints={this.dataHints}
+          dataHintsHandlers={this.dataHintsHandlers}
           a11yAltTextConfig={a11yAltTextConfig}
           patterns={patterns}
           duration={duration}
