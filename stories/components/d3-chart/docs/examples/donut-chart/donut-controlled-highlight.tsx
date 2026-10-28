@@ -22,7 +22,7 @@ const Demo = () => {
 
   return (
     <Flex mt={3} gap={6} alignItems='flex-start' flexWrap>
-      <Plot height={160} width={160} mt={6} mb={6} data={data}>
+      <Plot height={180} width={180} mt={6} mb={6} data={data}>
         <Donut>
           {Object.keys(data).map((name, index) => (
             <Donut.Pie

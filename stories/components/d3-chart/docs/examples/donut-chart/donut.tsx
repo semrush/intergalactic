@@ -5,11 +5,11 @@ import DonutMockData from '../../../__mocks__/donut';
 
 const Demo = () => {
   return (
-    <div style={{ width: '460px' }}>
+    <div style={{ width: '340px' }}>
       <Chart.Donut
         colorMap={{ other: 'chart-data-other-value' }}
-        plotWidth={300}
-        plotHeight={300}
+        plotWidth={180}
+        plotHeight={180}
         data={data}
         aria-label='Donut chart'
       />

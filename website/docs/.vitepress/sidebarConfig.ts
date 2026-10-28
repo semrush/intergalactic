@@ -610,11 +610,6 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Donut chart',
           },
           {
-            link: '/data-display/score-donut-chart/score-donut-chart',
-            activeMatch: '/data-display/score-donut-chart/',
-            text: 'Score donut chart',
-          },
-          {
             link: '/data-display/histogram-chart/histogram-chart',
             activeMatch: '/data-display/histogram-chart/',
             text: 'Histogram',

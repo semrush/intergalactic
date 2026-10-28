@@ -42,7 +42,7 @@ Use `active` property to control segments highlight.
 
 :::
 
-## Semi-Donut
+## Semi-donut
 
 To create a half-size chart, you need to specify the `halfsize` value and reduce the height of the chart by half.
 
@@ -85,6 +85,30 @@ Note that for ChartLegend `patterns` property works only with default `shape={'C
 
 <script lang="tsx">
   export Demo from 'stories/components/d3-chart/docs/examples/donut-chart/legend-and-pattern-fill.tsx';
+</script>
+
+:::
+
+## Score donut
+
+Shows one score on a 0–100 scale. The unfilled part of the ring is the rest of the scale.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/d3-chart/docs/examples/score-donut-chart/basic-usage.tsx';
+</script>
+
+:::
+
+## Score semi-donut
+
+Set `halfsize` and use half the plot height when the chart should read as a gauge.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/d3-chart/docs/examples/score-donut-chart/semi-donut.tsx';
 </script>
 
 :::

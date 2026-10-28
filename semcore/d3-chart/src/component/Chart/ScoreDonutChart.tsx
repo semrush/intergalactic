@@ -231,7 +231,7 @@ class ScoreDonutChartComponent extends AbstractChart<
 /**
    * ScoreDonutChart
    *
-   * {@link https://developer.semrush.com/intergalactic/data-display/score-donut-chart/score-donut-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/score-donut-chart/score-donut-chart-code/|Examples}
+   * {@link https://developer.semrush.com/intergalactic/data-display/donut-chart/donut-chart-api/#chartscoredonut|API} | {@link https://developer.semrush.com/intergalactic/data-display/donut-chart/donut-chart-code/#score-donut|Examples}
    */
 export const ScoreDonutChart = createComponent<
   ScoreDonutChartType,
