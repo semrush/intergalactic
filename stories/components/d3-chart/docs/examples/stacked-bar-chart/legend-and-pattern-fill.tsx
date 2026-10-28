@@ -1,19 +1,9 @@
-import { Flex } from '@semcore/ui/base-components';
 import Card from '@semcore/ui/card';
-import {
-  Plot,
-  StackBar,
-  YAxis,
-  XAxis,
-  ChartLegend,
-  makeDataHintsContainer,
-} from '@semcore/ui/d3-chart';
+import { Chart } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
 import StackedBarMockData from '../../../__mocks__/stacked-bar';
-
-const dataHints = makeDataHintsContainer();
 
 const Demo = () => {
   const MARGIN = 30;
@@ -30,40 +20,6 @@ const Demo = () => {
     .range([height - MARGIN, 0])
     .domain([0, 15]);
 
-  const [legendItems, setLegendItems] = React.useState(
-    Object.keys(data[0])
-      .filter((name) => name !== 'bar')
-      .map((item, index) => {
-        return {
-          id: item,
-          label: `Category ${index + 1}`,
-          checked: true,
-          color: `chart-palette-order-${index + 1}`,
-        };
-      }),
-  );
-
-  const [highlightedLine, setHighlightedLine] = React.useState(-1);
-
-  const handleChangeVisible = React.useCallback((id: string, isVisible: boolean) => {
-    setLegendItems((prevItems) => {
-      return prevItems.map((item) => {
-        if (item.id === id) {
-          item.checked = isVisible;
-        }
-
-        return item;
-      });
-    });
-  }, []);
-
-  const handleMouseEnter = React.useCallback((id: string) => {
-    setHighlightedLine(legendItems.findIndex((line) => line.id === id));
-  }, []);
-  const handleMouseLeave = React.useCallback(() => {
-    setHighlightedLine(-1);
-  }, []);
-
   return (
     <Card w='550px'>
       <Card.Header pt={4}>
@@ -71,51 +27,35 @@ const Demo = () => {
           Chart legend
         </Card.Title>
       </Card.Header>
-      <Card.Body tag={Flex} direction='column'>
-        <ChartLegend
-          items={legendItems}
-          onChangeVisibleItem={handleChangeVisible}
-          onMouseEnterItem={handleMouseEnter}
-          onMouseLeaveItem={handleMouseLeave}
-          dataHints={dataHints}
-          patterns
-          aria-label='Stacked bar chart legend'
-        />
-        <Plot
+      <Card.Body>
+        <Chart.Bar
+          groupKey='bar'
           data={data}
-          scale={[xScale, yScale]}
-          width={width}
-          height={height}
-          dataHints={dataHints}
+          type='stack'
+          plotWidth={width}
+          plotHeight={height}
+          xScale={xScale}
+          yScale={yScale}
+          showTooltip={false}
           patterns
-        >
-          <YAxis>
-            <YAxis.Ticks />
-            <YAxis.Grid />
-          </YAxis>
-          <XAxis>
-            <XAxis.Ticks />
-          </XAxis>
-          <StackBar x='bar'>
-            {legendItems.map((stack, index) => {
-              return (
-                stack.checked && (
-                  <StackBar.Bar
-                    y={stack.id}
-                    key={stack.id}
-                    color={stack.color}
-                    transparent={highlightedLine !== -1 && highlightedLine !== index}
-                  />
-                )
-              );
-            })}
-          </StackBar>
-        </Plot>
+          legendProps={legendProps}
+          aria-label='Stacked bar chart'
+        />
       </Card.Body>
     </Card>
   );
 };
 
 const data = StackedBarMockData.ThreeBars;
+
+const legendProps = {
+  legendMap: Object.keys(data[0])
+    .filter((name) => name !== 'bar')
+    .reduce<Record<string, { label: string }>>((acc, key, index) => {
+      acc[key] = { label: `Category ${index + 1}` };
+
+      return acc;
+    }, {}),
+};
 
 export default Demo;

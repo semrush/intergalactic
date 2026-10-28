@@ -1,19 +1,8 @@
-import { Flex } from '@semcore/ui/base-components';
-import {
-  Line,
-  minMax,
-  Plot,
-  XAxis,
-  YAxis,
-  ChartLegend,
-  makeDataHintsContainer,
-} from '@semcore/ui/d3-chart';
+import { Chart, minMax } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
 import LineMockData from '../../../__mocks__/line';
-
-const dataHints = makeDataHintsContainer();
 
 const Demo = () => {
   const MARGIN = 30;
@@ -28,86 +17,35 @@ const Demo = () => {
     .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
 
-  const [legendItems, setLegendItems] = React.useState(
-    Object.keys(data[0])
-      .filter((name) => name !== 'x')
-      .map((item, index) => {
-        return {
-          id: item,
-          label: `Line ${index + 1}`,
-          checked: true,
-          color: `chart-palette-order-${index + 1}`,
-        };
-      }),
-  );
-
-  const [highlightedLine, setHighlightedLine] = React.useState(-1);
-
-  const handleChangeVisible = React.useCallback((id: string, isVisible: boolean) => {
-    setLegendItems((prevItems) => {
-      return prevItems.map((item) => {
-        if (item.id === id) {
-          item.checked = isVisible;
-        }
-
-        return item;
-      });
-    });
-  }, []);
-
-  const handleMouseEnter = React.useCallback((id: string) => {
-    setHighlightedLine(legendItems.findIndex((line) => line.id === id));
-  }, []);
-  const handleMouseLeave = React.useCallback(() => {
-    setHighlightedLine(-1);
-  }, []);
-
   return (
-    <Flex direction='column'>
-      <ChartLegend
-        dataHints={dataHints}
-        items={legendItems}
-        onChangeVisibleItem={handleChangeVisible}
-        onMouseEnterItem={handleMouseEnter}
-        onMouseLeaveItem={handleMouseLeave}
-        patterns
-        aria-label='Patterned chart legend'
-      />
-      <Plot
-        data={data}
-        scale={[xScale, yScale]}
-        width={width}
-        height={height}
-        dataHints={dataHints}
-        patterns
-      >
-        <YAxis>
-          <YAxis.Ticks ticks={yScale.ticks(4)} />
-          <YAxis.Grid ticks={yScale.ticks(4)} />
-        </YAxis>
-        <XAxis>
-          <XAxis.Ticks ticks={xScale.ticks(5)} />
-        </XAxis>
-        {legendItems.map((item, index) => {
-          return (
-            item.checked && (
-              <Line
-                x='x'
-                y={item.id}
-                key={item.id}
-                color={item.color}
-                transparent={highlightedLine !== -1 && highlightedLine !== index}
-              >
-                <Line.Dots display />
-              </Line>
-            )
-          );
-        })}
-      </Plot>
-    </Flex>
+    <Chart.Line
+      groupKey='x'
+      data={data}
+      plotWidth={width}
+      plotHeight={height}
+      xScale={xScale}
+      yScale={yScale}
+      xTicksCount={5}
+      yTicksCount={4}
+      showDots
+      showTooltip={false}
+      patterns
+      legendProps={legendProps}
+      aria-label='Line chart'
+    />
   );
 };
 
 const data = LineMockData.ThreeLines;
+
+const legendProps = {
+  legendMap: Object.keys(data[0])
+    .filter((name) => name !== 'x')
+    .reduce<Record<string, { label: string }>>((acc, key, index) => {
+      acc[key] = { label: `Line ${index + 1}` };
+
+      return acc;
+    }, {}),
+};
 
 export default Demo;
