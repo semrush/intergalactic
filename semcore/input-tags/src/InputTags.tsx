@@ -272,7 +272,7 @@ class Value extends Component<
 
     return sstyled(this.asProps.styles)(
       <>
-        <SValue render={Input.Value} style={{ width: this.state.width }} />
+        <SValue render={Input.Value} flex-basis-width={this.state.width} />
         <SSpacer ref={this._spacer} aria-hidden />
       </>,
     );
