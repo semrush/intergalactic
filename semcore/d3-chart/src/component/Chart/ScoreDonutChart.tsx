@@ -102,6 +102,7 @@ class ScoreDonutChartComponent extends AbstractChart<
   defaultLegendProps() {
     return {
       legendType: 'Table' as const,
+      shape: 'Circle' as const,
     };
   }
 
