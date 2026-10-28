@@ -176,6 +176,7 @@ function Shape(
 ) {
   const SPointShape = Root;
   const SPatternSymbol = PatternSymbol;
+  const SCheckbox = Checkbox;
   const {
     styles,
     size,
@@ -206,7 +207,7 @@ function Shape(
   if (shape === 'Checkbox') {
     return sstyled(styles)(
       <>
-        <Checkbox
+        <SCheckbox
           size={size}
           checked={checked}
           theme={color}

@@ -216,7 +216,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   variables.forEach((vars) => {
     test(`Verify line chart with config ${vars.name}`, {
-      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@base-components', '@flex-box'],
+      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -401,7 +401,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify patterns and symbols for dots mouse interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -427,7 +427,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify patterns and symbols for dots keyboard interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -470,7 +470,7 @@ test.describe(`${TAG.VISUAL}`, () => {
    * Deliberately one test rather than three, so the branch gains 3 PNGs instead of 9.
    */
   test('Verify forecast, potential and highlighted dots render', {
-    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -522,7 +522,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
    * the main line or the series visibly changes thickness partway along.
    */
   test('Verify data line stroke width is 2px', {
-    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -553,7 +553,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
    * `renderForecast` about the gradient it defines but never references.
    */
   test('Verify forecast and potential render as separate dashed segments', {
-    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -605,7 +605,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
    * read off the path and the gradient is then looked up by it.
    */
   test('Verify the potential segment is painted by a gradient that exists', {
-    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -658,7 +658,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify interpolated points are dropped from the series without breaking it', {
-    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(page, BASIC_USAGE_STORY, 'en', { withInterpolatedGaps: true, duration: 0 });
     await locators.plot(page).first().waitFor({ state: 'visible' });
@@ -709,7 +709,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     };
 
     test('Verify chart auto-sizes to its container and aspect derives the height', {
-      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@responsive', '@base-components', '@flex-box'],
+      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@responsive', '@base-components', '@flex-box', '@checkbox'],
     }, async ({ page }) => {
       await test.step('Without plotWidth/plotHeight the Plot renders with a measured (non-zero) size', async () => {
         // useExplicitPlotWidth is false by default - chart receives no plotWidth/plotHeight.
@@ -736,7 +736,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify hMin clamps the aspect-derived height to the minimum', {
-      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@responsive', '@base-components', '@flex-box'],
+      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@responsive', '@base-components', '@flex-box', '@checkbox'],
     }, async ({ page }) => {
       // aspect 10 -> computed height (~width/10) is well below 120, so hMin must clamp it
       await loadPage(page, STORY, 'en', { aspect: 10, hMin: 120 });
@@ -749,7 +749,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify hMax clamps the aspect-derived height to the maximum', {
-      tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart', '@responsive', '@base-components', '@flex-box'],
+      tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart', '@responsive', '@base-components', '@flex-box', '@checkbox'],
     }, async ({ page }) => {
       // aspect 0.5 -> computed height (~2*width) is well above 180, so hMax must clamp it
       await loadPage(page, STORY, 'en', { aspect: 0.5, hMax: 180 });
@@ -762,7 +762,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify explicit plotWidth takes priority over container measurement', {
-      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@responsive', '@base-components', '@flex-box'],
+      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@responsive', '@base-components', '@flex-box', '@checkbox'],
     }, async ({ page }) => {
       // useExplicitPlotWidth passes plotWidth straight to the chart; the 500px Box is ignored for width
       await loadPage(page, STORY, 'en', { useExplicitPlotWidth: true, plotWidth: 250 });
