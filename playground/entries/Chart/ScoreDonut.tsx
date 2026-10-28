@@ -76,6 +76,16 @@ const entry: PlaygroundEntry<DonutChartJSXProps> = {
         commonChartProps: ['showTotalInTooltip'],
         legendProps: ['direction'],
       },
+      add: {
+        legendProps: {
+          shape: {
+            type: 'select',
+            value: 'Circle',
+            options: ['Checkbox', 'Circle', 'Pattern'],
+            displayName: 'Shape',
+          },
+        },
+      },
     }),
   },
   link: createGithubLink('d3-chart'),
