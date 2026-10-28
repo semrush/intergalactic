@@ -6,7 +6,7 @@ import { Row } from './Row';
 import style from './style.shadow.css';
 import type { ISelectedRows } from '../../store/SelectableRows';
 import { MergedRowsCell } from '../Body/MergedCells';
-import type { RowRoot } from '../Body/Row';
+import { RowRoot } from '../Body/Row';
 import type { DTRow, DataTableRowProps } from '../Body/Row.types';
 import { SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DataTableData } from '../DataTable/DataTable.types';
@@ -24,17 +24,37 @@ type RowGroupProps<Data extends DataTableData, UniqKeyType> = {
 };
 
 export class RowGroup<Data extends DataTableData, UniqKeyType> extends React.PureComponent<RowGroupProps<Data, UniqKeyType>> {
+  private groupedRowsMap = new Map<UniqKeyType, RowRoot<Data, UniqKeyType>>();
+
   public rowElementRef = React.createRef<HTMLDivElement>();
 
   componentDidMount() {
     const { startIndex, rowIndex, componentRef, rows } = this.props;
-    componentRef?.(startIndex + rowIndex, rows[0], this);
+    const firstGroupedRow = this.groupedRowsMap.values().next().value;
+
+    componentRef?.(startIndex + rowIndex, rows[0], firstGroupedRow ?? this);
   }
 
   componentWillUnmount() {
     const { startIndex, rowIndex, componentRef, rows } = this.props;
     componentRef?.(startIndex + rowIndex, rows[0], null);
   }
+
+  handleComponentRef = (
+    index: number,
+    row: DTRow<UniqKeyType>,
+    component: RowRoot<Data, UniqKeyType> | RowGroup<Data, UniqKeyType> | null,
+  ) => {
+    const id = row[UNIQ_ROW_KEY];
+
+    if (component) {
+      if (component instanceof RowRoot) {
+        this.groupedRowsMap.set(id, component);
+      }
+    } else {
+      this.groupedRowsMap.delete(id);
+    }
+  };
 
   render() {
     const SRowGroup = Box;
@@ -62,7 +82,7 @@ export class RowGroup<Data extends DataTableData, UniqKeyType> extends React.Pur
             <Row
               key={item[UNIQ_ROW_KEY]?.toString() ?? `gg_${groupUniqKey}_row_${i}`}
               {...getPropsToRow({ row: item, mergedRow: i > 0 ? true : false, orderedIndex: startIndex + rowIndex })}
-              componentRef={undefined}
+              componentRef={this.handleComponentRef}
               shadowVertical={shadowVertical}
             />
           );
