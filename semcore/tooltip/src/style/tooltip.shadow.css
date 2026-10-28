@@ -83,7 +83,7 @@ STooltip[data-popper-placement^='top'] SArrow {
   border-left-color: transparent !important;
 
   &::before {
-    top: -7px;
+    top: -7.4px;
     left: -6px;
 
     border-bottom: 0 transparent;
@@ -100,7 +100,7 @@ STooltip[data-popper-placement^='bottom'] SArrow {
   border-left-color: transparent !important;
 
   &::before {
-    top: 1px;
+    top: 1.4px;
     left: -6px;
 
     border-top: 0 transparent;
@@ -118,7 +118,7 @@ STooltip[data-popper-placement^='left'] SArrow {
 
   &::before {
     top: -6px;
-    left: -7px;
+    left: -7.4px;
 
     border-right: 0 transparent;
     border-top-color: transparent !important;
@@ -135,7 +135,7 @@ STooltip[data-popper-placement^='right'] SArrow {
 
   &::before {
     top: -6px;
-    left: 1px;
+    left: 1.4px;
 
     border-left: 0 transparent;
     border-top-color: transparent !important;
