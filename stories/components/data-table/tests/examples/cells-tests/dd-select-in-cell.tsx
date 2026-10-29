@@ -53,16 +53,20 @@ const Demo = (props: DDSelectInCellProps) => {
       <DataTable
         data={props.virtualScroll ? manyRows : data}
         aria-label='Access to cells'
-        hMax={200}
+        hMax={600}
         virtualScroll={props.virtualScroll}
         headerProps={props.virtualScroll ? { sticky: true } : undefined}
         columns={[
+          { name: 'id', children: 'ID' },
           { name: 'keyword', children: 'Keyword' },
           { name: 'kd', children: 'KD,%' },
           { name: 'cpc', children: 'CPC' },
           { name: 'vol', children: 'Vol.' },
         ]}
         renderCell={(props) => {
+          if (props.columnName === 'id') {
+            return props.rowIndex;
+          }
           if (props.columnName === 'keyword') {
             return (
               <Flex alignItems='center'>
