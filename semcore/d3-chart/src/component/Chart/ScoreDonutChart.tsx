@@ -124,7 +124,7 @@ class ScoreDonutChartComponent extends AbstractChart<
               dataKey={item.id}
               name={item.label}
               color={item.color}
-              active={highlightedItem === index}
+              transparent={false}
               dataHintsHandler={{
                 establishDataType: () => {
                 },
@@ -141,6 +141,7 @@ class ScoreDonutChartComponent extends AbstractChart<
           mask={`url(#${uid}-mask)`}
           uid={uid}
           patterns={false}
+          transparent={false}
           dataHintsHandler={{
             establishDataType: () => {
             },
