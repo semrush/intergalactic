@@ -18,6 +18,10 @@ SPie[transparent] {
   opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
 }
 
+SLabel {
+  overflow-wrap: anywhere;
+}
+
 SEmptyData {
   fill: var(--intergalactic-chart-data-null, oklch(0.9 0.009 234));
 }

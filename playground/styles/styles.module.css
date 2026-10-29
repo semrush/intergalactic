@@ -45,7 +45,7 @@
   .controlPanel {
     border: none;
     padding: 0;
-    grid-template-columns: 72px auto;
+    grid-template-columns: 80px auto;
   }
 
   .fullWidthItem {
