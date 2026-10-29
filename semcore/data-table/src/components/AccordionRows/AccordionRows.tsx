@@ -27,6 +27,16 @@ export class AccordionRows<Data extends DataTableData, UniqKeyType> extends Reac
     maxHeight: 0,
   };
 
+  componentDidMount(): void {
+    const { expanded, expandedForAnimation } = this.props;
+
+    if (expanded || expandedForAnimation) {
+      this.setState({
+        maxHeight: 2000, // some value, more than real window height
+      });
+    }
+  }
+
   componentDidUpdate(prevProps: Readonly<AccordionRowsProps<Data, UniqKeyType>>): void {
     const { expanded, rows, expandedForAnimation } = this.props;
 

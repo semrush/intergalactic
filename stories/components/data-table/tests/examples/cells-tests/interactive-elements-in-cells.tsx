@@ -9,13 +9,22 @@ import { DescriptionTooltip, Hint } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-const Demo = () => {
+export type InteractiveCellsProps = {
+  virtualScroll?: boolean;
+};
+
+export const interactiveCellsProps: InteractiveCellsProps = {
+  virtualScroll: false,
+};
+
+const Demo = (props: InteractiveCellsProps) => {
   return (
     <>
       <DataTable
         data={data}
         aria-label='Access to cells'
         hMax={200}
+        virtualScroll={props.virtualScroll}
         columns={[
           { name: 'keyword', children: 'Keyword' },
           { name: 'kd', children: 'KD,%' },

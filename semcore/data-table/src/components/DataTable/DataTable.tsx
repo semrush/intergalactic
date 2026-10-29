@@ -793,6 +793,11 @@ class DataTableRoot<
   handleScroll = trottle((e) => {
     if (this.asProps.virtualScroll) {
       const scrollTop = e.target.scrollTop;
+
+      if (scrollTop === this.state.scrollTop) {
+        return;
+      }
+
       const scrollDirection = scrollTop > this.state.scrollTop ? 'down' : 'up';
       this.setState({ scrollTop, scrollDirection });
     }
@@ -970,7 +975,7 @@ class DataTableRoot<
     let gridTemplateRows: string | undefined = undefined;
 
     if (virtualScroll && typeof virtualScroll !== 'boolean' && 'rowHeight' in virtualScroll) {
-      gridTemplateRows = `auto auto repeat(${this.totalRows}, minmax(${virtualScroll.rowHeight}px, auto))`;
+      gridTemplateRows = `${this.hasGroups ? 'auto auto' : 'auto'} repeat(${this.totalRows}, ${virtualScroll.rowHeight}px)`;
     }
 
     return sstyled(styles)(

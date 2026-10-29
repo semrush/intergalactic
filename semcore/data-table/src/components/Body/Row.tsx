@@ -49,7 +49,7 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   private openAccordionTimeout = 0;
   private readonly cellStyle = new Map<string, React.CSSProperties>();
 
-  rowElementRef = React.createRef<HTMLDivElement>();
+  public rowElementRef = React.createRef<HTMLDivElement>();
 
   state: State<UniqKeyType> = {
     expandedForAnimation: false,
@@ -66,8 +66,8 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   }
 
   componentDidMount() {
-    const { componentRef } = this.asProps;
-    componentRef?.(this);
+    const { orderedIndex, componentRef, row } = this.asProps;
+    componentRef?.(orderedIndex, row, this);
 
     this.setAccordion();
 
@@ -83,7 +83,8 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   }
 
   componentWillUnmount() {
-    this.asProps.componentRef?.(null);
+    const { orderedIndex, componentRef, row } = this.asProps;
+    componentRef?.(orderedIndex, row, null);
 
     this.cellStyle.clear();
   }
@@ -185,9 +186,9 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
         (Array.isArray(row[ACCORDION]) ? Math.min(50 * row[ACCORDION].length, 200) : 200);
 
     setTimeout(() => {
-      setRowHeight(index, row);
+      setRowHeight(index);
       for (let i = index; i < rowsHeightMap.size; i++) {
-        setRowHeight(i, row);
+        setRowHeight(i);
       }
     }, openDuration + 100); // we need to calculate after expanding animation
 
@@ -279,17 +280,15 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
   handleClickRow(row: DTRow<UniqKeyType>) {
     return (e: React.SyntheticEvent) => {
-      const index = row[ROW_INDEX];
-
       if (!isInteractiveElement(e.target) && row[ACCORDION] && !this.asProps.mergedRow) {
-        this.handleExpandRow(row, index);
+        this.handleExpandRow(row, this.asProps.orderedIndex);
       }
     };
   }
 
-  handleClickCell = (e: React.SyntheticEvent<HTMLElement>, opt: { row: DTRow<UniqKeyType>; rowIndex: number }) => {
+  handleClickCell = (e: React.SyntheticEvent<HTMLElement>, opt: { row: DTRow<UniqKeyType>; orderedIndex: number }) => {
     if (!isInteractiveElement(e.target)) {
-      this.handleExpandRow(opt.row, opt.rowIndex);
+      this.handleExpandRow(opt.row, opt.orderedIndex);
     }
   };
 
@@ -304,8 +303,7 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       tableRef,
       onCellClick,
       rawData,
-      flatRows,
-      variant,
+      orderedIndex,
       isAccordionRow,
       accordionRowIndex,
       selectedRows,
@@ -341,6 +339,7 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       onClick: onCellClick,
       flatRows: this.asProps.flatRows,
       theme,
+      orderedIndex,
     };
 
     if (renderCell) {
@@ -393,10 +392,9 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       extraProps.expanded = expanded;
 
       const row = props.row;
-      const rowIndex = props.rowIndex;
 
       const handleClick = (e: React.SyntheticEvent<HTMLButtonElement>) => {
-        this.handleExpandRow(row, rowIndex);
+        this.handleExpandRow(row, orderedIndex);
       };
 
       if (value?.[ACCORDION] || (cellValue instanceof MergedRowsCell && cellValue.accordion)) {
@@ -702,6 +700,7 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
             componentsMap={componentsMap}
             calculateAriaRowIndex={calculateAriaRowIndex}
             hasGroups={hasGroups}
+            orderedIndex={NaN} // we don't use it in Accordion, just required becuause of Row types
           />
         )}
       </>,
@@ -724,7 +723,7 @@ type RowComponent = DataTableRowType & {
   Cell: any;
 };
 
-export type {
+export {
   RowRoot,
 };
 
