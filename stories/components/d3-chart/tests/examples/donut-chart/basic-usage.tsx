@@ -19,6 +19,7 @@ const Demo = (props: DonutChartProps) => {
     >
       <Chart.Donut
         {...chartProps}
+        innerLabel={[chartProps.innerLabel, chartProps.innerDescription]}
         aria-label='Donut chart'
       />
     </Box>
@@ -33,6 +34,8 @@ const data = {
 
 const propsFromHelper = getChartProps<DonutChartProps>({
   data,
+  innerLabel: '71,240',
+  innerDescription: 'Description',
 });
 
 // Remove showLegend from defaultProps to allow DonutChart's internal logic to work

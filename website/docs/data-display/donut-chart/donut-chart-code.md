@@ -42,7 +42,7 @@ Use `active` property to control segments highlight.
 
 :::
 
-## Semi-donut
+## Semi-Donut
 
 To create a half-size chart, you need to specify the `halfsize` value and reduce the height of the chart by half.
 

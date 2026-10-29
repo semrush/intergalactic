@@ -31,7 +31,7 @@ SBubble[pattern][color] {
 }
 
 SBubble[transparent] {
-  opacity: 0.3;
+  opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
 }
 
 SCenter {
@@ -46,7 +46,7 @@ SCenter[color] {
 }
 
 SCenter[transparent] {
-  opacity: 0.3;
+  opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
 }
 
 SLabel {
@@ -66,5 +66,5 @@ SLabel[color] {
 }
 
 SLabel[transparent] {
-  opacity: 0.3;
+  opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
 }
