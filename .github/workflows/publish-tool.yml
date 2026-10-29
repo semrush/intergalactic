@@ -26,13 +26,13 @@ jobs:
       - name: check-not-merged-pr
         run: |
           prs=$(gh pr list \
-            --base 'release/v17' \
+            --base 'release/v18' \
             --json title \
             -A semrush-ci-whale \
-            -S 'Merge new tool version into release/v17' \
+            -S 'Merge new tool version into release/v18' \
             --jq 'length')
           if ((prs > 0)); then
-            echo "Merge exist PR with last tool release to the release/v17 first"
+            echo "Merge exist PR with last tool release to the release/v18 first"
             exit 1
           fi
   build:
@@ -153,7 +153,7 @@ jobs:
       - name: Create PR
         run: |
           gh pr create \
-            --base 'release/v17' \
+            --base 'release/v18' \
             --head '${{ needs.publish.outputs.tool_release_branch }}' \
-            --title 'Merge new tool version into release/v17' \
+            --title 'Merge new tool version into release/v18' \
             --body 'Created by automatization'
