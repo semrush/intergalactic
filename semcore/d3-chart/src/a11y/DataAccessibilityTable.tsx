@@ -18,7 +18,7 @@ export const DataAccessibilityTable: React.FC<{
     fromHints.push(...hints.fields.horizontalAxes);
     fromHints.push(...hints.fields.valueAxes);
     fromHints.push(...config.additionalFields);
-    fromHints.push(...Object.keys(hints.fields.values));
+    fromHints.push(...Array.from(hints.fields.values));
 
     fromHints = [...new Set(fromHints)].filter((key) => key in data[0]);
 

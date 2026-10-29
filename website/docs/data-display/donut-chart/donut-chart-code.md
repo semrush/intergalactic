@@ -18,11 +18,9 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 :::
 
-## Advanced usage
+## Donut with "other value"
 
-- You can draw donut and pie charts with the `Donut` component.
-- `Pie` is a separate sector.
-- `Label` is a text label inside the chart.
+- You should add custom color (use `chart-palette-order-other-data` token) by key in your data for "other value".
 
 ::: sandbox
 
@@ -87,6 +85,30 @@ Note that for ChartLegend `patterns` property works only with default `shape={'C
 
 <script lang="tsx">
   export Demo from 'stories/components/d3-chart/docs/examples/donut-chart/legend-and-pattern-fill.tsx';
+</script>
+
+:::
+
+## Score donut
+
+Shows one score on a 0–100 scale. The unfilled part of the ring is the rest of the scale.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/d3-chart/docs/examples/score-donut-chart/basic-usage.tsx';
+</script>
+
+:::
+
+## Score semi-donut
+
+Set `halfsize` and use half the plot height when the chart should read as a gauge.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/d3-chart/docs/examples/score-donut-chart/semi-donut.tsx';
 </script>
 
 :::
