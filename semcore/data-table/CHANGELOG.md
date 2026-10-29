@@ -2,6 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.1] - 2026-10-29
+
+### Fixed
+
+- Unnecessary rerenders of table rows; improved row calculation for
+virtualization.
+- Hydration errors when checking css.supports in srr mode.
+
 ## [18.0.0] - 2026-10-08
 
 ### BREAK

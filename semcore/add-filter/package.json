@@ -17,16 +17,16 @@
     "require": "./lib/cjs/index.js"
   },
   "dependencies": {
-    "@semcore/select": "^18.0.0",
+    "@semcore/select": "^18.0.1",
     "@semcore/button": "^18.0.0",
-    "@semcore/dropdown-menu": "^18.0.0",
+    "@semcore/dropdown-menu": "^18.0.1",
     "@semcore/dropdown": "^18.0.0",
     "@semcore/input": "^18.0.0",
     "@semcore/base-trigger": "^18.0.0"
   },
   "peerDependencies": {
     "@semcore/base-components": "^18.0.0",
-    "@semcore/icon": "^18.0.0"
+    "@semcore/icon": "^18.0.1"
   },
   "repository": {
     "type": "git",

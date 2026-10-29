@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.1.0] - 2026-10-29
+
+### Fixed
+
+- `final-form-focus.default is not a function` error in SSR environments
+with native ESM (e.g. Astro).
+
+### Added
+
+- `NSFeedbackRating` namespace export.
+
 ## [18.0.0] - 2026-10-08
 
 ### BREAK

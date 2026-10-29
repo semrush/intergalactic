@@ -17,7 +17,7 @@
     "require": "./lib/cjs/index.js"
   },
   "dependencies": {
-    "@semcore/card": "^18.0.0"
+    "@semcore/card": "^18.0.1"
   },
   "peerDependencies": {
     "@semcore/base-components": "^18.0.0"

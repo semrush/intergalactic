@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.1] - 2026-10-29
+
+### Changed
+
+- Default colors now resolve without the base token list attached.
+
 ## [18.0.0] - 2026-10-08
 
 ### BREAK

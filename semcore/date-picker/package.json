@@ -24,13 +24,13 @@
     "@semcore/input": "^18.0.0",
     "@semcore/input-mask": "^18.0.0",
     "@semcore/typography": "^18.0.0",
-    "@semcore/checkbox": "^18.0.0",
+    "@semcore/checkbox": "^18.0.1",
     "@semcore/tooltip": "^18.0.0",
     "dayjs": "1.8.36"
   },
   "peerDependencies": {
     "@semcore/base-components": "^18.0.0",
-    "@semcore/icon": "^18.0.0"
+    "@semcore/icon": "^18.0.1"
   },
   "repository": {
     "type": "git",

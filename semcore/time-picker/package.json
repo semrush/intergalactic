@@ -19,7 +19,7 @@
   "dependencies": {
     "@semcore/button": "^18.0.0",
     "@semcore/input": "^18.0.0",
-    "@semcore/select": "^18.0.0"
+    "@semcore/select": "^18.0.1"
   },
   "peerDependencies": {
     "@semcore/base-components": "^18.0.0"

@@ -1,3 +1,83 @@
+## [18.1.0] - 2026-10-29
+
+### @semcore/core
+
+- **Fixed** `useScrollBarWidth` being stuck at 0 when the scrollbar appears after
+mount.
+
+### @semcore/color-picker
+
+- **Changed** Default colors now resolve without the base token list attached.
+
+### @semcore/mini-chart
+
+- **Changed** Rework visual part of the components. New theme applied.
+
+### @semcore/product-head
+
+- **Added** `NSProductHead` namespace export.
+
+### @semcore/inline-edit
+
+- **Added** `NSInlineEdit` namespace export.
+
+### @semcore/feedback-form
+
+- **Fixed** `final-form-focus.default is not a function` error in SSR environments
+with native ESM (e.g. Astro).
+- **Added** `NSFeedbackRating` namespace export.
+
+### @semcore/card
+
+- **Fixed** `margin-bottom` of the Header from 12 to 0.
+
+### @semcore/spin-container
+
+- **Fixed** `inert` remained on the container after loading stopped for the
+duration of the overlay disappearing animation.
+
+### @semcore/icon
+
+- **Changed** `GoogleDataStudio` icon.
+
+### @semcore/flags
+
+- **Added** Added `ESM` export.
+
+### @semcore/dropdown-menu
+
+- **Fixed** Shadow visual artifact.
+
+### @semcore/select
+
+- **Changed** values of the `OptionCheckbox`'s width and height: from raw to
+variables.
+
+### @semcore/radio
+
+- **Changed** Value size from 16 to 20 for M size, from 20 to 24 for L size.
+
+### @semcore/d3-chart
+
+- **Changed** styles for Checkbox in `LegendItem`.
+- **Changed** Changed `duration` and `ease` function for active Donut pie animation.
+Now it's `duration=150` and `ease=easeCubicOut`.
+- **Changed** Design of `Reference*` components in Charts.
+- **Added** `referenceLine` and `referenceArea` properties to the `Chart.Line`.
+- **Added** Marked all Reference* components as deprecated.
+- **Fixed** Incorrect opacity value for Line.Area component.
+- **Changed** Hovered tick is now hidden while another tick is focused.
+
+### @semcore/checkbox
+
+- **Changed** Value size from 16 to 20 for M size, from 20 to 24 for L size.
+
+### @semcore/data-table
+
+- **Fixed** Unnecessary rerenders of table rows; improved row calculation for
+virtualization.
+- **Fixed** Hydration errors when checking css.supports in srr mode.
+
 ## [18.0.0] - 2026-10-08
 
 ### @semcore/illustration
