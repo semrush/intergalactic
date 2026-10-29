@@ -1,12 +1,50 @@
 import { Box } from '@semcore/ui/base-components';
 import type { BarChartProps } from '@semcore/ui/d3-chart';
-import { Chart } from '@semcore/ui/d3-chart';
+import { Chart, DATA_TYPE, FORECAST, GOOD, HIGHLIGHT_DOT, interpolateValue, POTENTIAL, INSIGHTFUL } from '@semcore/ui/d3-chart';
 import React from 'react';
 
 import { getChartProps, getPropsToChart } from '../stories_props_helper';
 
 const Demo = (props: BarChartProps) => {
-  const { plotWidth, plotHeight, ...chartProps } = getPropsToChart(props);
+  const {
+    plotWidth, plotHeight,
+    withReferenceLine,
+    withReferenceArea,
+    referenceLineValue,
+    referenceLineArea,
+    referenceLineCount,
+    referenceLinesOverlap,
+    referenceAreaStart,
+    referenceAreaEnd,
+    referenceAreaUse,
+    referenceAreaTitle,
+    referenceAreaSubTitle,
+    ...chartProps
+  } = getPropsToChart(props);
+
+  const barProps = {
+    ...chartProps,
+  };
+
+  if (withReferenceLine) {
+    const firstValue = referenceLineValue ?? 3;
+    const step = referenceLinesOverlap ? 0 : 5;
+
+    barProps.referenceLine = referenceLineCount
+      ? Array.from({ length: referenceLineCount }, (_, i) => ({ value: firstValue + i * step, area: referenceLineArea }))
+      : { value: firstValue, area: referenceLineArea };
+  }
+
+  if (withReferenceArea) {
+    const use = referenceAreaUse ?? 'insight' as const;
+
+    barProps.referenceArea = {
+      value: [referenceAreaStart ?? 12, referenceAreaEnd ?? 16],
+      use,
+      title: referenceAreaTitle || undefined,
+      subTitle: referenceAreaSubTitle || undefined,
+    };
+  }
 
   return (
     <Box
@@ -18,7 +56,7 @@ const Demo = (props: BarChartProps) => {
       overflow='auto'
     >
       <Chart.Bar
-        {...chartProps}
+        {...barProps}
         aria-label='Bar chart'
       />
     </Box>
@@ -29,8 +67,8 @@ const data = [
   { category: 'Category 0', bar: 2 },
   { category: 'Category 1', bar: 5 },
   { category: 'Category 2', bar: 7 },
-  { category: 'Category 3', bar: 4 },
-  { category: 'Category 4', bar: 8 },
+  { category: 'Category 3', bar: 7, [DATA_TYPE]: FORECAST },
+  { category: 'Category 4', bar: 9, [DATA_TYPE]: POTENTIAL },
 ];
 
 export const defaultProps = getChartProps<BarChartProps>({
@@ -47,6 +85,14 @@ export const defaultProps = getChartProps<BarChartProps>({
       { x: 'Category 4' as string, y: 8 as number },
     ],
   },
+  withReferenceLine: false,
+  withReferenceArea: false,
+  referenceLineValue: 'Category 1',
+  referenceLinesOverlap: false,
+  referenceAreaStart: 'Category 2',
+  referenceAreaEnd: 'Category 4',
+  referenceAreaTitle: '',
+  referenceAreaSubTitle: '',
 } as any);
 
 Demo.defaultProps = defaultProps;

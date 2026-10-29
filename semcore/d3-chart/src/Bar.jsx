@@ -4,10 +4,11 @@ import { transition } from 'd3-transition';
 import React from 'react';
 
 import AnimatedClipPath from './AnimatedClipPath';
+import { DATA_TYPE, FORECAST, POTENTIAL } from './component/Chart';
 import createElement from './createElement';
-import { PatternFill } from './Pattern';
+import { ForecastGradient, PatternFill, PotentialGradient, StrokeMask } from './Pattern';
 import style from './style/bar.shadow.css';
-import { scaleToBand, roundedPath } from './utils';
+import { scaleToBand, roundedPath, getDataOfType } from './utils';
 
 export const MIN_HEIGHT = 2;
 
@@ -112,29 +113,44 @@ class BarRoot extends Component {
       dataHintsHandler.specifyDataRowFields(x, y);
     }
 
+    let mask = undefined;
+
+    if (d[DATA_TYPE] === POTENTIAL) {
+      mask = `url(#${uid}-forecast-mask)`;
+    }
+    if (d[DATA_TYPE] === FORECAST) {
+      mask = `url(#${uid}-forecast-gradient)`;
+    }
+
     return (
       <React.Fragment key={`bar-${i}`}>
         {sstyled(styles)(
-          <SBar
-            aria-hidden
-            render='path'
-            clipPath={`url(#${uid})`}
-            __excludeProps={['data', 'scale', 'value', 'onClick', 'offset']}
-            childrenPosition='above'
-            value={d}
-            index={i}
-            hide={hide}
-            pattern={patterns ? `url(#${uid}-${i}-pattern)` : undefined}
-            color={resolveColor(color)}
-            x={barX}
-            y={barY}
-            width={width}
-            height={height}
-            d={dSvg}
-            onClickCapture={handleClick}
-            use:duration={`${duration}ms`}
-            transparent={transparent}
-          />,
+          <>
+            <SBar
+              aria-hidden
+              render='path'
+              clipPath={`url(#${uid})`}
+              __excludeProps={['data', 'scale', 'value', 'onClick', 'offset']}
+              childrenPosition='above'
+              value={d}
+              index={i}
+              hide={hide}
+              pattern={patterns ? `url(#${uid}-${i}-pattern)` : undefined}
+              color={resolveColor(color)}
+              mask={mask}
+              x={barX}
+              y={barY}
+              width={width}
+              height={height}
+              d={dSvg}
+              onClickCapture={handleClick}
+              use:duration={`${duration}ms`}
+              transparent={transparent}
+            />
+            {/* <PotentialGradient id={`${uid}-potential-gradient-line`} type='line' /> */}
+            <ForecastGradient id={`${uid}-forecast-gradient`} />
+            <StrokeMask id={`${uid}-forecast-mask`} />
+          </>,
         )}
         {patterns && (
           <PatternFill
@@ -150,6 +166,7 @@ class BarRoot extends Component {
 
   render() {
     const { data, uid, size, duration } = this.asProps;
+
     return (
       <>
         {data.map(this.renderBar.bind(this))}

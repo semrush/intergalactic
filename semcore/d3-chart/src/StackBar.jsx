@@ -74,7 +74,7 @@ class StackBarRoot extends Component {
       const isEmptyValue = Number(d[y] - (d[XY0] ?? 0)) === 0;
 
       if (isEmptyValue || absHeight >= hMin) {
-        this.offsetBars[seriesIndex][i] = 0;
+        this.offsetBars[seriesIndex][i] = isEmptyValue ? 0 : 2;
       } else {
         const offsetValue = hMin - absHeight;
         this.offsetBars[seriesIndex][i] = d[y] > 0 ? offsetValue : -offsetValue;
