@@ -113,7 +113,7 @@ class ScoreDonutChartComponent extends AbstractChart<
     const checkedLegendItems = dataDefinitions.filter((item) => item.checked);
 
     this.dataHintsHandlers.establishDataType('values-set');
-    this.dataHintsHandlers.describeValueEntity('', '20%');
+    this.dataHintsHandlers.describeValueEntity('', `${this.data.value}%`);
 
     return (
       <Donut onClick={onClickPie} halfsize={halfsize} innerRadius={innerRadius}>
