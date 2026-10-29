@@ -100,7 +100,7 @@ const CustomSelect = () => {
 type SortableColumn = Exclude<keyof typeof sortingData[0], 'keyword'>;
 
 const Demo = (props: MultiLevelHeaderProps) => {
-  const [sort, setSort] = React.useState<DataTableSort<keyof typeof sortingData[0]>>(['kd', 'desc']);
+  const [sort, setSort] = React.useState<DataTableSort<PropertyKey>>(['kd', 'desc']);
   const sortedData = React.useMemo(
     () =>
       repeatRows(sortingData, props.rowsCount).sort((aRow, bRow) => {
@@ -118,13 +118,14 @@ const Demo = (props: MultiLevelHeaderProps) => {
     [props.rowsCount],
   );
   const isSorting = props.header === 'bordersAndSorting';
+  const data: TableProps['data'] = isSorting ? sortedData : repeatedInteractiveData;
 
   return (
     <DataTable
       key={props.header}
       virtualScroll
       aria-label='Multi level header'
-      data={isSorting ? sortedData : repeatedInteractiveData}
+      data={data}
       sort={isSorting ? sort : undefined}
       onSortChange={isSorting ? setSort : undefined}
       h={props.h}
