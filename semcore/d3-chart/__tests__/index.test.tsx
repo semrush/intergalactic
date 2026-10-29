@@ -1049,7 +1049,7 @@ describe('Chart.ScoreDonut', () => {
       expect(() => renderWithLegend({ [key]: [] })).not.toThrow();
     });
 
-    test('should start unchecked with defaultChecked false and not draw the value pie', async () => {
+    test('should keep the value pie hidden with defaultChecked false and the default Circle legend', async () => {
       const { container } = renderWithLegend({ defaultChecked: false });
       const masked = scoreDonutPies(container).filter((pie) => pie.getAttribute('mask'));
 
@@ -1075,14 +1075,11 @@ describe('Chart.ScoreDonut', () => {
       expect(pieSweepDegrees(scoreDonutPies(container)[0])).toBeCloseTo(144, 0);
     });
 
-    // B3: the other pie is drawn even when the value item is unchecked.
-    test.fails('should draw only the empty state when the value item is unchecked', async () => {
-      const { container, getByRole } = renderScoreDonut({ showLegend: true });
+    test('should render a non-toggleable Circle legend by default', async () => {
+      const { queryByRole, getByText } = renderScoreDonut({ showLegend: true });
 
-      await userEvent.click(getByRole('checkbox'));
-
-      expect(queryByAttribute('data-ui-name', container, 'Donut.EmptyData')).not.toBeNull();
-      expect(scoreDonutPies(container)).toHaveLength(0);
+      expect(getByText('value')).toBeTruthy();
+      expect(queryByRole('checkbox')).toBeNull();
     });
   });
 

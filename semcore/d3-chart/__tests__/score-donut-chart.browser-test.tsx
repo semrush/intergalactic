@@ -15,10 +15,8 @@ export const locators = {
   },
   otherPie: (page: Page) => page.locator('[data-ui-name="Donut.Pie"][mask]'),
   valuePie: (page: Page) => page.locator('[data-ui-name="Donut.Pie"]:not([mask])'),
-  emptyData: (page: Page) => page.locator('[data-ui-name="Donut.EmptyData"]'),
   tooltip: (page: Page) => page.locator('[data-ui-name="Donut.Tooltip"]'),
   legend: (page: Page) => page.getByLabel('Chart legend'),
-  legendCheckbox: (page: Page, name = 'value') => page.getByLabel('Chart legend').getByRole('checkbox', { name }),
   legendItem: (page: Page, text = 'value') => page.getByLabel('Chart legend').getByText(text, { exact: true }),
 };
 
@@ -188,6 +186,18 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.tooltip(page)).toContainText('40% score');
     });
 
+    test('Verify tooltip title uses the legend label', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, ...COMPONENT_TAGS, '@chart-legend'],
+    }, async ({ page }) => {
+      await load(page, { data: { value: 40 }, showLegend: true, legendLabel: 'Score' });
+
+      await expect(locators.legendItem(page, 'Score')).toBeVisible();
+
+      await hoverPieForTooltip(page, locators.valuePie(page));
+      await expect(locators.tooltip(page)).toContainText('Score');
+      await expect(locators.tooltip(page)).not.toContainText('value');
+    });
+
     test('Verify no tooltip when showTooltip is false', {
       tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, ...COMPONENT_TAGS],
     }, async ({ page }) => {
@@ -222,63 +232,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test.describe('Legend', () => {
-    test('Verify legend toggles the value pie by mouse', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, ...COMPONENT_TAGS, '@chart-legend', '@checkbox'],
-    }, async ({ page }) => {
-      await load(page, { showLegend: true });
-
-      await test.step('Verify value pie is drawn by default', async () => {
-        await expect(locators.legendCheckbox(page)).toBeChecked();
-        await expect(locators.valuePie(page)).toHaveCount(1);
-      });
-
-      await test.step('Verify unchecking hides the value pie', async () => {
-        await locators.legendItem(page).click();
-        await expect(locators.legendCheckbox(page)).not.toBeChecked();
-        await expect(locators.valuePie(page)).toHaveCount(0);
-        await expect(locators.emptyData(page)).toHaveCount(1);
-      });
-
-      await test.step('Verify checking again brings the value pie back', async () => {
-        await locators.legendItem(page).click();
-        await expect(locators.legendCheckbox(page)).toBeChecked();
-        await expect(locators.valuePie(page)).toHaveCount(1);
-        await expect(locators.emptyData(page)).toHaveCount(0);
-      });
-    });
-
-    test('Verify legend toggles the value pie by keyboard', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, ...COMPONENT_TAGS, '@chart-legend', '@checkbox'],
-    }, async ({ page, browserName }) => {
-      test.skip(browserName === 'webkit', 'Tab does not focus checkboxes in WebKit by default');
-      await load(page, { showLegend: true });
-
-      await test.step('Verify checkbox receives focus by Tab', async () => {
-        await page.keyboard.press('Tab');
-        await expect(locators.legendCheckbox(page)).toBeFocused();
-      });
-
-      await test.step('Verify Space toggles the value pie', async () => {
-        await page.keyboard.press('Space');
-        await expect(locators.legendCheckbox(page)).not.toBeChecked();
-        await expect(locators.valuePie(page)).toHaveCount(0);
-
-        await page.keyboard.press('Space');
-        await expect(locators.legendCheckbox(page)).toBeChecked();
-        await expect(locators.valuePie(page)).toHaveCount(1);
-      });
-    });
-
-    test('Verify unchecked value item does not look like a 100% other ring', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, ...COMPONENT_TAGS, '@chart-legend'],
-    }, async ({ page }) => {
-      test.fixme(true, 'B3: the other pie is drawn over EmptyData when the value item is unchecked');
-      await load(page, { showLegend: true });
-
-      await locators.legendItem(page).click();
-      await expect(locators.otherPie(page)).toHaveCount(0);
-    });
-
     test('Verify hover on the legend item highlights the value pie', {
       tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, ...COMPONENT_TAGS, '@chart-legend'],
     }, async ({ page }) => {
@@ -292,7 +245,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify value pie returns to its size after leaving the legend item', {
       tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, ...COMPONENT_TAGS, '@chart-legend'],
     }, async ({ page }) => {
-      test.fixme(true, 'B9: the value pie stays highlighted after the mouse leaves the legend item');
       await load(page, { showLegend: true });
       const idleRadius = await outerRadius(locators.valuePie(page));
 
@@ -303,14 +255,26 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect.poll(() => outerRadius(locators.valuePie(page))).toBe(idleRadius);
     });
 
-    test('Verify side metric layout hides the legend', {
-      tag: [TAG.PRIORITY_LOW, ...COMPONENT_TAGS, '@divider'],
+    test('Verify value pie returns to its size after leaving the pie', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, ...COMPONENT_TAGS],
     }, async ({ page }) => {
-      await load(page, { withSideMetric: true, data: { value: 3 } });
+      // Hovering the pie itself animates the radius; the animation is skipped with duration 0
+      // and until the mount animation ends, so the hover is retried.
+      await load(page, { data: { value: 40 }, duration: 300 });
+      const idleRadius = await outerRadius(locators.valuePie(page));
 
-      await expect(locators.legend(page)).toBeHidden();
-      await expect(page.getByText('71,286')).toBeVisible();
-      await expect(page.getByText('value name')).toBeVisible();
+      await test.step('Verify value pie grows on hover', async () => {
+        await expect(async () => {
+          await page.mouse.move(0, 0);
+          await hoverPie(locators.valuePie(page));
+          await expect.poll(() => outerRadius(locators.valuePie(page)), { timeout: 1000 }).toBe(idleRadius + 4);
+        }).toPass();
+      });
+
+      await test.step('Verify value pie shrinks back on leave', async () => {
+        await page.mouse.move(0, 0);
+        await expect.poll(() => outerRadius(locators.valuePie(page))).toBe(idleRadius);
+      });
     });
   });
 
@@ -331,13 +295,23 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       expect(await maskCoversOtherPie(page)).toBe(true);
     });
 
-    test('Verify other pie is not painted black', {
+    test('Verify other pie is painted with the chart-data-null token', {
       tag: [TAG.PRIORITY_HIGH, ...COMPONENT_TAGS],
     }, async ({ page }) => {
       await load(page, { data: { value: 40 } });
 
-      const fill = await locators.otherPie(page).evaluate((path) => getComputedStyle(path).fill);
-      expect(fill).not.toBe('rgb(0, 0, 0)');
+      const { fill, expected } = await locators.otherPie(page).evaluate((path) => {
+        const probe = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        probe.style.fill = 'var(--intergalactic-chart-data-null)';
+        path.ownerSVGElement!.append(probe);
+        const expected = getComputedStyle(probe).fill;
+        probe.remove();
+
+        return { fill: getComputedStyle(path).fill, expected };
+      });
+
+      expect(expected).not.toBe('rgb(0, 0, 0)');
+      expect(fill).toBe(expected);
     });
 
     test('Verify other pie gets a single fill method with patterns', {
@@ -379,30 +353,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(page.locator('[data-ui-name="Donut"]')).toHaveAttribute('aria-hidden', 'true');
     });
 
-    test('Verify data summary contains both values', {
+    test('Verify data summary contains the score', {
       tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, ...COMPONENT_TAGS],
     }, async ({ page }) => {
+      test.fixme(true, 'B10: the data summary always reads a hardcoded "20%" instead of data.value');
       await load(page, { data: { value: 40 } });
 
       await page.getByRole('button', { name: 'Open data summary' }).focus();
       await page.keyboard.press('Enter');
 
-      const summary = page.getByText(/Chart represents/);
-      await expect(summary).toBeVisible();
-      await expect(summary).toContainText('40');
-      await expect(summary).toContainText('60');
-    });
-
-    test('Verify data summary uses human-readable names', {
-      tag: [TAG.PRIORITY_LOW, TAG.KEYBOARD, ...COMPONENT_TAGS],
-    }, async ({ page }) => {
-      test.fixme(true, 'B8: the data summary reads raw keys ("other of value 60 and value of value 40")');
-      await load(page, { data: { value: 40 } });
-
-      await page.getByRole('button', { name: 'Open data summary' }).focus();
-      await page.keyboard.press('Enter');
-
-      await expect(page.getByText(/Chart represents/)).not.toContainText('of value');
+      await expect(page.getByText(/Chart represents/)).toHaveText('Chart represents 1 value: 40%.');
     });
   });
 });

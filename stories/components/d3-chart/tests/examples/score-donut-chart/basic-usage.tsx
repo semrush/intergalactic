@@ -30,10 +30,16 @@ type ScoreDonutChartStoryProps = Omit<ScoreDonutChartProps, 'patterns'> & {
   /** Set to true to replace the built-in tooltip value formatter with `formatValue`. */
   useCustomValueFormatter?: boolean;
   /**
-   * Sets `legendProps.legendMap.value.label`. Empty string keeps the default `value` label.
-   * It is the only way to reach the `legendData.label` branch of `getDefaultDataDefinitions`.
+   * Sets `legendProps.legendMap.value.label`, which renames the item in the legend and the tooltip
+   * title. Empty string keeps the default `value` label. Ignored with `showLegend: false`: the
+   * props union forbids `legendProps` there.
    */
   legendLabel?: string;
+  /**
+   * Sets `tooltipTitleFormatter` to return this text. Empty string keeps the legend label.
+   * Works with any `showLegend`, including the side metric layout.
+   */
+  tooltipTitle?: string;
   /**
    * Hides the legend and renders a `Metric` (value + diff), a description and a divider to the
    * right of the donut, as in the "Donut chart + ChartLegend" Figma layout. The chart has no
@@ -45,6 +51,7 @@ type ScoreDonutChartStoryProps = Omit<ScoreDonutChartProps, 'patterns'> & {
 /** Storybook args: the story props plus the flattened legend type the helper un-flattens. */
 type ScoreDonutChartStoryArgs = ScoreDonutChartStoryProps & {
   'legendProps.legendType'?: 'Flex' | 'Table';
+  'legendProps.shape'?: 'Checkbox' | 'Circle' | 'Pattern';
 };
 
 type DemoComponent = ((props: ScoreDonutChartStoryArgs) => React.ReactElement) & {
@@ -58,20 +65,19 @@ const Demo: DemoComponent = (props: ScoreDonutChartStoryArgs) => {
     withInnerLabel,
     useCustomValueFormatter,
     legendLabel,
+    tooltipTitle,
     withSideMetric,
     ...chartProps
   } = getPropsToChart<ScoreDonutChartStoryProps>(props);
 
   const typedChartProps = chartProps as ScoreDonutChartProps;
   const { legendProps: _legendProps, ...chartPropsWithoutLegend } = typedChartProps;
-  // A custom legend label is meaningful only with a visible legend, so the override also
-  // pins `showLegend: true` — the branch of the props union that accepts `legendProps`.
   const resolvedChartProps: ScoreDonutChartProps = withSideMetric
     ? { ...chartPropsWithoutLegend, showLegend: false }
     : legendLabel && typedChartProps.showLegend !== false
       ? {
           ...typedChartProps,
-          showLegend: true,
+          showLegend: typedChartProps.showLegend as true | undefined,
           legendProps: { ...typedChartProps.legendProps, legendMap: { value: { label: legendLabel } } },
         }
       : typedChartProps;
@@ -97,6 +103,7 @@ const Demo: DemoComponent = (props: ScoreDonutChartStoryArgs) => {
           }
         : {})}
       {...(useCustomValueFormatter ? { tooltipValueFormatter: formatValue } : {})}
+      {...(tooltipTitle ? { tooltipTitleFormatter: () => tooltipTitle } : {})}
       // The Figma layout uses a 180×180 donut; in a row the chart cannot measure its own size.
       {...(withSideMetric ? { plotWidth: 180, plotHeight: 180, w: 180, flex: 'none' } : {})}
       onClickPie={onClickPieHandler}
@@ -142,10 +149,12 @@ export const defaultProps: ScoreDonutChartStoryArgs = {
     withInnerLabel: false,
     useCustomValueFormatter: false,
     legendLabel: '',
+    tooltipTitle: '',
     withSideMetric: false,
   }),
-  // The component defaults to a Table legend; the helper's baseline is Flex.
+  // The component defaults to a Table legend with Circle items; the helper's baseline is Flex with Checkbox.
   'legendProps.legendType': 'Table',
+  'legendProps.shape': 'Circle',
 };
 
 Demo.defaultProps = defaultProps;
