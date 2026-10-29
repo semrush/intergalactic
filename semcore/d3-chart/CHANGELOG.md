@@ -2,6 +2,25 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.1.0] - 2026-10-29
+
+### Changed
+
+- styles for Checkbox in `LegendItem`.
+- Changed `duration` and `ease` function for active Donut pie animation.
+Now it's `duration=150` and `ease=easeCubicOut`.
+- Design of `Reference*` components in Charts.
+- Hovered tick is now hidden while another tick is focused.
+
+### Added
+
+- `referenceLine` and `referenceArea` properties to the `Chart.Line`.
+- Marked all Reference* components as deprecated.
+
+### Fixed
+
+- Incorrect opacity value for Line.Area component.
+
 ## [18.0.0] - 2026-10-08
 
 ### BREAK

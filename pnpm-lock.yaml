@@ -369,13 +369,13 @@ importers:
         specifier: ^18.0.0
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../dropdown-menu
       '@semcore/input':
         specifier: ^18.0.0
         version: link:../input
       '@semcore/select':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../select
     devDependencies:
       '@semcore/base-components':
@@ -692,7 +692,7 @@ importers:
         specifier: 4.1.13
         version: 4.1.13
       '@semcore/checkbox':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../checkbox
       '@semcore/divider':
         specifier: ^18.0.0
@@ -780,7 +780,7 @@ importers:
         specifier: ^18.0.0
         version: link:../button
       '@semcore/checkbox':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../checkbox
       '@semcore/divider':
         specifier: ^18.0.0
@@ -844,7 +844,7 @@ importers:
         specifier: ^18.0.0
         version: link:../button
       '@semcore/checkbox':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../checkbox
       '@semcore/divider':
         specifier: ^18.0.0
@@ -911,7 +911,7 @@ importers:
   semcore/drag-and-drop:
     dependencies:
       '@semcore/card':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../card
     devDependencies:
       '@semcore/badge':
@@ -1036,7 +1036,7 @@ importers:
         specifier: ^18.0.0
         version: link:../button
       '@semcore/checkbox':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../checkbox
       '@semcore/input':
         specifier: ^18.0.0
@@ -1048,10 +1048,10 @@ importers:
         specifier: ^18.0.0
         version: link:../pills
       '@semcore/radio':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../radio
       '@semcore/select':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../select
       '@semcore/switch':
         specifier: ^18.0.0
@@ -1107,7 +1107,7 @@ importers:
         specifier: ^18.0.0
         version: link:../button
       '@semcore/checkbox':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../checkbox
       '@semcore/illustration':
         specifier: ^18.0.0
@@ -1128,7 +1128,7 @@ importers:
         specifier: ^18.0.0
         version: link:../notice-bubble
       '@semcore/spin-container':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../spin-container
       '@semcore/textarea':
         specifier: ^18.0.0
@@ -1409,7 +1409,7 @@ importers:
   semcore/link:
     dependencies:
       '@semcore/icon':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../icon
       '@semcore/typography':
         specifier: ^18.0.0
@@ -1637,7 +1637,7 @@ importers:
         specifier: ^18.0.0
         version: link:../button
       '@semcore/checkbox':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../checkbox
       '@semcore/divider':
         specifier: ^18.0.0
@@ -1646,7 +1646,7 @@ importers:
         specifier: ^18.0.0
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../dropdown-menu
       '@semcore/input':
         specifier: ^18.0.0
@@ -1841,7 +1841,7 @@ importers:
         specifier: ^18.0.0
         version: link:../input
       '@semcore/select':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../select
     devDependencies:
       '@semcore/base-components':
@@ -1914,28 +1914,28 @@ importers:
         specifier: ^18.0.0
         version: link:../button
       '@semcore/card':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../card
       '@semcore/carousel':
         specifier: ^18.0.0
         version: link:../carousel
       '@semcore/checkbox':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../checkbox
       '@semcore/color-picker':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../color-picker
       '@semcore/core':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../core
       '@semcore/counter':
         specifier: ^18.0.0
         version: link:../counter
       '@semcore/d3-chart':
-        specifier: ^18.0.0
+        specifier: ^18.1.0
         version: link:../d3-chart
       '@semcore/data-table':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../data-table
       '@semcore/date-picker':
         specifier: ^18.0.0
@@ -1953,7 +1953,7 @@ importers:
         specifier: ^18.0.0
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../dropdown-menu
       '@semcore/ellipsis':
         specifier: ^18.0.0
@@ -1968,22 +1968,22 @@ importers:
         specifier: ^18.0.0
         version: link:../feature-popover
       '@semcore/feedback-form':
-        specifier: ^18.0.0
+        specifier: ^18.1.0
         version: link:../feedback-form
       '@semcore/flags':
-        specifier: ^18.0.0
+        specifier: ^18.1.0
         version: link:../flags
       '@semcore/fullscreen-modal':
         specifier: ^18.0.0
         version: link:../fullscreen-modal
       '@semcore/icon':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../icon
       '@semcore/illustration':
         specifier: ^18.0.0
         version: link:../illustration
       '@semcore/inline-edit':
-        specifier: ^18.0.0
+        specifier: ^18.1.0
         version: link:../inline-edit
       '@semcore/inline-input':
         specifier: ^18.0.0
@@ -2004,7 +2004,7 @@ importers:
         specifier: ^18.0.0
         version: link:../link
       '@semcore/mini-chart':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../mini-chart
       '@semcore/modal':
         specifier: ^18.0.0
@@ -2022,19 +2022,19 @@ importers:
         specifier: ^18.0.0
         version: link:../pills
       '@semcore/product-head':
-        specifier: ^18.0.0
+        specifier: ^18.1.0
         version: link:../product-head
       '@semcore/progress-bar':
         specifier: ^18.0.0
         version: link:../progress-bar
       '@semcore/radio':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../radio
       '@semcore/radio-cards':
         specifier: ^18.0.1
         version: link:../radio-cards
       '@semcore/select':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../select
       '@semcore/side-panel':
         specifier: ^18.0.0
@@ -2049,7 +2049,7 @@ importers:
         specifier: ^18.0.0
         version: link:../spin
       '@semcore/spin-container':
-        specifier: ^18.0.0
+        specifier: ^18.0.1
         version: link:../spin-container
       '@semcore/switch':
         specifier: ^18.0.0
