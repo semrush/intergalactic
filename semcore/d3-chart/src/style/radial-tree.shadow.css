@@ -12,7 +12,7 @@ SLine[stroke] {
 }
 
 SLine[transparent] {
-  opacity: 0.3;
+  opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
 }
 
 SCap {
@@ -25,11 +25,11 @@ SCap[pattern] {
 }
 
 SCap[transparent] {
-  opacity: 0.3;
+  opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
 }
 
 SIcon[transparent] {
-  opacity: 0.3;
+  opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
 }
 
 SLabel {
@@ -37,7 +37,7 @@ SLabel {
 }
 
 SLabel[transparent] {
-  opacity: 0.3;
+  opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
 }
 
 SRadian:hover SLabel {

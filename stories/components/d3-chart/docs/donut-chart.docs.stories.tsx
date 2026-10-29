@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicUsageExample from './examples/donut-chart/basic-usage';
 import DonutExample from './examples/donut-chart/donut';
-import DonutControlledHighlightExample from './examples/donut-chart/donut-controlled-highlight';
 import EdgeCasesExample from './examples/donut-chart/edge-cases';
 import LegendAndPatternFillExample from './examples/donut-chart/legend-and-pattern-fill';
 import SemiDonutExample from './examples/donut-chart/semi-donut';
@@ -19,10 +18,6 @@ export const Donut: StoryObj = {
 
 export const BasicUsage: StoryObj = {
   render: BasicUsageExample,
-};
-
-export const DonutControlledHighlight: StoryObj = {
-  render: DonutControlledHighlightExample,
 };
 
 export const EdgeCases: StoryObj = {

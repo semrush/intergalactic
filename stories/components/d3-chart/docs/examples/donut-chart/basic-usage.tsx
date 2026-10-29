@@ -6,7 +6,7 @@ import DonutMockData from '../../../__mocks__/donut';
 const Demo = () => {
   return (
     <div style={{ width: '450px' }}>
-      <Chart.Donut plotWidth={300} plotHeight={300} data={data} aria-label='Donut chart' />
+      <Chart.Donut plotWidth={300} plotHeight={180} data={data} aria-label='Donut chart'ы />
     </div>
   );
 };

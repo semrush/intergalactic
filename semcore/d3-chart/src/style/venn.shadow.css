@@ -28,7 +28,7 @@ SCircle[pattern][color] {
 }
 
 SCircle[transparent] {
-  opacity: 0.3;
+  opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
 }
 
 SIntersection {
@@ -42,5 +42,5 @@ SIntersection {
 }
 
 SIntersection[transparent] {
-  opacity: 0.3;
+  opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
 }

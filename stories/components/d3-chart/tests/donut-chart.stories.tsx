@@ -29,6 +29,8 @@ export const DonutProps = {
     halfsize: { control: { type: 'boolean' } },
     patterns: { control: { type: 'boolean' } },
     showLabel: { control: { type: 'boolean' } },
+    labelX: { control: { type: 'text' } },
+    labelY: { control: { type: 'text' } },
     showTooltip: { control: { type: 'boolean' } },
     data: { control: { type: 'object' } },
   },

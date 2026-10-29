@@ -1,5 +1,4 @@
 import { Chart } from '@semcore/ui/d3-chart';
-import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 import { getDefaultChartControls } from './common/controls';
@@ -13,7 +12,9 @@ type DonutChartProps = {
   legendProps: Omit<LegendChartProps, 'direction'>;
   donutProps: {
     halfsize: boolean;
-    innerLabel: string;
+    showInnerLabel: boolean;
+    label: string;
+    description: string;
   };
 };
 export type DonutChartJSXProps = JSXProps<DonutChartProps>;
@@ -25,6 +26,7 @@ const data = {
 };
 
 function getJSX(props: DonutChartJSXProps) {
+  const { halfsize, showInnerLabel, label, description } = props.donutProps;
   const legendProps = {
     ...props.legendProps,
     legendMap: {
@@ -35,20 +37,12 @@ function getJSX(props: DonutChartJSXProps) {
   };
   return (
     <Chart.Donut
-      plotWidth={300}
-      plotHeight={200}
+      plotWidth={180}
+      plotHeight={halfsize ? 90 : 180}
       data={data}
       aria-label='Donut chart'
-      {...props.donutProps}
-      innerLabel={(
-        props.donutProps.halfsize
-          ? (
-              <Text tag='tspan' dy='-1em'>
-                {props.donutProps.innerLabel}
-              </Text>
-            )
-          : props.donutProps.innerLabel
-      )}
+      halfsize={halfsize}
+      {...(showInnerLabel ? { innerLabel: [label, description] as [string, string] } : {})}
       {...props.commonChartProps}
       {...(props.legendProps && {
         legendProps,
@@ -71,10 +65,22 @@ const entry: PlaygroundEntry<DonutChartJSXProps> = {
           value: false,
           displayName: 'Half size',
         },
-        innerLabel: {
+        showInnerLabel: {
+          type: 'boolean',
+          value: true,
+          displayName: 'Inner label',
+        },
+        label: {
           type: 'text',
-          value: 'Example',
-          displayName: 'Inner Label',
+          value: 'Metric',
+          displayName: 'Label',
+          visibleIf: [{ dependsOn: 'showInnerLabel.donutProps', equals: true }],
+        },
+        description: {
+          type: 'text',
+          value: 'Description',
+          displayName: 'Description',
+          visibleIf: [{ dependsOn: 'showInnerLabel.donutProps', equals: true }],
         },
       },
     },

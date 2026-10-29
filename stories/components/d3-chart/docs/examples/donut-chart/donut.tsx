@@ -7,14 +7,17 @@ import DonutMockData from '../../../__mocks__/donut';
 
 const Demo = () => {
   return (
-    <Plot width={300} height={300} data={data}>
+    <Plot width={180} height={180} data={data}>
       <Donut>
         <Donut.Pie dataKey='a' name='Pie 1' />
         <Donut.Pie dataKey='b' name='Pie 2' />
         <Donut.Pie dataKey='c' name='Pie 3' />
         <Donut.Label>
-          <Text tag='tspan' fill='text-primary' size={400}>
-            Example
+          <Text tag='tspan' x='0' dy='-1.2em' fill='text-primary' size={500} fontWeight={500}>
+            71,240
+          </Text>
+          <Text tag='tspan' x='0' dy='1.2em' fill='text-secondary' size={200}>
+            Engagements
           </Text>
         </Donut.Label>
       </Donut>

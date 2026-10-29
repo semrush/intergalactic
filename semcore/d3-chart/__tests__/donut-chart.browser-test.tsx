@@ -164,29 +164,6 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 
-  test('Verify donut controlled highlight interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
-  }, async ({ page }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/docs/examples/donut-chart/donut-controlled-highlight.tsx',
-      'en',
-    );
-
-    await test.step('Verify highlights by default in controlled mode', async () => {
-      await locators.plot(page).waitFor({ state: 'visible' });
-      await page.waitForTimeout(500);// wait for animation
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify added highlighted section by checkbox click', async () => {
-      const pie0 = page.getByText('Option C');
-      await pie0.click();
-      await page.waitForTimeout(200);// wait for animation
-      await expect(page).toHaveScreenshot();
-    });
-  });
-
   test('Verify donut legend and pattern fill interactions', {
     tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@checkbox'],
   }, async ({ page }) => {
