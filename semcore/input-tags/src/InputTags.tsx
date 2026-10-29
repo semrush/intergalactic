@@ -232,7 +232,8 @@ class Value extends Component<
   };
 
   componentDidMount() {
-    this.updateInputStyles(this.asProps.value!);
+    const { value, defaultValue } = this.asProps;
+    this.updateInputStyles(value ?? defaultValue);
   }
 
   componentDidUpdate(prevProps: typeof this.asProps) {
@@ -246,7 +247,7 @@ class Value extends Component<
     this.updateInputStyles(value);
   };
 
-  updateInputStyles = (value: string) => {
+  updateInputStyles = (value?: string) => {
     const { current: spacerNode } = this._spacer;
     if (!spacerNode) return;
     const { placeholder } = this.props;
@@ -259,7 +260,7 @@ class Value extends Component<
       } */
       magicOffset += 8;
     } else {
-      spacerNode['innerText'] = value;
+      spacerNode['innerText'] = value ?? '';
     }
     this.setState({
       width: `${Math.max(spacerNode['offsetWidth'], spacerNode['scrollWidth']) + magicOffset}px`,
@@ -272,7 +273,7 @@ class Value extends Component<
 
     return sstyled(this.asProps.styles)(
       <>
-        <SValue render={Input.Value} style={{ width: this.state.width }} />
+        <SValue render={Input.Value} flex-basis-width={this.state.width} />
         <SSpacer ref={this._spacer} aria-hidden />
       </>,
     );
