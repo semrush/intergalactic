@@ -7,10 +7,12 @@ SAccordionRows {
   grid-column: 1 / -1;
   grid-row: var(--gridRow);
   overflow: clip;
-  transition-property: max-height;
-  transition-duration: var(--duration);
-  transition-timing-function: linear;
   grid-template-columns: subgrid;
+}
+
+SAccordionRows[aria-hidden='true'] {
+  max-height: 0;
+  min-height: 0;
 }
 
 SBody[compact] {
@@ -57,6 +59,12 @@ SCollapseRow[gridArea] > SCellWrapper, SRow[isAccordionRow] > SCellWrapper {
   overflow: auto;
 }
 
+/* `clip` doesn't create a scroll container, so sticky content inside the accordion sticks to the table scroll. */
+SCollapseRow[gridArea] > SCellWrapper,
+SCollapseRow[gridArea] > SCellWrapper > SCell {
+  overflow: clip;
+}
+
 SCollapseRow[gridArea] > SCellWrapper > SCell:not([withoutBorder]),
 SAccordionRows > SRow[isAccordionRow]:last-child > SCellWrapper > SCell:not([withoutBorder]) {
   border-bottom: 1px solid var(--intergalactic-border-table-accent, oklch(0.137 0.026 175.7 / 0.161));
@@ -64,6 +72,11 @@ SAccordionRows > SRow[isAccordionRow]:last-child > SCellWrapper > SCell:not([wit
 
 SCollapseRow > SCellWrapper > SCell {
   display: block;
+}
+
+/* Single-cell accordion spans fixed columns, so it must be above the fixed-column shadow. */
+SCollapseRow[gridArea] {
+  z-index: 11;
 }
 
 SRow[accordionType='row'][expanded] > SCellWrapper > SCell:not([theme]),
@@ -167,11 +180,12 @@ SCell {
     margin-left: calc(var(--intergalactic-spacing-05x, 2px) * -1);
     height: fit-content;
 
-    svg {
+    SAccordionToggleIcon {
+      display: inline-flex;
       transition: transform calc(var(--intergalactic-duration-accordion, 200) * 1ms) ease-out;
     }
 
-    &[expanded] svg {
+    &[expanded] SAccordionToggleIcon {
       transform: rotate(90deg);
     }
   }
@@ -327,48 +341,6 @@ SRow[sideIndents='wide'], SCollapseRow[sideIndents='wide'] {
   }
 }
 
-
-SCellWrapper[fixed][shadowVertical] {
-  &:after {
-    content: '';
-    position: absolute;
-    pointer-events: none;
-    display: none;
-    top: 0;
-    width: 5px;
-    height: 100%;
-    z-index: 5;
-  }
-}
-
-SCellWrapper[fixed='left'][shadowVertical='median'],
-SCellWrapper[fixed='left'][shadowVertical='start'] {
-  margin-right: -5px;
-
-  &:after {
-    display: block;
-    right: 0;
-    background: var(--intergalactic-scroll-area-shadow-left,
-    linear-gradient(to right, oklch(from oklch(0.23 0.01 140) l c h / 0.08) 20.55%, transparent 100%));
-  }
-  SCell {
-    margin-right: 5px;
-  }
-}
-SCellWrapper[fixed='right'][shadowVertical='median'],
-SCellWrapper[fixed='right'][shadowVertical='end'] {
-  margin-left: -5px;
-  &:after {
-    display: block;
-    left: 0;
-    background: var(--intergalactic-scroll-area-shadow-right,
-    linear-gradient(to left, oklch(from oklch(0.23 0.01 140) l c h / 0.08) 20.55%, transparent 100%));
-  }
-
-  SCell {
-    margin-left: 5px;
-  }
-}
 
 SLimitOverlayCellWrapper[gridArea] {
   width: 100%;

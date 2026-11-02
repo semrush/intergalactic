@@ -40,13 +40,16 @@ SScrollArea {
     }
   }
 
-  SShadowVertical::after, SShadowHorizontal::before, SShadowHorizontal:after {
+  SShadowVertical::after {
     z-index: 20;
   }
 
-  SShadowVertical::before,
-  SShadowHorizontal[leftOffset]::before,
-  SShadowHorizontal[rightOffset]::after {
+  /* Above fixed body cells (2), under single-cell accordion rows (11) and the sticky header (18). */
+  SShadowHorizontal::before, SShadowHorizontal:after {
+    z-index: 10;
+  }
+
+  SShadowVertical::before {
     display: none;
   }
 }
