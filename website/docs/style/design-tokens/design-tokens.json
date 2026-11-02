@@ -246,9 +246,7 @@
     "name": "--intergalactic-bg-primary-neutral-active",
     "value": "oklch(0.96 0.005 232.5)",
     "description": "Active (selected) state of the primary background of the interface which contains the main data and information.",
-    "components": [
-      "flags"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-bg-primary-neutral-hover",
@@ -364,9 +362,7 @@
     "name": "--intergalactic-bg-secondary-neutral-active",
     "value": "oklch(0.96 0.005 232.5)",
     "description": "Active (selected) state of the secondary background of the interface which contains the main data and information.",
-    "components": [
-      "flags"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-bg-secondary-neutral-hover",
@@ -3228,7 +3224,6 @@
       "date-picker",
       "dropdown",
       "dropdown-menu",
-      "flags",
       "pills",
       "radio-cards",
       "slider",

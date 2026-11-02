@@ -506,5 +506,21 @@
     "YEM": "YE",
     "ZMB": "ZM",
     "ZWE": "ZW"
+  },
+
+  "noneIsoName": {
+    "ABKHAZIA": "Abkhazia", 
+    "BASQUE_COUNTRY": "Basque Country",
+    "BRITISH_ANTARCTIC_TERRITORY": "British Antarctic Territory",
+    "CANARY_ISLANDS": "Canary Islands",
+    "COMMON_WEALTH": "Commonwealth",
+    "ENGLAND": "England",
+    "NATO": "NATO",
+    "NORTHERN_CYPRUS": "Northern Cyprus",
+    "SCOTLAND": "Scotland",
+    "SOMALILAND": "Somaliland",
+    "SOUTH_OSSETIA": "South Ossetia",
+    "UNITED_NATIONS": "United Nations",
+    "WALES": "Wales"
   }
 }

@@ -1,6 +1,7 @@
 import { ScreenReaderOnly } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
-import Flags, { type FlagsIso2, iso2Name } from '@semcore/ui/flags';
+import type { NSFlags } from '@semcore/ui/flags';
+import Flags, { iso2Name } from '@semcore/ui/flags';
 import { Info } from '@semcore/ui/product-head';
 import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
@@ -9,7 +10,7 @@ import React from 'react';
 const formatName = (name?: string) => name?.replace(/([a-z])([A-Z])/g, '$1 $2');
 
 export function CountrySelect() {
-  const flags = Object.keys(iso2Name) as FlagsIso2[];
+  const flags = Object.keys(iso2Name) as Array<NSFlags.Iso2Code>;
   const countries = flags.map((code) => {
     return {
       value: code,

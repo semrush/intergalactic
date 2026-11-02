@@ -1,18 +1,27 @@
 import { Flex } from '@semcore/ui/base-components';
-import Flags, { iso2Name, type FlagsIso2 } from '@semcore/ui/flags';
+import type { NSFlags } from '@semcore/ui/flags';
+import Flags, { iso2Name, nonIsoName } from '@semcore/ui/flags';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
-  const keys = Object.keys(iso2Name) as FlagsIso2[];
+  const flags = [
+    ...Object.keys(iso2Name),
+    ...Object.keys(nonIsoName),
+  ] as Array<NSFlags.Iso2Code> & Array<NSFlags.NonIsoNameCode>;
+
+  const names = {
+    ...iso2Name,
+    ...nonIsoName,
+  };
 
   return (
     <Flex flexWrap>
-      {keys.map((name) => (
-        <Flex direction='column' alignItems='center' p={5} key={name}>
-          <Flags name={name} mb={2} />
+      {flags.map((flag) => (
+        <Flex direction='column' alignItems='center' p={5} key={flag}>
+          <Flags name={flag} mb={2} />
           <Text style={{ textAlign: 'center' }} noWrap w={160}>
-            {iso2Name[name]}
+            {names[flag]}
           </Text>
         </Flex>
       ))}

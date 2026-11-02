@@ -1,9 +1,10 @@
 import { Flex } from '@semcore/ui/base-components';
-import Flags, { iso2Name, type FlagsIso2 } from '@semcore/ui/flags';
+import type { NSFlags } from '@semcore/ui/flags';
+import Flags, { iso2Name } from '@semcore/ui/flags';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-const countries: FlagsIso2[] = ['US', 'DE', 'ES', 'FR', 'IT'];
+const countries: Array<NSFlags.Iso2Code> = ['US', 'DE', 'ES', 'FR', 'IT'];
 
 const Demo = () => (
   <>
