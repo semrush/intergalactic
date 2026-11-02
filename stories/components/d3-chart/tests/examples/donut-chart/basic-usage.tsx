@@ -5,8 +5,13 @@ import React from 'react';
 
 import { getChartProps, getPropsToChart } from '../stories_props_helper';
 
-const Demo = (props: DonutChartProps) => {
-  const { plotWidth, plotHeight, ...chartProps } = getPropsToChart(props);
+type BasicUsageProps = Omit<DonutChartProps, 'innerLabel'> & {
+  innerLabel?: string;
+  innerDescription?: string;
+};
+
+const Demo = (props: BasicUsageProps) => {
+  const { plotWidth, plotHeight, innerLabel, innerDescription, ...chartProps } = getPropsToChart(props);
 
   return (
     <Box
@@ -19,7 +24,7 @@ const Demo = (props: DonutChartProps) => {
     >
       <Chart.Donut
         {...chartProps}
-        innerLabel={[chartProps.innerLabel, chartProps.innerDescription]}
+        innerLabel={innerLabel || innerDescription ? [innerLabel ?? '', innerDescription ?? ''] : undefined}
         aria-label='Donut chart'
       />
     </Box>
@@ -32,7 +37,7 @@ const data = {
   c: 2,
 };
 
-const propsFromHelper = getChartProps<DonutChartProps>({
+const propsFromHelper = getChartProps<BasicUsageProps>({
   data,
   innerLabel: '71,240',
   innerDescription: 'Description',
