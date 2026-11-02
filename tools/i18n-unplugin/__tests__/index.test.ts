@@ -2,7 +2,7 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
-import { expect, describe, beforeEach, afterEach } from '../../testing-utils/vitest';
+import { expect, describe, beforeEach, afterEach } from '@semcore/testing-utils';
 import { intergalacticI18nVitePlugin } from '../src/index';
 
 type Options = Parameters<typeof intergalacticI18nVitePlugin>[0];
