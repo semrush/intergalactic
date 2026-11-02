@@ -101,13 +101,13 @@ export class Package {
     const changelogComponents = collectedChangelog.components;
 
     for (const [componentName, changelogComponent] of Object.entries(changelogComponents)) {
-      await this.updatePackageVersion(componentName, changelogComponent.incrementType, changelogComponent.changelog);
+      await this.updatePackageVersion(componentName, changelogComponent.incrementType, changelogComponent.changelog, changelogComponents);
     }
 
     await this.updateReleaseVersion(collectedChangelog);
   }
 
-  public async updatePackageVersion(componentName: string, incrementType: IncrementType, changelog: ChangelogChange[]) {
+  public async updatePackageVersion(componentName: string, incrementType: IncrementType, changelog: ChangelogChange[], changelogComponents?: CollectedChangelog['components']) {
     const packageJson = this.packagesMap.get(componentName);
     if (!packageJson || changelog.length === 0) return;
 
@@ -119,6 +119,8 @@ export class Package {
     await fs.writeJSON(resolvePath(packageJson.path, 'package.json'), packageJson.data, { spaces: 2 });
 
     for (const packageFile of this.packagesMap.values()) {
+      if (changelogComponents !== undefined && !changelogComponents[packageFile.data.name]) continue;
+
       let hasChanges = false;
       if (packageFile.data.dependencies?.[componentName]) {
         packageFile.data.dependencies[componentName] = `^${newVersion}`;

@@ -24,6 +24,7 @@ import type { DemoProps as SelectableWithMergedRowsProps } from './examples/sele
 import SideIndentsExample from './examples/side-indents';
 import type { AccordionInTableProps } from './examples/table_perf/table_perf';
 import TablePerfExample, { accordionInsideTableDefaultProps } from './examples/table_perf/table_perf';
+import TablePerfVirtualizationExample from './examples/table_perf_virtualization';
 import VirtualScrollWithH100Example from './examples/virtual-scroll-with-h100';
 
 const meta: Meta<typeof DataTable> = {
@@ -66,6 +67,11 @@ export const AccordionInMergedRows: StoryObj<typeof accordionMergedProps> = {
   render: AccordionInMergedRowsExample,
   argTypes: {
     loading: { control: 'boolean' },
+    accordionMode: {
+      control: 'radio',
+      options: [undefined, 'independent', 'toggle'],
+      description: '`toggle`: opening one accordion closes the others, including the accordion on merged rows.',
+    },
   },
   args: accordionMergedProps,
 };
@@ -199,6 +205,27 @@ export const FixedColumnsWidthWithShadows: Story = {
 
 export const TablePerf: StoryObj<AccordionInTableProps> = {
   render: TablePerfExample,
+  argTypes: {
+    loading: { control: 'boolean' },
+    cropPosition: {
+      control: 'select',
+      options: ['end', 'middle'],
+    },
+    // UIK-4923: hintProps=false skips ellipsis JS calculation for cropPosition=end
+    hintProps: {
+      control: 'select',
+      options: ['default', 'false'],
+      mapping: {
+        default: undefined,
+        false: false,
+      },
+    },
+  },
+  args: accordionInsideTableDefaultProps,
+};
+
+export const TablePerfVirtualization: StoryObj<AccordionInTableProps> = {
+  render: TablePerfVirtualizationExample,
   argTypes: {
     loading: { control: 'boolean' },
     cropPosition: {
