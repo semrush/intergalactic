@@ -1,7 +1,7 @@
 {
   "name": "@semcore/d3-chart",
   "description": "Semrush D3 Chart Component",
-  "version": "18.0.0",
+  "version": "18.1.0",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.mjs",
   "typings": "lib/types/index.d.ts",
@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@formatjs/intl": "4.1.13",
-    "@semcore/checkbox": "^18.0.0",
+    "@semcore/checkbox": "^18.0.1",
     "@semcore/divider": "^18.0.0",
     "@semcore/typography": "^18.0.0",
     "@semcore/link": "^18.0.0",
@@ -37,7 +37,7 @@
   },
   "peerDependencies": {
     "@semcore/base-components": "^18.0.0",
-    "@semcore/icon": "^18.0.0"
+    "@semcore/icon": "^18.0.1"
   },
   "repository": {
     "type": "git",
