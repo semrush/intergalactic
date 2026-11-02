@@ -15,6 +15,18 @@ SLegendItem[transparent] {
   opacity: 0.3;
 }
 
+SCheckbox[size='m'] > span:first-of-type {
+  width: var(--intergalactic-spacing-4x, 16px);
+  height: var(--intergalactic-spacing-4x, 16px);
+  margin-top: var(--intergalactic-spacing-05x, 2px);
+}
+
+SCheckbox[size='l'] > span:first-of-type {
+  width: var(--intergalactic-spacing-5x, 20px);
+  height: var(--intergalactic-spacing-5x, 20px);
+  margin-top: var(--intergalactic-spacing-05x, 2px);
+}
+
 SPointShape[color] {
   background-color: var(--color);
   margin-right: var(--intergalactic-spacing-1-5x, 6px);

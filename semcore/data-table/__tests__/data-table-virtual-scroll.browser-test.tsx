@@ -42,12 +42,9 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@data-table',
-      '@button-link',
-      '@button',
-      '@typography',
     ],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/data-table/tests/examples/virtualization/header-content.tsx', 'en');
+    await loadPage(page, 'stories/components/data-table/docs/examples/virtual-scroll-in-table-different-height.tsx', 'en');
 
     const dataTable = page.locator('[data-ui-name="Row"]');
     await dataTable.first().hover();

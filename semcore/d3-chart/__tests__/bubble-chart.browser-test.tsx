@@ -75,7 +75,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   variables.forEach((vars, index) => {
     test(`Verify bubble chart ${vars.description}`, {
-      tag: [TAG.PRIORITY_HIGH, '@bubble-chart', '@d3-chart', '@base-components', '@flex-box'],
+      tag: [TAG.PRIORITY_HIGH, '@bubble-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -144,7 +144,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify legend and pattern interactions by mouse', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bubble-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@typography'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bubble-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@typography', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,

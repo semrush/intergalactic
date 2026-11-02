@@ -333,7 +333,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@data-table',
         '@d3-chart',
         '@line-chart',
-        '@responsive'],
+        '@responsive',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_checkbox.tsx', 'en', { variant: item.variant });
 
@@ -361,7 +362,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@data-table',
       '@d3-chart',
       '@line-chart',
-      '@responsive'],
+      '@responsive',
+      '@checkbox'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_checkbox.tsx', 'en', { variant: 'card' });
 

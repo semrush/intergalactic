@@ -63,9 +63,9 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step(`Verify size ${item.size} checkmark and label styles`, async () => {
         const isL = item.size === 'l';
-        await expect(locators.valueCheckmark(page)).toHaveCSS('height', isL ? '20px' : '16px');
-        await expect(locators.valueCheckmark(page)).toHaveCSS('width', isL ? '20px' : '16px');
-        await expect(locators.checkboxText(page)).toHaveCSS('margin-left', isL ? '8px' : '6px');
+        await expect(locators.valueCheckmark(page)).toHaveCSS('height', isL ? '24px' : '20px');
+        await expect(locators.valueCheckmark(page)).toHaveCSS('width', isL ? '24px' : '20px');
+        await expect(locators.checkboxText(page)).toHaveCSS('margin-left', '8px');
         await expect(locators.checkboxText(page)).toHaveCSS('font-size', isL ? '16px' : '14px');
       });
 

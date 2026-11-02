@@ -4,7 +4,15 @@ import { DataTable } from '@semcore/ui/data-table';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-const Demo = () => {
+export type MultiLevelBordersProps = {
+  virtualScroll?: boolean;
+};
+
+export const multiLevelBordersProps: MultiLevelBordersProps = {
+  virtualScroll: false,
+};
+
+const Demo = (props: MultiLevelBordersProps) => {
   return (
     <>
       <DataTable
@@ -12,6 +20,7 @@ const Demo = () => {
         aria-label='Borders'
         defaultGridTemplateColumnWidth='1fr'
         h='100%'
+        virtualScroll={props.virtualScroll}
 
         columns={[
           { name: 'other', children: 'Other' },
