@@ -81,6 +81,8 @@ declare namespace NSScrollArea {
       orientation?: 'horizontal' | 'vertical';
       /** Reference to the scrollable container element */
       container?: React.RefObject<HTMLElement | null>;
+      /** DOM node of this bar */
+      domRef?: React.Ref<HTMLElement>;
     };
     type DefaultProps = {
       container: React.RefObject<HTMLElement | null>;

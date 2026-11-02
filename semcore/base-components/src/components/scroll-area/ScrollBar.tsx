@@ -1,6 +1,7 @@
 import type { Intergalactic } from '@semcore/core';
 import { createComponent, sstyled, Component, Root } from '@semcore/core';
 import contextEnhance from '@semcore/core/lib/utils/enhances/contextEnhance';
+import { setRef } from '@semcore/core/lib/utils/ref';
 import React from 'react';
 
 import { Box } from '../flex-box';
@@ -79,10 +80,11 @@ class ScrollBarRoot extends Component<
   }
 
   refBar = (domNode: HTMLElement | null) => {
+    const { horizontalBarRef, verticalBarRef, domRef } = this.asProps;
+    if (domRef) setRef(domRef, domNode);
     if (domNode !== null) {
       this.$bar = domNode;
       const orientation = this.getOrientation();
-      const { horizontalBarRef, verticalBarRef } = this.asProps;
       if (orientation === 'horizontal' && horizontalBarRef) horizontalBarRef.current = domNode;
       if (orientation === 'vertical' && verticalBarRef) verticalBarRef.current = domNode;
 

@@ -16,35 +16,7 @@ type AccordionRowsProps<Data extends DataTableData, UniqKeyType> = DataTableRowP
   'aria-level': number;
 };
 
-type State = {
-  maxHeight: number;
-};
-
-export class AccordionRows<Data extends DataTableData, UniqKeyType> extends React.PureComponent<AccordionRowsProps<Data, UniqKeyType>, State> {
-  accordionRowsRef = React.createRef<HTMLDivElement>();
-
-  state: State = {
-    maxHeight: 0,
-  };
-
-  componentDidUpdate(prevProps: Readonly<AccordionRowsProps<Data, UniqKeyType>>): void {
-    const { expanded, rows, expandedForAnimation } = this.props;
-
-    if (prevProps.expanded !== expanded && expanded) {
-      this.setState({
-        maxHeight: 2000, // some value, more than real window height
-      });
-    }
-    if (prevProps.rows !== rows && this.accordionRowsRef.current) {
-      this.setState({
-        maxHeight: this.accordionRowsRef.current.scrollHeight,
-      });
-    }
-    if (prevProps.expandedForAnimation !== expandedForAnimation && expandedForAnimation && !expanded) {
-      this.setState({ maxHeight: 0 });
-    }
-  }
-
+export class AccordionRows<Data extends DataTableData, UniqKeyType> extends React.PureComponent<AccordionRowsProps<Data, UniqKeyType>> {
   render(): React.ReactNode {
     const SAccordionRows = Box;
 
@@ -64,10 +36,8 @@ export class AccordionRows<Data extends DataTableData, UniqKeyType> extends Reac
         id={accordionId}
         role='rowgroup'
         aria-hidden={!expanded}
-        ref={this.accordionRowsRef}
-        hMax={`${this.state.maxHeight}px`}
-        // @ts-ignore
-        duration={`${accordionDuration}ms`}
+        // Used as --gridRow in styles; Box doesn't declare this prop.
+        // @ts-expect-error
         gridRow={`${gridRowIndex + 1} / ${gridRowIndex + 1 + rows.length}`}
       >
         {(expanded || expandedForAnimation) && rows.map((subrow, i) => {

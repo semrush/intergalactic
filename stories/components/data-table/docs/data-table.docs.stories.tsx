@@ -23,6 +23,8 @@ import type { LimitedModeExampleProps } from './examples/limited-mode';
 import LimitedModeExample, { limitedModeDefaultProps } from './examples/limited-mode';
 import MultiLevelHeaderExample from './examples/multi-level-header';
 import PaginationExample from './examples/pagination';
+import type { PerformanceStressProps } from './examples/performance-stress';
+import PerformanceStressExample, { performanceStressDefaultProps } from './examples/performance-stress';
 import RowThemesExample from './examples/row-themes';
 import RowsMergingExample from './examples/rows-merging';
 import ScrollInTableExample from './examples/scroll-in-table';
@@ -133,6 +135,51 @@ export const MultiLevelHeader: Story = {
 
 export const Pagination: Story = {
   render: PaginationExample,
+};
+
+export const PerformanceStress: StoryObj<PerformanceStressProps> = {
+  render: PerformanceStressExample,
+  argTypes: {
+    rows: {
+      control: { type: 'number', min: 20, max: 2000, step: 20 },
+    },
+    columns: {
+      control: { type: 'number', min: 4, max: 30, step: 1 },
+    },
+    scrollMode: {
+      control: 'inline-radio',
+      options: ['page', 'container'],
+    },
+    headerScrollBar: {
+      control: 'boolean',
+    },
+    stickyTop: {
+      control: { type: 'number', min: 0, max: 200, step: 8 },
+    },
+    accordion: {
+      control: 'inline-radio',
+      options: ['rows', 'chart'],
+    },
+    accordionDuration: {
+      control: { type: 'number' },
+    },
+    fixedRight: {
+      control: 'boolean',
+    },
+    compact: {
+      control: 'boolean',
+    },
+    wideSideIndents: {
+      control: 'boolean',
+    },
+    loading: {
+      control: 'boolean',
+    },
+    virtualScroll: {
+      control: 'boolean',
+    },
+  },
+  args: performanceStressDefaultProps,
 };
 
 export const RowsMerging: Story = {

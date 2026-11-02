@@ -1,11 +1,11 @@
 import type { Intergalactic } from '@semcore/core';
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, cleanup } from '@semcore/testing-utils/testing-library';
+import { render, cleanup, fireEvent, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, describe, beforeEach, vi, assertType, afterEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
-import { DataTable } from '../src';
+import { ACCORDION, DataTable } from '../src';
 import type { CellRenderProps } from '../src/components/Body/Body.types';
 
 describe('data-table Dependency imports', () => {
@@ -35,6 +35,187 @@ describe('DataTable', (test) => {
     const result = extractUIName(container);
 
     expect(result).toMatchSnapshot();
+  });
+
+  test('accordion chevron rotates a wrapper around the icon', ({ expect }) => {
+    const { getByRole } = render(
+      <DataTable
+        aria-label='accordion chevron'
+        data={[{ keyword: 'ebay', [ACCORDION]: <div>details</div> }]}
+        columns={[{ name: 'keyword', children: 'Keyword' }]}
+      />,
+    );
+
+    const toggle = getByRole('button', { name: 'Show details' });
+    const svg = toggle.querySelector('svg');
+    expect(svg).toBeTruthy();
+    const icon = svg?.parentElement;
+    expect(icon?.tagName).toBe('SPAN');
+    expect(icon).not.toBe(toggle);
+
+    const css = [...document.querySelectorAll('style')].map((node) => node.textContent ?? '').join('\n');
+    const iconClass = [...(icon?.classList ?? [])].find((className) => css.includes(`.${className}`));
+    expect(iconClass).toBeTruthy();
+    const iconRule = css.split('}').find((rule) => rule.includes(`.${iconClass}`) && rule.includes('transition'));
+    expect(iconRule).toMatch(/transition:[^;}]*transform/);
+
+    const svgTransition = [...(svg?.classList ?? [])].some((className) => {
+      const rule = css.split('}').find((part) => part.includes(`.${className}`) && part.includes('transition'));
+      return rule?.includes('transform');
+    });
+    expect(svgTransition).toBe(false);
+  });
+
+  test('clicking the chevron icon toggles once, without waiting out the close timer', async ({ expect }) => {
+    const toggles: Array<'open' | 'close'> = [];
+    const { getByRole, queryByText } = render(
+      <DataTable
+        aria-label='accordion click'
+        accordionDuration={0}
+        onAccordionToggle={(type) => {
+          toggles.push(type);
+        }}
+        data={[{ keyword: 'ebay', [ACCORDION]: <div>details</div> }]}
+        columns={[{ name: 'keyword', children: 'Keyword' }]}
+      />,
+    );
+
+    const toggle = getByRole('button', { name: 'Show details' });
+    const icon = toggle.querySelector('svg');
+    expect(icon).toBeTruthy();
+
+    fireEvent.click(icon!);
+    expect(toggles).toEqual(['open']);
+    expect(toggle.getAttribute('aria-expanded')).toBe('true');
+    expect(queryByText('details')).toBeTruthy();
+
+    // The duplicate handlers of one click are ignored until the event's microtask.
+    // A later click is a new event.
+    await Promise.resolve();
+    fireEvent.click(icon!);
+    expect(toggles).toEqual(['open', 'close']);
+    expect(toggle.getAttribute('aria-expanded')).toBe('false');
+
+    await Promise.resolve();
+    fireEvent.click(icon!);
+    expect(toggles).toEqual(['open', 'close', 'open']);
+    expect(toggle.getAttribute('aria-expanded')).toBe('true');
+  });
+
+  test('zero accordionDuration does not animate collapse height', async ({ expect }) => {
+    const { container, getByRole } = render(
+      <DataTable
+        aria-label='accordion duration'
+        accordionDuration={0}
+        data={[{ keyword: 'ebay', [ACCORDION]: <div>details</div> }]}
+        columns={[{ name: 'keyword', children: 'Keyword' }]}
+      />,
+    );
+
+    await userEvent.click(getByRole('button', { name: 'Show details' }));
+
+    const collapse = container.querySelector('[data-ui-name="Collapse"]') as HTMLElement | null;
+    expect(collapse).toBeTruthy();
+    const style = collapse?.getAttribute('style') ?? '';
+    expect(style).toContain('0ms');
+    expect(style).not.toContain('200ms');
+    expect(collapse?.style.height).toBe('');
+  });
+
+  test('a positive accordionDuration still animates collapse height', async ({ expect }) => {
+    const { container, getByRole } = render(
+      <DataTable
+        aria-label='accordion duration animated'
+        accordionDuration={200}
+        data={[{ keyword: 'ebay', [ACCORDION]: <div>details</div> }]}
+        columns={[{ name: 'keyword', children: 'Keyword' }]}
+      />,
+    );
+
+    await userEvent.click(getByRole('button', { name: 'Show details' }));
+
+    const collapse = container.querySelector('[data-ui-name="Collapse"]') as HTMLElement | null;
+    expect(collapse).toBeTruthy();
+    expect(collapse?.getAttribute('style') ?? '').toContain('200ms');
+    // Opening writes the animation's start height. scrollHeight is applied on animationstart.
+    expect(collapse?.style.height).toBe('0px');
+  });
+
+  test('closed accordion rows are not sized from scrollHeight', async ({ expect }) => {
+    const { container, getByRole } = render(
+      <DataTable
+        aria-label='accordion rows'
+        data={[{
+          keyword: 'ebay',
+          [ACCORDION]: [{ keyword: 'nested' }],
+        }]}
+        columns={[{ name: 'keyword', children: 'Keyword' }]}
+      />,
+    );
+
+    const group = container.querySelector('[role="rowgroup"]') as HTMLElement | null;
+    expect(group).toBeTruthy();
+    expect(group?.getAttribute('aria-hidden')).toBe('true');
+    expect(group?.style.maxHeight).toBe('');
+    expect(container.textContent).not.toContain('nested');
+
+    await userEvent.click(getByRole('button', { name: 'Show details' }));
+
+    expect(container.textContent).toContain('nested');
+    expect(container.querySelector('[role="rowgroup"]')?.style.maxHeight).toBe('');
+  });
+
+  test('horizontal scroll does not stamp a shadow onto body cells', async ({ expect }) => {
+    const { container } = render(
+      <DataTable
+        aria-label='sticky shadow'
+        headerProps={{ sticky: true }}
+        data={[{ keyword: 'ebay', kd: '1' }]}
+        columns={[
+          { name: 'keyword', children: 'Keyword', fixed: 'left' },
+          { name: 'kd', children: 'KD' },
+        ]}
+      />,
+    );
+
+    const markScrollable = (node: Element | null) => {
+      if (!node) return;
+      Object.defineProperty(node, 'scrollWidth', { configurable: true, value: 800 });
+      Object.defineProperty(node, 'clientWidth', { configurable: true, value: 200 });
+      Object.defineProperty(node, 'scrollLeft', { configurable: true, value: 40 });
+    };
+    const scroller = container.querySelector('[id$="scroll-container"]');
+    markScrollable(scroller);
+    markScrollable(container.querySelector('[role="grid"]'));
+
+    fireEvent.scroll(scroller!);
+    await new Promise((resolve) => requestAnimationFrame(resolve));
+
+    expect(container.innerHTML).not.toContain('shadowVertical');
+    // The sticky header draws its own shadow: the body strip lies under it.
+    const header = container.querySelector('[role="row"]');
+    expect(header?.getAttribute('data-vertical-shadow')).toBe('median');
+    expect(header?.querySelectorAll('[class*="SHeadShadow"]')).toHaveLength(1);
+  });
+
+  test('fixed header columns get their sticky offset after mount', ({ expect }) => {
+    const { getAllByRole } = render(
+      <DataTable
+        aria-label='fixed header'
+        headerProps={{ sticky: true }}
+        data={[{ keyword: 'ebay', kd: '1', cpc: '2' }]}
+        columns={[
+          { name: 'keyword', children: 'Keyword', fixed: 'left' },
+          { name: 'kd', children: 'KD', fixed: 'left' },
+          { name: 'cpc', children: 'CPC' },
+        ]}
+      />,
+    );
+
+    const [keyword, kd, cpc] = getAllByRole('columnheader');
+    expect(keyword.style.left).toBe('0px');
+    expect(kd.style.left).toMatch(/px$/);
+    expect(cpc.style.left).toBe('');
   });
 
   describe('types', (test) => {

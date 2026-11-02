@@ -73,4 +73,6 @@ export type HeadPropsInner<
   withAnimation: boolean;
 
   headerNodesMap: Map<string, React.RefObject<HTMLDivElement>>;
+  /** Summed widths of left and right fixed columns */
+  scrollOffset: [left: number, right: number];
 };

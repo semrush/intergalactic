@@ -55,7 +55,6 @@ type State<
   scrollTop: number;
   scrollDirection: 'down' | 'up';
   selectAllMessage: string;
-  shadowVertical: BodyPropsInner<Data, UniqKeyType>['shadowVertical'];
   expandedRows: Set<UniqKeyType>;
   scrollOffset: [number, number];
 };
@@ -144,6 +143,15 @@ class DataTableRoot<
   };
 
   private headerNodesMap = new Map<string, React.RefObject<HTMLDivElement>>();
+  // Header sizes are measured once per resize and reused by rows.
+  // Caches are filled only in the commit phase: during render the DOM may still contain the previous header.
+  private headerWidths = new Map<string, number>();
+  private headerWidthsStale = true;
+  private cachedHeaderHeight = 0;
+  private cachedTableHeight: number | null = null;
+  private observedWidths: Map<Element, number> | null = null;
+  private pendingWidthChange = false;
+  private headerScrollBar: HTMLElement | null = null;
 
   private selectedRowsContainer: ISelectedRows<UniqKeyType>;
   private lastSelectedRowKey: UniqKeyType | undefined;
@@ -170,19 +178,17 @@ class DataTableRoot<
     scrollTop: 0,
     scrollDirection: 'down',
     selectAllMessage: '',
-    shadowVertical: '',
     expandedRows: new Set<UniqKeyType>(),
     scrollOffset: [0, 0],
   };
 
   componentDidMount() {
+    this.cacheHeaderHeight();
     const { headerProps, loading } = this.asProps;
     if ((headerProps?.sticky && !headerProps.h) || loading || this.hasFixedColumn) {
       requestAnimationFrame(() => {
-        this.setState({
-          scrollOffset: this.getScrollOffsetValue(),
-        });
-        this.calculateVerticalShadow();
+        this.commitScrollOffset();
+        this.calculateHeaderShadow();
         this.calculateContainerHeight();
       });
     }
@@ -197,17 +203,24 @@ class DataTableRoot<
   }
 
   componentDidUpdate(prevProps: any) {
-    const { data, selectedRows, columns } = this.asProps;
+    const { data, selectedRows, columns, loading } = this.asProps;
 
     if (prevProps.data !== data || prevProps.columns !== columns) {
-      if (this.hasFixedColumn) {
-        this.calculateVerticalShadow();
-      }
       setTimeout(() => {
-        this.setState({
-          scrollOffset: this.getScrollOffsetValue(),
-        });
+        this.commitScrollOffset();
+        this.calculateHeaderShadow();
       });
+    }
+    if (!this.cachedHeaderHeight) {
+      this.cacheHeaderHeight();
+    }
+    if (prevProps.loading !== loading && loading) {
+      this.calculateContainerHeight();
+    }
+    // The header or the header scrollbar may have been remounted and lost the inline variable.
+    if (this.cachedTableHeight != null) {
+      const scrollArea = this.scrollAreaRef.current;
+      if (scrollArea) this.writeScrollTo(scrollArea, `${this.cachedTableHeight}px`);
     }
     if (prevProps.selectedRows !== selectedRows && selectedRows !== undefined && !Array.isArray(selectedRows)) {
       this.selectedRowsContainer = selectedRows;
@@ -218,11 +231,14 @@ class DataTableRoot<
     if (canUseDOM()) {
       document.removeEventListener('scroll', this.handleDocumentScroll);
     }
-
     this.state.expandedRows?.clear();
   }
 
   onPropsChange(changedProps: Record<string, unknown>) {
+    if ('columns' in changedProps || 'data' in changedProps) {
+      this.headerWidthsStale = true;
+      this.cachedHeaderHeight = 0;
+    }
     if ('columns' in changedProps) {
       const cols = this.calculateColumnsFromConfig();
       this.columns = cols[0];
@@ -240,15 +256,17 @@ class DataTableRoot<
     const scrollArea = this.scrollAreaRef.current;
     const table = this.tableContainerRef.current;
     if (scrollArea && table) {
+      const headerHeightPx = `${this.getHeaderHeight()}px`;
       const currentHeaderHeight = scrollArea.style.getPropertyValue('--global-header-height');
-      const newHeaderHeight = `${this.getHeaderHeight()}px`;
-
-      scrollArea.style.setProperty('--global-scroll-to', `${table.offsetHeight}px`);
-      scrollArea.style.setProperty('--global-header-top', `${headerProps?.top ?? 0}px`);
-      scrollArea.style.setProperty('--global-header-height', newHeaderHeight);
-
-      if (currentHeaderHeight && currentHeaderHeight !== newHeaderHeight) {
-        this.forceUpdate();
+      if (currentHeaderHeight !== headerHeightPx) {
+        scrollArea.style.setProperty('--global-header-height', headerHeightPx);
+        if (currentHeaderHeight) {
+          this.forceUpdate();
+        }
+      }
+      const topPx = `${headerProps?.top ?? 0}px`;
+      if (scrollArea.style.getPropertyValue('--global-header-top') !== topPx) {
+        scrollArea.style.setProperty('--global-header-top', topPx);
       }
     }
   }
@@ -256,10 +274,43 @@ class DataTableRoot<
   calculateContainerHeight() {
     const scrollArea = this.scrollAreaRef.current;
     const table = this.tableContainerRef.current;
-    if (scrollArea && table) {
-      scrollArea.style.setProperty('--global-table-height', `${table.offsetHeight}px`);
+    if (!scrollArea || !table) return;
+    const height = table.offsetHeight;
+    const heightPx = `${height}px`;
+    if (height !== this.cachedTableHeight) {
+      this.cachedTableHeight = height;
+      this.writeScrollTo(scrollArea, heightPx);
+    }
+    // Only the loading overlay uses it, so it's updated only while loading.
+    if (this.asProps.loading && scrollArea.style.getPropertyValue('--global-table-height') !== heightPx) {
+      scrollArea.style.setProperty('--global-table-height', heightPx);
     }
   }
+
+  // --global-scroll-to is used only by the sticky header and the header scrollbar.
+  // It's set on them instead of the scroll-area root, so changing it doesn't recalculate styles of every cell.
+  private writeScrollTo(scrollArea: HTMLElement, heightPx: string) {
+    const header = this.headerRef.current;
+    if (header instanceof HTMLElement && header.style.getPropertyValue('--global-scroll-to') !== heightPx) {
+      header.style.setProperty('--global-scroll-to', heightPx);
+    }
+    const headerScrollBar = this.headerScrollBar;
+    if (headerScrollBar?.isConnected && headerScrollBar.style.getPropertyValue('--global-scroll-to') !== heightPx) {
+      headerScrollBar.style.setProperty('--global-scroll-to', heightPx);
+    }
+    if (scrollArea.style.getPropertyValue('--global-scroll-to')) {
+      scrollArea.style.removeProperty('--global-scroll-to');
+    }
+  }
+
+  // The bar node is attached after the table commit, so componentDidUpdate can't set the variable on it.
+  private setHeaderScrollBar = (node: HTMLElement | null) => {
+    this.headerScrollBar = node;
+    const scrollArea = this.scrollAreaRef.current;
+    if (node && scrollArea && this.cachedTableHeight != null) {
+      this.writeScrollTo(scrollArea, `${this.cachedTableHeight}px`);
+    }
+  };
 
   get withAnimation() {
     if (canUseDOM()) {
@@ -341,7 +392,6 @@ class DataTableRoot<
       variant,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
-    const { shadowVertical } = this.state;
 
     const sideIndentsValue = variant === 'card' ? 'wide' : sideIndents;
 
@@ -368,11 +418,11 @@ class DataTableRoot<
       onChangeSelectAll: Array.isArray(selectedRows) ? this.handleSelectAllRows : undefined,
       getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
-      shadowVertical,
       scrollDirection: this.scrollDirection,
       isDataEmpty: this.isDataEmpty,
       withAnimation: this.withAnimation && this.scrollDirection === 'horizontal' && !this.isDataEmpty,
       headerNodesMap: this.headerNodesMap,
+      scrollOffset: this.state.scrollOffset,
     };
   }
 
@@ -400,7 +450,6 @@ class DataTableRoot<
       accordionAnimationRows,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
-    const { shadowVertical } = this.state;
 
     return {
       accordionDuration,
@@ -438,7 +487,6 @@ class DataTableRoot<
       getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
       rawData,
-      shadowVertical,
       renderCellOverlay,
       limit,
       variant,
@@ -797,35 +845,32 @@ class DataTableRoot<
       this.setState({ scrollTop, scrollDirection });
     }
 
-    if (this.hasFixedColumn) {
-      this.calculateVerticalShadow();
-    }
+    this.calculateHeaderShadow();
   });
 
-  calculateVerticalShadow = () => {
-    if (!this.tableContainerRef.current) return;
+  // Only the sticky header needs its own shadow: the body uses the scroll-area shadow, which is under the header.
+  // Set as a DOM attribute instead of state, so scrolling doesn't re-render cells.
+  calculateHeaderShadow = () => {
+    const container = this.tableContainerRef.current;
+    const header = this.headerRef.current;
+    if (!container || !header || !this.hasFixedColumn || !this.asProps.headerProps?.sticky) return;
 
-    const { scrollWidth, clientWidth, scrollLeft } =
-            this.tableContainerRef.current;
-    const maxScrollRight = scrollWidth - clientWidth;
-
-    const roundedScroll = Math.round(scrollLeft);
-    const roundedMaxScroll = Math.round(maxScrollRight);
-    let shadow: BodyPropsInner<Data, UniqKeyType>['shadowVertical'] = '';
-    // not scroll
-    if (roundedMaxScroll <= 0) {
-      // start scroll
-    } else if (roundedScroll <= 0) {
+    const maxScroll = Math.round(container.scrollWidth - container.clientWidth);
+    const scrollLeft = Math.round(container.scrollLeft);
+    let shadow = '';
+    if (maxScroll <= 0) {
+      // no horizontal scroll
+    } else if (scrollLeft <= 0) {
       shadow = 'end';
-      // end scroll
-    } else if (roundedScroll >= roundedMaxScroll) {
+    } else if (scrollLeft >= maxScroll) {
       shadow = 'start';
-      // median scroll
-    } else if (roundedScroll > 0) {
+    } else {
       shadow = 'median';
     }
 
-    this.setState({ shadowVertical: shadow });
+    if ((header.getAttribute('data-vertical-shadow') ?? '') === shadow) return;
+    if (shadow) header.setAttribute('data-vertical-shadow', shadow);
+    else header.removeAttribute('data-vertical-shadow');
   };
 
   handleFocus = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
@@ -918,17 +963,33 @@ class DataTableRoot<
   };
 
   handleContainerResizeEnd = (entries: ResizeObserverEntry[], observer: ResizeObserver) => {
+    // Stored on the instance: the timeout below is restarted, and a height-only resize must not drop a pending width change.
+    if (entries?.length) {
+      if (!this.observedWidths) this.observedWidths = new Map();
+      for (const entry of entries) {
+        const width = Math.round(entry.contentRect.width);
+        if (this.observedWidths.get(entry.target) !== width) this.pendingWidthChange = true;
+        this.observedWidths.set(entry.target, width);
+      }
+    } else {
+      this.pendingWidthChange = true;
+    }
+    // The sticky header animation reads the live table height, so --global-scroll-to is updated in the same frame.
+    // In a timeout it would be written after paint, and the header would jump while the accordion animates.
+    this.calculateContainerHeight();
+
     if (this.containerResizeEndTimeoutId) {
       clearTimeout(this.containerResizeEndTimeoutId);
     }
 
     this.containerResizeEndTimeoutId = setTimeout(() => {
-      this.calculateVerticalShadow();
+      const widthChanged = this.pendingWidthChange;
+      this.pendingWidthChange = false;
+      // Header height can change without a width change (web fonts, header content), so it is re-measured on every resize.
+      this.cacheHeaderHeight();
+      this.calculateHeaderShadow();
       this.calculateStickyHeaderAnimation();
-      this.calculateContainerHeight();
-      this.setState({
-        scrollOffset: this.getScrollOffsetValue(),
-      });
+      if (widthChanged) this.commitScrollOffset();
     }, 0);
 
     this.asProps.onResize?.(entries, observer);
@@ -1046,6 +1107,7 @@ class DataTableRoot<
           withHeaderScrollBar={headerProps?.withScrollBar}
           withAnimation={this.withAnimation}
           scrollBarInstanceRef={this.scrollBarInstanceRef}
+          headerScrollBarRef={this.setHeaderScrollBar}
         />
 
         {selectedRows !== undefined && !Array.isArray(selectedRows) && (
@@ -1058,6 +1120,49 @@ class DataTableRoot<
     );
   }
 
+  private headerColumnWidth = (name: string) => {
+    if (!this.headerWidthsStale) {
+      const cached = this.headerWidths.get(name);
+      if (cached != null) return cached;
+    }
+    return this.measureHeaderColumnWidth(name);
+  };
+
+  // getBoundingClientRect keeps fractional widths: offsetWidth rounding adds up across fixed columns.
+  private measureHeaderColumnWidth(name: string) {
+    return this.headerNodesMap.get(name)?.current?.getBoundingClientRect().width ?? 0;
+  }
+
+  private refreshHeaderWidths() {
+    const next = new Map<string, number>();
+    let changed = false;
+    if (this.hasFixedColumn) {
+      for (const column of this.columns) {
+        const width = this.measureHeaderColumnWidth(column.name);
+        if (this.headerWidths.get(column.name) !== width) changed = true;
+        next.set(column.name, width);
+      }
+    }
+    changed = changed || next.size !== this.headerWidths.size;
+    this.headerWidths = next;
+    this.headerWidthsStale = false;
+    return changed;
+  }
+
+  private commitScrollOffset = () => {
+    const widthsChanged = this.refreshHeaderWidths();
+    const next = this.getScrollOffsetValue();
+    const prev = this.state.scrollOffset;
+    if (prev[0] === next[0] && prev[1] === next[1]) {
+      // Offsets match, but rows may have been rendered with widths of the previous header.
+      if (widthsChanged) this.forceUpdate();
+      return;
+    }
+    this.setState({
+      scrollOffset: next,
+    });
+  };
+
   private getScrollOffsetValue = (): [number, number] => {
     if (!this.headerRef.current) {
       return [0, 0];
@@ -1066,10 +1171,10 @@ class DataTableRoot<
     const offsets = this.columns.reduce(
       (acc, column) => {
         if (column.fixed === 'left') {
-          acc[0] += this.headerNodesMap.get(column.name)?.current?.getBoundingClientRect().width ?? 0;
+          acc[0] += this.headerColumnWidth(column.name);
         }
         if (column.fixed === 'right') {
-          acc[1] += this.headerNodesMap.get(column.name)?.current?.getBoundingClientRect().width ?? 0;
+          acc[1] += this.headerColumnWidth(column.name);
         }
         return acc;
       },
@@ -1107,7 +1212,7 @@ class DataTableRoot<
     if (columnsFixed.length < 1) return [side, 0];
 
     const sum = columnsFixed.reduce(
-      (acc, column) => acc + (this.headerNodesMap.get(column.name)?.current?.getBoundingClientRect().width ?? 0),
+      (acc, column) => acc + this.headerColumnWidth(column.name),
       0,
     );
     return [side, `${sum}px`];
@@ -1478,6 +1583,14 @@ class DataTableRoot<
   }
 
   private getHeaderHeight() {
+    return this.cachedHeaderHeight || this.measureHeaderHeight();
+  }
+
+  private cacheHeaderHeight() {
+    this.cachedHeaderHeight = this.measureHeaderHeight();
+  }
+
+  private measureHeaderHeight() {
     const header = this.headerRef.current?.children;
 
     let height = 0;

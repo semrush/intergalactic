@@ -2,6 +2,20 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.3.1] - 2026-10-29
+
+### Changed
+
+- Updated `@semcore/base-components` dependency to `^17.3.0`.
+
+### Fixed
+
+- Performance of horizontal scroll in tables with fixed columns: the fixed-column shadow doesn't re-render cells on scroll anymore.
+- Performance of tables with a sticky header: header sizes are measured once per resize, and table height changes don't recalculate styles of every cell.
+- Accordion toggle click could be handled more than once.
+- With `accordionDuration={0}`, a click right after collapsing an accordion row was ignored.
+- Content with `position: sticky` inside a single-cell accordion row didn't stick to the table scroll.
+
 ## [17.3.0] - 2026-09-10
 
 ### Fixed

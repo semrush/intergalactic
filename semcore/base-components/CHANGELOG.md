@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.3.0] - 2026-10-29
+
+### Added
+
+- **scroll-area**: `domRef` prop for `ScrollArea.Bar` to get the bar DOM node.
+
+### Fixed
+
+- **animation**: `Collapse` with zero duration (or disabled animations) ran a height transition instead of showing content at its natural height immediately.
+
 ## [17.2.2] - 2026-09-10
 
 ### Changed

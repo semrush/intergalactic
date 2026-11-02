@@ -128,6 +128,7 @@ export type DataTableProps<
 
     /**
      * Duration for collapse/expand accordion rows in tables in ms.
+     * `0` disables the height animation.
      * @default 200
      */
     accordionDuration?: number | [number, number];
