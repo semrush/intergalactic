@@ -333,7 +333,7 @@ function Label({
 
   return sstyled(styles)(
     <SLabel render='foreignObject' x={x ?? '-50%'} y={y ?? halfsize ? '-100%' : '-50%'} aria-hidden width='100%' height='100%'>
-      <Flex alignItems='center' justifyContent={halfsize ? 'flex-end' : 'center'} h='100%' direction='column'>
+      <Flex alignItems='center' textAlign='center' justifyContent={halfsize ? 'flex-end' : 'center'} h='100%' direction='column'>
         <Children />
       </Flex>
     </SLabel>,
