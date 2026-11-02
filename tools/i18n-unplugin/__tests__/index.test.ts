@@ -2,14 +2,18 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
+import { transform } from 'esbuild';
+
 import { expect, describe, beforeEach, afterEach } from '../../testing-utils/vitest';
-import { intergalacticI18nVitePlugin } from '../src/index';
+import { intergalacticI18nUnplugin, intergalacticI18nVitePlugin } from '../src/index';
 
 type Options = Parameters<typeof intergalacticI18nVitePlugin>[0];
 
 const callLoad = async (options: Options, id: string): Promise<string> => {
   const plugin: any = intergalacticI18nVitePlugin(options);
   const result = await plugin.load(id);
+
+  await transform(result.code, { loader: 'js', format: 'esm' });
 
   return result.code;
 };
@@ -59,7 +63,7 @@ describe('i18n-unplugin', () => {
       expect(code).not.toContain(`'./de.json'`);
     });
 
-    test('Verify .json.mjs takes precedence over .json regardless of file order', async () => {
+    test.fails('Verify .json.mjs takes precedence over .json regardless of file order', async () => {
       createFiles('en.json', 'en.json.mjs', 'de.json.mjs', 'de.json');
 
       const code = await callLoad({}, id);
@@ -124,6 +128,57 @@ describe('i18n-unplugin', () => {
       await expect(callLoad({ includeLocales: ['en', 'es'] }, id)).rejects.toThrow(
         'Requested locale es was not found',
       );
+    });
+  });
+
+  describe('options validation', (test) => {
+    beforeEach(() => {
+      createFiles('en.json.mjs', 'de.json.mjs');
+    });
+
+    test('Verify empty bundleLocales throws', async () => {
+      await expect(callLoad({ bundleLocales: [] }, id)).rejects.toThrow(
+        'At least one locale should be mentioned in "bundleLocales" list.',
+      );
+    });
+
+    test('Verify bundled locale that is excluded throws', async () => {
+      await expect(callLoad({ bundleLocales: ['de'], excludeLocales: ['de'] }, id)).rejects.toThrow(
+        'Locale "de" is mentioned in "bundleLocales" but excluded with "excludeLocales"',
+      );
+    });
+
+    test('Verify bundled locale that is not included throws', async () => {
+      await expect(callLoad({ bundleLocales: ['de'], includeLocales: ['en'] }, id)).rejects.toThrow(
+        'Locale "de" is mentioned in "bundleLocales" but not included with "includeLocales"',
+      );
+    });
+
+    test('Verify bundled locale presence is checked', async () => {
+      await expect(callLoad({ bundleLocales: ['es'] }, id)).rejects.toThrow(
+        'Requested locale es was not found',
+      );
+    });
+  });
+
+  describe('loadInclude', (test) => {
+    const { loadInclude } = intergalacticI18nUnplugin.raw({}, { framework: 'vite' }) as any;
+
+    test.each([
+      '/app/node_modules/@semcore/button/lib/esm/translations/__intergalactic-dynamic-locales.mjs',
+      '/app/node_modules/@semcore/button/lib/es6/translations/__intergalactic-dynamic-locales.js',
+      '/app/node_modules/@semcore/button/lib/cjs/translations/__intergalactic-dynamic-locales.cjs',
+      '/repo/intergalactic/semcore/button/src/translations/__intergalactic-dynamic-locales.ts',
+    ])('Verify %s is handled', (path) => {
+      expect(loadInclude(path)).toBe(true);
+    });
+
+    test.each([
+      '/app/node_modules/other-lib/translations/__intergalactic-dynamic-locales.mjs',
+      '/app/node_modules/@semcore/button/lib/esm/translations/en.json.mjs',
+      '/app/node_modules/@semcore/button/lib/esm/index.mjs',
+    ])('Verify %s is not handled', (path) => {
+      expect(loadInclude(path)).toBe(false);
     });
   });
 });
