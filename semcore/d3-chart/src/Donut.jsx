@@ -332,7 +332,7 @@ function Label({
   dataHintsHandler.setTitle('vertical', label || children);
 
   return sstyled(styles)(
-    <SLabel render='foreignObject' x={x ?? '-50%'} y={y ?? halfsize ? '-100%' : '-50%'} aria-hidden width='100%' height='100%'>
+    <SLabel render='foreignObject' x={x ?? '-50%'} y={y ?? (halfsize ? '-100%' : '-50%')} aria-hidden width='100%' height='100%'>
       <Flex alignItems='center' textAlign='center' justifyContent={halfsize ? 'flex-end' : 'center'} h='100%' direction='column'>
         <Children />
       </Flex>
