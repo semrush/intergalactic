@@ -2,7 +2,8 @@ import { mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSyn
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
-import { expect, describe, beforeEach, afterEach } from '../../testing-utils/vitest';
+import { expect, describe, beforeEach, afterEach } from '@semcore/testing-utils/vitest';
+
 import { processCssVitePlugin } from '../src/index';
 
 // Helper to call transform hook
