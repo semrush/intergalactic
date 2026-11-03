@@ -66,7 +66,11 @@ class DonutChartComponent extends AbstractChart<
     return (
       <Donut onClick={onClickPie} halfsize={halfsize} innerRadius={innerRadius}>
         {checkedLegendItems.length === 0 && <Donut.EmptyData />}
-        {checkedLegendItems.map((item, index) => {
+        {dataDefinitions.map((item, index) => {
+          if (!item.checked) {
+            return null;
+          }
+
           return (
             <Donut.Pie
               key={item.id}
