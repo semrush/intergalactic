@@ -1,8 +1,14 @@
+import { resolve as resolvePath } from 'path';
+import { fileURLToPath } from 'url';
+
+import fs from 'fs-extra';
 import Git from 'simple-git';
 
+import type { PackageJson } from './packages';
 import { Package } from './packages';
 
 const git = Git();
+const dirname = resolvePath(fileURLToPath(import.meta.url), '..');
 
 const excludePackageNames = new Set([
   '__tests__',
@@ -65,4 +71,36 @@ export async function getChangedFiles(command = 'HEAD^1'): Promise<Set<string>> 
   });
 
   return components;
+}
+
+export async function getChangedTools(command = 'HEAD^1'): Promise<Set<string>> {
+  const toolsPath = resolvePath(dirname, '..', '..', '..');
+  const diff = await git.diffSummary(command);
+  const tools = new Set<string>();
+
+  console.log(dirname);
+
+  for (const item of diff.files) {
+    if (!item.file.startsWith('tools/')) continue;
+
+    const path = item.file.split('/');
+    const toolName = path[1].startsWith('{') ? path[2] : path[1];
+    const toolPath = resolvePath(toolsPath, toolName);
+    const packageFilePath = resolvePath(toolPath, 'package.json');
+
+    if (!toolName || !(await fs.pathExists(packageFilePath))) continue;
+
+    const vitestConfigs = ['vitest.config.mts', 'vitest.config.ts', 'vitest.config.js', 'vitest.config.mjs'];
+    const configExists = await Promise.all(
+      vitestConfigs.map((config) => fs.pathExists(resolvePath(toolPath, config))),
+    );
+
+    if (!configExists.some(Boolean)) continue;
+
+    const packageFile: PackageJson = await fs.readJson(packageFilePath);
+
+    tools.add(packageFile.name);
+  }
+
+  return tools;
 }

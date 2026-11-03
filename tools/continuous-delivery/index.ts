@@ -10,7 +10,7 @@ import { updateVersions } from './src/updateVersions';
 import { formatMarkdown, log } from './src/utils';
 import type { ChangelogChangeLabel, ChangelogItem } from './src/utils/changelog';
 import { Changelog } from './src/utils/changelog';
-import { getChangedFiles } from './src/utils/getChangedFiles';
+import { getChangedFiles, getChangedTools } from './src/utils/getChangedFiles';
 import { gitUtils } from './src/utils/gitUtils';
 import { NpmUtils } from './src/utils/npmUtils';
 import { Package } from './src/utils/packages';
@@ -118,6 +118,12 @@ export const getChangedPackages = async (base: string): Promise<string[]> => {
 
     return name;
   });
+};
+
+export const getChangedToolPackages = async (base: string) => {
+  const changedTools = await getChangedTools(base);
+
+  return Array.from(changedTools);
 };
 
 const sendReleaseChangelog = async (endpoints: string[]) => {
