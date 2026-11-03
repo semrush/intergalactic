@@ -78,8 +78,6 @@ export async function getChangedTools(command = 'HEAD^1'): Promise<Set<string>> 
   const diff = await git.diffSummary(command);
   const tools = new Set<string>();
 
-  console.log(dirname);
-
   for (const item of diff.files) {
     if (!item.file.startsWith('tools/')) continue;
 
