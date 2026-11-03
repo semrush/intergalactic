@@ -47,6 +47,7 @@ export type PieProps = Context & {
   color?: string;
   /**
    * Active sector
+   * @deprecated. doesn't work anymore. Use only transparent.
    * */
   active?: boolean;
   /** Enables element transparency */
