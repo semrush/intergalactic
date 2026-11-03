@@ -43,7 +43,6 @@
     "@semcore/fullscreen-modal": "^18.0.0",
     "@semcore/inline-edit": "^18.0.0",
     "@semcore/inline-input": "^18.0.0",
-    "@semcore/flags": "^18.0.0",
     "@semcore/input-number": "^18.0.0",
     "@semcore/input-mask": "^18.0.0",
     "@semcore/link": "^18.0.0",
@@ -80,7 +79,8 @@
     "react": "16.8 - 19",
     "react-dom": "16.8 - 19",
     "@semcore/icon": "^18.0.0",
-    "@semcore/illustration": "^18.0.0"
+    "@semcore/illustration": "^18.0.0",
+    "@semcore/flags": "^18.0.0"
   },
   "devDependencies": {
     "@semcore/continuous-delivery": "workspace:*",
@@ -567,11 +567,6 @@
       "types": "./inline-input/index.d.ts",
       "import": "./inline-input/index.mjs",
       "require": "./inline-input/index.cjs"
-    },
-    "./flags": {
-      "types": "./flags/index.d.ts",
-      "import": "./flags/index.mjs",
-      "require": "./flags/index.cjs"
     },
     "./input-number": {
       "types": "./input-number/index.d.ts",

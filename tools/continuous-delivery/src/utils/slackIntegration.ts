@@ -26,6 +26,10 @@ export const makeTitleFromChangelogs = (version: string) => {
     return `:art: Illustration Release v${version.slice('illustration'.length)}`;
   }
 
+  if (version.startsWith('flags')) {
+    return `:flags: Flags Release v${version.slice('flags'.length)}`;
+  }
+
   throw new Error(`Unknown version: "${version}"`);
 };
 
@@ -33,12 +37,14 @@ export const makeMessageFromChangelogs = (version: string, changelogs: Changelog
   if (version.startsWith('v')) {
     return changelogs.map((item) => bodyTemplate(item)).join('\n');
   }
-  let component: 'icon' | 'illustration';
+  let component: 'icon' | 'illustration' | 'flags';
 
   if (version.startsWith('icon')) {
     component = 'icon';
   } else if (version.startsWith('illustration')) {
     component = 'illustration';
+  } else if (version.startsWith('flags')) {
+    component = 'flags';
   } else {
     throw new Error(`Unknown version: "${version}"`);
   }

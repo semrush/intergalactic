@@ -171,6 +171,8 @@ export class Changelog {
       component = 'icon';
     } else if (versionTag.startsWith('illustration')) {
       component = 'illustration';
+    } else if (versionTag.startsWith('flags')) {
+      component = 'flags';
     }
 
     const changelogPath = resolvePath(dirname, '..', '..', '..', '..', 'semcore', component, 'CHANGELOG.md');
