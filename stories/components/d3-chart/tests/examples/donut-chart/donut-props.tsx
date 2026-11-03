@@ -6,8 +6,6 @@ import React from 'react';
 
 export interface DonutPropsWithLabel extends DonutProps {
   showLabel?: boolean;
-  labelX?: number | string;
-  labelY?: number | string;
   showTooltip?: boolean;
   data?: { [key: string]: number };
 }
@@ -21,14 +19,9 @@ const Demo = (props: DonutPropsWithLabel) => {
     halfsize,
     patterns,
     showLabel = true,
-    labelX,
-    labelY,
     showTooltip = true,
     data = defaultData,
   } = props;
-
-  const toCoordinate = (value?: number | string) =>
-    value === undefined || value === '' ? undefined : Number.isNaN(Number(value)) ? value : Number(value);
 
   return (
     <Plot width={300} height={300} data={data}>
@@ -44,7 +37,7 @@ const Demo = (props: DonutPropsWithLabel) => {
         <Donut.Pie dataKey='b' name='Pie 2' />
         <Donut.Pie dataKey='c' name='Pie 3' />
         {showLabel && (
-          <Donut.Label x={toCoordinate(labelX)} y={toCoordinate(labelY)}>
+          <Donut.Label>
             <Text tag='tspan' color='text-primary' size={100}>
               Donut Chart
             </Text>
@@ -85,8 +78,6 @@ export const defaultProps: DonutPropsWithLabel = {
   halfsize: false,
   patterns: undefined,
   showLabel: true,
-  labelX: undefined,
-  labelY: undefined,
   showTooltip: true,
   data: defaultData,
 };

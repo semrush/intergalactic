@@ -4,7 +4,7 @@ import BasicUsageExample, { defaultProps as basicUsageProps } from './examples/d
 import DonutPropsExample, {
   defaultProps as donutPropsExampleProps,
 } from './examples/donut-chart/donut-props';
-import OnClickPieExample from './examples/donut-chart/on-click-pie';
+import OnClickPieExample, { defaultProps as onClickPieProps } from './examples/donut-chart/on-click-pie';
 import { getChartArgTypes, legendTypeControl } from './examples/stories_props_helper';
 
 const meta: Meta = {
@@ -29,8 +29,6 @@ export const DonutProps = {
     halfsize: { control: { type: 'boolean' } },
     patterns: { control: { type: 'boolean' } },
     showLabel: { control: { type: 'boolean' } },
-    labelX: { control: { type: 'text' } },
-    labelY: { control: { type: 'text' } },
     showTooltip: { control: { type: 'boolean' } },
     data: { control: { type: 'object' } },
   },
@@ -39,4 +37,8 @@ export const DonutProps = {
 
 export const OnClickPie: StoryObj = {
   render: OnClickPieExample,
+  argTypes: {
+    showLabel: { control: { type: 'boolean' } },
+  },
+  args: onClickPieProps,
 };

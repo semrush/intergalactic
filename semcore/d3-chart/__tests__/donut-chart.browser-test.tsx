@@ -316,41 +316,77 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test('Verify onClick callback in donut pie', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+  test('Verify legend and pie highlight the same item after unchecking a legend item', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@checkbox'],
   }, async ({ page }) => {
-    const messages: string[] = [];
-    page.on('console', (msg) => {
-      if (msg.type() === 'log' && msg.text().startsWith('I call')) {
-        messages.push(msg.text());
-      }
+    await loadPage(page, 'stories/components/d3-chart/docs/examples/donut-chart/basic-usage.tsx', 'en');
+    await locators.plot(page).waitFor({ state: 'visible' });
+
+    const legendRow = (name: string) =>
+      page.locator('div[data-ui-name="LegendTable.LegendItem"]').filter({ hasText: name });
+    const pieByName = (name: string) => page.locator(`[data-ui-name="Donut.Pie"][name="${name}"]`);
+
+    await test.step('Uncheck the first legend item', async () => {
+      await legendRow('a').click();
+      await expect(page.getByRole('checkbox', { name: 'a' })).not.toBeChecked();
+      await expect(pieByName('a')).toHaveCount(0);
     });
 
-    await loadPage(
-      page,
-      'stories/components/d3-chart/tests/examples/donut-chart/on-click-pie.tsx',
-      'en',
-    );
+    await test.step('Verify hover on pie highlights its own legend row', async () => {
+      await hoverPie(pieByName('c'));
 
-    await page.waitForTimeout(500);
-
-    await test.step('Verify no calls on render', async () => {
-      await locators.plot(page).waitFor({ state: 'visible' });
-      expect(messages.length).toBe(0);
+      await expect(legendRow('c')).toHaveCSS('opacity', '1');
+      await expect(legendRow('b')).toHaveCSS('opacity', '0.3');
     });
 
-    await test.step('Verify no calls on legend click', async () => {
-      await locators.legendItem(page, 'Option A').click();
-      expect(messages.length).toBe(0);
-    });
+    await test.step('Verify hover on legend row highlights its own pie', async () => {
+      await page.mouse.move(0, 0);
+      await legendRow('b').hover();
 
-    await test.step('Verify callback triggered on pie click', async () => {
-      const box = await locators.pie(page, 0).boundingBox();
-      if (box) {
-        await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
-      }
-      expect(messages).toEqual(['I call on mount']);
-      expect(messages.length).toBe(1);
+      await expect(pieByName('b')).toHaveCSS('opacity', '1');
+      await expect(pieByName('c')).toHaveCSS('opacity', '0.3');
+    });
+  });
+
+  [true, false].forEach((showLabel) => {
+    test(`Verify onClick callback in donut pie ${showLabel ? 'with' : 'without'} label`, {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox', '@typography'],
+    }, async ({ page }) => {
+      const messages: string[] = [];
+      page.on('console', (msg) => {
+        if (msg.type() === 'log' && msg.text().startsWith('I call')) {
+          messages.push(msg.text());
+        }
+      });
+
+      await loadPage(
+        page,
+        'stories/components/d3-chart/tests/examples/donut-chart/on-click-pie.tsx',
+        'en',
+        { showLabel },
+      );
+
+      await page.waitForTimeout(500);
+
+      await test.step('Verify no calls on render', async () => {
+        await locators.plot(page).waitFor({ state: 'visible' });
+        await expect(locators.label(page)).toHaveCount(showLabel ? 1 : 0);
+        expect(messages.length).toBe(0);
+      });
+
+      await test.step('Verify no calls on legend click', async () => {
+        await locators.legendItem(page, 'Option A').click();
+        expect(messages.length).toBe(0);
+      });
+
+      await test.step('Verify callback triggered on pie click', async () => {
+        const box = await locators.pie(page, 0).boundingBox();
+        if (box) {
+          await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+        }
+        expect(messages).toEqual(['I call onClick with key: a']);
+        expect(messages.length).toBe(1);
+      });
     });
   });
 });
