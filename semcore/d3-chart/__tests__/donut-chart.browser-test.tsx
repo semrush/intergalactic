@@ -22,7 +22,14 @@ export const locators = {
 The center of a donut pie is empty, so .hover() misses the segment and times out.
 Hover over the middle of the ring instead.
 */
-const hoverPie = async (pie: Locator) => {
+const getRingPoint = async (pie: Locator) => {
+  // Wait for the pie animation to finish, otherwise the point is taken from a moving arc
+  await expect.poll(async () => {
+    const before = await pie.getAttribute('d');
+    await pie.page().waitForTimeout(100);
+    return before === await pie.getAttribute('d');
+  }).toBe(true);
+
   const box = await pie.boundingBox();
 
   if (!box) throw new Error('Donut.Pie is not rendered');
@@ -41,7 +48,15 @@ const hoverPie = async (pie: Locator) => {
     return { x, y };
   });
 
-  await pie.hover({ position: { x: point.x - box.x, y: point.y - box.y } });
+  return { x: point.x - box.x, y: point.y - box.y };
+};
+
+const hoverPie = async (pie: Locator) => {
+  await pie.hover({ position: await getRingPoint(pie) });
+};
+
+const clickPie = async (pie: Locator) => {
+  await pie.click({ position: await getRingPoint(pie) });
 };
 
 /* =====================================================
@@ -380,12 +395,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       await test.step('Verify callback triggered on pie click', async () => {
-        const box = await locators.pie(page, 0).boundingBox();
-        if (box) {
-          await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
-        }
-        expect(messages).toEqual(['I call onClick with key: a']);
-        expect(messages.length).toBe(1);
+        await clickPie(locators.pie(page, 0));
+
+        await expect.poll(() => messages).toEqual(['I call onClick with key: a']);
       });
     });
   });
