@@ -19,8 +19,22 @@
 }
 
 SCollapse {
-  transition-property: height;
   display: flow-root;
+}
+
+SCollapse:not([instant]) {
+  transition-property: height;
+}
+
+/* Zero duration: height switches instantly, without a transition. */
+SCollapse[instant] {
+  transition-property: none;
+  height: var(--defaultHeight, auto);
+}
+
+SCollapse[instant]:not([visible]) {
+  height: 0;
+  overflow: clip;
 }
 
 @keyframes fade-in-out-enter {

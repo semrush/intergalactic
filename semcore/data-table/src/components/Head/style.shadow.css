@@ -22,7 +22,7 @@ SHead[animationDuration] > SColumn {
   }
 }
 
-SHead[withAnimation][sticky] SColumn, SHead[withAnimation][sticky] SGroup {
+SHead[withAnimation][sticky] SColumn, SHead[withAnimation][sticky] SGroup, SHead[withAnimation][sticky] SHeadShadow {
   animation-name: moveWithScroll;
   animation-timeline: --table-sticky-timeline;
   animation-range-start: exit-crossing calc(-1 * var(--global-header-top));
@@ -235,62 +235,35 @@ SHeadCheckboxCol {
   }
 }
 
-
-SColumn[fixed][shadowVertical], SGroup[fixed][shadowVertical] {
-  &:after {
-    content: '';
-    position: absolute;
-    pointer-events: none;
-    display: none;
-    top: 0;
-    width: 5px;
-    height: 100%;
-    z-index: 5;
-  }
+SHeadShadow {
+  position: sticky;
+  top: 0;
+  z-index: 19;
+  width: 5px;
+  align-self: stretch;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(var(--global-scroll-translate));
 }
 
-
-/*SColumnChildrenWrapper*/
-
-SColumn[fixed='left'][shadowVertical='median'],
-SColumn[fixed='left'][shadowVertical='start'],
-SGroup[fixed='left'][shadowVertical='median'],
-SGroup[fixed='left'][shadowVertical='start'] {
+SHeadShadow[edge='left'] {
+  justify-self: end;
   margin-right: -5px;
-  border-right-color: transparent;
-
-  &[use='primary'] {
-    padding-right: calc(var(--intergalactic-spacing-3x, 12px) + 5px);
-  }
-  &[use='secondary'] {
-    padding-right: calc(var(--intergalactic-spacing-2x, 8px) + 5px);
-  }
-
-  &:after {
-    display: block;
-    right: 0;
-    background: var(--intergalactic-scroll-area-shadow-left,
-    linear-gradient(to right, oklch(from oklch(0.23 0.01 140) l c h / 0.08) 20.55%, transparent 100%));
-  }
+  background: var(--intergalactic-scroll-area-shadow-left,
+  linear-gradient(to right, oklch(from oklch(0.23 0.01 140) l c h / 0.08) 20.55%, transparent 100%));
 }
-SColumn[fixed='right'][shadowVertical='median'],
-SColumn[fixed='right'][shadowVertical='end'],
-SGroup[fixed='right'][shadowVertical='median'],
-SGroup[fixed='right'][shadowVertical='end'] {
+
+SHeadShadow[edge='right'] {
+  justify-self: start;
   margin-left: -5px;
-  border-left-color: transparent;
+  background: var(--intergalactic-scroll-area-shadow-right,
+  linear-gradient(to left, oklch(from oklch(0.23 0.01 140) l c h / 0.08) 20.55%, transparent 100%));
+}
 
-  &[use='primary'] {
-    padding-left: calc(var(--intergalactic-spacing-3x, 12px) + 5px);
-  }
-  &[use='secondary'] {
-    padding-left: calc(var(--intergalactic-spacing-2x, 8px) + 5px);
-  }
-
-  &:after {
-    display: block;
-    left: 0;
-    background: var(--intergalactic-scroll-area-shadow-right,
-    linear-gradient(to left, oklch(from oklch(0.23 0.01 140) l c h / 0.08) 20.55%, transparent 100%));
-  }
+/* Only opacity changes on scroll, so the grid layout isn't recalculated. */
+SHead[data-vertical-shadow='median'] SHeadShadow[edge='left'],
+SHead[data-vertical-shadow='start'] SHeadShadow[edge='left'],
+SHead[data-vertical-shadow='median'] SHeadShadow[edge='right'],
+SHead[data-vertical-shadow='end'] SHeadShadow[edge='right'] {
+  opacity: 1;
 }

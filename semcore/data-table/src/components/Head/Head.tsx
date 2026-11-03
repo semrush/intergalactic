@@ -40,7 +40,9 @@ class HeadRoot<
   componentDidMount() {
     const { selectedRows } = this.asProps;
 
+    // Fixed column offsets depend on the rendered header widths, so re-render once after mount.
     this.recalculateColumnStyle();
+    this.forceUpdate();
 
     if (selectedRows && !Array.isArray(selectedRows)) {
       this.unsubscribeSelectAll = selectedRows.on(SelectableRows.SELECT_ALL_EVENT, () => {
@@ -118,19 +120,13 @@ class HeadRoot<
   }
 
   getGroupProps(props: any, index: number) {
-    const { columns } = props;
-    const { use, gridAreaGroupMap, children, getFixedStyle, shadowVertical, top, scrollDirection } = this.asProps;
-    const groupColumns = columns ?? [];
-
-    const firstColumn = groupColumns[0];
-    const lastColumn = groupColumns[groupColumns.length - 1];
+    const { use, gridAreaGroupMap, children, getFixedStyle, top, scrollDirection } = this.asProps;
 
     return {
       use,
       gridArea: gridAreaGroupMap.get(index),
       withConfig: children === undefined,
       getFixedStyle,
-      shadowVertical: (firstColumn.showShadowVertical || lastColumn.showShadowVertical) ? shadowVertical : undefined,
       style: this.columnStyle.get(props.name),
       scrollDirection,
       top: top && scrollDirection !== 'horizontal' ? `${top}px` : undefined,
@@ -151,7 +147,6 @@ class HeadRoot<
       selectedRows,
       h,
       onCellClick,
-      shadowVertical,
       scrollDirection,
       headerNodesMap,
     } = this.asProps;
@@ -179,7 +174,6 @@ class HeadRoot<
       gridTemplateAreas,
       h,
       'onClick': onCellClick,
-      'shadowVertical': column.showShadowVertical ? shadowVertical : undefined,
       scrollDirection,
       headerNodesMap,
       'top': top && scrollDirection !== 'horizontal' ? `${top}px` : undefined,
@@ -260,14 +254,46 @@ class HeadRoot<
     return mappedFlatRows;
   }
 
+  // Shadows at the edges of fixed columns. The sticky header covers the scroll-area shadow, and pseudo-elements
+  // of header cells are clipped by overflow, so the shadows are rendered as separate grid items.
+  getFixedShadowStyles(): Partial<Record<'left' | 'right', React.CSSProperties>> {
+    const { columns, scrollOffset, top, scrollDirection } = this.asProps;
+
+    const parseArea = (area?: string) => (area ?? '').split('/').map((part) => Number(part.trim()));
+    const rowEnd = Math.max(...columns.map((column) => parseArea(column.gridArea)[2] || 2));
+    const stickyTop = top && scrollDirection !== 'horizontal' ? `${top}px` : undefined;
+
+    const leftFixed = columns.filter((column) => column.fixed === 'left');
+    const edges = {
+      left: leftFixed.length < columns.length ? leftFixed[leftFixed.length - 1] : undefined,
+      right: columns.find((column) => column.fixed === 'right'),
+    };
+
+    const styles: Partial<Record<'left' | 'right', React.CSSProperties>> = {};
+    (['left', 'right'] as const).forEach((edge, index) => {
+      const [, columnStart, , columnEnd] = parseArea(edges[edge]?.gridArea);
+      if (!columnStart || !columnEnd) return;
+
+      styles[edge] = {
+        gridArea: `1 / ${columnStart} / ${rowEnd} / ${columnEnd}`,
+        [edge]: `${scrollOffset[index]}px`,
+        top: stickyTop,
+      };
+    });
+
+    return styles;
+  }
+
   render() {
     const SHead = Root;
     const SHeadCheckboxCol = Head.Column;
+    const SHeadShadow = 'div';
     const { Children, styles, getI18nText, children, treeColumns, selectedRows, sticky, animationDuration, isDataEmpty, gridTemplateColumns } = this.asProps;
 
     const areAllRowsSelected = this.areAllRowsSelected;
     const indeterminate = this.isIndeterminate && !areAllRowsSelected;
     const isDisabledCheckbox = this.isDisabledCheckbox && (indeterminate || !areAllRowsSelected);
+    const shadowStyles = sticky && !isDataEmpty ? this.getFixedShadowStyles() : {};
 
     return sstyled(styles)(
       <>
@@ -326,6 +352,14 @@ class HeadRoot<
                   })}
                 </>
               )}
+          {shadowStyles.left && (
+            // @ts-expect-error use it for css only
+            <SHeadShadow aria-hidden='true' edge='left' style={shadowStyles.left} />
+          )}
+          {shadowStyles.right && (
+            // @ts-expect-error use it for css only
+            <SHeadShadow aria-hidden='true' edge='right' style={shadowStyles.right} />
+          )}
         </SHead>
 
         <ScreenReaderOnly aria-hidden={true} id={this.sortableColumnDescribeId()}>

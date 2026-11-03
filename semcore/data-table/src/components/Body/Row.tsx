@@ -47,6 +47,8 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   private cellName: string = '';
   private closeAccordionTimeout = 0;
   private openAccordionTimeout = 0;
+  /** Prevents handling one click twice while it bubbles from the toggle through the cell to the row. */
+  private expandHandledInEvent = false;
   private readonly cellStyle = new Map<string, React.CSSProperties>();
 
   rowElementRef = React.createRef<HTMLDivElement>();
@@ -175,6 +177,12 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       accordionAnimationRows,
     } = this.asProps;
     const { expandedForAnimation } = this.state;
+    if (this.expandHandledInEvent) return;
+    this.expandHandledInEvent = true;
+    queueMicrotask(() => {
+      this.expandHandledInEvent = false;
+    });
+
     const openDuration = Array.isArray(accordionDuration)
       ? accordionDuration[0]
       : accordionDuration ??
@@ -184,12 +192,14 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       : accordionDuration ??
         (Array.isArray(row[ACCORDION]) ? Math.min(50 * row[ACCORDION].length, 200) : 200);
 
+    // Measure row heights after the expand animation ends; without animation measure right away.
+    const measureDelay = openDuration > 0 ? openDuration + 100 : 0;
     setTimeout(() => {
       setRowHeight(index, row);
       for (let i = index; i < rowsHeightMap.size; i++) {
         setRowHeight(i, row);
       }
-    }, openDuration + 100); // we need to calculate after expanding animation
+    }, measureDelay);
 
     if (expandedRows.has(row[UNIQ_ROW_KEY]) && expandedForAnimation === false) {
       this.closeAccordion(row, closeDuration);
@@ -260,6 +270,22 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
     if (this.openAccordionTimeout) {
       clearTimeout(this.openAccordionTimeout);
+      this.openAccordionTimeout = 0;
+    }
+    if (this.closeAccordionTimeout) {
+      clearTimeout(this.closeAccordionTimeout);
+      this.closeAccordionTimeout = 0;
+    }
+
+    // Without animation collapse immediately, so the next click isn't blocked by a pending timeout.
+    if (closeDuration <= 0) {
+      onExpandRow(row);
+      if (this.state.expandedForAnimation) {
+        this.setState({ expandedForAnimation: false }, calculateAriaRowIndex);
+      } else {
+        this.forceUpdate(calculateAriaRowIndex);
+      }
+      return;
     }
 
     this.setState((prevState) => {
@@ -312,6 +338,7 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       theme,
     } = this.asProps;
     const SAccordionToggle = ButtonLink;
+    const SAccordionToggleIcon = 'span';
 
     let dataKey = props.column.name;
     const cellValue = props.row[dataKey];
@@ -418,7 +445,11 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
             aria-describedby={props.id}
             aria-controls={expanded ? props.accordionId : undefined}
           >
-            <SAccordionToggle.Addon tag={ChevronRightM} />
+            <SAccordionToggle.Addon>
+              <SAccordionToggleIcon>
+                <ChevronRightM />
+              </SAccordionToggleIcon>
+            </SAccordionToggle.Addon>
           </SAccordionToggle>
           {extraProps.children}
         </>,
