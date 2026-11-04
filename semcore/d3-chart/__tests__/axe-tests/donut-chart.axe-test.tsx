@@ -9,12 +9,6 @@ test.describe(`@d3-chart @donut-chart ${TAG.ACCESSIBILITY}`, () => {
     expect(violations).toEqual([]);
   });
 
-  test('donut', async ({ page }) => {
-    await loadPage(page, 'stories/components/d3-chart/docs/examples/donut-chart/donut.tsx', 'en');
-    const violations = await getAccessibilityViolations({ page });
-    expect(violations).toEqual([]);
-  });
-
   test('edge-cases', async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/donut-chart/edge-cases.tsx', 'en');
     const violations = await getAccessibilityViolations({ page });

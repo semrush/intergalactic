@@ -67,24 +67,24 @@ test.describe(`${TAG.VISUAL}`, () => {
   const variables = [
     {
       description: 'Standard: default with tooltip and label',
-      paddingAngle: 0.2,
       showTooltip: true,
-      showLabel: true,
+      showLegend: false,
       duration: 0,
     },
     {
-      description: 'Custom radius: inner and outer radius variations',
+      description: 'Custom radius: innerRadius',
       innerRadius: 50,
-      outerRadius: 120,
       showTooltip: true,
-      showLabel: false,
+      showLegend: false,
+      innerLabel: '',
+      innerDescription: '',
       duration: 0,
     },
     {
       description: 'Patterns: patterns enabled, no tooltip',
       patterns: true,
       showTooltip: false,
-      showLabel: true,
+      showLegend: false,
       duration: 0,
     },
   ];
@@ -95,7 +95,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     }, async ({ page }) => {
       await loadPage(
         page,
-        'stories/components/d3-chart/tests/examples/donut-chart/donut-props.tsx',
+        'stories/components/d3-chart/tests/examples/donut-chart/basic-usage.tsx',
         'en',
         item,
       );
@@ -125,16 +125,17 @@ test.describe(`${TAG.VISUAL}`, () => {
       description: 'Standard: halfsize with tooltip and label',
       halfsize: true,
       showTooltip: true,
-      showLabel: true,
+      showLegend: false,
       duration: 0,
     },
     {
-      description: 'Custom radius: innerRadius and paddingAngle',
+      description: 'Custom radius: innerRadius',
       halfsize: true,
       innerRadius: 50,
-      paddingAngle: 0.2,
       showTooltip: true,
-      showLabel: false,
+      showLegend: false,
+      innerLabel: '',
+      innerDescription: '',
       duration: 0,
     },
     {
@@ -142,7 +143,9 @@ test.describe(`${TAG.VISUAL}`, () => {
       halfsize: true,
       patterns: true,
       showTooltip: false,
-      showLabel: false,
+      showLegend: false,
+      innerLabel: '',
+      innerDescription: '',
       duration: 0,
     },
   ];
@@ -153,7 +156,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     }, async ({ page }) => {
       await loadPage(
         page,
-        'stories/components/d3-chart/tests/examples/donut-chart/donut-props.tsx',
+        'stories/components/d3-chart/tests/examples/donut-chart/basic-usage.tsx',
         'en',
         item,
       );
@@ -253,8 +256,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     await test.step('Verify pies and labels have aria-hidden attribute', async () => {
-      await loadPage(page, 'stories/components/d3-chart/tests/examples/donut-chart/donut-props.tsx', 'en', {
-        showLabel: true,
+      await loadPage(page, 'stories/components/d3-chart/tests/examples/donut-chart/basic-usage.tsx', 'en', {
         duration: 0,
       });
       await locators.plot(page).waitFor({ state: 'visible' });

@@ -3,7 +3,7 @@ import React from 'react';
 
 const Demo = () => {
   return (
-    <Chart.Donut width={180} height={180} data={[]} showLegend={false} />
+    <Chart.Donut w={180} h={180} data={[]} showLegend={false} />
   );
 };
 
