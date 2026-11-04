@@ -16,7 +16,7 @@ SLine[hide] {
 }
 
 SLine[transparent] {
-  opacity: 0.3;
+  opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
 }
 
 SNull {
