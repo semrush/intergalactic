@@ -1,4 +1,4 @@
-import { Chart, minMax } from '@semcore/ui/d3-chart';
+import { Chart, minMax, type LineChartProps } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
@@ -39,6 +39,6 @@ const Demo = () => {
   );
 };
 
-const data = LineMockData.Interpolation;
+const data = LineMockData.Interpolation as LineChartProps['data'];
 
 export default Demo;
