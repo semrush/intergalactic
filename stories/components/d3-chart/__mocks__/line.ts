@@ -121,10 +121,10 @@ export default {
   ],
   Interpolation: [
     { x: 0, line1: 5, line2: 3 },
-    { x: 1, line1: 8, line2: interpolateValue },
+    { x: 1, line1: 8, line2: interpolateValue } as const,
     { x: 2, line1: 4, line2: 8 },
-    { x: 3, line1: 5, line2: interpolateValue },
-    { x: 4, line1: 5, line2: interpolateValue },
+    { x: 3, line1: 5, line2: interpolateValue } as const,
+    { x: 4, line1: 5, line2: interpolateValue } as const,
     { x: 5, line1: 3, line2: 1 },
   ],
   Time: [
