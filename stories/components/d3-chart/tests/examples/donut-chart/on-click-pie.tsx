@@ -1,11 +1,16 @@
 import { Flex } from '@semcore/ui/base-components';
 import Checkbox from '@semcore/ui/checkbox';
 import { Donut, Plot } from '@semcore/ui/d3-chart';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const data = { a: 3, b: 1, c: 2 };
 
-const Demo = () => {
+type OnClickPieProps = {
+  showLabel?: boolean;
+};
+
+const Demo = ({ showLabel }: OnClickPieProps) => {
   const [selected, setSelected] = React.useState(['b']);
   const handleCheckboxToggle = React.useCallback(
     (name: any) => () => {
@@ -20,8 +25,8 @@ const Demo = () => {
     [setSelected],
   );
 
-  const onClick = () => {
-    console.log('I call on mount');
+  const onClick = (key: unknown) => {
+    console.log(`I call onClick with key: ${typeof key === 'string' ? key : typeof key}`);
   };
 
   return (
@@ -33,10 +38,13 @@ const Demo = () => {
               key={name}
               dataKey={name}
               name={`Pie ${index}`}
-              active={selected.includes(name)}
-
             />
           ))}
+          {showLabel && (
+            <Donut.Label>
+              <Text size={200}>Total</Text>
+            </Donut.Label>
+          )}
         </Donut>
       </Plot>
       <Flex direction='column'>
@@ -60,5 +68,11 @@ const Demo = () => {
     </Flex>
   );
 };
+
+export const defaultProps: OnClickPieProps = {
+  showLabel: true,
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;

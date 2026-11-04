@@ -45,10 +45,6 @@ export type PieProps = Context & {
   name: string;
   /** Color pie **/
   color?: string;
-  /**
-   * Active sector
-   * */
-  active?: boolean;
   /** Enables element transparency */
   transparent?: boolean;
 };
