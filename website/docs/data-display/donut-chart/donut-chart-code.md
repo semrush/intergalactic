@@ -18,20 +18,6 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 :::
 
-## Advanced usage
-
-- You can draw donut and pie charts with the `Donut` component.
-- `Pie` is a separate sector.
-- `Label` is a text label inside the chart.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/d3-chart/docs/examples/donut-chart/donut.tsx';
-</script>
-
-:::
-
 ## Semi-Donut
 
 To create a half-size chart, you need to specify the `halfsize` value and reduce the height of the chart by half.
@@ -48,15 +34,6 @@ To create a half-size chart, you need to specify the `halfsize` value and reduce
 
 - If any data is missing – don't display it on the chart.
 - If only one value is known – display it with a small sector. Be sure to also specify the percentage or value of the unknown data.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/d3-chart/docs/examples/donut-chart/edge-cases.tsx';
-</script>
-
-:::
-
 - If there is no data – show an empty gray chart.
 
 ::: sandbox
