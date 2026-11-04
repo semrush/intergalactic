@@ -88,7 +88,7 @@ class DonutChartComponent extends AbstractChart<
           );
         })}
         {innerLabel && (
-          <Donut.Label>
+          <Donut.Label innerFlexHeight={this.plotHeight}>
             <Text size={500} semibold={true} style={{ fontVariantNumeric: 'lining-nums tabular-nums' }}>{innerLabel[0]}</Text>
             <Text size={200} use='secondary'>{innerLabel[1]}</Text>
           </Donut.Label>
