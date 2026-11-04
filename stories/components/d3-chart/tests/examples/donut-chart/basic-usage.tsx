@@ -51,7 +51,7 @@ const data = {
 
 // showLegend is left out of the defaults so that DonutChart's own logic works
 // (the legend is hidden automatically when data has only 1 item)
-const { showLegend: _showLegend, ...defaultProps } = getChartProps<BasicUsageProps>({
+const { showLegend: _showLegend, ...chartProps } = getChartProps<BasicUsageProps>({
   data,
   halfsize: false,
   innerLabel: '71,240',
@@ -59,7 +59,7 @@ const { showLegend: _showLegend, ...defaultProps } = getChartProps<BasicUsagePro
   logClickPie: false,
 });
 
-export { defaultProps };
+export const defaultProps: Omit<BasicUsageProps, 'showLegend'> = chartProps;
 
 Demo.defaultProps = defaultProps;
 
