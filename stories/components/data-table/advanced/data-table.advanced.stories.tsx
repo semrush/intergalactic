@@ -16,6 +16,8 @@ import FixedColumnsWithDiffWidthsExample from './examples/fixed_columns_with_dif
 import LinkInTableExample from './examples/link_in_table';
 import OverflowInCellsExample from './examples/overflow_in_cells';
 import OverlapCellsExample from './examples/overlap_cells';
+import PerformanceStressExample, { performanceStressDefaultProps } from './examples/performance-stress';
+import type { PerformanceStressProps } from './examples/performance-stress';
 import RenderCellInAccordionExample from './examples/render_cell_in_accordion';
 import RenderCellRawValueExample from './examples/render_cell_raw_data';
 import RowCellStatesExample from './examples/row_cell_states';
@@ -243,4 +245,28 @@ export const TablePerfVirtualization: StoryObj<AccordionInTableProps> = {
     },
   },
   args: accordionInsideTableDefaultProps,
+};
+
+export const PerformanceStress: StoryObj<PerformanceStressProps> = {
+  render: PerformanceStressExample,
+  argTypes: {
+    rows: {
+      control: { type: 'number', min: 20, max: 2000, step: 20 },
+    },
+    columns: {
+      control: { type: 'number', min: 4, max: 30, step: 1 },
+    },
+    scrollMode: {
+      control: 'inline-radio',
+      options: ['page', 'container'],
+    },
+    stickyTop: {
+      control: { type: 'number', min: 0, max: 200, step: 8 },
+    },
+    accordion: {
+      control: 'inline-radio',
+      options: ['rows', 'chart'],
+    },
+  },
+  args: performanceStressDefaultProps,
 };
