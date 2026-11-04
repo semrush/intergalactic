@@ -27,6 +27,7 @@ const Demo = () => {
       data={data}
       plotWidth={400}
       plotHeight={300}
+      direction='row'
       colorMap={colorMap}
       showLegend={false}
       showTooltip

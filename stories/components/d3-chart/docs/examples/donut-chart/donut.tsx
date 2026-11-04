@@ -18,6 +18,7 @@ const Demo = () => {
       data={data}
       plotWidth={300}
       plotHeight={300}
+      direction='row'
       showLegend={false}
       showTooltip
       tooltipTitleFormatter={formatTooltipTitle}

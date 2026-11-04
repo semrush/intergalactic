@@ -14,6 +14,7 @@ const Demo = () => {
       <Chart.Radar
         data={data}
         groupKey='categories'
+        w='auto'
         plotWidth={250}
         plotHeight={250}
         scale={scale_1}
@@ -24,6 +25,7 @@ const Demo = () => {
       <Chart.Radar
         data={data}
         groupKey='categories'
+        w='auto'
         plotWidth={250}
         plotHeight={250}
         scale={scale_2}
