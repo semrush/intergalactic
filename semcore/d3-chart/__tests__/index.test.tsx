@@ -863,17 +863,22 @@ const renderScoreDonut = (props: Record<string, unknown> = {}) =>
 
 const scoreDonutPies = (container: HTMLElement) => queryAllByAttribute('data-ui-name', container, 'Donut.Pie');
 
-/** Angle (in degrees, clockwise from 12 o'clock) swept by the first arc command of a pie path. */
-const pieSweepDegrees = (pie: Element) => {
-  const d = pie.getAttribute('d') ?? '';
-  const start = d.match(/^M([-\d.e]+),([-\d.e]+)/);
-  const end = d.match(/A[\d.]+,[\d.]+,0,(\d),1,([-\d.e]+),([-\d.e]+)/);
+/** Angle (in degrees, clockwise from 12 o'clock) of the first point of a pie path. */
+const pieStartDegrees = (pie: Element) => {
+  const start = (pie.getAttribute('d') ?? '').match(/^M([-\d.e]+),([-\d.e]+)/);
 
-  if (!start || !end) return Number.NaN;
+  if (!start) return Number.NaN;
 
-  const angle = (x: number, y: number) => ((Math.atan2(x, -y) * 180) / Math.PI + 360) % 360;
-  const startAngle = angle(Number(start[1]), Number(start[2]));
-  let sweep = angle(Number(end[2]), Number(end[3])) - startAngle;
+  return ((Math.atan2(Number(start[1]), -Number(start[2])) * 180) / Math.PI + 360) % 360;
+};
+
+/**
+ * Angle (in degrees) swept by the pie at `index`, measured from its start to the start of the next pie.
+ * Rounded corners and the pad angle shift every pie start equally, so they cancel out.
+ */
+const pieSweepDegrees = (container: HTMLElement, index: number) => {
+  const pies = scoreDonutPies(container);
+  let sweep = pieStartDegrees(pies[(index + 1) % pies.length]) - pieStartDegrees(pies[index]);
 
   if (sweep <= 0) sweep += 360;
 
@@ -889,17 +894,16 @@ describe('Chart.ScoreDonut', () => {
       const [valuePie, otherPie] = scoreDonutPies(container);
 
       expect(scoreDonutPies(container)).toHaveLength(2);
-      expect(pieSweepDegrees(valuePie)).toBeCloseTo(144, 0);
-      expect(pieSweepDegrees(otherPie)).toBeCloseTo(216, 0);
+      expect(pieSweepDegrees(container, 0)).toBeCloseTo(144, 0);
+      expect(pieSweepDegrees(container, 1)).toBeCloseTo(216, 0);
       expect(otherPie.getAttribute('mask')).toMatch(/^url\(#.+-mask\)$/);
       expect(valuePie.getAttribute('mask')).toBeNull();
     });
 
     test('should keep a fractional value proportional', async () => {
       const { container } = renderScoreDonut({ data: { value: 33.33 } });
-      const [valuePie] = scoreDonutPies(container);
 
-      expect(pieSweepDegrees(valuePie)).toBeCloseTo(120, 0);
+      expect(pieSweepDegrees(container, 0)).toBeCloseTo(120, 0);
     });
 
     test('should ignore extra keys in data', async () => {
@@ -931,35 +935,32 @@ describe('Chart.ScoreDonut', () => {
 
     test('should split value 50 into two equal halves', async () => {
       const { container } = renderScoreDonut({ data: { value: 50 } });
-      const [valuePie, otherPie] = scoreDonutPies(container);
 
-      expect(pieSweepDegrees(valuePie)).toBeCloseTo(180, 0);
-      expect(pieSweepDegrees(otherPie)).toBeCloseTo(180, 0);
+      expect(pieSweepDegrees(container, 0)).toBeCloseTo(180, 0);
+      expect(pieSweepDegrees(container, 1)).toBeCloseTo(180, 0);
     });
 
     test.each([0.01, 0.99, 1, 1.01])(
       'should keep a tiny value %s visible as about a 1%% slice',
       async (value) => {
         const { container } = renderScoreDonut({ data: { value } });
-        const [valuePie] = scoreDonutPies(container);
 
         // Donut enlarges a slice below 1% of the total to 1% of it, i.e. ~0.99% of the new total.
         expect(scoreDonutPies(container)).toHaveLength(2);
-        expect(pieSweepDegrees(valuePie)).toBeGreaterThan(3.5);
+        expect(pieSweepDegrees(container, 0)).toBeGreaterThan(3.5);
       },
     );
 
     test.each([99, 99.99])('should keep a tiny other slice visible for value %s', async (value) => {
       const { container } = renderScoreDonut({ data: { value } });
-      const [, otherPie] = scoreDonutPies(container);
 
       expect(scoreDonutPies(container)).toHaveLength(2);
-      expect(pieSweepDegrees(otherPie)).toBeGreaterThan(3.5);
+      expect(pieSweepDegrees(container, 1)).toBeGreaterThan(3.5);
     });
   });
 
   describe('innerRadius boundary values', () => {
-    test('should render a 16px ring by default', async () => {
+    test('should render a 12px ring by default', async () => {
       const { container } = renderScoreDonut();
       const [pie] = scoreDonutPies(container);
 
@@ -974,7 +975,7 @@ describe('Chart.ScoreDonut', () => {
     });
 
     test('should render a 1px ring for innerRadius = outerRadius - 1', async () => {
-      const { container } = renderScoreDonut({ innerRadius: 145 });
+      const { container } = renderScoreDonut({ innerRadius: 149 });
       const [pie] = scoreDonutPies(container);
 
       expect(getPieGeometry(pie).thickness).toBe(1);
@@ -1070,14 +1071,14 @@ describe('Chart.ScoreDonut', () => {
         rerender(<Chart.ScoreDonut data={{ value }} aria-label='Score donut chart' {...SCORE_DONUT_PLOT} />);
 
       rerenderWith(80);
-      expect(pieSweepDegrees(scoreDonutPies(container)[0])).toBeCloseTo(288, 0);
+      expect(pieSweepDegrees(container, 0)).toBeCloseTo(288, 0);
 
       rerenderWith(0);
       expect(scoreDonutPies(container)).toHaveLength(1);
 
       rerenderWith(40);
       expect(scoreDonutPies(container)).toHaveLength(2);
-      expect(pieSweepDegrees(scoreDonutPies(container)[0])).toBeCloseTo(144, 0);
+      expect(pieSweepDegrees(container, 0)).toBeCloseTo(144, 0);
     });
 
     test('should render a non-toggleable Circle legend by default', async () => {
