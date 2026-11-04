@@ -69,7 +69,7 @@ To create a half-size chart, you need to specify the `halfsize` value and reduce
 
 ## Legend and pattern fill
 
-Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
+Set `patterns` on `Chart.Donut` to fill both the segments and the legend markers with patterns. In the legend, patterns work only with the default `'Checkbox'` value of `legendProps.shape`.
 
 ::: sandbox
 
