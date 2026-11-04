@@ -749,12 +749,14 @@ describe('Chart.Donut', () => {
   });
 });
 
-const DONUT_THICKNESS = 16;
-const DONUT_INCREASE_FACTOR = 4;
+const DONUT_THICKNESS = 12;
+const DONUT_CORNER_RADIUS = 2;
 
 const getPieGeometry = (pie: Element) => {
   const d = pie.getAttribute('d') ?? '';
-  const radii = [...new Set([...d.matchAll(/A([\d.]+),/g)].map((match) => Number(match[1])))];
+  // Skip the small arcs of the rounded corners, keep only the ring arcs
+  const radii = [...new Set([...d.matchAll(/A([\d.]+),/g)].map((match) => Number(match[1])))]
+    .filter((radius) => radius > DONUT_CORNER_RADIUS);
   const outerRadius = Math.max(...radii);
   const innerRadius = radii.length > 1 ? Math.min(...radii) : 0;
 
@@ -781,21 +783,21 @@ const renderDonut = (
 describe('Donut geometry', () => {
   beforeEach(cleanup);
 
-  test.concurrent('should render a 16px thick ring by default', async () => {
+  test.concurrent('should render a 12px thick ring by default', async () => {
     const [pie] = renderDonut();
 
-    // outerRadius = (300 - DONUT_INCREASE_FACTOR * 2) / 2 = 146
-    expect(pie.outerRadius).toBe(146);
-    expect(pie.innerRadius).toBe(146 - DONUT_THICKNESS);
+    // outerRadius = 300 / 2 = 150
+    expect(pie.outerRadius).toBe(150);
+    expect(pie.innerRadius).toBe(150 - DONUT_THICKNESS);
     expect(pie.thickness).toBe(DONUT_THICKNESS);
   });
 
-  test.concurrent('should keep the 16px thickness regardless of the plot size', async () => {
+  test.concurrent('should keep the 12px thickness regardless of the plot size', async () => {
     const sizes: [number, number][] = [
       [300, 300],
       [120, 120],
       [60, 60],
-      [40, 40], // the smallest plot where a 16px ring still fits
+      [40, 40],
     ];
 
     for (const size of sizes) {
@@ -805,7 +807,7 @@ describe('Donut geometry', () => {
     }
   });
 
-  test.concurrent('should keep the 16px thickness for a semi donut', async () => {
+  test.concurrent('should keep the 12px thickness for a semi donut', async () => {
     const [pie] = renderDonut({ halfsize: true }, [300, 150]);
 
     expect(pie.thickness).toBe(DONUT_THICKNESS);
@@ -815,37 +817,40 @@ describe('Donut geometry', () => {
     const [pie] = renderDonut({ innerRadius: 50 });
 
     expect(pie.innerRadius).toBe(50);
-    expect(pie.outerRadius).toBe(146);
+    expect(pie.outerRadius).toBe(150);
   });
 
   test.concurrent('should render a full pie when innerRadius is explicitly 0', async () => {
     const [pie] = renderDonut({ innerRadius: 0 });
 
     expect(pie.innerRadius).toBe(0);
-    expect(pie.thickness).toBe(146);
+    expect(pie.thickness).toBe(150);
   });
 
   test.concurrent('should clamp the inner radius to 0 instead of going negative', async () => {
-    const [pie] = renderDonut({}, [30, 30]);
+    // outerRadius = 20 / 2 = 10 < DONUT_THICKNESS
+    const [pie] = renderDonut({}, [20, 20]);
 
-    expect(pie.outerRadius).toBe(11);
+    expect(pie.outerRadius).toBe(10);
     expect(pie.innerRadius).toBe(0);
   });
 
-  test.concurrent('should expand an active pie outwards keeping its inner edge', async () => {
+  test('should not change pie geometry on hover', async () => {
     const { container } = render(
       <Plot width={300} height={300} data={ChartOptions.donut.data}>
-        <Donut>
-          <Donut.Pie active dataKey='a' name='Pie 1' />
+        <Donut duration={0}>
+          <Donut.Pie dataKey='a' name='Pie 1' />
           <Donut.Pie dataKey='b' name='Pie 2' />
         </Donut>
       </Plot>,
     );
-    const [activePie, idlePie] = queryAllByAttribute('data-ui-name', container, 'Donut.Pie').map(getPieGeometry);
+    const pies = queryAllByAttribute('data-ui-name', container, 'Donut.Pie');
+    const before = pies.map(getPieGeometry);
 
-    expect(activePie.innerRadius).toBe(idlePie.innerRadius);
-    expect(activePie.outerRadius).toBe(idlePie.outerRadius + DONUT_INCREASE_FACTOR);
-    expect(activePie.thickness).toBe(DONUT_THICKNESS + DONUT_INCREASE_FACTOR);
+    await userEvent.hover(pies[0]);
+
+    expect(pies.map(getPieGeometry)).toEqual(before);
+    expect(before[0].thickness).toBe(DONUT_THICKNESS);
   });
 });
 
