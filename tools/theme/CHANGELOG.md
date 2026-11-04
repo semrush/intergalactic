@@ -2,6 +2,25 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.4.1] - 2026-10-29
+
+### Changed
+
+- Moved non-ordered tokens (`null`, `other-value`, `total-amount`) to
+chart-data-*.
+- Fixed value for the `chart-data-success` variable from `salad-200` to
+`green-300`.
+- Gray shades become more cold and mint-ish
+- Gray is used for a focus semantics now
+- Removed opacity from the `text-primary`for better contrast
+- Updated `bg` for hover and active `bg` for `CheckboxButton` and
+`DropdownMenu` item
+- Gray shades become more cold and mint-ish
+- Gray is used for a focus semantics now
+- Removed opacity from the `text-primary`for better contrast
+- Updated `bg` for hover and active `bg` for `CheckboxButton` and
+`DropdownMenu` item
+
 ## [2.4.0] - 2026-10-07
 
 ### Changed

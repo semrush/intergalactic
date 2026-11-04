@@ -60,7 +60,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   variables.forEach((vars, index) => {
     test(`Verify bar horizontal compact with config ${index + 1} (${vars.description})`, {
-      tag: [TAG.PRIORITY_HIGH, '@bar-horizontal-compact', '@d3-chart', '@base-components', '@flex-box'],
+      tag: [TAG.PRIORITY_HIGH, '@bar-horizontal-compact', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(
         page,

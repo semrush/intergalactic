@@ -21,8 +21,8 @@ const Demo = () => {
   );
 
   return (
-    <Flex mt={3} alignItems='flex-start' flexWrap>
-      <Plot height={120} width={120} mt={6} mb={6} data={data}>
+    <Flex mt={3} gap={6} alignItems='flex-start' flexWrap>
+      <Plot height={160} width={160} mt={6} mb={6} data={data}>
         <Donut>
           {Object.keys(data).map((name, index) => (
             <Donut.Pie
@@ -34,7 +34,7 @@ const Demo = () => {
           ))}
         </Donut>
       </Plot>
-      <Flex direction='column'>
+      <Flex direction='column' gap={2}>
         {Object.keys(data).map((name, index) => {
           return (
             <Checkbox key={name} id={name} theme={`chart-palette-order-${index + 1}`}>

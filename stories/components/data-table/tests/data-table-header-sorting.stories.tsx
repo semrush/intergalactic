@@ -1,7 +1,8 @@
 import { DataTable } from '@semcore/ui/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import MultiLevelExample from './examples/header-tests/multi-level-borders';
+import MultiLevelExample, { multiLevelBordersProps } from './examples/header-tests/multi-level-borders';
+import type { MultiLevelBordersProps } from './examples/header-tests/multi-level-borders';
 import MultiLevelSortingExample, { multiLevelSortingProps } from './examples/header-tests/sorting/multi-level-sorting';
 import type { MultiLevelSortingProps } from './examples/header-tests/sorting/multi-level-sorting';
 import type { OneLevelHeaderSortingProps } from './examples/header-tests/sorting/one-level-header-sorting-props';
@@ -53,6 +54,7 @@ export const MultiLevelSorting: StoryObj<MultiLevelSortingProps> = {
   },
 };
 
-export const MultiLevelBorders: Story = {
+export const MultiLevelBorders: StoryObj<MultiLevelBordersProps> = {
   render: MultiLevelExample,
+  args: multiLevelBordersProps,
 };

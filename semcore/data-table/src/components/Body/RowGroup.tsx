@@ -6,7 +6,7 @@ import { Row } from './Row';
 import style from './style.shadow.css';
 import type { ISelectedRows } from '../../store/SelectableRows';
 import { MergedRowsCell } from '../Body/MergedCells';
-import type { RowRoot } from '../Body/Row';
+import { RowRoot } from '../Body/Row';
 import type { DTRow, DataTableRowProps } from '../Body/Row.types';
 import { SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DataTableData } from '../DataTable/DataTable.types';
@@ -19,12 +19,43 @@ type RowGroupProps<Data extends DataTableData, UniqKeyType> = {
   startIndex: number;
   rowIndex: number;
   shadowVertical?: '' | 'end' | 'start' | 'median';
-  handleRef: (index: number, row: DTRow<UniqKeyType>) => (node: HTMLElement | null) => void;
-  handleComponentRef: (row: DTRow<UniqKeyType>) => (component: RowRoot<Data, UniqKeyType> | null) => void;
-  getPropsToRow: (props: { row: DTRow<UniqKeyType>; mergedRow?: boolean }) => DataTableRowProps<Data, UniqKeyType>;
+  componentRef: (index: number, row: DTRow<UniqKeyType>, component: RowRoot<Data, UniqKeyType> | RowGroup<Data, UniqKeyType> | null) => void;
+  getPropsToRow: (props: { row: DTRow<UniqKeyType>; mergedRow?: boolean; orderedIndex: number }) => DataTableRowProps<Data, UniqKeyType>;
 };
 
 export class RowGroup<Data extends DataTableData, UniqKeyType> extends React.PureComponent<RowGroupProps<Data, UniqKeyType>> {
+  private groupedRowsMap = new Map<UniqKeyType, RowRoot<Data, UniqKeyType>>();
+
+  public rowElementRef = React.createRef<HTMLDivElement>();
+
+  componentDidMount() {
+    const { startIndex, rowIndex, componentRef, rows } = this.props;
+    const firstGroupedRow = this.groupedRowsMap.values().next().value;
+
+    componentRef?.(startIndex + rowIndex, rows[0], firstGroupedRow ?? this);
+  }
+
+  componentWillUnmount() {
+    const { startIndex, rowIndex, componentRef, rows } = this.props;
+    componentRef?.(startIndex + rowIndex, rows[0], null);
+  }
+
+  handleComponentRef = (
+    index: number,
+    row: DTRow<UniqKeyType>,
+    component: RowRoot<Data, UniqKeyType> | RowGroup<Data, UniqKeyType> | null,
+  ) => {
+    const id = row[UNIQ_ROW_KEY];
+
+    if (component) {
+      if (component instanceof RowRoot) {
+        this.groupedRowsMap.set(id, component);
+      }
+    } else {
+      this.groupedRowsMap.delete(id);
+    }
+  };
+
   render() {
     const SRowGroup = Box;
     const { rows, selectedRows, columns, startIndex, rowIndex, getPropsToRow, shadowVertical } = this.props;
@@ -44,14 +75,14 @@ export class RowGroup<Data extends DataTableData, UniqKeyType> extends React.Pur
       <SRowGroup
         role='rowgroup'
         key={`gg_${groupUniqKey}`}
-        ref={this.props.handleRef(startIndex + rowIndex, rows[0])}
+        ref={this.rowElementRef}
       >
         {rows.map((item, i) => {
           return (
             <Row
               key={item[UNIQ_ROW_KEY]?.toString() ?? `gg_${groupUniqKey}_row_${i}`}
-              componentRef={this.props.handleComponentRef(item)}
-              {...getPropsToRow({ row: item, mergedRow: i > 0 ? true : false })}
+              {...getPropsToRow({ row: item, mergedRow: i > 0 ? true : false, orderedIndex: startIndex + rowIndex })}
+              componentRef={this.handleComponentRef}
               shadowVertical={shadowVertical}
             />
           );
