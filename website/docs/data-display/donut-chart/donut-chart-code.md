@@ -43,18 +43,6 @@ To create a half-size chart, you need to specify the `halfsize` value and reduce
 
 :::
 
-## Controlled highlight
-
-Use `active` property to control segments highlight.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/d3-chart/docs/examples/donut-chart/donut-controlled-highlight.tsx';
-</script>
-
-:::
-
 ## Edge cases
 
 - If any data is missing – don't display it on the chart.

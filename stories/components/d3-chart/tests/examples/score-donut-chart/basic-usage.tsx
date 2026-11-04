@@ -95,10 +95,16 @@ const Demo: DemoComponent = (props: ScoreDonutChartStoryArgs) => {
       aria-label='Score donut chart'
       {...(withInnerLabel
         ? {
+            // Same title and description as the Chart.Donut innerLabel.
             innerLabel: (
-              <Text tag='tspan' fill='text-primary' size={400}>
-                {`${chartProps.data.value}%`}
-              </Text>
+              <>
+                <Text size={500} semibold style={{ fontVariantNumeric: 'lining-nums tabular-nums' }}>
+                  {`${chartProps.data.value}%`}
+                </Text>
+                <Text size={200} use='secondary'>
+                  Description
+                </Text>
+              </>
             ),
           }
         : {})}

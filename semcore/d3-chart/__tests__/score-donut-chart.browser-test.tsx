@@ -61,16 +61,10 @@ const hoverPieForTooltip = async (page: Page, pie: Locator) => {
   }).toPass();
 };
 
-const outerRadius = (pie: Locator) =>
-  pie.evaluate((path) => {
-    const radii = [...(path.getAttribute('d') ?? '').matchAll(/A([\d.]+),/g)].map((match) => Number(match[1]));
-
-    return Math.max(...radii);
-  });
-
 /**
 Resolves the mask rectangle of the `other` pie into the pie's user space, where percentages
 are taken from the svg viewport, and compares it with the pie's bounding box.
+The ring touches the plot edge, so the box may go past the mask by a sub-pixel rounding error.
 */
 const maskCoversOtherPie = (page: Page) =>
   locators.otherPie(page).evaluate((path: SVGPathElement) => {
@@ -86,12 +80,13 @@ const maskCoversOtherPie = (page: Page) =>
     const maskWidth = resolve(rect.getAttribute('width'), width);
     const maskHeight = resolve(rect.getAttribute('height'), height);
     const box = path.getBBox();
+    const tolerance = 0.5;
 
     return (
-      box.x >= maskX &&
-      box.y >= maskY &&
-      box.x + box.width <= maskX + maskWidth &&
-      box.y + box.height <= maskY + maskHeight
+      box.x >= maskX - tolerance &&
+      box.y >= maskY - tolerance &&
+      box.x + box.width <= maskX + maskWidth + tolerance &&
+      box.y + box.height <= maskY + maskHeight + tolerance
     );
   });
 
@@ -137,7 +132,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_MEDIUM, ...COMPONENT_TAGS, '@chart-legend'],
     }, async ({ page }) => {
       const { legendType, ...props } = item;
-      await load(page, { ...props, 'showLegend': true, 'legendProps.legendType': legendType });
+      await load(page, { ...props, showLegend: true, legendProps: { legendType } });
 
       await test.step('Verify chart renders correctly', async () => {
         await expect(page).toHaveScreenshot();
@@ -232,48 +227,23 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test.describe('Legend', () => {
-    test('Verify hover on the legend item highlights the value pie', {
+    test('Verify pies stay opaque on hover', {
       tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, ...COMPONENT_TAGS, '@chart-legend'],
     }, async ({ page }) => {
-      await load(page, { showLegend: true });
-      const idleRadius = await outerRadius(locators.valuePie(page));
+      await load(page, { data: { value: 40 }, showLegend: true });
 
-      await locators.legendItem(page).hover();
-      await expect.poll(() => outerRadius(locators.valuePie(page))).toBe(idleRadius + 4);
-    });
+      await test.step('Verify pies stay opaque on legend item hover', async () => {
+        await locators.legendItem(page).hover();
 
-    test('Verify value pie returns to its size after leaving the legend item', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, ...COMPONENT_TAGS, '@chart-legend'],
-    }, async ({ page }) => {
-      await load(page, { showLegend: true });
-      const idleRadius = await outerRadius(locators.valuePie(page));
-
-      await locators.legendItem(page).hover();
-      await expect.poll(() => outerRadius(locators.valuePie(page))).toBe(idleRadius + 4);
-
-      await page.mouse.move(0, 0);
-      await expect.poll(() => outerRadius(locators.valuePie(page))).toBe(idleRadius);
-    });
-
-    test('Verify value pie returns to its size after leaving the pie', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, ...COMPONENT_TAGS],
-    }, async ({ page }) => {
-      // Hovering the pie itself animates the radius; the animation is skipped with duration 0
-      // and until the mount animation ends, so the hover is retried.
-      await load(page, { data: { value: 40 }, duration: 300 });
-      const idleRadius = await outerRadius(locators.valuePie(page));
-
-      await test.step('Verify value pie grows on hover', async () => {
-        await expect(async () => {
-          await page.mouse.move(0, 0);
-          await hoverPie(locators.valuePie(page));
-          await expect.poll(() => outerRadius(locators.valuePie(page)), { timeout: 1000 }).toBe(idleRadius + 4);
-        }).toPass();
+        await expect(locators.valuePie(page)).toHaveCSS('opacity', '1');
+        await expect(locators.otherPie(page)).toHaveCSS('opacity', '1');
       });
 
-      await test.step('Verify value pie shrinks back on leave', async () => {
-        await page.mouse.move(0, 0);
-        await expect.poll(() => outerRadius(locators.valuePie(page))).toBe(idleRadius);
+      await test.step('Verify pies stay opaque on value pie hover', async () => {
+        await hoverPieForTooltip(page, locators.valuePie(page));
+
+        await expect(locators.valuePie(page)).toHaveCSS('opacity', '1');
+        await expect(locators.otherPie(page)).toHaveCSS('opacity', '1');
       });
     });
   });
@@ -356,7 +326,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify data summary contains the score', {
       tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, ...COMPONENT_TAGS],
     }, async ({ page }) => {
-      test.fixme(true, 'B10: the data summary always reads a hardcoded "20%" instead of data.value');
       await load(page, { data: { value: 40 } });
 
       await page.getByRole('button', { name: 'Open data summary' }).focus();
