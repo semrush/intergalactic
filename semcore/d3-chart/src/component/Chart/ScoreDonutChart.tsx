@@ -108,7 +108,7 @@ class ScoreDonutChartComponent extends AbstractChart<
 
   renderChart() {
     const { innerRadius, halfsize, innerLabel, onClickPie, uid } = this.asProps;
-    const { dataDefinitions, highlightedItem } = this.state;
+    const { dataDefinitions } = this.state;
 
     const checkedLegendItems = dataDefinitions.filter((item) => item.checked);
 
@@ -149,7 +149,12 @@ class ScoreDonutChartComponent extends AbstractChart<
             },
           }}
         />
-        {innerLabel && <Donut.Label>{innerLabel}</Donut.Label>}
+        {innerLabel && (
+          <Donut.Label innerFlexHeight={this.plotHeight}>
+            <Text size={500} semibold={true} style={{ fontVariantNumeric: 'lining-nums tabular-nums' }}>{innerLabel[0]}</Text>
+            <Text size={200} use='secondary'>{innerLabel[1]}</Text>
+          </Donut.Label>
+        )}
       </Donut>
     );
   }

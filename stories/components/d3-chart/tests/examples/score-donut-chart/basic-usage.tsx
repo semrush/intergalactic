@@ -96,16 +96,7 @@ const Demo: DemoComponent = (props: ScoreDonutChartStoryArgs) => {
       {...(withInnerLabel
         ? {
             // Same title and description as the Chart.Donut innerLabel.
-            innerLabel: (
-              <>
-                <Text size={500} semibold style={{ fontVariantNumeric: 'lining-nums tabular-nums' }}>
-                  {`${chartProps.data.value}%`}
-                </Text>
-                <Text size={200} use='secondary'>
-                  Description
-                </Text>
-              </>
-            ),
+            innerLabel: [`${chartProps.data.value}%`, 'Description'],
           }
         : {})}
       {...(useCustomValueFormatter ? { tooltipValueFormatter: formatValue } : {})}
