@@ -23,8 +23,8 @@ function formatValue(value: unknown) {
 type ScoreDonutChartStoryProps = Omit<ScoreDonutChartProps, 'patterns'> & {
   patterns?: ScoreDonutChartProps['patterns'] | false;
   /**
-   * `innerLabel` is a ReactNode and cannot travel through `loadPage` as JSON, so the story
-   * builds it. Turning it on is the only way to reach the `Donut.Label` branch.
+   * The story builds `innerLabel` from `data.value`, so the label always matches the score.
+   * Turning it on is the only way to reach the `Donut.Label` branch.
    */
   withInnerLabel?: boolean;
   /** Set to true to replace the built-in tooltip value formatter with `formatValue`. */

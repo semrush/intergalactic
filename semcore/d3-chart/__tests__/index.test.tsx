@@ -1119,9 +1119,9 @@ describe('Chart.ScoreDonut', () => {
     });
 
     test('should render innerLabel inside the donut', async () => {
-      const { container } = renderScoreDonut({ innerLabel: '40%' });
+      const { container } = renderScoreDonut({ innerLabel: ['40%', 'Description'] });
 
-      expect(queryByAttribute('data-ui-name', container, 'Donut.Label')?.textContent).toBe('40%');
+      expect(queryByAttribute('data-ui-name', container, 'Donut.Label')?.textContent).toBe('40%Description');
     });
   });
 
