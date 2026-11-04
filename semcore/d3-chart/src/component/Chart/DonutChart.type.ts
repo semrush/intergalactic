@@ -23,8 +23,11 @@ export type DonutChartProps = Intergalactic.InternalTypings.EfficientOmit<
   innerRadius?: number;
   /** Creates a semi-donut chart when enabled */
   halfsize?: boolean;
-  /** Content displayed in the center of the donut */
-  innerLabel?: React.ReactNode;
+  /**
+   * Content displayed in the center of the donut
+   * ["Label (usually total number)", "Description (some text)"]
+   */
+  innerLabel?: [string, string];
   /** Callback triggered when a user clicks on a pie */
   onClickPie?: (key: DataKey, e: React.SyntheticEvent) => void;
 };

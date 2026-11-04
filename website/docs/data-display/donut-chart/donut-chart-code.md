@@ -18,6 +18,19 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 :::
 
+## Semi-Donut
+
+To create a half-size chart, you need to specify the `halfsize` value and reduce the height of the chart by half.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/d3-chart/docs/examples/donut-chart/semi-donut.tsx';
+</script>
+
+:::
+
+
 ## Donut with "other value"
 
 - You should add custom color (use `chart-palette-order-other-data` token) by key in your data for "other value".
@@ -42,31 +55,10 @@ Use `active` property to control segments highlight.
 
 :::
 
-## Semi-donut
-
-To create a half-size chart, you need to specify the `halfsize` value and reduce the height of the chart by half.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/d3-chart/docs/examples/donut-chart/semi-donut.tsx';
-</script>
-
-:::
-
 ## Edge cases
 
 - If any data is missing – don't display it on the chart.
 - If only one value is known – display it with a small sector. Be sure to also specify the percentage or value of the unknown data.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/d3-chart/docs/examples/donut-chart/edge-cases.tsx';
-</script>
-
-:::
-
 - If there is no data – show an empty gray chart.
 
 ::: sandbox
@@ -79,7 +71,7 @@ To create a half-size chart, you need to specify the `halfsize` value and reduce
 
 ## Legend and pattern fill
 
-Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
+Set `patterns` on `Chart.Donut` to fill both the segments and the legend markers with patterns. In the legend, patterns work only with the default `'Checkbox'` value of `legendProps.shape`.
 
 ::: sandbox
 

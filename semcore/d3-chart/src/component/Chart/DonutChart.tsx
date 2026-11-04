@@ -66,18 +66,33 @@ class DonutChartComponent extends AbstractChart<
     return (
       <Donut onClick={onClickPie} halfsize={halfsize} innerRadius={innerRadius}>
         {checkedLegendItems.length === 0 && <Donut.EmptyData />}
-        {checkedLegendItems.map((item, index) => {
+        {dataDefinitions.map((item, index) => {
+          if (!item.checked) {
+            return null;
+          }
+
           return (
             <Donut.Pie
               key={item.id}
               dataKey={item.id}
               name={item.label}
               color={item.color}
-              active={highlightedItem === index}
+              transparent={highlightedItem !== -1 && highlightedItem !== index}
+              onMouseOver={() => {
+                this.setState({ highlightedItem: index });
+              }}
+              onMouseOut={() => {
+                this.setState({ highlightedItem: -1 });
+              }}
             />
           );
         })}
-        {innerLabel && <Donut.Label>{innerLabel}</Donut.Label>}
+        {innerLabel && (
+          <Donut.Label innerFlexHeight={this.plotHeight}>
+            <Text size={500} semibold={true} style={{ fontVariantNumeric: 'lining-nums tabular-nums' }}>{innerLabel[0]}</Text>
+            <Text size={200} use='secondary'>{innerLabel[1]}</Text>
+          </Donut.Label>
+        )}
       </Donut>
     );
   }

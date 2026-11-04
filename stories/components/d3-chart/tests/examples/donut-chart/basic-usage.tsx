@@ -5,8 +5,23 @@ import React from 'react';
 
 import { getChartProps, getPropsToChart } from '../stories_props_helper';
 
-const Demo = (props: DonutChartProps) => {
-  const { plotWidth, plotHeight, ...chartProps } = getPropsToChart(props);
+type BasicUsageProps = Omit<DonutChartProps, 'innerLabel' | 'patterns'> & {
+  patterns?: DonutChartProps['patterns'] | false;
+  /** First line of `innerLabel`. An empty value together with `innerDescription` hides the label. */
+  innerLabel?: string;
+  /** Second line of `innerLabel`. */
+  innerDescription?: string;
+  /** `onClickPie` is a function, so the story passes one that logs the clicked key to the console. */
+  logClickPie?: boolean;
+};
+
+const logClickedPie = (key: string) => {
+  console.log(`I call onClickPie with key: ${key}`);
+};
+
+const Demo = (props: BasicUsageProps) => {
+  const { plotWidth, plotHeight, innerLabel, innerDescription, logClickPie, patterns, ...chartProps } =
+    getPropsToChart<BasicUsageProps>(props);
 
   return (
     <Box
@@ -18,7 +33,10 @@ const Demo = (props: DonutChartProps) => {
       overflow='auto'
     >
       <Chart.Donut
-        {...chartProps}
+        {...(chartProps as DonutChartProps)}
+        {...(patterns ? { patterns } : {})}
+        {...(innerLabel || innerDescription ? { innerLabel: [innerLabel ?? '', innerDescription ?? ''] } : {})}
+        {...(logClickPie ? { onClickPie: logClickedPie } : {})}
         aria-label='Donut chart'
       />
     </Box>
@@ -31,13 +49,15 @@ const data = {
   c: 2,
 };
 
-const propsFromHelper = getChartProps<DonutChartProps>({
+// showLegend is left out of the defaults so that DonutChart's own logic works
+// (the legend is hidden automatically when data has only 1 item)
+const { showLegend: _showLegend, ...defaultProps } = getChartProps<BasicUsageProps>({
   data,
+  halfsize: false,
+  innerLabel: '71,240',
+  innerDescription: 'Description',
+  logClickPie: false,
 });
-
-// Remove showLegend from defaultProps to allow DonutChart's internal logic to work
-// (auto-hide legend when data has only 1 item)
-const { showLegend, ...defaultProps } = propsFromHelper as any;
 
 export { defaultProps };
 

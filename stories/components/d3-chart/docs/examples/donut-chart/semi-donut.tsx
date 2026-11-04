@@ -1,42 +1,11 @@
-import { Flex } from '@semcore/ui/base-components';
-import { Plot, Donut } from '@semcore/ui/d3-chart';
-import { Text } from '@semcore/ui/typography';
+import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
 import DonutMockData from '../../../__mocks__/donut';
 
 const Demo = () => {
   return (
-    <Plot width={180} height={90} data={data}>
-      <Donut halfsize>
-        <Donut.Pie dataKey='a' name='Pie 1' />
-        <Donut.Pie dataKey='b' name='Pie 2' />
-        <Donut.Pie dataKey='c' name='Pie 3' />
-        <Donut.Label label='71,240 engagements'>
-          <Text tag='tspan' x='0' dy='-0.9em' fill='text-primary' size={500}>
-            71,240
-          </Text>
-          <Text tag='tspan' x='0' dy='1.2em' fill='text-secondary' size={200}>
-            Engagements
-          </Text>
-        </Donut.Label>
-      </Donut>
-      <Donut.Tooltip>
-        {({ dataKey, name }) => {
-          return {
-            children: (
-              <>
-                <Donut.Tooltip.Title>{name}</Donut.Tooltip.Title>
-                <Flex justifyContent='space-between'>
-                  {/* @ts-ignore */}
-                  <Text bold>{data[dataKey]}</Text>
-                </Flex>
-              </>
-            ),
-          };
-        }}
-      </Donut.Tooltip>
-    </Plot>
+    <Chart.Donut w={180} h={90} halfsize={true} showLegend={false} data={data} aria-label='Donut chart' innerLabel={['71,240', 'Engagements']} />
   );
 };
 
