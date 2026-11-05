@@ -1,6 +1,6 @@
 import { Box } from '@semcore/ui/base-components';
 import type { BarChartProps } from '@semcore/ui/d3-chart';
-import { Chart, DATA_TYPE, FORECAST, GOOD, HIGHLIGHT_DOT, interpolateValue, POTENTIAL, INSIGHTFUL } from '@semcore/ui/d3-chart';
+import { Chart, DATA_TYPE, FORECAST, GOOD, BAD, HIGHLIGHT_DOT, interpolateValue, POTENTIAL, INSIGHTFUL } from '@semcore/ui/d3-chart';
 import React from 'react';
 
 import { getChartProps, getPropsToChart } from '../stories_props_helper';
@@ -64,9 +64,9 @@ const Demo = (props: BarChartProps) => {
 };
 
 const data = [
-  { category: 'Category 0', bar: 2 },
-  { category: 'Category 1', bar: 5 },
-  { category: 'Category 2', bar: 7 },
+  { category: 'Category 0', bar: 2, [HIGHLIGHT_DOT]: GOOD },
+  { category: 'Category 1', bar: 5, [HIGHLIGHT_DOT]: INSIGHTFUL },
+  { category: 'Category 2', bar: 7, [HIGHLIGHT_DOT]: BAD },
   { category: 'Category 3', bar: 7, [DATA_TYPE]: FORECAST },
   { category: 'Category 4', bar: 9, [DATA_TYPE]: POTENTIAL },
 ];
