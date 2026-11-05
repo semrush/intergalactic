@@ -27,7 +27,7 @@ class HorizontalBarRoot extends Component {
   static defaultProps = {
     offset: [0, 0],
     duration: 500,
-    r: 0,
+    r: 2,
     wMin: MIN_WIDTH,
   };
 

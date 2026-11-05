@@ -43,6 +43,9 @@ export type HorizontalBarProps = Context & {
 };
 
 declare const HorizontalBar: IntergalacticD3Component<'path', HorizontalBarProps, BarContext> & {
+  /**
+   * @deprecated. Since the new design was applied, you shouldn't use it anymore for Bar charts.
+   */
   Background: IntergalacticD3Component<'rect', BackgroundProps, Context>;
 };
 
