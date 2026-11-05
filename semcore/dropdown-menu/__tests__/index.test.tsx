@@ -2,12 +2,16 @@ import { Box } from '@semcore/base-components';
 import { ButtonTrigger } from '@semcore/base-trigger';
 import Button from '@semcore/button';
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import DropdownMenu from '../src';
+
+describe ('dropdown-menu Translations exports', () => {
+  runTranslationsCheckTest('@semcore/dropdown-menu');
+});
 
 describe('dropdown-menu Dependency imports', () => {
   runDependencyCheckTests('dropdown-menu');

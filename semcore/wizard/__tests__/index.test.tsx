@@ -1,10 +1,14 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { describe, test, expect, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Wizard from '../src';
+
+describe ('wizard Translations exports', () => {
+  runTranslationsCheckTest('@semcore/wizard');
+});
 
 describe('wizard Dependency imports', () => {
   runDependencyCheckTests('wizard');

@@ -1,10 +1,14 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import ColorPicker, { PaletteManager } from '../src';
+
+describe ('color-picker Translations exports', () => {
+  runTranslationsCheckTest('@semcore/color-picker');
+});
 
 describe('color-picker Dependency imports', () => {
   runDependencyCheckTests('color-picker');
