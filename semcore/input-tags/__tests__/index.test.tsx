@@ -1,10 +1,14 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { render, userEvent, cleanup } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import * as React from 'react';
 
 import InputTags from '../src';
+
+describe ('input-tags Translations exports', () => {
+  runTranslationsCheckTest('@semcore/input-tags');
+});
 
 describe('input-tags Dependency imports', () => {
   runDependencyCheckTests('input-tags');

@@ -1,11 +1,15 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, queryByAttribute, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Button from '../../button/src';
 import Modal from '../src';
+
+describe ('modal Translations exports', () => {
+  runTranslationsCheckTest('@semcore/modal');
+});
 
 describe('modal Dependency imports', () => {
   runDependencyCheckTests('modal');

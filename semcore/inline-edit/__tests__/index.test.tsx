@@ -1,10 +1,14 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import InlineEdit from '../src';
+
+describe ('inline-edit Translations exports', () => {
+  runTranslationsCheckTest('@semcore/inline-edit');
+});
 
 describe('inline-edit Dependency imports', () => {
   runDependencyCheckTests('inline-edit');

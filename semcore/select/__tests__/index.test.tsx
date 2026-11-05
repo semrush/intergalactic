@@ -1,10 +1,14 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, screen, userEvent, waitFor } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Select, { AutoSuggest, InputSearch } from '../src';
+
+describe ('select Translations exports', () => {
+  runTranslationsCheckTest('@semcore/select');
+});
 
 describe('select Dependency imports', () => {
   runDependencyCheckTests('select');
