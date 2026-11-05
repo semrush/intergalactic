@@ -21,7 +21,7 @@ SScatterPlot[pattern][color] {
 }
 
 SScatterPlot[transparent] {
-  opacity: 0.3;
+  opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
 }
 
 SValue {
@@ -35,5 +35,5 @@ SValue[color] {
 }
 
 SValue[transparent] {
-  opacity: 0.3;
+  opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
 }

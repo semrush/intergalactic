@@ -5,7 +5,8 @@ import BaseOneLevelHeaderExample, { baseDefaultProps } from './examples/header-t
 import type { OneLevelHeaderBaseProps } from './examples/header-tests/base-one-level-header-props';
 import LongHeaderEllipsisExample, { longHeaderEllipsisProps } from './examples/header-tests/long-header-ellipsis';
 import type { LongHeaderEllipsisProps } from './examples/header-tests/long-header-ellipsis';
-import MultiLevelBodersExample from './examples/header-tests/multi-level-borders';
+import MultiLevelBodersExample, { multiLevelBordersProps } from './examples/header-tests/multi-level-borders';
+import type { MultiLevelBordersProps } from './examples/header-tests/multi-level-borders';
 import MultiLevelNonInteractivePropsExample, {
   multiLevelNonInteractiveProps,
 } from './examples/header-tests/multi-level-header-non-interactive';
@@ -85,6 +86,7 @@ export const LongHeaderEllipsis: StoryObj<LongHeaderEllipsisProps> = {
   },
 };
 
-export const MultiLevelBorders: Story = {
+export const MultiLevelBorders: StoryObj<MultiLevelBordersProps> = {
   render: MultiLevelBodersExample,
+  args: multiLevelBordersProps,
 };

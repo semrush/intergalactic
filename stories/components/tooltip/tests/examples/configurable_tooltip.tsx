@@ -38,7 +38,7 @@ const Demo = (props: ConfigurableTooltipProps) => {
   } = props;
 
   return (
-    <Flex gap={4} direction='column'>
+    <Flex gap={4} direction='column' ml={45} mt={20}>
       <Flex gap={4} alignItems='center'>
         Tooltip:
         <Tooltip

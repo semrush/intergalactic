@@ -1,3 +1,4 @@
+import type { DataTableProps } from '@semcore/ui/data-table';
 import { DataTable, ROW_GROUP, ACCORDION } from '@semcore/ui/data-table';
 import React from 'react';
 
@@ -47,12 +48,16 @@ const data = [
   },
 ];
 
-type accordionMergedProps = { loading?: boolean };
+type accordionMergedProps = {
+  loading?: boolean;
+  accordionMode?: DataTableProps<typeof data, any, any>['accordionMode'];
+};
 const Demo = (props: accordionMergedProps) => {
   return (
     <DataTable
       data={data}
       loading={props.loading}
+      accordionMode={props.accordionMode}
       aria-label='Rows grouping'
       columns={[
         { name: 'keyword', children: 'Keyword' },
@@ -64,8 +69,9 @@ const Demo = (props: accordionMergedProps) => {
   );
 };
 
-export const accordionMergedProps = {
+export const accordionMergedProps: accordionMergedProps = {
   loading: false,
+  accordionMode: undefined,
 };
 
 Demo.defaultMergedProps = accordionMergedProps;

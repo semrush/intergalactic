@@ -18,7 +18,7 @@ import type { BaseChartProps, BaseLegendProps, ListData, ObjectData, ObjectDataK
 import type { HoverLine, HoverRect } from '../..';
 // @ts-ignore
 import { Plot, XAxis, YAxis } from '../..';
-import { makeDataHintsContainer } from '../../a11y/hints';
+import { makeDataHintsContainer, makeDataHintsHandlers } from '../../a11y/hints';
 import style from '../../style/abstract-chart.shadow.css';
 import { interpolateValue } from '../../utils';
 import ChartLegend, { ChartLegendTable } from '../ChartLegend';
@@ -55,6 +55,7 @@ export abstract class AbstractChart<
   protected plotPadding = 10;
 
   protected dataHints = makeDataHintsContainer();
+  protected dataHintsHandlers = makeDataHintsHandlers(this.dataHints);
 
   protected chartRef = React.createRef<HTMLElement>();
   protected legendRef = React.createRef<HTMLDivElement>();
@@ -680,6 +681,7 @@ export abstract class AbstractChart<
           width={plotWidth}
           height={plotHeight}
           dataHints={this.dataHints}
+          dataHintsHandlers={this.dataHintsHandlers}
           a11yAltTextConfig={a11yAltTextConfig}
           patterns={patterns}
           duration={duration}

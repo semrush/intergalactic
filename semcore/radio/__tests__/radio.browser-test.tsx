@@ -27,8 +27,8 @@ export const locators = {
 };
 
 const sizeStyles = {
-  m: { mark: '16px', fontSize: '14px', textMargin: '6px' },
-  l: { mark: '20px', fontSize: '16px', textMargin: '8px' },
+  m: { mark: '20px', fontSize: '14px', textMargin: '8px' },
+  l: { mark: '24px', fontSize: '16px', textMargin: '8px' },
 };
 
 const expectSizeStyles = async (page: Page, size: 'm' | 'l', { withTextMargin }: { withTextMargin: boolean }) => {
