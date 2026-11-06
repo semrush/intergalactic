@@ -88,6 +88,9 @@ type BackgroundContext = Context & {
 };
 
 declare const Bar: IntergalacticD3Component<'rect', BarProps, BarContext> & {
+  /**
+   * @deprecated. Since the new design was applied, you shouldn't use it anymore for Bar charts.
+   */
   Background: IntergalacticD3Component<'rect', BackgroundProps, BackgroundContext>;
 };
 

@@ -80,6 +80,30 @@ export const legendTypeControl = {
   'legendProps.legendType': { control: 'select', options: ['Flex', 'Table'] },
 } as const;
 
+/**
+ * Knobs that build the `referenceLine` / `referenceArea` objects passed to `LineChart`.
+ */
+const referenceKnob = { table: { category: 'Reference knobs' } } as const;
+
+export const referenceControls = {
+  withReferenceLine: { control: 'boolean', ...referenceKnob },
+  referenceLineValue: { control: 'number', if: { arg: 'withReferenceLine' }, ...referenceKnob },
+  referenceLineArea: { control: 'number', if: { arg: 'withReferenceLine' }, ...referenceKnob },
+  referenceLineCount: { control: { type: 'number', min: 1, max: 3 }, if: { arg: 'withReferenceLine' }, ...referenceKnob },
+  referenceLinesOverlap: { control: 'boolean', if: { arg: 'withReferenceLine' }, ...referenceKnob },
+  withReferenceArea: { control: 'boolean', ...referenceKnob },
+  referenceAreaStart: { control: 'number', if: { arg: 'withReferenceArea' }, ...referenceKnob },
+  referenceAreaEnd: { control: 'number', if: { arg: 'withReferenceArea' }, ...referenceKnob },
+  referenceAreaUse: {
+    control: 'select',
+    if: { arg: 'withReferenceArea' },
+    options: ['neutral', 'good', 'bad', 'insight'],
+    ...referenceKnob,
+  },
+  referenceAreaTitle: { control: 'text', if: { arg: 'withReferenceArea' }, ...referenceKnob },
+  referenceAreaSubTitle: { control: 'text', if: { arg: 'withReferenceArea' }, ...referenceKnob },
+};
+
 export const getChartArgTypes = (additionalControls?: any) => {
   return {
     'plotWidth': { control: { type: 'number' } },

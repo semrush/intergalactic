@@ -4,8 +4,9 @@ import { transition } from 'd3-transition';
 import React from 'react';
 
 import AnimatedClipPath from './AnimatedClipPath';
+import { DATA_TYPE, FORECAST, POTENTIAL, HIGHLIGHT_DOT, GOOD, BAD, INSIGHTFUL } from './component/Chart';
 import createElement from './createElement';
-import { PatternFill } from './Pattern';
+import { PatternFill, PotentialGradient } from './Pattern';
 import style from './style/bar.shadow.css';
 import { scaleToBand, roundedPath } from './utils';
 
@@ -112,29 +113,52 @@ class BarRoot extends Component {
       dataHintsHandler.specifyDataRowFields(x, y);
     }
 
+    let mask = undefined;
+    let resolvedColor = resolveColor(color);
+
+    if (d[DATA_TYPE] === POTENTIAL) {
+      resolvedColor = `url(#${this.potentialGradientId})`;
+      mask = `url(#${this.potentialPatternId})`;
+    }
+    if (d[DATA_TYPE] === FORECAST) {
+      mask = `url(#${this.forecastPatternId})`;
+    }
+
     return (
       <React.Fragment key={`bar-${i}`}>
         {sstyled(styles)(
-          <SBar
-            aria-hidden
-            render='path'
-            clipPath={`url(#${uid})`}
-            __excludeProps={['data', 'scale', 'value', 'onClick', 'offset']}
-            childrenPosition='above'
-            value={d}
-            index={i}
-            hide={hide}
-            pattern={patterns ? `url(#${uid}-${i}-pattern)` : undefined}
-            color={resolveColor(color)}
-            x={barX}
-            y={barY}
-            width={width}
-            height={height}
-            d={dSvg}
-            onClickCapture={handleClick}
-            use:duration={`${duration}ms`}
-            transparent={transparent}
-          />,
+          <>
+            {Boolean(d[HIGHLIGHT_DOT]) && (
+              this.renderHighlight({
+                barX,
+                barY,
+                width,
+                height,
+                highlight: d[HIGHLIGHT_DOT],
+              })
+            )}
+            <SBar
+              aria-hidden
+              render='path'
+              clipPath={`url(#${uid})`}
+              __excludeProps={['data', 'scale', 'value', 'onClick', 'offset']}
+              childrenPosition='above'
+              value={d}
+              index={i}
+              hide={hide}
+              pattern={patterns ? `url(#${uid}-${i}-pattern)` : undefined}
+              color={resolvedColor}
+              mask={mask}
+              x={barX}
+              y={barY}
+              width={width}
+              height={height}
+              d={dSvg}
+              onClickCapture={handleClick}
+              use:duration={`${duration}ms`}
+              transparent={transparent}
+            />
+          </>,
         )}
         {patterns && (
           <PatternFill
@@ -148,10 +172,138 @@ class BarRoot extends Component {
     );
   }
 
-  render() {
-    const { data, uid, size, duration } = this.asProps;
+  resolveHighlightColor(highlight) {
+    const { resolveColor, uid } = this.asProps;
+    switch (highlight) {
+      case GOOD: {
+        return resolveColor('--intergalactic-chart-data-success');
+      }
+      case BAD: {
+        return resolveColor('--intergalactic-chart-data-critical');
+      }
+      case INSIGHTFUL: {
+        return `url(#${this.potentialGradientId})`;
+      }
+      default:
+        return '';
+    }
+  };
+
+  renderHighlight({
+    highlight,
+    barX,
+    barY,
+    width,
+    height,
+  }) {
+    const newHeight = Math.max(height * 0.1, 20);
+
+    const dSvg = getRect({
+      x: barX - 2,
+      y: barY - 4,
+      width: width + 4,
+      height: newHeight,
+      radius: 4,
+      position: 'top',
+    });
+
     return (
       <>
+        <path d={dSvg} fill={this.resolveHighlightColor(highlight)} mask='url(#fadeMask)' />
+      </>
+    );
+  }
+
+  get strokePatternId() {
+    const { uid } = this.asProps;
+
+    return `${uid}-stroke-pattern`;
+  }
+
+  get forecastPatternId() {
+    const { uid } = this.asProps;
+
+    return `${uid}-forecast-mask`;
+  }
+
+  renderForecastPattern() {
+    return (
+      <defs>
+        <mask id={this.forecastPatternId}>
+          <rect width='100%' height='100%' fill={`url(#${this.strokePatternId})`} />
+        </mask>
+      </defs>
+    );
+  }
+
+  get potentialPatternId() {
+    const { uid } = this.asProps;
+
+    return `${uid}-potential-mask`;
+  }
+
+  get potentialGradientId() {
+    const { uid } = this.asProps;
+
+    return `${uid}-potential-gradient`;
+  }
+
+  renderPotentialPattern() {
+    return (
+      <defs>
+        <linearGradient id={this.potentialGradientId} x1='0%' y1='0%' x2='0%' y2='100%'>
+          <stop offset='0%' stopColor='#2de3a7' />
+          <stop offset='60%' stopColor='#9d67f5' />
+          <stop offset='100%' stopColor='#18181e' />
+        </linearGradient>
+
+        <mask id={this.potentialPatternId}>
+          <rect width='100%' height='100%' fill={`url(#${this.strokePatternId})`} />
+        </mask>
+      </defs>
+    );
+  }
+
+  renderCommonPattern() {
+    const { resolveColor } = this.asProps;
+    return (
+      <pattern
+        id={`${this.strokePatternId}`}
+        width='4'
+        height='4'
+        patternUnits='userSpaceOnUse'
+        patternTransform='rotate(40)'
+      >
+        <rect width='4' height='4' fill='#fff' />
+        <line x1='3' y1='0' x2='3' y2='4' stroke={resolveColor('chart-grid-bar-base-bg')} strokeWidth='2' />
+      </pattern>
+    );
+  }
+
+  renderFadeMask() {
+    return (
+      <defs>
+        <linearGradient id='alphaGrad' x1='0' y1='0' x2='0' y2='1'>
+          <stop offset='0%' stopColor='#fff' stopOpacity='0.4' />
+          <stop offset='100%' stopColor='#000' />
+        </linearGradient>
+
+        <mask id='fadeMask' maskUnits='objectBoundingBox' maskContentUnits='objectBoundingBox' x='0' y='0' width='1' height='1'>
+          <rect x='0' y='0' width='1' height='1' fill='url(#alphaGrad)' />
+        </mask>
+      </defs>
+    );
+  }
+
+  render() {
+    const { data, uid, size, duration } = this.asProps;
+
+    return (
+      <>
+        {this.renderFadeMask()}
+        {this.renderCommonPattern()}
+        {this.renderForecastPattern()}
+        {this.renderPotentialPattern()}
         {data.map(this.renderBar.bind(this))}
         {duration && (
           <AnimatedClipPath

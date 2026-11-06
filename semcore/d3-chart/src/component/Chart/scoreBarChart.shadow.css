@@ -1,0 +1,81 @@
+SChart {
+  display: grid;
+  grid-template-columns: 1fr max-content max-content;
+  column-gap: 16px;
+  row-gap: 16px;
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+
+  &[invertAxis] {
+    grid-template-columns: max-content 1fr max-content max-content;
+  }
+}
+
+SItem {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-template-rows: auto auto;
+  row-gap: 8px;
+  align-items: center;
+  position: relative;
+
+  &[invertAxis] {
+    grid-template-rows: auto;
+  }
+
+  &:hover {
+    ::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      background-color: var(--intergalactic-chart-grid-bar-hover, oklch(0.375 0.09 242.7 / 0.05));
+      border-radius: var(--intergalactic-rounded-medium, 6px);
+      z-index: -1;
+    }
+  }
+}
+
+SCategory {
+  grid-area: 1;
+}
+
+SPercent {
+  grid-column: -2 / -3;
+}
+
+SValue {
+  grid-column: -1 / -2;
+  justify-self: end;
+}
+
+SBar {
+  grid-column: 1 / -1;
+  height: 12px;
+  overflow: hidden;
+  display: flex;
+
+  &[invertAxis] {
+    grid-row: 1;
+    grid-column: 2;
+  }
+
+  SBarValue {
+    height: 100%;
+    background-color: #0C0E13;
+    border-radius: 2px;
+  }
+
+  SBarBackground {
+    height: 100%;
+    background-color: var(--intergalactic-chart-data-null, oklch(0.9 0.009 234));
+    background-image: repeating-linear-gradient(
+      154deg,
+      transparent 0 3px,
+      var(--intergalactic-chart-grid-bar-base-bg, oklch(0.92 0.008 233.5)) 3px 6px
+    );
+    border-radius: 2px;
+    margin-left: 2px;
+  }
+}

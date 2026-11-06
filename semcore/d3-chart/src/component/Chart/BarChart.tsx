@@ -8,7 +8,7 @@ import { AbstractChart } from './AbstractChart';
 import type { BaseLegendProps } from './AbstractChart.type';
 import type { BarChartData, BarChartProps, BarChartType, BarChartDefaultProps } from './BarChart.type';
 // @ts-ignore
-import { minMax, GroupBar, HoverRect, StackBar, Line, YAxis, XAxis } from '../..';
+import { minMax, GroupBar, HoverRect, StackBar, Line, YAxis, XAxis, ReferenceLine, ReferenceStripes } from '../..';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import type { BarProps } from '../../types';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
@@ -194,6 +194,36 @@ class BarChartComponent extends AbstractChart<
           };
         }}
       </HoverRect.Tooltip>
+    );
+  }
+
+  protected renderReference() {
+    const { referenceLine, referenceArea } = this.asProps;
+
+    if (!referenceLine && !referenceArea) {
+      return null;
+    }
+
+    return (
+      <>
+        {referenceLine && (
+          Array.isArray(referenceLine)
+            ? referenceLine.map((refLineItem) => {
+                return (<ReferenceLine key={refLineItem.value.toString()} value={refLineItem.value} area={refLineItem.area} />);
+              })
+            : (<ReferenceLine value={referenceLine.value} area={referenceLine.area} />)
+        )}
+
+        {referenceArea && (
+          <ReferenceStripes
+            value={referenceArea.value[0]}
+            endValue={referenceArea.value[1]}
+            use={referenceArea.use}
+            title={referenceArea.title}
+            subTitle={referenceArea.subTitle}
+          />
+        )}
+      </>
     );
   }
 

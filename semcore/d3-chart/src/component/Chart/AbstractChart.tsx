@@ -89,7 +89,9 @@ export abstract class AbstractChart<
   }
 
   public componentDidMount(): void {
-    this.observer?.observe(this.chartRef.current!);
+    if (this.chartRef.current) {
+      this.observer?.observe(this.chartRef.current);
+    }
   }
 
   public componentDidUpdate(prevProps: Props) {
@@ -541,10 +543,10 @@ export abstract class AbstractChart<
   }
 
   protected getPercentDelta(key: ObjectDataKey, index: number, data: Data) {
-    const { getPercentDelta: customGetPercenDelta } = this.asProps;
+    const { getPercentDelta: customGetPercentDelta } = this.asProps;
 
-    if (customGetPercenDelta) {
-      const customDelta = customGetPercenDelta(key, index, data);
+    if (customGetPercentDelta) {
+      const customDelta = customGetPercentDelta(key, index, data);
 
       if (customDelta === null) return null;
 

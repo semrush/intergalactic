@@ -74,10 +74,10 @@ class StackBarRoot extends Component {
       const isEmptyValue = Number(d[y] - (d[XY0] ?? 0)) === 0;
 
       if (isEmptyValue || absHeight >= hMin) {
-        this.offsetBars[seriesIndex][i] = 0;
+        this.offsetBars[seriesIndex][i] = isEmptyValue ? 0 : 2;
       } else {
         const offsetValue = hMin - absHeight;
-        this.offsetBars[seriesIndex][i] = d[y] > 0 ? offsetValue : -offsetValue;
+        this.offsetBars[seriesIndex][i] = d[y] > 0 ? offsetValue + 2 : -offsetValue - 2;
       }
 
       return [0, offset];
@@ -102,7 +102,7 @@ class StackBarRoot extends Component {
     const [xScale] = scale;
 
     const seriesIndex = this.series.findIndex((s) => s.key === x);
-    const series = this.series[seriesIndex];
+    const series = this.series[seriesIndex] ?? [];
 
     this.offsetBars[seriesIndex] = this.offsetBars[seriesIndex] ?? [];
     const data = series.map((s) => ({
@@ -117,17 +117,31 @@ class StackBarRoot extends Component {
       const absWidth = Math.abs(
         xScale(d[x]) - Math.max(xScale(xScale.domain()[0]), xScale(d[XY0] ?? 0)),
       );
+
       this.offsetBars[seriesIndex][i] =
-        Number(d[x] - (d[XY0] ?? 0)) === 0 ? 0 : absWidth >= wMin ? 0 : d[x] > 0 ? -wMin : wMin;
+        Number(d[x] - (d[XY0] ?? 0)) === 0
+          ? 0
+          : absWidth >= wMin
+            ? -2
+            : d[x] > 0 ? -wMin - 2 : wMin + 2;
+
       return [offset, 0];
     };
+
+    const rBar = series.map((s, i) => {
+      if (s[0] === 0) {
+        return [r, 0];
+      }
+
+      return this.series.slice(seriesIndex + 1).some((bar) => bar[i][0] !== bar[i][1]) ? 0 : [0, r];
+    });
 
     return {
       data,
       wMin,
       x0: XY0,
       y,
-      r: 0,
+      r: rBar,
       groupKey: y,
       offset: calcOffset,
       maxBarSize,

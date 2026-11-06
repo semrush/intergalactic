@@ -369,3 +369,28 @@ export function getDataOfType(data: ObjectData[], type: typeof FORECAST | typeof
 
   return result;
 }
+
+type RectData = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
+
+export function getVerticalPathFromRect(data: RectData, radius = 12) {
+  const { x, y, width, height } = data;
+  const r = radius;
+
+  const path = `M ${x},${y + r} Q ${x},${y} ${x + r},${y} H ${x + width - r} Q ${x + width},${y} ${x + width},${y + r} V ${y + height} H ${x} Z`;
+
+  return path;
+}
+
+export function getHorizontalPathFromRect(data: RectData, radius = 12) {
+  const { x, y, width, height } = data;
+  const r = radius;
+
+  const path = `M ${x},${y} H ${x + width - r} Q ${x + width},${y} ${x + width},${y + r} V ${y + height - r} Q ${x + width},${y + height} ${x + width - r},${y + height} H ${x} Z`;
+
+  return path;
+}
