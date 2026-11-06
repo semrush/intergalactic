@@ -99,6 +99,7 @@ export * from './component/Chart/LineChart.type';
 export * from './component/Chart/BarChart.type';
 export * from './component/Chart/HistogramChart.type';
 export * from './component/Chart/CompactHorizontalBarChart.type';
+export * from './component/Chart/ScoreBarChart.type';
 export * from './component/Chart/ScatterPlotChart.type';
 export * from './component/Chart/AreaChart.type';
 export * from './component/Chart/BubbleChart.type';

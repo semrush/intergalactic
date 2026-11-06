@@ -9,6 +9,7 @@ import { HistogramChart } from './HistogramChart';
 import { LineChart } from './LineChart';
 import { RadarChart } from './RadarChart';
 import { ScatterPlotChart } from './ScatterPlotChart';
+import { ScoreBarChart } from './ScoreBarChart';
 import { VennChart } from './VennChart';
 
 export default {
@@ -23,6 +24,7 @@ export default {
   Radar: RadarChart,
   Cigarette: CigaretteChart,
   CompactHorizontalBar: CompactHorizontalBarChart,
+  ScoreBar: ScoreBarChart,
 };
 
 export {
