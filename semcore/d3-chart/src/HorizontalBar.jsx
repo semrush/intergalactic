@@ -85,7 +85,6 @@ class HorizontalBarRoot extends Component {
       width,
       height,
       radius: Array.isArray(r) ? r[i] : r,
-      position: d[x] > 0 || Object.is(d[x], 0) ? 'right' : 'left',
     });
 
     if (groupKey) {
@@ -172,12 +171,17 @@ function Background(props) {
   );
 }
 
-function getHorizontalRect({ x, y, width, height, radius, position }) {
+function getHorizontalRect({ x, y, width, height, radius }) {
   if (width < radius) radius = width;
   if (radius) {
-    if (position === 'right')
-      return roundedPath(x, y, width, height, radius, false, true, false, true);
-    return roundedPath(x, y, width, height, radius, true, false, true, false);
+    if (Array.isArray(radius)) {
+      const leftR = radius[0];
+      const rightR = radius[1];
+
+      return roundedPath(x, y, width, height, Math.max(leftR, rightR), leftR > 0, rightR > 0, leftR > 0, rightR > 0);
+    } else {
+      return roundedPath(x, y, width, height, radius, true, true, true, true);
+    }
   }
   return roundedPath(x, y, width, height, radius);
 }

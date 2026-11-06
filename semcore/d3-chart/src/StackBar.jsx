@@ -128,8 +128,12 @@ class StackBarRoot extends Component {
       return [offset, 0];
     };
 
-    const rBar = series.map((_s, i) => {
-      return this.series.slice(seriesIndex + 1).some((bar) => bar[i][0] !== bar[i][1]) ? 0 : r;
+    const rBar = series.map((s, i) => {
+      if (s[0] === 0) {
+        return [r, 0];
+      }
+
+      return this.series.slice(seriesIndex + 1).some((bar) => bar[i][0] !== bar[i][1]) ? 0 : [0, r];
     });
 
     return {
