@@ -6,11 +6,7 @@ import BarMockData from '../../../__mocks__/bar';
 const Demo = () => {
   return (
     <Chart.ScoreBar
-      y='category'
-      x='value'
       data={data}
-      plotWidth={500}
-      plotHeight={450}
       aria-label='ScoreBar chart'
     />
   );

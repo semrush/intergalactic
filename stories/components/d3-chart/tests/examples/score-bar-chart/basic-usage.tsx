@@ -3,17 +3,16 @@ import type { ScoreBarChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import { getChartProps, getPropsToChart } from '../stories_props_helper';
+import { getPropsToChart } from '../stories_props_helper';
 
 const Demo = (props: ScoreBarChartProps) => {
-  const { plotWidth, plotHeight, ...chartProps } = getPropsToChart(props);
+  const chartProps = getPropsToChart(props);
 
   return (
-    <Box
-      w={plotWidth}
-    >
+    <Box>
       <Chart.ScoreBar
         {...chartProps}
+        data={data}
         aria-label='ScoreBar chart'
       />
     </Box>
@@ -43,15 +42,9 @@ const data = [
   },
 ];
 
-export const defaultProps = getChartProps<ScoreBarChartProps>({
-  y: 'category',
-  x: 'value',
-  marginX: 0,
-  marginY: 0,
-  plotHeight: 350,
-  showXAxis: false,
-  data,
-});
+export const defaultProps = {
+  mode: 'default',
+};
 
 Demo.defaultProps = defaultProps;
 

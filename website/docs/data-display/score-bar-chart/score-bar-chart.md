@@ -1,7 +1,7 @@
 ---
-title: Compact horizontal bar chart
+title: Score bar chart
 fileSource: d3-chart
-tabs: Design('bar-horizontal-compact'), A11y('bar-horizontal-compact-a11y'), API('bar-horizontal-compact-api'), Examples('bar-horizontal-compact-code'), Changelog('bar-horizontal-compact-changelog')
+tabs: Design('score-bar-chart'), A11y('score-bar-chart-a11y'), API('score-bar-chart-api'), Examples('score-bar-chart-code'), Changelog('score-bar-chart-changelog')
 ---
 
 ::: info
@@ -10,13 +10,13 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 ## Description
 
-**Compact horizontal bar chart** is a compact version of the **[Horizontal bar chart](/data-display/bar-horizontal/bar-horizontal)** that visualizes the distribution of values by category for a part-to-whole comparison.
+**Score bar chart** is a chart that visualizes the distribution of values by category for a part-to-whole comparison.
 
 ![](static/hor-vs-compact.png)
 
 ### Usage
 
-**Use Compact horizontal bar chart when:**
+**Use Score bar chart when:**
 
 - The values of all categories add up to 100%.
 - Categories have or may have long names in localization.
@@ -28,7 +28,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 ![](static/hor-bar-compact-example.png)
 
-**Avoid Compact horizontal bar chart when:**
+**Avoid Score bar chart when:**
 
 - Displaying trends (use [Line chart](/data-display/line-chart/line-chart)).
 - Showing data over time (use [Bar chart](/data-display/bar-chart/bar-chart) or [Line chart](/data-display/line-chart/line-chart)).

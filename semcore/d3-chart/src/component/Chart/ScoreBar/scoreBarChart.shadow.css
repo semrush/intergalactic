@@ -1,13 +1,30 @@
+@keyframes valueWidthAnimation {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: calc(1% * var(--global-target-width));
+  }
+}
+@keyframes bgWidthAnimation {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: calc(1% * (100 - var(--global-target-width)));
+  }
+}
+
 SChart {
   display: grid;
   grid-template-columns: 1fr max-content max-content;
-  column-gap: 16px;
-  row-gap: 16px;
+  column-gap: var(--intergalactic-spacing-4x, 16px);
+  row-gap: var(--intergalactic-spacing-4x, 16px);
   width: 100%;
-  padding: 8px;
+  padding: var(--intergalactic-spacing-2x, 8px);
   box-sizing: border-box;
 
-  &[invertAxis] {
+  &[mode='compact'] {
     grid-template-columns: max-content 1fr max-content max-content;
   }
 }
@@ -17,19 +34,21 @@ SItem {
   display: grid;
   grid-template-columns: subgrid;
   grid-template-rows: auto auto;
-  row-gap: 8px;
+  row-gap: var(--intergalactic-spacing-2x, 8px);
   align-items: center;
   position: relative;
 
-  &[invertAxis] {
+  &[mode='compact'] {
     grid-template-rows: auto;
   }
 
-  &:hover {
-    ::before {
+  &[clickable]:hover {
+    cursor: pointer;
+
+    &::before {
       content: '';
       position: absolute;
-      inset: -8px;
+      inset: calc(-1 * var(--intergalactic-spacing-2x, 8px));
       background-color: var(--intergalactic-chart-grid-bar-hover, oklch(0.375 0.09 242.7 / 0.05));
       border-radius: var(--intergalactic-rounded-medium, 6px);
       z-index: -1;
@@ -45,26 +64,36 @@ SPercent {
   grid-column: -2 / -3;
 }
 
-SValue {
+SValue, SValueLink {
   grid-column: -1 / -2;
   justify-self: end;
 }
 
 SBar {
   grid-column: 1 / -1;
-  height: 12px;
+  height: var(--intergalactic-spacing-3x, 12px);
   overflow: hidden;
   display: flex;
+  position: relative;
 
-  &[invertAxis] {
+  &[mode='compact'] {
     grid-row: 1;
     grid-column: 2;
+  }
+
+  &[duration] {
+    SBarValue, SBarBackground {
+      animation-duration: calc(var(--duration) * 1ms);
+    }
   }
 
   SBarValue {
     height: 100%;
     background-color: #0C0E13;
     border-radius: 2px;
+    animation-name: valueWidthAnimation;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
   }
 
   SBarBackground {
@@ -75,7 +104,11 @@ SBar {
       transparent 0 3px,
       var(--intergalactic-chart-grid-bar-base-bg, oklch(0.92 0.008 233.5)) 3px 6px
     );
-    border-radius: 2px;
-    margin-left: 2px;
+    border-radius: var(--intergalactic-chart-rounded, 2px);
+    margin-left: var(--intergalactic-spacing-05x, 2px);
+
+    animation-name: bgWidthAnimation;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
   }
 }
