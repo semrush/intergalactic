@@ -1,5 +1,7 @@
 import {
+  act,
   cleanup,
+  fireEvent,
   render,
   userEvent,
   waitFor,
@@ -87,6 +89,78 @@ describe('Hint', () => {
       expect(handleChange).toHaveBeenCalledTimes(2);
       expect(handleChange).toHaveBeenLastCalledWith(false);
     });
+  });
+
+  describe('Timers cleanup on unmount', () => {
+    const TestComponent = ({ onVisibleChange }: { onVisibleChange: (visible: boolean) => void }) => {
+      const ref = useRef<HTMLButtonElement>(null);
+      return (
+        <>
+          <button ref={ref} data-testid='trigger'>Hover</button>
+          <Hint triggerRef={ref} onVisibleChange={onVisibleChange} timeout={[50, 50]}>
+            Hint text
+          </Hint>
+        </>
+      );
+    };
+
+    test('Should not call onVisibleChange after unmount when hint is visible', async () => {
+      vi.useFakeTimers();
+      const handleChange = vi.fn();
+
+      const { getByTestId, unmount } = render(<TestComponent onVisibleChange={handleChange} />);
+
+      fireEvent.mouseEnter(getByTestId('trigger'));
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(100);
+      });
+      expect(handleChange).toHaveBeenCalledTimes(1);
+
+      unmount();
+
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(500);
+      });
+
+      expect(handleChange).toHaveBeenCalledTimes(1);
+      expect(vi.getTimerCount()).toBe(0);
+    });
+  });
+
+  test('Should hide hint when mouse leaves right after it became visible', async () => {
+    vi.useFakeTimers();
+    const handleChange = vi.fn();
+
+    const TestComponent = () => {
+      const ref = useRef<HTMLButtonElement>(null);
+      return (
+        <>
+          <button ref={ref} data-testid='trigger'>Hover</button>
+          <Hint triggerRef={ref} onVisibleChange={handleChange} timeout={[50, 50]}>
+            Hint text
+          </Hint>
+        </>
+      );
+    };
+
+    const { getByTestId } = render(<TestComponent />);
+    const trigger = getByTestId('trigger');
+
+    fireEvent.mouseEnter(trigger);
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(51);
+    });
+    expect(handleChange).toHaveBeenLastCalledWith(true);
+
+    fireEvent.mouseLeave(trigger);
+    for (let i = 0; i < 10; i++) {
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(20);
+      });
+    }
+
+    expect(handleChange).toHaveBeenLastCalledWith(false);
+    expect(document.body.querySelector('[data-ui-name="Hint"]')).toBeNull();
   });
 
   test('Should use defaultVisible for initial state', () => {
