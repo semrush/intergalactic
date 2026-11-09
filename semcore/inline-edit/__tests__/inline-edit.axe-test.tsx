@@ -6,87 +6,63 @@ test.describe(`@inline-edit ${TAG.ACCESSIBILITY}`, () => {
   test('Basic usage', async ({ page }) => {
     await loadPage(page, 'stories/components/inline-edit/docs/examples/simple_use.tsx', 'en');
 
-    // base check
-    {
+    await test.step('Verify view mode', async () => {
       const violations = await getAccessibilityViolations({ page });
-
       expect(violations).toEqual([]);
-    }
+    });
 
-    // focused editor check
-    {
+    await test.step('Verify focused view', async () => {
       await page.keyboard.press('Tab');
-
       const violations = await getAccessibilityViolations({ page });
-
       expect(violations).toEqual([]);
-    }
+    });
 
-    // edit mode
-    {
+    await test.step('Verify edit mode', async () => {
       await page.keyboard.press('Enter');
-
       const violations = await getAccessibilityViolations({ page });
-
       expect(violations).toEqual([]);
-    }
+    });
   });
 
   test('Editable tag', async ({ page }) => {
     await loadPage(page, 'stories/components/inline-edit/docs/examples/editable_tag.tsx', 'en');
 
-    // base check
-    {
+    await test.step('Verify view mode', async () => {
       const violations = await getAccessibilityViolations({ page });
-
       expect(violations).toEqual([]);
-    }
+    });
 
-    // focused editor check
-    {
+    await test.step('Verify focused view', async () => {
       await page.keyboard.press('Tab');
-
       const violations = await getAccessibilityViolations({ page });
-
       expect(violations).toEqual([]);
-    }
+    });
 
-    // edit mode
-    {
+    await test.step('Verify edit mode', async () => {
       await page.keyboard.press('Enter');
-
       const violations = await getAccessibilityViolations({ page });
-
       expect(violations).toEqual([]);
-    }
+    });
   });
 
-  test('Preudo network interaction', async ({ page }) => {
+  test('Pseudo network interaction', async ({ page }) => {
     await loadPage(page, 'stories/components/inline-edit/docs/examples/pseudo_network_interaction.tsx', 'en');
 
-    // base check
-    {
+    await test.step('Verify view mode', async () => {
       const violations = await getAccessibilityViolations({ page });
-
       expect(violations).toEqual([]);
-    }
+    });
 
-    // focused editor check
-    {
+    await test.step('Verify focused view', async () => {
       await page.keyboard.press('Tab');
-
       const violations = await getAccessibilityViolations({ page });
-
       expect(violations).toEqual([]);
-    }
+    });
 
-    // edit mode
-    {
+    await test.step('Verify edit mode', async () => {
       await page.keyboard.press('Enter');
-
       const violations = await getAccessibilityViolations({ page });
-
       expect(violations).toEqual([]);
-    }
+    });
   });
 });

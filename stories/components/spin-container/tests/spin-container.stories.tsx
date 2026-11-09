@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import SpinContainerBaseExample, {
   defaultSpinContainerProps,
 } from './examples/spin-container-base';
+import SpinContainerWithAutofocusInputExample from './examples/spin-container-with-autofocus-input';
 
 const meta: Meta<typeof SpinContainer> = {
   title: 'Components/SpinContainer/Tests',
@@ -61,4 +62,8 @@ export const SpinContainerBase: StoryObj<typeof defaultSpinContainerProps> = {
   render: SpinContainerBaseExample,
   argTypes: spinContainerArgTypes,
   args: defaultSpinContainerProps,
+};
+
+export const SpinContainerWithAutofocusInput = {
+  render: SpinContainerWithAutofocusInputExample,
 };

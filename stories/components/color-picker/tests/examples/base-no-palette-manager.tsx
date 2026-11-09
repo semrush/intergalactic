@@ -1,5 +1,5 @@
 import { Flex } from '@semcore/ui/base-components';
-import ColorPicker, { PaletteManager } from '@semcore/ui/color-picker';
+import ColorPicker from '@semcore/ui/color-picker';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 

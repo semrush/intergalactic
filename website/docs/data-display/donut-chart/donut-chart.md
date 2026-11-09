@@ -133,6 +133,21 @@ Display name and value in tooltips. Disable tooltips for very small charts.
 
 ## Edge cases
 
+### One data set
+
+If you need to show one data set, use `ScoreDonut`. This chart shows a single score on a 0–100 scale as a donut or a semi-donut. The filled part is the score. The rest of the ring is the remaining scale, not a second category.
+
+![](static/score-donut.png)
+
+Use it when one number should be read as a score, completion, or share of a maximum:
+
+- Use the full donut when the score is the main metric in the widget and the value can sit in the center.
+- Use the half-size chart when the widget is narrow or the chart sits next to a legend.
+
+Do not use it to compare several categories. For parts of a whole, use the donut chart described above. For a tiny inline score, use the [Mini chart](/data-display/mini-chart/mini-chart) score donut.
+
+See [ScoreDonut examples](/data-display/donut-chart/donut-chart-code#score-donut).
+
 ### Null values
 
 Show zeros in the legend but not on the chart. Show 0 as the values in the legend, use `--text-secondary` color.

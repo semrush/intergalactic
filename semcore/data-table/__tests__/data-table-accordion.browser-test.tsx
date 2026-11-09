@@ -11,6 +11,8 @@ import {
   getStylesNotActive,
 } from './utils';
 
+const skipStepIf = (condition: boolean) => (condition ? test.step.skip : test.step);
+
 /* =====================================================
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
@@ -63,11 +65,11 @@ test.describe(`${TAG.VISUAL}`, () => {
         await locators.toggle(page).first().click();
         const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
         await locators.chart(page, 'Chart').waitFor({ state: 'hidden' });
-        if (browserName !== 'firefox') {
+        await skipStepIf(browserName === 'firefox')('Verify hovered row background (skipped in Firefox)', async () => {
           await checkStyles(cells, {
             'background-color': cellHoverBg,
           });
-        }
+        });
       });
 
       await test.step('Verify cells styles when accordion not in 1st cell', async () => {
@@ -76,10 +78,9 @@ test.describe(`${TAG.VISUAL}`, () => {
         await locators.toggle(page).first().hover();
 
         const cells3 = locators.row(page, 3).locator('[data-ui-name="Row.Cell"]');
+        const cellsBeforeAccordion = (await cells3.all()).slice(0, -1);
 
-        const cellCount3 = await cells3.count();
-        for (let i = 0; i < cellCount3 - 1; i++) {
-          const cell = cells3.nth(i);
+        for (const cell of cellsBeforeAccordion) {
           await checkStyles(cell, { 'background-color': cellDefaultBg });
         }
         await checkStyles(cells3.nth(3), { 'background-color': cellActiveBg });
@@ -87,11 +88,11 @@ test.describe(`${TAG.VISUAL}`, () => {
         await locators.toggle(page).nth(1).hover();
         await checkStyles(cells3.nth(3), { 'background-color': cellActiveBg });
 
-        if (browserName !== 'firefox')
-          for (let i = 0; i < cellCount3 - 1; i++) {
-            const cell = cells3.nth(i);
+        await skipStepIf(browserName === 'firefox')('Verify hovered row cells background (skipped in Firefox)', async () => {
+          for (const cell of cellsBeforeAccordion) {
             await checkStyles(cell, { 'background-color': cellHoverBg });
           }
+        });
       });
     });
 
@@ -112,21 +113,22 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('Enter');
       await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
       await page.waitForTimeout(500); // for chart animation is finished (webkit needs more time)
+      await expect(
+        page.getByRole('row').filter({ has: locators.chart(page, 'Chart') }),
+        'ArrowDown looks up the next row by aria-rowindex, which is recalculated in rAF after the accordion opens',
+      ).toHaveAttribute('aria-rowindex', '3');
 
-      // ArrowDown must land on the accordion cell with the chart. Without waiting
-      // for the focus to actually get there, webkit screenshots the moment before
-      // and captures the focus ring on the next data row instead.
       await page.keyboard.press('ArrowDown');
-      await expect(locators.chart(page, 'Chart')).toBeFocused();
+      await expect(locators.chart(page, 'Chart'), 'wait for focus on the chart cell, otherwise webkit captures the focus ring on the next row').toBeFocused();
       await expect(page).toHaveScreenshot();
 
       await page.keyboard.press('ArrowUp');
       await expect(locators.toggle(page).nth(0)).toBeFocused();
       await page.keyboard.press('Enter');
-      // wait for the closing animation to end, not just for the content to hide:
-      // the row keeps the expanded attribute — and with it the active background and
-      // the left accent border — until expandedForAnimation resets
-      await expect(page.locator('[data-ui-name="Row.Cell"][expanded]')).toHaveCount(0);
+      await expect(
+        page.locator('[data-ui-name="Row.Cell"][expanded]'),
+        'the row keeps expanded styles until the closing animation ends (expandedForAnimation)',
+      ).toHaveCount(0);
       await expect(locators.chart(page, 'Chart')).toHaveCount(0);
       await expect(page).toHaveScreenshot();
     });
@@ -190,14 +192,9 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
         await expect(locators.chart(page, 'Chart')).toHaveCount(1);
-        if (browserName !== 'firefox')
-          await checkStyles(locators.row(page, 5).locator('[data-ui-name="Row.Cell"]').first(), {
-            padding: '0px',
-          });
-        else
-          await checkStyles(locators.row(page, 5).locator('[data-ui-name="Row.Cell"]').first(), {
-            padding: '0%',
-          });
+        await checkStyles(locators.row(page, 5).locator('[data-ui-name="Row.Cell"]').first(), {
+          padding: browserName === 'firefox' ? '0%' : '0px',
+        });
       });
     });
 
@@ -223,9 +220,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         await page.keyboard.press('ArrowRight');
         await page.keyboard.press('ArrowRight');
         await page.waitForTimeout(100);
-        if (browserName === 'webkit')
-          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
-        else await expect(page).toHaveScreenshot();
+        await expect(page).toHaveScreenshot(browserName === 'webkit' ? { maxDiffPixelRatio: 0.01 } : {});
       });
     });
 
@@ -238,7 +233,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@button',
         '@flex-box',
         '@notice',
-        '@typography'],
+        '@typography',
+        '@checkbox'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_pagination.tsx', 'en');
       const stylesActiveHovered = await getStylesActiveHovered(page);
@@ -250,36 +246,28 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.waitForTimeout(50);
 
       const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
-      const cellCount = await cells.count();
 
       await test.step('Verify cells when expanded accordion not in 1st cell and checkbox is checked', async () => {
-        for (let i = 0; i < cellCount - 2; i++) {
-          const cell = cells.nth(i);
+        for (const cell of (await cells.all()).slice(0, -2)) {
           await checkStyles(cell, {
             'background-color': stylesNotActive[1],
           });
         }
 
-        await checkStyles(cells.nth(cellCount - 1), {
+        await checkStyles(cells.last(), {
           'background-color': cellSelectedActiveBg,
         });
       });
       await test.step('Verify cells when expanded accordion not in 1st cell and checkbox is checked and row hovered', async () => {
-        const box = await locators.row(page, 2).getByRole('gridcell').nth(1).boundingBox();
-        if (box) {
-          await page.mouse.move(box.x + 10, box.y + 5);
-        }
+        await locators.row(page, 2).getByRole('gridcell').nth(1).hover({ position: { x: 10, y: 5 } });
 
-        if (browserName !== 'firefox') {
-          for (let i = 0; i < cellCount - 1; i++) {
-            await checkStyles(cells.nth(i), {
+        await skipStepIf(browserName === 'firefox')('Verify hovered row cells background (skipped in Firefox)', async () => {
+          for (const cell of await cells.all()) {
+            await checkStyles(cell, {
               'background-color': stylesActiveHovered[1],
             });
           }
-          await checkStyles(cells.nth(cellCount - 1), {
-            'background-color': stylesActiveHovered[1],
-          });
-        }
+        });
       });
       await expect(page).toHaveScreenshot();
     });
@@ -297,7 +285,8 @@ test.describe(`${TAG.VISUAL}`, () => {
           '@data-table',
           '@d3-chart',
           '@line-chart',
-          '@responsive'],
+          '@responsive',
+          '@checkbox'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_checkbox.tsx', 'en', item);
         const cellSelectedActiveBg = await getCssVarColor(page, '--intergalactic-table-td-cell-selected-active');
@@ -455,25 +444,23 @@ test.describe(`${TAG.VISUAL}`, () => {
       const stylesNotActive = await getStylesNotActive(page);
 
       const cells = locators.row(page, 2).getByRole('gridcell');
-      const cellCount = await cells.count();
 
       await test.step('Verify expanded state', async () => {
-        for (let i = 0; i < cellCount; i++) {
-          const cell = cells.nth(i);
+        for (const [index, cell] of (await cells.all()).entries()) {
           await checkStyles(cell, {
-            'background-color': stylesExpanded[i],
+            'background-color': stylesExpanded[index],
           });
         }
       });
-      await test.step('Verify hovered state', async () => {
-        if (browserName === 'firefox') test.skip();
+      await test.step('Collapse row', async () => {
         await locators.toggle(page).click();
-        await locators.toggle(page).hover();
         await locators.collapse(page).waitFor({ state: 'hidden' });
-        for (let i = 0; i < cellCount; i++) {
-          const cell = cells.nth(i);
+      });
+      await skipStepIf(browserName === 'firefox')('Verify hovered state (skipped in Firefox)', async () => {
+        await locators.toggle(page).hover();
+        for (const [index, cell] of (await cells.all()).entries()) {
           await checkStyles(cell, {
-            'background-color': stylesActiveHovered[i],
+            'background-color': stylesActiveHovered[index],
           });
         }
       });
@@ -485,10 +472,9 @@ test.describe(`${TAG.VISUAL}`, () => {
           await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
         }
 
-        for (let i = 0; i < cellCount; i++) {
-          const cell = cells.nth(i);
+        for (const [index, cell] of (await cells.all()).entries()) {
           await checkStyles(cell, {
-            'background-color': stylesNotActive[i],
+            'background-color': stylesNotActive[index],
           });
         }
       });
@@ -609,9 +595,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         await page.keyboard.press('ArrowRight');
         await page.keyboard.press('ArrowRight');
         await page.waitForTimeout(100);
-        if (browserName === 'webkit')
-          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
-        else await expect(page).toHaveScreenshot();
+        await expect(page).toHaveScreenshot(browserName === 'webkit' ? { maxDiffPixelRatio: 0.01 } : {});
       });
     });
 
@@ -1029,7 +1013,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(firstrowCell).toBeFocused();
       });
 
-      await test.step('Verify focus on accrordion toggle inside cell ', async () => {
+      await test.step('Verify focus on accordion toggle inside cell', async () => {
         await page.keyboard.press('Enter');
         await expect(locators.toggle(page).first()).toBeFocused();
         await expect(locators.collapse(page)).toHaveCount(0);
@@ -1040,8 +1024,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(firstrowCell).toBeFocused();
       });
 
-      if (browserName === 'webkit') test.skip();
-      await test.step('Verify focus on the next focusable element by tab', async () => {
+      const notWebkitStep = skipStepIf(browserName === 'webkit');
+      await notWebkitStep('Verify focus on the next focusable element by tab (skipped in WebKit)', async () => {
         await page.keyboard.press('Enter');
         await page.keyboard.press('Tab');
         await page.keyboard.press('ArrowDown');
@@ -1052,14 +1036,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.toggle(page).first()).toBeFocused();
       });
 
-      await test.step('Verify accordion can be expanded', async () => {
+      await notWebkitStep('Verify accordion can be expanded (skipped in WebKit)', async () => {
         await page.keyboard.press('Enter');
         await locators.collapse(page).waitFor({ state: 'visible' });
 
         await expect(locators.collapse(page)).toHaveCount(1);
       });
 
-      await test.step('Verify accordion not collapsed by esc', async () => {
+      await notWebkitStep('Verify accordion not collapsed by Escape (skipped in WebKit)', async () => {
         await page.keyboard.press('Escape');
         await expect(locators.collapse(page)).toHaveCount(1);
       });
@@ -1075,7 +1059,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@flex-box',
         '@notice',
-        '@typography'],
+        '@typography',
+        '@checkbox'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_pagination.tsx', 'en');
 
@@ -1091,9 +1076,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await locators.toggle(page).first().click();
       await locators.collapse(page).waitFor({ state: 'visible' });
       await expect(locators.collapse(page)).toHaveCount(1);
-      // expanded accordions saved
       await locators.button(page, 'Prev').click();
-      await expect(locators.collapse(page)).toHaveCount(2);
+      await expect(locators.collapse(page), 'expanded accordions are kept after switching pages').toHaveCount(2);
     });
   });
 
@@ -1120,15 +1104,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Verify child table attributes when expanded', async () => {
         const nestedRows = page.locator('[role="row"][aria-level="2"]');
-        const rowCount = await nestedRows.count();
+        await expect(nestedRows).not.toHaveCount(0);
 
-        for (let i = 0; i < rowCount; i++) {
-          const row = nestedRows.nth(i);
-          const cells = row.locator('[data-ui-name="Row.Cell"]');
-          const cellCount = await cells.count();
-
-          for (let j = 0; j < cellCount; j++) {
-            const cell = cells.nth(j);
+        for (const row of await nestedRows.all()) {
+          for (const cell of await row.locator('[data-ui-name="Row.Cell"]').all()) {
             await expect(cell).toHaveAttribute('role', 'gridcell');
             await expect(cell).toHaveAttribute('aria-colindex');
             await expect(cell).toHaveAttribute('tabindex', '-1');
@@ -1341,13 +1320,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.MOUSE,
         '@data-table'],
     }, async ({ page, browserName }) => {
+      test.skip(browserName === 'webkit', 'Works in debug mode but lags in docker');
       await loadPage(page, 'stories/components/data-table/docs/examples/table-in-table.tsx', 'en', {
         accordionMode: 'independent',
         onAccordionToggle: `function(type, rowId, rowIndex) {
     console.log("Accordion " + type + " for row #" + rowIndex);}`,
       });
 
-      if (browserName === 'webkit') test.skip();// disabled for webkit because works in debug mode but lags in docker
       let messages: string[] = [];
       page.on('console', (msg) => {
         if (msg.type() === 'log' && msg.text().startsWith('Accordion')) {

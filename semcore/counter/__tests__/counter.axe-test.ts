@@ -2,7 +2,7 @@ import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe(`@color-picker  ${TAG.ACCESSIBILITY}`, () => {
+test.describe(`@counter ${TAG.ACCESSIBILITY}`, () => {
   test('Animated number', async ({ page }) => {
     await loadPage(page, 'stories/components/counter/docs/examples/animated_number.tsx', 'en');
 

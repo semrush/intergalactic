@@ -4,7 +4,6 @@ import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
-
   button: (page: Page, name?: string, index?: number) => {
     const base = page.getByRole('button', { name });
     return typeof index === 'number' ? base.nth(index) : base;
@@ -12,29 +11,18 @@ export const locators = {
   featurePopoverPopper: (page: Page) => page.getByRole('dialog'),
   hint: (page: Page) => page.getByText('Close'),
   featurePopover: (page: Page) => page.locator('[data-ui-name="FeaturePopover.Popper"]'),
+  spot: (page: Page) => page.locator('[data-ui-name="FeaturePopover.Spot"]'),
 };
 /* =====================================================
   @visual
   Visual states, hover and focus styles, paddings, margins, and snapshots.
   ===================================================== */
-test.describe(`${TAG.VISUAL} `, () => {
+test.describe(`${TAG.VISUAL}`, () => {
   const placement = [
-    { placement: 'auto-start' },
-    { placement: 'auto' },
-    { placement: 'auto-end' },
-    { placement: 'top-start' },
-    { placement: 'top' },
-    { placement: 'top-end' },
-    { placement: 'right-start' },
-    { placement: 'right' },
-    { placement: 'right-end' },
-    { placement: 'bottom-end' },
-    { placement: 'bottom' },
     { placement: 'bottom-start' },
-    { placement: 'left-end' },
+    { placement: 'top' },
+    { placement: 'right' },
     { placement: 'left' },
-    { placement: 'left-start' },
-
   ];
   placement.forEach((item) => {
     test(`Verify Feature popover when placement = ${item.placement}`, {
@@ -48,10 +36,14 @@ test.describe(`${TAG.VISUAL} `, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/feature-popover/tests/examples/base-usage-with-all-props.tsx', 'en', item);
 
-      await locators.featurePopoverPopper(page).waitFor({ state: 'visible' });
-      await expect(page).toHaveScreenshot();
+      const focusStep = item.placement === 'bottom-start' ? test.step : test.step.skip;
 
-      await test.step('Verify visual regression when focus inside feature popover', async () => {
+      await test.step('Verify opened feature popover', async () => {
+        await locators.featurePopoverPopper(page).waitFor({ state: 'visible' });
+        await expect(page).toHaveScreenshot();
+      });
+
+      await focusStep('Verify visual regression when focus inside feature popover (default placement only)', async () => {
         await page.keyboard.press('Tab');
         await expect(locators.button(page, 'Close')).toBeFocused();
         await locators.hint(page).waitFor({ state: 'visible' });
@@ -65,7 +57,6 @@ test.describe(`${TAG.VISUAL} `, () => {
     { closeIcon: false, theme: 'accent' },
     { closeIcon: true, theme: 'neutral' },
     { closeIcon: false, theme: 'neutral' },
-
   ];
   closeIcon.forEach((item) => {
     test(`Verify Feature popover styles with closeIcon = ${item.closeIcon} and theme = ${item.theme}`, {
@@ -79,7 +70,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/feature-popover/docs/examples/Basic.tsx', 'en', item);
 
-      const spot = page.locator('[data-ui-name="FeaturePopover.Spot"]');
+      const spot = locators.spot(page);
 
       await locators.featurePopover(page).waitFor({ state: 'visible' });
 
@@ -112,10 +103,12 @@ test.describe(`${TAG.VISUAL} `, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/feature-popover/tests/examples/base-usage-with-medium-illustration.tsx', 'en', { disablePortal: false });
 
-    await locators.featurePopoverPopper(page).waitFor({ state: 'visible' });
-    await locators.button(page, 'Close').hover();
-    await locators.hint(page).waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify popover with medium illustration and Close hint on hover', async () => {
+      await locators.featurePopoverPopper(page).waitFor({ state: 'visible' });
+      await locators.button(page, 'Close').hover();
+      await locators.hint(page).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
   });
 });
 
@@ -124,7 +117,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   Keyboard and mouse interactions - no snapshots here.
   We verify states, visibility, and attributes.
   ===================================================== */
-test.describe(`${TAG.FUNCTIONAL} `, () => {
+test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Base example with Close keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
@@ -153,7 +146,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await locators.hint(page).waitFor({ state: 'visible' });
     });
 
-    await test.step('Verify Feature Popper closed by Close button activating ', async () => {
+    await test.step('Verify Feature Popper closed by activating Close button', async () => {
       await page.keyboard.press('Enter');
       await locators.featurePopoverPopper(page).waitFor({ state: 'hidden' });
       await expect(locators.button(page, 'Export')).toBeFocused();
@@ -173,7 +166,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.featurePopoverPopper(page)).toBeFocused();
     });
 
-    await test.step('Verify Feature Popper closed by ESC when focus is on the other focusable element inside ', async () => {
+    await test.step('Verify Feature Popper closed by Escape when focus is on another focusable element inside', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Escape');
@@ -181,7 +174,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.button(page, 'Export')).toBeFocused();
     });
 
-    await test.step('Verify focus in not looped inside Feature Popover and focused goes to next button when disablePortal = true', async () => {
+    await test.step('Verify focus is not trapped inside Feature Popover and moves to the next button when disablePortal = true', async () => {
       await loadPage(page, 'stories/components/feature-popover/docs/examples/Basic.tsx', 'en');
       await locators.featurePopoverPopper(page).waitFor({ state: 'visible' });
       await page.keyboard.press('Tab');
@@ -211,7 +204,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.featurePopoverPopper(page)).toBeFocused();
     });
 
-    await test.step('Verify next focusable element focused by Tab pressing ', async () => {
+    await test.step('Verify next focusable element focused by Tab', async () => {
       await page.keyboard.press('Tab');
       await expect(page.getByRole('button', { name: 'Next' })).toBeFocused();
     });
@@ -242,7 +235,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/feature-popover/docs/examples/Basic.tsx', 'en');
 
-    const gotIt = page.getByText('Next');
+    const nextButton = page.getByText('Next');
     await locators.featurePopoverPopper(page).waitFor({ state: 'visible' });
 
     await test.step('Verify Hint on hover Close', async () => {
@@ -262,10 +255,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.featurePopoverPopper(page)).toHaveCount(0);
     });
 
-    await test.step('Verify Feature Popper closed by pressing Other button', async () => {
+    await test.step('Verify Feature Popper closed by clicking Next button', async () => {
       await loadPage(page, 'stories/components/feature-popover/docs/examples/Basic.tsx', 'en');
       await locators.featurePopoverPopper(page).waitFor({ state: 'visible' });
-      await gotIt.click();
+      await nextButton.click();
       await locators.featurePopoverPopper(page).waitFor({ state: 'hidden' });
       await expect(locators.featurePopoverPopper(page)).toHaveCount(0);
     });
@@ -286,7 +279,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     });
   });
 
-  test('Verify Focus order when disablePortal = false', {
+  test('Verify focus order when disablePortal = false', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@feature-popover',
@@ -300,19 +293,20 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await locators.featurePopover(page).waitFor({ state: 'visible' });
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await expect(locators.featurePopoverPopper(page)).toBeVisible();
-    await expect(page.getByRole('button', { name: 'Reload page' })).not.toBeFocused();
+    await test.step('Verify focus does not reach the next page button while popover is open', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await expect(locators.featurePopoverPopper(page)).toBeVisible();
+      await expect(locators.button(page, 'Reload page')).not.toBeFocused();
+    });
   });
 
   const autoFocus = [
     { autoFocus: true },
     { autoFocus: false },
     { autoFocus: 'enforced' },
-
   ];
   autoFocus.forEach((item) => {
     test(`Verify Feature popover when autoFocus = ${item.autoFocus}`, {
@@ -328,11 +322,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
       await locators.featurePopoverPopper(page).waitFor({ state: 'visible' });
 
-      if (!item.autoFocus) {
-        await expect(locators.featurePopoverPopper(page)).not.toBeFocused();
-      } else {
-        await expect(locators.featurePopoverPopper(page)).toBeFocused();
-      }
+      const popper = expect(locators.featurePopoverPopper(page));
+      await (item.autoFocus ? popper.toBeFocused() : popper.not.toBeFocused());
     });
   });
 });

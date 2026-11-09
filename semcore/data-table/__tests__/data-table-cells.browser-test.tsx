@@ -54,14 +54,13 @@ test.describe(`${TAG.VISUAL}`, () => {
     await page.keyboard.press('ArrowDown');
     await expect(page).toHaveScreenshot();
 
-    if (browserName !== 'chromium') test.skip();
-    const cell = locators.row(page, 4).locator('[aria-colindex="1"]');
-    const box = await cell.boundingBox();
-
-    if (box) {
-      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
-    }
-    await expect(page).toHaveScreenshot();
+    const chromiumStep = browserName === 'chromium' ? test.step : test.step.skip;
+    await chromiumStep('Verify hovered colored cell (chromium only)', async () => {
+      const box = await locators.row(page, 4).locator('[aria-colindex="1"]').boundingBox();
+      expect(box).toBeTruthy();
+      await page.mouse.move(box!.x + box!.width / 2, box!.y + box!.height / 2);
+      await expect(page).toHaveScreenshot();
+    });
   });
 });
 
@@ -172,15 +171,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     const dropdownPopper = page.locator('[data-ui-name="Dropdown.Popper"]');
 
     await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowRight');
 
     await test.step('Verify interaction with select', async () => {
-      await expect(locators.getCell(page, 2, 1)).toBeFocused();
+      await expect(locators.getCell(page, 2, 2)).toBeFocused();
 
       await page.keyboard.press('Enter');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
 
-      await expect(locators.selectButton(page, 2, 1)).toBeFocused();
+      await expect(locators.selectButton(page, 2, 2)).toBeFocused();
       await page.keyboard.press('Enter');
 
       const selectOption = page.getByRole('option', { name: 'Option 0' });
@@ -191,17 +191,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Enter');
 
       await expect(selectOption).toBeHidden();
-      await expect(locators.selectButton(page, 2, 1)).toHaveAttribute('value', '2');
+      await expect(locators.selectButton(page, 2, 2)).toHaveAttribute('value', '2');
 
       await page.keyboard.press('Escape');
-      await expect(locators.getCell(page, 2, 1)).toBeFocused();
+      await expect(locators.getCell(page, 2, 2)).toBeFocused();
     });
 
     await test.step('Verify interaction with dropdown', async () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
 
-      await expect(locators.dropdownButton(page, 2, 3)).toBeFocused();
+      await expect(locators.dropdownButton(page, 2, 4)).toBeFocused();
       await expect(dropdownPopper).toBeHidden();
 
       await page.keyboard.press('Enter');
@@ -215,7 +215,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Escape');
 
       await expect(dropdownPopper).toBeHidden();
-      await expect(locators.dropdownButton(page, 2, 3)).toBeFocused();
+      await expect(locators.dropdownButton(page, 2, 4)).toBeFocused();
     });
   });
 
@@ -236,8 +236,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/dd-select-in-cell.tsx', 'en');
 
-    const selectButton = locators.getCell(page, 2, 2).locator('button[data-ui-name="Select"]');
-    const dropdownButton = locators.getCell(page, 2, 3).locator('button[data-ui-name="Dropdown.Trigger"]');
+    const selectButton = locators.getCell(page, 2, 3).locator('button[data-ui-name="Select"]');
+    const dropdownButton = locators.getCell(page, 2, 4).locator('button[data-ui-name="Dropdown.Trigger"]');
     const dropdownPopper = page.locator('[data-ui-name="Dropdown.Popper"]');
 
     await test.step('Verify interaction with select', async () => {

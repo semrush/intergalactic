@@ -62,21 +62,16 @@ const expectNoFeatureHighlightFocusOutline = async (
 export const locators = {
   buttons: (page: Page) => page.locator('[data-ui-name="ButtonFH"]'),
   pills: (page: Page) => page.getByRole('radio'),
-  pillHighlightedItem: (page: Page) => page.locator('[data-ui-name="HighlightedItem.Addon"]'),
   select: (page: Page) => page.getByRole('combobox'),
   selectOptions: (page: Page) => page.getByRole('option'),
   input: (page: Page) => page.getByRole('textbox'),
   inputOutline: (page: Page) => page.locator('[class*="SOutline"]'),
-  switch: (page: Page) => page.locator('[data-ui-name="SwitchFH"]'),
   // The focus outline is painted on the toggle that wraps the switch input.
   switchToggle: (page: Page) => page.locator('[class*="SToggle"]').first(),
-  radioGroup: (page: Page) => page.locator('[data-ui-name="RadioGroup"]'),
   radioMark: (page: Page) => page.locator('[data-ui-name="Value.RadioMark"]'),
-  checkbox: (page: Page) => page.locator('[data-ui-name="CheckboxFH"]'),
   checkboxMark: (page: Page) => page.locator('[data-ui-name="Value.CheckMark"]'),
   notice: (page: Page) => page.locator('[data-ui-name="NoticeFH"]'),
   dataTable: (page: Page) => page.locator('[role="grid"]'),
-  tablist: (page: Page) => page.getByRole('tablist'),
   tabs: (page: Page) => page.getByRole('tab'),
 };
 
@@ -86,8 +81,8 @@ Visual states, hover and focus styles.
 ===================================================== */
 test.describe(`${TAG.VISUAL} `, () => {
   test.describe(`BadgeFH`, () => {
-    test(`Verify BasgeFH Visual`, {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@feature-highlight', '@pills'],
+    test(`Verify BadgeFH Visual`, {
+      tag: [TAG.PRIORITY_HIGH, '@feature-highlight', '@badge'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/feature-highlight/docs/examples/badge.tsx', 'en');
       await expect(page).toHaveScreenshot();
@@ -119,25 +114,25 @@ test.describe(`${TAG.VISUAL} `, () => {
         await loadPage(page, 'stories/components/feature-highlight/tests/examples/button.tsx', 'en', item);
 
         const button = locators.buttons(page);
-        await expect(page).toHaveScreenshot();
+        const interactive = !item.disabled && !item.loading;
+        const focusStep = interactive ? test.step : test.step.skip;
+        const hoverStep = interactive && !item.active && browserName !== 'firefox' ? test.step : test.step.skip;
 
-        if (!item.disabled && !item.loading) {
-          await test.step('Verify focus style for buttons', async () => {
-            await page.keyboard.press('Tab');
+        await test.step('Verify default styles', async () => {
+          await expect(page).toHaveScreenshot();
+        });
 
-            await expect(button).toBeFocused();
-            await expectFeatureHighlightFocusOutline(page, button);
-            await expect(page).toHaveScreenshot();
-          });
+        await focusStep('Verify focus style for buttons', async () => {
+          await page.keyboard.press('Tab');
+          await expect(button).toBeFocused();
+          await expectFeatureHighlightFocusOutline(page, button);
+          await expect(page).toHaveScreenshot();
+        });
 
-          if (browserName === 'firefox') return;
-          await test.step('Verify hover style for non-active buttons', async () => {
-            if (!item.active && !item.loading) {
-              await button.hover();
-              await expect(page).toHaveScreenshot();
-            }
-          });
-        }
+        await hoverStep('Verify hover style for non-active buttons (not checked in Firefox)', async () => {
+          await button.hover();
+          await expect(page).toHaveScreenshot();
+        });
       });
     });
   });
@@ -197,7 +192,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/feature-highlight/tests/examples/input.tsx', 'en', item);
 
-        const outline = page.locator('[class*="SOutline"]');
+        const outline = locators.inputOutline(page);
 
         if (item.disabled || item.state !== 'normal') {
           await test.step('Verify disabled or invalid state', async () => {
@@ -237,19 +232,22 @@ test.describe(`${TAG.VISUAL} `, () => {
             await expect(page).toHaveScreenshot();
           });
         } else {
-          await test.step('Verify focus and toggle', async () => {
-            await page.keyboard.press('Tab');
-            // Webkit doesn't move focus to checkbox based controls with Tab,
-            // so the focus outline can only be verified in the other browsers.
-            if (browserName !== 'webkit') {
-              await expectFeatureHighlightFocusOutline(page, toggle);
-            }
-            await expect(page).toHaveScreenshot();
+          const outlineStep = browserName === 'webkit' ? test.step.skip : test.step;
+          const outlineStepTitle = 'Verify feature highlight focus outline (WebKit does not focus checkbox-based controls by Tab)';
 
-            await page.keyboard.press('Space');
-            if (browserName !== 'webkit') {
-              await expectFeatureHighlightFocusOutline(page, toggle);
-            }
+          await page.keyboard.press('Tab');
+          await outlineStep(outlineStepTitle, async () => {
+            await expectFeatureHighlightFocusOutline(page, toggle);
+          });
+          await test.step('Verify focused switch', async () => {
+            await expect(page).toHaveScreenshot();
+          });
+
+          await page.keyboard.press('Space');
+          await outlineStep(outlineStepTitle, async () => {
+            await expectFeatureHighlightFocusOutline(page, toggle);
+          });
+          await test.step('Verify toggled switch', async () => {
             await expect(page).toHaveScreenshot();
           });
         }
@@ -263,27 +261,18 @@ test.describe(`${TAG.VISUAL} `, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/feature-highlight/docs/examples/data-table.tsx', 'en');
 
-      const flex = locators.dataTable(page);
+      const tables = locators.dataTable(page);
 
-      await test.step('Verify primary table', async () => {
-        const screenshotsClip1 = (await flex.first().boundingBox())!;
-        screenshotsClip1.x -= 4;
-        screenshotsClip1.y -= 4;
-        screenshotsClip1.width += 8;
-        screenshotsClip1.height += 8;
-
-        await expect(page).toHaveScreenshot({ clip: screenshotsClip1 });
-      });
-
-      await test.step('Verify secondary table', async () => {
-        const screenshotsClip2 = (await flex.nth(1).boundingBox())!;
-        screenshotsClip2.x -= 4;
-        screenshotsClip2.y -= 4;
-        screenshotsClip2.width += 8;
-        screenshotsClip2.height += 8;
-
-        await expect(page).toHaveScreenshot({ clip: screenshotsClip2 });
-      });
+      for (const [index, use] of ['primary', 'secondary'].entries()) {
+        await test.step(`Verify ${use} table`, async () => {
+          const clip = (await tables.nth(index).boundingBox())!;
+          clip.x -= 4;
+          clip.y -= 4;
+          clip.width += 8;
+          clip.height += 8;
+          await expect(page).toHaveScreenshot({ clip });
+        });
+      }
     });
   });
 
@@ -297,7 +286,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     variables.forEach((item) => {
       test(`Verify Tabline disabled = ${item.disabled} size = ${item.size} showBadge = ${item.showBadge}`, {
-        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@feature-highlight', '@tabline', '@base-components', '@flex-box'],
+        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@feature-highlight', '@tab-line', '@base-components', '@flex-box'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/feature-highlight/tests/examples/tabline.tsx', 'en', item);
 
@@ -345,21 +334,22 @@ test.describe(`${TAG.VISUAL} `, () => {
             await expect(page).toHaveScreenshot();
           });
         } else {
-          if (browserName !== 'webkit') {
-            await test.step('Verify focus and selection', async () => {
-              await page.keyboard.press('Tab');
-              await expectFeatureHighlightFocusOutline(page, radioMark.first(), '::before');
-              await expect(page).toHaveScreenshot();
+          const notWebkitStep = browserName === 'webkit' ? test.step.skip : test.step;
 
-              await page.keyboard.press('Space');
-              await expectFeatureHighlightFocusOutline(page, radioMark.first(), '::before');
-              await expect(page).toHaveScreenshot();
+          await notWebkitStep('Verify focus and selection (WebKit does not focus radio by Tab)', async () => {
+            await page.keyboard.press('Tab');
+            await expectFeatureHighlightFocusOutline(page, radioMark.first(), '::before');
+            await expect(page).toHaveScreenshot();
 
-              // The second radio is a regular one, it keeps the default focus outline.
-              await page.keyboard.press('ArrowDown');
-              await expectNoFeatureHighlightFocusOutline(page, radioMark.nth(1), '::before');
-            });
-          }
+            await page.keyboard.press('Space');
+            await expectFeatureHighlightFocusOutline(page, radioMark.first(), '::before');
+            await expect(page).toHaveScreenshot();
+          });
+
+          await notWebkitStep('Verify regular radio keeps default focus outline', async () => {
+            await page.keyboard.press('ArrowDown');
+            await expectNoFeatureHighlightFocusOutline(page, radioMark.nth(1), '::before');
+          });
         }
       });
     });
@@ -387,22 +377,26 @@ test.describe(`${TAG.VISUAL} `, () => {
             await expect(page).toHaveScreenshot();
           });
         } else {
-          await test.step('Verify focus and toggle', async () => {
-            await page.keyboard.press('Tab');
-            // Webkit doesn't move focus to checkbox based controls with Tab,
-            // so the focus outline can only be verified in the other browsers.
-            if (browserName !== 'webkit') {
-              await expectFeatureHighlightFocusOutline(page, value.first(), '::before');
-            }
-            await expect(page).toHaveScreenshot();
+          const outlineStep = browserName === 'webkit' ? test.step.skip : test.step;
+          const outlineStepTitle = 'Verify feature highlight focus outline (WebKit does not focus checkbox-based controls by Tab)';
 
-            await page.keyboard.press('Enter');
-            if (browserName !== 'webkit') {
-              await expectFeatureHighlightFocusOutline(page, value.first(), '::before');
-            }
+          await page.keyboard.press('Tab');
+          await outlineStep(outlineStepTitle, async () => {
+            await expectFeatureHighlightFocusOutline(page, value.first(), '::before');
+          });
+          await test.step('Verify focused checkbox', async () => {
             await expect(page).toHaveScreenshot();
+          });
 
-            // The second checkbox is a regular one, it keeps the default focus outline.
+          await page.keyboard.press('Enter');
+          await outlineStep(outlineStepTitle, async () => {
+            await expectFeatureHighlightFocusOutline(page, value.first(), '::before');
+          });
+          await test.step('Verify checked checkbox', async () => {
+            await expect(page).toHaveScreenshot();
+          });
+
+          await test.step('Verify regular checkbox keeps default focus outline', async () => {
             await page.keyboard.press('Tab');
             await expectNoFeatureHighlightFocusOutline(page, value.nth(1), '::before');
           });
@@ -494,74 +488,34 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Pills addon logic', {
-    tag: [TAG.PRIORITY_HIGH, '@feature-highlight', '@pills'],
+    tag: [TAG.PRIORITY_HIGH, '@feature-highlight', '@pills', '@badge', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/feature-highlight/tests/examples/pills/pills-addon-logic.tsx', 'en');
 
     const pill = locators.pills(page);
+    const cases = [
+      { title: 'Verify stars in addons', index: 0, sparkles: 1 },
+      { title: 'Verify number in addons', index: 1, sparkles: 0, text: '0' },
+      { title: 'Verify icon in addons', index: 2, sparkles: 0 },
+      { title: 'Verify badge in addons', index: 3, sparkles: 0, badges: 1 },
+      { title: 'Verify text in addons', index: 4, sparkles: 0, text: 'Test' },
+    ];
 
-    await test.step('Verify stars in addon', async () => {
-      const addons = pill.first().locator('[data-ui-name="HighlightedItem.Addon"]');
-      await expect(addons).toHaveCount(2);
+    for (const item of cases) {
+      await test.step(item.title, async () => {
+        const addons = pill.nth(item.index).locator('[data-ui-name="HighlightedItem.Addon"]');
+        await expect(addons).toHaveCount(2);
 
-      const addonCount = await addons.count();
-      for (let j = 0; j < addonCount; j++) {
-        const addon = addons.nth(j);
-        const icons = addon.locator('[data-ui-name="SummaryAI"]');
-        await expect(icons).toHaveCount(1);
-      }
-    });
-
-    await test.step('Verify number in addons', async () => {
-      const addons = pill.nth(1).locator('[data-ui-name="HighlightedItem.Addon"]');
-      await expect(addons).toHaveCount(2);
-
-      const addonCount = await addons.count();
-      for (let j = 0; j < addonCount; j++) {
-        const addon = addons.nth(j);
-        const icons = addon.locator('[data-ui-name="SummaryAI"]');
-        await expect(icons).toHaveCount(0);
-        expect(await addon.textContent()).toBe('0');
-      }
-    });
-
-    await test.step('Verify icon in addons', async () => {
-      const addons = pill.nth(2).locator('[data-ui-name="HighlightedItem.Addon"]');
-      await expect(addons).toHaveCount(2);
-
-      const addonCount = await addons.count();
-      for (let j = 0; j < addonCount; j++) {
-        const addon = addons.nth(j);
-        const icons = addon.locator('[data-ui-name="SummaryAI"]');
-        await expect(icons).toHaveCount(0);
-      }
-    });
-
-    await test.step('Verify badge in addons', async () => {
-      const addons = pill.nth(3).locator('[data-ui-name="HighlightedItem.Addon"]');
-      await expect(addons).toHaveCount(2);
-
-      const addonCount = await addons.count();
-      for (let j = 0; j < addonCount; j++) {
-        const addon = addons.nth(j);
-        const icons = addon.locator('[data-ui-name="SummaryAI"]');
-        const badge = addon.locator('[data-ui-name="BadgeFH"]');
-        await expect(icons).toHaveCount(0);
-        await expect(badge).toHaveCount(1);
-      }
-    });
-
-    await test.step('Verify text in addons', async () => {
-      const addons = pill.nth(4).locator('[data-ui-name="HighlightedItem.Addon"]');
-      await expect(addons).toHaveCount(2);
-
-      const addonCount = await addons.count();
-      for (let j = 0; j < addonCount; j++) {
-        const addon = addons.nth(j);
-        const icons = addon.locator('[data-ui-name="SummaryAI"]');
-        await expect(icons).toHaveCount(0);
-        expect(await addon.textContent()).toBe('Test');
-      }
-    });
+        for (const addon of await addons.all()) {
+          await expect(addon.locator('[data-ui-name="SummaryAI"]')).toHaveCount(item.sparkles);
+          if (item.text !== undefined) {
+            await expect(addon).toHaveText(item.text);
+          }
+          if (item.badges !== undefined) {
+            await expect(addon.locator('[data-ui-name="BadgeFH"]')).toHaveCount(item.badges);
+          }
+        }
+      });
+    }
   });
 });

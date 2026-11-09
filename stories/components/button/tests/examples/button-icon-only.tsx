@@ -105,7 +105,7 @@ export const defaultIconButtonProps: ExampleProps = {
   use: 'primary',
   theme: 'info',
   hintPlacement: 'top',
-  style: undefined, // this prop is needed for barckground to verify some button themes (primary invert for instance)
+  style: undefined, // this prop is needed for background to verify some button themes (primary invert for instance)
 
 };
 

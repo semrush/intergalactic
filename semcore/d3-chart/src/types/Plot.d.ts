@@ -1,7 +1,7 @@
 import type { NSBox } from '@semcore/base-components';
 import type { UnknownProperties, Intergalactic } from '@semcore/core';
 
-import type { DataStructureHints } from './a11y/hints';
+import type { DataStructureHints, makeDataHintHandler } from './a11y/hints';
 import type { Context } from './context';
 import type { PatternsConfig } from './Pattern';
 import type { PlotEventEmitter } from './utils';
@@ -27,6 +27,11 @@ export type PlotProps = Context &
      * Optional container for data hints (use it if you have a legend component upper in tree)
      */
     dataHints?: DataStructureHints;
+
+    /**
+     * Optional container for data hints handlers (use it if you have a legend component upper in tree)
+     */
+    dataHintsHandlers?: typeof makeDataHintHandler;
     /** Optional prop to tune up alt text generating for charts */
     a11yAltTextConfig?: PlotSummarizerConfig;
 

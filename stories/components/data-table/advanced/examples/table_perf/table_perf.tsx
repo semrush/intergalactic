@@ -20,9 +20,9 @@ export type AccordionInTableProps = {
   cropPosition?: 'end' | 'middle';
 };
 
-const refsMap: Record<string | symbol, HTMLElement | null> = {};
+export const refsMap: Record<string | symbol, HTMLElement | null> = {};
 
-const COLUMNS_CONFIG = [
+export const COLUMNS_CONFIG = [
   {
     id: 'actions',
     defaultActive: true,
@@ -182,7 +182,7 @@ const COLUMNS_CONFIG = [
   },
 ];
 
-const cols = COLUMNS_CONFIG.map((c) => ({
+export const cols = COLUMNS_CONFIG.map((c) => ({
   name: c.id,
   children: c.id,
   gtcWidth: c.wMin ? `minmax(${c.wMin}px, 1fr)` : 'max-content',
@@ -198,12 +198,12 @@ const cols = COLUMNS_CONFIG.map((c) => ({
 // );
 
 // no memo
-const componentsMap = Object.fromEntries(
+export const componentsMap = Object.fromEntries(
   COLUMNS_CONFIG.map((c) => [c.id, c.Component]),
 );
 
-const DEFAULT_LOCALE = 'en-US';
-const DEFAULT_MESSAGES = {};
+export const DEFAULT_LOCALE = 'en-US';
+export const DEFAULT_MESSAGES = {};
 
 const Demo = (demoProps: AccordionInTableProps) => {
   const cropPos = demoProps.cropPosition ?? 'middle';
@@ -268,13 +268,13 @@ export const accordionInsideTableDefaultProps: AccordionInTableProps = {
 
 Demo.defaultProps = accordionInsideTableDefaultProps;
 
-const ChartExample = () => {
+export const ChartExample = () => {
   return (
     <div style={{ width: '600px', height: '400px', background: '#fff' }} />
   );
 };
 
-const data: DataTableData = [
+export const data: DataTableData = [
   {
     payment_intent_id: '300749e8-77a6-4637-a36b-285e33af4c0a',
     affected_payment_intent_id: '5f39d854-f1e3-4c20-a0f8-de290e23be5a',

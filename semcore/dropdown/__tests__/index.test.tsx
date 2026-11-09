@@ -1,5 +1,5 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import {
   cleanup,
   render,
@@ -11,6 +11,10 @@ import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/v
 import React from 'react';
 
 import Dropdown from '../src';
+
+describe('dropdown Translations exports', () => {
+  runTranslationsCheckTest('@semcore/dropdown');
+});
 
 describe('dropdown Dependency imports', () => {
   runDependencyCheckTests('dropdown');
@@ -29,21 +33,21 @@ describe('Dropdown.StatusItem', () => {
     expect(status).toHaveAttribute('id', 'search-result');
   });
 
-  test('Verify renders screen reader result count', () => {
+  test('Verify renders screen reader result count', async () => {
     render(<Dropdown.StatusItem id='search-result' itemsCount={2} />);
 
-    waitFor(() => {
-      const status = screen.getByRole('status', { name: '2 results found' });
-      expect(status).toBeInTheDocument();
-      expect(status).toHaveAttribute('aria-live', 'polite');
+    const status = screen.getByRole('status');
+    expect(status).toHaveAttribute('aria-live', 'polite');
+    await waitFor(() => {
+      expect(status.textContent).toContain('2 results found');
     });
   });
 
-  test('Verify renders singular result count', () => {
+  test('Verify renders singular result count', async () => {
     render(<Dropdown.StatusItem id='search-result' itemsCount={1} />);
 
-    waitFor(() => {
-      expect(screen.getByRole('status', { name: '1 result found' })).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByRole('status').textContent).toContain('1 result found');
     });
   });
 

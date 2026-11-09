@@ -28,20 +28,24 @@ test.describe(`${TAG.VISUAL} `, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/form/docs/examples/datepicker-and-timepicker.tsx', 'en');
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.type('12122024');
-    await page.keyboard.press('Escape');
+    await test.step('Verify filled date and minutes', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.type('12122024');
+      await page.keyboard.press('Escape');
 
-    await locators.timeBoxes(page).nth(1).click();
-    await locators.options(page).first().waitFor({ state: 'visible' });
-    await locators.options(page).first().click();
-    await locators.options(page).first().waitFor({ state: 'hidden' });
+      await locators.timeBoxes(page).nth(1).click();
+      await locators.options(page).first().waitFor({ state: 'visible' });
+      await locators.options(page).first().click();
+      await locators.options(page).first().waitFor({ state: 'hidden' });
 
-    await expect(page).toHaveScreenshot();
+      await expect(page).toHaveScreenshot();
+    });
 
-    await page.locator('[data-ui-name="Checkbox.Text"]').click();
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify date range fields shown after checkbox click', async () => {
+      await page.locator('[data-ui-name="Checkbox.Text"]').click();
+      await page.keyboard.press('Tab');
+      await expect(page).toHaveScreenshot();
+    });
   });
 });
 
@@ -55,7 +59,6 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@time-picker',
-
       '@checkbox',
       '@date-picker',
       '@button',
@@ -66,36 +69,47 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await loadPage(page, 'stories/patterns/ux-patterns/form/docs/examples/datepicker-and-timepicker.tsx', 'en');
 
     const datePickerTrigger = page.locator('[data-ui-name="DatePicker.Trigger"]');
-    await expect(datePickerTrigger).toHaveCount(3);
-    await expect(locators.timePickerGroup(page)).toHaveCount(1);
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await locators.button(page, 'Today').waitFor({ state: 'visible' });
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Enter');
-    await locators.button(page, 'Today').waitFor({ state: 'hidden' });
+    await test.step('Verify initial pattern has one date and one time field', async () => {
+      await expect(datePickerTrigger).toHaveCount(3);
+      await expect(locators.timePickerGroup(page)).toHaveCount(1);
+    });
 
-    await expect(datePickerTrigger.nth(2)).toHaveAttribute('value');
-    await page.keyboard.press('Tab');
-    await locators.options(page).first().waitFor({ state: 'visible' });
-    await expect(locators.options(page).first()).toHaveClass(/highlighted/);
-    await page.keyboard.press('Enter');
-    await locators.options(page).first().waitFor({ state: 'hidden' });
-    await page.keyboard.press('Tab');
-    await locators.options(page).first().waitFor({ state: 'visible' });
-    await expect(locators.options(page).first()).toHaveClass(/highlighted/);
-    await page.keyboard.press('Enter');
-    await locators.options(page).first().waitFor({ state: 'hidden' });
+    await test.step('Verify date selected from calendar by keyboard', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.button(page, 'Today').waitFor({ state: 'visible' });
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Enter');
+      await locators.button(page, 'Today').waitFor({ state: 'hidden' });
+      await expect(datePickerTrigger.nth(2)).toHaveAttribute('value');
+    });
 
-    await page.keyboard.press('Tab');
-    await expect(locators.button(page, 'AM')).toBeFocused();
-    await page.keyboard.press('Enter');
-    await expect(locators.button(page, 'PM')).toBeFocused();
+    await test.step('Verify hours and minutes selected by keyboard', async () => {
+      await page.keyboard.press('Tab');
+      await locators.options(page).first().waitFor({ state: 'visible' });
+      await expect(locators.options(page).first()).toHaveClass(/highlighted/);
+      await page.keyboard.press('Enter');
+      await locators.options(page).first().waitFor({ state: 'hidden' });
+      await page.keyboard.press('Tab');
+      await locators.options(page).first().waitFor({ state: 'visible' });
+      await expect(locators.options(page).first()).toHaveClass(/highlighted/);
+      await page.keyboard.press('Enter');
+      await locators.options(page).first().waitFor({ state: 'hidden' });
+    });
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Space');
-    await expect(datePickerTrigger).toHaveCount(6);
-    await expect(locators.timePickerGroup(page)).toHaveCount(2);
+    await test.step('Verify format toggled by Enter', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.button(page, 'AM')).toBeFocused();
+      await page.keyboard.press('Enter');
+      await expect(locators.button(page, 'PM')).toBeFocused();
+    });
+
+    await test.step('Verify checkbox adds end date and time fields', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      await expect(datePickerTrigger).toHaveCount(6);
+      await expect(locators.timePickerGroup(page)).toHaveCount(2);
+    });
   });
 });

@@ -5,12 +5,12 @@ import { TAG } from '@semcore/testing-utils/shared/tags';
 
 const locators = {
   timeBoxes: (page: Page) => page.getByRole('combobox'),
-  timePickerGroup: (page: Page) => page.getByRole('group'),
   options: (page: Page) => page.getByRole('option'),
   button: (page: Page, text?: string) => page.getByRole('button', { name: text }),
-  label: (page: Page, text: string) => page.locator('label', { hasText: text }),
-
+  format: (page: Page) => page.locator('[data-ui-name="TimePicker.Format"] span'),
 };
+
+const RETURNED_TIME = /Returned value:\s*(?:[01]\d|2[0-3]):[0-5]\d/;
 
 /* =====================================================
   @visual
@@ -36,33 +36,24 @@ test.describe(`${TAG.VISUAL} `, () => {
       const optionH = page.getByRole('option');
 
       await test.step('Verify boxes margins', async () => {
-        const classAttr = await locators.timePickerGroup(page).first().getAttribute('class');
-
-        if (classAttr?.includes('_size_m_')) {
-          for (let i = 0; i < 2; i++) {
-            await expect(locators.timeBoxes(page).nth(i)).toHaveCSS('margin-left', '12px');
-            await expect(locators.timeBoxes(page).nth(i)).toHaveCSS('margin-right', '12px');
-          }
-        } else if (classAttr?.includes('_size_l_')) {
-          await expect(locators.timeBoxes(page).nth(0)).toHaveCSS('margin-left', '12px');
-          await expect(locators.timeBoxes(page).nth(0)).toHaveCSS('margin-right', '12px');
-          await expect(locators.timeBoxes(page).nth(1)).toHaveCSS('margin-left', '12px');
-          await expect(locators.timeBoxes(page).nth(1)).toHaveCSS('margin-right', '12px');
+        for (const index of [0, 1]) {
+          await expect(locators.timeBoxes(page).nth(index)).toHaveCSS('margin-left', '12px');
+          await expect(locators.timeBoxes(page).nth(index)).toHaveCSS('margin-right', '12px');
         }
-      },
-      );
+      });
 
-      await test.step('Verify Not focused styles', async () => {
+      await test.step('Verify not focused styles', async () => {
         await expect(page).toHaveScreenshot();
       });
-      await test.step('Verify format focused styles', async () => {
+
+      await test.step('Verify focused hours with opened list', async () => {
         await page.keyboard.press('Tab');
         await optionH.first().waitFor({ state: 'visible' });
 
         await expect(page).toHaveScreenshot();
       });
 
-      await test.step('Verify format focused styles', async () => {
+      await test.step('Verify focused format button', async () => {
         await page.keyboard.press('Enter');
         await optionH.first().waitFor({ state: 'hidden' });
 
@@ -72,7 +63,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         await expect(page).toHaveScreenshot();
       });
 
-      await test.step('Verify pm to am', async () => {
+      await test.step('Verify format toggled by Enter', async () => {
         await page.keyboard.press('Enter');
         await expect(page).toHaveScreenshot();
       });
@@ -171,15 +162,15 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     const separator = page.locator('[data-ui-name="TimePicker.Separator"]');
 
     await test.step('Verify attributes in empty state', async () => {
-      const count = await locators.timeBoxes(page).count();
-      for (let i = 0; i < count; i++) {
-        await expect(locators.timeBoxes(page).nth(i)).toHaveAttribute('aria-invalid', 'false');
-        await expect(locators.timeBoxes(page).nth(i)).toHaveAttribute('placeholder', '00');
-        await expect(locators.timeBoxes(page).nth(i)).toHaveAttribute('aria-haspopup', 'listbox');
-        await expect(locators.timeBoxes(page).nth(i)).toHaveAttribute('aria-expanded', 'false');
-        await expect(locators.timeBoxes(page).nth(i)).toHaveAttribute('aria-autocomplete', 'list');
-        await expect(locators.timeBoxes(page).nth(i)).toHaveAttribute('aria-disabled', 'false');
-        await expect(locators.timeBoxes(page).nth(i)).toHaveAttribute('inputmode', 'numeric');
+      await expect(locators.timeBoxes(page)).not.toHaveCount(0);
+      for (const box of await locators.timeBoxes(page).all()) {
+        await expect(box).toHaveAttribute('aria-invalid', 'false');
+        await expect(box).toHaveAttribute('placeholder', '00');
+        await expect(box).toHaveAttribute('aria-haspopup', 'listbox');
+        await expect(box).toHaveAttribute('aria-expanded', 'false');
+        await expect(box).toHaveAttribute('aria-autocomplete', 'list');
+        await expect(box).toHaveAttribute('aria-disabled', 'false');
+        await expect(box).toHaveAttribute('inputmode', 'numeric');
       }
       await expect(separator).toHaveAttribute('aria-hidden', 'true');
     });
@@ -252,11 +243,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await test.step('Verify Format can be changed by keyboard', async () => {
       await page.keyboard.press('Space');
-
-      const formatButton = page.locator('[data-ui-name="TimePicker.Format"] span');
-      const formatValue = (await formatButton.textContent())?.trim();
-
-      expect(formatValue).toBe('PM');
+      await expect(locators.format(page)).toHaveText('PM');
     });
 
     await test.step('Verify Shift Tab moves to the prev focusable element', async () => {
@@ -267,7 +254,6 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
   test('Verify Time Picker inputs has correct aria-invalid value for invalid state', {
     tag: [TAG.PRIORITY_HIGH,
-      TAG.MOUSE,
       '@time-picker', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/time-picker/tests/examples/different_cases.tsx', 'en', { state: 'invalid' });
@@ -305,7 +291,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.timeBoxes(page).nth(0)).toHaveAttribute('aria-controls');
     });
 
-    await test.step('Verify Minues list opened and Hours closed by click on Minutes', async () => {
+    await test.step('Verify Minutes list opened and Hours closed by click on Minutes', async () => {
       await locators.timeBoxes(page).nth(1).click();
       await page.getByRole('option', { name: '00' }).nth(0).waitFor({ state: 'visible' });
       await expect(locators.timeBoxes(page).nth(1)).toHaveAttribute('aria-expanded', 'true');
@@ -318,14 +304,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.timeBoxes(page).nth(1)).toHaveValue('01');
     });
 
-    await test.step('Verify format can be changed by clcik on it', async () => {
+    await test.step('Verify format can be changed by click on it', async () => {
       await locators.timeBoxes(page).nth(1).click();
       await locators.options(page).first().waitFor({ state: 'visible' });
       await locators.button(page).click();
-      const formatButton = page.locator('[data-ui-name="TimePicker.Format"] span');
-      const formatValue = (await formatButton.textContent())?.trim();
-
-      expect(formatValue).toBe('PM');
+      await expect(locators.format(page)).toHaveText('PM');
     });
   });
 
@@ -380,7 +363,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.timeBoxes(page).nth(2)).toHaveValue('');
     });
 
-    await test.step('Verify value applues when entering wrong data', async () => {
+    await test.step('Verify non-digit characters are ignored when entering hours', async () => {
       await page.keyboard.press('3');
       await page.keyboard.press('a');
       await page.keyboard.press('3');
@@ -409,7 +392,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.timeBoxes(page).nth(3)).toHaveValue('01');
     });
 
-    await test.step('Verify Backspace clears hours', async () => {
+    await test.step('Verify non-digit characters are ignored when entering minutes', async () => {
       await page.keyboard.press('3');
       await page.keyboard.press('?');
       await page.keyboard.press('3');
@@ -418,7 +401,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.timeBoxes(page).nth(3)).toHaveValue('33');
     });
 
-    await test.step('Verify Backspace clears hours', async () => {
+    await test.step('Verify Enter closes minutes list and keeps value', async () => {
       await page.keyboard.press('Enter');
       await page.getByRole('option', { name: '01' }).nth(0).waitFor({ state: 'hidden' });
       await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-expanded', 'false');
@@ -426,19 +409,17 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.timeBoxes(page).nth(3)).toHaveValue('33');
     });
 
-    await test.step('Verify Backspace clears hours', async () => {
+    await test.step('Verify Backspace clears minutes', async () => {
       await page.keyboard.press('Backspace');
       await page.keyboard.press('Backspace');
       await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-expanded', 'false');
       await expect(locators.timeBoxes(page).nth(3)).toHaveValue('');
     });
 
-    await test.step('Verify Backspace clears hours', async () => {
+    await test.step('Verify ArrowDown opens list on last value and selects next option', async () => {
       await page.keyboard.press('ArrowDown');
       await page.getByRole('option', { name: '33' }).nth(0).waitFor({ state: 'visible' });
-      await expect.poll(async () => {
-        return page.getByRole('option', { name: '33' }).nth(0).getAttribute('class');
-      }, { timeout: 2000 }).toMatch(/highlighted/);
+      await expect(page.getByRole('option', { name: '33' }).nth(0)).toHaveClass(/highlighted/, { timeout: 2000 });
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
       await expect(locators.timeBoxes(page).nth(3)).toHaveValue('34');
@@ -452,11 +433,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await test.step('Verify Format can be changed by keyboard', async () => {
       await page.keyboard.press('Space');
-
-      const formatButton = page.locator('[data-ui-name="TimePicker.Format"] span');
-      const formatValue = (await formatButton.nth(1).textContent())?.trim();
-
-      expect(formatValue).toBe('PM');
+      await expect(locators.format(page).nth(1)).toHaveText('PM');
     });
 
     await test.step('Verify Shift Tab moves to the prev focusable element', async () => {
@@ -538,29 +515,25 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       '@time-picker', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/time-picker/docs/examples/expanded_access_to_all_the_components.tsx', 'en');
-    const formatButton = page.locator('[data-ui-name="TimePicker.Format"] span');
+    const formatButton = locators.format(page);
 
-    const formatValueInit = (await formatButton.textContent())?.trim();
-    expect(formatValueInit).toBe('AM');
+    await expect(formatButton).toHaveText('AM');
     await test.step('Verify Format can be changed by keyboard when nothing entered', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
-      const formatValue = (await formatButton.textContent())?.trim();
-      expect(formatValue).toBe('PM');
+      await expect(formatButton).toHaveText('PM');
     });
 
     await test.step('Verify Format can be changed by mouse', async () => {
       await formatButton.click();
-      const formatValue = (await formatButton.textContent())?.trim();
-      expect(formatValue).toBe('AM');
+      await expect(formatButton).toHaveText('AM');
     });
   });
 
   test('Verify valid time is logged to console when selecting from list or entering manually', {
     tag: [TAG.PRIORITY_HIGH,
-      TAG.FUNCTIONAL,
       '@time-picker', '@base-components', '@flex-box', '@button', '@typography'],
   }, async ({ page }) => {
     const consoleMessages: string[] = [];
@@ -587,20 +560,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await page.keyboard.press('Enter');
       await locators.options(page).first().waitFor({ state: 'hidden' });
 
-      // Wait a bit for console messages
       await page.waitForTimeout(100);
-
-      // Check that console contains "Returned value:" with valid time format HH:MM
-      const returnedValueMsg = consoleMessages.find((msg) => msg.startsWith('Returned value:'));
-      expect(returnedValueMsg).toBeTruthy();
-
-      // Extract time value from message (hours: 00-23, minutes: 00-59)
-      const timeMatch = returnedValueMsg?.match(/Returned value:\s*((?:0[0-9]|1[0-9]|2[0-3]):[0-5][0-9])/);
-      expect(timeMatch).toBeTruthy();
-
-      const timeValue = timeMatch?.[1];
-      // Verify time format with leading zeros: 00-23:00-59
-      expect(timeValue).toMatch(/^(?:0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/);
+      expect(consoleMessages.find((msg) => msg.startsWith('Returned value:'))).toMatch(RETURNED_TIME);
     });
 
     await test.step('Verify manually entering time logs valid time format', async () => {
@@ -619,35 +580,16 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await page.keyboard.press('Backspace');
       await page.keyboard.type('06');
 
-      // Trigger onChange by pressing Tab to lose focus
       await page.keyboard.press('Tab');
 
-      // Wait a bit for console messages
       await page.waitForTimeout(200);
-
-      // Check that console contains "Returned value:" with valid time format
-      const returnedValueMsg = consoleMessages.find((msg) => msg.startsWith('Returned value:'));
-      expect(returnedValueMsg).toBeTruthy();
-
-      // Extract time value from message (hours: 00-23, minutes: 00-59)
-      const timeMatch = returnedValueMsg?.match(/Returned value:\s*((?:0[0-9]|1[0-9]|2[0-3]):[0-5][0-9])/);
-      expect(timeMatch).toBeTruthy();
-
-      const timeValue = timeMatch?.[1];
-      // Verify time format with leading zeros: 00-23:00-59
-      expect(timeValue).toMatch(/^(?:0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/);
-      const [hours, minutes] = timeValue!.split(':').map(Number);
-      expect(hours).toBeGreaterThanOrEqual(0);
-      expect(hours).toBeLessThanOrEqual(23);
-      expect(minutes).toBeGreaterThanOrEqual(0);
-      expect(minutes).toBeLessThanOrEqual(59);
+      expect(consoleMessages.find((msg) => msg.startsWith('Returned value:'))).toMatch(RETURNED_TIME);
     });
 
     await test.step('Verify buttons also log valid time format', async () => {
       consoleMessages.length = 0;
       await page.getByRole('button', { name: 'Set to 9:00 AM' }).click();
 
-      // Wait a bit for console messages
       await page.waitForTimeout(100);
       const returnedValueMsg = consoleMessages.find((msg) => msg.includes('Returned value:'));
       expect(returnedValueMsg).toBeTruthy();
@@ -657,7 +599,6 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
   test('Verify 24-hour mode returns 12 when entering noon manually', {
     tag: [TAG.PRIORITY_HIGH,
-      TAG.FUNCTIONAL,
       '@time-picker', '@base-components', '@flex-box', '@button', '@typography'],
   }, async ({ page }) => {
     const consoleMessages: string[] = [];
@@ -688,7 +629,6 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
   test('Verify custom format does not convert values in 24-hour mode', {
     tag: [TAG.PRIORITY_HIGH,
-      TAG.FUNCTIONAL,
       '@time-picker', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/time-picker/tests/examples/different_cases.tsx', 'en', {
@@ -710,7 +650,6 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
   test('Verify locale prop localizes time field labels', {
     tag: [TAG.PRIORITY_MEDIUM,
-      TAG.FUNCTIONAL,
       '@time-picker', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/time-picker/tests/examples/different_cases.tsx', 'fr', {
@@ -727,7 +666,6 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
   test('Verify item-level step, placeholder and autoFocus props', {
     tag: [TAG.PRIORITY_MEDIUM,
-      TAG.FUNCTIONAL,
       '@time-picker', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/time-picker/tests/examples/different_cases.tsx', 'en', {
@@ -758,7 +696,6 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
   test('Verify 12-hour mode should infer PM from a controlled 24-hour value', {
     tag: [TAG.PRIORITY_HIGH,
-      TAG.FUNCTIONAL,
       '@time-picker', '@base-components', '@flex-box', '@button', '@typography'],
   }, async ({ page }) => {
     const consoleMessages: string[] = [];
@@ -778,8 +715,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await expect(locators.timeBoxes(page).nth(0)).toHaveValue('02');
     await expect(locators.timeBoxes(page).nth(1)).toHaveValue('30');
 
-    const meridiem = await page.locator('[data-ui-name="TimePicker.Format"] span').first().textContent();
-    expect(meridiem?.trim()).toBe('PM');
+    await expect(locators.format(page).first()).toHaveText('PM');
 
     await locators.timeBoxes(page).nth(1).fill('45');
     await locators.timeBoxes(page).nth(1).evaluate((node) => (node as HTMLInputElement).blur());
@@ -791,7 +727,6 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
   test('Verify 12-hour mode should infer PM after external controlled value updates', {
     tag: [TAG.PRIORITY_HIGH,
-      TAG.FUNCTIONAL,
       '@time-picker', '@base-components', '@flex-box', '@button', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/time-picker/tests/examples/interactive_examples.tsx', 'en', {
@@ -806,7 +741,6 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await expect(locators.timeBoxes(page).nth(0)).toHaveValue('01');
     await expect(locators.timeBoxes(page).nth(1)).toHaveValue('30');
 
-    const meridiem = await page.locator('[data-ui-name="TimePicker.Format"] span').first().textContent();
-    expect(meridiem?.trim()).toBe('PM');
+    await expect(locators.format(page).first()).toHaveText('PM');
   });
 });

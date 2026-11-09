@@ -1,8 +1,8 @@
 import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
 import Icon from '@semcore/icon/Video/m';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup, queryAllByAttribute, queryByAttribute, userEvent } from '@semcore/testing-utils/testing-library';
-import { expect, test, describe, beforeEach, vi, afterEach } from '@semcore/testing-utils/vitest';
+import { expect, test, describe, beforeEach, vi, afterEach, type MockInstance } from '@semcore/testing-utils/vitest';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
@@ -24,7 +24,7 @@ import {
   ChartLegend,
   HoverLine,
   Donut,
-  // @ts-ignore
+  // @ts-expect-error src/index.js has no declarations, and DATA_TYPE/FORECAST/HIGHLIGHT_DOT are missing from src/types
 } from '../src';
 import { PlotA11yView } from '../src/a11y/PlotA11yView';
 import { getIndexFromData } from '../src/utils';
@@ -111,6 +111,12 @@ const PlotTest = React.forwardRef((props, ref) => (
   <Plot ref={ref} data={ChartOptions.line.data} scale={[xScale, yScale]} width={100} height={100} {...props} />
 ));
 
+describe('d3-chart Translations exports', () => {
+  runTranslationsCheckTest('@semcore/d3-chart');
+  runTranslationsCheckTest('@semcore/d3-chart', 'a11y/translations/module');
+  runTranslationsCheckTest('@semcore/d3-chart', 'a11y/translations/view');
+});
+
 describe('d3-chart Dependency imports', () => {
   runDependencyCheckTests('d3-chart');
 });
@@ -118,7 +124,7 @@ describe('d3-chart Dependency imports', () => {
 describe('Plot', () => {
   beforeEach(cleanup);
 
-  test.concurrent('Should support render null', () => {
+  test.concurrent('should render nothing without data and scale', () => {
     const { queryByText } = render(<Plot>Test</Plot>);
     expect(queryByText(/Test/)).toBeNull();
   });
@@ -128,7 +134,7 @@ describe('YAxis', () => {
   beforeEach(cleanup);
 
   test(
-    'Should support call children function for Grid how many ticks are passed',
+    'should call YAxis.Grid children function once per tick',
     () => {
       expect.assertions(2);
 
@@ -148,7 +154,7 @@ describe('YAxis', () => {
   );
 
   test(
-    'Should support call children function for Ticks how many ticks are passed',
+    'should call YAxis.Ticks children function once per tick',
     () => {
       /* Called once per tick. Measuring multiline ticks no longer needs a rootRef,
          so the extra re-render after the initial render is gone. */
@@ -169,7 +175,7 @@ describe('YAxis', () => {
     },
   );
 
-  test('should support set data-ui-name for Line.Ticks', () => {
+  test('should set data-ui-name on YAxis.Ticks', () => {
     const { queryByTestId } = render(
       <Plot data={ChartOptions.line.data} scale={[xScale, yScale]} width={100} height={100}>
         <YAxis ticks={[0]}>
@@ -181,7 +187,7 @@ describe('YAxis', () => {
     expect((queryByTestId('test')!.attributes as any)['data-ui-name'].value).toBe('Axis.Ticks');
   });
 
-  test('should support change tag YAxis.Ticks', () => {
+  test('should support changing the tag of YAxis.Ticks', () => {
     const { queryByTestId } = render(
       <Plot data={ChartOptions.line.data} scale={[xScale, yScale]} width={100} height={100}>
         <YAxis ticks={[0]}>
@@ -198,7 +204,6 @@ describe('XAxis', () => {
 
   test.concurrent('should support hover for custom XAxis.Ticks', () => {
     vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => (cb as any)());
-    // const bisect = bisector((d) => d.x).center;
     class EventEmitter {
       emit() { }
       subscribe() { }
@@ -258,7 +263,7 @@ describe('utils', () => {
 describe('Focus skip to content after plot', () => {
   beforeEach(cleanup);
 
-  test('nested case', async () => {
+  test('should skip to the first focusable element after the plot in nested markup', async () => {
     const data = Array(20)
       .fill({})
       .map((d, i) => ({
@@ -310,7 +315,7 @@ describe('Focus skip to content after plot', () => {
     expect(getByTestId('focusableElement-1')).toHaveFocus();
   });
 
-  test('nested and shifted case', async () => {
+  test('should skip to the first focusable element after the plot in nested and shifted markup', async () => {
     const data = Array(20)
       .fill({})
       .map((d, i) => ({
@@ -749,12 +754,14 @@ describe('Chart.Donut', () => {
   });
 });
 
-const DONUT_THICKNESS = 16;
-const DONUT_INCREASE_FACTOR = 4;
+const DONUT_THICKNESS = 12;
+const DONUT_CORNER_RADIUS = 2;
 
 const getPieGeometry = (pie: Element) => {
   const d = pie.getAttribute('d') ?? '';
-  const radii = [...new Set([...d.matchAll(/A([\d.]+),/g)].map((match) => Number(match[1])))];
+  // Skip the small arcs of the rounded corners, keep only the ring arcs
+  const radii = [...new Set([...d.matchAll(/A([\d.]+),/g)].map((match) => Number(match[1])))]
+    .filter((radius) => radius > DONUT_CORNER_RADIUS);
   const outerRadius = Math.max(...radii);
   const innerRadius = radii.length > 1 ? Math.min(...radii) : 0;
 
@@ -781,21 +788,21 @@ const renderDonut = (
 describe('Donut geometry', () => {
   beforeEach(cleanup);
 
-  test.concurrent('should render a 16px thick ring by default', async () => {
+  test.concurrent('should render a 12px thick ring by default', async () => {
     const [pie] = renderDonut();
 
-    // outerRadius = (300 - DONUT_INCREASE_FACTOR * 2) / 2 = 146
-    expect(pie.outerRadius).toBe(146);
-    expect(pie.innerRadius).toBe(146 - DONUT_THICKNESS);
+    // outerRadius = 300 / 2 = 150
+    expect(pie.outerRadius).toBe(150);
+    expect(pie.innerRadius).toBe(150 - DONUT_THICKNESS);
     expect(pie.thickness).toBe(DONUT_THICKNESS);
   });
 
-  test.concurrent('should keep the 16px thickness regardless of the plot size', async () => {
+  test.concurrent('should keep the 12px thickness regardless of the plot size', async () => {
     const sizes: [number, number][] = [
       [300, 300],
       [120, 120],
       [60, 60],
-      [40, 40], // the smallest plot where a 16px ring still fits
+      [40, 40],
     ];
 
     for (const size of sizes) {
@@ -805,7 +812,7 @@ describe('Donut geometry', () => {
     }
   });
 
-  test.concurrent('should keep the 16px thickness for a semi donut', async () => {
+  test.concurrent('should keep the 12px thickness for a semi donut', async () => {
     const [pie] = renderDonut({ halfsize: true }, [300, 150]);
 
     expect(pie.thickness).toBe(DONUT_THICKNESS);
@@ -815,37 +822,327 @@ describe('Donut geometry', () => {
     const [pie] = renderDonut({ innerRadius: 50 });
 
     expect(pie.innerRadius).toBe(50);
-    expect(pie.outerRadius).toBe(146);
+    expect(pie.outerRadius).toBe(150);
   });
 
   test.concurrent('should render a full pie when innerRadius is explicitly 0', async () => {
     const [pie] = renderDonut({ innerRadius: 0 });
 
     expect(pie.innerRadius).toBe(0);
-    expect(pie.thickness).toBe(146);
+    expect(pie.thickness).toBe(150);
   });
 
   test.concurrent('should clamp the inner radius to 0 instead of going negative', async () => {
-    const [pie] = renderDonut({}, [30, 30]);
+    // outerRadius = 20 / 2 = 10 < DONUT_THICKNESS
+    const [pie] = renderDonut({}, [20, 20]);
 
-    expect(pie.outerRadius).toBe(11);
+    expect(pie.outerRadius).toBe(10);
     expect(pie.innerRadius).toBe(0);
   });
 
-  test.concurrent('should expand an active pie outwards keeping its inner edge', async () => {
+  test('should not change pie geometry on hover', async () => {
     const { container } = render(
       <Plot width={300} height={300} data={ChartOptions.donut.data}>
-        <Donut>
-          <Donut.Pie active dataKey='a' name='Pie 1' />
+        <Donut duration={0}>
+          <Donut.Pie dataKey='a' name='Pie 1' />
           <Donut.Pie dataKey='b' name='Pie 2' />
         </Donut>
       </Plot>,
     );
-    const [activePie, idlePie] = queryAllByAttribute('data-ui-name', container, 'Donut.Pie').map(getPieGeometry);
+    const pies = queryAllByAttribute('data-ui-name', container, 'Donut.Pie');
+    const before = pies.map(getPieGeometry);
 
-    expect(activePie.innerRadius).toBe(idlePie.innerRadius);
-    expect(activePie.outerRadius).toBe(idlePie.outerRadius + DONUT_INCREASE_FACTOR);
-    expect(activePie.thickness).toBe(DONUT_THICKNESS + DONUT_INCREASE_FACTOR);
+    await userEvent.hover(pies[0]);
+
+    expect(pies.map(getPieGeometry)).toEqual(before);
+    expect(before[0].thickness).toBe(DONUT_THICKNESS);
+  });
+});
+
+const SCORE_DONUT_PLOT = { plotWidth: 300, plotHeight: 300, duration: 0 } as const;
+
+const renderScoreDonut = (props: Record<string, unknown> = {}) =>
+  render(
+    <Chart.ScoreDonut data={{ value: 40 }} aria-label='Score donut chart' {...SCORE_DONUT_PLOT} {...props} />,
+  );
+
+const scoreDonutPies = (container: HTMLElement) => queryAllByAttribute('data-ui-name', container, 'Donut.Pie');
+
+/** Angle (in degrees, clockwise from 12 o'clock) of the first point of a pie path. */
+const pieStartDegrees = (pie: Element) => {
+  const start = (pie.getAttribute('d') ?? '').match(/^M([-\d.e]+),([-\d.e]+)/);
+
+  if (!start) return Number.NaN;
+
+  return ((Math.atan2(Number(start[1]), -Number(start[2])) * 180) / Math.PI + 360) % 360;
+};
+
+/**
+ * Angle (in degrees) swept by the pie at `index`, measured from its start to the start of the next pie.
+ * Rounded corners and the pad angle shift every pie start equally, so they cancel out.
+ */
+const pieSweepDegrees = (container: HTMLElement, index: number) => {
+  const pies = scoreDonutPies(container);
+  let sweep = pieStartDegrees(pies[(index + 1) % pies.length]) - pieStartDegrees(pies[index]);
+
+  if (sweep <= 0) sweep += 360;
+
+  return sweep;
+};
+
+describe('Chart.ScoreDonut', () => {
+  beforeEach(cleanup);
+
+  describe('data.value equivalence classes', () => {
+    test('should split a valid value into value and other pies', async () => {
+      const { container } = renderScoreDonut({ data: { value: 40 } });
+      const [valuePie, otherPie] = scoreDonutPies(container);
+
+      expect(scoreDonutPies(container)).toHaveLength(2);
+      expect(pieSweepDegrees(container, 0)).toBeCloseTo(144, 0);
+      expect(pieSweepDegrees(container, 1)).toBeCloseTo(216, 0);
+      expect(otherPie.getAttribute('mask')).toMatch(/^url\(#.+-mask\)$/);
+      expect(valuePie.getAttribute('mask')).toBeNull();
+    });
+
+    test('should keep a fractional value proportional', async () => {
+      const { container } = renderScoreDonut({ data: { value: 33.33 } });
+
+      expect(pieSweepDegrees(container, 0)).toBeCloseTo(120, 0);
+    });
+
+    test('should ignore extra keys in data', async () => {
+      const { container, getAllByText } = renderScoreDonut({ data: { value: 40, test: 60 }, showLegend: true });
+
+      expect(scoreDonutPies(container)).toHaveLength(2);
+      expect(getAllByText('value')).toHaveLength(1);
+      expect(container.textContent).not.toContain('test');
+    });
+  });
+
+  describe('data.value boundary values', () => {
+    test('should render only the other pie for value 0', async () => {
+      const { container, getByText } = renderScoreDonut({ data: { value: 0 }, showLegend: true });
+      const pies = scoreDonutPies(container);
+
+      expect(pies).toHaveLength(1);
+      expect(pies[0].getAttribute('mask')).not.toBeNull();
+      expect(getByText('0.00%')).toBeTruthy();
+    });
+
+    test('should render only the value pie for value 100', async () => {
+      const { container } = renderScoreDonut({ data: { value: 100 } });
+      const pies = scoreDonutPies(container);
+
+      expect(pies).toHaveLength(1);
+      expect(pies[0].getAttribute('mask')).toBeNull();
+    });
+
+    test('should split value 50 into two equal halves', async () => {
+      const { container } = renderScoreDonut({ data: { value: 50 } });
+
+      expect(pieSweepDegrees(container, 0)).toBeCloseTo(180, 0);
+      expect(pieSweepDegrees(container, 1)).toBeCloseTo(180, 0);
+    });
+
+    test.each([0.01, 0.99, 1, 1.01])(
+      'should keep a tiny value %s visible as about a 1%% slice',
+      async (value) => {
+        const { container } = renderScoreDonut({ data: { value } });
+
+        // Donut enlarges a slice below 1% of the total to 1% of it, i.e. ~0.99% of the new total.
+        expect(scoreDonutPies(container)).toHaveLength(2);
+        expect(pieSweepDegrees(container, 0)).toBeGreaterThan(3.5);
+      },
+    );
+
+    test.each([99, 99.99])('should keep a tiny other slice visible for value %s', async (value) => {
+      const { container } = renderScoreDonut({ data: { value } });
+
+      expect(scoreDonutPies(container)).toHaveLength(2);
+      expect(pieSweepDegrees(container, 1)).toBeGreaterThan(3.5);
+    });
+  });
+
+  describe('innerRadius boundary values', () => {
+    test('should render a 12px ring by default', async () => {
+      const { container } = renderScoreDonut();
+      const [pie] = scoreDonutPies(container);
+
+      expect(getPieGeometry(pie).thickness).toBe(DONUT_THICKNESS);
+    });
+
+    test('should render a full pie for innerRadius 0', async () => {
+      const { container } = renderScoreDonut({ innerRadius: 0 });
+      const [pie] = scoreDonutPies(container);
+
+      expect(getPieGeometry(pie).innerRadius).toBe(0);
+    });
+
+    test('should render a 1px ring for innerRadius = outerRadius - 1', async () => {
+      const { container } = renderScoreDonut({ innerRadius: 149 });
+      const [pie] = scoreDonutPies(container);
+
+      expect(getPieGeometry(pie).thickness).toBe(1);
+    });
+
+    test('should not crash for innerRadius >= outerRadius', async () => {
+      expect(() => renderScoreDonut({ innerRadius: 200 })).not.toThrow();
+    });
+  });
+
+  describe('legend visibility (decision table)', () => {
+    test.each([
+      ['undefined', undefined, false],
+      ['true', true, true],
+      ['false', false, false],
+    ])('showLegend %s', async (_, showLegend, expectedVisible) => {
+      const { queryByLabelText, container } = renderScoreDonut(
+        showLegend === undefined ? {} : { showLegend },
+      );
+
+      expect(Boolean(queryByLabelText('Chart legend'))).toBe(expectedVisible);
+      expect(scoreDonutPies(container)).toHaveLength(2);
+    });
+  });
+
+  describe('legend item content (decision table)', () => {
+    const renderWithLegend = (legendMapValue?: Record<string, unknown>) =>
+      renderScoreDonut({
+        showLegend: true,
+        legendProps: { legendType: 'Table', ...(legendMapValue ? { legendMap: { value: legendMapValue } } : {}) },
+      });
+
+    test('should compute percent and value columns without legendMap', async () => {
+      const { getByText } = renderWithLegend();
+
+      expect(getByText('value')).toBeTruthy();
+      expect(getByText('40.00%')).toBeTruthy();
+      expect(getByText('40')).toBeTruthy();
+    });
+
+    test('should use a custom label and keep the computed columns', async () => {
+      const { getByText, queryByText } = renderWithLegend({ label: 'SEO score' });
+
+      expect(getByText('SEO score')).toBeTruthy();
+      expect(queryByText('value')).toBeNull();
+      expect(getByText('40.00%')).toBeTruthy();
+    });
+
+    test('should render count after the label', async () => {
+      const { getByText } = renderWithLegend({ count: 12 });
+
+      expect(getByText('(12)')).toBeTruthy();
+    });
+
+    test('should prefer additionalInfo over count', async () => {
+      const { getByText, queryByText } = renderWithLegend({ additionalInfo: 'of 100', count: 12 });
+
+      expect(getByText('of 100')).toBeTruthy();
+      expect(queryByText('(12)')).toBeNull();
+    });
+
+    test('should render given rows instead of computed columns', async () => {
+      const { getByText, queryByText } = renderWithLegend({ rows: [<span key='r'>custom row</span>] });
+
+      expect(getByText('custom row')).toBeTruthy();
+      expect(queryByText('40.00%')).toBeNull();
+    });
+
+    test('should render given columns instead of computed columns', async () => {
+      const { getByText, queryByText } = renderWithLegend({ columns: [<span key='c'>custom column</span>] });
+
+      expect(getByText('custom column')).toBeTruthy();
+      expect(queryByText('40.00%')).toBeNull();
+    });
+
+    test.each([['rows'], ['columns']])('should accept an empty %s array', async (key) => {
+      expect(() => renderWithLegend({ [key]: [] })).not.toThrow();
+    });
+
+    test('should keep the value pie hidden with defaultChecked false and the default Circle legend', async () => {
+      const { container } = renderWithLegend({ defaultChecked: false });
+      const masked = scoreDonutPies(container).filter((pie) => pie.getAttribute('mask'));
+
+      expect(scoreDonutPies(container)).toHaveLength(masked.length);
+    });
+  });
+
+  describe('state transitions', () => {
+    test('should update pies when value changes 40 -> 80 -> 0 -> 40', async () => {
+      const { container, rerender } = renderScoreDonut({ data: { value: 40 } });
+
+      const rerenderWith = (value: number) =>
+        rerender(<Chart.ScoreDonut data={{ value }} aria-label='Score donut chart' {...SCORE_DONUT_PLOT} />);
+
+      rerenderWith(80);
+      expect(pieSweepDegrees(container, 0)).toBeCloseTo(288, 0);
+
+      rerenderWith(0);
+      expect(scoreDonutPies(container)).toHaveLength(1);
+
+      rerenderWith(40);
+      expect(scoreDonutPies(container)).toHaveLength(2);
+      expect(pieSweepDegrees(container, 0)).toBeCloseTo(144, 0);
+    });
+
+    test('should render a non-toggleable Circle legend by default', async () => {
+      const { queryByRole, getByText } = renderScoreDonut({ showLegend: true });
+
+      expect(getByText('value')).toBeTruthy();
+      expect(queryByRole('checkbox')).toBeNull();
+    });
+  });
+
+  describe('error guessing', () => {
+    test('should call onClickPie with value and other keys', async () => {
+      const onClickPie = vi.fn();
+      const { container } = renderScoreDonut({ onClickPie });
+      const [valuePie, otherPie] = scoreDonutPies(container);
+
+      await userEvent.click(valuePie);
+      await userEvent.click(otherPie);
+
+      expect(onClickPie.mock.calls.map(([key]) => key)).toEqual(['value', 'other']);
+    });
+
+    test('should give two charts on one page unique mask ids', async () => {
+      const { container } = render(
+        <>
+          <Chart.ScoreDonut data={{ value: 40 }} aria-label='First' {...SCORE_DONUT_PLOT} />
+          <Chart.ScoreDonut data={{ value: 60 }} aria-label='Second' {...SCORE_DONUT_PLOT} />
+        </>,
+      );
+      const maskIds = [...container.querySelectorAll('mask')].map((mask) => mask.id);
+      const references = scoreDonutPies(container)
+        .map((pie) => pie.getAttribute('mask'))
+        .filter(Boolean);
+
+      expect(maskIds).toHaveLength(2);
+      expect(new Set(maskIds).size).toBe(2);
+      references.forEach((reference, index) => expect(reference).toBe(`url(#${maskIds[index]})`));
+    });
+
+    test('should render innerLabel inside the donut', async () => {
+      const { container } = renderScoreDonut({ innerLabel: ['40%', 'Description'] });
+
+      expect(queryByAttribute('data-ui-name', container, 'Donut.Label')?.textContent).toBe('40%Description');
+    });
+  });
+
+  describe('accessibility', () => {
+    test('should put role group on the root and aria-label on the plot', async () => {
+      const { container } = renderScoreDonut();
+
+      expect(container.querySelector('[role="group"]')).not.toBeNull();
+      expect(container.querySelector('svg[aria-label="Score donut chart"]')).not.toBeNull();
+    });
+
+    test('should hide pies from assistive technologies', async () => {
+      const { container } = renderScoreDonut();
+
+      scoreDonutPies(container).forEach((pie) => expect(pie.closest('[aria-hidden]')).not.toBeNull());
+    });
   });
 });
 
@@ -1227,7 +1524,7 @@ describe('Chart tooltip percent delta', () => {
     { category: 'Point 4', first: 75, second: 30 },
   ];
 
-  let rafSpy: ReturnType<typeof vi.spyOn>;
+  let rafSpy: MockInstance<typeof window.requestAnimationFrame>;
 
   beforeEach(() => {
     cleanup();
@@ -1384,7 +1681,7 @@ describe('Chart tooltip default formatting', () => {
     { time: new Date('2024-07-04T00:00:00Z'), integer: 30, fractional: 99.95 },
   ];
 
-  let rafSpy: ReturnType<typeof vi.spyOn>;
+  let rafSpy: MockInstance<typeof window.requestAnimationFrame>;
 
   beforeEach(() => {
     cleanup();
@@ -1649,7 +1946,7 @@ describe('Chart tooltip default formatting', () => {
  * dropped from it.
  */
 describe('Chart tooltip numeric formatting across chart types', () => {
-  let rafSpy: ReturnType<typeof vi.spyOn>;
+  let rafSpy: MockInstance<typeof window.requestAnimationFrame>;
 
   beforeEach(() => {
     cleanup();
@@ -1732,7 +2029,7 @@ describe('Tooltip.Dot ring lightness', () => {
     { x: 3, y: 7 },
   ];
 
-  let rafSpy: ReturnType<typeof vi.spyOn>;
+  let rafSpy: MockInstance<typeof window.requestAnimationFrame>;
 
   beforeEach(() => {
     cleanup();

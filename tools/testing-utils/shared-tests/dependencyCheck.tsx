@@ -1,11 +1,13 @@
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
-import * as process from 'node:process';
+import { fileURLToPath } from 'node:url';
 
 import glob from 'fast-glob';
 import ts from 'typescript';
 // eslint-disable-next-line no-restricted-imports
 import { test, expect } from 'vitest';
+
+const semcorePath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../semcore');
 
 function traverseImports(node: ts.Node, file: string, imports: Set<string>) {
   if (ts.isImportDeclaration(node)) {
@@ -50,7 +52,7 @@ async function extractImports(filePath: string, imports: Set<string>) {
 
 export function runDependencyCheckTests(component: string) {
   test(`All @semcore dependencies are imported in: "${component}"`, async () => {
-    const pathToComponent = process.cwd();
+    const pathToComponent = path.join(semcorePath, component);
     const packageRawData = await fs.readFile(path.join(pathToComponent, 'package.json'), 'utf8');
     const packageData = JSON.parse(packageRawData);
     const definedDependencies = new Set([
@@ -58,6 +60,8 @@ export function runDependencyCheckTests(component: string) {
       ...Object.keys(packageData.peerDependencies ?? {}),
     ]);
     const srcFiles = await glob(`${pathToComponent}/src/**/*.+(js|jsx|ts|tsx)`);
+    expect(srcFiles.length, `No source files found in ${pathToComponent}/src`).toBeGreaterThan(0);
+
     const allImports = new Set<string>();
 
     await Promise.all(

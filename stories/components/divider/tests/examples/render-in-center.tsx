@@ -1,21 +1,20 @@
+import { Box, Flex } from '@semcore/ui/base-components';
 import Divider from '@semcore/ui/divider';
 import React from 'react';
 
 const Demo = () => {
   return (
     <>
-      <div style={{ display: 'flex', alignItems: 'center', width: 100, height: 20 }}>
-        <div style={{ width: '50%', height: 20, background: 'yellow' }} />
+      <Flex alignItems='center' w={100} h={20}>
+        <Box w='50%' h={20} style={{ background: 'yellow' }} />
         <Divider orientation='vertical' />
-        <div style={{ width: '50%', height: 20, background: 'yellow' }} />
-      </div>
-      <div
-        style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: 100 }}
-      >
-        <div style={{ height: '20px', background: 'blue' }} />
+        <Box w='50%' h={20} style={{ background: 'yellow' }} />
+      </Flex>
+      <Flex direction='column' justifyContent='center' w={100}>
+        <Box h={20} style={{ background: 'blue' }} />
         <Divider orientation='horizontal' />
-        <div style={{ height: '20px', background: 'blue' }} />
-      </div>
+        <Box h={20} style={{ background: 'blue' }} />
+      </Flex>
     </>
   );
 };

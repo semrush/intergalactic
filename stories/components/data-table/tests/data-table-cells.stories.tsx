@@ -7,8 +7,10 @@ import CheckboxExample, { defaultProps as checkboxReactiveProps } from './exampl
 import type { DemoProps as CheckboxReactiveProps } from './examples/cells-tests/checkbox';
 import CheckboxInTableWithNoDataExample, { defaultProps as checkboxNoDataProps } from './examples/cells-tests/checkbox-in-table-with-no-data';
 import type { DemoProps as CheckboxNoDataProps } from './examples/cells-tests/checkbox-in-table-with-no-data';
-import DDSelectInCellExample from './examples/cells-tests/dd-select-in-cell';
-import InteractiveCellsExample from './examples/cells-tests/interactive-elements-in-cells';
+import DDSelectInCellExample, { ddSelectInCellProps } from './examples/cells-tests/dd-select-in-cell';
+import type { DDSelectInCellProps } from './examples/cells-tests/dd-select-in-cell';
+import InteractiveCellsExample, { interactiveCellsProps } from './examples/cells-tests/interactive-elements-in-cells';
+import type { InteractiveCellsProps } from './examples/cells-tests/interactive-elements-in-cells';
 import LongTextCellsExample from './examples/cells-tests/long-text-in-cells';
 import MergedRowColumnWithFixedExample, {
   mergedRowColumnWithFixedProps,
@@ -108,16 +110,18 @@ export const OneBigMergedRowAndScroll: Story = {
   render: OneBigMergedRowAndScrollExample,
 };
 
-export const DDSelectInCell: Story = {
+export const DDSelectInCell: StoryObj<DDSelectInCellProps> = {
   render: DDSelectInCellExample,
+  args: ddSelectInCellProps,
 };
 
 export const LongTextCells: Story = {
   render: LongTextCellsExample,
 };
 
-export const InteractiveCells: Story = {
+export const InteractiveCells: StoryObj<InteractiveCellsProps> = {
   render: InteractiveCellsExample,
+  args: interactiveCellsProps,
 };
 
 export const MergedRowColumnWithFixed: StoryObj<MergedRowColumnWithFixedProps> = {

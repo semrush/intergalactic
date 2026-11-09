@@ -28,7 +28,6 @@ export const locators = {
     const base = page.locator('[data-ui-name="Skeleton"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
-  // areas of the example, so every screenshot is scoped to its own skeleton
   area: (page: Page, testId: string) => page.locator(`[data-testid="${testId}"]`),
   chart: (page: Page, name: string) => page.locator(`[data-testid="chart-${name}"]`),
 };
@@ -179,8 +178,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     const skeleton = locators.skeleton(page, 0);
 
-    expect(await skeleton.getAttribute('style')).toContain('500ms');
-    expect(await computed(skeleton, 'animation-duration')).toBe('0.5s');
+    await expect(skeleton).toHaveAttribute('style', /500ms/);
+    await expect(skeleton).toHaveCSS('animation-duration', '0.5s');
   });
 
   test('Verify hidden prop renders nothing', {
@@ -203,7 +202,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'de', { locale: 'de' });
 
-    expect(await locators.skeleton(page, 0).getAttribute('aria-label')).not.toBe('Loading…');
+    await expect(locators.skeleton(page, 0)).toHaveAttribute('aria-label', /.+/);
+    await expect(locators.skeleton(page, 0)).not.toHaveAttribute('aria-label', 'Loading…');
   });
 
   test('Verify Skeleton.Text amount renders the requested number of lines', {
@@ -214,8 +214,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { amount: 4 });
 
-    // 4 lines from the first Skeleton.Text plus a single line from the second one
-    await expect(locators.area(page, 'plain-skeleton').locator('rect[rx="4"]')).toHaveCount(5);
+    await test.step('4 lines from the first Skeleton.Text and 1 line from the second one', async () => {
+      await expect(locators.area(page, 'plain-skeleton').locator('rect[rx="4"]')).toHaveCount(5);
+    });
   });
 
   test('Verify theme changes the fill of Skeleton', {
@@ -287,6 +288,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { w: 300, parentWidth: 200 });
 
-    expect(await computed(locators.skeleton(page, 0), 'width')).toBe('300px');
+    await expect(locators.skeleton(page, 0)).toHaveCSS('width', '300px');
   });
 });

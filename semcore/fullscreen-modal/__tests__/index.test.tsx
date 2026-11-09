@@ -1,10 +1,14 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup, screen, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import FullscreenModal from '../src';
+
+describe('fullscreen-modal Translations exports', () => {
+  runTranslationsCheckTest('@semcore/fullscreen-modal');
+});
 
 describe('fullscreen-modal Dependency imports', () => {
   runDependencyCheckTests('fullscreen-modal');

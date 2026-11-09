@@ -75,7 +75,7 @@ class TrendBarRoot extends Trend<
           {...extractedAriaProps}
         >
           {this.data.map((barItem, index) => {
-            let color = resolveColor('chart-palette-order-other-data');
+            let color = resolveColor('chart-data-other-value');
 
             if (barItem.color) {
               color = resolveColor(barItem.color);

@@ -1,29 +1,12 @@
-import type { Page } from '@playwright/test';
 import { expect, test } from '@semcore/testing-utils/playwright';
+import type { Locator, Page } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 const locators = {
   button: (page: Page, text: string) => page.getByRole('button', { name: text }),
-
-  feedbackForm: (page: Page, index?: number) => {
-    const base = page.locator(`[data-ui-name="FeedbackForm"]`);
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  notice: (page: Page, index?: number) => {
-    const base = page.locator(`[data-ui-name="FeedbackForm.Notice"]`);
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
   dialog: (page: Page, index?: number) => {
     const base = page.getByRole('dialog');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  stars: (page: Page, index?: number) => {
-    const base = page.getByRole('none');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  sliderRating: (page: Page, index?: number) => {
-    const base = page.getByRole('slider');
     return typeof index === 'number' ? base.nth(index) : base;
   },
   inputs: (page: Page, index?: number) => {
@@ -34,6 +17,26 @@ const locators = {
     const base = page.locator(`[data-ui-name="FeedbackForm.Success"]`);
     return typeof index === 'number' ? base.nth(index) : base;
   },
+};
+
+const expectFeedbackFieldAttributes = async (field: Locator, invalid: boolean) => {
+  await expect(field).toHaveAttribute('aria-invalid', String(invalid));
+  await expect(field).toHaveAttribute('name', 'feedback');
+  await expect(field).toHaveAttribute('id', 'feedback');
+  await expect(field).toHaveAttribute('rows', '2');
+  if (invalid) {
+    await expect(field).toHaveAttribute('aria-describedby');
+  } else {
+    await expect(field).not.toHaveAttribute('aria-describedby');
+  }
+};
+
+const expectEmailFieldAttributes = async (field: Locator, invalid: boolean) => {
+  await expect(field).toHaveAttribute('aria-invalid', String(invalid));
+  await expect(field).toHaveAttribute('name', 'email');
+  await expect(field).toHaveAttribute('id', 'email');
+  await expect(field).toHaveAttribute('autocomplete', 'email');
+  await expect(field).toHaveAttribute('aria-describedby');
 };
 
 /* =====================================================
@@ -121,7 +124,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     const feedbackFormItem = page.locator('[data-ui-name="FeedbackForm.Item"]');
 
-    await test.step('Verify stars can be focused and their attributes ', async () => {
+    await test.step('Verify focus order of answer buttons and Notice close hint', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.button(page, 'Yes')).toBeFocused();
       await page.keyboard.press('Tab');
@@ -145,28 +148,20 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.button(page, 'No').first()).toBeFocused();
     });
 
-    await test.step('Verify form opened and attributed', async () => {
+    await test.step('Verify form opened and field attributes', async () => {
       await page.keyboard.press('Enter');
       await locators.dialog(page).waitFor({ state: 'visible' });
 
       await expect(feedbackFormItem.first()).toBeFocused();
-      await expect(feedbackFormItem.first()).toHaveAttribute('aria-invalid', 'false');
-      await expect(feedbackFormItem.first()).toHaveAttribute('name', 'feedback');
-      await expect(feedbackFormItem.first()).toHaveAttribute('id', 'feedback');
-      await expect(feedbackFormItem.first()).toHaveAttribute('rows', '2');
-      await expect(feedbackFormItem.first()).not.toHaveAttribute('aria-describedby');
+      await expectFeedbackFieldAttributes(feedbackFormItem.first(), false);
       await page.keyboard.press('Tab');
 
       await expect(feedbackFormItem.nth(1)).toBeFocused();
-      await expect(feedbackFormItem.nth(1)).toHaveAttribute('aria-invalid', 'false');
-      await expect(feedbackFormItem.nth(1)).toHaveAttribute('name', 'email');
-      await expect(feedbackFormItem.nth(1)).toHaveAttribute('id', 'email');
-      await expect(feedbackFormItem.nth(1)).toHaveAttribute('autocomplete', 'email');
-      await expect(feedbackFormItem.nth(1)).toHaveAttribute('aria-describedby');
+      await expectEmailFieldAttributes(feedbackFormItem.nth(1), false);
       await expect(feedbackFormItem.nth(1)).toHaveAttribute('value');
     });
 
-    await test.step('Verify form with error and attributed', async () => {
+    await test.step('Verify form with errors and field attributes', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
 
@@ -174,19 +169,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Enter');
 
       await expect(feedbackFormItem.first()).toBeFocused();
-      await expect(feedbackFormItem.first()).toHaveAttribute('aria-invalid', 'true');
-      await expect(feedbackFormItem.first()).toHaveAttribute('name', 'feedback');
-      await expect(feedbackFormItem.first()).toHaveAttribute('id', 'feedback');
-      await expect(feedbackFormItem.first()).toHaveAttribute('rows', '2');
-      await expect(feedbackFormItem.first()).toHaveAttribute('aria-describedby');
+      await expectFeedbackFieldAttributes(feedbackFormItem.first(), true);
 
       await page.keyboard.press('Tab');
       await expect(feedbackFormItem.nth(1)).toBeFocused();
-      await expect(feedbackFormItem.nth(1)).toHaveAttribute('aria-invalid', 'true');
-      await expect(feedbackFormItem.nth(1)).toHaveAttribute('name', 'email');
-      await expect(feedbackFormItem.nth(1)).toHaveAttribute('id', 'email');
-      await expect(feedbackFormItem.nth(1)).toHaveAttribute('autocomplete', 'email');
-      await expect(feedbackFormItem.nth(1)).toHaveAttribute('aria-describedby');
+      await expectEmailFieldAttributes(feedbackFormItem.nth(1), true);
       await expect(feedbackFormItem.nth(1)).toHaveAttribute('value');
     });
 
@@ -200,7 +187,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.button(page, 'No').first()).toBeFocused();
     });
 
-    await test.step('Verify form closed Escape', async () => {
+    await test.step('Verify form closed by Escape', async () => {
       await page.keyboard.press('Shift+Tab');
       await expect(locators.button(page, 'Yes')).toBeFocused();
       await page.keyboard.press('Enter');
@@ -211,7 +198,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.button(page, 'Yes')).toBeFocused();
     });
 
-    await test.step('Verify Success form appeard and closed by Escape', async () => {
+    await test.step('Verify Success form appeared and closed by Escape', async () => {
       await page.keyboard.press('Enter');
       await locators.dialog(page).waitFor({ state: 'visible' });
       await expect(locators.inputs(page).first()).toBeFocused();
@@ -227,17 +214,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Tab');
       await expect(locators.button(page, 'Send feedback')).toBeFocused();
 
-      await expect(feedbackFormItem.first()).toHaveAttribute('aria-invalid', 'false');
-      await expect(feedbackFormItem.first()).toHaveAttribute('name', 'feedback');
-      await expect(feedbackFormItem.first()).toHaveAttribute('id', 'feedback');
-      await expect(feedbackFormItem.first()).toHaveAttribute('rows', '2');
-      await expect(feedbackFormItem.first()).not.toHaveAttribute('aria-describedby');
-
-      await expect(feedbackFormItem.nth(1)).toHaveAttribute('aria-invalid', 'false');
-      await expect(feedbackFormItem.nth(1)).toHaveAttribute('name', 'email');
-      await expect(feedbackFormItem.nth(1)).toHaveAttribute('id', 'email');
-      await expect(feedbackFormItem.nth(1)).toHaveAttribute('autocomplete', 'email');
-      await expect(feedbackFormItem.nth(1)).toHaveAttribute('aria-describedby');
+      await expectFeedbackFieldAttributes(feedbackFormItem.first(), false);
+      await expectEmailFieldAttributes(feedbackFormItem.nth(1), false);
 
       await page.keyboard.press('Enter');
       await locators.success(page).waitFor({ state: 'visible' });
@@ -275,25 +253,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(feedbackFormItem.nth(1)).toBeFocused();
     });
 
-    await test.step('Verify error tooltip  ', async () => {
+    await test.step('Verify error tooltip and field attributes', async () => {
       await locators.button(page, 'Send feedback').click();
       await expect(page.getByRole('tooltip')).toHaveCount(1);
 
       await expect(feedbackFormItem.first()).toBeFocused();
-      await expect(feedbackFormItem.first()).toHaveAttribute('aria-invalid', 'true');
-      await expect(feedbackFormItem.first()).toHaveAttribute('name', 'feedback');
-      await expect(feedbackFormItem.first()).toHaveAttribute('id', 'feedback');
-      await expect(feedbackFormItem.first()).toHaveAttribute('rows', '2');
-      await expect(feedbackFormItem.first()).toHaveAttribute('aria-describedby');
+      await expectFeedbackFieldAttributes(feedbackFormItem.first(), true);
 
       await page.locator('label').nth(1).click();
       await expect(page.getByRole('tooltip')).toHaveCount(1);
       await expect(feedbackFormItem.nth(1)).toBeFocused();
-      await expect(feedbackFormItem.nth(1)).toHaveAttribute('aria-invalid', 'true');
-      await expect(feedbackFormItem.nth(1)).toHaveAttribute('name', 'email');
-      await expect(feedbackFormItem.nth(1)).toHaveAttribute('id', 'email');
-      await expect(feedbackFormItem.nth(1)).toHaveAttribute('autocomplete', 'email');
-      await expect(feedbackFormItem.nth(1)).toHaveAttribute('aria-describedby');
+      await expectEmailFieldAttributes(feedbackFormItem.nth(1), true);
       await expect(feedbackFormItem.nth(1)).toHaveAttribute('value');
     });
 

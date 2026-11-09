@@ -64,7 +64,6 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     const entries = Object.entries(SIZES);
 
-    // the example renders the full size scale twice: default theme, then invert theme
     for (const [themeIndex, themeName] of ['default', 'invert'].entries()) {
       for (const [sizeIndex, [size, [expectedPx, expectedStroke]]] of entries.entries()) {
         const spin = locators.spin(page, themeIndex * entries.length + sizeIndex);
@@ -72,16 +71,13 @@ test.describe(`${TAG.VISUAL}`, () => {
         await test.step(`Verify size="${size}" (${themeName} theme)`, async () => {
           await expect(spin).toBeVisible();
 
-          expect(await computed(spin, 'width')).toBe(`${expectedPx}px`);
-          expect(await computed(spin, 'height')).toBe(`${expectedPx}px`);
-
-          // size is driven by SVG attributes now, not by CSS rules
+          await expect(spin).toHaveCSS('width', `${expectedPx}px`);
+          await expect(spin).toHaveCSS('height', `${expectedPx}px`);
           await expect(spin).toHaveAttribute('width', String(expectedPx));
           await expect(spin).toHaveAttribute('height', String(expectedPx));
 
           const circle = locators.circle(spin);
           await expect(circle).toHaveAttribute('stroke-width', String(expectedStroke));
-          // the arc must stay inside the viewport: r = (size - strokeWidth) / 2
           await expect(circle).toHaveAttribute('r', String((expectedPx - expectedStroke) / 2));
         });
       }
@@ -100,9 +96,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { theme: 'default' });
 
-    const spin = locators.spin(page, 0);
-    const style = await spin.getAttribute('style');
-    expect(style).toContain('default');
+    await expect(locators.spin(page, 0)).toHaveAttribute('style', /default/);
 
     await expectStableSpinScreenshot(page, locators.area(page, 'spin-default-bg'));
   });
@@ -115,9 +109,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { theme: 'invert' });
 
-    const spin = locators.spin(page, 1);
-    const style = await spin.getAttribute('style');
-    expect(style).toContain('invert');
+    await expect(locators.spin(page, 1)).toHaveAttribute('style', /invert/);
 
     await expectStableSpinScreenshot(page, locators.area(page, 'spin-invert-bg'));
   });
@@ -140,13 +132,10 @@ test.describe(`${TAG.VISUAL}`, () => {
         await loadPage(page, BASE_EXAMPLE, 'en', { theme });
 
         const spin = locators.spin(page, 0);
-        const style = await spin.getAttribute('style');
-
         if (expectedInStyle) {
-          expect(style).toContain(expectedInStyle);
+          await expect(spin).toHaveAttribute('style', new RegExp(expectedInStyle));
         }
 
-        // whatever the input format, the stroke must resolve to a real color
         const stroke = await computed(locators.circle(spin), 'stroke');
         expect(stroke).not.toBe('');
         expect(stroke).not.toContain(theme);
@@ -174,7 +163,6 @@ test.describe(`${TAG.VISUAL}`, () => {
     expect(parentBox).not.toBeNull();
     expect(spinBox).not.toBeNull();
 
-    // margin: auto centers the spinner in both axes inside a flex parent
     const parentCenterX = parentBox!.x + parentBox!.width / 2;
     const spinCenterX = spinBox!.x + spinBox!.width / 2;
     const parentCenterY = parentBox!.y + parentBox!.height / 2;
@@ -245,8 +233,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     const spin = locators.spin(page, 0);
 
-    expect(await computed(spin, 'animation-name')).toBe('none');
-    expect(await computed(locators.circle(spin), 'animation-name')).toBe('none');
+    await expect(spin).toHaveCSS('animation-name', 'none');
+    await expect(locators.circle(spin)).toHaveCSS('animation-name', 'none');
 
     await page.emulateMedia({ reducedMotion: null });
   });
@@ -261,12 +249,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     const div = page.locator('div[role="status"][aria-live="polite"]');
     const svg = div.locator('svg');
 
-    await test.step('Verify spin visibility and attributes', async () => {
+    await test.step('Verify spin size s visibility and attributes', async () => {
       await expect(svg).toBeVisible();
 
       await expect(svg).toHaveAttribute('role', 'img');
       await expect(svg).toHaveAttribute('aria-label', 'Loading…');
-      // default size m: geometry comes from width/height attributes
       await expect(svg).toHaveAttribute('width', '20');
       await expect(svg).toHaveAttribute('height', '20');
     });

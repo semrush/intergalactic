@@ -29,8 +29,10 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify basic usage', {
-    tag: [TAG.PRIORITY_HIGH, '@radar-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@radar-chart', '@d3-chart', '@checkbox'],
   }, async ({ page, browserName }) => {
+    const step = browserName === 'webkit' ? test.step.skip : test.step;
+
     await loadPage(page, 'stories/components/d3-chart/docs/examples/radar-chart/basic-usage.tsx', 'en');
 
     await test.step('Verify chart renders correctly', async () => {
@@ -55,8 +57,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot();
     });
 
-    if (browserName === 'webkit') return;
-    await test.step('Verify all items can be removed and chart looks good', async () => {
+    await step('Verify all legend items can be disabled by keyboard and chart looks good', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
 
@@ -116,11 +117,11 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify custom label', {
     tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@radar-chart', '@d3-chart', '@base-components', '@flex-box', '@tag'],
   }, async ({ page, browserName }) => {
-    if (browserName === 'webkit') return;
+    const step = browserName === 'webkit' ? test.step.skip : test.step;
 
     await loadPage(page, 'stories/components/d3-chart/docs/examples/radar-chart/label-custom.tsx', 'en');
 
-    await test.step('Verify chart with custom labels and focus', async () => {
+    await step('Verify chart with custom labels and focus', async () => {
       await locators.plot(page).waitFor({ state: 'visible' });
 
       await page.keyboard.press('Tab');
@@ -179,13 +180,14 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify rotation', {
     tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@radar-chart', '@d3-chart', '@slider'],
   }, async ({ page, browserName }) => {
-    if (browserName === 'webkit') return;
+    const step = browserName === 'webkit' ? test.step.skip : test.step;
 
     await loadPage(page, 'stories/components/d3-chart/docs/examples/radar-chart/rotated.tsx', 'en');
 
-    await test.step('Verify rotated chart with keyboard navigation', async () => {
+    await step('Verify rotated chart with keyboard navigation', async () => {
       await locators.plot(page).waitFor({ state: 'visible' });
       await page.keyboard.press('Tab');
+      await expect(page.getByRole('slider')).toBeFocused();
 
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
@@ -199,7 +201,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify legend and pattern fill', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@radar-chart', '@d3-chart', '@chart-legend'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@radar-chart', '@d3-chart', '@chart-legend', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -225,7 +227,7 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify aria-hidden attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@radar-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@radar-chart', '@d3-chart', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/radar-chart/basic-usage.tsx', 'en');
 
@@ -252,14 +254,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await locators.plot(page).waitFor({ state: 'visible' });
       const chart = locators.plot(page).first();
       const box = await chart.boundingBox();
+      if (!box) throw new Error('Bounding box not found');
 
-      if (box) {
-        await page.mouse.move(box.x + 200, box.y + 200);
-        await page.waitForTimeout(500);
+      await page.mouse.move(box.x + 200, box.y + 200);
+      await page.waitForTimeout(500);
 
-        const tooltip = locators.tooltip(page);
-        await expect(tooltip).toBeVisible();
-      }
+      await expect(locators.tooltip(page)).toBeVisible();
     });
   });
 });

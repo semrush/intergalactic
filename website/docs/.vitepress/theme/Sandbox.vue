@@ -79,7 +79,7 @@ const stackblitzFiles = computed(() => {
         '@semcore/illustration': 'latest',
       },
       devDependencies: {
-        vite: 'latest',
+        vite: '^7.3.0',
         typescript: 'latest',
         '@types/react': '18',
         '@types/react-dom': '18',

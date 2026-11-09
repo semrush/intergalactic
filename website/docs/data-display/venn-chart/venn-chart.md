@@ -123,13 +123,13 @@ Zero counts as data. 0 ≠ n/a.
 
 ![](static/venn-null.png)
 
-If all data set values are zero, display a circle in `--chart-palette-order-null` color.
+If all data set values are zero, display a circle in `--chart-data-null` color.
 
 ![](static/venn-null-2.png)
 
 ### No data
 
-Exclude unavailable data from the chart, marking it as n/a in the legend. If all dataset values are unknown, show a circle in `--chart-palette-order-null` color.
+Exclude unavailable data from the chart, marking it as n/a in the legend. If all dataset values are unknown, show a circle in `--chart-data-null` color.
 
 ![](static/venn-na.png)
 

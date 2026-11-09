@@ -98,8 +98,8 @@ test.describe(`${TAG.VISUAL} `, () => {
 Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
-test.describe(`${TAG.FUNCTIONAL} `, () => {
-  test('Verify focus returns on Clear Addon by mouse click in Dynamic dearch', {
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify focus returns on Clear Addon by mouse click in Dynamic search', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@input',
@@ -122,7 +122,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await expect(locators.button(page, 'Clear')).toBeHidden();
   });
 
-  test('Verify focus returns on Clear addon by keyboard interaction in Dynamic dearch', {
+  test('Verify focus returns on Clear addon by keyboard interaction in Dynamic search', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@input',

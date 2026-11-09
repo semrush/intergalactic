@@ -38,14 +38,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');
         await locators.closeButton(page).waitFor({ state: 'visible' });
-        // Notice no longer steals focus on open — focus stays on the trigger.
         await expect(buttonTrigger).toBeFocused();
         await expect(noticeBubbleContainer).toHaveAttribute('role', 'region');
         await expect(noticeBubbleContainer).toHaveAttribute('aria-label', 'Notifications');
         await expect(noticeBubbleContainer.locator('div').first()).toHaveAttribute('aria-live', 'polite');
       });
 
-      await test.step('Verify TAB moves focus into the notice ', async () => {
+      await test.step('Verify TAB moves focus into the notice', async () => {
         await page.keyboard.press('Tab');
         await expect(locators.closeButton(page)).toBeFocused();
         await locators.closeHint(page).waitFor({ state: 'visible' });
@@ -62,16 +61,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.closeButton(page)).toBeFocused();
       });
 
-      await test.step('Verify focus returns to the trigger by pessing Enter on the Close button', async () => {
+      await test.step('Verify focus returns to the trigger by pressing Enter on the Close button', async () => {
         await page.keyboard.press('Enter');
         await locators.closeButton(page).waitFor({ state: 'hidden' });
         await expect(buttonTrigger).toBeFocused();
       });
 
-      await test.step('Verify focus returns to the trigger be Escape', async () => {
+      await test.step('Verify focus returns to the trigger by Escape', async () => {
         await page.keyboard.press('Enter');
         await locators.closeButton(page).waitFor({ state: 'visible' });
-        // Focus stays on the trigger on open — Tab into the notice to interact.
         await page.keyboard.press('Tab');
         await expect(locators.closeButton(page)).toBeFocused();
         await locators.closeHint(page).waitFor({ state: 'visible' });
@@ -96,20 +94,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(buttonTrigger).toBeFocused();
       });
 
-      if (browserName === 'firefox') return; // works unstable in playwright ff browser
-      await test.step('Verify focus is not trapped and can move between notices and out because focusLock is undefined', async () => {
-        // Focus is on the trigger. Tab progresses through both notices without being trapped in either.
+      const notFirefoxStep = browserName === 'firefox' ? test.step.skip : test.step;
+      await notFirefoxStep('Verify focus is not trapped and can move between notices and out because focusLock is undefined (in Firefox focus stays inside the notices after the last Tab)', async () => {
         await page.keyboard.press('Tab');
         await expect(locators.closeButton(page).nth(0)).toBeFocused();
         await page.keyboard.press('Tab');
         await expect(locators.link(page).nth(0)).toBeFocused();
         await page.keyboard.press('Tab');
-        // Focus moved into the second notice — proves it is not trapped within the first one.
         await expect(locators.closeButton(page).nth(1)).toBeFocused();
         await page.keyboard.press('Tab');
         await expect(locators.link(page).nth(1)).toBeFocused();
         await page.keyboard.press('Tab');
-        // Focus has left both notices entirely.
         await expect(locators.closeButton(page).nth(0)).not.toBeFocused();
         await expect(locators.closeButton(page).nth(1)).not.toBeFocused();
         await expect(locators.link(page).nth(0)).not.toBeFocused();
@@ -122,7 +117,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble',
       '@button',
       '@link'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/basic_notice.tsx', 'en', {
       focusLock: true,
     });
@@ -133,7 +128,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.closeButton(page).waitFor({ state: 'visible' });
-      // Notice no longer steals focus on open — focus stays on the trigger.
       await expect(buttonTrigger).toBeFocused();
     });
 
@@ -159,16 +153,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.closeButton(page)).toBeFocused();
     });
 
-    await test.step('Verify focus returns to the trigger by pessing Enter on the Close button', async () => {
+    await test.step('Verify focus returns to the trigger by pressing Enter on the Close button', async () => {
       await page.keyboard.press('Enter');
       await locators.closeHint(page).waitFor({ state: 'hidden' });
       await expect(buttonTrigger).toBeFocused();
     });
 
-    await test.step('Verify focus returns to the trigger be Escape', async () => {
+    await test.step('Verify focus returns to the trigger by Escape', async () => {
       await page.keyboard.press('Enter');
       await locators.closeButton(page).waitFor({ state: 'visible' });
-      // Focus stays on the trigger on open — Tab into the notice to interact.
       await page.keyboard.press('Tab');
       await page.keyboard.press('Escape');
       await page.keyboard.press('Escape');
@@ -181,20 +174,20 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice-bubble',
       '@button',
       '@link'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/basic_notice.tsx', 'en', {
       focusLock: false,
     });
 
     const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
 
-    await test.step('Verify notice shown when click on th trigger', async () => {
+    await test.step('Verify notice shown when click on the trigger', async () => {
       await buttonTrigger.click();
       await locators.closeButton(page).waitFor({ state: 'visible' });
       await expect(locators.closeHint(page)).toBeHidden();
     });
 
-    await test.step('Verify secong notice shown when click on th trigger', async () => {
+    await test.step('Verify second notice shown when click on the trigger', async () => {
       await buttonTrigger.click();
       await locators.closeButton(page).nth(1).waitFor({ state: 'visible' });
       await expect(locators.closeHint(page)).toBeHidden();
@@ -202,7 +195,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     await test.step('Verify notice closes by clicking the close button', async () => {
-      // Opened by mouse, focus stays on the trigger, so Escape cannot reach the notice — close via the button.
       await locators.closeButton(page).nth(1).click();
       await expect(locators.closeButton(page)).toHaveCount(1);
     });
@@ -213,7 +205,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@base-components',
       '@button',
       '@flex-box'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/completion_state.tsx', 'en', {
       initialAnimation: true,
       duration: 500,
@@ -228,7 +220,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Enter');
       await locators.closeButton(page).waitFor({ state: 'visible' });
       await expect(locators.closeButton(page)).not.toBeFocused();
-      await expect(locators.closeHint(page)).not.toBeVisible();
+      await expect(locators.closeHint(page)).toBeHidden();
       await expect(buttonTrigger).toBeFocused();
       await page.keyboard.press('Enter');
       await locators.closeButton(page).nth(1).waitFor({ state: 'visible' });
@@ -238,7 +230,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(buttonTrigger).toBeFocused();
     });
 
-    await test.step('Verrify notices close after durattion passed', async () => {
+    await test.step('Verify notices close after duration passed', async () => {
       await new Promise((resolve) => setTimeout(resolve, 500));
       await expect(buttonTrigger).toBeFocused();
       await expect(locators.closeButton(page)).toHaveCount(0);
@@ -250,7 +242,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@base-components',
       '@button',
       '@flex-box'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/completion_state.tsx', 'en', {
       initialAnimation: false,
       duration: 500,
@@ -264,7 +256,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await buttonTrigger.click();
       await locators.closeButton(page).waitFor({ state: 'visible' });
       await expect(locators.closeButton(page)).not.toBeFocused();
-      await expect(locators.closeHint(page)).not.toBeVisible();
+      await expect(locators.closeHint(page)).toBeHidden();
       await buttonTrigger.click();
       await locators.closeButton(page).nth(1).waitFor({ state: 'visible' });
       await buttonTrigger.click();
@@ -272,13 +264,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.closeButton(page)).toHaveCount(3);
     });
 
-    await test.step('Verify notices close after durattion passed', async () => {
+    await test.step('Verify notices close after duration passed', async () => {
       await new Promise((resolve) => setTimeout(resolve, 500));
       await expect(buttonTrigger).toBeFocused();
       await expect(locators.closeButton(page)).toHaveCount(0);
     });
 
-    await test.step('Verify notice not closed by timeout when hoverred by mouse', async () => {
+    await test.step('Verify notice not closed by timeout when hovered by mouse', async () => {
       await buttonTrigger.click();
       await expect(locators.closeButton(page)).toHaveCount(1);
       await locators.closeButton(page).hover();
@@ -287,7 +279,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.closeButton(page)).toHaveCount(1);
     });
 
-    await test.step('Verify duration timer starts from the begin and notice closed after when unhover the notice', async () => {
+    await test.step('Verify duration timer starts restarts and notice closes after unhover', async () => {
       await buttonTrigger.hover();
       await new Promise((resolve) => setTimeout(resolve, 400));
       await expect(locators.closeButton(page)).toHaveCount(1);
@@ -510,7 +502,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Enter');
       await locators.closeButton(page).waitFor({ state: 'visible' });
       await expect(notices).toHaveCount(1);
-      // Notice no longer steals focus on open — focus stays on the trigger.
       await expect(buttonBasic).toBeFocused();
     });
 
@@ -524,7 +515,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test('Verify notices disappear in SM2 container aftre duration is passed', {
+  test('Verify notices disappear in SM2 container after duration is passed', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble',
       '@button',
       '@link'],
@@ -540,7 +531,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     const buttonSuccess = locators.buttonTrigger(page, 'Show success notice');
     const notices = container.locator('[aria-live="polite"]');
 
-    await test.step('Verify Base notice closes after duratiom', async () => {
+    await test.step('Verify Base notice closes after duration', async () => {
       await buttonBasic.click();
       await buttonBasic.click();
       await buttonBasic.click();
@@ -550,7 +541,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(notices).toHaveCount(0);
     });
 
-    await test.step('Verify Success notice closes after duratiom', async () => {
+    await test.step('Verify Success notice closes after duration', async () => {
       await buttonSuccess.click();
       await buttonSuccess.click();
       await buttonSuccess.click();
@@ -580,27 +571,34 @@ test.describe(`${TAG.VISUAL}`, () => {
       focusLock: undefined,
     });
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await page.keyboard.press('Tab');
+    const notWebkitStep = browserName === 'webkit' ? test.step.skip : test.step;
 
-    await locators.closeButton(page).waitFor({ state: 'visible' });
-    await locators.closeHint(page).waitFor({ state: 'visible' });
-    if (browserName !== 'webkit') {
+    await test.step('Open notice and focus Close', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Tab');
+      await locators.closeButton(page).waitFor({ state: 'visible' });
+      await locators.closeHint(page).waitFor({ state: 'visible' });
+    });
+
+    await notWebkitStep('Verify notice with Close hint (screenshot not taken in WebKit)', async () => {
       await expect(page).toHaveScreenshot();
-    }
-    await page.keyboard.press('Shift+Tab');
-    await locators.closeHint(page).waitFor({ state: 'hidden' });
-    await page.keyboard.press('Enter');
-    await locators.closeButton(page).nth(1).waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify two notices', async () => {
+      await page.keyboard.press('Shift+Tab');
+      await locators.closeHint(page).waitFor({ state: 'hidden' });
+      await page.keyboard.press('Enter');
+      await locators.closeButton(page).nth(1).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
   });
 
   test('Verify Notice with Undo action', {
     tag: [TAG.PRIORITY_HIGH, '@notice-bubble',
       '@button',
       '@link'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/undo_action.tsx', 'en', {
       initialAnimation: true,
       duration: 0,
@@ -630,7 +628,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [TAG.PRIORITY_HIGH, '@notice-bubble',
       '@button',
       '@link'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/noticebubble_not_in_portal.tsx', 'en', {
       initialAnimation: true,
       duration: 0,
@@ -650,7 +648,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Notice with Reload action', {
     tag: [TAG.PRIORITY_HIGH, '@notice-bubble',
       '@button'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/reload_action.tsx', 'en', {
       initialAnimation: true,
       duration: 0,
@@ -677,7 +675,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@base-components',
       '@button',
       '@flex-box'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/completion_state.tsx', 'en', {
       initialAnimation: true,
       duration: 0,
@@ -696,7 +694,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Notice with Success state', {
     tag: [TAG.PRIORITY_HIGH, '@notice-bubble',
       '@button'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/success_notice.tsx', 'en', {
       initialAnimation: true,
       duration: 0,
@@ -713,7 +711,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Notice with Failture state', {
     tag: [TAG.PRIORITY_HIGH, '@notice-bubble',
       '@button'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/failure_notice.tsx', 'en', {
       initialAnimation: true,
       duration: 0,
@@ -735,7 +733,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@button',
       '@flex-box',
       '@spin'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     test.setTimeout(60000);
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/dynamic_notice.tsx', 'en', {
       initialAnimation: true,
@@ -744,20 +742,24 @@ test.describe(`${TAG.VISUAL}`, () => {
       focusLock: false,
       loadingDuration: 10000,
     });
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await page.keyboard.press('Tab');
+    await test.step('Verify loading state', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Tab');
+      await locators.closeButton(page).waitFor({ state: 'visible' });
+      await locators.closeHint(page).waitFor({ state: 'visible' });
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await page.locator('[data-ui-name="Spin"]').waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
 
-    await locators.closeButton(page).waitFor({ state: 'visible' });
-    await locators.closeHint(page).waitFor({ state: 'visible' });
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await page.locator('[data-ui-name="Spin"]').waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
-    await page.waitForSelector('text="Try again"', { timeout: 30000 });
-    await page.keyboard.press('Tab');
-    await locators.closeHint(page).waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify failed state with Try again', async () => {
+      await page.waitForSelector('text="Try again"', { timeout: 30000 });
+      await page.keyboard.press('Tab');
+      await locators.closeHint(page).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
   });
 
   test('Verify notice with illustration', {

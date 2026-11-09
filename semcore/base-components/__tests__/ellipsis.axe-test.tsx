@@ -9,7 +9,7 @@ export const locators = {
   hint: (page: Page) => page.locator('[data-ui-name="Hint"]'),
 };
 
-test.describe(`@ellipsis ${TAG.ACCESSIBILITY}`, () => {
+test.describe(`@base-components @ellipsis ${TAG.ACCESSIBILITY}`, () => {
   test('Basic usage', async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/ellipsis/docs/examples/basic_usage.tsx', 'en');
 

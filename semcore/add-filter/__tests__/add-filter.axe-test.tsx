@@ -22,6 +22,7 @@ test.describe(`@add-filter ${TAG.ACCESSIBILITY}`, () => {
       expect(violations).toEqual([]);
     }
     {
+      await expect(page.getByRole('menuitem', { name: 'Color' })).toBeFocused();
       await page.keyboard.press('Enter');
       await page.getByRole('menuitem', { name: 'Color' }).waitFor({ state: 'hidden' });
       const violations = await getAccessibilityViolations({ page });

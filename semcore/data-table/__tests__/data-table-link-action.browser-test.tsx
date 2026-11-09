@@ -28,7 +28,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@base-components',
       '@pagination'],
   }, async ({ page }) => {
-    // Smoke check that the composition survives a real render pass.
     await loadPage(page, STORY, 'en');
 
     await expect(locators.linkActionLink(page, ROW, COL)).toBeVisible();
@@ -49,8 +48,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, STORY, 'en');
 
-    // DataTable is a grid: Tab lands on a cell, arrows walk the cells, and Enter steps
-    // inside one. Only then does Tab move between the controls the cell holds.
     await page.keyboard.press('Tab');
     await expect(locators.getCell(page, ROW, 1)).toBeFocused();
 

@@ -12,11 +12,6 @@ export const locators = {
     const base = page.locator('[data-ui-name="Modal.Close"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
-  overlay: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="Modal.Overlay"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  overlayContentWrapper: (page: Page) => page.locator('[data-ui-name="Modal.Overlay.ContentWrapper"]'),
   button: (page: Page, name?: string, index?: number) => {
     const base = page.getByRole('button', { name });
     return typeof index === 'number' ? base.nth(index) : base;
@@ -29,7 +24,7 @@ Visual states, styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Confirmation modal dialog visual states', {
-    tag: [TAG.PRIORITY_HIGH, '@modal', '@tooltip', '@input'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@modal', '@tooltip', '@input'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/confirmation-modal-dialog/docs/examples/confirmation-modal-example.tsx', 'en');
 
@@ -55,7 +50,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
-test.describe(` ${TAG.FUNCTIONAL}`, () => {
+test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Confirmation modal dialog keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@modal', '@tooltip', '@input'],
   }, async ({ page }) => {
@@ -63,7 +58,7 @@ test.describe(` ${TAG.FUNCTIONAL}`, () => {
 
     const trigger = page.getByRole('button', { name: 'Open confirmation modal' });
 
-    await test.step('Verify opens by enter and Close is focused', async () => {
+    await test.step('Verify opens by Enter and Close is focused', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.button(page, 'Delete').waitFor({ state: 'visible' });
@@ -77,14 +72,15 @@ test.describe(` ${TAG.FUNCTIONAL}`, () => {
       await expect(locators.close(page)).toHaveAttribute('aria-label', 'Close');
     });
 
-    await test.step('Verify not closed when no data added', async () => {
+    await test.step('Verify not closed and error shown when no data added', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await expect(locators.modal(page)).toHaveCount(1);
+      await expect(page.getByText('Please enter the correct project name')).toBeVisible();
     });
 
-    await test.step('Verify closed by ESC and focus returns', async () => {
+    await test.step('Verify closed by Escape and focus returns to the trigger', async () => {
       await page.keyboard.press('Escape');
       await locators.button(page, 'Delete').waitFor({ state: 'hidden' });
       await expect(locators.modal(page)).toHaveCount(0);

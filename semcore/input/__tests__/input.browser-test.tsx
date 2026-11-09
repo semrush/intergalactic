@@ -4,24 +4,24 @@ import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
-
-  button: (page: Page, name?: string, index?: number) => {
-    const base = page.getByRole('button', { name });
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
   input: (page: Page) => page.getByRole('textbox'),
   hint: (page: Page) => page.locator('[data-ui-name="Hint"]'),
-
   addon: (page: Page) => page.locator('[data-ui-name="Input.Addon"]'),
   control: (page: Page) => page.locator('[data-ui-name="Input"]'),
 };
+
+const getWrapClip = async (page: Page) => {
+  const clip = (await page.getByTestId('wrap').first().boundingBox())!;
+  return { x: clip.x - 4, y: clip.y - 4, width: clip.width + 8, height: clip.height + 8 };
+};
+
+const controlHeight = { m: '32px', l: '44px' };
 /* =====================================================
   @visual
   Visual states, hover and focus styles, paddings, margins, and snapshots.
   ===================================================== */
 test.describe(`${TAG.VISUAL} `, () => {
   const variablesActive = [
-    // active
     { size: 'm', state: 'normal', disabled: false, autoFocus: true, readOnly: false, placeholder: 'Placeholder', w: undefined },
     { size: 'm', state: 'valid', disabled: false, autoFocus: false, readOnly: false, placeholder: undefined, w: 200 },
     { size: 'm', state: 'invalid', disabled: false, autoFocus: false, readOnly: false, placeholder: 'Placeholder', w: 150 },
@@ -30,19 +30,15 @@ test.describe(`${TAG.VISUAL} `, () => {
     { size: 'l', state: 'valid', disabled: false, autoFocus: false, readOnly: false, placeholder: 'Placeholder', w: 120 },
     { size: 'l', state: 'invalid', disabled: false, autoFocus: true, readOnly: false, placeholder: 'Placeholder', w: undefined },
 
-    // disabled
     { size: 'm', state: 'normal', disabled: true, autoFocus: false, readOnly: false, placeholder: 'Placeholder', w: 200 },
     { size: 'l', state: 'valid', disabled: true, autoFocus: true, readOnly: false, placeholder: undefined, w: undefined },
     { size: 'm', state: 'invalid', disabled: true, autoFocus: false, readOnly: false, placeholder: 'Placeholder', w: 120 },
 
-    // readOnly
     { size: 'm', state: 'normal', disabled: false, autoFocus: false, readOnly: true, placeholder: 'Placeholder', w: 200 },
     { size: 'l', state: 'valid', disabled: false, autoFocus: true, readOnly: true, placeholder: undefined, w: undefined },
     { size: 'l', state: 'invalid', disabled: false, autoFocus: false, readOnly: true, placeholder: 'Placeholder', w: 120 },
 
-    // readOnly + disabled
     { size: 'm', state: 'normal', disabled: true, autoFocus: false, readOnly: true, placeholder: 'Placeholder', w: 120 },
-
   ];
   variablesActive.forEach((item) => {
     test(`Verify input base state=${item.size} state=${item.state} disabled=${item.disabled} readOnly=${item.readOnly} autoFocus=${item.autoFocus} placeholder = ${item.placeholder}`, {
@@ -54,48 +50,25 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/input/tests/examples/input-base-example.tsx', 'en', item);
+      const clip = await getWrapClip(page);
+      const focusStep = item.disabled ? test.step.skip : test.step;
 
-      const flex = page.locator('[data-testid="wrap"]');
-      const screenshotsClip = (await flex.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-      const count = await locators.input(page).count();
-
-      await test.step('Verify Default ', async () => {
-        await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      await test.step('Verify default', async () => {
+        await expect(page).toHaveScreenshot({ clip });
       });
 
-      if (item.size == 'm') {
-        await test.step('Verify m styles ', async () => {
-          for (let i = 0; i < count; i++) {
-            await expect(locators.control(page).nth(i)).toHaveCSS('height', '32px');
-          }
-        });
-      }
+      await test.step(`Verify ${item.size} height`, async () => {
+        await expect(locators.control(page)).not.toHaveCount(0);
+        for (const control of await locators.control(page).all()) {
+          await expect(control).toHaveCSS('height', controlHeight[item.size as keyof typeof controlHeight]);
+        }
+      });
 
-      if (item.size == 'l') {
-        await test.step('Verify l styles ', async () => {
-          for (let i = 0; i < count; i++) {
-            await expect(locators.control(page).nth(i)).toHaveCSS('height', '44px');
-          }
-        });
-      }
-
-      if (!item.disabled && !item.readOnly) {
-        await test.step('Verify Focused ', async () => {
-          await page.keyboard.press('Tab');
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-          await page.keyboard.press('k');
-        });
-      }
-      if (item.readOnly) {
-        await test.step('Verify readOnly Rocused ', async () => {
-          await page.keyboard.press('Tab');
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-        });
-      }
+      await focusStep(item.readOnly ? 'Verify readOnly focused' : 'Verify focused', async () => {
+        await page.keyboard.press('Tab');
+        await expect(page).toHaveScreenshot({ clip });
+        if (!item.readOnly) await page.keyboard.press('k');
+      });
     });
 
     test(`Verify input with neighbor-location state=${item.size} state=${item.state} disabled=${item.disabled} readOnly=${item.readOnly} autoFocus=${item.autoFocus} placeholder = ${item.placeholder}`, {
@@ -103,38 +76,24 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@input',
         '@badge',
         '@base-components',
-        '@neighbor-locatioon',
         '@button',
         '@button-link',
         '@flex-box',
         '@neighbor-location'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/input/tests/examples/input-with-neighborlocation.tsx', 'en', item);
+      const clip = await getWrapClip(page);
+      const focusStep = item.disabled ? test.step.skip : test.step;
 
-      const flex = page.locator('[data-testid="wrap"]');
-      const screenshotsClip = (await flex.first().boundingBox())!;
-      screenshotsClip.x -= 4;
-      screenshotsClip.y -= 4;
-      screenshotsClip.width += 8;
-      screenshotsClip.height += 8;
-
-      await test.step('Verify Default ', async () => {
-        await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      await test.step('Verify default', async () => {
+        await expect(page).toHaveScreenshot({ clip });
       });
 
-      if (!item.disabled && !item.readOnly) {
-        await test.step('Verify Focused ', async () => {
-          await page.keyboard.press('Tab');
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-          await page.keyboard.press('k');
-        });
-      }
-      if (item.readOnly) {
-        await test.step('Verify readOnly Rocused ', async () => {
-          await page.keyboard.press('Tab');
-          await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-        });
-      }
+      await focusStep(item.readOnly ? 'Verify readOnly focused' : 'Verify focused', async () => {
+        await page.keyboard.press('Tab');
+        await expect(page).toHaveScreenshot({ clip });
+        if (!item.readOnly) await page.keyboard.press('k');
+      });
     });
   });
 
@@ -150,11 +109,13 @@ test.describe(`${TAG.VISUAL} `, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input/docs/examples/input_with_a_submit_icon.tsx', 'en');
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.type('Hello world');
-    await page.keyboard.press('Tab');
-    await locators.hint(page).waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify submit button focused with hint', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.type('Hello world');
+      await page.keyboard.press('Tab');
+      await locators.hint(page).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
   });
 
   test('Verify password input', {
@@ -169,10 +130,11 @@ test.describe(`${TAG.VISUAL} `, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input/docs/examples/password_input.tsx', 'en');
 
-    const hintTrigger = locators.addon(page).locator('button');
-    await hintTrigger.click();
-    await locators.hint(page).waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify shown password with hint', async () => {
+      await locators.addon(page).locator('button').click();
+      await locators.hint(page).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
   });
 
   test('Verify input loading state ', {
@@ -185,49 +147,60 @@ test.describe(`${TAG.VISUAL} `, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input/docs/examples/loading_state_in_the_input.tsx', 'en');
 
-    await expect(locators.addon(page)).toHaveAttribute('role', 'status');
-    await expect(locators.addon(page)).toHaveAttribute('aria-live', 'polite');
+    await test.step('Verify loading addon attributes', async () => {
+      await expect(locators.addon(page)).toHaveAttribute('role', 'status');
+      await expect(locators.addon(page)).toHaveAttribute('aria-live', 'polite');
+    });
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.type('Hello world');
-    await expect(page).toHaveScreenshot();
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify focused input with text', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.type('Hello world');
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify input after focus moved out', async () => {
+      await page.keyboard.press('Tab');
+      await expect(page).toHaveScreenshot();
+    });
   });
 
   test('Verify Input Text with addon keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
       '@input',
-      '@spin',
       '@base-components',
       '@flex-box',
       '@typography'],
   }, async ({ page, browserName }) => {
+    test.skip(browserName === 'firefox', 'Long text in input is not always truncated in Firefox');
     await loadPage(page, 'stories/components/input/docs/examples/input_with_a_text_addon.tsx', 'en');
 
-    if (browserName === 'firefox') return; // issue - long text in input not alwasy truncated in ff
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.type('Hello world Hello world Hello world Hello world');
-    await page.keyboard.press('Tab');
-    await page.keyboard.type('Hello world');
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify long text is truncated in the first input', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.type('Hello world Hello world Hello world Hello world');
+      await page.keyboard.press('Tab');
+      await page.keyboard.type('Hello world');
+      await expect(page).toHaveScreenshot();
+    });
   });
 
   test('Verify Input with counter and badge keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
       '@input',
       '@tag',
       '@badge',
       '@base-components',
       '@flex-box',
       '@typography'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/input/docs/examples/input_with_other_component_inside.tsx', 'en');
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.type('Hello world');
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify focused input with text', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.type('Hello world');
+      await expect(page).toHaveScreenshot();
+    });
   });
 });
 
@@ -236,7 +209,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
-test.describe(`${TAG.FUNCTIONAL} `, () => {
+test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify focus return back to Input after keyboard interactions with Close button', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
@@ -265,10 +238,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
       await expect(locators.input(page)).toBeFocused();
       await expect(addonButton).toBeHidden();
-      expect(await locators.input(page).inputValue()).toBe('');
+      await expect(locators.input(page)).toHaveValue('');
     });
 
-    await test.step('Verify focus return back to Input by Enter press on Close button ', async () => {
+    await test.step('Verify focus return back to Input by Space press on Close button', async () => {
       await page.keyboard.type('Focus test');
       await addonButton.waitFor({ state: 'visible' });
 
@@ -280,7 +253,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
       await expect(locators.input(page)).toBeFocused();
       await expect(addonButton).toBeHidden();
-      expect(await locators.input(page).inputValue()).toBe('');
+      await expect(locators.input(page)).toHaveValue('');
     });
   });
 
@@ -298,7 +271,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await loadPage(page, 'stories/components/input/docs/examples/input_with_a_submit_icon.tsx', 'en');
 
     const hintTrigger = locators.addon(page).locator('button');
-    await test.step('Verify focus return back to Input by Enter press on Submit button ', async () => {
+    await test.step('Verify focus return back to Input by Enter press on Submit button', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.input(page)).toBeFocused();
       await expect(locators.input(page)).toHaveAttribute('type', 'text');
@@ -314,21 +287,21 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
       await expect(locators.input(page)).toHaveValue('');
       await expect(locators.input(page)).toBeFocused();
-      await expect(hintTrigger).not.toBeVisible();
+      await expect(hintTrigger).toBeHidden();
     });
 
-    await test.step('Verify focus return back to Input by Space press on Submit button ', async () => {
+    await test.step('Verify focus return back to Input by Space press on Submit button', async () => {
       await page.keyboard.type('Hello world');
-      await expect(await locators.input(page).inputValue()).toBe('Hello world');
+      await expect(locators.input(page)).toHaveValue('Hello world');
 
       await page.keyboard.press('Tab');
       await expect(hintTrigger).toBeFocused();
       await page.getByText('Submit').waitFor({ state: 'visible' });
       await page.keyboard.press('Space');
 
-      await expect(await locators.input(page).inputValue()).toBe('');
+      await expect(locators.input(page)).toHaveValue('');
       await expect(locators.input(page)).toBeFocused();
-      await expect(hintTrigger).not.toBeVisible();
+      await expect(hintTrigger).toBeHidden();
     });
   });
 
@@ -347,22 +320,26 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     const hintTrigger = locators.addon(page).locator('button');
 
-    await locators.input(page).click();
-    await expect(locators.input(page)).toBeFocused();
+    await test.step('Verify Submit button appears after typing', async () => {
+      await locators.input(page).click();
+      await expect(locators.input(page)).toBeFocused();
+      await page.keyboard.type('Hello world');
+      await expect(locators.input(page)).toHaveValue('Hello world');
+      await expect(hintTrigger).toBeVisible();
+    });
 
-    await page.keyboard.type('Hello world');
-    await expect(await locators.input(page).inputValue()).toBe('Hello world');
+    await test.step('Verify hint on Submit hover keeps the value', async () => {
+      await hintTrigger.hover();
+      await page.getByText('Submit').waitFor({ state: 'visible' });
+      await expect(locators.input(page)).toHaveValue('Hello world');
+    });
 
-    await expect(hintTrigger).toBeVisible();
-
-    await hintTrigger.hover();
-    await page.getByText('Submit').waitFor({ state: 'visible' });
-    await expect(await locators.input(page).inputValue()).toBe('Hello world');
-
-    await hintTrigger.click();
-    await expect(await locators.input(page).inputValue()).toBe('');
-    await expect(locators.input(page)).toBeFocused();
-    await expect(hintTrigger).not.toBeVisible();
+    await test.step('Verify Submit click clears the value and focuses input', async () => {
+      await hintTrigger.click();
+      await expect(locators.input(page)).toHaveValue('');
+      await expect(locators.input(page)).toBeFocused();
+      await expect(hintTrigger).toBeHidden();
+    });
   });
 
   test('Verify password input keyboard interactions', {
@@ -380,32 +357,36 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     const hintTrigger = locators.addon(page).locator('button');
 
-    await page.keyboard.press('Tab');
-    await expect(locators.input(page)).toBeFocused();
-    await expect(hintTrigger).toBeVisible();
-    await expect(hintTrigger).not.toBeFocused();
+    await test.step('Verify input focused by Tab and its attributes', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.input(page)).toBeFocused();
+      await expect(hintTrigger).toBeVisible();
+      await expect(hintTrigger).not.toBeFocused();
+      await expect(locators.input(page)).toHaveAttribute('autocomplete', 'current-password');
+      await expect(locators.input(page)).toHaveAttribute('value', 'I_like_cats');
+    });
 
-    await expect(locators.input(page)).toHaveAttribute('autocomplete', 'current-password');
-    await expect(locators.input(page)).toHaveAttribute('value', 'I_like_cats');
+    await test.step('Verify value can be cleared and typed', async () => {
+      await page.keyboard.press('Backspace');
+      await expect(locators.input(page)).toHaveValue('');
+      await page.keyboard.type('Hello world');
+      await expect(locators.input(page)).toHaveValue('Hello world');
+    });
 
-    await page.keyboard.press('Backspace');
-    await expect(locators.input(page)).toHaveValue('');
+    await test.step('Verify Show password toggles by Enter', async () => {
+      await page.keyboard.press('Tab');
+      await expect(hintTrigger).toBeFocused();
+      await page.getByText('Show password').waitFor({ state: 'visible' });
+      await page.keyboard.down('Enter');
+      await expect(locators.input(page)).toHaveValue('Hello world');
+      await page.getByText('Hide password').waitFor({ state: 'visible' });
+      await expect(hintTrigger).toBeVisible();
+    });
 
-    await page.keyboard.type('Hello world');
-    await expect(locators.input(page)).toHaveValue('Hello world');
-
-    await page.keyboard.press('Tab');
-    await expect(hintTrigger).toBeFocused();
-    await page.getByText('Show password').waitFor({ state: 'visible' });
-
-    await page.keyboard.down('Enter');
-
-    await expect(locators.input(page)).toHaveValue('Hello world');
-    await page.getByText('Hide password').waitFor({ state: 'visible' });
-    await expect(hintTrigger).toBeVisible();
-
-    await page.keyboard.press('Shift+Tab');
-    await expect(locators.input(page)).toBeFocused();
+    await test.step('Verify Shift+Tab returns focus to input', async () => {
+      await page.keyboard.press('Shift+Tab');
+      await expect(locators.input(page)).toBeFocused();
+    });
   });
 
   test('Verify password input mouse interactions', {
@@ -423,26 +404,33 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     const hintTrigger = locators.addon(page).locator('button');
 
-    await expect(hintTrigger).toBeVisible();
+    await test.step('Verify initial attributes', async () => {
+      await expect(hintTrigger).toBeVisible();
+      await expect(locators.input(page)).toHaveAttribute('autocomplete', 'current-password');
+      await expect(locators.input(page)).toHaveAttribute('value', 'I_like_cats');
+    });
 
-    await expect(locators.input(page)).toHaveAttribute('autocomplete', 'current-password');
-    await expect(locators.input(page)).toHaveAttribute('value', 'I_like_cats');
+    await test.step('Verify Show password hint on hover', async () => {
+      await hintTrigger.hover();
+      await page.getByText('Show password').waitFor({ state: 'visible' });
+      await expect(locators.input(page)).not.toBeFocused();
+      await expect(hintTrigger).not.toBeFocused();
+    });
 
-    await hintTrigger.hover();
-    await page.getByText('Show password').waitFor({ state: 'visible' });
-    await expect(locators.input(page)).not.toBeFocused();
-    await expect(hintTrigger).not.toBeFocused();
+    await test.step('Verify click toggles password and focuses input', async () => {
+      await hintTrigger.click();
+      await expect(locators.input(page)).toHaveValue('I_like_cats');
+      await page.getByText('Hide password').waitFor({ state: 'visible' });
+      await expect(locators.input(page)).toBeFocused();
+      await expect(hintTrigger).not.toBeFocused();
+    });
 
-    await hintTrigger.click();
-    await expect(await locators.input(page).inputValue()).toBe('I_like_cats');
-    await page.getByText('Hide password').waitFor({ state: 'visible' });
-    await expect(locators.input(page)).toBeFocused();
-    await expect(hintTrigger).not.toBeFocused();
-
-    await locators.input(page).click();
-    await expect(await locators.input(page).inputValue()).toBe('I_like_cats');
-    await expect(locators.input(page)).toBeFocused();
-    await expect(hintTrigger).not.toBeFocused();
+    await test.step('Verify click on input keeps the value', async () => {
+      await locators.input(page).click();
+      await expect(locators.input(page)).toHaveValue('I_like_cats');
+      await expect(locators.input(page)).toBeFocused();
+      await expect(hintTrigger).not.toBeFocused();
+    });
   });
 
   test('Verify Input Text addon mouse interactions', {
@@ -455,17 +443,19 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input/docs/examples/input_with_a_text_addon.tsx', 'en');
 
-    // input focused by click on the text addon
-    await locators.addon(page).first().click();
-    await expect(locators.input(page).first()).toBeFocused();
-    await expect(locators.addon(page).first()).not.toBeFocused();
-    await page.keyboard.type('Hello world');
-    // input focused by click on the input
+    await test.step('Verify input focused by click on the addon', async () => {
+      await locators.addon(page).first().click();
+      await expect(locators.input(page).first()).toBeFocused();
+      await expect(locators.addon(page).first()).not.toBeFocused();
+      await page.keyboard.type('Hello world');
+    });
 
-    await locators.input(page).nth(1).click();
-    await expect(locators.input(page).first()).not.toBeFocused();
-    await expect(locators.input(page).nth(1)).toBeFocused();
-    await expect(locators.addon(page).nth(1)).not.toBeFocused();
+    await test.step('Verify second input focused by click on it', async () => {
+      await locators.input(page).nth(1).click();
+      await expect(locators.input(page).first()).not.toBeFocused();
+      await expect(locators.input(page).nth(1)).toBeFocused();
+      await expect(locators.addon(page).nth(1)).not.toBeFocused();
+    });
   });
 
   test('Verify Input with counter and badge mouse interactions', {
@@ -480,17 +470,19 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input/docs/examples/input_with_other_component_inside.tsx', 'en');
 
-    // input focused by click on the text addon
-    await locators.addon(page).first().click();
-    await expect(locators.input(page).first()).toBeFocused();
-    await expect(locators.addon(page).first()).not.toBeFocused();
-    await page.keyboard.type('Hello world');
-    // input focused by click on the input
+    await test.step('Verify input focused by click on the addon', async () => {
+      await locators.addon(page).first().click();
+      await expect(locators.input(page).first()).toBeFocused();
+      await expect(locators.addon(page).first()).not.toBeFocused();
+      await page.keyboard.type('Hello world');
+    });
 
-    await locators.input(page).nth(1).click();
-    await expect(locators.input(page).first()).not.toBeFocused();
-    await expect(locators.input(page).nth(1)).toBeFocused();
-    await expect(locators.addon(page).nth(1)).not.toBeFocused();
+    await test.step('Verify second input focused by click on it', async () => {
+      await locators.input(page).nth(1).click();
+      await expect(locators.input(page).first()).not.toBeFocused();
+      await expect(locators.input(page).nth(1)).toBeFocused();
+      await expect(locators.addon(page).nth(1)).not.toBeFocused();
+    });
   });
 
   test('Verify Input multiple addon focus order', {
@@ -510,24 +502,32 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     const hintTrigger = locators.addon(page).locator('button');
     const link = page.locator('[data-ui-name="Link"]');
 
-    await page.keyboard.press('Tab');
-    await expect(locators.input(page)).toBeFocused();
-    await expect(hintTrigger).not.toBeFocused();
-    await expect(link).not.toBeFocused();
+    await test.step('Verify input focused first', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.input(page)).toBeFocused();
+      await expect(hintTrigger).not.toBeFocused();
+      await expect(link).not.toBeFocused();
+    });
 
-    await page.keyboard.press('Tab');
-    await expect(locators.input(page)).not.toBeFocused();
-    await expect(link).toBeFocused();
-    await expect(hintTrigger).not.toBeFocused();
+    await test.step('Verify link focused next', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.input(page)).not.toBeFocused();
+      await expect(link).toBeFocused();
+      await expect(hintTrigger).not.toBeFocused();
+    });
 
-    await page.keyboard.press('Tab');
-    await expect(locators.input(page)).not.toBeFocused();
-    await expect(link).not.toBeFocused();
-    await expect(hintTrigger).toBeFocused();
+    await test.step('Verify addon button focused last', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.input(page)).not.toBeFocused();
+      await expect(link).not.toBeFocused();
+      await expect(hintTrigger).toBeFocused();
+    });
 
-    await page.keyboard.press('Shift+Tab');
-    await expect(locators.input(page)).not.toBeFocused();
-    await expect(link).toBeFocused();
-    await expect(hintTrigger).not.toBeFocused();
+    await test.step('Verify Shift+Tab returns focus to link', async () => {
+      await page.keyboard.press('Shift+Tab');
+      await expect(locators.input(page)).not.toBeFocused();
+      await expect(link).toBeFocused();
+      await expect(hintTrigger).not.toBeFocused();
+    });
   });
 });

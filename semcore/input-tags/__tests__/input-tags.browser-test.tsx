@@ -1,5 +1,3 @@
-import { platform } from 'os';
-
 import { expect, test } from '@semcore/testing-utils/playwright';
 import type { Locator, Page } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
@@ -16,6 +14,21 @@ export const locators = {
   tag: (page: Page) => page.locator(`li[data-ui-name="InputTags.Tag"]`),
   inputText: (page: Page) => page.locator(`[data-ui-name="InputTags.Tag.Text"]`),
   inputClose: (page: Page) => page.locator(`[data-ui-name="InputTags.Tag.Close"]`),
+};
+
+const expectNoOptionHighlighted = async (page: Page) => {
+  for (const option of await locators.options(page).all()) {
+    await expect(option).not.toHaveClass(/highlighted/);
+  }
+};
+
+const expectOnlyFirstOptionHighlighted = async (page: Page) => {
+  const options = await locators.options(page).all();
+  expect(options.length).toBeGreaterThan(0);
+  await expect(options[0]).toHaveClass(/highlighted/);
+  for (const option of options.slice(1)) {
+    await expect(option).not.toHaveClass(/highlighted/);
+  }
 };
 
 const testHelpers = {
@@ -48,11 +61,7 @@ const testHelpers = {
   },
 
   async selectAll(page: Page) {
-    if (platform() === 'darwin') {
-      await page.keyboard.press('Meta+A');
-    } else {
-      await page.keyboard.press('Control+A');
-    }
+    await page.keyboard.press('ControlOrMeta+A');
   },
 };
 
@@ -153,24 +162,15 @@ test.describe(`${TAG.VISUAL} `, () => {
         });
 
         await test.step('Verify InputTags and InputTags.Tag disabled state', async () => {
-          const inputTagsClasses = await locators.inputTags(page).getAttribute('class');
+          const expectDisabledClass = (locator: Locator) =>
+            item.disabled ? expect(locator).toHaveClass(/disabled/) : expect(locator).not.toHaveClass(/disabled/);
 
-          if (item.disabled) {
-            expect(inputTagsClasses).toContain('disabled');
-            await expect(locators.inputValue(page)).toBeDisabled();
-          } else {
-            expect(inputTagsClasses).not.toContain('disabled');
-            await expect(locators.inputValue(page)).not.toBeDisabled();
-          }
+          await expectDisabledClass(locators.inputTags(page));
+          await (item.disabled ? expect(locators.inputValue(page)).toBeDisabled() : expect(locators.inputValue(page)).toBeEnabled());
 
-          for await (const tag of await locators.tag(page).all()) {
-            const tagClasses = await tag.getAttribute('class');
-
-            if (item.disabled) {
-              expect(tagClasses).toContain('disabled');
-            } else {
-              expect(tagClasses).not.toContain('disabled');
-            }
+          await expect(locators.tag(page)).not.toHaveCount(0);
+          for (const tag of await locators.tag(page).all()) {
+            await expectDisabledClass(tag);
           }
         });
       });
@@ -189,22 +189,26 @@ test.describe(`${TAG.VISUAL} `, () => {
           '@typography'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/input-tags/docs/examples/wrapping_email_in_tag.tsx', 'en', item);
+        const firstTag = locators.tag(page).first();
 
-        const firstClass = await locators.tag(page).first().getAttribute('class');
-
-        if (firstClass?.includes('disabled')) {
-          await expect(page).toHaveScreenshot();
-          return;
-        }
-
-        if (firstClass?.includes('interactive')) {
-          await locators.inputText(page).nth(1).hover();
-          await expect(page).toHaveScreenshot();
-
-          await locators.tag(page).nth(2).click();
+        if (item.disabled) {
+          await test.step('Verify disabled tags', async () => {
+            await expect(firstTag).toHaveClass(/disabled/);
+            await expect(page).toHaveScreenshot();
+          });
+        } else if (item.editable) {
+          await test.step('Verify hover on editable tag text', async () => {
+            await expect(firstTag).toHaveClass(/interactive/);
+            await locators.inputText(page).nth(1).hover();
+            await expect(page).toHaveScreenshot();
+            await locators.tag(page).nth(2).click();
+          });
         } else {
-          await locators.inputClose(page).nth(1).hover();
-          await expect(page).toHaveScreenshot();
+          await test.step('Verify hover on tag close button', async () => {
+            await expect(firstTag).not.toHaveClass(/interactive/);
+            await locators.inputClose(page).nth(1).hover();
+            await expect(page).toHaveScreenshot();
+          });
         }
       });
     });
@@ -222,15 +226,16 @@ test.describe(`${TAG.VISUAL} `, () => {
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/input-tags/tests/examples/tags-with-addons.tsx', 'en', item);
 
-        const inputText = page.locator('[data-ui-name="InputTags.Tag.Text"]');
-        const firstClass = await locators.tag(page).first().getAttribute('class');
-
-        if (firstClass?.includes('disabled')) {
-          await expect(page).toHaveScreenshot();
-          return;
+        if (item.disabled) {
+          await test.step('Verify disabled tags with addons', async () => {
+            await expect(locators.tag(page).first()).toHaveClass(/disabled/);
+            await expect(page).toHaveScreenshot();
+          });
         } else {
-          await inputText.nth(1).hover();
-          await expect(page).toHaveScreenshot();
+          await test.step('Verify hover on tag with addon', async () => {
+            await locators.inputText(page).nth(1).hover();
+            await expect(page).toHaveScreenshot();
+          });
         }
       });
     });
@@ -265,7 +270,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         await expect(page).toHaveScreenshot();
       });
 
-      await test.step('Verify adding and edditing by click on the tag', async () => {
+      await test.step('Verify adding and editing by click on the tag', async () => {
         await page.keyboard.type('TikTokTest');
         await inputText.nth(0).click();
         await expect(page).toHaveScreenshot();
@@ -413,7 +418,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
-test.describe(`${TAG.FUNCTIONAL} `, () => {
+test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify tags can be added removed and edited by mouse', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
@@ -430,11 +435,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await test.step('Verify attributes', async () => {
       await expect(ul).toHaveAttribute('aria-label', 'Social media');
-      const count = await locators.inputText(page).count();
-      for (let i = 0; i < count; i++) {
-        await expect(locators.inputText(page).nth(i)).toHaveAttribute('aria-describedby');
-        await expect(locators.inputText(page).nth(i)).toHaveAttribute('tabindex', '0');
-      }
+      await expect(locators.inputText(page)).not.toHaveCount(0);
+      await testHelpers.verifyAttributesForAll(locators.inputText(page), {
+        'aria-describedby': /.*/,
+        'tabindex': '0',
+      });
     });
 
     await test.step('Verify focused and cursor set by click on label', async () => {
@@ -462,33 +467,34 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.inputText(page)).toHaveCount(count + 4);
     });
 
-    await test.step('Verify editing mode enaled by click on text', async () => {
+    await test.step('Verify editing mode enabled by click on text', async () => {
       await locators.inputText(page).first().click();
       await expect(locators.inputValue(page)).toHaveAttribute('value', 'TikTok');
       await locators.inputText(page).nth(2).click();
       await expect(locators.inputValue(page)).toHaveAttribute('value', 'Instagram');
+    });
 
-      // editing and save
+    await test.step('Verify edited tag saved by Enter', async () => {
       await page.keyboard.type('Test');
       await page.keyboard.press('Enter');
-      const count = await locators.inputText(page).count();
-      await expect(locators.inputText(page).nth(count - 1)).toHaveText('InstagramTest');
+      await expect(locators.inputText(page).last()).toHaveText('InstagramTest');
+    });
 
-      // no edit and press enter
+    await test.step('Verify Enter without changes keeps the tag', async () => {
       await locators.inputText(page).first().click();
       await page.keyboard.press('Enter');
-      await expect(locators.inputText(page).nth(count - 1)).toHaveText('Facebook');
+      await expect(locators.inputText(page).last()).toHaveText('Facebook');
+    });
 
-      /// ctrl a and remove editing
+    await test.step('Verify clearing edited tag removes it', async () => {
       await locators.inputText(page).first().click();
-
       await testHelpers.selectAll(page);
       await page.keyboard.press('Backspace');
       await page.keyboard.press('Enter');
       await expect(locators.inputValue(page)).toHaveAttribute('value', '');
     });
 
-    await test.step('Verify adding and edditing by click on the tag', async () => {
+    await test.step('Verify adding and editing by click on the tag', async () => {
       await page.keyboard.type('TikTokTest');
       await locators.inputText(page).nth(0).click();
       await expect(locators.inputValue(page)).toHaveAttribute('value', 'Social media with a very long name');
@@ -531,23 +537,16 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await test.step('Verify removing 1st tag by Enter', async () => {
       const initialCount = await locators.tag(page).count();
-
       await page.keyboard.press('Enter');
-      const newCount = await locators.tag(page).count();
-
-      expect(newCount).toBe(initialCount - 1);
+      await expect(locators.tag(page)).toHaveCount(initialCount - 1);
       await expect(locators.inputText(page).first()).toBeFocused();
     });
 
     await test.step('Verify removing 1st tag by Space', async () => {
       const initialCount = await locators.tag(page).count();
       await page.keyboard.press('Tab');
-
       await page.keyboard.press('Space');
-      const newCount = await locators.tag(page).count();
-
-      expect(newCount).toBe(initialCount - 1);
-
+      await expect(locators.tag(page)).toHaveCount(initialCount - 1);
       await expect(locators.inputText(page).first()).toBeFocused();
     });
 
@@ -557,7 +556,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.inputText(page).nth(1)).toBeFocused();
     });
 
-    await test.step('Verify input tag focused and сursor in value by tab', async () => {
+    await test.step('Verify input focused by Tab', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
@@ -628,11 +627,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
       await page.keyboard.type(typedValue);
       await locators.inputValue(page).evaluate((el, text) => {
-        const event = new Event('paste', { bubbles: true, cancelable: true });
-        (event as any).clipboardData = {
-          getData: (type: string) => (type === 'text/plain' ? text : ''),
-          types: ['text/plain'],
-        };
+        const event = Object.assign(new Event('paste', { bubbles: true, cancelable: true }), {
+          clipboardData: {
+            getData: (type: string) => (type === 'text/plain' ? text : ''),
+            types: ['text/plain'],
+          },
+        });
         el.dispatchEvent(event);
       }, bufferedText);
 
@@ -643,7 +643,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
   test('Verify wrapping emails in tags without width limitation and email validation mouse interactions', {
     tag: [TAG.PRIORITY_HIGH,
-      '@input-tag',
+      TAG.MOUSE,
       '@base-components',
       '@flex-box',
       '@input-tags',
@@ -673,15 +673,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await page.keyboard.type('Social media');
       await page.keyboard.press('Shift+Tab');
       await expect(locators.tag(page)).toHaveCount(count + 3);
-
-      // 2 spaces don't work in this examples, possibly bug in the example
-      // await page.keyboard.type('Hello@gmail.com');
-      // await page.keyboard.press('Space');
-      // await page.keyboard.press('Space');
-      // await expect(tag).toHaveCount(count + 4);
     });
 
-    await test.step('Verify editing mode not enaled by click on text', async () => {
+    await test.step('Verify editing mode not enabled by click on text', async () => {
       await inputText.first().click();
 
       await expect(inputValue).toHaveAttribute('value', '');
@@ -698,7 +692,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
   test('Verify wrapping emails in tags without width limitation and email validation keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
-      '@input-tag',
+      TAG.KEYBOARD,
       '@base-components',
       '@flex-box',
       '@input-tags',
@@ -720,11 +714,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await test.step('Verify removing 1st tag by Enter', async () => {
       const initialCount = await locators.tag(page).count();
-
       await page.keyboard.press('Enter');
-      const newCount = await locators.tag(page).count();
-
-      expect(newCount).toBe(initialCount - 1);
+      await expect(locators.tag(page)).toHaveCount(initialCount - 1);
 
       await expect(inputValue).not.toBeFocused();
       await expect(inputText.first()).not.toBeFocused();
@@ -733,31 +724,28 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await test.step('Verify removing 1st tag by Space', async () => {
       const initialCount = await locators.tag(page).count();
-
       await page.keyboard.press('Space');
-      const newCount = await locators.tag(page).count();
-
-      expect(newCount).toBe(initialCount - 1);
+      await expect(locators.tag(page)).toHaveCount(initialCount - 1);
 
       await expect(inputValue).not.toBeFocused();
       await expect(inputText.first()).not.toBeFocused();
       await expect(tagClose.first()).toBeFocused();
     });
 
-    await test.step('Verify next Tag Close  Text focused by Tab', async () => {
+    await test.step('Verify next Tag Close focused by Tab', async () => {
       await page.keyboard.press('Tab');
 
       await expect(inputValue).not.toBeFocused();
       await expect(tagClose.nth(1)).toBeFocused();
     });
 
-    await test.step('Verify Prev Tag close focused by Shift+ Tab', async () => {
+    await test.step('Verify previous Tag Close focused by Shift+Tab', async () => {
       await page.keyboard.press('Shift+Tab');
       await expect(inputValue).not.toBeFocused();
       await expect(tagClose.first()).toBeFocused();
     });
 
-    await test.step('Verify input tag focused and fursor in value by tab', async () => {
+    await test.step('Verify input focused by Tab', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await expect(inputValue).toBeFocused();
@@ -807,11 +795,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.inputValue(page)).toHaveAttribute('aria-expanded', 'true');
       await page.waitForSelector('text="LinkedIn"');
       await expect(locators.inputValue(page)).toBeFocused();
-
-      const count = await locators.options(page).count();
-      for (let i = 0; i < count; i++) {
-        await expect(locators.options(page).nth(i)).not.toHaveClass(/highlighted/);
-      }
+      await expectNoOptionHighlighted(page);
       await expect(locators.tag(page)).toHaveCount(0);
     });
 
@@ -861,10 +845,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       while (await locators.inputClose(page).count() > 0) {
         await locators.inputClose(page).first().click();
       }
-      const count = await locators.options(page).count();
-      for (let i = 0; i < count; i++) {
-        await expect(locators.options(page).nth(i)).not.toHaveClass(/highlighted/);
-      }
+      await expectNoOptionHighlighted(page);
       await expect(locators.tag(page)).toHaveCount(0);
     });
   });
@@ -884,30 +865,20 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await page.keyboard.press('Tab');
       await expect(locators.inputValue(page)).toBeFocused();
       await page.waitForSelector('text="LinkedIn"');
-      await expect(locators.options(page).nth(0)).toHaveClass(/highlighted/);
-
-      const count = await locators.options(page).count();
-      for (let i = 1; i < count; i++) {
-        await expect(locators.options(page).nth(i)).not.toHaveClass(/highlighted/);
-      }
+      await expectOnlyFirstOptionHighlighted(page);
     });
 
-    await test.step('Verify menu hidden by ESC', async () => {
+    await test.step('Verify menu hidden by Escape', async () => {
       await page.keyboard.press('Escape');
       await expect(locators.inputValue(page)).toBeFocused();
-      await expect(locators.options(page).nth(0)).not.toBeVisible();
+      await expect(locators.options(page).nth(0)).toBeHidden();
     });
 
     await test.step('Verify input focused and menu expanded by Enter', async () => {
       await page.keyboard.press('Enter');
       await expect(locators.inputValue(page)).toBeFocused();
       await page.waitForSelector('text="LinkedIn"');
-      await expect(locators.options(page).nth(0)).toHaveClass(/highlighted/);
-
-      const count = await locators.options(page).count();
-      for (let i = 1; i < count; i++) {
-        await expect(locators.options(page).nth(i)).not.toHaveClass(/highlighted/);
-      }
+      await expectOnlyFirstOptionHighlighted(page);
     });
 
     await test.step('Verify tag added by Enter', async () => {
@@ -955,10 +926,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
       await page.keyboard.press('Tab');
       await expect(locators.inputValue(page)).toBeFocused();
-      // Firefox behavior: Doesn't restore highlight automatically after Tab navigation
-      if (browserName !== 'firefox') {
-        await expect(locators.options(page).nth(0)).toHaveClass(/highlighted/);
-      }
+    });
+
+    const notFirefoxStep = browserName === 'firefox' ? test.step.skip : test.step;
+    await notFirefoxStep('Verify first option highlighted again after Tab (Firefox does not restore highlight)', async () => {
+      await expect(locators.options(page).nth(0)).toHaveClass(/highlighted/);
     });
 
     await test.step('Verify Removing tag', async () => {
@@ -1015,7 +987,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.inputValue(page)).toBeFocused();
     });
 
-    await test.step('Verify default special symbols delimiters dont work', async () => {
+    await test.step('Verify default delimiters do not add tags', async () => {
       const count = await locators.tag(page).count();
       await page.keyboard.type('Test');
       await page.keyboard.type(',');
@@ -1038,7 +1010,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.inputValue(page)).toHaveAttribute('value', '');
     });
 
-    await test.step('Verify Tab not adds tag', async () => {
+    await test.step('Verify Tab does not add tag', async () => {
       const count = await locators.tag(page).count();
       await page.keyboard.type('Test');
 

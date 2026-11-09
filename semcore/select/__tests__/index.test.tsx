@@ -1,10 +1,14 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, screen, userEvent, waitFor } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Select, { AutoSuggest, InputSearch } from '../src';
+
+describe('select Translations exports', () => {
+  runTranslationsCheckTest('@semcore/select');
+});
 
 describe('select Dependency imports', () => {
   runDependencyCheckTests('select');
@@ -220,7 +224,6 @@ describe('Select Trigger', () => {
   test.sequential(
     'Verify focus position preserve with keyboard navigation and interaction=focus',
     async () => {
-      // vi.useFakeTimers();
       const { getByTestId } = render(
         <Select value={['2']} disablePortal interaction='focus'>
           <Select.Trigger aria-label='Select trigger' data-testid='trigger'>
@@ -359,7 +362,7 @@ describe('Select Trigger invalid state', () => {
 describe('Option.Checkbox', () => {
   beforeEach(cleanup);
 
-  test('Verify not focused by Tab between Select.Option.Checkbox(deprecated methids regression)', async () => {
+  test('Verify not focused by Tab between Select.Option.Checkbox(deprecated methods regression)', async () => {
     const { getByTestId } = render(
       <Select>
         <Select.Trigger placeholder="I'll show u some options" data-testid='selectTrigger' />
@@ -406,7 +409,7 @@ describe('Option.Checkbox', () => {
 describe('InputSearch', () => {
   beforeEach(cleanup);
 
-  test('Verify calls onChange ones per symbol', async () => {
+  test('Verify calls onChange once per symbol', async () => {
     const spy = vi.fn();
     const { unmount } = render(
       <Select visible disablePortal>
@@ -415,7 +418,6 @@ describe('InputSearch', () => {
     );
 
     await userEvent.keyboard('[Tab]');
-    // await userEvent.keyboard('[Tab]');
     // Wait for autoFocus in Input.Value to complete
     await new Promise((resolve) => setTimeout(resolve, 200));
     await userEvent.keyboard('test');

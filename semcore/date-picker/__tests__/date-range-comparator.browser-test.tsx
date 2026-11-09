@@ -69,9 +69,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await test.step('Verify header margins and calendar paddings', async () => {
         await checkStyle(locators.dateRangeHeader(page), { padding: '16px' });
         const indicators = page.locator('[data-ui-name="DateRange.Indicator"]');
-        const count = await indicators.count();
-        for (let i = 0; i < count; i++) {
-          const calendar = indicators.nth(i);
+        for (const calendar of await indicators.all()) {
           await expect(calendar).toHaveAttribute('width', '16');
           await expect(calendar).toHaveAttribute('height', '16');
           await checkStyle(calendar, {
@@ -159,9 +157,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@base-components',
         '@flex-box',
         '@typography'],
-    }, async ({ page, browserName }) => {
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/tests/examples/date-range-comparator-props.tsx', 'en');
-      // if (browserName === 'webkit') test.skip(); // skipped for webkit because of unstable focus outline on the dialog
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
@@ -282,9 +279,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         const inputs = [locators.inputValues(page), locators.compareValues(page)];
 
         for (const locator of inputs) {
-          const count = await locator.count();
-          for (let i = 0; i < count; i++) {
-            const input = locator.nth(i);
+          for (const input of await locator.all()) {
             for (const { name, value } of inputAttributesCommon) {
               await expect(input).toHaveAttribute(name, value);
             }
@@ -324,8 +319,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
             const day = weekDays.nth(i);
             await expect(day).toHaveAttribute('role', 'columnheader');
             await expect(day).toHaveAttribute('aria-label', daysOfWeek[i]);
-            const dayText = await day.textContent();
-            await expect(dayText).toBe(daysOfWeek[i].slice(0, 3));
+            await expect(day).toHaveText(daysOfWeek[i].slice(0, 3));
           }
 
           await expect(calendar).toHaveAttribute('tabindex', i === 0 ? '0' : '-1');
@@ -334,10 +328,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Verify days attributes', async () => {
         const cells = page.locator('[data-ui-name="CalendarDays.Unit"]');
-        const cellCount = await cells.count();
-
-        for (let i = 0; i < cellCount; i++) {
-          const cell = cells.nth(i);
+        for (const cell of await cells.all()) {
           const ariaLabel = await cell.getAttribute('aria-label');
           if (!ariaLabel) continue;
 
@@ -525,15 +516,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@date-picker',
         '@base-components',
         '@flex-box'],
-    }, async ({ page, browserName }) => {
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/date_range_comparator.tsx', 'en');
 
       const getInputValues = async (locator: any) => ({
         from: await locator.nth(0).inputValue(),
         to: await locator.nth(1).inputValue(),
       });
-
-      // if (browserName === 'webkit') return;
 
       await test.step('Open and close calendar using keyboard', async () => {
         await page.keyboard.press('Tab');

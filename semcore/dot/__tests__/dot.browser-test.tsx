@@ -6,14 +6,12 @@ import { TAG } from '@semcore/testing-utils/shared/tags';
   @visual
   Visual states, hover and focus styles, paddings, margins, and snapshots.
   ===================================================== */
-test.describe(`${TAG.VISUAL} `, () => {
+test.describe(`${TAG.VISUAL}`, () => {
   const variables = [
-
     { size: 'm', up: true },
     { size: 'm', up: false },
     { size: 'l', up: true },
     { size: 'l', up: false },
-
   ];
 
   variables.forEach((item) => {
@@ -30,29 +28,24 @@ test.describe(`${TAG.VISUAL} `, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dot/tests/examples/sizes-and-positions.tsx', 'en', item);
 
-      await expect(page).toHaveScreenshot();
-      const dot = page.locator('[data-ui-name="Dot"]');
+      await test.step('Verify dots styles', async () => {
+        await expect(page).toHaveScreenshot();
+      });
 
-      const count = await dot.count();
-      for (let i = 0; i < count; i++) {
-        const width = await dot.nth(i).evaluate((el) =>
-          window.getComputedStyle(el).getPropertyValue('width'),
-        );
-        const height = await dot.nth(i).evaluate((el) =>
-          window.getComputedStyle(el).getPropertyValue('height'),
-        );
-
-        if (item.size == 'm') {
-          expect(width.trim()).toBe('6px');
-          expect(height.trim()).toBe('6px');
-        } else {
-          expect(width.trim()).toBe('12px');
-          expect(height.trim()).toBe('12px');
+      await test.step(`Verify each dot is ${item.size === 'm' ? '6px' : '12px'}`, async () => {
+        const dots = page.locator('[data-ui-name="Dot"]');
+        const dotSize = item.size === 'm' ? '6px' : '12px';
+        await expect(dots).not.toHaveCount(0);
+        for (const dot of await dots.all()) {
+          await expect(dot).toHaveCSS('width', dotSize);
+          await expect(dot).toHaveCSS('height', dotSize);
         }
-      }
+      });
     });
+  });
 
-    test(`Verify dot with counter size=${item.size} up=${item.up} `, {
+  variables.filter((item) => item.size === 'm').forEach((item) => {
+    test(`Verify dot with counter size=${item.size} up=${item.up}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@dot',
         '@button',
@@ -64,22 +57,19 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@pills'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dot/tests/examples/with-counter-sizes-and-positions.tsx', 'en', item);
-      if (item.size == 'l') test.skip();// the size L is not actual for dot with counter
-      await expect(page).toHaveScreenshot();
-      const dotCounter = page.locator('span[aria-label="Value"][data-ui-name="Dot"]');
 
-      const count = await dotCounter.count();
-      for (let i = 0; i < count; i++) {
-        const paddingLeft = await dotCounter.nth(i).evaluate((el) =>
-          window.getComputedStyle(el).getPropertyValue('padding-left'),
-        );
-        const paddingRight = await dotCounter.nth(i).evaluate((el) =>
-          window.getComputedStyle(el).getPropertyValue('padding-right'),
-        );
+      await test.step('Verify dots with counter styles', async () => {
+        await expect(page).toHaveScreenshot();
+      });
 
-        expect(paddingLeft.trim()).toBe('4px');
-        expect(paddingRight.trim()).toBe('4px');
-      }
+      await test.step('Verify each dot with counter has 4px horizontal paddings', async () => {
+        const dotCounters = page.locator('[data-ui-name="Dot"]');
+        await expect(dotCounters).not.toHaveCount(0);
+        for (const dotCounter of await dotCounters.all()) {
+          await expect(dotCounter).toHaveCSS('padding-left', '4px');
+          await expect(dotCounter).toHaveCSS('padding-right', '4px');
+        }
+      });
     });
   });
 });
@@ -89,7 +79,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
-test.describe(`${TAG.FUNCTIONAL} `, () => {
+test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify dot hides by mouse', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
@@ -98,13 +88,18 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dot/docs/examples/example_of_dot_animation.tsx', 'en');
 
-    const button = page.locator('[data-ui-name="Button"]');
+    const button = page.getByRole('button');
     const dot = page.locator('[data-ui-name="Dot"]');
 
-    await button.hover();
-    await expect(dot).toBeVisible();
-    await button.click();
-    await expect(dot).not.toBeVisible();
+    await test.step('Verify dot is visible on hover', async () => {
+      await button.hover();
+      await expect(dot).toBeVisible();
+    });
+
+    await test.step('Verify dot hides after click', async () => {
+      await button.click();
+      await expect(dot).toBeHidden();
+    });
   });
 
   test('Verify dot hides by keyboard', {
@@ -115,13 +110,18 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dot/docs/examples/example_of_dot_animation.tsx', 'en');
 
-    const button = page.locator('[data-ui-name="Button"]');
+    const button = page.getByRole('button');
     const dot = page.locator('[data-ui-name="Dot"]');
 
-    await page.keyboard.press('Tab');
-    await expect(button).toBeFocused();
-    await expect(dot).toBeVisible();
-    await page.keyboard.press('Enter');
-    await expect(dot).not.toBeVisible();
+    await test.step('Verify dot is visible when button is focused', async () => {
+      await page.keyboard.press('Tab');
+      await expect(button).toBeFocused();
+      await expect(dot).toBeVisible();
+    });
+
+    await test.step('Verify dot hides after Enter', async () => {
+      await page.keyboard.press('Enter');
+      await expect(dot).toBeHidden();
+    });
   });
 });

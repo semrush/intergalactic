@@ -7,11 +7,6 @@ export const locators = {
   slider: (page: Page) => page.locator('[data-ui-name="Slider"]'),
   bar: (page: Page) => page.locator('[data-ui-name="Slider.Bar"]'),
   knob: (page: Page) => page.locator('[data-ui-name="Slider.Knob"]'),
-  options: (page: Page) => page.locator('[data-ui-name="Slider.Options"]'),
-  item: (page: Page, value?: string) => {
-    const base = page.locator('div[data-ui-name="Slider.Item"]');
-    return value ? base.filter({ has: page.locator(`[value="${value}"]`) }) : base;
-  },
   hiddenInput: (page: Page) => page.locator('input[type="hidden"]'),
   inputNumberValue: (page: Page) => page.locator('[data-ui-name="InputNumber.Value"]'),
   visibleInput: (page: Page) => page.locator('input[data-ui-name="Box"]'),
@@ -24,28 +19,15 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 test.describe(`${TAG.VISUAL}`, () => {
   test.describe('Base states and styles', () => {
     const sliderVariables = [
-      // Basic combinations with defaultValue variations
       { defaultValue: 0, min: 0, max: 100, step: 1, disabled: false, showKnob: true, showBar: true },
       { defaultValue: 50, min: 0, max: 100, step: 1, disabled: false, showKnob: true, showBar: true },
       { defaultValue: 100, min: 0, max: 100, step: 1, disabled: false, showKnob: true, showBar: true },
-
-      // Test with disabled state
       { defaultValue: 50, min: 0, max: 100, step: 1, disabled: true, showKnob: true, showBar: true },
-
-      // Test without knob
       { defaultValue: 50, min: 0, max: 100, step: 1, disabled: false, showKnob: false, showBar: true },
-
-      // Test without bar
       { defaultValue: 50, min: 0, max: 100, step: 1, disabled: false, showKnob: true, showBar: false },
-
-      // Test without both knob and bar
       { defaultValue: 50, min: 0, max: 100, step: 1, disabled: false, showKnob: false, showBar: false },
-
-      // Test with different ranges
       { defaultValue: 25, min: 10, max: 50, step: 5, disabled: false, showKnob: true, showBar: true },
       { defaultValue: 500, min: 0, max: 1000, step: 10, disabled: false, showKnob: true, showBar: true },
-
-      // Test disabled with different configurations
       { defaultValue: 75, min: 0, max: 100, step: 1, disabled: true, showKnob: false, showBar: true },
       { defaultValue: 25, min: 0, max: 100, step: 1, disabled: true, showKnob: true, showBar: false },
     ];

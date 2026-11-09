@@ -1,3 +1,4 @@
+import de from './de.json';
 import en from './en.json';
 import es from './es.json';
 import fr from './fr.json';
@@ -13,6 +14,7 @@ import vi from './vi.json';
 import zh from './zh.json';
 
 export const localizedMessages = {
+  de,
   en,
   es,
   fr,

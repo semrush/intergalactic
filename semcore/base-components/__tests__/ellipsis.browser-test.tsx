@@ -11,8 +11,16 @@ export const locators = {
     return link.locator('[data-ui-name="Link.Text"]');
   },
   text: (page: Page) => page.locator('[data-ui-name="Text"]'),
+  tagText: (page: Page) => page.locator('[data-ui-name="Tag.Text"]'),
   hint: (page: Page) => page.locator('[data-ui-name="Hint"]'),
 };
+
+const waitForHintOpaque = (page: Page) => page.waitForFunction(
+  () => {
+    const el = document.querySelector('[data-ui-name="Hint"]');
+    return el && getComputedStyle(el).opacity === '1';
+  },
+);
 
 /* =====================================================
 @visual
@@ -49,17 +57,13 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await locators.text(page).waitFor({ state: 'visible' });
         await page.waitForTimeout(200);
+        await expect(locators.text(page)).toHaveClass(/__isEllipsized/);
 
         await test.step('Hover text and verify hint appears', async () => {
           await locators.text(page).hover();
 
           await locators.hint(page).waitFor({ state: 'visible' });
-          await page.waitForFunction(
-            () => {
-              const el = document.querySelector('[data-ui-name="Hint"]');
-              return el && getComputedStyle(el).opacity === '1';
-            },
-          );
+          await waitForHintOpaque(page);
           await expect(page).toHaveScreenshot();
         });
       });
@@ -89,26 +93,21 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify basic ellipsis usage', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@base-components', '@ellipsis', '@tag', '@typography'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@base-components', '@ellipsis', '@tag'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/ellipsis/docs/examples/basic_usage.tsx', 'en');
     await page.waitForTimeout(100);
 
     await test.step('Hover text and verify hint appears', async () => {
-      await page.locator('[data-ui-name="Tag.Text"]').hover();
+      await locators.tagText(page).hover();
       await locators.hint(page).waitFor({ state: 'visible' });
-      await page.waitForFunction(
-        () => {
-          const el = document.querySelector('[data-ui-name="Hint"]');
-          return el && getComputedStyle(el).opacity === '1';
-        },
-      );
+      await waitForHintOpaque(page);
       await expect(page).toHaveScreenshot();
     });
   });
 
-  test('Verify search highlight works well', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@base-components', '@ellipsis', '@flex-box', '@input', '@typography'],
+  test('Verify search match highlight inside ellipsis text', {
+    tag: [TAG.PRIORITY_HIGH, '@base-components', '@ellipsis', '@flex-box', '@input', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/ellipsis/docs/examples/with_search_selection.tsx', 'en');
 
@@ -149,18 +148,20 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     await test.step('Hover text - hint should appear', async () => {
-      await page.locator('[data-ui-name="Tag.Text"]').hover();
+      await expect(locators.tagText(page)).toHaveClass(/__isEllipsized/);
+      await locators.tagText(page).hover();
       await expect(locators.hint(page)).toHaveCount(1);
+      await waitForHintOpaque(page);
     });
 
     await test.step('Move mouse away - hint should hide', async () => {
-      await page.mouse.move(0, 0);
+      await page.mouse.move(0, 0, { steps: 5 });
       await expect(locators.hint(page)).toHaveCount(0);
     });
   });
 
-  test('Verify hint shows and hide via keyboard interaction', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@base-components', '@ellipsis', '@link'],
+  test('Verify hint shows and hides via keyboard interaction', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@base-components', '@ellipsis', '@link', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/link_with_ellipsis.tsx', 'en');
     await locators.link(page).waitFor({ state: 'visible' });
@@ -181,7 +182,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify no hint when text is not truncated', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@base-components', '@ellipsis', '@link'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@base-components', '@ellipsis', '@link', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/link_with_ellipsis.tsx', 'en', { ellipsis: false });
     await page.waitForTimeout(100);
@@ -218,26 +219,27 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await loadPage(page, 'stories/components/base-components/ellipsis/docs/examples/basic_usage.tsx', 'en');
     await page.waitForTimeout(100);
 
-    await test.step('Show hint and verify it is positioned above text', async () => {
-      await page.locator('[data-ui-name="Tag.Text"]').hover();
+    await test.step('Show hint and verify it is placed right next to the text without overlapping', async () => {
+      await locators.tagText(page).hover();
 
       await expect(locators.hint(page)).toHaveCount(1);
+      await waitForHintOpaque(page);
 
-      const textBox = await page.locator('[data-ui-name="Tag.Text"]').boundingBox();
-      const hintBox = await locators.hint(page).boundingBox();
+      const textBox = (await locators.tagText(page).boundingBox())!;
+      const hintBox = (await locators.hint(page).boundingBox())!;
 
-      expect(textBox).not.toBeNull();
-      expect(hintBox).not.toBeNull();
+      const textBottom = textBox.y + textBox.height;
+      const gap = hintBox.y >= textBottom
+        ? hintBox.y - textBottom
+        : textBox.y - (hintBox.y + hintBox.height);
 
-      // Hint should be positioned above or near the text
-      if (textBox && hintBox) {
-        expect(Math.abs(hintBox.y - textBox.y)).toBeLessThan(200);
-      }
+      expect(gap).toBeGreaterThanOrEqual(0);
+      expect(gap).toBeLessThan(20);
     });
   });
 
   test('Verify observe with undefined init value', {
-    tag: [TAG.PRIORITY_HIGH, '@base-components', '@ellipsis', '@link'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@base-components', '@ellipsis', '@link'],
   }, async ({ page }) => {
     const link = 'https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis';
 
@@ -269,7 +271,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     await test.step('Click button to change text to long text', async () => {
-      await page.getByRole('button').first().click();
+      await page.getByRole('button', { name: 'Change text (via DOM)' }).click();
 
       // Wait for text to change
       const textElement = locators.text(page);
@@ -282,8 +284,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     await test.step('Hover on ellipsis text - hint should appear with full text', async () => {
-      await page.getByRole('button').nth(0).click();
-
       const textElement = locators.text(page);
       await textElement.hover();
 
@@ -300,7 +300,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await expect(locators.hint(page)).toHaveCount(0);
 
-      await page.getByRole('button').nth(1).click();
+      await page.getByRole('button', { name: 'Reset' }).click();
 
       const textElement = locators.text(page);
       await expect(textElement).toBeVisible();
@@ -335,7 +335,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test.describe(` Clipboard copy`, () => {
+  test.describe('Clipboard copy', () => {
     const fullText =
       'Intergalactic is a constantly developing system of UI components, guidelines and UX patterns for building exceptional web experiences.';
     const longUrl = 'https://example.com/very/long/path/to/resource/with/many/segments/file.pdf';
@@ -371,10 +371,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }
 
     test('Verify full text is copied from end-crop ellipsis', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@base-components', '@ellipsis', '@flex-box', '@link', '@notice', '@typography'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@base-components', '@ellipsis', '@flex-box', '@link', '@notice', '@typography'],
     }, async ({ page, browserName }) => {
       await loadPage(page, storyPath, 'en');
-      if (browserName == 'webkit') test.skip(); // doesnt work properly for webkit in headless mode
+      test.skip(browserName === 'webkit', 'Clipboard copy does not work in headless WebKit');
 
       const textElements = locators.text(page);
       await textElements.first().waitFor({ state: 'visible' });
@@ -391,10 +391,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify full text is copied from middle-crop ellipsis', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@base-components', '@ellipsis', '@flex-box', '@link', '@notice', '@typography'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@base-components', '@ellipsis', '@flex-box', '@link', '@notice', '@typography'],
     }, async ({ page, browserName }) => {
       await loadPage(page, storyPath, 'en');
-      if (browserName == 'webkit') test.skip(); // doesnt work properly in headless mode
+      test.skip(browserName === 'webkit', 'Clipboard copy does not work in headless WebKit');
 
       const textElements = locators.text(page);
       await textElements.first().waitFor({ state: 'visible' });
@@ -411,10 +411,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify full link is copied from middle-crop link ellipsis', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@base-components', '@ellipsis', '@flex-box', '@link', '@notice', '@typography'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@base-components', '@ellipsis', '@flex-box', '@link', '@notice', '@typography'],
     }, async ({ page, browserName }) => {
       await loadPage(page, storyPath, 'en');
-      if (browserName != 'chromium') test.skip();
+      test.skip(browserName !== 'chromium', 'Clipboard copy of links works only in headless Chromium');
       await page.waitForTimeout(300);
       await setupClipboardMock(page);
 
@@ -428,15 +428,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify full link is copied from end-crop link ellipsis', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@base-components', '@ellipsis', '@flex-box', '@link', '@notice', '@typography'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@base-components', '@ellipsis', '@flex-box', '@link', '@notice', '@typography'],
     }, async ({ page, browserName }) => {
       await loadPage(page, storyPath, 'en');
-      if (browserName != 'chromium') test.skip(); // doesnt work properly  in headless mode
+      test.skip(browserName !== 'chromium', 'Clipboard copy of links works only in headless Chromium');
 
       await page.waitForTimeout(300);
       await setupClipboardMock(page);
 
-      await test.step('Select middle-crop link text and copy', async () => {
+      await test.step('Select end-crop link text and copy', async () => {
         const linkText = page.locator('[data-ui-name="Link.Text"]').nth(1);
         await selectAllAndCopy(page, linkText);
 

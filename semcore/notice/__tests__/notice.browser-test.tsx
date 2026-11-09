@@ -228,11 +228,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       const askMeLaterButton = page.getByRole('button', { name: 'Ask me later' });
       await expect(locators.notice(page)).toBeVisible();
       await askMeLaterButton.click();
-      await expect(locators.notice(page)).not.toBeVisible();
+      await expect(locators.notice(page)).toBeHidden();
     });
   });
 
-  test.describe(`NoticeSmart `, () => {
+  test.describe(`NoticeSmart`, () => {
     test('Verify hidden prop hides notice', {
       tag: [TAG.PRIORITY_HIGH, '@notice',
         '@base-components',
@@ -246,7 +246,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Verify notice is not visible with hidden prop', async () => {
         await loadPage(page, SMART_STORY, 'en', { hidden: true });
-        await expect(page.getByTestId('smart-configurable')).not.toBeVisible();
+        await expect(page.getByTestId('smart-configurable')).toBeHidden();
       });
     });
 
@@ -264,7 +264,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify notice closes on close button click', async () => {
         await loadPage(page, SMART_STORY, 'en');
         await locators.close(page).click();
-        await expect(page.getByTestId('smart-configurable')).not.toBeVisible();
+        await expect(page.getByTestId('smart-configurable')).toBeHidden();
       });
     });
 
@@ -289,7 +289,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Verify notice closes on Enter', async () => {
         await page.keyboard.press('Enter');
-        await expect(page.getByTestId('smart-configurable')).not.toBeVisible();
+        await expect(page.getByTestId('smart-configurable')).toBeHidden();
       });
     });
 
@@ -358,7 +358,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test.describe(`NoticeSmart docs example `, () => {
+  test.describe(`NoticeSmart docs example`, () => {
     test('Verify NoticeSmart roles and attributes', {
       tag: [TAG.PRIORITY_HIGH, '@notice',
         '@base-components',
@@ -390,7 +390,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test.describe(`Notice illustrations `, () => {
+  test.describe(`Notice illustrations`, () => {
     test('Verify medium illustrations keep their default size and stay left of the content', {
       tag: [TAG.PRIORITY_HIGH, '@notice',
         '@base-components',

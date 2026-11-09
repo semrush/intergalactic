@@ -17,7 +17,7 @@ SArea[pattern] {
 }
 
 SArea[transparent] {
-  opacity: 0.3;
+  opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
 }
 
 SAreaLine {
@@ -31,7 +31,7 @@ SAreaLine[color] {
 }
 
 SAreaLine[transparent] {
-  opacity: 0.3;
+  opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
 }
 
 SArea,
@@ -43,7 +43,7 @@ SAreaLine {
 
 SNull {
   fill: transparent;
-  stroke: var(--intergalactic-chart-palette-order-null, oklch(0.9 0.009 234));
+  stroke: var(--intergalactic-chart-data-null, oklch(0.9 0.009 234));
   stroke-dasharray: 4;
 }
 

@@ -42,12 +42,9 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@data-table',
-      '@button-link',
-      '@button',
-      '@typography',
     ],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/data-table/tests/examples/virtualization/header-content.tsx', 'en');
+    await loadPage(page, 'stories/components/data-table/docs/examples/virtual-scroll-in-table-different-height.tsx', 'en');
 
     const dataTable = page.locator('[data-ui-name="Row"]');
     await dataTable.first().hover();
@@ -96,8 +93,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     const gridTemplateRows = await locators.dataTable(page).evaluate(
       (el) => getComputedStyle(el).gridTemplateRows,
     );
-    // If bracket was missing in repeat(), browser ignores the rule and returns 'none'
-    expect(gridTemplateRows).not.toBe('none');
+    expect(gridTemplateRows, 'a missing bracket in repeat() makes the browser ignore the rule').not.toBe('none');
     expect(gridTemplateRows).toMatch(/\d+px/);
   });
 

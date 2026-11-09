@@ -13,24 +13,26 @@ SHead[animationDuration] > SColumn {
   transition: top var(--animationDuration) ease-out;
 }
 
-@keyframes moveWithScroll {
-  from {
-    transform: translateY(0);
+@supports ((animation-timeline: view()) and (animation-range: normal)) {
+  @keyframes moveWithScroll {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(var(--global-scroll-to));
+    }
   }
-  to {
-    transform: translateY(var(--global-scroll-to));
+
+  SHead[withAnimation][sticky] SColumn, SHead[withAnimation][sticky] SGroup {
+    animation-name: moveWithScroll;
+    animation-timeline: --table-sticky-timeline;
+    animation-range-start: exit-crossing calc(-1 * var(--global-header-top));
+    animation-range-end: exit-crossing calc(100% - var(--global-header-top));
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+
+    transform: none;
   }
-}
-
-SHead[withAnimation][sticky] SColumn, SHead[withAnimation][sticky] SGroup {
-  animation-name: moveWithScroll;
-  animation-timeline: --table-sticky-timeline;
-  animation-range-start: exit-crossing calc(-1 * var(--global-header-top));
-  animation-range-end: exit-crossing calc(100% - var(--global-header-top));
-  animation-timing-function: linear;
-  animation-fill-mode: both;
-
-  transform: none;
 }
 
 SHead[sticky] SColumn, SHead[sticky] SGroup {

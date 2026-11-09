@@ -10,14 +10,14 @@ test.describe(`${TAG.ACCESSIBILITY} @tab-panel`, () => {
 
     expect(violations).toEqual([]);
   });
-  test.skip('Disabled tabLine item', async ({ page }) => {
+  test.skip('Disabled TabPanel item', async ({ page }) => {
     await loadPage(page, 'stories/components/tab-panel/docs/examples/disabled_tab_panel_item.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 
     expect(violations).toEqual([]);
   });
-  test('TabLine item addons', async ({ page }) => {
+  test('TabPanel item addons', async ({ page }) => {
     await loadPage(page, 'stories/components/tab-panel/docs/examples/tab_panel_item_addons.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });

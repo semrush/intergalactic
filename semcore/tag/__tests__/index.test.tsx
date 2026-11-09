@@ -1,10 +1,14 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import * as React from 'react';
 
 import Tag, { TagContainer } from '../src';
+
+describe('tag Translations exports', () => {
+  runTranslationsCheckTest('@semcore/tag');
+});
 
 describe('tag Dependency imports', () => {
   runDependencyCheckTests('tag');
@@ -45,7 +49,7 @@ describe('Tag', () => {
     expect(onClick).toHaveBeenCalledTimes(2);
   });
 
-  test('Verify calls keydwon callback once per key down', async () => {
+  test('Verify calls keydown callback once per key down', async () => {
     const onKeyDown = vi.fn();
     const { getByTestId } = render(
       <Tag interactive onKeyDown={onKeyDown} data-testid='tagKeyboardTest'>
@@ -146,7 +150,7 @@ describe('TagContainer', () => {
     expect(onClick).toHaveBeenCalledTimes(2);
   });
 
-  test('Verify calls keydwon callback once per key down', async () => {
+  test('Verify calls keydown callback once per key down', async () => {
     const onKeyDown = vi.fn();
     const { getByTestId } = render(
       <TagContainer>

@@ -32,4 +32,12 @@ import { Donut } from '@semcore/ui/d3-chart';
 
 <TypesView type="DonutProps" :types={...types} />
 
+## Chart.ScoreDonut
+
+```js
+import { Chart } from '@semcore/ui/d3-chart';
+```
+
+<TypesView type="ScoreDonutChartProps" :types={...types} />
+
 <script setup>import { data as types } from '@types.data.ts';</script>

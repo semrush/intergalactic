@@ -84,7 +84,7 @@ test.describe(TAG.VISUAL, () => {
     const descriptionTooltip = locators.dialog(page);
     const image = page.locator('[data-ui-name="Warning"]');
 
-    await test.step('Verify focus on tooltip trigger and link hover', async () => {
+    await test.step('Verify focus on tooltip trigger and button hover', async () => {
       await page.keyboard.press('Tab');
       await button.nth(1).hover();
 
@@ -95,11 +95,7 @@ test.describe(TAG.VISUAL, () => {
       await page.keyboard.press('Space');
       await descriptionTooltip.waitFor({ state: 'visible' });
 
-      const box = await image.nth(2).boundingBox();
-
-      if (box) {
-        await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
-      }
+      await image.nth(2).hover();
       await locators.hint(page).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
@@ -126,7 +122,7 @@ test.describe(TAG.VISUAL, () => {
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify Description tooltip and Hint opened', async () => {
+    await test.step('Verify Description tooltip opened by click', async () => {
       await locators.button(page, 1).click();
       await descriptionTooltip.waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
