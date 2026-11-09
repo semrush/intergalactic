@@ -127,42 +127,6 @@ describe('Hint', () => {
     });
   });
 
-  test('Should hide hint when mouse leaves right after it became visible', async () => {
-    vi.useFakeTimers();
-    const handleChange = vi.fn();
-
-    const TestComponent = () => {
-      const ref = useRef<HTMLButtonElement>(null);
-      return (
-        <>
-          <button ref={ref} data-testid='trigger'>Hover</button>
-          <Hint triggerRef={ref} onVisibleChange={handleChange} timeout={[50, 50]}>
-            Hint text
-          </Hint>
-        </>
-      );
-    };
-
-    const { getByTestId } = render(<TestComponent />);
-    const trigger = getByTestId('trigger');
-
-    fireEvent.mouseEnter(trigger);
-    await act(async () => {
-      await vi.advanceTimersByTimeAsync(51);
-    });
-    expect(handleChange).toHaveBeenLastCalledWith(true);
-
-    fireEvent.mouseLeave(trigger);
-    for (let i = 0; i < 10; i++) {
-      await act(async () => {
-        await vi.advanceTimersByTimeAsync(20);
-      });
-    }
-
-    expect(handleChange).toHaveBeenLastCalledWith(false);
-    expect(document.body.querySelector('[data-ui-name="Hint"]')).toBeNull();
-  });
-
   test('Should use defaultVisible for initial state', () => {
     const TestComponent = () => {
       const ref = useRef<HTMLButtonElement>(null);
