@@ -1,6 +1,6 @@
 import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
 import Icon from '@semcore/icon/Video/m';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup, queryAllByAttribute, queryByAttribute, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi, afterEach } from '@semcore/testing-utils/vitest';
 import { scaleLinear, scaleBand } from 'd3-scale';
@@ -110,6 +110,12 @@ const ChartOptions = {
 const PlotTest = React.forwardRef((props, ref) => (
   <Plot ref={ref} data={ChartOptions.line.data} scale={[xScale, yScale]} width={100} height={100} {...props} />
 ));
+
+describe('d3-chart Translations exports', () => {
+  runTranslationsCheckTest('@semcore/d3-chart');
+  runTranslationsCheckTest('@semcore/d3-chart', 'a11y/translations/module');
+  runTranslationsCheckTest('@semcore/d3-chart', 'a11y/translations/view');
+});
 
 describe('d3-chart Dependency imports', () => {
   runDependencyCheckTests('d3-chart');

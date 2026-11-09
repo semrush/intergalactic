@@ -1,10 +1,14 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent, waitFor } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import InlineInput from '../src/InlineInput';
+
+describe('inline-input Translations exports', () => {
+  runTranslationsCheckTest('@semcore/inline-input');
+});
 
 describe('inline-input Dependency imports', () => {
   runDependencyCheckTests('inline-input');

@@ -1,10 +1,14 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, afterEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Carousel from '../src';
+
+describe('carousel Translations exports', () => {
+  runTranslationsCheckTest('@semcore/carousel');
+});
 
 describe('Carousel Dependency imports', () => {
   runDependencyCheckTests('carousel');

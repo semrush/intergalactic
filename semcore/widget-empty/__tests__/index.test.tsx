@@ -1,10 +1,15 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { render } from '@semcore/testing-utils/testing-library';
 import { describe, expect, test } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import WidgetEmpty, { Error, NoData } from '../src';
+
+describe('widget-empty Translations exports', () => {
+  runTranslationsCheckTest('@semcore/widget-empty', 'NoData/translations');
+  runTranslationsCheckTest('@semcore/widget-empty', 'Error/translations');
+});
 
 describe('widget-empty Dependency imports', () => {
   runDependencyCheckTests('widget-empty');
