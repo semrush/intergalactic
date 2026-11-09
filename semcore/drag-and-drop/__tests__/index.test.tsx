@@ -1,10 +1,14 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { beforeEach, describe, expect, test } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import DragAndDrop from '../src';
+
+describe ('drag-and-drop Translations exports', () => {
+  runTranslationsCheckTest('@semcore/drag-and-drop');
+});
 
 describe('drag-and-drop Dependency imports', () => {
   runDependencyCheckTests('drag-and-drop');

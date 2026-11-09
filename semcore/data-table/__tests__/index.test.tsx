@@ -1,12 +1,16 @@
 import type { Intergalactic } from '@semcore/core';
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup } from '@semcore/testing-utils/testing-library';
 import { expect, describe, beforeEach, vi, assertType, afterEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import { DataTable } from '../src';
 import type { CellRenderProps } from '../src/components/Body/Body.types';
+
+describe ('data-table Translations exports', () => {
+  runTranslationsCheckTest('@semcore/data-table');
+});
 
 describe('data-table Dependency imports', () => {
   runDependencyCheckTests('data-table');

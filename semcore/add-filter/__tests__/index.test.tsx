@@ -1,10 +1,14 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup, waitFor, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import AddFilter from '../src';
+
+describe ('add-filter Translations exports', () => {
+  runTranslationsCheckTest('@semcore/add-filter');
+});
 
 describe('AddFilter Dependency imports', () => {
   runDependencyCheckTests('add-filter');

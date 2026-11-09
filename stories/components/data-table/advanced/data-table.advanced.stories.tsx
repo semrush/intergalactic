@@ -16,6 +16,8 @@ import FixedColumnsWithDiffWidthsExample from './examples/fixed_columns_with_dif
 import LinkInTableExample from './examples/link_in_table';
 import OverflowInCellsExample from './examples/overflow_in_cells';
 import OverlapCellsExample from './examples/overlap_cells';
+import PerformanceStressExample, { performanceStressDefaultProps } from './examples/performance-stress';
+import type { PerformanceStressProps } from './examples/performance-stress';
 import RenderCellInAccordionExample from './examples/render_cell_in_accordion';
 import RenderCellRawValueExample from './examples/render_cell_raw_data';
 import RowCellStatesExample from './examples/row_cell_states';
@@ -24,6 +26,7 @@ import type { DemoProps as SelectableWithMergedRowsProps } from './examples/sele
 import SideIndentsExample from './examples/side-indents';
 import type { AccordionInTableProps } from './examples/table_perf/table_perf';
 import TablePerfExample, { accordionInsideTableDefaultProps } from './examples/table_perf/table_perf';
+import TablePerfVirtualizationExample from './examples/table_perf_virtualization';
 import VirtualScrollWithH100Example from './examples/virtual-scroll-with-h100';
 
 const meta: Meta<typeof DataTable> = {
@@ -66,6 +69,11 @@ export const AccordionInMergedRows: StoryObj<typeof accordionMergedProps> = {
   render: AccordionInMergedRowsExample,
   argTypes: {
     loading: { control: 'boolean' },
+    accordionMode: {
+      control: 'radio',
+      options: [undefined, 'independent', 'toggle'],
+      description: '`toggle`: opening one accordion closes the others, including the accordion on merged rows.',
+    },
   },
   args: accordionMergedProps,
 };
@@ -216,4 +224,49 @@ export const TablePerf: StoryObj<AccordionInTableProps> = {
     },
   },
   args: accordionInsideTableDefaultProps,
+};
+
+export const TablePerfVirtualization: StoryObj<AccordionInTableProps> = {
+  render: TablePerfVirtualizationExample,
+  argTypes: {
+    loading: { control: 'boolean' },
+    cropPosition: {
+      control: 'select',
+      options: ['end', 'middle'],
+    },
+    // UIK-4923: hintProps=false skips ellipsis JS calculation for cropPosition=end
+    hintProps: {
+      control: 'select',
+      options: ['default', 'false'],
+      mapping: {
+        default: undefined,
+        false: false,
+      },
+    },
+  },
+  args: accordionInsideTableDefaultProps,
+};
+
+export const PerformanceStress: StoryObj<PerformanceStressProps> = {
+  render: PerformanceStressExample,
+  argTypes: {
+    rows: {
+      control: { type: 'number', min: 20, max: 2000, step: 20 },
+    },
+    columns: {
+      control: { type: 'number', min: 4, max: 30, step: 1 },
+    },
+    scrollMode: {
+      control: 'inline-radio',
+      options: ['page', 'container'],
+    },
+    stickyTop: {
+      control: { type: 'number', min: 0, max: 200, step: 8 },
+    },
+    accordion: {
+      control: 'inline-radio',
+      options: ['rows', 'chart'],
+    },
+  },
+  args: performanceStressDefaultProps,
 };

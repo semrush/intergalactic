@@ -1,10 +1,14 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Notice, { NoticeSmart } from '../src';
+
+describe ('notice Translations exports', () => {
+  runTranslationsCheckTest('@semcore/notice');
+});
 
 describe('notice Dependency imports', () => {
   runDependencyCheckTests('notice');

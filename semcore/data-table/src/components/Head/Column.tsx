@@ -296,7 +296,7 @@ export class Column<
       this.lockedCell[1] = true;
     }
 
-    onClick?.(e, { rowIndex: -1, colIndex: columnIndex });
+    onClick?.(e, { rowIndex: -1, colIndex: columnIndex, orderedIndex: -1 });
   };
 
   render() {

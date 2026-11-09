@@ -1,5 +1,5 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { render } from '@semcore/testing-utils/testing-library';
 import { describe, expect, test } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -16,6 +16,10 @@ import SkeletonSVG, {
   ScatterPlotChartSkeleton,
   VennChartSkeleton,
 } from '../src';
+
+describe ('skeleton Translations exports', () => {
+  runTranslationsCheckTest('@semcore/skeleton');
+});
 
 describe('skeleton Dependency imports', () => {
   runDependencyCheckTests('skeleton');

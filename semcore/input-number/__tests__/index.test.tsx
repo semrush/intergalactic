@@ -1,5 +1,5 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -7,6 +7,10 @@ import React from 'react';
 import InputNumber from '../src';
 import type { NSInputNumber } from '../src';
 import { localizedMessages } from '../src/translations/__intergalactic-dynamic-locales';
+
+describe ('input-number Translations exports', () => {
+  runTranslationsCheckTest('@semcore/input-number');
+});
 
 describe('input-number Dependency imports', () => {
   runDependencyCheckTests('input-number');

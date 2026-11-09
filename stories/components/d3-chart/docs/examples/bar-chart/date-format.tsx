@@ -1,48 +1,34 @@
-import { Bar, ResponsiveContainer, XAxis, Plot, YAxis } from '@semcore/ui/d3-chart';
-import { scaleLinear, scaleBand } from 'd3-scale';
+import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
 import BarMockData from '../../../__mocks__/bar';
 
+const formatDate = (date: any) =>
+  new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(date);
+
+const formatXAxisValue = (value: any) => {
+  const index = data.findIndex((d) => d.date_chart === value);
+
+  return index % 2 === 0 ? formatDate(value) : null;
+};
+
 const Demo = () => {
-  const [[width, height], setSize] = React.useState([0, 0]);
-  const MARGIN = 40;
-
-  const xScale = scaleBand()
-    .domain(data.map((d) => String(d.date_chart)))
-    .range([MARGIN, width - MARGIN])
-    .paddingInner(0.4)
-    .paddingOuter(0.2);
-
-  const yScale = scaleLinear()
-    .domain([0, Math.max(...data.map((d) => d.download))])
-    .range([height - MARGIN, MARGIN]);
-
-  const getDate = (date: any) =>
-    new Intl.DateTimeFormat('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
-    }).format(date);
-
   return (
-    <ResponsiveContainer h={300} onResize={setSize}>
-      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-        <YAxis ticks={yScale.ticks(4)}>
-          <YAxis.Ticks />
-          <YAxis.Grid />
-        </YAxis>
-        <XAxis>
-          <XAxis.Ticks>
-            {({ value, index }) => ({
-              children: index % 2 === 0 ? getDate(value) : '',
-              value: getDate(value),
-            })}
-          </XAxis.Ticks>
-        </XAxis>
-        <Bar x='date_chart' y='download' />
-      </Plot>
-    </ResponsiveContainer>
+    <Chart.Bar
+      groupKey='date_chart'
+      data={data}
+      plotHeight={300}
+      marginX={40}
+      marginY={40}
+      yTicksCount={4}
+      axisXValueFormatter={formatXAxisValue}
+      showTooltip={false}
+      aria-label='Bar chart'
+    />
   );
 };
 

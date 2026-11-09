@@ -1,10 +1,14 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import BaseTrigger, { ButtonTrigger, FilterTrigger, LinkTrigger } from '../src';
+
+describe ('base-trigger Translations exports', () => {
+  runTranslationsCheckTest('@semcore/base-trigger');
+});
 
 describe('BaseTrigger Dependency imports', () => {
   runDependencyCheckTests('base-trigger');

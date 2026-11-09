@@ -2,7 +2,8 @@ import { mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSyn
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
-import { expect, describe, beforeEach, afterEach } from '../../testing-utils/vitest';
+import { expect, describe, beforeEach, afterEach } from '@semcore/testing-utils/vitest';
+
 import { processCssVitePlugin } from '../src/index';
 
 // Helper to call transform hook
@@ -390,7 +391,7 @@ const style2 = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*
       const id = '/node_modules/@semcore/flags/lib/es6/Flags.js';
       const result = callTransform(plugin, sourceCode, id);
 
-      expect(result?.code).toContain('var styles = (undefined, ');
+      expect(result?.code).toContain('const style = (undefined, ');
       expect(() => new Function(result!.code.replace(/^import .*$/gm, ''))).not.toThrow();
     });
 
