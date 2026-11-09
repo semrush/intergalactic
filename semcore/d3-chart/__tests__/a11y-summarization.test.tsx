@@ -1,19 +1,12 @@
 import { expect, test, describe } from '@semcore/testing-utils/vitest';
 
-import type {
-  DataStructureHints } from '../src/a11y/hints';
+import type { DataStructureHints } from '../src/a11y/hints';
 import {
   makeDataHintsContainer as makeHints,
   makeDataSummarizationConfig as makeConfig,
 } from '../src/a11y/hints';
-import type {
-  AnalyzedData,
-  ClusterNode,
-  ComparisonNode,
-  Insight } from '../src/a11y/insights';
-import {
-  extractDataInsights,
-} from '../src/a11y/insights';
+import type { AnalyzedData, ClusterNode, ComparisonNode, Insight } from '../src/a11y/insights';
+import { extractDataInsights } from '../src/a11y/insights';
 import { serialize } from '../src/a11y/serialize';
 import { localizedMessages as translations } from '../src/a11y/translations/view/__intergalactic-dynamic-locales';
 
@@ -656,7 +649,7 @@ describe('Plot a11y summarization', () => {
     expect(dataRange).toEqual([]);
   });
 
-  test.concurrent('insights-extraction/data-title/from-horizaontal-title', () => {
+  test.concurrent('insights-extraction/data-title/from-horizontal-title', () => {
     const data = [{}];
     const hints: DataStructureHints = {
       ...makeHints(),
@@ -729,7 +722,7 @@ describe('Plot a11y summarization', () => {
     ).toBeTruthy();
   });
 
-  test.concurrent('serizalizetion/basic', () => {
+  test.concurrent('serialization/basic', () => {
     const insights: Insight[] = [
       {
         type: 'general-trend',
@@ -753,14 +746,14 @@ describe('Plot a11y summarization', () => {
       },
     );
 
-    expect(text!.includes('0')).toBeTruthy();
-    expect(text!.includes('10')).toBeTruthy();
-    expect(text!.includes('Awesome data')).toBeTruthy();
-    expect(text!.includes('grow')).toBeTruthy();
-    expect(text!.includes('x')).toBeTruthy();
+    expect(text).toContain('0');
+    expect(text).toContain('10');
+    expect(text).toContain('Awesome data');
+    expect(text).toContain('grow');
+    expect(text).toContain('x');
   });
 
-  test.concurrent('serizalizetion/insights-cut', () => {
+  test.concurrent('serialization/insights-cut', () => {
     const insights: Insight[] = Array(10000)
       .fill(0)
       .map(() => ({
@@ -784,18 +777,10 @@ describe('Plot a11y summarization', () => {
       },
     );
 
-    const limit = 550;
-    const length = text!.length;
-
-    if (length >= limit) {
-      console.log(
-        `Expected summarization result for a huge count of insights be limited, for example, by ${limit} characters (got ${length})`,
-      );
-    }
-    expect(length).toBeLessThan(limit);
+    expect(text!.length, 'summarization of a huge count of insights should be limited').toBeLessThan(550);
   });
 
-  test.concurrent('serizalizetion/basic', () => {
+  test.concurrent('serialization/basic', () => {
     const insights: Insight[] = [
       {
         type: 'general-trend',
@@ -819,14 +804,14 @@ describe('Plot a11y summarization', () => {
       },
     );
 
-    expect(text!.includes('0')).toBeTruthy();
-    expect(text!.includes('10')).toBeTruthy();
-    expect(text!.includes('Awesome data')).toBeTruthy();
-    expect(text!.includes('grow')).toBeTruthy();
-    expect(text!.includes('x')).toBeTruthy();
+    expect(text).toContain('0');
+    expect(text).toContain('10');
+    expect(text).toContain('Awesome data');
+    expect(text).toContain('grow');
+    expect(text).toContain('x');
   });
 
-  test.concurrent('serizalizetion/locale-switch', () => {
+  test.concurrent('serialization/locale-switch', () => {
     const insights: Insight[] = [
       {
         type: 'general-trend',
@@ -852,10 +837,10 @@ describe('Plot a11y summarization', () => {
       locale,
     );
 
-    expect(text!.includes('EcmaScript')).toBeTruthy();
+    expect(text).toContain('EcmaScript');
   });
 
-  test.concurrent('serizalizetion/all-texts-are-used', () => {
+  test.concurrent('serialization/all-texts-are-used', () => {
     const translationsList = Object.keys(translations.en).filter(
       (messageId) => !messageId.startsWith('view-'),
     );
@@ -1210,15 +1195,8 @@ describe('Plot a11y summarization', () => {
     );
 
     const unusedMessages = translationsList.filter((messageId) => !usedMessages.has(messageId));
-    const unusedMessagesCount = unusedMessages.length;
-    const unusedMessagesJoin = unusedMessages.join(', ');
 
-    if (unusedMessagesCount !== 0) {
-      console.log(
-        `Expected all non-view translations messages be used (unused messages [${unusedMessagesCount}]: ${unusedMessagesJoin})`,
-      );
-    }
-    expect(unusedMessages).toHaveLength(0);
+    expect(unusedMessages).toEqual([]);
   });
 
   test.concurrent('serialization/trends/no-ellipsis-on-too-much-trends', () => {
@@ -1242,7 +1220,7 @@ describe('Plot a11y summarization', () => {
       },
     );
 
-    expect(text!.includes('%TREND%')).toBeTruthy();
-    expect(text!.includes('%ELLIPSIS%')).toBeFalsy();
+    expect(text).toContain('%TREND%');
+    expect(text).not.toContain('%ELLIPSIS%');
   });
 });

@@ -101,12 +101,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     const lastColumn = page.locator('[data-ui-name="Head.Column"]').last();
 
-    const isShadowExist = await lastColumn.evaluate((node) => {
-      // default `left` value is `auto`
-      return window.getComputedStyle(node, '::after').getPropertyValue('left') === '0px';
-    });
+    const shadowLeft = await lastColumn.evaluate((node) =>
+      window.getComputedStyle(node, '::after').getPropertyValue('left'));
 
-    expect(isShadowExist).toBe(false);
+    expect(shadowLeft, 'shadow ::after has left: 0px only when it is shown').not.toBe('0px');
 
     await page.setViewportSize({ width: 400, height: 700 });
     await page.waitForTimeout(100);
