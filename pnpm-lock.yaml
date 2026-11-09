@@ -1035,6 +1035,9 @@ importers:
       '@semcore/checkbox':
         specifier: ^18.0.1
         version: link:../checkbox
+      '@semcore/icon':
+        specifier: ^18.0.1
+        version: link:../icon
       '@semcore/input':
         specifier: ^18.0.0
         version: link:../input

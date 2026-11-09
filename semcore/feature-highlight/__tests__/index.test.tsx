@@ -1,4 +1,5 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render } from '@semcore/testing-utils/testing-library';
 import { expect, describe } from '@semcore/testing-utils/vitest';
 import React, { createRef } from 'react';
@@ -15,6 +16,10 @@ import { SwitchFH } from '../src/components/switch/Switch';
 import { TabLineFH } from '../src/components/tab-line/TabLine';
 import { ButtonTriggerFH } from '../src/inner-components/button-trigger/ButtonTrigger';
 import SvgSparkle from '../src/inner-components/sparkle/Sparkle';
+
+describe('feature-highlight Dependency imports', () => {
+  runDependencyCheckTests('feature-highlight');
+});
 
 const expectUINameToMatchSnapshot = (component: React.ReactElement) => {
   const { container } = render(component);
