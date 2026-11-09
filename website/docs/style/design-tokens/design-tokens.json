@@ -178,7 +178,8 @@
     "value": "oklch(0.64 0.226 24.5)",
     "description": "Accent background of a message or a banner with a critical information.",
     "components": [
-      "counter"
+      "counter",
+      "limits"
     ]
   },
   {
@@ -1251,7 +1252,8 @@
     "components": [
       "button",
       "dropdown",
-      "feature-highlight"
+      "feature-highlight",
+      "limits"
     ]
   },
   {
@@ -1275,7 +1277,8 @@
     "value": "oklch(1 0 0)",
     "description": "Inverted background of the primary control.",
     "components": [
-      "button"
+      "button",
+      "limits"
     ]
   },
   {
@@ -2262,6 +2265,7 @@
     "value": "oklch(0.291 0.069 241.9 / 0.123)",
     "description": "Background color of the ProgressBar.",
     "components": [
+      "limits",
       "progress-bar"
     ]
   },
@@ -2276,6 +2280,7 @@
     "value": "oklch(0.919 0.042 245.1 / 0.234)",
     "description": "Inverted version of the background color of the ProgressBar.",
     "components": [
+      "limits",
       "progress-bar"
     ]
   },
@@ -3219,6 +3224,7 @@
     "components": [
       "d3-chart",
       "date-picker",
+      "limits",
       "notice-bubble"
     ]
   },
@@ -3681,6 +3687,7 @@
     "value": "6px",
     "description": "Use for rounding bars: ProgressBar, SliderBar, etc.",
     "components": [
+      "limits",
       "progress-bar",
       "slider"
     ]

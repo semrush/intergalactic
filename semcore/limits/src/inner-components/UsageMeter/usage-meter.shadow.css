@@ -4,34 +4,34 @@ SUsageMeter {
 
   &[theme-value='invert'] {
     SUsageMeterText {
-      color: var(--intergalactic-text-primary-invert);
+      color: var(--intergalactic-text-primary-invert, oklch(0.991 0.005 232.5 / 0.959));
     }
 
     SUsageMeterIndicator {
-      background: var(--intergalactic-progress-bar-bg-invert);
+      background: var(--intergalactic-progress-bar-bg-invert, oklch(0.919 0.042 245.1 / 0.234));
     }
 
     SUsageMeterIndicatorFilled {
       &[state-value='normal'] {
-        background: var(--intergalactic-control-primary-invert);
+        background: var(--intergalactic-control-primary-invert, oklch(1 0 0));
       }
     }
   }
 }
 
 SUsageMeterIndicator {
-  border-radius: var(--intergalactic-progress-bar-rounded);
-  background: var(--intergalactic-progress-bar-bg);
+  border-radius: var(--intergalactic-progress-bar-rounded, 6px);
+  background: var(--intergalactic-progress-bar-bg, oklch(0.291 0.069 241.9 / 0.123));
   height: 2px;
 }
 
 SUsageMeterIndicatorFilled {
-  border-radius: var(--intergalactic-progress-bar-rounded);
+  border-radius: var(--intergalactic-progress-bar-rounded, 6px);
   height: 100%;
-  background: var(--intergalactic-control-primary-info);
+  background: var(--intergalactic-control-primary-info, oklch(0.23 0.009 245));
   flex-basis: calc(var(--filled-value) * 1%);
 
   &[state-value='warning'] {
-    background: var(--intergalactic-bg-primary-critical);
+    background: var(--intergalactic-bg-primary-critical, oklch(0.64 0.226 24.5));
   }
 }
