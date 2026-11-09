@@ -178,8 +178,7 @@
     "value": "oklch(0.64 0.226 24.5)",
     "description": "Accent background of a message or a banner with a critical information.",
     "components": [
-      "counter",
-      "limits"
+      "counter"
     ]
   },
   {
@@ -1252,8 +1251,7 @@
     "components": [
       "button",
       "dropdown",
-      "feature-highlight",
-      "limits"
+      "feature-highlight"
     ]
   },
   {
@@ -1277,8 +1275,7 @@
     "value": "oklch(1 0 0)",
     "description": "Inverted background of the primary control.",
     "components": [
-      "button",
-      "limits"
+      "button"
     ]
   },
   {
@@ -2138,6 +2135,70 @@
     ]
   },
   {
+    "name": "--intergalactic-limits-bg-accent",
+    "value": "oklch(0.93 0.019 185)",
+    "description": "Accent background for Limits surfaces.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-limits-bg-gradient",
+    "value": "linear-gradient(180deg, oklch(0.93 0.019 185) 0%, oklch(0.9 0.065 303) 106.09%, #fff 151.56%)",
+    "description": "Background gradient for Limits surfaces.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-limits-bg-neutral",
+    "value": "oklch(1 0 0)",
+    "description": "Neutral background for Limits surfaces.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-limits-card-label",
+    "value": "oklch(0.22 0.008 245)",
+    "description": "Label color on Limits cards.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-limits-indicator-bg-base",
+    "value": "oklch(0.291 0.069 241.9 / 0.123)",
+    "description": "Background of the Limits usage indicator.",
+    "components": [
+      "limits"
+    ]
+  },
+  {
+    "name": "--intergalactic-limits-indicator-bg-base-invert",
+    "value": "oklch(0.919 0.042 245.1 / 0.234)",
+    "description": "Inverted background of the Limits usage indicator.",
+    "components": [
+      "limits"
+    ]
+  },
+  {
+    "name": "--intergalactic-limits-indicator-value-critical",
+    "value": "oklch(0.64 0.226 24.5)",
+    "description": "Fill of the Limits usage indicator in the critical state.",
+    "components": [
+      "limits"
+    ]
+  },
+  {
+    "name": "--intergalactic-limits-indicator-value-normal",
+    "value": "oklch(0.22 0.008 245)",
+    "description": "Fill of the Limits usage indicator in the normal state.",
+    "components": [
+      "limits"
+    ]
+  },
+  {
+    "name": "--intergalactic-limits-indicator-value-normal-invert",
+    "value": "oklch(0.991 0.005 232.5 / 0.959)",
+    "description": "Inverted fill of the Limits usage indicator in the normal state.",
+    "components": [
+      "limits"
+    ]
+  },
+  {
     "name": "--intergalactic-neighbor-location-invert",
     "value": "oklch(0 0 0 / 0.5)",
     "description": "Inverted border of the components that are combined with neighbor-location property.",
@@ -2265,7 +2326,6 @@
     "value": "oklch(0.291 0.069 241.9 / 0.123)",
     "description": "Background color of the ProgressBar.",
     "components": [
-      "limits",
       "progress-bar"
     ]
   },
@@ -2280,7 +2340,6 @@
     "value": "oklch(0.919 0.042 245.1 / 0.234)",
     "description": "Inverted version of the background color of the ProgressBar.",
     "components": [
-      "limits",
       "progress-bar"
     ]
   },
