@@ -76,6 +76,7 @@ export abstract class AbstractChart<
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
     this.resolveColor = this.resolveColor.bind(this);
+    this.valueFormatter = this.valueFormatter.bind(this);
     this.tooltipValueFormatter = this.tooltipValueFormatter.bind(this);
     this.handleWithTrendChange = this.handleWithTrendChange.bind(this);
 
@@ -373,7 +374,7 @@ export abstract class AbstractChart<
     return this.props.colorMap?.[id] ?? `chart-palette-order-${index + 1}`;
   }
 
-  protected defaultTooltipFormatter(value?: unknown): string {
+  protected valueFormatter(value?: unknown): string {
     const { locale } = this.asProps;
 
     if (value === undefined || value === interpolateValue) {
@@ -409,7 +410,7 @@ export abstract class AbstractChart<
 
     if (tooltipValueFormatter) return tooltipValueFormatter(value);
 
-    return this.defaultTooltipFormatter(value);
+    return this.valueFormatter(value);
   }
 
   protected tooltipTitleFormatter(value?: unknown): string {
@@ -417,7 +418,7 @@ export abstract class AbstractChart<
 
     if (tooltipTitleFormatter) return tooltipTitleFormatter(value);
 
-    return this.defaultTooltipFormatter(value);
+    return this.valueFormatter(value);
   }
 
   protected defaultLegendProps(): Partial<BaseLegendProps> {

@@ -3604,6 +3604,7 @@
     "value": "2px",
     "description": "Use for rounding big and small charts like bar, histogram and others.",
     "components": [
+      "d3-chart",
       "mini-chart"
     ]
   },
