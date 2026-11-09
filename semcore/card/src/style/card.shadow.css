@@ -25,7 +25,7 @@ SCard {
 
   SHeader {
     padding-top: var(--intergalactic-spacing-5x, 20px);
-    padding-bottom: var(--intergalactic-spacing-3x, 12px);
+    padding-bottom: 0;
     padding-left: var(--intergalactic-spacing-5x, 20px);
     padding-right: var(--intergalactic-spacing-5x, 20px);
   }

@@ -26,6 +26,14 @@ export const locators = {
   },
 };
 
+const expectInputsInvalid = async (page: Page) => {
+  await expect(locators.inputs(page)).not.toHaveCount(0);
+  for (const input of await locators.inputs(page).all()) {
+    await expect(input).toHaveAttribute('aria-invalid', 'true');
+    await expect(input).toHaveAttribute('aria-describedby');
+  }
+};
+
 /* =====================================================
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
@@ -113,29 +121,34 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@typography',
       '@button'],
   }, async ({ page, browserName }) => {
+    test.skip(browserName === 'webkit', 'Loading state screenshot is unstable in WebKit');
     await loadPage(page, 'stories/components/feedback/tests/examples/feedback_form_theme_loading.tsx', 'en');
-    if (browserName == 'webkit') test.skip(); // unstable
-    await locators.button(page).click();
-    await locators.feedbackForm(page).waitFor({ state: 'visible' });
-    await expect(locators.inputs(page).nth(0)).toBeFocused();
 
-    await locators.inputs(page, 0).fill('Your feedback must contain at least 10 characters.');
+    await test.step('Fill the form', async () => {
+      await locators.button(page).click();
+      await locators.feedbackForm(page).waitFor({ state: 'visible' });
+      await expect(locators.inputs(page).nth(0)).toBeFocused();
 
-    await page.keyboard.press('Tab');
-    await expect(locators.inputs(page).nth(1)).toBeFocused();
+      await locators.inputs(page, 0).fill('Your feedback must contain at least 10 characters.');
 
-    await locators.inputs(page, 1).fill('test@test.test');
-    await page.keyboard.press('Tab');
-    await expect(page.getByRole('link', { name: 'Privacy Policy' })).toBeFocused();
+      await page.keyboard.press('Tab');
+      await expect(locators.inputs(page).nth(1)).toBeFocused();
 
-    await page.keyboard.press('Tab');
-    await expect(locators.button(page, 1)).toBeFocused();
+      await locators.inputs(page, 1).fill('test@test.test');
+      await page.keyboard.press('Tab');
+      await expect(page.getByRole('link', { name: 'Privacy Policy' })).toBeFocused();
+    });
 
-    await page.keyboard.press('Enter');
-    await expect(locators.button(page, 1)).not.toBeFocused();
+    await test.step('Verify loading styles after submit', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.button(page, 1)).toBeFocused();
 
-    await page.locator('[aria-label="Loading…"]').waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
+      await page.keyboard.press('Enter');
+      await expect(locators.button(page, 1)).not.toBeFocused();
+
+      await page.locator('[aria-label="Loading…"]').waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
   });
 });
 
@@ -174,9 +187,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.feedbackForm(page)).toHaveAttribute('novalidate');
       await expect(locators.feedbackForm(page)).toHaveAttribute('method', 'POST');
 
-      const count = await locators.inputs(page).count();
-      for (let i = 0; i < count; i++) {
-        await expect(locators.inputs(page, i)).toHaveAttribute('aria-invalid', 'false');
+      await expect(locators.inputs(page)).not.toHaveCount(0);
+      for (const input of await locators.inputs(page).all()) {
+        await expect(input).toHaveAttribute('aria-invalid', 'false');
       }
       await expect(locators.inputs(page, 0)).toHaveAttribute('name', 'description');
       await expect(locators.inputs(page, 1)).toHaveAttribute('name', 'email');
@@ -194,7 +207,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await page.keyboard.press('Enter');
       await locators.feedbackForm(page).waitFor({ state: 'hidden' });
-      await expect(locators.feedbackForm(page)).not.toBeVisible();
+      await expect(locators.feedbackForm(page)).toBeHidden();
       await expect(locators.button(page)).toBeFocused();
     });
 
@@ -203,7 +216,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await locators.feedbackForm(page).waitFor({ state: 'visible' });
       await page.keyboard.press('Escape');
       await locators.feedbackForm(page).waitFor({ state: 'hidden' });
-      await expect(locators.feedbackForm(page)).not.toBeVisible();
+      await expect(locators.feedbackForm(page)).toBeHidden();
       await expect(locators.button(page)).toBeFocused();
     });
 
@@ -228,12 +241,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await page.getByRole('tooltip', { name: 'Your feedback must contain at least 10 characters.' }).waitFor({ state: 'visible' });
       await expect(locators.inputs(page, 0)).toBeFocused();
-      const count = await locators.inputs(page).count();
-
-      for (let i = 0; i < count; i++) {
-        await expect(locators.inputs(page, i)).toHaveAttribute('aria-invalid', 'true');
-        await expect(locators.inputs(page, i)).toHaveAttribute('aria-describedby');
-      }
+      await expectInputsInvalid(page);
 
       await page.keyboard.press('Tab');
       await expect(locators.inputs(page, 1)).toBeFocused();
@@ -267,10 +275,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.success(page)).toBeFocused();
     });
 
-    await test.step('Verify success closed by ESC', async () => {
+    await test.step('Verify success closed by Escape', async () => {
       await page.keyboard.press('Escape');
       await locators.success(page).waitFor({ state: 'hidden' });
-      await expect(locators.success(page)).not.toBeVisible();
+      await expect(locators.success(page)).toBeHidden();
       await expect(locators.button(page)).toBeFocused();
     });
   });
@@ -292,30 +300,34 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/feedback/docs/examples/default_feedback_form.tsx', 'en');
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await locators.feedbackForm(page).waitFor({ state: 'visible' });
-    await expect(locators.inputs(page, 0)).toBeFocused();
+    await test.step('Verify validation tooltip shown after submitting empty form', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await locators.feedbackForm(page).waitFor({ state: 'visible' });
+      await expect(locators.inputs(page, 0)).toBeFocused();
 
-    await page.keyboard.press('Tab');
-    await expect(locators.inputs(page, 1)).toBeFocused();
+      await page.keyboard.press('Tab');
+      await expect(locators.inputs(page, 1)).toBeFocused();
 
-    await page.keyboard.press('Tab');
-    await expect(page.getByRole('link', { name: 'Privacy Policy' })).toBeFocused();
+      await page.keyboard.press('Tab');
+      await expect(page.getByRole('link', { name: 'Privacy Policy' })).toBeFocused();
 
-    await page.keyboard.press('Tab');
-    await expect(locators.button(page, 1)).toBeFocused();
+      await page.keyboard.press('Tab');
+      await expect(locators.button(page, 1)).toBeFocused();
 
-    await page.keyboard.press('Enter');
-    await page.getByRole('tooltip', { name: 'Your feedback must contain at least 10 characters.' }).waitFor({ state: 'visible' });
-    await expect(locators.inputs(page, 0)).toBeFocused();
-    await expect(locators.inputs(page, 0)).toHaveAttribute('aria-invalid', 'true');
-    await expect(locators.inputs(page, 0)).toHaveAttribute('aria-describedby');
+      await page.keyboard.press('Enter');
+      await page.getByRole('tooltip', { name: 'Your feedback must contain at least 10 characters.' }).waitFor({ state: 'visible' });
+      await expect(locators.inputs(page, 0)).toBeFocused();
+      await expect(locators.inputs(page, 0)).toHaveAttribute('aria-invalid', 'true');
+      await expect(locators.inputs(page, 0)).toHaveAttribute('aria-describedby');
+    });
 
-    await page.keyboard.press('Escape');
-    await locators.feedbackForm(page).waitFor({ state: 'hidden' });
-    await expect(locators.feedbackForm(page)).not.toBeVisible();
-    await expect(locators.button(page)).toBeFocused();
+    await test.step('Verify Escape closes the form and returns focus to trigger', async () => {
+      await page.keyboard.press('Escape');
+      await locators.feedbackForm(page).waitFor({ state: 'hidden' });
+      await expect(locators.feedbackForm(page)).toBeHidden();
+      await expect(locators.button(page)).toBeFocused();
+    });
   });
 
   test('Verify base feedback form mouse interaction', {
@@ -344,11 +356,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.inputs(page, 0)).toBeFocused();
     });
 
-    await test.step('Verify feedback form closed by Cancel click ', async () => {
+    await test.step('Verify feedback form closed by Cancel click', async () => {
       await expect(cancel).toHaveAttribute('type', 'reset');
       await cancel.click();
       await locators.feedbackForm(page).waitFor({ state: 'hidden' });
-      await expect(locators.feedbackForm(page)).not.toBeVisible();
+      await expect(locators.feedbackForm(page)).toBeHidden();
     });
 
     await test.step('Verify feedback form closed by click outside the form', async () => {
@@ -356,22 +368,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await locators.feedbackForm(page).waitFor({ state: 'visible' });
       await page.mouse.click(0, 0);
       await locators.feedbackForm(page).waitFor({ state: 'hidden' });
-      await expect(locators.feedbackForm(page)).not.toBeVisible();
+      await expect(locators.feedbackForm(page)).toBeHidden();
     });
 
-    await test.step('Verify feedback form validation starts  and form not closed by click  Send Feedback', async () => {
+    await test.step('Verify feedback form validation starts and form not closed by click on Send feedback', async () => {
       await locators.button(page).click();
       await locators.feedbackForm(page).waitFor({ state: 'visible' });
       await expect(submit).toHaveAttribute('type', 'submit');
       await submit.click();
       await page.getByRole('tooltip', { name: 'Your feedback must contain at least 10 characters.' }).waitFor({ state: 'visible' });
       await expect(locators.inputs(page, 0)).toBeFocused();
-      const count = await locators.inputs(page).count();
-
-      for (let i = 0; i < count; i++) {
-        await expect(locators.inputs(page, i)).toHaveAttribute('aria-invalid', 'true');
-        await expect(locators.inputs(page, i)).toHaveAttribute('aria-describedby');
-      }
+      await expectInputsInvalid(page);
     });
 
     await test.step('Verify feedback form changes to success by click on Send feedback when inputs filled', async () => {
@@ -386,7 +393,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify success closed by click outside the form', async () => {
       await page.mouse.click(0, 0);
       await locators.success(page).waitFor({ state: 'hidden' });
-      await expect(locators.success(page)).not.toBeVisible();
+      await expect(locators.success(page)).toBeHidden();
     });
 
     await test.step('Verify success closed by click on trigger', async () => {
@@ -395,7 +402,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await locators.button(page).click();
 
       await locators.success(page).waitFor({ state: 'hidden' });
-      await expect(locators.success(page)).not.toBeVisible();
+      await expect(locators.success(page)).toBeHidden();
     });
   });
 });

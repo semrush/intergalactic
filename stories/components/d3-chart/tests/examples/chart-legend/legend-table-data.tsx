@@ -25,7 +25,7 @@ const rows = [
   { id: 'item-3', label: 'Label', color: 'chart-palette-order-3', value: 27500 },
   { id: 'item-4', label: 'Label', color: 'chart-palette-order-4', value: 11100 },
   { id: 'item-5', label: 'Label', color: 'chart-palette-order-5', value: 2400 },
-  { id: 'other-data', label: 'Other data', color: 'chart-palette-order-other-data', value: 22800 },
+  { id: 'other-data', label: 'Other data', color: 'chart-data-other-value', value: 22800 },
 ];
 
 const total = rows.reduce((sum, row) => sum + row.value, 0);

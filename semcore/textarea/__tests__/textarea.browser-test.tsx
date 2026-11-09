@@ -1,5 +1,3 @@
-import { platform } from 'os';
-
 import { expect, test } from '@semcore/testing-utils/playwright';
 import type { Page } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
@@ -30,8 +28,9 @@ test.describe(`${TAG.VISUAL} `, () => {
     { size: 'l', state: 'normal', autoFocus: false, readOnly: false, resize: 'horizontal', disabled: true, minRows: undefined, maxRows: undefined, value: undefined, defaultValue: undefined, placeholder: undefined },
     { size: 'l', state: 'valid', autoFocus: false, readOnly: false, resize: 'none', disabled: false, minRows: 2, maxRows: 6, value: 'Some Value', defaultValue: undefined, placeholder: 'Type something...' },
     { size: 'm', state: 'normal', autoFocus: true, readOnly: false, resize: 'both', disabled: false, minRows: 3, maxRows: 3, value: undefined, defaultValue: undefined, placeholder: undefined },
-
   ];
+  const longText =
+    'Zoom in on product categories to understand how each site segment drives \nconversions.\nSecond row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row\n11 row';
   variables.forEach((item) => {
     test(`Verify Textarea with size = ${item.size}  state = ${item.state} autoFocus = ${item.autoFocus}  readOnly = ${item.readOnly} resize = ${item.resize} disabled = ${item.disabled} minRows = ${item.minRows} maxRows = ${item.maxRows} value = ${item.value} defaultValue = ${item.defaultValue} and placeholder = ${item.placeholder}`, {
       tag: [TAG.PRIORITY_HIGH,
@@ -44,23 +43,27 @@ test.describe(`${TAG.VISUAL} `, () => {
 
       await expect(page).toHaveScreenshot();
 
-      const isDisabled = await locators.textarea(page).getAttribute('disabled');
-      const isReadOnly = await locators.textarea(page).getAttribute('readOnly');
+      const isControlled = item.value !== undefined;
+      const readOnlyStep = !item.disabled && item.readOnly ? test.step : test.step.skip;
+      const typingStep = !item.disabled && !item.readOnly ? test.step : test.step.skip;
 
-      if (isDisabled !== null) {
-        return;
-      }
-      if (isReadOnly !== null) {
+      await readOnlyStep('Verify readOnly textarea after click', async () => {
         await locators.textarea(page).click();
-        await expect(page).toHaveScreenshot();
-        return;
-      } else {
+        if (!item.autoFocus) {
+          await expect(page).toHaveScreenshot();
+        }
+      });
+
+      await typingStep('Verify textarea after typing long text', async () => {
         await locators.textarea(page).click();
-        const text =
-          'Zoom in on product categories to understand how each site segment drives \nconversions.\nSecond row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row\n11 row';
-        await page.keyboard.type(text, { delay: 10 });
-        await expect(page).toHaveScreenshot();
-      }
+        await page.keyboard.type(longText, { delay: 10 });
+        if (isControlled) {
+          await expect(locators.textarea(page)).toHaveValue(item.value!);
+        }
+        if (!isControlled || !item.autoFocus) {
+          await expect(page).toHaveScreenshot();
+        }
+      });
     });
   });
 });
@@ -86,12 +89,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await locators.label(page).click();
     await expect(locators.textarea(page)).toBeFocused();
 
-    const forValue = await locators.label(page).getAttribute('for');
-    const idValue = await locators.textarea(page).getAttribute('id');
-
-    expect(forValue).not.toBeNull();
-    expect(idValue).not.toBeNull();
-    expect(forValue).toBe(idValue);
+    await expect(locators.label(page)).toHaveAttribute('for', 'autoscalable-textarea');
+    await expect(locators.textarea(page)).toHaveAttribute('id', 'autoscalable-textarea');
   });
 
   test('Verify textarea keyboard interactions', {
@@ -116,19 +115,16 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     });
 
     await test.step('Verify amount of lines updates when entering text', async () => {
-      const text =
-        'Zoom in on product categories to understand how each site segment drives \nconversions.\nSecond row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row\n11 row';
-      await page.keyboard.type(text, { delay: 10 });
+      await page.keyboard.type(
+        'Zoom in on product categories to understand how each site segment drives \nconversions.\nSecond row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row\n11 row',
+        { delay: 10 },
+      );
 
       await expect.poll(getNumberOfLines).toBe(11);
     });
 
     await test.step('Verify amount of lines updates when removing all text', async () => {
-      if (platform() === 'darwin') {
-        await page.keyboard.press('Meta+A');
-      } else {
-        await page.keyboard.press('Control+A');
-      }
+      await page.keyboard.press('ControlOrMeta+A');
       await page.keyboard.press('Backspace');
 
       await expect.poll(getNumberOfLines).toBe(2);

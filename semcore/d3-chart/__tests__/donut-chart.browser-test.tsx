@@ -23,7 +23,14 @@ export const locators = {
 The center of a donut pie is empty, so .hover() misses the segment and times out.
 Hover over the middle of the ring instead.
 */
-const hoverPie = async (pie: Locator) => {
+const getRingPoint = async (pie: Locator) => {
+  // Wait for the pie animation to finish, otherwise the point is taken from a moving arc
+  await expect.poll(async () => {
+    const before = await pie.getAttribute('d');
+    await pie.page().waitForTimeout(100);
+    return before === await pie.getAttribute('d');
+  }).toBe(true);
+
   const box = await pie.boundingBox();
 
   if (!box) throw new Error('Donut.Pie is not rendered');
@@ -42,7 +49,15 @@ const hoverPie = async (pie: Locator) => {
     return { x, y };
   });
 
-  await pie.hover({ position: { x: point.x - box.x, y: point.y - box.y } });
+  return { x: point.x - box.x, y: point.y - box.y };
+};
+
+const hoverPie = async (pie: Locator) => {
+  await pie.hover({ position: await getRingPoint(pie) });
+};
+
+const clickPie = async (pie: Locator) => {
+  await pie.click({ position: await getRingPoint(pie) });
 };
 
 /* =====================================================
@@ -53,24 +68,24 @@ test.describe(`${TAG.VISUAL}`, () => {
   const variables = [
     {
       description: 'Standard: default with tooltip and label',
-      paddingAngle: 0.2,
       showTooltip: true,
-      showLabel: true,
+      showLegend: false,
       duration: 0,
     },
     {
-      description: 'Custom radius: inner and outer radius variations',
+      description: 'Custom radius: innerRadius',
       innerRadius: 50,
-      outerRadius: 120,
       showTooltip: true,
-      showLabel: false,
+      showLegend: false,
+      innerLabel: '',
+      innerDescription: '',
       duration: 0,
     },
     {
       description: 'Patterns: patterns enabled, no tooltip',
       patterns: true,
       showTooltip: false,
-      showLabel: true,
+      showLegend: false,
       duration: 0,
     },
   ];
@@ -81,7 +96,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     }, async ({ page }) => {
       await loadPage(
         page,
-        'stories/components/d3-chart/tests/examples/donut-chart/donut-props.tsx',
+        'stories/components/d3-chart/tests/examples/donut-chart/basic-usage.tsx',
         'en',
         item,
       );
@@ -110,16 +125,17 @@ test.describe(`${TAG.VISUAL}`, () => {
       description: 'Standard: halfsize with tooltip and label',
       halfsize: true,
       showTooltip: true,
-      showLabel: true,
+      showLegend: false,
       duration: 0,
     },
     {
-      description: 'Custom radius: innerRadius and paddingAngle',
+      description: 'Custom radius: innerRadius',
       halfsize: true,
       innerRadius: 50,
-      paddingAngle: 0.2,
       showTooltip: true,
-      showLabel: false,
+      showLegend: false,
+      innerLabel: '',
+      innerDescription: '',
       duration: 0,
     },
     {
@@ -127,7 +143,9 @@ test.describe(`${TAG.VISUAL}`, () => {
       halfsize: true,
       patterns: true,
       showTooltip: false,
-      showLabel: false,
+      showLegend: false,
+      innerLabel: '',
+      innerDescription: '',
       duration: 0,
     },
   ];
@@ -138,7 +156,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     }, async ({ page }) => {
       await loadPage(
         page,
-        'stories/components/d3-chart/tests/examples/donut-chart/donut-props.tsx',
+        'stories/components/d3-chart/tests/examples/donut-chart/basic-usage.tsx',
         'en',
         item,
       );
@@ -163,30 +181,8 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 
-  test('Verify donut controlled highlight interactions', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
-  }, async ({ page }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/docs/examples/donut-chart/donut-controlled-highlight.tsx',
-      'en',
-    );
-
-    await test.step('Verify highlights by default in controlled mode', async () => {
-      await locators.plot(page).waitFor({ state: 'visible' });
-      await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify added highlighted section by checkbox click', async () => {
-      await page.getByText('Option C').click();
-      await page.waitForTimeout(200);
-      await expect(page).toHaveScreenshot();
-    });
-  });
-
   test('Verify donut legend and pattern fill interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -250,7 +246,7 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify aria-hidden attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
+    tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@typography', '@checkbox'],
   }, async ({ page }) => {
     await test.step('Verify pies have aria-hidden attribute in basic usage', async () => {
       await loadPage(page, 'stories/components/d3-chart/docs/examples/donut-chart/basic-usage.tsx', 'en');
@@ -260,8 +256,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     await test.step('Verify pies and labels have aria-hidden attribute', async () => {
-      await loadPage(page, 'stories/components/d3-chart/tests/examples/donut-chart/donut-props.tsx', 'en', {
-        showLabel: true,
+      await loadPage(page, 'stories/components/d3-chart/tests/examples/donut-chart/basic-usage.tsx', 'en', {
         duration: 0,
       });
       await locators.plot(page).waitFor({ state: 'visible' });
@@ -324,7 +319,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   showLegendCombinations.forEach((item) => {
     test(`Verify showLegend prop: ${item.description}`, {
-      tag: [item.priority, '@donut-chart', '@d3-chart', '@base-components', '@flex-box'],
+      tag: [item.priority, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     }, async ({ page }) => {
       const testProps: { data: Record<string, number>; showLegend?: boolean } = {
         data: item.data,
@@ -350,41 +345,74 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test('Verify onClick callback in donut pie', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+  test('Verify legend and pie highlight the same item after unchecking a legend item', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@checkbox'],
   }, async ({ page }) => {
-    const messages: string[] = [];
-    page.on('console', (msg) => {
-      if (msg.type() === 'log' && msg.text().startsWith('I call')) {
-        messages.push(msg.text());
-      }
+    await loadPage(page, 'stories/components/d3-chart/docs/examples/donut-chart/basic-usage.tsx', 'en');
+    await locators.plot(page).waitFor({ state: 'visible' });
+
+    const legendRow = (name: string) =>
+      page.locator('div[data-ui-name="LegendTable.LegendItem"]').filter({ hasText: name });
+    const pieByName = (name: string) => page.locator(`[data-ui-name="Donut.Pie"][name="${name}"]`);
+
+    await test.step('Uncheck the first legend item', async () => {
+      await legendRow('a').click();
+      await expect(page.getByRole('checkbox', { name: 'a' })).not.toBeChecked();
+      await expect(pieByName('a')).toHaveCount(0);
     });
 
-    await loadPage(
-      page,
-      'stories/components/d3-chart/tests/examples/donut-chart/on-click-pie.tsx',
-      'en',
-    );
+    await test.step('Verify hover on pie highlights its own legend row', async () => {
+      await hoverPie(pieByName('c'));
 
-    await page.waitForTimeout(500);
-
-    await test.step('Verify no calls on render', async () => {
-      await locators.plot(page).waitFor({ state: 'visible' });
-      expect(messages.length).toBe(0);
+      await expect(legendRow('c')).toHaveCSS('opacity', '1');
+      await expect(legendRow('b')).toHaveCSS('opacity', '0.3');
     });
 
-    await test.step('Verify no calls on legend click', async () => {
-      await locators.legendItem(page, 'Option A').click();
-      expect(messages.length).toBe(0);
-    });
+    await test.step('Verify hover on legend row highlights its own pie', async () => {
+      await page.mouse.move(0, 0);
+      await legendRow('b').hover();
 
-    await test.step('Verify callback triggered on pie click', async () => {
-      const box = await locators.pie(page, 0).boundingBox();
-      if (box) {
-        await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
-      }
-      expect(messages).toEqual(['I call on mount']);
-      expect(messages.length).toBe(1);
+      await expect(pieByName('b')).toHaveCSS('opacity', '1');
+      await expect(pieByName('c')).toHaveCSS('opacity', '0.3');
+    });
+  });
+
+  [true, false].forEach((showLabel) => {
+    test(`Verify onClick callback in donut pie ${showLabel ? 'with' : 'without'} label`, {
+      tag: [showLabel ? TAG.PRIORITY_HIGH : TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox', '@typography'],
+    }, async ({ page }) => {
+      const messages: string[] = [];
+      page.on('console', (msg) => {
+        if (msg.type() === 'log' && msg.text().startsWith('I call')) {
+          messages.push(msg.text());
+        }
+      });
+
+      await loadPage(
+        page,
+        'stories/components/d3-chart/tests/examples/donut-chart/on-click-pie.tsx',
+        'en',
+        { showLabel },
+      );
+
+      await page.waitForTimeout(500);
+
+      await test.step('Verify no calls on render', async () => {
+        await locators.plot(page).waitFor({ state: 'visible' });
+        await expect(locators.label(page)).toHaveCount(showLabel ? 1 : 0);
+        expect(messages.length).toBe(0);
+      });
+
+      await test.step('Verify no calls on legend click', async () => {
+        await locators.legendItem(page, 'Option A').click();
+        expect(messages.length).toBe(0);
+      });
+
+      await test.step('Verify callback triggered on pie click', async () => {
+        await clickPie(locators.pie(page, 0));
+
+        await expect.poll(() => messages).toEqual(['I call onClick with key: a']);
+      });
     });
   });
 });

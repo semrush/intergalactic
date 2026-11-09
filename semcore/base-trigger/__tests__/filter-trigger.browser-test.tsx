@@ -22,11 +22,11 @@ test.describe(`${TAG.VISUAL}`, () => {
   variables.forEach((item) => {
     test(`Verify Base case size=${item.size} disabled=${item.disabled} active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
         '@base-trigger',
         '@filter-trigger',
         '@base-components',
-        '@flex-box',
-        '@tooltip'],
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/filter-trigger/base.tsx', 'en', item);
 
@@ -52,13 +52,13 @@ test.describe(`${TAG.VISUAL}`, () => {
       }
     });
 
-    test(`Verify With addons case size=${item.size} disabled=${item.disabled}  active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
+    test(`Verify With addons case size=${item.size} disabled=${item.disabled} active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
         '@base-trigger',
         '@filter-trigger',
         '@base-components',
-        '@flex-box',
-        '@tooltip'],
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/filter-trigger/with-addons.tsx', 'en', item);
 
@@ -70,7 +70,7 @@ test.describe(`${TAG.VISUAL}`, () => {
           }
 
           await page.keyboard.press('Tab');
-          await expect(page).toHaveScreenshot(`with-addonssize:${item.size}-disabled:${item.disabled}-active:${item.active}-placeholder:${item.placeholder}.png`);
+          await expect(page).toHaveScreenshot(`with-addons-size:${item.size}-disabled:${item.disabled}-active:${item.active}-placeholder:${item.placeholder}.png`);
         });
       }
 
@@ -79,13 +79,14 @@ test.describe(`${TAG.VISUAL}`, () => {
           for (const button of buttons) {
             await expect(button).toHaveAttribute('tabindex', '0');
           }
-          await expect(page).toHaveScreenshot(`with-addonssize:${item.size}-disabled:${item.disabled}-active:${item.active}-placeholder:${item.placeholder}.png`);
+          await expect(page).toHaveScreenshot(`with-addons-size:${item.size}-disabled:${item.disabled}-active:${item.active}-placeholder:${item.placeholder}.png`);
         });
       }
     });
 
-    test(`Verify Filter Trigger for Select size=${item.size} disabled=${item.disabled}  active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
+    test(`Verify Filter Trigger for Select size=${item.size} disabled=${item.disabled} active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
       tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
         '@base-trigger',
         '@filter-trigger',
         '@base-components',
@@ -113,6 +114,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test('Verify ellipsis in Filter trigger and few tags', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
       '@base-trigger',
       '@filter-trigger',
       '@dropdown-menu',
@@ -134,6 +136,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test('Verify Counter on trigger', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
       '@base-trigger',
       '@filter-trigger',
       '@dropdown',
@@ -155,11 +158,11 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test('Verify Hint on Close button', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
       '@base-trigger',
       '@filter-trigger',
       '@base-components',
-      '@flex-box',
-      '@tooltip'],
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/tests/examples/filter-trigger/base.tsx', 'en');
 
@@ -188,7 +191,7 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Filter Trigger with select', () => {
-    test('Verify Filter Triger for select by keyboard interactions', {
+    test('Verify Filter Trigger for select by keyboard interactions', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@base-trigger',
@@ -232,7 +235,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.trigger(page)).toBeFocused();
     });
 
-    test('Verify Filter Triger for select by mouse AND keyboards interactions', {
+    test('Verify Filter Trigger for select by mouse AND keyboard interactions', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         TAG.MOUSE,
@@ -245,7 +248,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/docs/filter-trigger/examples/usage_with_select.tsx', 'en');
 
-      locators.trigger(page).click();
+      await locators.trigger(page).click();
       await locators.options(page, 'Blue').waitFor({ state: 'visible' });
 
       await expect(locators.options(page, 'Blue')).not.toHaveClass(/highlighted/);
@@ -264,7 +267,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.clearButton(page)).toBeFocused();
     });
 
-    test('Verify Filter Triger for select by mouse interactions', {
+    test('Verify Filter Trigger for select by mouse interactions', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
         '@base-trigger',
@@ -275,14 +278,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/docs/filter-trigger/examples/usage_with_select.tsx', 'en');
-      locators.trigger(page).click();
+      await locators.trigger(page).click();
 
       await locators.options(page, 'Blue').waitFor({ state: 'visible' });
       await expect(locators.options(page, 'Blue')).not.toHaveClass(/highlighted/);
-      locators.trigger(page).click();
+      await locators.trigger(page).click();
       await locators.options(page, 'Blue').waitFor({ state: 'hidden' });
 
-      locators.trigger(page).click();
+      await locators.trigger(page).click();
       await locators.options(page, 'Blue').waitFor({ state: 'visible' });
 
       await locators.options(page, 'Green').click();
@@ -302,6 +305,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Controlled filter trigger (triggerRef)', () => {
     test('Verify keyboard interactions', {
       tag: [TAG.PRIORITY_HIGH,
+        '@button',
         TAG.KEYBOARD,
         '@base-trigger',
         '@filter-trigger',
@@ -404,7 +408,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       for (let i = 0; i < 10; i++) {
         await page.keyboard.press('Enter');
       }
-      await expect(page.locator('[data-ui-name="FilterTrigger.Counter"]')).toHaveText('10');
+      await expect(locators.filterCounter(page)).toHaveText('10');
       await page.keyboard.press('Escape');
       await locators.dialog(page).waitFor({ state: 'hidden' });
 
@@ -417,7 +421,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Enter');
       await expect(locators.clearButton(page)).not.toBeVisible();
       await expect(locators.trigger(page)).toBeFocused();
-      await expect(page.locator('[data-ui-name="FilterTrigger.Counter"]')).not.toBeVisible();
+      await expect(locators.filterCounter(page)).not.toBeVisible();
     });
 
     test('Verify mouse interactions', {
@@ -437,19 +441,19 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       for (let i = 0; i < 10; i++) {
         await addFilter.click();
       }
-      await expect(page.locator('[data-ui-name="FilterTrigger.Counter"]')).toHaveText('10');
+      await expect(locators.filterCounter(page)).toHaveText('10');
       await locators.trigger(page).click();
 
       await expect(locators.trigger(page)).toBeVisible();
       await expect(locators.clearButton(page)).toBeVisible();
       await locators.clearButton(page).click();
 
-      await expect(page.locator('[data-ui-name="FilterTrigger.Counter"]')).not.toBeVisible();
+      await expect(locators.filterCounter(page)).not.toBeVisible();
     });
 
-    test('Verify Accessible name focus and keyboard interactions', {
+    test('Verify accessible name and selected values of multiselect Filter trigger by mouse', {
       tag: [TAG.PRIORITY_HIGH,
-        TAG.KEYBOARD,
+        TAG.MOUSE,
         '@base-trigger',
         '@filter-trigger',
         '@base-components',
@@ -467,15 +471,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       const button = page.getByRole('combobox', { name: 'Material' });
 
       await expect(button).toHaveAttribute('value', 'Glass,Metal,Paper');
-      await expect(button.locator('[data-ui-name="FilterTrigger.Text"]')).toContainText(
+      await expect(locators.triggerText(button, 'FilterTrigger')).toContainText(
         '3 selected',
       );
 
-      const textSpan = button.locator('[data-ui-name="FilterTrigger.Text"] span');
+      const textSpan = locators.triggerText(button, 'FilterTrigger').locator('span');
       await expect(textSpan).toHaveAttribute('aria-hidden', 'true');
 
       await locators.clearButton(page).click();
-      await expect(button.locator('[data-ui-name="FilterTrigger.Text"]')).not.toContainText(
+      await expect(locators.triggerText(button, 'FilterTrigger')).not.toContainText(
         '3 selected',
       );
     });

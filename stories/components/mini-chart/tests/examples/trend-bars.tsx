@@ -3,7 +3,7 @@ import type { NSMiniChart } from '@semcore/ui/mini-chart';
 import MiniChart from '@semcore/ui/mini-chart';
 import React from 'react';
 
-type TrendBarsProps = NSMiniChart.Trend.Bar.Props;
+type TrendBarsProps = Omit<NSMiniChart.Trend.Bar.Props, 'data'>;
 
 const Demo = ({
   loading,
@@ -43,6 +43,14 @@ const Demo = ({
     </Flex>
   );
 };
+
+export const defaultTrendBarsProps: TrendBarsProps = {
+  loading: false,
+  animate: true,
+};
+
+Demo.defaultProps = defaultTrendBarsProps;
+
 export type { TrendBarsProps };
 
 export default Demo;

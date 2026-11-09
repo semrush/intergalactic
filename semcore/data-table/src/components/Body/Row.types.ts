@@ -5,6 +5,7 @@ import type { CellRenderProps } from './Body.types';
 import type { DataTableCellProps, Theme } from './Cell.types';
 import type { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import type { RowRoot } from './Row';
+import type { RowGroup } from './RowGroup';
 import type { ISelectedRows } from '../../store/SelectableRows';
 import type {
   ACCORDION,
@@ -44,6 +45,7 @@ export type DataTableRowProps<Data extends DataTableData, UniqKeyType> = {
   'flatRows': DTRow<UniqKeyType>[];
   'rowIndex': number; // from 0
   'gridRowIndex': number; // from 1 + 1 (or 2 if it has group) header
+  'orderedIndex': number; // order form 0 for real rows (and grouped rows)
 
   /**
    * Flag to show is row in a merged list or not.
@@ -54,7 +56,7 @@ export type DataTableRowProps<Data extends DataTableData, UniqKeyType> = {
   'accordionRowIndex'?: DataTableCellProps<Data, UniqKeyType>['accordionRowIndex'];
   'isNonInteractive'?: boolean;
 
-  'componentRef'?: (component: RowRoot<Data, UniqKeyType> | null) => void;
+  'componentRef'?: (index: number, row: DTRow<UniqKeyType>, component: RowRoot<Data, UniqKeyType> | RowGroup<Data, UniqKeyType> | null) => void;
 
   'accordionIndex'?: number;
 
@@ -96,8 +98,8 @@ export type DataTableRowProps<Data extends DataTableData, UniqKeyType> = {
   'shadowVertical'?: '' | 'end' | 'start' | 'median';
   'expandedRows': Set<UniqKeyType>;
   'accordionMode'?: DataTableProps<any, any, any>['accordionMode'];
-  'rowsHeightMap': Map<number, [number, number, HTMLElement]>;
-  'setRowHeight': (index: number, row: DTRow<UniqKeyType>) => void;
+  'rowsHeightMap': Map<number, [number, number, HTMLElement | null]>;
+  'setRowHeight': (index: number) => void;
   'componentsMap': Map<UniqKeyType, RowRoot<Data, UniqKeyType>>;
   'calculateAriaRowIndex': () => void;
   'variant': DataTableProps<any, any, any>['variant'];

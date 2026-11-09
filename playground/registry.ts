@@ -13,6 +13,7 @@ import ChartLine from './entries/Chart/Line';
 import MiniChart from './entries/Chart/MiniChart';
 import ChartRadar from './entries/Chart/Radar';
 import ChartScatterPlot from './entries/Chart/ScatterPlot';
+import ChartScoreDonut from './entries/Chart/ScoreDonut';
 import ChartStackedArea from './entries/Chart/StackedArea';
 import ChartStackedBar from './entries/Chart/StackedBar';
 import ChartStackedHorizontalBar from './entries/Chart/StackedHorizontalBar';
@@ -89,6 +90,7 @@ const registry = {
   'Chart.Cigarette': ChartCigarette,
   'ChartLegend': ChartLegend,
   'Chart.Donut': ChartDonut,
+  'Chart.ScoreDonut': ChartScoreDonut,
   'Chart.Histogram': ChartHistogram,
   'Chart.Line': ChartLine,
   'MiniChart': MiniChart,

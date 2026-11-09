@@ -4,18 +4,19 @@ import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
-
-  button: (page: Page, name?: string, index?: number) => {
-    const base = page.getByRole('button', { name });
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  options: (page: Page) => page.getByRole('option'),
   tabLines: (page: Page) => page.getByRole('tab'),
   addons: (page: Page) => page.locator('[data-ui-name="TabLine.Item.Addon"]'),
   text: (page: Page) => page.locator('[data-ui-name="TabLine.Item.Text"]'),
   tabLine: (page: Page) => page.getByRole('tablist'),
   tabpanel: (page: Page) => page.locator('[role="tabpanel"]'),
+};
 
+const tabHeight = { m: '32px', l: '44px' };
+
+const expectSelectedTab = async (page: Page, selectedIndex: number) => {
+  for (const [index, tab] of (await locators.tabLines(page).all()).entries()) {
+    await expect(tab).toHaveAttribute('aria-selected', String(index === selectedIndex));
+  }
 };
 
 /* =====================================================
@@ -26,13 +27,12 @@ test.describe(`${TAG.VISUAL} `, () => {
   const variablesActive = [
     { disabled: false, size: 'm', underlined: true },
     { disabled: false, size: 'l', underlined: false },
-  ];
+  ] as const;
   variablesActive.forEach((item) => {
     test(`Verify active Tab lines size = ${item.size} underlined = ${item.underlined} styles`, {
       tag: [TAG.PRIORITY_HIGH,
         '@tab-line',
         '@base-components',
-
         '@counter',
         '@badge',
         '@typography'],
@@ -44,45 +44,26 @@ test.describe(`${TAG.VISUAL} `, () => {
 
       await expect(page).toHaveScreenshot();
 
-      const m_size = page.locator('[data-ui-name="TabLine"][class*="size_m"]');
-      const l_size = page.locator('[data-ui-name="TabLine"][class*="size_l"]');
-
-      await test.step('Verify tab line styles styles', async () => {
-        // Spacing between tabs comes from the tablist gap and depends on the size
+      await test.step('Verify gaps between tabs and inside tabs', async () => {
         await expect(locators.tabLine(page)).toHaveCSS('column-gap', item.size === 'l' ? '20px' : '16px');
 
-        const countTabs = await locators.tabLines(page).count();
-        for (let i = 0; i < countTabs; i++) {
-          // Spacing between an addon and the text comes from the tab gap
-          await expect(locators.tabLines(page).nth(i)).toHaveCSS('column-gap', '6px');
-          await expect(locators.tabLines(page).nth(i)).toHaveCSS('margin-right', '0px');
-        }
-
-        // Per-child margins were replaced by the gaps above and must not come back
-        const countText = await locators.text(page).count();
-        for (let i = 0; i < countText; i++) {
-          await expect(locators.text(page).nth(i)).toHaveCSS('margin-right', '0px');
-          await expect(locators.text(page).nth(i)).toHaveCSS('margin-left', '0px');
-        }
-
-        const countAddons = await locators.addons(page).count();
-        for (let i = 0; i < countAddons; i++) {
-          await expect(locators.addons(page).nth(i)).toHaveCSS('margin-right', '0px');
-          await expect(locators.addons(page).nth(i)).toHaveCSS('margin-left', '0px');
+        for (const tab of await locators.tabLines(page).all()) {
+          await expect(tab).toHaveCSS('column-gap', '6px');
+          await expect(tab).toHaveCSS('margin-right', '0px');
         }
       });
 
-      await test.step('Verify tab line sizes styles', async () => {
-        if (await m_size.count() > 0) {
-          const tabLinesCount = await locators.tabLines(page).count();
-          for (let i = 0; i < tabLinesCount; i++) {
-            await expect(locators.tabLines(page).nth(i)).toHaveCSS('height', '32px');
-          }
-        } else if (await l_size.count() > 0) {
-          const tabLinesCount = await locators.tabLines(page).count();
-          for (let i = 0; i < tabLinesCount; i++) {
-            await expect(locators.tabLines(page).nth(i)).toHaveCSS('height', '44px');
-          }
+      await test.step('Verify text and addons have no own margins', async () => {
+        for (const element of [...await locators.text(page).all(), ...await locators.addons(page).all()]) {
+          await expect(element).toHaveCSS('margin-right', '0px');
+          await expect(element).toHaveCSS('margin-left', '0px');
+        }
+      });
+
+      await test.step(`Verify tab height for size ${item.size}`, async () => {
+        await expect(locators.tabLines(page)).not.toHaveCount(0);
+        for (const tab of await locators.tabLines(page).all()) {
+          await expect(tab).toHaveCSS('height', tabHeight[item.size]);
         }
       });
     });
@@ -97,7 +78,6 @@ test.describe(`${TAG.VISUAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@tab-line',
         '@base-components',
-
         '@counter',
         '@badge',
         '@typography'],
@@ -117,10 +97,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('ArrowRight');
-    const box = await locators.tabLines(page).nth(1).boundingBox();
-    if (box) {
-      await page.mouse.move(box.x + 10, box.y + 5);
-    }
+    await locators.tabLines(page).nth(1).hover({ position: { x: 10, y: 5 } });
     await page.waitForSelector('text="Do not forget to add short text to explain why this item is disabled."');
 
     await expect(page).toHaveScreenshot();
@@ -187,21 +164,19 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify tabline roles and attributes', async () => {
       await expect(locators.tabLine(page)).toHaveAttribute('aria-label');
     });
-    await test.step('Verify tabs roles and attributes when first is selected', async () => {
-      const countTabs = await locators.tabLines(page).count();
-      for (let i = 0; i < countTabs; i++) {
-        await expect(locators.tabLines(page).nth(i)).toHaveAttribute('type', 'button');
-        await expect(locators.tabLines(page).nth(i)).toHaveAttribute('aria-selected');
-        await expect(locators.tabLines(page).nth(i)).toHaveAttribute('value');
-        await expect(locators.tabLines(page).nth(i)).toHaveAttribute('id');
-      }
-      await expect(locators.tabLines(page).nth(0)).not.toHaveAttribute('aria-controls');
-      await expect(locators.tabLines(page).nth(0)).toHaveAttribute('tabindex', '-1');
-      await expect(locators.tabLines(page).nth(1)).toHaveAttribute('tabindex', '0');
-      await expect(locators.tabLines(page).nth(1)).toHaveAttribute('aria-controls');
-      for (let i = 2; i < countTabs; i++) {
-        await expect(locators.tabLines(page).nth(i)).not.toHaveAttribute('aria-controls');
-        await expect(locators.tabLines(page).nth(i)).toHaveAttribute('tabindex', '-1');
+    await test.step('Verify tabs roles and attributes when second is selected by default', async () => {
+      for (const [index, tab] of (await locators.tabLines(page).all()).entries()) {
+        await expect(tab).toHaveAttribute('type', 'button');
+        await expect(tab).toHaveAttribute('aria-selected');
+        await expect(tab).toHaveAttribute('value');
+        await expect(tab).toHaveAttribute('id');
+        if (index === 1) {
+          await expect(tab).toHaveAttribute('tabindex', '0');
+          await expect(tab).toHaveAttribute('aria-controls');
+        } else {
+          await expect(tab).toHaveAttribute('tabindex', '-1');
+          await expect(tab).not.toHaveAttribute('aria-controls');
+        }
       }
     });
 
@@ -210,9 +185,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await expect(locators.tabpanel(page)).toHaveAttribute('tabindex', '-1');
       await expect(locators.tabpanel(page)).toHaveAttribute('aria-labelledby', 'tab-label-fb');
-      await expect(locators.tabLines(page).nth(0)).toHaveAttribute('aria-selected', 'true');
-      await expect(locators.tabLines(page).nth(1)).toHaveAttribute('aria-selected', 'false');
-      await expect(locators.tabLines(page).nth(2)).toHaveAttribute('aria-selected', 'false');
+      await expectSelectedTab(page, 0);
     });
     await test.step('Verify tabLine roles and attributes and selected attribute when second is selected', async () => {
       await locators.tabLines(page).nth(1).click();
@@ -234,29 +207,31 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tab-line/tests/examples/tab_line_item_addons_and_props.tsx', 'en', { behavior: 'auto' });
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowLeft');
-    await page.keyboard.press('Enter');
+    await test.step('Verify ArrowLeft selects first tab', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowLeft');
+      await page.keyboard.press('Enter');
 
-    await expect(locators.tabLines(page).first()).toBeFocused();
-    await expect(locators.tabpanel(page)).toHaveAttribute('aria-labelledby', 'tab-label-fb');
-    await expect(locators.tabLines(page).nth(0)).toHaveAttribute('aria-selected', 'true');
-    await expect(locators.tabLines(page).nth(1)).toHaveAttribute('aria-selected', 'false');
-    await expect(locators.tabLines(page).nth(2)).toHaveAttribute('aria-selected', 'false');
+      await expect(locators.tabLines(page).first()).toBeFocused();
+      await expect(locators.tabpanel(page)).toHaveAttribute('aria-labelledby', 'tab-label-fb');
+      await expectSelectedTab(page, 0);
+    });
 
-    await page.keyboard.press('ArrowRight');
-    await expect(locators.tabLines(page).nth(1)).toBeFocused();
-    await expect(locators.tabpanel(page)).toHaveAttribute('aria-labelledby', 'tab-label-ig');
-    await expect(locators.tabLines(page).nth(0)).not.toHaveClass(/selected/);
-    await expect(locators.tabLines(page).nth(1)).toHaveAttribute('aria-selected', 'true');
-    await expect(locators.tabLines(page).nth(1)).toHaveClass(/selected/);
+    await test.step('Verify ArrowRight selects second tab', async () => {
+      await page.keyboard.press('ArrowRight');
+      await expect(locators.tabLines(page).nth(1)).toBeFocused();
+      await expect(locators.tabpanel(page)).toHaveAttribute('aria-labelledby', 'tab-label-ig');
+      await expect(locators.tabLines(page).nth(0)).not.toHaveClass(/selected/);
+      await expect(locators.tabLines(page).nth(1)).toHaveClass(/selected/);
+      await expectSelectedTab(page, 1);
+    });
 
-    await page.keyboard.press('ArrowLeft');
-    await expect(locators.tabLines(page).first()).toBeFocused();
-    await expect(locators.tabpanel(page)).toHaveAttribute('aria-labelledby', 'tab-label-fb');
-    await expect(locators.tabLines(page).nth(0)).toHaveAttribute('aria-selected', 'true');
-    await expect(locators.tabLines(page).nth(1)).toHaveAttribute('aria-selected', 'false');
-    await expect(locators.tabLines(page).nth(2)).toHaveAttribute('aria-selected', 'false');
+    await test.step('Verify ArrowLeft selects first tab again', async () => {
+      await page.keyboard.press('ArrowLeft');
+      await expect(locators.tabLines(page).first()).toBeFocused();
+      await expect(locators.tabpanel(page)).toHaveAttribute('aria-labelledby', 'tab-label-fb');
+      await expectSelectedTab(page, 0);
+    });
   });
 
   test('Verify manual tabs activation by keyboard', {
@@ -269,33 +244,36 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tab-line/tests/examples/tab_line_item_addons_and_props.tsx', 'en', { behavior: 'manual' });
 
-    await page.keyboard.press('Tab');
-    await expect(locators.tabLines(page).nth(1)).toBeFocused();
-    await expect(locators.tabpanel(page)).toHaveAttribute('aria-labelledby');
-    await expect(locators.tabLines(page).nth(1)).toHaveAttribute('aria-selected', 'true');
-    await expect(locators.tabLines(page).nth(0)).toHaveAttribute('aria-selected', 'false');
-    await expect(locators.tabLines(page).nth(2)).toHaveAttribute('aria-selected', 'false');
+    await test.step('Verify Tab focuses selected tab', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.tabLines(page).nth(1)).toBeFocused();
+      await expect(locators.tabpanel(page)).toHaveAttribute('aria-labelledby');
+      await expectSelectedTab(page, 1);
+    });
 
-    await page.keyboard.press('ArrowRight');
-    await expect(locators.tabLines(page).nth(2)).toBeFocused();
-    await page.keyboard.press('Space');
-    await expect(locators.tabpanel(page)).toContainText('Twitter');
-    await expect(locators.tabLines(page).nth(0)).not.toHaveClass(/selected/);
-    await expect(locators.tabLines(page).nth(1)).not.toHaveClass(/selected/);
+    await test.step('Verify arrow moves focus and Space selects tab', async () => {
+      await page.keyboard.press('ArrowRight');
+      await expect(locators.tabLines(page).nth(2)).toBeFocused();
+      await page.keyboard.press('Space');
+      await expect(locators.tabpanel(page)).toContainText('Twitter');
+      await expect(locators.tabLines(page).nth(0)).not.toHaveClass(/selected/);
+      await expect(locators.tabLines(page).nth(1)).not.toHaveClass(/selected/);
+      await expect(locators.tabLines(page).nth(2)).toHaveClass(/selected/);
+      await expectSelectedTab(page, 2);
+    });
 
-    await expect(locators.tabLines(page).nth(2)).toHaveAttribute('aria-selected', 'true');
-    await expect(locators.tabLines(page).nth(2)).toHaveClass(/selected/);
+    await test.step('Verify arrows do not select tab without Enter', async () => {
+      await page.keyboard.press('ArrowLeft');
+      await page.keyboard.press('ArrowLeft');
+      await expect(locators.tabLines(page).first()).toBeFocused();
+      await expect(locators.tabpanel(page)).toContainText('Twitter');
+    });
 
-    await page.keyboard.press('ArrowLeft');
-    await page.keyboard.press('ArrowLeft');
-
-    await expect(locators.tabLines(page).first()).toBeFocused();
-    await expect(locators.tabpanel(page)).toContainText('Twitter');
-    await page.keyboard.press('Enter');
-    await expect(locators.tabpanel(page)).toContainText('Facebook');
-    await expect(locators.tabLines(page).nth(0)).toHaveAttribute('aria-selected', 'true');
-    await expect(locators.tabLines(page).nth(1)).toHaveAttribute('aria-selected', 'false');
-    await expect(locators.tabLines(page).nth(2)).toHaveAttribute('aria-selected', 'false');
+    await test.step('Verify Enter selects focused tab', async () => {
+      await page.keyboard.press('Enter');
+      await expect(locators.tabpanel(page)).toContainText('Facebook');
+      await expectSelectedTab(page, 0);
+    });
   });
 
   test('Verify manual tabs activation by mouse', {
@@ -308,9 +286,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tab-line/tests/examples/tab_line_item_addons_and_props.tsx', 'en', { behavior: 'manual' });
 
-    await expect(locators.tabLines(page).nth(1)).toHaveAttribute('aria-selected', 'true');
-    await expect(locators.tabLines(page).nth(0)).toHaveAttribute('aria-selected', 'false');
-    await expect(locators.tabLines(page).nth(2)).toHaveAttribute('aria-selected', 'false');
+    await expectSelectedTab(page, 1);
 
     await locators.tabLines(page).nth(2).click();
     await expect(locators.tabLines(page).nth(0)).not.toHaveClass(/selected/);
@@ -330,9 +306,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     const messages: string[] = [];
 
     await expect(locators.tabLines(page).nth(1)).toHaveClass(/selected/);
-    await expect(locators.tabLines(page).nth(0)).toHaveAttribute('aria-selected', 'false');
-    await expect(locators.tabLines(page).nth(1)).toHaveAttribute('aria-selected', 'true');
-    await expect(locators.tabLines(page).nth(2)).toHaveAttribute('aria-selected', 'false');
+    await expectSelectedTab(page, 1);
     page.on('console', (msg) => {
       if (msg.type() === 'log') {
         messages.push(msg.text());
@@ -351,7 +325,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.KEYBOARD,
       '@tab-line',
       '@base-components',
-
       '@counter',
       '@badge',
       '@typography'],

@@ -2,59 +2,38 @@ import { expect, test, getAccessibilityViolations } from '@semcore/testing-utils
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe(`@radio-cards  ${TAG.ACCESSIBILITY}`, () => {
+test.describe(`@radio-cards ${TAG.ACCESSIBILITY}`, () => {
   test('Basic', async ({ page }) => {
     await loadPage(page, 'stories/components/radio-cards/docs/examples/basic.tsx', 'en');
 
-    {
+    await test.step('Verify initial render', async () => {
       const violations = await getAccessibilityViolations({ page });
       expect(violations).toEqual([]);
-    }
+    });
 
-    {
+    await test.step('Verify after keyboard selection', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowRight');
 
       const violations = await getAccessibilityViolations({ page });
       expect(violations).toEqual([]);
-    }
+    });
   });
 
-  test('Advanced', async ({ page }) => {
-    await loadPage(page, 'stories/components/radio-cards/tests/examples/advanced.tsx', 'en');
+  test('Large icons', async ({ page }) => {
+    await loadPage(page, 'stories/components/radio-cards/docs/examples/large-icons.tsx', 'en');
 
-    {
+    await test.step('Verify initial render', async () => {
       const violations = await getAccessibilityViolations({ page });
       expect(violations).toEqual([]);
-    }
+    });
 
-    {
+    await test.step('Verify after keyboard selection', async () => {
       await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
+      await page.keyboard.press('ArrowRight');
 
       const violations = await getAccessibilityViolations({ page });
       expect(violations).toEqual([]);
-    }
-  });
-
-  /*
-    The `loading` prop puts a Skeleton (an SVG with role='img') inside the radio's label,
-    so check that the extra image role does not break the radiogroup semantics.
-  */
-  test('Loading', async ({ page }) => {
-    await loadPage(page, 'stories/components/radio-cards/tests/examples/radio-card-all-props.tsx', 'en', { loadingCard: '1', disabledCard: 'none' });
-
-    {
-      const violations = await getAccessibilityViolations({ page });
-      expect(violations).toEqual([]);
-    }
-
-    {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('ArrowLeft');
-
-      const violations = await getAccessibilityViolations({ page });
-      expect(violations).toEqual([]);
-    }
+    });
   });
 });

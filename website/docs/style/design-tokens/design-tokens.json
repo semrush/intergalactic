@@ -665,7 +665,7 @@
   },
   {
     "name": "--intergalactic-chart-data-success",
-    "value": "oklch(0.82 0.19 143)",
+    "value": "oklch(0.74 0.17 170)",
     "description": "Success data color for charts.",
     "components": [
       "d3-chart"
@@ -687,6 +687,26 @@
     "name": "--intergalactic-chart-data-lost",
     "value": "oklch(0.74 0.19 22)",
     "description": "Color for the \"Lost\" data on the chart.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-data-null",
+    "value": "oklch(0.9 0.009 234)",
+    "description": "Use it to show null value on the chart.",
+    "components": [
+      "d3-chart"
+    ]
+  },
+  {
+    "name": "--intergalactic-chart-data-other-value",
+    "value": "oklch(0.82 0.016 237.4)",
+    "description": "Use it to indicate voids, missing or some other data on the chart.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-data-total-amount",
+    "value": "oklch(0.64 0.022 243.8)",
+    "description": "Use it to show total value on the chart.",
     "components": []
   },
   {
@@ -720,6 +740,14 @@
     "components": []
   },
   {
+    "name": "--intergalactic-chart-transparent-opacity",
+    "value": "0.3",
+    "description": "Opacity for inactive parts of charts.",
+    "components": [
+      "d3-chart"
+    ]
+  },
+  {
     "name": "--intergalactic-chart-grid-bar-base-bg",
     "value": "oklch(0.92 0.008 233.5)",
     "description": "Default background color of a bar in the BarChart.",
@@ -741,8 +769,7 @@
     "value": "#ffffff",
     "description": "Border for distinguishing data sets and chart dots on the chart grid.",
     "components": [
-      "d3-chart",
-      "mini-chart"
+      "d3-chart"
     ]
   },
   {
@@ -773,9 +800,7 @@
     "name": "--intergalactic-chart-grid-period-pattern",
     "value": "oklch(0.95 0.006 232.7)",
     "description": "Stripe color for diagonal pattern background.",
-    "components": [
-      "d3-chart"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-chart-grid-bg-good",
@@ -831,7 +856,9 @@
     "name": "--intergalactic-chart-grid-text-label-accent",
     "value": "oklch(0.102 0.021 230.9 / 0.9)",
     "description": "Text label with accent on the chart grid.",
-    "components": []
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-grid-x-axis",
@@ -998,26 +1025,6 @@
     "name": "--intergalactic-chart-palette-order-24",
     "value": "oklch(0.64 0.16 64)",
     "description": "24 color in the default list of colors for charts.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-chart-palette-order-null",
-    "value": "oklch(0.9 0.009 234)",
-    "description": "Use it to show null value on the chart.",
-    "components": [
-      "d3-chart"
-    ]
-  },
-  {
-    "name": "--intergalactic-chart-palette-order-other-data",
-    "value": "oklch(0.82 0.016 237.4)",
-    "description": "Use it to indicate voids, missing or some other data on the chart.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-chart-palette-order-total-amount",
-    "value": "oklch(0.64 0.022 243.8)",
-    "description": "Use it to show total value on the chart.",
     "components": []
   },
   {
@@ -3674,7 +3681,6 @@
     "value": "6px",
     "description": "Use for rounding bars: ProgressBar, SliderBar, etc.",
     "components": [
-      "mini-chart",
       "progress-bar",
       "slider"
     ]

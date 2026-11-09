@@ -9,16 +9,12 @@ import React from 'react';
 import type { NSSpinContainer } from './SpinContainer.type';
 import style from './style/spin-container.shadow.css';
 
-type State = {
-  inert?: boolean;
-};
-
 class SpinContainerRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSSpinContainer.Component>,
   typeof SpinContainerRoot.enhance,
   {},
   {},
-  State,
+  {},
   NSSpinContainer.DefaultProps
 > {
   static displayName = 'SpinContainer';
@@ -30,29 +26,6 @@ class SpinContainerRoot extends Component<
   } as const;
 
   static enhance = [resolveColorEnhance()] as const;
-
-  state: State = {
-    inert: this.props.loading,
-  };
-
-  private inertTimer: ReturnType<typeof setTimeout> | null = null;
-
-  componentDidUpdate(prevProps: typeof this.asProps) {
-    const { loading } = this.props;
-    if (prevProps.loading !== loading) {
-      if (this.inertTimer) {
-        clearTimeout(this.inertTimer);
-      }
-
-      if (loading) {
-        this.setState({ inert: true });
-      } else {
-        this.inertTimer = setTimeout(() => {
-          this.setState({ inert: false });
-        }, this.asProps.duration + 50);
-      }
-    }
-  }
 
   getOverlayProps() {
     const { loading, background, duration, size, theme, resolveColor } = this.asProps;
@@ -69,9 +42,11 @@ class SpinContainerRoot extends Component<
   }
 
   getContentProps() {
-    const { inert } = this.state;
+    const { loading } = this.asProps;
 
-    return { inert: inert ? '' : undefined };
+    return {
+      inert: loading ? '' : undefined,
+    };
   }
 
   render() {
@@ -103,18 +78,24 @@ class SpinContainerRoot extends Component<
 type OverlayProps = Intergalactic.InternalTypings.InferChildComponentProps<NSSpinContainer.Overlay.Component, typeof SpinContainerRoot, 'Overlay'>;
 
 class Overlay extends Component<OverlayProps> {
-  static defaultProps = ({ size, theme }: OverlayProps) => ({
-    children: <Spin size={size} theme={theme} />,
-  });
-
   render() {
     const SOverlay = Root;
-    const { styles, theme, background, loading, duration, resolveColor } = this.asProps;
+    const { styles, theme, size, background, loading, duration, resolveColor, children: hasChildren, Children } = this.asProps;
     const useTheme = background ? 'custom' : theme;
 
     return sstyled(styles)(
       <FadeInOut visible={loading} duration={duration}>
-        <SOverlay render={Box} use:theme={useTheme} use:background={resolveColor(background)} />
+        <SOverlay
+          render={Box}
+          use:theme={useTheme}
+          use:background={resolveColor(background)}
+        >
+          {hasChildren
+            ? <Children />
+            : (
+                <Spin size={size} theme={theme} aria-hidden={!loading} />
+              )}
+        </SOverlay>
       </FadeInOut>,
     );
   }

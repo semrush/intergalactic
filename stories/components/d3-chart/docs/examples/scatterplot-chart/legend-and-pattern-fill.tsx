@@ -1,39 +1,10 @@
-import { Plot, ScatterPlot, XAxis, YAxis, minMax, ChartLegend } from '@semcore/ui/d3-chart';
+import { Chart } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
 import ScatterplotMockData from '../../../__mocks__/scatterplot';
 
-const getDegaultLegendItems = () => {
-  return Object.keys(data[0])
-    .filter((name) => name !== 'x' && name !== 'value')
-    .map((item, index) => {
-      return {
-        id: item,
-        label: `Dataset ${index + 1}`,
-        checked: true,
-        color: `chart-palette-order-${index + 1}`,
-      };
-    });
-};
-
 const Demo = () => {
-  const [legendItems, setLegendItems] = React.useState(getDegaultLegendItems);
-
-  const handleChangeVisible = React.useCallback((id: string, isVisible: boolean) => {
-    setLegendItems((prevItems) => {
-      const newItems = prevItems.map((item) => {
-        if (item.id === id) {
-          item.checked = isVisible;
-        }
-
-        return item;
-      });
-
-      return newItems;
-    });
-  }, []);
-
   const MARGIN = 40;
   const width = 500;
   const height = 300;
@@ -47,34 +18,33 @@ const Demo = () => {
     .domain([-1, 11]);
 
   return (
-    <>
-      <ChartLegend
-        items={legendItems}
-        shape='Checkbox'
-        patterns
-        onChangeVisibleItem={handleChangeVisible}
-        aria-label='Scatterplot legend'
-      />
-      <Plot scale={[xScale, yScale]} width={width} height={height} data={data} patterns={true}>
-        <YAxis>
-          <YAxis.Ticks />
-          <YAxis.Grid />
-        </YAxis>
-        <XAxis>
-          <XAxis.Ticks />
-        </XAxis>
-        {legendItems
-          .filter((item) => item.checked)
-          .map((item) => {
-            return (
-              <ScatterPlot key={item.id} x='x' y={item.id} value='value' color={item.color} />
-            );
-          })}
-      </Plot>
-    </>
+    <Chart.ScatterPlot
+      data={data}
+      groupKey='x'
+      valueKey='value'
+      plotWidth={width}
+      plotHeight={height}
+      xScale={xScale}
+      yScale={yScale}
+      showLegend
+      legendProps={legendProps}
+      showTooltip={false}
+      patterns
+      aria-label='Scatterplot chart'
+    />
   );
 };
 
 const data = ScatterplotMockData.ThreeSetsWithValue;
+
+const legendProps = {
+  legendMap: Object.keys(data[0])
+    .filter((name) => name !== 'x' && name !== 'value')
+    .reduce<Record<string, { label: string }>>((acc, key, index) => {
+      acc[key] = { label: `Dataset ${index + 1}` };
+
+      return acc;
+    }, {}),
+};
 
 export default Demo;

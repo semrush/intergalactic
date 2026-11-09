@@ -1,6 +1,7 @@
 SPie {
   stroke: var(--intergalactic-chart-grid-border, #ffffff);
   fill: var(--intergalactic-chart-palette-order-1, oklch(0.23 0.009 245));
+  transition: opacity calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-out;
 }
 
 SPie[color] {
@@ -14,21 +15,18 @@ SPie[pattern][color] {
 }
 
 SPie[transparent] {
-  opacity: 0.3;
+  opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
+}
+
+SLabel {
+  overflow-wrap: anywhere;
+  pointer-events: none;
 }
 
 SEmptyData {
-  fill: var(--intergalactic-chart-palette-order-null, oklch(0.9 0.009 234));
+  fill: var(--intergalactic-chart-data-null, oklch(0.9 0.009 234));
 }
 
 SEmptyData[color] {
   fill: var(--color);
-}
-
-SLabel {
-  text-anchor: middle;
-  vertical-anchor: middle;
-  font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 1.4286);
-
 }

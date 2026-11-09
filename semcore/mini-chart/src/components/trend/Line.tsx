@@ -42,15 +42,11 @@ class TrendLineRoot extends Trend<
   }
 
   override get svgWidth(): number {
-    return this.asProps.lastPointColor
-      ? this.defaultWidth + this.lastPointRadius
-      : this.defaultWidth;
+    return this.asProps.lastPointColor ? this.defaultWidth + this.lastPointRadius : this.defaultWidth;
   }
 
   override get svgHeight(): number {
-    return this.asProps.lastPointColor
-      ? this.defaultHeight + this.lastPointRadius
-      : this.defaultHeight;
+    return this.asProps.lastPointColor ? this.defaultHeight + this.lastPointRadius : this.defaultHeight;
   }
 
   get color() {
@@ -85,23 +81,32 @@ class TrendLineRoot extends Trend<
           role='img'
           {...extractedAriaProps}
         >
+          {withArea && (
+            <>
+              <defs>
+                <linearGradient id={`${uid}-area-gradient`} x1='0' y1='0' x2='0' y2='1'>
+                  <stop offset='0' stopColor={this.color} stopOpacity={0.15} />
+                  <stop offset='0.06' stopColor={this.color} stopOpacity={0.2} />
+                  <stop offset='1' stopColor={this.color} stopOpacity={0} />
+                </linearGradient>
+              </defs>
+              <polyline
+                points={`0,${this.defaultHeight} ${points.join(' ')} ${this.defaultWidth},${this.defaultHeight}`}
+                fill={`url(#${uid}-area-gradient)`}
+                clipPath={`url(#${uid})`}
+              />
+            </>
+          )}
           <polyline
             points={points.join(' ')}
             stroke={this.color}
-            strokeWidth='4'
+            strokeWidth={2}
             fill='none'
+            strokeLinejoin='round'
+            strokeLinecap='round'
+            vectorEffect='non-scaling-stroke'
             clipPath={`url(#${uid})`}
           />
-          {withArea && (
-            <polyline
-              points={`0,${this.defaultHeight} ${points.join(' ')} ${this.defaultWidth},${
-                this.defaultHeight
-              }`}
-              fill={this.color}
-              fillOpacity={0.2}
-              clipPath={`url(#${uid})`}
-            />
-          )}
           {lastPointColor && !loading && (
             <circle
               cx={step * (length - 1)}

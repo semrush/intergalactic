@@ -66,7 +66,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en');
 
@@ -396,7 +397,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/limited-mode/checkboxes.tsx', 'en', { rowsLimit: 0, columnsLimit: 0 });
 
@@ -414,7 +416,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
         sideIndents: 'wide',
@@ -440,7 +443,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
         fixedColumns: true,
@@ -471,7 +475,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
         fixedColumns: true,
@@ -509,7 +514,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
         fixedColumns: true,
@@ -541,7 +547,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
         fixedColumns: true,
@@ -613,7 +620,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@typography',
         '@animation',
         '@base-components',
-        '@flex-box'],
+        '@flex-box',
+        '@checkbox'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/selectable_with_merged_rows.tsx', 'en');
       const cellSelectedBg = await getCssVarColor(page, '--intergalactic-table-td-cell-selected');
@@ -668,7 +676,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page, browserName }) => {
       test.skip(browserName === 'firefox', 'Skipped in Firefox, reason not documented');
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
@@ -692,7 +701,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
         sideIndents: 'wide', reactive: false,
@@ -718,7 +728,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
       const cellSelectedHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-selected-hover');
@@ -747,7 +758,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page, browserName }) => {
       test.skip(browserName === 'firefox', 'Skipped in Firefox, reason not documented');
 
@@ -962,7 +974,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Selectable rows ', () => {
     test('Verify empty data with selectable rows', {
       tag: [TAG.PRIORITY_MEDIUM,
-        '@data-table'],
+        '@data-table',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox-in-table-with-no-data.tsx', 'en');
 
@@ -979,7 +992,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en');
 
@@ -1122,7 +1136,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@flex-box',
         '@pagination',
-        '@typography'],
+        '@typography',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
         maxAvailableSelectedRows: 2,
@@ -1184,7 +1199,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@flex-box',
         '@pagination',
-        '@typography'],
+        '@typography',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
         maxAvailableSelectedRows: 3,
@@ -1230,7 +1246,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@flex-box',
         '@pagination',
-        '@typography'],
+        '@typography',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
         pagination: true,
@@ -1281,7 +1298,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@flex-box',
         '@pagination',
-        '@typography'],
+        '@typography',
+        '@checkbox'],
     }, async ({ page }) => {
       // regression guard: the header checkbox used to be disabled whenever the limit was
       // reached, which blocked deselect-all once every visible row was selected
@@ -1326,7 +1344,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en');
 
@@ -1437,7 +1456,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@pagination',
 
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en');
 
@@ -1474,7 +1494,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@typography',
         '@animation',
         '@base-components',
-        '@flex-box'],
+        '@flex-box',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/selectable_with_merged_rows.tsx', 'en');
 
@@ -1505,7 +1526,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@typography',
         '@animation',
         '@base-components',
-        '@flex-box'],
+        '@flex-box',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/selectable_with_merged_rows.tsx', 'en');
 
@@ -1564,7 +1586,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en');
 
@@ -1591,7 +1614,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en');
 
@@ -1609,7 +1633,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('SelectableRows (legacy API)', () => {
     test('Verify SelectableRows empty data with selectable rows', {
       tag: [TAG.PRIORITY_MEDIUM,
-        '@data-table'],
+        '@data-table',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox-in-table-with-no-data.tsx', 'en', { reactive: false });
 
@@ -1626,7 +1651,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
 
@@ -1691,7 +1717,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
 
@@ -1747,7 +1774,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false, pagination: true });
 
@@ -1848,7 +1876,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false, pagination: true });
 
@@ -1928,7 +1957,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
 
@@ -1972,7 +2002,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false, mergedRows: true });
 
@@ -2006,7 +2037,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false, mergedRows: true });
 
@@ -2059,7 +2091,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false, mergedRows: true });
 
@@ -2103,7 +2136,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
 
@@ -2125,7 +2159,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@pagination',
         '@typography',
-        '@animation'],
+        '@animation',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
 
@@ -2241,7 +2276,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           '@button',
           '@pagination',
           '@typography',
-          '@animation'],
+          '@animation',
+          '@checkbox'],
       }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/data-table/tests/examples/limited-mode/checkboxes.tsx', 'en', item);
 

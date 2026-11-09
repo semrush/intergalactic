@@ -194,6 +194,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@d3-chart',
         '@base-components',
         '@flex-box',
+        '@checkbox',
       ],
     }, async ({ page }) => {
       await loadPage(page, AREA_STORY, 'en', vars);
@@ -239,7 +240,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   dataVariations.forEach((dataVariant) => {
     test(`Verify area chart ${dataVariant.description}`, {
-      tag: [TAG.PRIORITY_LOW, '@area-chart', '@d3-chart', '@base-components', '@flex-box'],
+      tag: [TAG.PRIORITY_LOW, '@area-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, AREA_STORY, 'en', { data: dataVariant.data, duration: 0 });
 
@@ -334,7 +335,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify legend and pattern fill hover and focus styles', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@area-chart', '@d3-chart', '@chart-legend'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@area-chart', '@d3-chart', '@chart-legend', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/area-chart/legend-and-pattern-fill.tsx', 'en');
 
@@ -360,7 +361,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify stacked area chart legend hover styles', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@stacked-area-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@typography'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@stacked-area-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@typography', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/stacked-area-chart/legend-and-pattern-fill.tsx', 'en');
 
@@ -383,7 +384,7 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify axes, dots, tooltip and legend render with all features enabled', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@area-chart', '@d3-chart', '@base-components', '@flex-box'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@area-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -481,7 +482,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify click handler (onClickArea)', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@area-chart', '@d3-chart', '@base-components', '@flex-box'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@area-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     const consoleMessages: string[] = [];
 
@@ -506,7 +507,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify legend checkbox attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@area-chart', '@d3-chart', '@chart-legend'],
+    tag: [TAG.PRIORITY_HIGH, '@area-chart', '@d3-chart', '@chart-legend', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/area-chart/legend-and-pattern-fill.tsx', 'en');
 
@@ -545,7 +546,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   gradientRules.forEach(({ description, props, gradient }) => {
     test(`Verify area gradient is ${gradient ? 'applied' : 'suppressed'}: ${description}`, {
-      tag: ['patterns' in props ? TAG.PRIORITY_MEDIUM : TAG.PRIORITY_HIGH, '@area-chart', '@d3-chart'],
+      tag: ['patterns' in props ? TAG.PRIORITY_MEDIUM : TAG.PRIORITY_HIGH, '@area-chart', '@d3-chart', '@checkbox'],
     }, async ({ page }) => {
       await openAreaStory(page, props);
 
@@ -554,7 +555,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify the area gradient follows the legend rather than the data', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@area-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@area-chart', '@d3-chart', '@checkbox'],
   }, async ({ page }) => {
     await openAreaStory(page, {
       stacked: false,
@@ -585,7 +586,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify highlighted dots survive a hover', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@area-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@area-chart', '@d3-chart', '@checkbox'],
   }, async ({ page }) => {
     await openAreaStory(page, { highlightDots: 'mixed', singleSeries: true, showDots: false });
 
@@ -603,7 +604,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify forecast does not use the pattern fill when patterns are enabled', {
-    tag: [TAG.PRIORITY_HIGH, TAG.ACCESSIBILITY, '@area-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.ACCESSIBILITY, '@area-chart', '@d3-chart', '@checkbox'],
   }, async ({ page }) => {
     await openAreaStory(page, { dataType: 'forecast', singleSeries: true, patterns: true });
 
@@ -614,7 +615,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify forecast segments differ in colour between two series', {
-    tag: [TAG.PRIORITY_HIGH, '@area-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@area-chart', '@d3-chart', '@checkbox'],
   }, async ({ page }) => {
     await openAreaStory(page, { dataType: 'forecast' });
 
@@ -631,7 +632,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify interpolated points bridge the gap instead of breaking the series', {
-    tag: [TAG.PRIORITY_MEDIUM, '@area-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, '@area-chart', '@d3-chart', '@checkbox'],
   }, async ({ page }) => {
     await openAreaStory(page, {
       withInterpolatedGaps: true,

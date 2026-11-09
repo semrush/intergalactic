@@ -159,6 +159,18 @@ const hoverPlotCenter = async (page: Page) => {
 };
 
 /**
+ * Hovers the plot column under the given tick, so the hovered tick pill shows the same
+ * content as that tick.
+ */
+const hoverTickColumn = async (page: Page, tick: ReturnType<Page['locator']>) => {
+  const plotBox = await locators.plot(page).first().boundingBox();
+  const tickBox = await tick.boundingBox();
+  if (!plotBox || !tickBox) throw new Error('Bounding box not found');
+
+  await page.mouse.move(tickBox.x + tickBox.width / 2, plotBox.y + plotBox.height / 2);
+};
+
+/**
  * Dots give the exact position of a data point, so the hovered index needs no
  * coordinate math. The first 10 dots belong to the first series, one per point.
  *
@@ -220,7 +232,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       });
 
       await test.step('Verify ReferenceBackground attributes', async () => {
-        const background = page.locator('svg').first().locator('rect').nth(1);
+        const background = locators.plot(page, 0).locator('path[value="Category 3"]');
         await expect(background).toHaveAttribute('aria-hidden', 'true');
         await expect(background).toHaveAttribute('value', 'Category 3');
       });
@@ -423,7 +435,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test.describe('Tooltip percent delta', () => {
     test('Verify upward deltas render with the DiffUp icon', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@area-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@area-chart', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', deltaProps);
 
@@ -709,11 +721,42 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       expect(linkSize).toBe(tickSize);
     });
+
+    test('Verify the hovered tick hides while a tick link has keyboard focus', {
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@d3-chart',
+        '@bar-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, LINKS_EXAMPLE, 'en');
+      await locators.plot(page).waitFor({ state: 'visible' });
+
+      const tickLinks = locators.axisTicks(page).locator('a');
+      const pill = locators.hoveredTick(page);
+
+      await hoverTickColumn(page, tickLinks.first());
+      await expect(pill).toHaveCSS('visibility', 'visible');
+
+      await test.step('Focus the link with the keyboard', async () => {
+        // Focus arrives by Shift+Tab, so the link matches :focus-visible in every browser.
+        await tickLinks.nth(1).focus();
+        await page.keyboard.press('Shift+Tab');
+
+        await expect(tickLinks.first()).toBeFocused();
+        await expect(pill).toHaveCSS('visibility', 'hidden');
+      });
+
+      await test.step('Move focus off the tick links', async () => {
+        // The first link is the first tab stop, so Shift+Tab would leave the page.
+        await tickLinks.first().blur();
+
+        await expect(tickLinks.first()).not.toBeFocused();
+        await expect(pill).toHaveCSS('visibility', 'visible');
+      });
+    });
   });
 
   test.describe('Pattern fills, dots and lines', () => {
     test('Verify pattern styles', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@area-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@area-chart', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/pattern-fill.tsx', 'en');
 
@@ -767,7 +810,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       ['Chart.Area', AREA_CHART_EXAMPLE, '[data-ui-name="Area.Dots"]', '@area-chart'],
     ] as const).forEach(([chart, example, dotSelector, chartTag]) => {
       test(`Verify ${chart} keeps the hovered dot when showDots is disabled`, {
-        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', chartTag],
+        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', chartTag, '@checkbox'],
       }, async ({ page }) => {
         await loadPage(page, example, 'en', { showDots: false, duration: 0 });
 
@@ -788,7 +831,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       test(`Verify ${chart} renders every dot when showDots is enabled`, {
-        tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', chartTag],
+        tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', chartTag, '@checkbox'],
       }, async ({ page }) => {
         await loadPage(page, example, 'en', { showDots: true, duration: 0 });
 
@@ -897,7 +940,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       ['Chart.Area', AREA_CHART_EXAMPLE, '@area-chart'],
     ] as const).forEach(([chart, example, chartTag]) => {
       test(`Verify ${chart} draws the hover line with a cap on each end`, {
-        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', chartTag],
+        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', chartTag, '@checkbox'],
       }, async ({ page }) => {
         await loadPage(page, example, 'en', { duration: 0 });
 
@@ -930,7 +973,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify Chart.Bar hovers with a rect and gets no caps', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@bar-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@bar-chart', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, BAR_CHART_EXAMPLE, 'en', { duration: 0 });
 
@@ -989,7 +1032,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     ).forEach(([name, axisProps]) => {
       test(`Verify hovering a chart with ${name} renders no pill and raises no error`, {
         tag: [TAG.PRIORITY_LOW, TAG.MOUSE, '@d3-chart',
-          '@line-chart'],
+          '@line-chart', '@checkbox'],
       }, async ({ page }) => {
         const pageErrors: string[] = [];
         page.on('pageerror', (error) => pageErrors.push(error.message));
@@ -1049,7 +1092,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
    */
   test.describe('Tooltip percent delta', () => {
     test('Verify upward deltas render with the DiffUp icon', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@area-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@area-chart', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', deltaProps);
 
@@ -1062,7 +1105,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify downward deltas render with the DiffDown icon', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@area-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@area-chart', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', deltaProps);
 
@@ -1081,7 +1124,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify the diff is green upwards, red downwards and muted when stable', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@area-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@area-chart', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', deltaProps);
 
@@ -1127,7 +1170,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
         '@area-chart',
         '@base-components',
-        '@flex-box'],
+        '@flex-box',
+        '@checkbox'],
     }, async ({ page }) => {
       const readBothTrends = async (deltaPercentGrowthColor: 'good' | 'bad') => {
         await loadPage(page, AREA_CHART_EXAMPLE, 'en', { ...deltaProps, deltaPercentGrowthColor });
@@ -1160,7 +1204,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart',
         '@area-chart',
         '@base-components',
-        '@flex-box'],
+        '@flex-box',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', {
         ...deltaProps,
@@ -1190,7 +1235,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_LOW, TAG.MOUSE, '@d3-chart',
         '@area-chart',
         '@base-components',
-        '@flex-box'],
+        '@flex-box',
+        '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', {
         ...deltaProps,
@@ -1261,7 +1307,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify an unchanged value renders a stable delta without an icon', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@area-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@area-chart', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', deltaProps);
 
@@ -1274,7 +1320,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify the first data point renders no delta column', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@area-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@area-chart', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', deltaProps);
 
@@ -1288,7 +1334,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
      * CSS Grid pulls the next label into the hole.
      */
     test('Verify rows stay aligned when only some series have a delta', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@area-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@area-chart', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', { ...deltaProps, withZeroValue: true });
 
@@ -1328,7 +1374,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify no delta is rendered when showDeltaPercentInTooltip is off', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@area-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@area-chart', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', {
         ...deltaProps,
@@ -1363,7 +1409,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     };
 
     test('Verify HoverLine highlights a value the axis does not label', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@line-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@line-chart', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, LINE_CHART_EXAMPLE, 'en', { duration: 0 });
 
@@ -1379,7 +1425,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify HoverLine formats the value the same way the axis does', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@area-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@area-chart', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', { duration: 0 });
 
@@ -1395,7 +1441,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify HoverRect highlights the hovered category', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@bar-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@bar-chart', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, BAR_CHART_EXAMPLE, 'en', { duration: 0 });
 
@@ -1431,7 +1477,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       );
 
     test('Verify each dot is ringed by a lighter shade of its own colour', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@line-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@line-chart', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, LINE_CHART_EXAMPLE, 'en', { duration: 0 });
 
@@ -1456,7 +1502,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test.describe('Tooltip default formatting', () => {
     test('Verify a Date group key is formatted through Intl for the given locale', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@line-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@line-chart', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, TOOLTIP_DEFAULT_FORMAT_EXAMPLE, 'en', { locale: 'de' });
 
@@ -1466,7 +1512,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify the default date carries the full weekday and month and no time', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@line-chart'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart', '@line-chart', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, TOOLTIP_DEFAULT_FORMAT_EXAMPLE, 'en');
 
@@ -1490,7 +1536,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     for (const [titleFormat, expected] of titleFormats) {
       test(`Verify tooltipTitleFormatter renders the ${titleFormat} title`, {
-        tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@line-chart'],
+        tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@line-chart', '@checkbox'],
       }, async ({ page }) => {
         await loadPage(page, TOOLTIP_DEFAULT_FORMAT_EXAMPLE, 'en', { titleFormat });
 
@@ -1501,7 +1547,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }
 
     test('Verify tooltipTitleFormatter leaves the series values alone', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@line-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@line-chart', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, TOOLTIP_DEFAULT_FORMAT_EXAMPLE, 'en', { titleFormat: 'short' });
 

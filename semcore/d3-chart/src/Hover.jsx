@@ -238,23 +238,20 @@ const HOVERED_TICK_PADDING_X = 12;
 function HoveredTick(props) {
   const { tickFormatter, value, isFirstTick = false, isLastTick = false, styles, x, yRange, size, position } = props;
 
-  const contentRef = React.useRef(null);
-  const [interactive, setInteractive] = React.useState(false);
-
   const formattedValue = tickFormatter(value);
 
+  const contentRef = React.useRef(null);
+
+  const isRendered = size?.width !== undefined && size?.height !== undefined && position !== null;
   const isMightBeInteractive = formattedValue !== null && typeof formattedValue === 'object';
 
   useEnhancedEffect(() => {
-    if (!isMightBeInteractive || !contentRef.current) {
-      setInteractive(false);
-      return;
-    }
+    if (!isRendered || !isMightBeInteractive || !contentRef.current) return;
 
-    setInteractive(getFocusableIn(contentRef.current).length > 0);
-  });
+    getFocusableIn(contentRef.current).forEach((node) => node.setAttribute('tabindex', '-1'));
+  }, [value, isRendered, isMightBeInteractive]);
 
-  if (size?.width === undefined || size?.height === undefined || position === null) return null;
+  if (!isRendered) return null;
 
   const { width, height } = size;
 
@@ -281,7 +278,8 @@ function HoveredTick(props) {
       data-is-first={isFirstTick}
       data-is-last={isLastTick}
       position={position}
-      aria-hidden={interactive ? undefined : true}
+      data-hovered-tick
+      aria-hidden='true'
     >
       <SHoveredTickContent ref={contentRef}>
         <SHoveredTick>{formattedValue}</SHoveredTick>

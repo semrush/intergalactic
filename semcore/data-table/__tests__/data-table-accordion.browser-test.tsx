@@ -233,7 +233,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@button',
         '@flex-box',
         '@notice',
-        '@typography'],
+        '@typography',
+        '@checkbox'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_pagination.tsx', 'en');
       const stylesActiveHovered = await getStylesActiveHovered(page);
@@ -284,7 +285,8 @@ test.describe(`${TAG.VISUAL}`, () => {
           '@data-table',
           '@d3-chart',
           '@line-chart',
-          '@responsive'],
+          '@responsive',
+          '@checkbox'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_checkbox.tsx', 'en', item);
         const cellSelectedActiveBg = await getCssVarColor(page, '--intergalactic-table-td-cell-selected-active');
@@ -1057,7 +1059,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@flex-box',
         '@notice',
-        '@typography'],
+        '@typography',
+        '@checkbox'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_pagination.tsx', 'en');
 

@@ -2,7 +2,7 @@ import { expect, getAccessibilityViolations, test } from '@semcore/testing-utils
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-test.describe(`${TAG.ACCESSIBILITY} @fullscreen-modal `, () => {
+test.describe(`${TAG.ACCESSIBILITY} @fullscreen-modal`, () => {
   test('Basic usage', async ({ page }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/docs/examples/basic_fullscreen.headers_use.tsx', 'en');
 

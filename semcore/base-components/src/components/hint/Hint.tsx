@@ -56,6 +56,7 @@ class HintPopperRoot extends Component<
 
   private showTimer?: number;
   private hideTimer?: number;
+  private positionTimer?: number;
 
   static enhance = enhances;
 
@@ -138,7 +139,13 @@ class HintPopperRoot extends Component<
     trigger.removeEventListener('mouseleave', this.handleMouseLeave);
     trigger.removeEventListener('keydown', this.handleKeyDown);
 
-    this.hideHint();
+    this.clearTimers();
+  }
+
+  private clearTimers() {
+    clearTimeout(this.showTimer);
+    clearTimeout(this.positionTimer);
+    clearTimeout(this.hideTimer);
   }
 
   private showHint(node: Element, mouseEvent?: MouseEvent): void {
@@ -153,7 +160,7 @@ class HintPopperRoot extends Component<
     this.showTimer = window.setTimeout(() => {
       this.handlers.visible(true);
 
-      window.setTimeout(() => {
+      this.positionTimer = window.setTimeout(() => {
         const popperElement = this.hintRef.current;
         if (popperElement) {
           const middleware = [
@@ -190,9 +197,8 @@ class HintPopperRoot extends Component<
 
     const hideTimeout = Array.isArray(timeout) ? timeout[1] : timeout;
 
-    if (this.showTimer) {
-      clearTimeout(this.showTimer);
-    }
+    clearTimeout(this.showTimer);
+    clearTimeout(this.positionTimer);
 
     if (this.state.innerVisible) {
       this.setState({ innerVisible: false });

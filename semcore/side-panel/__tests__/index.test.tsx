@@ -1,11 +1,15 @@
 import { Portal } from '@semcore/base-components';
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import SidePanel from '../src';
+
+describe('side-panel Translations exports', () => {
+  runTranslationsCheckTest('@semcore/side-panel');
+});
 
 describe('side-panel Dependency imports', () => {
   runDependencyCheckTests('side-panel');

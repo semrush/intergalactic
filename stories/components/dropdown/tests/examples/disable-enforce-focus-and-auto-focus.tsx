@@ -16,10 +16,10 @@ type DisableEnforceAndAutoFocusExampleProps =
 const Demo = (props: DisableEnforceAndAutoFocusExampleProps) => (
   <>
     <Dropdown>
-      <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2} disableEnforceFocus={props.disableEnforceFocus}>
+      <Dropdown.Trigger id='dropdown-trigger-enforce' tag={Button} ml={2} disableEnforceFocus={props.disableEnforceFocus}>
         disableEnforceFocus trigger
       </Dropdown.Trigger>
-      <Dropdown.Popper p={4} wMax={260} aria-labelledby='dropdown-basic' autoFocus={props.autoFocus}>
+      <Dropdown.Popper p={4} wMax={260} aria-labelledby='dropdown-trigger-enforce' autoFocus={props.autoFocus}>
         <Text size={200}>
           Hello there! I'm Dropdown's content
         </Text>
@@ -33,10 +33,10 @@ const Demo = (props: DisableEnforceAndAutoFocusExampleProps) => (
     </Dropdown>
 
     <Dropdown>
-      <Dropdown.Trigger id='dropdown-basic' tag={Button} ml={2}>
+      <Dropdown.Trigger id='dropdown-popper-enforce' tag={Button} ml={2}>
         disableEnforceFocus popper
       </Dropdown.Trigger>
-      <Dropdown.Popper p={4} wMax={260} aria-labelledby='dropdown-basic' disableEnforceFocus={props.disableEnforceFocus} autoFocus={props.autoFocus}>
+      <Dropdown.Popper p={4} wMax={260} aria-labelledby='dropdown-popper-enforce' disableEnforceFocus={props.disableEnforceFocus} autoFocus={props.autoFocus}>
         <Text size={200}>
           Hello there! I'm Dropdown's content
         </Text>
@@ -54,7 +54,6 @@ const Demo = (props: DisableEnforceAndAutoFocusExampleProps) => (
 export const defaultDisableEnforceAndAutoFocusExampleProps: DisableEnforceAndAutoFocusExampleProps = {
   disableEnforceFocus: undefined,
   autoFocus: undefined,
-
 };
 
 Demo.defaultProps = defaultDisableEnforceAndAutoFocusExampleProps;

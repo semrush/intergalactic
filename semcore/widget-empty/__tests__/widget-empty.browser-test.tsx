@@ -3,13 +3,8 @@ import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 const locators = {
-  widgetEmpty: (page: Page) => page.locator('[data-ui-name="WidgetEmpty"]'),
-  widgetError: (page: Page) => page.locator('[data-ui-name="WidgetError"]'),
-  widgetNoData: (page: Page) => page.locator('[data-ui-name="WidgetNoData"]'),
-  image: (page: Page) => page.locator('img'),
-  imageContainer: (page: Page) => page.locator('img').locator('..'),
   button: (page: Page, name: string) => page.getByRole('button', { name }),
-  link: (page: Page, name: string) => page.getByRole('link', { name }),
+  options: (page: Page) => page.getByRole('option'),
 };
 
 /* =====================================================
@@ -111,14 +106,14 @@ test.describe(TAG.VISUAL, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/widget-empty/docs/examples/error_example.tsx', 'en');
 
-    await test.step('Verify default state', async () => {
+    await test.step('Verify error texts after switching locale by keyboard', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.getByRole('option').first().waitFor({ state: 'visible' });
+      await locators.options(page).first().waitFor({ state: 'visible' });
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
-      await page.getByRole('option').first().waitFor({ state: 'hidden' });
+      await locators.options(page).first().waitFor({ state: 'hidden' });
       await expect(page).toHaveScreenshot();
     });
   });
@@ -134,14 +129,13 @@ test.describe(TAG.VISUAL, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/widget-empty/docs/examples/nodata_example.tsx', 'en');
 
-    await test.step('Verify default state', async () => {
+    await test.step('Verify no data texts after switching locale by keyboard', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.getByRole('option').first().waitFor({ state: 'visible' });
+      await locators.options(page).first().waitFor({ state: 'visible' });
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
-      await page.getByRole('option').first().waitFor({ state: 'hidden' });
-
+      await locators.options(page).first().waitFor({ state: 'hidden' });
       await expect(page).toHaveScreenshot();
     });
   });

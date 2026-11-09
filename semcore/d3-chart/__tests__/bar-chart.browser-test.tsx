@@ -140,7 +140,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     variables.forEach(({ priority, ...vars }) => {
       test(`Verify bar chart ${vars.description}`, {
-        tag: [priority, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box'],
+        tag: [priority, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
       }, async ({ page }) => {
         await loadPage(
           page,
@@ -184,7 +184,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     variablesTrend.forEach((vars) => {
       test(`Verify trend for chart ${vars.description}`, {
-        tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box'],
+        tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
       }, async ({ page }) => {
         await loadPage(
           page,
@@ -225,7 +225,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.waitForTimeout(500);
 
       await test.step('Verify no default tooltip when hover', async () => {
-        await locators.bar(page, 2).hover();
+        await locators.groupBarBar(page, 2).hover();
         await expect(page).toHaveScreenshot();
       });
     });
@@ -410,7 +410,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     groupedStackedVariations.forEach((variant) => {
       test(`Verify bar chart ${variant.name}`, {
-        tag: [variant.priority, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box'],
+        tag: [variant.priority, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
       }, async ({ page }) => {
         await loadPage(
           page,
@@ -457,7 +457,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test.describe('Bar chart - Legend and interactions', () => {
     test('Verify bar legend and pattern fill mouse interaction', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@typography'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@typography', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -500,7 +500,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify bar legend and pattern fill keyboard interaction', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@typography'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@typography', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -596,7 +596,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     dataVariations.forEach((dataVariant) => {
       test(`Verify bar chart ${dataVariant.name}`, {
-        tag: [dataVariant.priority, '@bar-chart', '@d3-chart', '@base-components', '@flex-box'],
+        tag: [dataVariant.priority, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
       }, async ({ page }) => {
         await loadPage(
           page,
@@ -756,7 +756,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify horizontal bar legend and pattern fill mouse interaction', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@typography'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@typography', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -785,7 +785,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify horizontal bar legend and pattern fill keyboard interaction', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@typography'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@typography', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -881,7 +881,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify stacked bar legend and pattern fill mouse interaction', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@card', '@chart-legend'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@card', '@chart-legend', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -914,7 +914,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify stacked bar legend and pattern fill keyboard interaction', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@card', '@chart-legend'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@card', '@chart-legend', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -980,7 +980,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify stacked horizontal bar legend and pattern fill mouse interaction', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@card', '@chart-legend'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@card', '@chart-legend', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -1013,7 +1013,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify stacked horizontal bar legend and pattern fill keyboard interaction', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@card', '@chart-legend'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@card', '@chart-legend', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -1106,7 +1106,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   ariaHiddenVariations.forEach((variant) => {
     test(`Verify bars aria-hidden attribute for ${variant.name}`, {
-      tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@base-components', '@flex-box'],
+      tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -1153,9 +1153,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify bars have correct attributes', async () => {
       await locators.plot(page).first().waitFor({ state: 'visible' });
 
-      await expect(locators.bar(page)).not.toHaveCount(0);
+      await expect(locators.groupBarBar(page)).not.toHaveCount(0);
 
-      for (const bar of await locators.bar(page).all()) {
+      for (const bar of await locators.groupBarBar(page).all()) {
         await expect(bar).toHaveAttribute('aria-hidden', 'true');
         await expect(bar).toHaveAttribute('r', '2');
       }
@@ -1412,7 +1412,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   maxBarSizeVariations.forEach((variant) => {
     test(`Verify default maxBarSize limits ${variant.name} to ${MAX_BAR_SIZE}px`, {
-      tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -1443,7 +1443,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify custom maxBarSize overrides the default', {
-    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -1472,7 +1472,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify bars stay thinner than maxBarSize when the group has no room', {
-    tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -1524,7 +1524,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test.fixme('Verify the gap between bars inside a group is 2px', {
-    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@checkbox'],
     annotation: {
       type: 'issue',
       description: 'UIK-5880: GroupBar keeps paddingInner hardcoded to 0.1, so the gap is a share of the band step instead of a fixed 2px (3.74px at plotWidth 500, ~28px at plotWidth 800)',

@@ -1,6 +1,25 @@
+import type { Locator } from '@semcore/testing-utils/playwright';
 import { test, expect } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
+
+const expectCSS = async (locator: Locator, styles: Record<string, string>) => {
+  for (const [property, value] of Object.entries(styles)) {
+    await expect(locator).toHaveCSS(property, value);
+  }
+};
+
+type StyleCase = { props: string; styles: Record<string, string> };
+
+const getAfterInset = (locator: Locator) => locator.evaluate((el) => {
+  const after = window.getComputedStyle(el, '::after');
+  return {
+    top: after.top,
+    right: after.right,
+    bottom: after.bottom,
+    left: after.left,
+  };
+});
 
 /* =====================================================
 @functional
@@ -15,100 +34,24 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/flex-box/tests/examples/box-margins-and-paddings.tsx', 'en');
 
-    // Get all Box elements
-    const boxes = await page.$$('div[data-ui-name="Box"]');
+    const boxes = page.locator('div[data-ui-name="Box"]');
+    const cases: StyleCase[] = [
+      { props: 'no m/p', styles: { margin: '0px', padding: '0px' } },
+      { props: 'm={5} p={10}', styles: { margin: '20px', padding: '40px' } },
+      { props: 'mr={5} ml={5} mt={10} mb={10}', styles: { margin: '40px 20px' } },
+      { props: 'pt={10} pr={5} pb={10} pl={5}', styles: { padding: '40px 20px' } },
+      { props: 'mx={10}', styles: { margin: '0px 40px' } },
+      { props: 'my={10}', styles: { margin: '40px 0px' } },
+      { props: 'px={10}', styles: { padding: '0px 40px' } },
+      { props: 'py={10}', styles: { padding: '40px 0px' } },
+      { props: 'scaleIndent={5} py={10}', styles: { padding: '50px 0px' } },
+    ];
 
-    // Check No m/p
-    expect(
-      await boxes[0].evaluate((box) => {
-        const computedStyle = window.getComputedStyle(box);
-        return {
-          margin: computedStyle.margin,
-          padding: computedStyle.padding,
-        };
-      }),
-    ).toEqual({ margin: '0px', padding: '0px' });
-
-    // Check m={5} p={10}
-    expect(
-      await boxes[1].evaluate((box) => {
-        const computedStyle = window.getComputedStyle(box);
-        return {
-          margin: computedStyle.margin,
-          padding: computedStyle.padding,
-        };
-      }),
-    ).toEqual({ margin: '20px', padding: '40px' });
-
-    // Check mr={5} ml={5} mt={10} mb={10}
-    expect(
-      await boxes[2].evaluate((box) => {
-        const computedStyle = window.getComputedStyle(box);
-        return {
-          margin: computedStyle.margin,
-        };
-      }),
-    ).toEqual({ margin: '40px 20px' });
-
-    // Check pt={10} pr={5} pb={10} pl={5}
-    expect(
-      await boxes[3].evaluate((box) => {
-        const computedStyle = window.getComputedStyle(box);
-        return {
-          padding: computedStyle.padding,
-        };
-      }),
-    ).toEqual({ padding: '40px 20px' });
-
-    // Check mx={10}
-    expect(
-      await boxes[4].evaluate((box) => {
-        const computedStyle = window.getComputedStyle(box);
-        return {
-          margin: computedStyle.margin,
-        };
-      }),
-    ).toEqual({ margin: '0px 40px' });
-
-    // Check my={10}
-    expect(
-      await boxes[5].evaluate((box) => {
-        const computedStyle = window.getComputedStyle(box);
-        return {
-          margin: computedStyle.margin,
-        };
-      }),
-    ).toEqual({ margin: '40px 0px' });
-
-    // Check px={10}
-    expect(
-      await boxes[6].evaluate((box) => {
-        const computedStyle = window.getComputedStyle(box);
-        return {
-          padding: computedStyle.padding,
-        };
-      }),
-    ).toEqual({ padding: '0px 40px' });
-
-    // Check py={10}
-    expect(
-      await boxes[7].evaluate((box) => {
-        const computedStyle = window.getComputedStyle(box);
-        return {
-          padding: computedStyle.padding,
-        };
-      }),
-    ).toEqual({ padding: '40px 0px' });
-
-    // Check scaleIndent={4}
-    expect(
-      await boxes[8].evaluate((box) => {
-        const computedStyle = window.getComputedStyle(box);
-        return {
-          padding: computedStyle.padding,
-        };
-      }),
-    ).toEqual({ padding: '40px 0px' });
+    for (const [index, { props, styles }] of cases.entries()) {
+      await test.step(`Verify ${props}`, async () => {
+        await expectCSS(boxes.nth(index), styles);
+      });
+    }
   });
 
   test('Verify Box dimensions', {
@@ -118,72 +61,106 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/flex-box/tests/examples/flex-box-width-height-test.tsx', 'en');
 
-    // Get all Box elements
-    const boxes = await page.$$('div[data-ui-name="Box"]');
+    const boxes = page.locator('div[data-ui-name="Box"]');
+    const cases: StyleCase[] = [
+      { props: 'w={0.5} h={0.25}', styles: { width: '200px', height: '25px' } },
+      { props: 'w=\'50px\' h=\'50px\'', styles: { width: '50px', height: '50px' } },
+      { props: 'w={2 / 5} h=\'auto\'', styles: { width: '160px' } },
+      { props: 'h={2 / 5} w=\'auto\'', styles: { height: '40px' } },
+      { props: 'wMax=\'100px\' hMax=\'50px\'', styles: { width: '100px', height: '50px' } },
+      { props: 'wMin=\'100px\' hMin=\'100px\'', styles: { width: '100px', height: '100px' } },
+    ];
 
-    // Check w={0.5} h={0.25}
-    expect(
-      await boxes[0].evaluate((box) => {
-        const computedStyle = window.getComputedStyle(box);
-        return {
-          width: computedStyle.width,
-          height: computedStyle.height,
-        };
-      }),
-    ).toEqual({ width: '200px', height: '25px' });
+    for (const [index, { props, styles }] of cases.entries()) {
+      await test.step(`Verify ${props}`, async () => {
+        await expectCSS(boxes.nth(index), styles);
+      });
+    }
+  });
 
-    // Check w='50px' h='50px'
-    expect(
-      await boxes[1].evaluate((box) => {
-        const computedStyle = window.getComputedStyle(box);
-        return {
-          width: computedStyle.width,
-          height: computedStyle.height,
-        };
-      }),
-    ).toEqual({ width: '50px', height: '50px' });
+  test('Verify Flex hover cursor', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@base-components',
+      '@flex-box'],
+  }, async ({ page, browserName }) => {
+    test.skip(browserName === 'firefox', 'Firefox drops the synthetic :hover state before getComputedStyle runs');
 
-    // Check w={2 / 5} h='auto'
-    expect(
-      await boxes[2].evaluate((box) => {
-        const computedStyle = window.getComputedStyle(box);
-        return {
-          width: computedStyle.width,
-        };
-      }),
-    ).toEqual({ width: '160px' });
+    const hoverCursor = 'zoom-in';
 
-    // Check h={2 / 5} w='auto'
-    expect(
-      await boxes[3].evaluate((box) => {
-        const computedStyle = window.getComputedStyle(box);
-        return {
-          height: computedStyle.height,
-        };
-      }),
-    ).toEqual({ height: '40px' });
+    await loadPage(page, 'stories/components/base-components/flex-box/tests/examples/box-all-props.tsx', 'en', { hoverCursor });
 
-    // Check wMax='100px' hMax='50px'
-    expect(
-      await boxes[4].evaluate((box) => {
-        const computedStyle = window.getComputedStyle(box);
-        return {
-          width: computedStyle.width,
-          height: computedStyle.height,
-        };
-      }),
-    ).toEqual({ width: '100px', height: '50px' });
+    const box = page.locator('[data-ui-name="Box"]');
 
-    // Check wMin='100px' hMin='100px'
-    expect(
-      await boxes[5].evaluate((box) => {
-        const computedStyle = window.getComputedStyle(box);
-        return {
-          width: computedStyle.width,
-          height: computedStyle.height,
-        };
-      }),
-    ).toEqual({ width: '100px', height: '100px' });
+    await box.hover();
+
+    await expect(box).toHaveCSS('cursor', hoverCursor);
+  });
+
+  test('Verify Box token style props in configurable story', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@base-components',
+      '@flex-box'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/flex-box/tests/examples/box-all-props.tsx', 'en', {
+      bg: 'rgb(1, 2, 3)',
+      border: '2px solid rgb(7, 8, 9)',
+      borderRadius: '10px',
+    });
+
+    await expectCSS(page.locator('[data-ui-name="Box"]'), {
+      'background-color': 'rgb(1, 2, 3)',
+      'border-top-width': '2px',
+      'border-top-style': 'solid',
+      'border-top-color': 'rgb(7, 8, 9)',
+      'border-radius': '10px',
+    });
+  });
+
+  test('Verify inAfterOutline applies focusRingXOffset attributes to ::after', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@base-components',
+      '@flex-box'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/flex-box/tests/examples/box-all-props.tsx', 'en', {
+      tag: 'button',
+      inAfterOutline: true,
+      focusRingTopOffset: '8px',
+      focusRingRightOffset: '4px',
+      focusRingBottomOffset: '8px',
+      focusRingLeftOffset: '4px',
+    });
+
+    const box = page.locator('[data-ui-name="Box"]');
+    await box.focus();
+
+    expect(await getAfterInset(box)).toEqual({
+      top: '8px',
+      right: '4px',
+      bottom: '8px',
+      left: '4px',
+    });
+  });
+
+  test('Verify inAfterOutline without focusRingXOffset keeps inset 0 on ::after', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@base-components',
+      '@flex-box'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/flex-box/tests/examples/box-all-props.tsx', 'en', {
+      tag: 'button',
+      inAfterOutline: true,
+    });
+
+    const box = page.locator('[data-ui-name="Box"]');
+    await box.focus();
+
+    expect(await getAfterInset(box)).toEqual({
+      top: '0px',
+      right: '0px',
+      bottom: '0px',
+      left: '0px',
+    });
   });
 });
 
@@ -208,135 +185,5 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/flex-box/docs/examples/flex.tsx', 'en');
     await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify Flex hover cursor', {
-    tag: [TAG.PRIORITY_HIGH,
-      '@base-components',
-      '@flex-box'],
-  }, async ({ page, browserName }) => {
-    /*
-     Firefox doesn't retain the :hover pseudo-state when getComputedStyle
-     is evaluated via Playwright — by the time the JS executes, the browser
-     has already dropped the synthetic hover, so cursor falls back to 'auto'.
-    */
-    if (browserName === 'firefox') return;
-
-    const hoverCursor = 'zoom-in';
-
-    await loadPage(page, 'stories/components/base-components/flex-box/tests/examples/box-all-props.tsx', 'en', { hoverCursor });
-
-    const box = page.locator('[data-ui-name="Box"]');
-
-    await box.hover();
-
-    const cursor = await box.evaluate((el) => {
-      const { cursor } = getComputedStyle(el);
-
-      return cursor;
-    });
-
-    expect(cursor).toBe(hoverCursor);
-  });
-
-  test('Verify Box token style props in configurable story', {
-    tag: [TAG.PRIORITY_HIGH,
-      '@base-components',
-      '@flex-box'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/base-components/flex-box/tests/examples/box-all-props.tsx', 'en', {
-      bg: 'rgb(1, 2, 3)',
-      border: '2px solid rgb(7, 8, 9)',
-      borderRadius: '10px',
-    });
-
-    const box = page.locator('[data-ui-name="Box"]');
-
-    const styles = await box.evaluate((el) => {
-      const computedStyle = window.getComputedStyle(el);
-      return {
-        backgroundColor: computedStyle.backgroundColor,
-        borderTopWidth: computedStyle.borderTopWidth,
-        borderTopStyle: computedStyle.borderTopStyle,
-        borderTopColor: computedStyle.borderTopColor,
-        borderRadius: computedStyle.borderRadius,
-      };
-    });
-
-    expect(styles).toEqual({
-      backgroundColor: 'rgb(1, 2, 3)',
-      borderTopWidth: '2px',
-      borderTopStyle: 'solid',
-      borderTopColor: 'rgb(7, 8, 9)',
-      borderRadius: '10px',
-    });
-  });
-
-  test('Verify inAfterOutline applies focusRingXOffset attributes to ::after', {
-    tag: [TAG.PRIORITY_HIGH,
-      TAG.KEYBOARD,
-      '@base-components',
-      '@flex-box'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/base-components/flex-box/tests/examples/box-all-props.tsx', 'en', {
-      tag: 'button',
-      inAfterOutline: true,
-      focusRingTopOffset: '8px',
-      focusRingRightOffset: '4px',
-      focusRingBottomOffset: '8px',
-      focusRingLeftOffset: '4px',
-    });
-
-    const box = page.locator('[data-ui-name="Box"]');
-    await box.focus();
-
-    const offsets = await box.evaluate((el) => {
-      const after = window.getComputedStyle(el, '::after');
-      return {
-        top: after.top,
-        right: after.right,
-        bottom: after.bottom,
-        left: after.left,
-      };
-    });
-
-    expect(offsets).toEqual({
-      top: '8px',
-      right: '4px',
-      bottom: '8px',
-      left: '4px',
-    });
-  });
-
-  test('Verify inAfterOutline without focusRingXOffset keeps inset 0 on ::after', {
-    tag: [TAG.PRIORITY_HIGH,
-      TAG.KEYBOARD,
-      '@base-components',
-      '@flex-box'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/base-components/flex-box/tests/examples/box-all-props.tsx', 'en', {
-      tag: 'button',
-      inAfterOutline: true,
-    });
-
-    const box = page.locator('[data-ui-name="Box"]');
-    await box.focus();
-
-    const offsets = await box.evaluate((el) => {
-      const after = window.getComputedStyle(el, '::after');
-      return {
-        top: after.top,
-        right: after.right,
-        bottom: after.bottom,
-        left: after.left,
-      };
-    });
-
-    expect(offsets).toEqual({
-      top: '0px',
-      right: '0px',
-      bottom: '0px',
-      left: '0px',
-    });
   });
 });

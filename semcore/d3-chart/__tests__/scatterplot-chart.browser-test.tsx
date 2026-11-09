@@ -73,7 +73,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   variables.forEach(({ priority, ...vars }, index) => {
     test(`Verify scatterplot chart with config ${index + 1} (${vars.description})`, {
-      tag: [priority, '@scatterplot-chart', '@d3-chart', '@base-components', '@flex-box'],
+      tag: [priority, '@scatterplot-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -118,7 +118,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify legend and pattern fill focus styles', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@scatterplot-chart', '@d3-chart', '@chart-legend'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@scatterplot-chart', '@d3-chart', '@chart-legend', '@checkbox'],
   }, async ({ page, browserName }) => {
     const step = browserName === 'webkit' ? test.step.skip : test.step;
 
@@ -145,7 +145,7 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify onClickScatterItem callback', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@scatterplot-chart', '@d3-chart', '@base-components', '@flex-box'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@scatterplot-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     const messages: string[] = [];
     page.on('console', (msg) => {

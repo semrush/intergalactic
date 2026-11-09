@@ -155,7 +155,7 @@ const App = function (props) {
 
 #### Total amount
 
-Use `--intergalactic-chart-palette-order-total-amount` token to indicate total values.
+Use `--intergalactic-chart-data-total-amount` token to indicate total values.
 
 ::: react-view
 
@@ -163,7 +163,7 @@ Use `--intergalactic-chart-palette-order-total-amount` token to indicate total v
 import React from 'react';
 import Color from '@components/Color';
 
-const colors = ['--intergalactic-chart-palette-order-total-amount'] // totalAmount
+const colors = ['--intergalactic-chart-data-total-amount'] // totalAmount
 
 const App = function (props) {
   return (
@@ -186,7 +186,7 @@ const App = function (props) {
 
 #### Other data
 
-Use `--intergalactic-chart-palette-order-other-data` token to indicate voids, missing or some other data.
+Use `--intergalactic-chart-data-other-value` token to indicate voids, missing or some other data.
 
 ::: react-view
 
@@ -194,7 +194,7 @@ Use `--intergalactic-chart-palette-order-other-data` token to indicate voids, mi
 import React from 'react';
 import Color from '@components/Color';
 
-const colors = ['--intergalactic-chart-palette-order-other-data'] // otherData
+const colors = ['--intergalactic-chart-data-other-value'] // otherData
 
 const App = function (props) {
   return (
@@ -217,7 +217,7 @@ const App = function (props) {
 
 #### Null and n/a data
 
-Use `--intergalactic-chart-palette-order-null` token to indicate null or not available data when applicable (for example, in Donut chart).
+Use `--intergalactic-chart-data-null` token to indicate null or not available data when applicable (for example, in Donut chart).
 
 ::: react-view
 
@@ -225,7 +225,7 @@ Use `--intergalactic-chart-palette-order-null` token to indicate null or not ava
 import React from 'react';
 import Color from '@components/Color';
 
-const colors = ['--intergalactic-chart-palette-order-null'] // nullData
+const colors = ['--intergalactic-chart-data-null'] // nullData
 
 const App = function (props) {
   return (

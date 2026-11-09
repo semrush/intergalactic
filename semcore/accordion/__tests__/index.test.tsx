@@ -68,17 +68,21 @@ describe('Accordion', (test) => {
     expect(result).toMatchSnapshot();
   });
 
-  test.concurrent('Verify supports uncontrolled mode with single expandable item', async () => {
+  const renderItems = () => (
+    <>
+      <Accordion.Item value={1}>
+        <Accordion.Item.Toggle>Item 1</Accordion.Item.Toggle>
+      </Accordion.Item>
+      <Accordion.Item value={2}>
+        <Accordion.Item.Toggle>Item 2</Accordion.Item.Toggle>
+      </Accordion.Item>
+    </>
+  );
+
+  test('Verify supports uncontrolled mode with single expandable item', async () => {
     const spy = vi.fn();
     const { getByText } = render(
-      <Accordion onChange={spy} defaultValue={null}>
-        <Accordion.Item value={1}>
-          <Accordion.Item.Toggle>Item 1</Accordion.Item.Toggle>
-        </Accordion.Item>
-        <Accordion.Item value={2}>
-          <Accordion.Item.Toggle>Item 2</Accordion.Item.Toggle>
-        </Accordion.Item>
-      </Accordion>,
+      <Accordion onChange={spy} defaultValue={null}>{renderItems()}</Accordion>,
     );
 
     await userEvent.click(getByText('Item 1'));
@@ -93,44 +97,18 @@ describe('Accordion', (test) => {
 
   test('Verify supports controlled mode with single expandable item', async () => {
     const spy = vi.fn();
-
     const { getByText, rerender } = render(
-      <Accordion onChange={spy} value={null}>
-        <Accordion.Item value={1}>
-          <Accordion.Item.Toggle>Item 1</Accordion.Item.Toggle>
-        </Accordion.Item>
-        <Accordion.Item value={2}>
-          <Accordion.Item.Toggle>Item 2</Accordion.Item.Toggle>
-        </Accordion.Item>
-      </Accordion>,
+      <Accordion onChange={spy} value={null}>{renderItems()}</Accordion>,
     );
 
     await userEvent.click(getByText('Item 1'));
     expect(spy).toBeCalledWith(1);
 
-    rerender(
-      <Accordion onChange={spy} value={1}>
-        <Accordion.Item value={1}>
-          <Accordion.Item.Toggle>Item 1</Accordion.Item.Toggle>
-        </Accordion.Item>
-        <Accordion.Item value={2}>
-          <Accordion.Item.Toggle>Item 2</Accordion.Item.Toggle>
-        </Accordion.Item>
-      </Accordion>,
-    );
+    rerender(<Accordion onChange={spy} value={1}>{renderItems()}</Accordion>);
     await userEvent.click(getByText('Item 2'));
     expect(spy).toBeCalledWith(2);
 
-    rerender(
-      <Accordion onChange={spy} value={2}>
-        <Accordion.Item value={1}>
-          <Accordion.Item.Toggle>Item 1</Accordion.Item.Toggle>
-        </Accordion.Item>
-        <Accordion.Item value={2}>
-          <Accordion.Item.Toggle>Item 2</Accordion.Item.Toggle>
-        </Accordion.Item>
-      </Accordion>,
-    );
+    rerender(<Accordion onChange={spy} value={2}>{renderItems()}</Accordion>);
     await userEvent.click(getByText('Item 2'));
     expect(spy).toBeCalledWith(null);
   });
@@ -138,14 +116,7 @@ describe('Accordion', (test) => {
   test('Verify supports uncontrolled mode with multiple expandable items', async () => {
     const spy = vi.fn();
     const { getByText } = render(
-      <Accordion onChange={spy}>
-        <Accordion.Item value={1}>
-          <Accordion.Item.Toggle>Item 1</Accordion.Item.Toggle>
-        </Accordion.Item>
-        <Accordion.Item value={2}>
-          <Accordion.Item.Toggle>Item 2</Accordion.Item.Toggle>
-        </Accordion.Item>
-      </Accordion>,
+      <Accordion onChange={spy}>{renderItems()}</Accordion>,
     );
 
     await userEvent.click(getByText('Item 1'));
@@ -163,56 +134,22 @@ describe('Accordion', (test) => {
 
   test('Verify supports controlled mode with multiple expandable items', async () => {
     const spy = vi.fn();
-
     const { getByText, rerender } = render(
-      <Accordion onChange={spy} value={[]}>
-        <Accordion.Item value={1}>
-          <Accordion.Item.Toggle>Item 1</Accordion.Item.Toggle>
-        </Accordion.Item>
-        <Accordion.Item value={2}>
-          <Accordion.Item.Toggle>Item 2</Accordion.Item.Toggle>
-        </Accordion.Item>
-      </Accordion>,
+      <Accordion onChange={spy} value={[]}>{renderItems()}</Accordion>,
     );
+
     await userEvent.click(getByText('Item 1'));
     expect(spy).toBeCalledWith([1]);
 
-    rerender(
-      <Accordion onChange={spy} value={[1]}>
-        <Accordion.Item value={1}>
-          <Accordion.Item.Toggle>Item 1</Accordion.Item.Toggle>
-        </Accordion.Item>
-        <Accordion.Item value={2}>
-          <Accordion.Item.Toggle>Item 2</Accordion.Item.Toggle>
-        </Accordion.Item>
-      </Accordion>,
-    );
+    rerender(<Accordion onChange={spy} value={[1]}>{renderItems()}</Accordion>);
     await userEvent.click(getByText('Item 2'));
     expect(spy).toBeCalledWith([1, 2]);
 
-    rerender(
-      <Accordion onChange={spy} value={[1, 2]}>
-        <Accordion.Item value={1}>
-          <Accordion.Item.Toggle>Item 1</Accordion.Item.Toggle>
-        </Accordion.Item>
-        <Accordion.Item value={2}>
-          <Accordion.Item.Toggle>Item 2</Accordion.Item.Toggle>
-        </Accordion.Item>
-      </Accordion>,
-    );
+    rerender(<Accordion onChange={spy} value={[1, 2]}>{renderItems()}</Accordion>);
     await userEvent.click(getByText('Item 1'));
     expect(spy).toBeCalledWith([2]);
 
-    rerender(
-      <Accordion onChange={spy} value={[2]}>
-        <Accordion.Item value={1}>
-          <Accordion.Item.Toggle>Item 1</Accordion.Item.Toggle>
-        </Accordion.Item>
-        <Accordion.Item value={2}>
-          <Accordion.Item.Toggle>Item 2</Accordion.Item.Toggle>
-        </Accordion.Item>
-      </Accordion>,
-    );
+    rerender(<Accordion onChange={spy} value={[2]}>{renderItems()}</Accordion>);
     await userEvent.click(getByText('Item 2'));
     expect(spy).toBeCalledWith([]);
   });

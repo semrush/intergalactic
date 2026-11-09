@@ -38,6 +38,8 @@ const ignoreComponents = [
 export class Package {
   public readonly packagesMap = new Map<string, { path: string; data: PackageJson }>();
 
+  private readonly changedPackagesSet = new Set<string>();
+
   public get list(): PackageJson[] {
     return Array.from(this.packagesMap.values()).map((pack) => pack.data);
   }
@@ -100,14 +102,16 @@ export class Package {
   public async updateVersions(collectedChangelog: CollectedChangelog) {
     const changelogComponents = collectedChangelog.components;
 
+    this.changedPackagesSet.clear();
+
     for (const [componentName, changelogComponent] of Object.entries(changelogComponents)) {
-      await this.updatePackageVersion(componentName, changelogComponent.incrementType, changelogComponent.changelog);
+      await this.updatePackageVersion(componentName, changelogComponent.incrementType, changelogComponent.changelog, changelogComponents);
     }
 
     await this.updateReleaseVersion(collectedChangelog);
   }
 
-  public async updatePackageVersion(componentName: string, incrementType: IncrementType, changelog: ChangelogChange[]) {
+  public async updatePackageVersion(componentName: string, incrementType: IncrementType, changelog: ChangelogChange[], changelogComponents?: CollectedChangelog['components']) {
     const packageJson = this.packagesMap.get(componentName);
     if (!packageJson || changelog.length === 0) return;
 
@@ -130,6 +134,15 @@ export class Package {
       }
 
       if (hasChanges) {
+        if (changelogComponents !== undefined && !changelogComponents[packageFile.data.name] && !this.changedPackagesSet.has(packageFile.data.name)) {
+          this.changedPackagesSet.add(packageFile.data.name);
+
+          const newVersion = semver.inc(packageFile.data.version, 'patch');
+          if (newVersion) {
+            packageFile.data.version = newVersion;
+          }
+        }
+
         await fs.writeJSON(resolvePath(packageFile.path, 'package.json'), packageFile.data, { spaces: 2 });
       }
     }

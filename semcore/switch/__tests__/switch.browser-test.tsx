@@ -1,17 +1,11 @@
-import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { expect, test } from '@semcore/testing-utils/playwright';
 import type { Page } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
-  button: (page: Page, name?: string, index?: number) => {
-    const base = page.getByRole('button', { name });
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
   value: (page: Page) => page.locator('[data-ui-name="Switch.Value"]'),
   addon: (page: Page) => page.locator('[data-ui-name="Switch.Addon"]'),
-
 };
 
 /* =====================================================
@@ -26,7 +20,6 @@ test.describe(`${TAG.VISUAL} `, () => {
     { size: 'm', theme: 'info', checked: true, defaultChecked: undefined },
     { size: 'l', theme: 'success', checked: undefined, defaultChecked: true },
     { size: 'xl', theme: 'dark-violet', checked: true, defaultChecked: undefined },
-
   ];
   variables.forEach((item) => {
     test(`Verify active Switch with size= ${item.size} theme= ${item.theme} and checked = ${item.checked} and defaultChecked = ${item.defaultChecked} `, {
@@ -50,7 +43,6 @@ test.describe(`${TAG.VISUAL} `, () => {
     { size: 'm', theme: 'info', checked: true, defaultChecked: undefined, disabled: true },
     { size: 'l', theme: 'success', checked: undefined, defaultChecked: true, disabled: true },
     { size: 'xl', theme: 'dark-violet', checked: true, defaultChecked: undefined, disabled: true },
-
   ];
   variablesDisabled.forEach((item) => {
     test(`Verify Disabled Switch with size= ${item.size} theme= ${item.theme} and checked = ${item.checked} and defaultChecked = ${item.defaultChecked} `, {
@@ -66,7 +58,6 @@ test.describe(`${TAG.VISUAL} `, () => {
     { size: 'l', theme: 'success', disabled: false },
     { size: 'xl', theme: 'info', disabled: false },
     { size: 'xl', theme: 'dark-violet', disabled: false },
-
   ];
   variablesActiveWithIcon.forEach((item) => {
     test(`Verify Active with icons  with size= ${item.size} theme= ${item.theme}`, {
@@ -129,9 +120,13 @@ test.describe(`${TAG.VISUAL} `, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/switch/tests/examples/long-text-addon.tsx', 'en', item);
       await expect(page).toHaveScreenshot();
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-      await expect(page).toHaveScreenshot();
+
+      await test.step('Verify disabled switch is not toggled by keyboard', async () => {
+        await expect(locators.value(page)).toBeDisabled();
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+        await expect(locators.value(page)).toBeChecked({ checked: item.checked });
+      });
     });
   });
 

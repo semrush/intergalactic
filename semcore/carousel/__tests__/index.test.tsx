@@ -1,10 +1,14 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, afterEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Carousel from '../src';
+
+describe('carousel Translations exports', () => {
+  runTranslationsCheckTest('@semcore/carousel');
+});
 
 describe('Carousel Dependency imports', () => {
   runDependencyCheckTests('carousel');
@@ -124,7 +128,7 @@ describe('Carousel.Indicators', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  test('Veerify right change index with Prev button', async () => {
+  test('Verify right change index with Prev button', async () => {
     const spy = vi.fn();
     const { getByLabelText, getByRole } = render(
       <Carousel onIndexChange={spy}>

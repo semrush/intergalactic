@@ -4,7 +4,6 @@ import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { NoticeSmart } from '@semcore/notice';
 import SpinContainer from '@semcore/spin-container';
-import createFocusDecorator from 'final-form-focus';
 import React from 'react';
 import { Field, Form } from 'react-final-form';
 
@@ -12,6 +11,7 @@ import { FeedbackItem } from './component/feedback-item/FeedbackItem';
 import { SubmitButton } from './component/submit-button/SubmitButton';
 import type { NSFeedbackForm } from './FeedbackForm.type';
 import style from './style/feedback-form.shadow.css';
+import { createFocusDecorator } from './utils/createFocusDecorator';
 
 class FeedbackForm extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSFeedbackForm.Component>,

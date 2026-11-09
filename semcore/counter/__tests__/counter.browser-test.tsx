@@ -30,6 +30,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify counter in filters', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
       '@counter',
       '@base-components',
       '@flex-box',
@@ -71,6 +72,8 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify counter in forms', {
     tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      TAG.MOUSE,
       '@counter', '@textarea',
       '@base-components',
       '@flex-box',

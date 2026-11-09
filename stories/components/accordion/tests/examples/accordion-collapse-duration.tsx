@@ -72,6 +72,21 @@ const Demo = () => {
           </Accordion.Item.Collapse>
         </Accordion.Item>
       </Accordion>
+
+      <Accordion duration={300}>
+        <Accordion.Item value={4}>
+          <Accordion.Item.Toggle>
+            <Accordion.Item.ToggleButton>
+              <Accordion.Item.Chevron />
+              Accordion duration 300
+            </Accordion.Item.ToggleButton>
+          </Accordion.Item.Toggle>
+          <Accordion.Item.Collapse>
+            Hello Section
+            <Box p={3}> Hello Section</Box>
+          </Accordion.Item.Collapse>
+        </Accordion.Item>
+      </Accordion>
     </>
   );
 };
