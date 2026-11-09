@@ -1,5 +1,4 @@
 import { Chart } from '@semcore/ui/d3-chart';
-import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 import { getDefaultChartControls } from './common/controls';
@@ -14,6 +13,7 @@ type DonutChartProps = {
   donutProps: {
     halfsize: boolean;
     innerLabel: string;
+    innerDescription: string;
   };
 };
 export type DonutChartJSXProps = JSXProps<DonutChartProps>;
@@ -26,22 +26,15 @@ function getJSX(props: DonutChartJSXProps) {
   const legendProps = {
     ...props.legendProps,
   };
+  const { innerLabel, innerDescription, ...donutProps } = props.donutProps;
   return (
     <Chart.ScoreDonut
       plotWidth={300}
       plotHeight={200}
       data={data}
       aria-label='Donut chart'
-      {...props.donutProps}
-      innerLabel={(
-        props.donutProps.halfsize
-          ? (
-              <Text tag='tspan' dy='-1em'>
-                {props.donutProps.innerLabel}
-              </Text>
-            )
-          : props.donutProps.innerLabel
-      )}
+      {...donutProps}
+      innerLabel={[innerLabel, innerDescription]}
       {...props.commonChartProps}
       {...(props.legendProps && {
         legendProps,
@@ -66,8 +59,13 @@ const entry: PlaygroundEntry<DonutChartJSXProps> = {
         },
         innerLabel: {
           type: 'text',
-          value: 'Example',
+          value: '33%',
           displayName: 'Inner Label',
+        },
+        innerDescription: {
+          type: 'text',
+          value: 'Example',
+          displayName: 'Inner Description',
         },
       },
     },
