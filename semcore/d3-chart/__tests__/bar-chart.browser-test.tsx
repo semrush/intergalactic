@@ -223,7 +223,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.waitForTimeout(500);
 
       await test.step('Verify no default tooltip when hover', async () => {
-        await locators.bar(page, 2).hover();
+        await locators.groupBarBar(page, 2).hover();
         await expect(page).toHaveScreenshot();
       });
     });
@@ -1154,7 +1154,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify bars have correct attributes', async () => {
       await locators.plot(page).first().waitFor({ state: 'visible' });
 
-      const bars = await locators.bar(page).all();
+      const bars = await locators.groupBarBar(page).all();
       expect(bars.length).toBeGreaterThan(0);
 
       for (const bar of bars) {
