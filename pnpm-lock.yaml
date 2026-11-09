@@ -1403,6 +1403,19 @@ importers:
         specifier: workspace:*
         version: link:../typography
 
+  semcore/limits:
+    dependencies:
+      '@semcore/typography':
+        specifier: ^18.0.0
+        version: link:../typography
+    devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
+      '@semcore/core':
+        specifier: workspace:*
+        version: link:../core
+
   semcore/link:
     dependencies:
       '@semcore/icon':
@@ -1997,6 +2010,9 @@ importers:
       '@semcore/input-tags':
         specifier: ^18.0.0
         version: link:../input-tags
+      '@semcore/limits':
+        specifier: ^18.1.0
+        version: link:../limits
       '@semcore/link':
         specifier: ^18.0.1
         version: link:../link
@@ -19653,7 +19669,7 @@ snapshots:
       sirv: 3.0.2
       tinyglobby: 0.2.17
       tinyrainbow: 2.0.0
-      vitest: 3.2.4(@types/debug@4.1.13)(@types/node@25.5.2)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@9.20.3)(jsdom@22.1.0)(lightningcss@1.31.1)(sass@1.100.0)(sugarss@5.0.1(postcss@8.5.14))(terser@5.48.0)(yaml@2.8.3)
+      vitest: 3.2.4(@types/debug@4.1.13)(@types/node@25.5.2)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@9.20.3)(jsdom@22.1.0)(lightningcss@1.31.1)(sass@1.100.0)(sugarss@5.0.1(postcss@8.5.15))(terser@5.48.0)(yaml@2.8.3)
 
   '@vitest/utils@3.2.4':
     dependencies:

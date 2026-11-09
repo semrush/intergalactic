@@ -1,0 +1,37 @@
+SUsageMeter {
+  width: 100%;
+  max-width: 340px;
+
+  &[theme-value='invert'] {
+    SUsageMeterText {
+      color: var(--intergalactic-text-primary-invert);
+    }
+
+    SUsageMeterIndicator {
+      background: var(--intergalactic-progress-bar-bg-invert);
+    }
+
+    SUsageMeterIndicatorFilled {
+      &[state-value='normal'] {
+        background: var(--intergalactic-control-primary-invert);
+      }
+    }
+  }
+}
+
+SUsageMeterIndicator {
+  border-radius: var(--intergalactic-progress-bar-rounded);
+  background: var(--intergalactic-progress-bar-bg);
+  height: 2px;
+}
+
+SUsageMeterIndicatorFilled {
+  border-radius: var(--intergalactic-progress-bar-rounded);
+  height: 100%;
+  background: var(--intergalactic-control-primary-info);
+  flex-basis: calc(var(--filled-value) * 1%);
+
+  &[state-value='warning'] {
+    background: var(--intergalactic-bg-primary-critical);
+  }
+}
