@@ -6,7 +6,7 @@ import React from 'react';
 
 import Select, { AutoSuggest, InputSearch } from '../src';
 
-describe ('select Translations exports', () => {
+describe('select Translations exports', () => {
   runTranslationsCheckTest('@semcore/select');
 });
 

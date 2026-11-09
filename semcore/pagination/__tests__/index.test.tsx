@@ -8,7 +8,7 @@ import React from 'react';
 
 import Pagination from '../src';
 
-describe ('pagination Translations exports', () => {
+describe('pagination Translations exports', () => {
   runTranslationsCheckTest('@semcore/pagination');
 });
 

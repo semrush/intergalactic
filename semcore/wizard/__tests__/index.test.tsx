@@ -6,7 +6,7 @@ import React from 'react';
 
 import Wizard from '../src';
 
-describe ('wizard Translations exports', () => {
+describe('wizard Translations exports', () => {
   runTranslationsCheckTest('@semcore/wizard');
 });
 

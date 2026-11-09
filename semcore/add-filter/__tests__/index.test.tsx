@@ -6,7 +6,7 @@ import React from 'react';
 
 import AddFilter from '../src';
 
-describe ('add-filter Translations exports', () => {
+describe('add-filter Translations exports', () => {
   runTranslationsCheckTest('@semcore/add-filter');
 });
 

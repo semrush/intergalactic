@@ -6,7 +6,7 @@ import React from 'react';
 
 import InlineInput from '../src/InlineInput';
 
-describe ('inline-input Translations exports', () => {
+describe('inline-input Translations exports', () => {
   runTranslationsCheckTest('@semcore/inline-input');
 });
 

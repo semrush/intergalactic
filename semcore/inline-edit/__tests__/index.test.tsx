@@ -6,7 +6,7 @@ import React from 'react';
 
 import InlineEdit from '../src';
 
-describe ('inline-edit Translations exports', () => {
+describe('inline-edit Translations exports', () => {
   runTranslationsCheckTest('@semcore/inline-edit');
 });
 

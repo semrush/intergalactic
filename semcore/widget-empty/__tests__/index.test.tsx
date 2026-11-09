@@ -6,9 +6,9 @@ import React from 'react';
 
 import WidgetEmpty, { Error, NoData } from '../src';
 
-describe ('widget-empty Translations exports', () => {
-  runTranslationsCheckTest('@semcore/widget-empty', 'NoData');
-  runTranslationsCheckTest('@semcore/widget-empty', 'Error');
+describe('widget-empty Translations exports', () => {
+  runTranslationsCheckTest('@semcore/widget-empty', 'NoData/translations');
+  runTranslationsCheckTest('@semcore/widget-empty', 'Error/translations');
 });
 
 describe('widget-empty Dependency imports', () => {

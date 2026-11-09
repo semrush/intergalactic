@@ -7,7 +7,7 @@ import React from 'react';
 
 import SidePanel from '../src';
 
-describe ('side-panel Translations exports', () => {
+describe('side-panel Translations exports', () => {
   runTranslationsCheckTest('@semcore/side-panel');
 });
 

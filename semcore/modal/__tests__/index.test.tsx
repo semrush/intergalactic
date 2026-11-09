@@ -7,7 +7,7 @@ import React from 'react';
 import Button from '../../button/src';
 import Modal from '../src';
 
-describe ('modal Translations exports', () => {
+describe('modal Translations exports', () => {
   runTranslationsCheckTest('@semcore/modal');
 });
 

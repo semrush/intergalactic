@@ -6,7 +6,7 @@ import React from 'react';
 
 import ColorPicker, { PaletteManager } from '../src';
 
-describe ('color-picker Translations exports', () => {
+describe('color-picker Translations exports', () => {
   runTranslationsCheckTest('@semcore/color-picker');
 });
 

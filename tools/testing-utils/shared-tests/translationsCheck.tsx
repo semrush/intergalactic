@@ -9,8 +9,12 @@ import { test, expect } from 'vitest';
 
 const execFileAsync = promisify(execFile);
 
-export function runTranslationsCheckTest(pckg: string, innerFolder?: string) {
-  test(`All translations are exported from "${pckg}" ${innerFolder ? `> ${innerFolder}` : ''}`, async () => {
+/**
+ * @param pckg - package name, e.g. `@semcore/d3-chart`
+ * @param translationsDir - path to the translations folder relative to `src`, e.g. `PageError/translations`
+ */
+export function runTranslationsCheckTest(pckg: string, translationsDir = 'translations') {
+  test(`All translations are exported from "${pckg}" > ${translationsDir}`, async () => {
     let translationsPath = null;
 
     const { stdout: packageInfo } = await execFileAsync('pnpm', ['list', '--json', '--filter', pckg], {
@@ -19,7 +23,7 @@ export function runTranslationsCheckTest(pckg: string, innerFolder?: string) {
     const packagePath = JSON.parse(packageInfo)[0]?.path;
 
     if (packagePath) {
-      translationsPath = path.join(packagePath, 'src', innerFolder ?? '', 'translations');
+      translationsPath = path.join(packagePath, 'src', translationsDir);
     }
 
     if (translationsPath === null) {

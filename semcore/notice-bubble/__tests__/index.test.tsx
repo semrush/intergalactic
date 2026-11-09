@@ -12,7 +12,7 @@ import React from 'react';
 import { NoticeBubbleContainer } from '../src';
 import { NoticeBubbleManager } from '../src/NoticeBubbleManager';
 
-describe ('notice-bubble Translations exports', () => {
+describe('notice-bubble Translations exports', () => {
   runTranslationsCheckTest('@semcore/notice-bubble');
 });
 

@@ -6,7 +6,7 @@ import React from 'react';
 
 import Spin from '../src';
 
-describe ('spin Translations exports', () => {
+describe('spin Translations exports', () => {
   runTranslationsCheckTest('@semcore/spin');
 });
 

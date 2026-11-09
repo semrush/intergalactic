@@ -6,7 +6,7 @@ import React from 'react';
 
 import Link from '../src';
 
-describe ('link Translations exports', () => {
+describe('link Translations exports', () => {
   runTranslationsCheckTest('@semcore/link');
 });
 

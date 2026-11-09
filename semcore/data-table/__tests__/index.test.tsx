@@ -8,7 +8,7 @@ import React from 'react';
 import { DataTable } from '../src';
 import type { CellRenderProps } from '../src/components/Body/Body.types';
 
-describe ('data-table Translations exports', () => {
+describe('data-table Translations exports', () => {
   runTranslationsCheckTest('@semcore/data-table');
 });
 

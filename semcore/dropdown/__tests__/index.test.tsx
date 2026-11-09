@@ -12,7 +12,7 @@ import React from 'react';
 
 import Dropdown from '../src';
 
-describe ('dropdown Translations exports', () => {
+describe('dropdown Translations exports', () => {
   runTranslationsCheckTest('@semcore/dropdown');
 });
 

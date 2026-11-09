@@ -6,7 +6,7 @@ import React from 'react';
 
 import DragAndDrop from '../src';
 
-describe ('drag-and-drop Translations exports', () => {
+describe('drag-and-drop Translations exports', () => {
   runTranslationsCheckTest('@semcore/drag-and-drop');
 });
 

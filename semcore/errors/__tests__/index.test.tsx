@@ -6,12 +6,12 @@ import React from 'react';
 
 import BaseError, { PageError } from '../src';
 
-describe ('errors Translations exports', () => {
-  runTranslationsCheckTest('@semcore/errors', 'PageNotFound');
-  runTranslationsCheckTest('@semcore/errors', 'ProjectNotFound');
-  runTranslationsCheckTest('@semcore/errors', 'Maintenance');
-  runTranslationsCheckTest('@semcore/errors', 'AccessDenied');
-  runTranslationsCheckTest('@semcore/errors', 'PageError');
+describe('errors Translations exports', () => {
+  runTranslationsCheckTest('@semcore/errors', 'PageNotFound/translations');
+  runTranslationsCheckTest('@semcore/errors', 'ProjectNotFound/translations');
+  runTranslationsCheckTest('@semcore/errors', 'Maintenance/translations');
+  runTranslationsCheckTest('@semcore/errors', 'AccessDenied/translations');
+  runTranslationsCheckTest('@semcore/errors', 'PageError/translations');
 });
 
 describe('errors Dependency imports', () => {

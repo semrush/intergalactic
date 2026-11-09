@@ -6,7 +6,7 @@ import React from 'react';
 
 import BaseTrigger, { ButtonTrigger, FilterTrigger, LinkTrigger } from '../src';
 
-describe ('base-trigger Translations exports', () => {
+describe('base-trigger Translations exports', () => {
   runTranslationsCheckTest('@semcore/base-trigger');
 });
 

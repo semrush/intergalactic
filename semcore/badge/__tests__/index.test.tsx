@@ -6,7 +6,7 @@ import React from 'react';
 
 import Badge from '../src';
 
-describe ('badge Translations exports', () => {
+describe('badge Translations exports', () => {
   runTranslationsCheckTest('@semcore/badge');
 });
 

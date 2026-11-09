@@ -9,7 +9,7 @@ import React from 'react';
 
 import DropdownMenu from '../src';
 
-describe ('dropdown-menu Translations exports', () => {
+describe('dropdown-menu Translations exports', () => {
   runTranslationsCheckTest('@semcore/dropdown-menu');
 });
 

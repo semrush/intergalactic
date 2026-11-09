@@ -17,7 +17,7 @@ import SkeletonSVG, {
   VennChartSkeleton,
 } from '../src';
 
-describe ('skeleton Translations exports', () => {
+describe('skeleton Translations exports', () => {
   runTranslationsCheckTest('@semcore/skeleton');
 });
 

@@ -6,7 +6,7 @@ import * as React from 'react';
 
 import Tag, { TagContainer } from '../src';
 
-describe ('tag Translations exports', () => {
+describe('tag Translations exports', () => {
   runTranslationsCheckTest('@semcore/tag');
 });
 

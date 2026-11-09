@@ -8,7 +8,7 @@ import type { FieldRenderProps } from 'react-final-form';
 
 import FeedbackForm, { FeedbackRating } from '../src';
 
-describe ('feedback-form Translations exports', () => {
+describe('feedback-form Translations exports', () => {
   runTranslationsCheckTest('@semcore/feedback-form');
 });
 

@@ -6,7 +6,7 @@ import React from 'react';
 
 import FullscreenModal from '../src';
 
-describe ('fullscreen-modal Translations exports', () => {
+describe('fullscreen-modal Translations exports', () => {
   runTranslationsCheckTest('@semcore/fullscreen-modal');
 });
 

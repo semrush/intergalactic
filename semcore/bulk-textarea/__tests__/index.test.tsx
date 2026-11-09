@@ -52,7 +52,7 @@ afterEach(async () => {
   vi.useRealTimers();
 });
 
-describe ('bulk-textarea Translations exports', () => {
+describe('bulk-textarea Translations exports', () => {
   runTranslationsCheckTest('@semcore/bulk-textarea');
 });
 

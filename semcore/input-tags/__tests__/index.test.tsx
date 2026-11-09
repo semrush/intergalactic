@@ -6,7 +6,7 @@ import * as React from 'react';
 
 import InputTags from '../src';
 
-describe ('input-tags Translations exports', () => {
+describe('input-tags Translations exports', () => {
   runTranslationsCheckTest('@semcore/input-tags');
 });
 

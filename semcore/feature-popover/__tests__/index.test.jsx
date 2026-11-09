@@ -6,7 +6,7 @@ import React from 'react';
 
 import FeaturePopover from '../src';
 
-describe ('feature-popover Translations exports', () => {
+describe('feature-popover Translations exports', () => {
   runTranslationsCheckTest('@semcore/feature-popover');
 });
 

@@ -8,7 +8,7 @@ import InputNumber from '../src';
 import type { NSInputNumber } from '../src';
 import { localizedMessages } from '../src/translations/__intergalactic-dynamic-locales';
 
-describe ('input-number Translations exports', () => {
+describe('input-number Translations exports', () => {
   runTranslationsCheckTest('@semcore/input-number');
 });
 

@@ -9,7 +9,7 @@ import {
   DateRangePicker,
 } from '../src';
 
-describe ('date-picker Translations exports', () => {
+describe('date-picker Translations exports', () => {
   runTranslationsCheckTest('@semcore/date-picker');
 });
 

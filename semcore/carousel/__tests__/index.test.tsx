@@ -6,7 +6,7 @@ import React from 'react';
 
 import Carousel from '../src';
 
-describe ('carousel Translations exports', () => {
+describe('carousel Translations exports', () => {
   runTranslationsCheckTest('@semcore/carousel');
 });
 

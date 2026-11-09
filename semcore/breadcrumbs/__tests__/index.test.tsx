@@ -6,7 +6,7 @@ import React from 'react';
 
 import Breadcrumbs from '../src';
 
-describe ('breadcrumbs Translations exports', () => {
+describe('breadcrumbs Translations exports', () => {
   runTranslationsCheckTest('@semcore/breadcrumbs');
 });
 

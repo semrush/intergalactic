@@ -111,8 +111,10 @@ const PlotTest = React.forwardRef((props, ref) => (
   <Plot ref={ref} data={ChartOptions.line.data} scale={[xScale, yScale]} width={100} height={100} {...props} />
 ));
 
-describe ('d3-chart Translations exports', () => {
+describe('d3-chart Translations exports', () => {
   runTranslationsCheckTest('@semcore/d3-chart');
+  runTranslationsCheckTest('@semcore/d3-chart', 'a11y/translations/module');
+  runTranslationsCheckTest('@semcore/d3-chart', 'a11y/translations/view');
 });
 
 describe('d3-chart Dependency imports', () => {

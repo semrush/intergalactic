@@ -7,7 +7,7 @@ import React from 'react';
 import TimePicker from '../src';
 import TimePickerEntity from '../src/entity/TimePickerEntity';
 
-describe ('time-picker Translations exports', () => {
+describe('time-picker Translations exports', () => {
   runTranslationsCheckTest('@semcore/time-picker');
 });
 

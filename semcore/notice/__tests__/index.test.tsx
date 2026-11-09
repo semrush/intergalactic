@@ -6,7 +6,7 @@ import React from 'react';
 
 import Notice, { NoticeSmart } from '../src';
 
-describe ('notice Translations exports', () => {
+describe('notice Translations exports', () => {
   runTranslationsCheckTest('@semcore/notice');
 });
 
