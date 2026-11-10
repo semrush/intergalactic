@@ -190,6 +190,8 @@ function Dots(props) {
             href={`#${svgPatternId}`}
             x={width + (d3.x()(d) - width / 2)}
             y={d3.y()(d) - height / 2}
+            width={width}
+            height={height}
             value={d}
             transparent={transparent}
             radius={radius}

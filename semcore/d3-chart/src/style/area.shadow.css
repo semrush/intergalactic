@@ -13,7 +13,7 @@ SArea[color] {
 
 SArea[pattern] {
   fill: var(--pattern);
-  fill-opacity: 0.5;
+  fill-opacity: 0.8;
 }
 
 SArea[transparent] {

@@ -34,258 +34,202 @@ export type Pattern = {
 const defaultDasharrays = ['4 4', '8 8', '2 4', '4 8', '8 2', '8 4', '12 4', '2 2'];
 
 const defaultPatterns = {
-  starSmall: {
+  zigzag: {
     fill: {
-      viewBox: '0 0 20 20',
+      viewBox: '0 0 12 12',
       children: (
-        <>
-          <path d='M9.062 2.535c.322-.871 1.554-.871 1.876 0l1.603 4.333a1 1 0 0 0 .591.59l4.333 1.604c.871.322.871 1.554 0 1.876l-4.333 1.603a1 1 0 0 0-.59.591l-1.604 4.333c-.322.871-1.554.871-1.876 0L7.46 13.132a1 1 0 0 0-.591-.59l-4.334-1.604c-.87-.322-.87-1.554 0-1.876L6.868 7.46a1 1 0 0 0 .59-.591l1.604-4.333Z' />
-        </>
+        <path d='M12 9.91 9.91 12H7.1L12 7.09zM4.91 12H2.1L0 9.91V7.1zm0-12L6 1.09 7.09 0H9.9L6 3.91 2.09 0z' />
       ),
     },
     symbol: {
-      viewBox: '0 0 33 32',
-      size: [16, 16],
+      viewBox: '0 0 21 21',
+      size: [17.14, 16.02],
       children: (
-        <>
-          <path d='M15.062 2.534c.322-.87 1.554-.87 1.876 0l3.224 8.713a1 1 0 0 0 .59.591l8.713 3.224c.871.322.871 1.554 0 1.876l-8.712 3.224a1 1 0 0 0-.591.59l-3.224 8.713c-.322.871-1.554.871-1.876 0l-3.224-8.712a1 1 0 0 0-.59-.591l-8.713-3.224c-.871-.322-.871-1.554 0-1.876l8.712-3.224a1 1 0 0 0 .591-.59l3.224-8.713Z' />
-        </>
+        <path d='m20.12 1.28-9.8 9.8L.12.88v8.49l10.2 10.2 9.8-9.8z' />
       ),
     },
-    dasharray: defaultDasharrays[0],
-  },
-  romb: {
-    fill: {
-      viewBox: '0 0 20 20',
-      children: (
-        <>
-          <path d='M19.828 10 10 .172.172 10 10 19.828 19.828 10Z' />
-        </>
-      ),
-    },
-    symbol: {
-      viewBox: '0 0 20 20',
-      size: [14, 14],
-      children: (
-        <>
-          <path d='M20 10 10 0 0 10l10 10 10-10Z' />
-        </>
-      ),
-    },
-    dasharray: defaultDasharrays[1],
+    dasharray: defaultDasharrays[7],
   },
   circleOutline: {
     fill: {
-      viewBox: '0 0 20 20',
+      viewBox: '0 0 16 16',
       children: (
-        <>
-          <path
-            fillRule='evenodd'
-            d='M6 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM0 6a6 6 0 1 1 12 0A6 6 0 0 1 0 6Z'
-            clipRule='evenodd'
-          />
-        </>
+        <path
+          fillRule='evenodd'
+          d='M10 7.5a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0m2 0a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0'
+        />
       ),
     },
     symbol: {
       viewBox: '0 0 10 10',
       size: [14, 14],
       children: (
-        <>
-          <path
-            fillRule='evenodd'
-            d='M5 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM0 5a5 5 0 1 1 10 0A5 5 0 0 1 0 5Z'
-            clipRule='evenodd'
-          />
-        </>
+        <path
+          fillRule='evenodd'
+          d='M5 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM0 5a5 5 0 1 1 10 0A5 5 0 0 1 0 5Z'
+        />
       ),
     },
     dasharray: defaultDasharrays[2],
   },
-  triangleDown: {
+  linesDouble: {
     fill: {
       viewBox: '0 0 16 16',
       children: (
-        <>
-          <path d='M7.99998 14L14.0622 3.5H1.93781L7.99998 14Z' />
-        </>
+        <path d='M7 16H5V0h2zm6 0h-2V0h2z' />
       ),
     },
     symbol: {
-      viewBox: '0 0 33 32',
-      size: [16, 12],
+      viewBox: '0 0 17 16',
+      size: [16, 16],
       children: (
-        <>
-          <path d='M16.56 26.755 29.12 5H4l12.56 21.755Z' />
-        </>
+        <path d='M9.12 2h4v12h-4zm-5 0h4v12h-4z' />
       ),
     },
-    dasharray: defaultDasharrays[3],
-  },
-  rombOutline: {
-    fill: {
-      viewBox: '0 0 20 20',
-      children: (
-        <>
-          <path
-            fillRule='evenodd'
-            clipRule='evenodd'
-            d='M10 0.17157L19.8284 10L10 19.8284L0.17157 10L10 0.17157ZM5.82842 10L10 14.1716L14.1716 10L10 5.82842L5.82842 10Z'
-          />
-        </>
-      ),
-    },
-    symbol: {
-      viewBox: '0 0 25 24',
-      size: [16.61, 16.61],
-      children: (
-        <>
-          <path
-            fillRule='evenodd'
-            d='M12.536 0 24.07 11.536 12.535 23.07 1 11.535 12.536 0ZM8.07 11.536 12.536 16 17 11.536 12.536 7.07 8.07 11.536Z'
-            clipRule='evenodd'
-          />
-        </>
-      ),
-    },
-    dasharray: defaultDasharrays[4],
-  },
-  square: {
-    fill: {
-      viewBox: '0 0 28 28',
-      children: (
-        <>
-          <path d='M18 2H2v16h16V2Z' />
-        </>
-      ),
-    },
-    symbol: {
-      viewBox: '0 0 21 20',
-      size: [18, 18],
-      children: (
-        <>
-          <path d='M17 3H3v14h14V3Z' />
-        </>
-      ),
-    },
-    dasharray: defaultDasharrays[5],
+    dasharray: defaultDasharrays[6],
   },
   trees: {
     fill: {
-      viewBox: '0 0 21 20',
+      viewBox: '0 0 20 20',
       children: (
-        <>
-          <path d='m19.536 12.456-9.415-9.415-9.415 9.415L5.21 16.96l4.912-4.913 4.913 4.913 4.502-4.503Z' />
-        </>
+        <path d='m19.2 16.8-1.4 1.4-3.8-3.79-3.8 3.8-1.4-1.42 5.2-5.2zm-8-9L9.8 9.2 6 5.42l-3.8 3.8L.8 7.79 6 2.6z' />
       ),
     },
     symbol: {
       viewBox: '0 0 21 20',
       size: [16.14, 14],
       children: (
-        <>
-          <path d='m19.536 12.456-9.415-9.415-9.415 9.415L5.21 16.96l4.912-4.913 4.913 4.913 4.502-4.503Z' />
-        </>
+        <path d='m19.54 12.46-9.42-9.42-9.41 9.42 4.5 4.5 4.91-4.91 4.92 4.91z' />
       ),
     },
     dasharray: defaultDasharrays[6],
+  },
+  rombOutline: {
+    fill: {
+      viewBox: '0 0 18 18',
+      children: (
+        <path
+          fillRule='evenodd'
+          d='m16.83 9.41-7.41 7.42L2 9.42 9.41 2zm-12.34 0 4.92 4.93 4.93-4.93L9.4 4.5z'
+        />
+      ),
+    },
+    symbol: {
+      viewBox: '0 0 25 24',
+      size: [16.61, 16.61],
+      children: (
+        <path
+          fillRule='evenodd'
+          d='m12.54 0 11.53 11.54-11.53 11.53L1 11.54zM8.07 11.54 12.54 16 17 11.54l-4.46-4.47z'
+        />
+      ),
+    },
+    dasharray: defaultDasharrays[4],
+  },
+  square: {
+    fill: {
+      viewBox: '0 0 18 18',
+      children: (
+        <path d='M12 4H4v8h8V4Z' />
+      ),
+    },
+    symbol: {
+      viewBox: '0 0 21 20',
+      size: [18, 18],
+      children: (
+        <path d='M17 3H3v14h14V3Z' />
+      ),
+    },
+    dasharray: defaultDasharrays[5],
   },
   wave: {
     fill: {
       viewBox: '0 0 12 12',
       children: (
-        <>
-          <path
-            fillRule='evenodd'
-            clipRule='evenodd'
-            d='M3 5.5C2.4683 5.5 1.80116 5.78854 1.28624 6.64674L0.514495 7.93298L-2.05798 6.3895L-1.28624 5.10326C-0.30116 3.46146 1.2817 2.5 3 2.5C4.7183 2.5 6.30116 3.46146 7.28624 5.10326C7.80116 5.96146 8.4683 6.25 9 6.25C9.5317 6.25 10.1988 5.96146 10.7138 5.10326L11.4855 3.81702L14.058 5.3605L13.2862 6.64674C12.3012 8.28854 10.7183 9.25 9 9.25C7.2817 9.25 5.69884 8.28854 4.71376 6.64674C4.19884 5.78854 3.5317 5.5 3 5.5Z'
-          />
-        </>
+        <path d='M3 3c1.52 0 2.95.85 3.86 2.36.6.99 1.41 1.39 2.14 1.39s1.55-.4 2.14-1.39q.38-.62.86-1.09v3.2c-.84.83-1.9 1.28-3 1.28-1.52 0-2.95-.85-3.86-2.36C4.54 5.4 3.73 5 3 5S1.45 5.4.86 6.39Q.48 7.01 0 7.48v-3.2C.84 3.44 1.9 3 3 3' />
       ),
     },
     symbol: {
       viewBox: '0 0 21 20',
       size: [17.14, 14],
       children: (
-        <>
-          <path d='m20.121 6.457-.027-.017-1.43 2.383c-.954 1.59-2.19 2.125-3.176 2.125-.985 0-2.22-.534-3.175-2.125C10.488 5.781 7.555 4 4.372 4c-1.503 0-2.95.397-4.25 1.136v8.339l1.074-1.792c.954-1.59 2.19-2.125 3.176-2.125.985 0 2.22.535 3.175 2.125 1.825 3.042 4.758 4.823 7.942 4.823 1.651 0 3.235-.479 4.632-1.365V6.457Z' />
-        </>
+        <path d='m20.12 6.46-.03-.02-1.43 2.38c-.95 1.6-2.19 2.13-3.17 2.13-.99 0-2.22-.54-3.18-2.13C10.5 5.78 7.55 4 4.37 4c-1.5 0-2.95.4-4.25 1.14v8.34l1.08-1.8c.95-1.59 2.19-2.12 3.17-2.12.99 0 2.22.53 3.18 2.12 1.82 3.05 4.76 4.83 7.94 4.83 1.65 0 3.23-.48 4.63-1.37z' />
       ),
     },
     dasharray: defaultDasharrays[7],
   },
+  triangleDown: {
+    fill: {
+      viewBox: '0 0 21 16',
+      children: (
+        <path d='M10.56 12.63 16.12 3H5z' />
+      ),
+    },
+    symbol: {
+      viewBox: '4 5 25.12 21.755',
+      size: [16, 14],
+      children: (
+        <path d='M16.56 26.76 29.12 5H4z' />
+      ),
+    },
+    dasharray: defaultDasharrays[3],
+  },
   star: {
     fill: {
-      viewBox: '0 0 21 20',
+      viewBox: '0 0 20 20',
       children: (
-        <>
-          <path d='M9.17 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .951.69h3.461c.969 0 1.372 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.839-.197-1.54-1.118l1.07-3.292a1 1 0 0 0-.363-1.118L3.1 8.72c-.784-.57-.381-1.81.587-1.81H7.15a1 1 0 0 0 .95-.69l1.07-3.292Z' />
-        </>
+        <path d='M8.04 3.47c.27-.98 1.65-.98 1.92 0l.64 2.27c.12.45.54.76 1 .74l2.36-.1c1.02-.05 1.44 1.27.6 1.83l-1.97 1.3c-.39.26-.55.75-.38 1.19l.82 2.21c.36.95-.76 1.76-1.56 1.13l-1.85-1.47c-.36-.29-.88-.29-1.24 0l-1.85 1.47c-.8.63-1.92-.18-1.56-1.13l.82-2.21c.17-.44 0-.93-.38-1.19l-1.97-1.3c-.84-.56-.42-1.88.6-1.84l2.36.1c.46.03.88-.28 1-.73z' />
       ),
     },
     symbol: {
       viewBox: '0 0 33 32',
       size: [16.41, 15.66],
       children: (
-        <>
-          <path d='M15.049.927c.3-.921 1.603-.921 1.902 0l2.866 8.82a1 1 0 0 0 .95.69h9.274c.97 0 1.372 1.24.588 1.81l-7.502 5.45a1 1 0 0 0-.364 1.119l2.866 8.82c.3.92-.755 1.687-1.539 1.117l-7.502-5.45a1 1 0 0 0-1.176 0l-7.502 5.45c-.784.57-1.838-.196-1.54-1.118l2.867-8.82a1 1 0 0 0-.364-1.117l-7.502-5.451c-.784-.57-.381-1.81.588-1.81h9.273a1 1 0 0 0 .951-.69L15.05.927Z' />
-        </>
+        <path d='M15.05.93c.3-.92 1.6-.92 1.9 0l2.87 8.82a1 1 0 0 0 .95.69h9.27c.97 0 1.37 1.24.59 1.8l-7.5 5.46a1 1 0 0 0-.37 1.12l2.87 8.82c.3.92-.76 1.68-1.54 1.11l-7.5-5.45a1 1 0 0 0-1.18 0l-7.5 5.45c-.78.57-1.84-.2-1.54-1.11l2.87-8.82a1 1 0 0 0-.37-1.12l-7.5-5.45c-.78-.57-.38-1.81.59-1.81h9.27a1 1 0 0 0 .95-.7z' />
       ),
     },
     dasharray: defaultDasharrays[0],
   },
   cogwheel: {
     fill: {
-      viewBox: '0 0 20 20',
+      viewBox: '0 0 18 20',
       children: (
-        <>
-          <path
-            fillRule='evenodd'
-            clipRule='evenodd'
-            d='M10.0622 1L18.1244 5.6547V14.9641L10.0622 19.6188L2 14.9641V5.6547L10.0622 1ZM6 7.9641V12.6547L10.0622 15L14.1244 12.6547V7.9641L10.0622 5.6188L6 7.9641Z'
-          />
-        </>
+        <path
+          fillRule='evenodd'
+          d='M16.06 5.92v8.16L9 18.15l-7.06-4.07V5.92L9 1.85zM3.94 7.08v5.84L9 15.84l5.06-2.92V7.08L9 4.15z'
+        />
       ),
     },
     symbol: {
       viewBox: '0 0 21 20',
       size: [16.95, 16.95],
       children: (
-        <>
-          <path
-            fillRule='evenodd'
-            d='m10.121.113 8.562 4.944v9.886l-8.562 4.944-8.562-4.944V5.057L10.121.113ZM6.56 7.943v4.114l3.562 2.056 3.563-2.056V7.943L10.12 5.887 6.56 7.943Z'
-            clipRule='evenodd'
-          />
-        </>
+        <path
+          fillRule='evenodd'
+          d='m10.12.11 8.56 4.95v9.88l-8.56 4.95-8.56-4.95V5.06zM6.56 7.94v4.12l3.56 2.05 3.57-2.05V7.94L10.12 5.9z'
+        />
       ),
     },
     dasharray: defaultDasharrays[1],
   },
   crossesDiagonal: {
     fill: {
-      viewBox: '0 0 20 20',
+      viewBox: '0 0 16 16',
       children: (
-        <>
-          <path
-            fillRule='evenodd'
-            d='M3.683 3.683a2.333 2.333 0 0 1 3.3 0L10 6.7l3.017-3.017a2.333 2.333 0 1 1 3.3 3.3L13.3 10l3.017 3.017a2.333 2.333 0 0 1-3.3 3.3L10 13.3l-3.017 3.017a2.333 2.333 0 0 1-3.3-3.3L6.7 10 3.683 6.983a2.333 2.333 0 0 1 0-3.3Z'
-            clipRule='evenodd'
-          />
-        </>
+        <path
+          fillRule='evenodd'
+          d='M10.3 4.3c.38-.4 1.02-.4 1.4 0 .4.38.4 1.02 0 1.4L9.42 8l2.3 2.3c.39.38.39 1.02 0 1.4-.4.4-1.03.4-1.42 0L8 9.42l-2.3 2.3c-.38.39-1.02.39-1.4 0-.4-.4-.4-1.03 0-1.42L6.58 8l-2.3-2.3c-.39-.38-.39-1.02 0-1.4.4-.4 1.03-.4 1.42 0L8 6.58z'
+        />
       ),
     },
     symbol: {
       viewBox: '0 0 20 20',
       size: [18, 18],
       children: (
-        <>
-          <path
-            fillRule='evenodd'
-            d='M3.683 3.683a2.333 2.333 0 0 1 3.3 0L10 6.7l3.017-3.017a2.333 2.333 0 1 1 3.3 3.3L13.3 10l3.017 3.017a2.333 2.333 0 0 1-3.3 3.3L10 13.3l-3.017 3.017a2.333 2.333 0 0 1-3.3-3.3L6.7 10 3.683 6.983a2.333 2.333 0 0 1 0-3.3Z'
-            clipRule='evenodd'
-          />
-        </>
+        <path
+          fillRule='evenodd'
+          d='M3.68 3.68a2.33 2.33 0 0 1 3.3 0L10 6.7l3.02-3.02a2.33 2.33 0 1 1 3.3 3.3L13.3 10l3.02 3.02a2.33 2.33 0 0 1-3.3 3.3L10 13.3l-3.02 3.02a2.33 2.33 0 0 1-3.3-3.3L6.7 10 3.68 6.98a2.33 2.33 0 0 1 0-3.3'
+        />
       ),
     },
     dasharray: defaultDasharrays[2],
@@ -294,54 +238,42 @@ const defaultPatterns = {
     fill: {
       viewBox: '0 0 18 18',
       children: (
-        <>
-          <path
-            fillRule='evenodd'
-            clipRule='evenodd'
-            d='M8.99998 2L16.7942 15.5H1.20575L8.99998 2ZM6.4019 12.5H11.5981L8.99998 8L6.4019 12.5Z'
-          />
-        </>
+        <path
+          fillRule='evenodd'
+          d='M15.93 15H2.07L9 3zm-10.4-2h6.93L9 7z'
+        />
       ),
     },
     symbol: {
-      viewBox: '0 0 33 32',
-      size: [18, 18],
+      viewBox: '2 4 27.98 24.231',
+      size: [16, 14],
       children: (
-        <>
-          <path
-            fillRule='evenodd'
-            d='m15.99 4 13.99 24.231H2L15.99 4Zm0 12.923-2.798 4.847h5.596l-2.798-4.847Z'
-            clipRule='evenodd'
-          />
-        </>
+        <path
+          fillRule='evenodd'
+          d='m15.99 4 13.99 24.23H2zm0 12.92-2.8 4.85h5.6z'
+        />
       ),
     },
     dasharray: defaultDasharrays[3],
   },
   chain: {
     fill: {
-      viewBox: '0 0 24 14',
+      viewBox: '0 0 26 24',
       children: (
-        <>
-          <path
-            fillRule='evenodd'
-            clipRule='evenodd'
-            d='M6.8453 -2H17.1547L21.1547 4.9282H26V8.9282H21.1547L17.1547 15.8564H6.8453L2.8453 8.9282H-2V4.9282H2.8453L6.8453 -2ZM6.3094 6.9282L9.1547 11.8564H14.8453L17.6906 6.9282L14.8453 2H9.1547L6.3094 6.9282Z'
-          />
-        </>
+        <path
+          fillRule='evenodd'
+          d='m17.58 4 4 6.93H26v2h-4.42l-4 6.93H8.42l-4-6.93H0v-2h4.42l4-6.93zM6.15 11.93l3.43 5.93h6.84l3.42-5.93L16.42 6H9.58z'
+        />
       ),
     },
     symbol: {
       viewBox: '0 0 25 24',
       size: [17.28, 17.28],
       children: (
-        <>
-          <path
-            fillRule='evenodd'
-            d='M6.557 2.572h10.886l4 6.928h2.678v5h-2.678l-4 6.928H6.557l-4-6.928H.12v-5h2.436l4-6.928ZM6.887 12l2.556 4.428h5.114L17.113 12l-2.556-4.428H9.443L6.887 12Z'
-            clipRule='evenodd'
-          />
-        </>
+        <path
+          fillRule='evenodd'
+          d='M6.56 2.57h10.88l4 6.93h2.68v5h-2.68l-4 6.93H6.56l-4-6.93H.12v-5h2.44zM6.89 12l2.55 4.43h5.12L17.1 12l-2.55-4.43H9.44z'
+        />
       ),
     },
     dasharray: defaultDasharrays[4],
@@ -350,59 +282,46 @@ const defaultPatterns = {
     fill: {
       viewBox: '0 0 18 18',
       children: (
-        <>
-          <path d='M12.314 12a8 8 0 0 0 0-11.314L1 12a8 8 0 0 0 11.314 0Z' />
-        </>
+        <path d='M10.94 10.63c2.75-2.75 2.75-7.2 0-9.94L1 10.63c2.75 2.74 7.2 2.74 9.94 0' />
       ),
     },
     symbol: {
       viewBox: '0 0 18 18',
       size: [13.66, 13.66],
       children: (
-        <>
-          <path d='M12.314 12a8 8 0 0 0 0-11.314L1 12a8 8 0 0 0 11.314 0Z' />
-        </>
+        <path d='M12.31 12a8 8 0 0 0 0-11.31L1 12a8 8 0 0 0 11.31 0' />
       ),
     },
     dasharray: defaultDasharrays[5],
   },
-  linesDouble: {
+  romb: {
     fill: {
-      viewBox: '0 0 16 16',
+      viewBox: '0 0 18 18',
       children: (
-        <>
-          <path d='M11 0H14V16H11V0Z' />
-          <path d='M5 0H8V16H5V0Z' />
-        </>
+        <path d='M16 9 9 2 2 9l7 7 7-7Z' />
       ),
     },
     symbol: {
-      viewBox: '0 0 17 16',
-      size: [16, 16],
+      viewBox: '0 0 20 20',
+      size: [14, 14],
       children: (
-        <>
-          <path d='M9.121 2h4v12h-4V2ZM4.121 2h4v12h-4V2Z' />
-        </>
+        <path d='M20 10 10 0 0 10l10 10 10-10Z' />
       ),
     },
-    dasharray: defaultDasharrays[6],
+    dasharray: defaultDasharrays[1],
   },
   zigzagVertical: {
     fill: {
       viewBox: '0 0 12 12',
       children: (
-        <>
-          <path d='M12 1.94 7.84 6.151l4.16 4.06V1.94ZM0 10.18V1.972L1.948 0h4.217L.128 6.112 6.16 12H1.865L0 10.18Z' />
-        </>
+        <path d='M5.44 12H2.58L0 9.48v-2.8zM12 5.5l-.61.62.61.6v2.8L8.55 6.13 12 2.65zM5.46 0 0 5.53V2.68L2.65 0z' />
       ),
     },
     symbol: {
       viewBox: '0 0 21 20',
       size: [15.85, 17.14],
       children: (
-        <>
-          <path d='m1.757 10 10-10h8.486l-10 10 10 10h-8.486l-10-10Z' />
-        </>
+        <path d='m1.76 10 10-10h8.48l-10 10 10 10h-8.48z' />
       ),
     },
     dasharray: defaultDasharrays[7],
@@ -411,46 +330,36 @@ const defaultPatterns = {
     fill: {
       viewBox: '0 0 18 18',
       children: (
-        <>
-          <path
-            fillRule='evenodd'
-            clipRule='evenodd'
-            d='M8.99998 17L16.7942 3.5H1.20575L8.99998 17ZM6.4019 6.5H11.5981L8.99998 11L6.4019 6.5Z'
-          />
-        </>
+        <path
+          fillRule='evenodd'
+          d='M15.86 3H2l6.93 12zM5.46 5h6.93l-3.46 6z'
+        />
       ),
     },
     symbol: {
-      viewBox: '0 0 33 32',
-      size: [16, 13.22],
+      viewBox: '2 3.769 27.98 24.231',
+      size: [16, 14],
       children: (
-        <>
-          <path
-            fillRule='evenodd'
-            d='M15.99 28 29.98 3.769H2L15.99 28Zm0-12.923-2.798-4.847h5.596l-2.798 4.847Z'
-            clipRule='evenodd'
-          />
-        </>
+        <path
+          fillRule='evenodd'
+          d='M15.99 28 29.98 3.77H2zm0-12.92-2.8-4.85h5.6z'
+        />
       ),
     },
     dasharray: defaultDasharrays[0],
   },
   crosses: {
     fill: {
-      viewBox: '0 0 22 22',
+      viewBox: '0 0 20 20',
       children: (
-        <>
-          <path d='M8 0a2.286 2.286 0 0 0-2.286 2.286v3.428H2.286a2.286 2.286 0 0 0 0 4.572h3.428v3.428a2.286 2.286 0 1 0 4.572 0v-3.428h3.428a2.286 2.286 0 1 0 0-4.572h-3.428V2.286A2.286 2.286 0 0 0 8 0Z' />
-        </>
+        <path d='M9 5.76a1 1 0 1 1 2 0V9h3.24a1 1 0 0 1 0 2H11v3.24a1 1 0 0 1-2 0V11H5.76a1 1 0 1 1 0-2H9z' />
       ),
     },
     symbol: {
       viewBox: '0 0 16 16',
       size: [18, 18],
       children: (
-        <>
-          <path d='M8 0a2.286 2.286 0 0 0-2.286 2.286v3.428H2.286a2.286 2.286 0 0 0 0 4.572h3.428v3.428a2.286 2.286 0 1 0 4.572 0v-3.428h3.428a2.286 2.286 0 1 0 0-4.572h-3.428V2.286A2.286 2.286 0 0 0 8 0Z' />
-        </>
+        <path d='M8 0a2.3 2.3 0 0 0-2.29 2.29V5.7H2.3a2.29 2.29 0 0 0 0 4.58h3.4v3.42a2.29 2.29 0 1 0 4.58 0v-3.4h3.42a2.29 2.29 0 1 0 0-4.58h-3.4V2.3A2.3 2.3 0 0 0 8 0' />
       ),
     },
     dasharray: defaultDasharrays[1],
@@ -459,18 +368,14 @@ const defaultPatterns = {
     fill: {
       viewBox: '0 0 16 16',
       children: (
-        <>
-          <path d='M16 11v3H0v-3h16ZM16 5v3H0V5h16Z' />
-        </>
+        <path d='M16 14H0v-2h16zm0-6H0V6h16z' />
       ),
     },
     symbol: {
       viewBox: '0 0 17 16',
       size: [16, 16],
       children: (
-        <>
-          <path d='M2 8V4h12v4H2ZM2 13V9h12v4H2Z' />
-        </>
+        <path d='M2 8V4h12v4H2ZM2 13V9h12v4H2Z' />
       ),
     },
     dasharray: defaultDasharrays[2],
@@ -479,109 +384,84 @@ const defaultPatterns = {
     fill: {
       viewBox: '0 0 12 12',
       children: (
-        <>
-          <path
-            fillRule='evenodd'
-            clipRule='evenodd'
-            d='M5.625 8.875C5.625 9.4067 5.91354 10.0738 6.77174 10.5888L8.05798 11.3605L6.5145 13.933L5.22826 13.1612C3.58646 12.1762 2.625 10.5933 2.625 8.875C2.625 7.1567 3.58646 5.57384 5.22826 4.58876C6.08646 4.07384 6.375 3.4067 6.375 2.875C6.375 2.3433 6.08646 1.67616 5.22826 1.16124L3.94202 0.389496L5.4855 -2.18298L6.77174 -1.41124C8.41354 -0.42616 9.375 1.1567 9.375 2.875C9.375 4.5933 8.41354 6.17616 6.77174 7.16124C5.91354 7.67616 5.625 8.3433 5.625 8.875Z'
-          />
-        </>
+        <path d='M7.72 0c.75.82 1.16 1.83 1.16 2.88 0 1.52-.85 2.95-2.37 3.85-.98.6-1.38 1.42-1.38 2.14s.4 1.55 1.38 2.15q.71.42 1.21.98h-3.2c-.9-.86-1.4-1.97-1.4-3.12 0-1.53.85-2.96 2.37-3.86.98-.6 1.38-1.42 1.38-2.14S6.48 1.33 5.5.73Q4.95.41 4.52 0z' />
       ),
     },
     symbol: {
       viewBox: '0 0 21 20',
       size: [16, 17.14],
       children: (
-        <>
-          <path d='M8.823 1.336 6.596 0h8.62a8.593 8.593 0 0 1 1.29 4.512c0 3.183-1.78 6.116-4.823 7.941-1.59.954-2.125 2.19-2.125 3.176 0 .985.535 2.22 2.125 3.175L13.677 20H5.206A8.578 8.578 0 0 1 4 15.629c0-3.184 1.781-6.117 4.823-7.942 1.59-.954 2.125-2.19 2.125-3.175 0-.986-.534-2.222-2.125-3.176Z' />
-        </>
+        <path d='M8.82 1.34 6.6 0h8.62a8.6 8.6 0 0 1 1.29 4.51c0 3.18-1.78 6.12-4.83 7.94-1.59.96-2.12 2.2-2.12 3.18s.53 2.22 2.12 3.17l2 1.2H5.2A8.6 8.6 0 0 1 4 15.63c0-3.19 1.78-6.12 4.82-7.94 1.6-.96 2.13-2.2 2.13-3.18S10.4 2.3 8.82 1.34' />
       ),
     },
     dasharray: defaultDasharrays[3],
   },
   squareOutline: {
     fill: {
-      viewBox: '0 0 22 22',
+      viewBox: '0 0 18 18',
       children: (
-        <>
-          <path
-            fillRule='evenodd'
-            d='M2 2h16v16H2V2Zm4.364 4.364v7.272h7.272V6.364H6.364Z'
-            clipRule='evenodd'
-          />
-        </>
+        <path
+          fillRule='evenodd'
+          d='M14 4V14H4V4H14ZM6 12H12V6H6V12Z'
+        />
       ),
     },
     symbol: {
       viewBox: '0 0 21 20',
       size: [18, 18],
       children: (
-        <>
-          <path fillRule='evenodd' d='M1.5 1.5h17v17h-17v-17Zm5 5v7h7v-7h-7Z' clipRule='evenodd' />
-        </>
+        <path fillRule='evenodd' d='M1.5 1.5h17v17h-17v-17Zm5 5v7h7v-7h-7Z' />
       ),
     },
     dasharray: defaultDasharrays[4],
   },
   triangle: {
     fill: {
-      viewBox: '0 0 21 20',
+      viewBox: '0 0 16 16',
       children: (
-        <>
-          <path d='m10 2 8.66 15H1.34L10 2Z' />
-        </>
+        <path d='m8 2 5.2 9H2.8z' />
       ),
     },
     symbol: {
-      viewBox: '0 0 33 32',
-      size: [16, 16],
+      viewBox: '3 5 25.32 21.928',
+      size: [16, 14],
       children: (
-        <>
-          <path d='m15.66 5 12.66 21.928H3L15.66 5Z' />
-        </>
+        <path d='m15.66 5 12.66 21.93H3z' />
       ),
     },
     dasharray: defaultDasharrays[5],
   },
   crescent: {
     fill: {
-      viewBox: '0 0 21 20',
+      viewBox: '0 0 24 24',
       children: (
-        <>
-          <path d='M18.501 16.748c.269-.293.018-.748-.38-.748A9 9 0 0 1 11.466.94c.32-.35.13-.941-.345-.941-5.523 0-10 4.477-10 10s4.477 10 10 10a9.974 9.974 0 0 0 7.38-3.252Z' />
-        </>
+        <path d='M17.07 13.43c.15-.29-.14-.59-.45-.5-3.84 1.03-7.79-1.25-8.82-5.1-.48-1.8-.23-3.62.56-5.16.17-.34-.1-.76-.46-.66-4.27 1.15-6.8 5.53-5.66 9.8s5.53 6.8 9.8 5.66c2.26-.6 4.03-2.12 5.03-4.04' />
       ),
     },
     symbol: {
       viewBox: '0 0 21 20',
       size: [14.99, 17.14],
       children: (
-        <>
-          <path d='M18.501 16.748c.269-.293.018-.748-.38-.748A9 9 0 0 1 11.466.94c.32-.35.13-.941-.345-.941-5.523 0-10 4.477-10 10s4.477 10 10 10a9.974 9.974 0 0 0 7.38-3.252Z' />
-        </>
+        <path d='M18.5 16.75c.27-.3.02-.75-.38-.75A9 9 0 0 1 11.47.94c.32-.35.13-.94-.35-.94-5.52 0-10 4.48-10 10s4.48 10 10 10a10 10 0 0 0 7.38-3.25' />
       ),
     },
     dasharray: defaultDasharrays[6],
   },
-  zigzag: {
+  starSmall: {
     fill: {
-      viewBox: '0 0 12 12',
+      viewBox: '0 0 22 22',
       children: (
-        <>
-          <path d='M6 4.621 1.379 0H5.62L6 .379 6.379 0h4.242L6 4.621ZM0 10.621 1.379 12H5.62L0 6.379v4.242ZM6.379 12h4.242L12 10.621V6.38L6.379 12Z' />
-        </>
+        <path d='M9.17 3.9c.26-.81 1.4-.81 1.66 0l1.14 3.57c.08.27.3.48.56.56l3.57 1.14c.81.26.81 1.4 0 1.66l-3.57 1.14c-.26.08-.48.3-.56.56l-1.14 3.57c-.26.81-1.4.81-1.66 0l-1.14-3.57c-.08-.26-.3-.48-.56-.56L3.9 10.83c-.81-.26-.81-1.4 0-1.66l3.57-1.14c.27-.08.48-.3.56-.56z' />
       ),
     },
     symbol: {
-      viewBox: '0 0 21 21',
-      size: [17.14, 16.02],
+      viewBox: '0 0 33 32',
+      size: [16, 16],
       children: (
-        <>
-          <path d='m20.121 1.284-9.797 9.797L.121.88v8.485l10.203 10.203 9.797-9.797V1.284Z' />
-        </>
+        <path d='M15.06 2.53c.32-.87 1.56-.87 1.88 0l3.22 8.72a1 1 0 0 0 .6.59l8.7 3.22c.88.32.88 1.56 0 1.88l-8.7 3.22a1 1 0 0 0-.6.6l-3.22 8.7c-.32.88-1.56.88-1.88 0l-3.22-8.7a1 1 0 0 0-.6-.6l-8.7-3.22c-.88-.32-.88-1.56 0-1.88l8.7-3.22a1 1 0 0 0 .6-.6z' />
       ),
     },
-    dasharray: defaultDasharrays[7],
+    dasharray: defaultDasharrays[0],
   },
 } satisfies Record<string, Pattern>;
 
@@ -717,6 +597,13 @@ export const PotentialGradient = (props: { id: string; type?: 'line' | 'area' })
   );
 };
 
+export const PATTERN_FILL_TILE_SCALE = 0.5;
+
+const getPatternFillTileSize = (viewBox: string): [number, number] => {
+  const parts = viewBox.trim().split(/\s+/).map(Number);
+  return [(parts[2] || 0) * PATTERN_FILL_TILE_SCALE, (parts[3] || 0) * PATTERN_FILL_TILE_SCALE];
+};
+
 export const PatternFill = ({
   id,
   color,
@@ -725,6 +612,7 @@ export const PatternFill = ({
 }: { id: string; color: string; patternKey: string; patterns?: PatternsConfig }) => {
   const DefaultPattern = React.useMemo(() => {
     const { fill } = resolvePattern(patternKey, patterns);
+    const [tileWidth, tileHeight] = getPatternFillTileSize(fill.viewBox);
     return () => (
       <pattern
         id={id}
@@ -732,8 +620,8 @@ export const PatternFill = ({
         fill={color}
         x='0'
         y='0'
-        width='12'
-        height='12'
+        width={tileWidth}
+        height={tileHeight}
         viewBox={fill.viewBox}
         patternUnits='userSpaceOnUse'
       >
@@ -748,14 +636,16 @@ export const PatternFill = ({
 export const getPatternSymbolSize = ({
   patternKey,
   patterns,
+  scale = 1,
 }: {
   patternKey: string;
   patterns?: PatternsConfig;
+  scale?: number;
 }): [width: number, height: number] => {
   const patternData = resolvePattern(patternKey, patterns);
-  if (!patternData?.symbol?.size) return [10, 10];
+  if (!patternData?.symbol?.size) return [10 * scale, 10 * scale];
 
-  return patternData.symbol.size;
+  return [patternData.symbol.size[0] * scale, patternData.symbol.size[1] * scale];
 };
 
 export const PatternSymbol: React.FC<
@@ -763,30 +653,37 @@ export const PatternSymbol: React.FC<
     color: string;
     patternKey: string;
     patterns?: PatternsConfig;
+    scale?: number;
+    sizeScale?: number;
   } & React.ComponentProps<'svg'>
-> = ({ color, patternKey, patterns, ...props }) => {
+> = ({ color, patternKey, patterns, scale = 1, sizeScale, ...props }) => {
   const DefaultSymbol = React.useMemo(() => {
     const patternData = resolvePattern(patternKey, patterns);
     const children = patternData?.symbol.children;
     const viewBox = patternData?.symbol.viewBox;
-    const width = patternData?.symbol.size[0];
-    const height = patternData?.symbol.size[1];
+    const resolvedScale =
+      typeof sizeScale === 'number' && Number.isFinite(sizeScale)
+        ? sizeScale
+        : typeof scale === 'number' && Number.isFinite(scale)
+          ? scale
+          : 1;
+    const width = patternData?.symbol.size[0] * resolvedScale;
+    const height = patternData?.symbol.size[1] * resolvedScale;
     return (props: React.ComponentProps<'svg'>) => (
       <svg
         fill={color}
         x='0'
         y='0'
+        {...propsForElement(props, 'svg')}
         width={width}
         height={height}
         viewBox={viewBox}
-        strokeWidth='1'
-        {...propsForElement(props, 'svg')}
         aria-hidden={true}
       >
         {children}
       </svg>
     );
-  }, [patternKey, color, patterns]);
+  }, [patternKey, color, patterns, scale, sizeScale]);
 
   return <DefaultSymbol {...props} />;
 };
