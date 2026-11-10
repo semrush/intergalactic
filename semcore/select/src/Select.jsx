@@ -262,7 +262,9 @@ class RootSelect extends AbstractDropdown {
 
   bindHandlerOptionClick = (optionValue, index) => (e) => {
     let newValue = optionValue;
-    const { value, multiselect } = this.asProps;
+    const { value, multiselect, disabled } = this.asProps;
+    if (disabled) return;
+
     if (Array.isArray(value)) {
       if (value.includes(optionValue)) {
         newValue = value.filter((v) => v !== optionValue);
