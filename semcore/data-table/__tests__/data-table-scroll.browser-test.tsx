@@ -1,20 +1,60 @@
+import type { Locator, Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 import { locators } from './utils';
 
-async function checkAriaMaxValue(scrollBar: any) {
-  await expect(scrollBar).toHaveAttribute('aria-valuemax');
-  const attrValue = await scrollBar.getAttribute('aria-valuemax');
-  expect(attrValue).not.toBeNull();
-  const value = Number(attrValue);
-  return value;
-}
-
-async function checkScrolled(scrollBar: any) {
+async function checkScrolled(scrollBar: Locator) {
   await expect(scrollBar).toHaveAttribute('aria-valuenow');
   await expect.poll(async () => Number(await scrollBar.getAttribute('aria-valuenow')), { timeout: 3000 }).toBeGreaterThan(0);
+}
+
+const tableRoot = (page: Page, index = 0) => page.locator('[data-ui-name="ScrollArea"]').nth(index);
+const scrollContainer = (page: Page, index = 0) => tableRoot(page, index).locator('[data-ui-name="ScrollArea.Container"]').first();
+const scrollBars = (page: Page, orientation: 'horizontal' | 'vertical', index = 0) =>
+  tableRoot(page, index).locator(`[data-ui-name="ScrollArea.Bar"][aria-orientation="${orientation}"]`);
+/** Scroll bars fade in and out, so they are hidden for screenshots; their state is checked via aria-valuenow. */
+async function hideScrollBars(page: Page) {
+  await page.addStyleTag({ content: '[data-ui-name="ScrollArea.Bar"] { visibility: hidden !important; }' });
+}
+
+/** Scrolls the table container to an exact position (clamped to the scrollable range) and waits until it settles. */
+async function scrollTableTo(page: Page, position: { top: number; left: number }, index = 0) {
+  const container = scrollContainer(page, index);
+  const target = await container.evaluate((el, { top, left }) => {
+    const clamped = {
+      top: Math.max(0, Math.min(top, el.scrollHeight - el.clientHeight)),
+      left: Math.max(0, Math.min(left, el.scrollWidth - el.clientWidth)),
+    };
+    el.scrollTop = clamped.top;
+    el.scrollLeft = clamped.left;
+    return clamped;
+  }, position);
+
+  await expect.poll(() => container.evaluate((el, { top, left }) =>
+    Math.abs(el.scrollTop - top) <= 1 && Math.abs(el.scrollLeft - left) <= 1, target)).toBe(true);
+}
+
+/** Sticky header stays at the top of the container; a non-sticky header scrolls away. Rows painted over the header are caught by the screenshot. */
+async function expectHeaderPosition(page: Page, sticky: boolean, index = 0) {
+  const containerBox = (await scrollContainer(page, index).boundingBox())!;
+  const header = tableRoot(page, index).locator('[data-ui-name="Head.Column"], [data-ui-name="Head.Group"]').first();
+  const headerBox = (await header.boundingBox())!;
+
+  if (sticky) {
+    expect(Math.abs(headerBox.y - containerBox.y), 'sticky header is at the top of the container').toBeLessThanOrEqual(1);
+  } else {
+    expect(headerBox.y + headerBox.height, 'non-sticky header scrolled away').toBeLessThanOrEqual(containerBox.y + 1);
+  }
+}
+
+/** Cells of the fixed left column stay at the left edge of the container after horizontal scroll. */
+async function expectFixedLeftColumn(page: Page, index = 0) {
+  const containerBox = (await scrollContainer(page, index).boundingBox())!;
+  const fixedCell = tableRoot(page, index).locator('[data-ui-name="Row.Cell"][aria-colindex="1"]').last();
+  const fixedCellBox = (await fixedCell.boundingBox())!;
+  expect(Math.abs(fixedCellBox.x - containerBox.x), 'fixed column is at the left edge').toBeLessThanOrEqual(1);
 }
 
 /* =====================================================
@@ -30,30 +70,39 @@ test.describe(`${TAG.VISUAL}`, () => {
   variantFixedColumn.forEach((item) => {
     test(`Verify Mouse scroll One Level with Fixed column sticky=${item.sticky} withScrollBar=${item.withScrollBar}`, {
       tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@data-table'],
-    }, async ({ page, browserName }) => {
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/scroll-tests/with-fixed-column.tsx', 'en', { ...item, multiLevel: false });
-      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
 
-      await test.step('Verify vertical scroll', async () => {
+      await test.step('Verify vertical scroll by mouse wheel', async () => {
         await locators.dataTable(page).hover();
         await page.mouse.wheel(0, 600);
         await page.waitForTimeout(1000);
-        if (item.withScrollBar) {
-          await checkScrolled(scrollBar.nth(2));
-        } else {
-          await checkScrolled(scrollBar.nth(1));
-        }
+        await checkScrolled(scrollBars(page, 'vertical').first());
       });
 
-      await test.step('Verify horizontal scroll', async () => {
+      await test.step('Verify horizontal scroll by mouse wheel', async () => {
         await locators.dataTable(page).hover();
         await page.mouse.wheel(600, 0);
         await page.waitForTimeout(1000);
+        await checkScrolled(scrollBars(page, 'horizontal').first());
+      });
 
-        if (item.sticky) {
-          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
-        }
-        await checkScrolled(scrollBar.nth(0));
+      await test.step('Scroll to a fixed position for stable geometry and screenshot', async () => {
+        await scrollTableTo(page, { top: 150, left: 300 });
+      });
+
+      await test.step(`Verify header is ${item.sticky ? 'sticky' : 'scrolled away'}`, async () => {
+        await expectHeaderPosition(page, item.sticky);
+      });
+
+      await test.step('Verify fixed left column stays at the left edge', async () => {
+        await expectFixedLeftColumn(page);
+      });
+
+      const screenshotStep = item.sticky ? test.step : test.step.skip;
+      await screenshotStep('Verify scrolled table screenshot', async () => {
+        await hideScrollBars(page);
+        await expect(tableRoot(page)).toHaveScreenshot();
       });
     });
   });
@@ -61,31 +110,41 @@ test.describe(`${TAG.VISUAL}`, () => {
   variantFixedColumn.forEach((item) => {
     test(`Verify keyboard scroll Multi Level with Fixed column sticky=${item.sticky} withScrollBar=${item.withScrollBar}`, {
       tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@data-table'],
-    }, async ({ page, browserName }) => {
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/scroll-tests/with-fixed-column.tsx', 'en', { ...item, multiLevel: true });
-      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
 
-      await test.step('Verify horizontal scroll', async () => {
+      await test.step('Verify horizontal scroll by keyboard', async () => {
         await page.keyboard.press('Tab');
         for (let i = 0; i < 3; i++) {
           await page.keyboard.press('ArrowRight');
         }
         await page.waitForTimeout(200);
-        await checkScrolled(scrollBar.nth(0));
+        await checkScrolled(scrollBars(page, 'horizontal').first());
       });
 
-      await test.step('Verify vertical scroll', async () => {
+      await test.step('Verify vertical scroll by keyboard', async () => {
         for (let i = 0; i < 5; i++) {
           await page.keyboard.press('ArrowDown');
         }
         await page.waitForTimeout(200);
+        await checkScrolled(scrollBars(page, 'vertical').first());
+      });
 
-        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
+      await test.step('Scroll to a fixed position for stable geometry and screenshot', async () => {
+        await scrollTableTo(page, { top: 150, left: 300 });
+      });
 
-        if (item.withScrollBar) {
-          await checkScrolled(scrollBar.nth(2));
-        } else
-          await checkScrolled(scrollBar.nth(1));
+      await test.step(`Verify multi-level header is ${item.sticky ? 'sticky' : 'scrolled away'}`, async () => {
+        await expectHeaderPosition(page, item.sticky);
+      });
+
+      await test.step('Verify fixed left column group stays at the left edge', async () => {
+        await expectFixedLeftColumn(page);
+      });
+
+      await test.step('Verify scrolled table screenshot', async () => {
+        await hideScrollBars(page);
+        await expect(tableRoot(page)).toHaveScreenshot();
       });
     });
   });
@@ -94,7 +153,6 @@ test.describe(`${TAG.VISUAL}`, () => {
     { sticky: false, withScrollBar: false, h: '200px', wMax: undefined },
     { sticky: true, withScrollBar: true, h: '200px', wMax: '300px' },
     { sticky: true, withScrollBar: false, h: '200px', wMax: '300px' },
-
   ];
   variantNoFixedColumn.forEach((item) => {
     test(`Verify keyboard scroll One Level scroll sticky=${item.sticky} withScrollBar=${item.withScrollBar} wMax=${item.wMax}`, {
@@ -102,11 +160,11 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@base-components',
         '@flex-box',
       ],
-    }, async ({ page, browserName }) => {
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/scroll-tests/scroll-in-table.tsx', 'en', { ...item, multiLevel: false });
-      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
+      const hasHorizontalScroll = item.wMax === '300px';
 
-      await test.step('Verify vertical scroll', async () => {
+      await test.step('Verify vertical scroll by keyboard in both tables', async () => {
         await page.keyboard.press('Tab');
         for (let i = 0; i < 5; i++) {
           await page.keyboard.press('ArrowDown');
@@ -117,37 +175,38 @@ test.describe(`${TAG.VISUAL}`, () => {
           await page.keyboard.press('ArrowDown');
         }
         await page.waitForTimeout(200);
-        if (item.wMax != '300px' && !item.withScrollBar) {
-          await checkScrolled(scrollBar.nth(0));
-          await checkScrolled(scrollBar.nth(1));
-        } else if (item.wMax == '300px' && item.withScrollBar) {
-          await checkScrolled(scrollBar.nth(0));
-          await checkScrolled(scrollBar.nth(3));
-        } else {
-          await checkScrolled(scrollBar.nth(0));
-          await checkScrolled(scrollBar.nth(2));
-        }
+        await checkScrolled(scrollBars(page, 'vertical', 0).first());
+        await checkScrolled(scrollBars(page, 'vertical', 1).first());
       });
 
-      if (item.wMax == '300px') {
-        await test.step('Verify horizontal scroll', async () => {
-          await page.keyboard.press('Shift+Tab');
-          for (let i = 0; i < 3; i++) {
-            await page.keyboard.press('ArrowRight');
-          }
-          await page.keyboard.press('Tab');
-          for (let i = 0; i < 3; i++) {
-            await page.keyboard.press('ArrowRight');
-          }
-          await page.waitForTimeout(200);
-          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
+      const horizontalStep = hasHorizontalScroll ? test.step : test.step.skip;
+      await horizontalStep('Verify horizontal scroll by keyboard (only with wMax)', async () => {
+        await page.keyboard.press('Shift+Tab');
+        for (let i = 0; i < 3; i++) {
+          await page.keyboard.press('ArrowRight');
+        }
+        await page.keyboard.press('Tab');
+        for (let i = 0; i < 3; i++) {
+          await page.keyboard.press('ArrowRight');
+        }
+        await page.waitForTimeout(200);
+        await checkScrolled(scrollBars(page, 'horizontal', 1).first());
+      });
 
-          if (item.withScrollBar)
-            await checkScrolled(scrollBar.nth(1));
-          else
-            await checkScrolled(scrollBar.nth(2));
-        });
-      }
+      await test.step('Scroll both tables to a fixed position for stable geometry and screenshot', async () => {
+        await scrollTableTo(page, { top: 100, left: 150 }, 0);
+        await scrollTableTo(page, { top: 100, left: 150 }, 1);
+      });
+
+      await test.step(`Verify headers are ${item.sticky ? 'sticky' : 'scrolled away'}`, async () => {
+        await expectHeaderPosition(page, item.sticky, 0);
+        await expectHeaderPosition(page, item.sticky, 1);
+      });
+
+      await horizontalStep('Verify scrolled tables screenshot (only with wMax)', async () => {
+        await hideScrollBars(page);
+        await expect(tableRoot(page, 0).locator('..')).toHaveScreenshot();
+      });
     });
   });
 
@@ -157,47 +216,47 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@base-components',
         '@flex-box',
       ],
-    }, async ({ page, browserName }) => {
+    }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/scroll-tests/scroll-in-table.tsx', 'en', { ...item, multiLevel: true });
-      const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
-      await test.step('Verify vertical scroll', async () => {
+      const hasHorizontalScroll = item.wMax === '300px';
+
+      await test.step('Verify vertical scroll by mouse wheel in both tables', async () => {
         await locators.dataTable(page).first().hover();
         await page.mouse.wheel(0, 600);
         await page.waitForTimeout(200);
         await locators.dataTable(page).nth(1).hover();
         await page.mouse.wheel(0, 600);
         await page.waitForTimeout(200);
-        if (item.wMax != '300px' && !item.withScrollBar) {
-          await checkScrolled(scrollBar.nth(0));
-          await checkScrolled(scrollBar.nth(1));
-        } else if (item.wMax == '300px' && item.withScrollBar) {
-          await checkScrolled(scrollBar.nth(2));
-          await checkScrolled(scrollBar.nth(5));
-        } else {
-          await checkScrolled(scrollBar.nth(1));
-          await checkScrolled(scrollBar.nth(3));
-        }
+        await checkScrolled(scrollBars(page, 'vertical', 0).first());
+        await checkScrolled(scrollBars(page, 'vertical', 1).first());
       });
 
-      if (item.wMax == '300px') {
-        await test.step('Verify horizontal scroll', async () => {
-          await locators.dataTable(page).first().hover();
-          await page.mouse.wheel(600, 0);
-          await page.waitForTimeout(200);
-          await locators.dataTable(page).nth(1).hover();
-          await page.mouse.wheel(600, 0);
-          await page.waitForTimeout(200);
-          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
+      const horizontalStep = hasHorizontalScroll ? test.step : test.step.skip;
+      await horizontalStep('Verify horizontal scroll by mouse wheel in both tables (only with wMax)', async () => {
+        await locators.dataTable(page).first().hover();
+        await page.mouse.wheel(600, 0);
+        await page.waitForTimeout(200);
+        await locators.dataTable(page).nth(1).hover();
+        await page.mouse.wheel(600, 0);
+        await page.waitForTimeout(200);
+        await checkScrolled(scrollBars(page, 'horizontal', 0).first());
+        await checkScrolled(scrollBars(page, 'horizontal', 1).first());
+      });
 
-          if (item.withScrollBar) {
-            await checkScrolled(scrollBar.nth(0));
-            await checkScrolled(scrollBar.nth(3));
-          } else {
-            await checkScrolled(scrollBar.nth(0));
-            await checkScrolled(scrollBar.nth(2));
-          }
-        });
-      }
+      await test.step('Scroll both tables to a fixed position for stable geometry and screenshot', async () => {
+        await scrollTableTo(page, { top: 100, left: 150 }, 0);
+        await scrollTableTo(page, { top: 100, left: 150 }, 1);
+      });
+
+      await test.step(`Verify multi-level headers are ${item.sticky ? 'sticky' : 'scrolled away'}`, async () => {
+        await expectHeaderPosition(page, item.sticky, 0);
+        await expectHeaderPosition(page, item.sticky, 1);
+      });
+
+      await horizontalStep('Verify scrolled tables screenshot (only with wMax)', async () => {
+        await hideScrollBars(page);
+        await expect(tableRoot(page, 0).locator('..')).toHaveScreenshot();
+      });
     });
   });
 
@@ -216,18 +275,13 @@ test.describe(`${TAG.VISUAL}`, () => {
     await page.waitForTimeout(100);
 
     const headColumns = page.locator('[data-ui-name="Head.Column"]');
-    const count = await headColumns.count();
-
-    for (let i = 0; i < count; i++) {
-      const column = headColumns.nth(i);
-      const topStyle = await column.evaluate((el) => getComputedStyle(el).top);
-      expect(topStyle).toBe('100px');
+    await expect(headColumns).not.toHaveCount(0);
+    for (const column of await headColumns.all()) {
+      await expect(column).toHaveCSS('top', '100px');
     }
 
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
   });
-
-  // add cases when hedader has interactive element
 });
 
 /* =====================================================
@@ -245,8 +299,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/scroll-tests/real-table.tsx', 'en');
 
-    // The fixed column is sized as `minmax(139px, auto)`, so it takes the leftover space in a wide
-    // container and shrinks back to its minimum in a narrow one.
     const fixedColumn = locators.getHeadColumn(page, 1);
     const horizontalScrollBars = page.locator('[data-ui-name="ScrollArea.Bar"][aria-orientation="horizontal"]');
 
@@ -256,18 +308,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await page.setViewportSize({ width: 800, height: 900 });
 
-    await test.step('Verify the fixed column shrinks together with the table', async () => {
+    await test.step('Verify the fixed column (minmax(139px, auto)) shrinks together with the table', async () => {
       await expect.poll(async () => (await fixedColumn.boundingBox())!.width, { timeout: 3000 }).toBeLessThan(wideColumnWidth);
     });
 
     await test.step('Verify horizontal scroll bars start at the end of the fixed column', async () => {
       await expect(horizontalScrollBars.first()).toBeVisible();
 
-      const scrollBarsCount = await horizontalScrollBars.count();
-
-      for (let i = 0; i < scrollBarsCount; i++) {
-        const scrollBar = horizontalScrollBars.nth(i);
-
+      for (const scrollBar of await horizontalScrollBars.all()) {
         await expect.poll(async () => {
           const scrollBarBox = (await scrollBar.boundingBox())!;
           const columnBox = (await fixedColumn.boundingBox())!;

@@ -9,9 +9,11 @@ import { locators, checkStyles, getStylesActiveHovered, getStylesNotActive } fro
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
+  const rowThemes = ['success', 'info', 'muted', 'warning', 'danger'];
+
   test('Verify colored rows', {
     tag: [TAG.PRIORITY_HIGH,
-      TAG.KEYBOARD,
+      TAG.MOUSE,
       '@data-table',
       '@base-components',
       '@flex-box',
@@ -20,83 +22,32 @@ test.describe(`${TAG.VISUAL}`, () => {
     await loadPage(page, 'stories/components/data-table/docs/examples/row-themes.tsx', 'en');
     const stylesActiveHovered = await getStylesActiveHovered(page);
     const stylesNotActive = await getStylesNotActive(page);
+    const hoverStep = browserName === 'firefox' ? test.step.skip : test.step;
 
-    await test.step('Verify success theme', async () => {
-      const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
+    for (const [index, theme] of rowThemes.entries()) {
+      const rowIndex = index + 2;
+      const cells = locators.row(page, rowIndex).locator('[data-ui-name="Row.Cell"]');
 
-      await checkStyles(cells, {
-        'background-color': stylesNotActive[0],
+      await test.step(`Verify ${theme} theme`, async () => {
+        await checkStyles(cells, {
+          'background-color': stylesNotActive[index],
+        });
       });
 
-      await locators.getCell(page, 2, 1).hover();
-      if (browserName !== 'firefox')
+      await hoverStep(`Verify ${theme} theme on hover (skipped in Firefox)`, async () => {
+        await locators.getCell(page, rowIndex, 1).hover();
         await checkStyles(cells, {
-          'background-color': stylesActiveHovered[0],
+          'background-color': stylesActiveHovered[index],
         });
-    });
-
-    await test.step('Verify info theme', async () => {
-      const cells = locators.row(page, 3).locator('[data-ui-name="Row.Cell"]');
-
-      await checkStyles(cells, {
-        'background-color': stylesNotActive[1],
       });
-
-      await locators.getCell(page, 3, 1).hover();
-      if (browserName !== 'firefox')
-        await checkStyles(cells, {
-          'background-color': stylesActiveHovered[1],
-        });
-    });
-
-    await test.step('Verify muted theme', async () => {
-      const cells = locators.row(page, 4).locator('[data-ui-name="Row.Cell"]');
-
-      await checkStyles(cells, {
-        'background-color': stylesNotActive[2],
-      });
-
-      await locators.getCell(page, 4, 1).hover();
-      if (browserName !== 'firefox')
-        await checkStyles(cells, {
-          'background-color': stylesActiveHovered[2],
-        });
-    });
-
-    await test.step('Verify warning theme', async () => {
-      const cells = locators.row(page, 5).locator('[data-ui-name="Row.Cell"]');
-
-      await checkStyles(cells, {
-        'background-color': stylesNotActive[3],
-      });
-
-      await locators.getCell(page, 5, 1).hover();
-      if (browserName !== 'firefox')
-        await checkStyles(cells, {
-          'background-color': stylesActiveHovered[3],
-        });
-    });
-
-    await test.step('Verify danger theme', async () => {
-      const cells = locators.row(page, 6).locator('[data-ui-name="Row.Cell"]');
-
-      await checkStyles(cells, {
-        'background-color': stylesNotActive[4],
-      });
-
-      await locators.getCell(page, 6, 1).hover();
-      if (browserName !== 'firefox')
-        await checkStyles(cells, {
-          'background-color': stylesActiveHovered[4],
-        });
-    });
+    }
   });
 
   test('Verify merged cells on Hover', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@data-table'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/columns-merging.tsx', 'en');
 
     const firstRow = page.locator('[data-ui-name="Row"]').first();
@@ -121,7 +72,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@data-table'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/rows-merging.tsx', 'en');
 
     await page.keyboard.press('Tab');
@@ -131,7 +82,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     const secondCell = locators.getCell(page, 2, 2);
 
     await expect(firstMergedCell).toBeFocused();
-    await test.step('Verify  attributes', async () => {
+    await test.step('Verify attributes', async () => {
       await expect(firstMergedCell).toHaveAttribute('tabindex', '-1');
       await expect(firstMergedCell).toHaveAttribute('data-grouped-by', 'rowgroup');
       await expect(firstMergedCell).toHaveAttribute('scope', 'rowgroup');
@@ -139,17 +90,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(firstMergedCell).toHaveAttribute('role', 'gridcell');
     });
 
-    await test.step('Verify  1st child cell focused', async () => {
+    await test.step('Verify 1st child cell focused', async () => {
       await page.keyboard.press('ArrowRight');
       await expect(secondCell).toBeFocused();
     });
 
-    await test.step('Verify return to parent from 1st child  ', async () => {
+    await test.step('Verify return to parent from 1st child', async () => {
       await page.keyboard.press('ArrowLeft');
       await expect(firstMergedCell).toBeFocused();
     });
 
-    await test.step('Verify return to parent from 2nd child  ', async () => {
+    await test.step('Verify return to parent from 2nd child', async () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowLeft');
@@ -157,7 +108,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(firstMergedCell).toBeFocused();
     });
 
-    await test.step('Verify return to parent from last child  ', async () => {
+    await test.step('Verify return to parent from last child', async () => {
       await page.keyboard.press('ArrowRight');
       await expect(secondCell).toBeFocused();
 
@@ -186,11 +137,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test('Verify merged rows keyboard navigation when megred rows in different positions', {
+  test('Verify merged rows keyboard navigation when merged rows in different positions', {
     tag: [TAG.PRIORITY_MEDIUM,
       TAG.KEYBOARD,
       '@data-table'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/rows-columns-tests/row-and-column-merging.tsx', 'en');
 
     await page.keyboard.press('Tab');

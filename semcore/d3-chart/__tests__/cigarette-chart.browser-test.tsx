@@ -52,7 +52,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify layouts and highlights on hover', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box', '@typography', '@checkbox'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box', '@typography', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -112,7 +112,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       { showTooltip: false },
     );
 
-    await test.step('Verify tooltip with percent shown', async () => {
+    await test.step('Verify no tooltip shown on hover', async () => {
       await locators.plot(page).first().waitFor({ state: 'visible' });
       await page.waitForTimeout(500);
       await locators.plot(page).first().locator('path').nth(2).hover();
@@ -261,7 +261,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify tiny value invisible at minimalBarWidth=0', {
-    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+    tag: [TAG.PRIORITY_MEDIUM, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -297,7 +297,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify multiple tiny values get minimalBarWidth from donor', {
-    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+    tag: [TAG.PRIORITY_LOW, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -317,7 +317,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify equal values have equal width', {
-    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+    tag: [TAG.PRIORITY_LOW, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -338,7 +338,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify zero value not in DOM', {
-    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+    tag: [TAG.PRIORITY_MEDIUM, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -379,11 +379,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       );
     });
 
-    await test.step('Verify the placeholder is visible and fully rounded', async () => {
+    await test.step('Verify the placeholder is visible with all four corners rounded', async () => {
       const width = Number(await locators.barItem(page, 0).getAttribute('width'));
       expect(width).toBeGreaterThan(0);
 
-      // a standalone placeholder has no neighbours, so all four corners are rounded
       const d = (await locators.barItem(page, 0).getAttribute('d')) ?? '';
       expect((d.match(/a/g) ?? []).length).toBe(4);
     });
@@ -396,7 +395,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify all tiny values get minimalBarWidth without donors', {
-    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+    tag: [TAG.PRIORITY_LOW, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,

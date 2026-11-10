@@ -1,5 +1,4 @@
-import { Plot, ScatterPlot, XAxis, YAxis, minMax } from '@semcore/ui/d3-chart';
-import { Text } from '@semcore/ui/typography';
+import { Chart } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
@@ -19,42 +18,16 @@ const Demo = () => {
     .domain([-1, 11]);
 
   return (
-    <Plot scale={[xScale, yScale]} width={width} height={height} data={data}>
-      <YAxis>
-        <YAxis.Ticks />
-        <YAxis.Grid />
-      </YAxis>
-      <XAxis>
-        <XAxis.Ticks />
-      </XAxis>
-      <ScatterPlot x='x' y='y' value='value' />
-      <ScatterPlot.Tooltip>
-        {({ index, x, y, value }) => {
-          return {
-            children: (
-              <>
-                <ScatterPlot.Tooltip.Title>Data</ScatterPlot.Tooltip.Title>
-                <Text tag='div'>
-                  X axis
-                  {/* @ts-ignore */}
-                  {data[index][x]}
-                </Text>
-                <Text tag='div'>
-                  Y axis
-                  {/* @ts-ignore */}
-                  {data[index][y]}
-                </Text>
-                <Text tag='div'>
-                  Value
-                  {/* @ts-ignore */}
-                  {data[index][value]}
-                </Text>
-              </>
-            ),
-          };
-        }}
-      </ScatterPlot.Tooltip>
-    </Plot>
+    <Chart.ScatterPlot
+      data={data}
+      groupKey='x'
+      valueKey='value'
+      plotWidth={width}
+      plotHeight={height}
+      xScale={xScale}
+      yScale={yScale}
+      aria-label='Scatterplot chart'
+    />
   );
 };
 

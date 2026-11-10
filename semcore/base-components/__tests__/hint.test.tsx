@@ -1,5 +1,7 @@
 import {
+  act,
   cleanup,
+  fireEvent,
   render,
   userEvent,
   waitFor,
@@ -86,6 +88,42 @@ describe('Hint', () => {
     await waitFor(() => {
       expect(handleChange).toHaveBeenCalledTimes(2);
       expect(handleChange).toHaveBeenLastCalledWith(false);
+    });
+  });
+
+  describe('Timers cleanup on unmount', () => {
+    const TestComponent = ({ onVisibleChange }: { onVisibleChange: (visible: boolean) => void }) => {
+      const ref = useRef<HTMLButtonElement>(null);
+      return (
+        <>
+          <button ref={ref} data-testid='trigger'>Hover</button>
+          <Hint triggerRef={ref} onVisibleChange={onVisibleChange} timeout={[50, 50]}>
+            Hint text
+          </Hint>
+        </>
+      );
+    };
+
+    test('Should not call onVisibleChange after unmount when hint is visible', async () => {
+      vi.useFakeTimers();
+      const handleChange = vi.fn();
+
+      const { getByTestId, unmount } = render(<TestComponent onVisibleChange={handleChange} />);
+
+      fireEvent.mouseEnter(getByTestId('trigger'));
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(100);
+      });
+      expect(handleChange).toHaveBeenCalledTimes(1);
+
+      unmount();
+
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(500);
+      });
+
+      expect(handleChange).toHaveBeenCalledTimes(1);
+      expect(vi.getTimerCount()).toBe(0);
     });
   });
 
