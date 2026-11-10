@@ -1,6 +1,5 @@
 import type { Intergalactic } from '@semcore/core';
-
-declare namespace NSLimitsUsageMeter {
+declare namespace NSUsageMeter {
     type State = 'normal' | 'warning';
 
     type Theme = 'default' | 'invert';
@@ -10,12 +9,12 @@ declare namespace NSLimitsUsageMeter {
       max?: number;
       value: number;
       feature: string;
-      state?: NSLimitsUsageMeter.State;
-      theme?: NSLimitsUsageMeter.Theme;
+      state?: NSUsageMeter.State;
+      theme?: NSUsageMeter.Theme;
       locale?: string;
     };
 
     type Component = Intergalactic.Component<'div', Props>;
 }
 
-export type { NSLimitsUsageMeter };
+export type { NSUsageMeter };
