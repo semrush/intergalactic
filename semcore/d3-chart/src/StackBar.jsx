@@ -130,7 +130,7 @@ class StackBarRoot extends Component {
 
     const rBar = series.map((s, i) => {
       if (s[0] === 0) {
-        return [r, 0];
+        return [r, this.series.length === 1 ? r : 0];
       }
 
       return this.series.slice(seriesIndex + 1).some((bar) => bar[i][0] !== bar[i][1]) ? 0 : [0, r];
