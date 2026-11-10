@@ -8,12 +8,12 @@ SUsageMeter {
     }
 
     SUsageMeterIndicator {
-      background: var(--intergalactic-progress-bar-bg-invert, oklch(0.919 0.042 245.1 / 0.234));
+      background: var(--intergalactic-limits-indicator-bg-base-invert, oklch(0.919 0.042 245.1 / 0.234));
     }
 
     SUsageMeterIndicatorFilled {
       &[state-value='normal'] {
-        background: var(--intergalactic-control-primary-invert, oklch(1 0 0));
+        background: var(--intergalactic-limits-indicator-value-normal-invert, oklch(0.991 0.005 232.5 / 0.959));
       }
     }
   }
@@ -21,17 +21,17 @@ SUsageMeter {
 
 SUsageMeterIndicator {
   border-radius: var(--intergalactic-progress-bar-rounded, 6px);
-  background: var(--intergalactic-progress-bar-bg, oklch(0.291 0.069 241.9 / 0.123));
+  background: var(--intergalactic-limits-indicator-bg-base, oklch(0.291 0.069 241.9 / 0.123));
   height: 2px;
 }
 
 SUsageMeterIndicatorFilled {
   border-radius: var(--intergalactic-progress-bar-rounded, 6px);
   height: 100%;
-  background: var(--intergalactic-control-primary-info, oklch(0.23 0.009 245));
+  background: var(--intergalactic-limits-indicator-value-normal, oklch(0.22 0.008 245));
   flex-basis: calc(var(--filled-value) * 1%);
 
   &[state-value='warning'] {
-    background: var(--intergalactic-bg-primary-critical, oklch(0.64 0.226 24.5));
+    background: var(--intergalactic-limits-indicator-value-critical, oklch(0.64 0.226 24.5));
   }
 }
