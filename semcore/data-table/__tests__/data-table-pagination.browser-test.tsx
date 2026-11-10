@@ -21,13 +21,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/pagination.tsx', 'en');
 
-    await page.getByRole('combobox').click();
+    await test.step('Select 8 rows per page so the last page has fewer rows', async () => {
+      await page.getByRole('combobox').click();
+      await page.getByRole('option', { name: '8' }).waitFor({ state: 'visible' });
+      await page.getByRole('option', { name: '8' }).click();
+    });
 
-    // select amount of items for first and last page will have different amount
-    await page.getByRole('option', { name: '8' }).waitFor({ state: 'visible' });
-    await page.getByRole('option', { name: '8' }).click();
-
-    await test.step('Focus 3rd row cell on 1st page  ', async () => {
+    await test.step('Focus 3rd row cell on 1st page', async () => {
       for (let i = 0; i < 4; i++) await page.keyboard.press('Shift+Tab');
       await expect(page.getByRole('gridcell', { name: '1 ebay buy' })).toBeFocused();
       await page.keyboard.press('ArrowDown');

@@ -73,7 +73,6 @@ class ScoreBarItemComponent extends Component<ScoreBarItemTypeProps> {
                 {displayValue}
               </SValue>
             )}
-        {/* @ts-expect-error mode is for css only */}
         <SBar mode={mode} aria-hidden='true' duration={duration}>
           <SBarValue />
           <SBarBackground style={{ width: `${bg}%` }} />

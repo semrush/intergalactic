@@ -1,8 +1,8 @@
 import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
 import Icon from '@semcore/icon/Video/m';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup, queryAllByAttribute, queryByAttribute, userEvent } from '@semcore/testing-utils/testing-library';
-import { expect, test, describe, beforeEach, vi, afterEach } from '@semcore/testing-utils/vitest';
+import { expect, test, describe, beforeEach, vi, afterEach, type MockInstance } from '@semcore/testing-utils/vitest';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
@@ -24,7 +24,7 @@ import {
   ChartLegend,
   HoverLine,
   Donut,
-  // @ts-ignore
+  // @ts-expect-error src/index.js has no declarations, and DATA_TYPE/FORECAST/HIGHLIGHT_DOT are missing from src/types
 } from '../src';
 import { PlotA11yView } from '../src/a11y/PlotA11yView';
 import { getIndexFromData } from '../src/utils';
@@ -111,6 +111,12 @@ const PlotTest = React.forwardRef((props, ref) => (
   <Plot ref={ref} data={ChartOptions.line.data} scale={[xScale, yScale]} width={100} height={100} {...props} />
 ));
 
+describe('d3-chart Translations exports', () => {
+  runTranslationsCheckTest('@semcore/d3-chart');
+  runTranslationsCheckTest('@semcore/d3-chart', 'a11y/translations/module');
+  runTranslationsCheckTest('@semcore/d3-chart', 'a11y/translations/view');
+});
+
 describe('d3-chart Dependency imports', () => {
   runDependencyCheckTests('d3-chart');
 });
@@ -118,7 +124,7 @@ describe('d3-chart Dependency imports', () => {
 describe('Plot', () => {
   beforeEach(cleanup);
 
-  test.concurrent('Should support render null', () => {
+  test.concurrent('should render nothing without data and scale', () => {
     const { queryByText } = render(<Plot>Test</Plot>);
     expect(queryByText(/Test/)).toBeNull();
   });
@@ -128,7 +134,7 @@ describe('YAxis', () => {
   beforeEach(cleanup);
 
   test(
-    'Should support call children function for Grid how many ticks are passed',
+    'should call YAxis.Grid children function once per tick',
     () => {
       expect.assertions(2);
 
@@ -148,7 +154,7 @@ describe('YAxis', () => {
   );
 
   test(
-    'Should support call children function for Ticks how many ticks are passed',
+    'should call YAxis.Ticks children function once per tick',
     () => {
       /* Called once per tick. Measuring multiline ticks no longer needs a rootRef,
          so the extra re-render after the initial render is gone. */
@@ -169,7 +175,7 @@ describe('YAxis', () => {
     },
   );
 
-  test('should support set data-ui-name for Line.Ticks', () => {
+  test('should set data-ui-name on YAxis.Ticks', () => {
     const { queryByTestId } = render(
       <Plot data={ChartOptions.line.data} scale={[xScale, yScale]} width={100} height={100}>
         <YAxis ticks={[0]}>
@@ -181,7 +187,7 @@ describe('YAxis', () => {
     expect((queryByTestId('test')!.attributes as any)['data-ui-name'].value).toBe('Axis.Ticks');
   });
 
-  test('should support change tag YAxis.Ticks', () => {
+  test('should support changing the tag of YAxis.Ticks', () => {
     const { queryByTestId } = render(
       <Plot data={ChartOptions.line.data} scale={[xScale, yScale]} width={100} height={100}>
         <YAxis ticks={[0]}>
@@ -198,7 +204,6 @@ describe('XAxis', () => {
 
   test.concurrent('should support hover for custom XAxis.Ticks', () => {
     vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => (cb as any)());
-    // const bisect = bisector((d) => d.x).center;
     class EventEmitter {
       emit() { }
       subscribe() { }
@@ -258,7 +263,7 @@ describe('utils', () => {
 describe('Focus skip to content after plot', () => {
   beforeEach(cleanup);
 
-  test('nested case', async () => {
+  test('should skip to the first focusable element after the plot in nested markup', async () => {
     const data = Array(20)
       .fill({})
       .map((d, i) => ({
@@ -310,7 +315,7 @@ describe('Focus skip to content after plot', () => {
     expect(getByTestId('focusableElement-1')).toHaveFocus();
   });
 
-  test('nested and shifted case', async () => {
+  test('should skip to the first focusable element after the plot in nested and shifted markup', async () => {
     const data = Array(20)
       .fill({})
       .map((d, i) => ({
@@ -1519,7 +1524,7 @@ describe('Chart tooltip percent delta', () => {
     { category: 'Point 4', first: 75, second: 30 },
   ];
 
-  let rafSpy: ReturnType<typeof vi.spyOn>;
+  let rafSpy: MockInstance<typeof window.requestAnimationFrame>;
 
   beforeEach(() => {
     cleanup();
@@ -1676,7 +1681,7 @@ describe('Chart tooltip default formatting', () => {
     { time: new Date('2024-07-04T00:00:00Z'), integer: 30, fractional: 99.95 },
   ];
 
-  let rafSpy: ReturnType<typeof vi.spyOn>;
+  let rafSpy: MockInstance<typeof window.requestAnimationFrame>;
 
   beforeEach(() => {
     cleanup();
@@ -1941,7 +1946,7 @@ describe('Chart tooltip default formatting', () => {
  * dropped from it.
  */
 describe('Chart tooltip numeric formatting across chart types', () => {
-  let rafSpy: ReturnType<typeof vi.spyOn>;
+  let rafSpy: MockInstance<typeof window.requestAnimationFrame>;
 
   beforeEach(() => {
     cleanup();
@@ -2024,7 +2029,7 @@ describe('Tooltip.Dot ring lightness', () => {
     { x: 3, y: 7 },
   ];
 
-  let rafSpy: ReturnType<typeof vi.spyOn>;
+  let rafSpy: MockInstance<typeof window.requestAnimationFrame>;
 
   beforeEach(() => {
     cleanup();

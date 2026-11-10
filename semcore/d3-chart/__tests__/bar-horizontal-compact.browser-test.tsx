@@ -28,6 +28,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   const variables = [
     {
       description: 'Standard: all features, medium size, with axis',
+      priority: TAG.PRIORITY_HIGH,
       plotHeight: 350,
       marginX: 40,
       marginY: 40,
@@ -38,6 +39,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     },
     {
       description: 'Patterns: no margins, no axis, patterns enabled',
+      priority: TAG.PRIORITY_MEDIUM,
       plotHeight: 450,
       marginX: 0,
       marginY: 0,
@@ -47,7 +49,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       duration: 0,
     },
     {
-      description: 'Standart: No margins no tooltip',
+      description: 'Standard: no margins, no tooltip',
+      priority: TAG.PRIORITY_MEDIUM,
       plotHeight: 250,
       marginX: 0,
       marginY: 0,
@@ -58,9 +61,9 @@ test.describe(`${TAG.VISUAL}`, () => {
     },
   ];
 
-  variables.forEach((vars, index) => {
+  variables.forEach(({ priority, ...vars }, index) => {
     test(`Verify bar horizontal compact with config ${index + 1} (${vars.description})`, {
-      tag: [TAG.PRIORITY_HIGH, '@bar-horizontal-compact', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+      tag: [priority, '@bar-horizontal-compact', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -87,7 +90,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify advanced usage of bar horizontal compact', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-horizontal-compact', '@d3-chart', '@base-components', '@flex-box', '@typography'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-horizontal-compact', '@d3-chart', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -123,7 +126,6 @@ test.describe(`${TAG.VISUAL}`, () => {
     await test.step('Verify links hover and keyboard navigation', async () => {
       await locators.link(page, 2).hover();
 
-      // Navigate with keyboard to verify focus state
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await expect(page).toHaveScreenshot();
@@ -149,19 +151,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify bar backgrounds have aria-hidden', async () => {
       await locators.plot(page).first().waitFor({ state: 'visible' });
 
-      const barBacks = await locators.barBackground(page).all();
-      expect(barBacks.length).toBeGreaterThan(0);
+      await expect(locators.barBackground(page)).not.toHaveCount(0);
 
-      for (const bar of barBacks) {
+      for (const bar of await locators.barBackground(page).all()) {
         await expect(bar).toHaveAttribute('aria-hidden', 'true');
       }
     });
 
     await test.step('Verify bar fills have aria-hidden', async () => {
-      const barFills = await locators.barFill(page).all();
-      expect(barFills.length).toBeGreaterThan(0);
+      await expect(locators.barFill(page)).not.toHaveCount(0);
 
-      for (const bar of barFills) {
+      for (const bar of await locators.barFill(page).all()) {
         await expect(bar).toHaveAttribute('aria-hidden', 'true');
       }
     });

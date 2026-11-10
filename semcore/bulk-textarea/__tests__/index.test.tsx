@@ -1,5 +1,5 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { act, render, userEvent, cleanup, waitFor, fireEvent } from '@semcore/testing-utils/testing-library';
 import { describe, test, vi, assertType, expect, afterEach, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -50,6 +50,10 @@ afterEach(async () => {
   await act(() => vi.runAllTimersAsync());
   cleanup();
   vi.useRealTimers();
+});
+
+describe('bulk-textarea Translations exports', () => {
+  runTranslationsCheckTest('@semcore/bulk-textarea');
 });
 
 describe('BulkTextarea Dependency imports', () => {

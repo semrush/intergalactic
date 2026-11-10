@@ -1,46 +1,93 @@
 import { Box } from '@semcore/ui/base-components';
 import type { BarChartProps } from '@semcore/ui/d3-chart';
-import { Chart, DATA_TYPE, FORECAST, GOOD, BAD, HIGHLIGHT_DOT, interpolateValue, POTENTIAL, INSIGHTFUL } from '@semcore/ui/d3-chart';
+import { Chart, DATA_TYPE, FORECAST, GOOD, BAD, HIGHLIGHT_DOT, POTENTIAL, INSIGHTFUL } from '@semcore/ui/d3-chart';
 import React from 'react';
 
 import { getChartProps, getPropsToChart } from '../stories_props_helper';
 
+export const categories = ['Category 0', 'Category 1', 'Category 2', 'Category 3', 'Category 4'];
+
+type HighlightDots = 'none' | 'good' | 'bad' | 'insightful' | 'mixed';
+type DataTypeKnob = 'none' | 'forecast' | 'potential' | 'both';
+
+const highlightsByKnob: Record<HighlightDots, Array<string | undefined>> = {
+  none: [],
+  good: [GOOD, GOOD, GOOD],
+  bad: [BAD, BAD, BAD],
+  insightful: [INSIGHTFUL, INSIGHTFUL, INSIGHTFUL],
+  mixed: [GOOD, INSIGHTFUL, BAD],
+};
+
+// Applied to Category 3 and Category 4.
+const dataTypesByKnob: Record<DataTypeKnob, Array<string | undefined>> = {
+  none: [],
+  forecast: [FORECAST, FORECAST],
+  potential: [POTENTIAL, POTENTIAL],
+  both: [FORECAST, POTENTIAL],
+};
+
+const values = [2, 5, 7, 7, 9];
+
+const getData = (highlightDots: HighlightDots, dataType: DataTypeKnob) =>
+  categories.map((category, i) => {
+    const item: Record<string, unknown> = { category, bar: values[i] };
+    const highlight = highlightsByKnob[highlightDots][i];
+    const type = dataTypesByKnob[dataType][i - 3];
+
+    if (highlight) item[HIGHLIGHT_DOT] = highlight;
+    if (type) item[DATA_TYPE] = type;
+
+    return item;
+  });
+
 const Demo = (props: BarChartProps) => {
   const {
     plotWidth, plotHeight,
+    highlightDots = 'mixed',
+    dataType = 'both',
     withReferenceLine,
     withReferenceArea,
+    referenceLineCategory,
     referenceLineValue,
     referenceLineArea,
     referenceLineCount,
     referenceLinesOverlap,
+    referenceAreaStartCategory,
+    referenceAreaEndCategory,
     referenceAreaStart,
     referenceAreaEnd,
     referenceAreaUse,
     referenceAreaTitle,
     referenceAreaSubTitle,
     ...chartProps
-  } = getPropsToChart(props);
+  } = getPropsToChart(props as any) as any;
 
   const barProps = {
     ...chartProps,
+    // Tests pass their own `data`; the knobs build it only when none is given.
+    data: chartProps.data ?? getData(highlightDots, dataType),
   };
 
+  // The reference line is drawn along the x scale: categories when the chart is vertical,
+  // values when `invertAxis` turns it horizontal.
   if (withReferenceLine) {
-    const firstValue = referenceLineValue ?? 3;
-    const step = referenceLinesOverlap ? 0 : 5;
+    const count = referenceLineCount ?? 1;
+    const lineValues = chartProps.invertAxis
+      ? Array.from({ length: count }, (_, i) => (referenceLineValue ?? 3) + (referenceLinesOverlap ? 0 : i * 2))
+      : Array.from({ length: count }, (_, i) =>
+          categories[categories.indexOf(referenceLineCategory) + (referenceLinesOverlap ? 0 : i)],
+        ).filter(Boolean);
+    const lines = lineValues.map((value) => ({ value, area: referenceLineArea }));
 
-    barProps.referenceLine = referenceLineCount
-      ? Array.from({ length: referenceLineCount }, (_, i) => ({ value: firstValue + i * step, area: referenceLineArea }))
-      : { value: firstValue, area: referenceLineArea };
+    barProps.referenceLine = referenceLineCount ? lines : lines[0];
   }
 
   if (withReferenceArea) {
-    const use = referenceAreaUse ?? 'insight' as const;
-
     barProps.referenceArea = {
-      value: [referenceAreaStart ?? 12, referenceAreaEnd ?? 16],
-      use,
+      value: chartProps.invertAxis
+        ? [referenceAreaStart ?? 4, referenceAreaEnd ?? 6]
+        : [referenceAreaStartCategory, referenceAreaEndCategory],
+      use: referenceAreaUse ?? 'insight',
       title: referenceAreaTitle || undefined,
       subTitle: referenceAreaSubTitle || undefined,
     };
@@ -63,18 +110,10 @@ const Demo = (props: BarChartProps) => {
   );
 };
 
-const data = [
-  { category: 'Category 0', bar: 2, [HIGHLIGHT_DOT]: GOOD },
-  { category: 'Category 1', bar: 5, [HIGHLIGHT_DOT]: INSIGHTFUL },
-  { category: 'Category 2', bar: 7, [HIGHLIGHT_DOT]: BAD },
-  { category: 'Category 3', bar: 7, [DATA_TYPE]: FORECAST },
-  { category: 'Category 4', bar: 9, [DATA_TYPE]: POTENTIAL },
-];
-
 export const defaultProps = getChartProps<BarChartProps>({
   groupKey: 'category',
   type: 'group',
-  data,
+  data: undefined,
   maxBarSize: 12,
   trend: {
     bar: [
@@ -85,12 +124,17 @@ export const defaultProps = getChartProps<BarChartProps>({
       { x: 'Category 4' as string, y: 8 as number },
     ],
   },
+  highlightDots: 'mixed',
+  dataType: 'both',
   withReferenceLine: false,
   withReferenceArea: false,
-  referenceLineValue: 'Category 1',
+  referenceLineCategory: 'Category 1',
+  referenceLineValue: 3,
   referenceLinesOverlap: false,
-  referenceAreaStart: 'Category 2',
-  referenceAreaEnd: 'Category 4',
+  referenceAreaStartCategory: 'Category 2',
+  referenceAreaEndCategory: 'Category 4',
+  referenceAreaStart: 4,
+  referenceAreaEnd: 6,
   referenceAreaTitle: '',
   referenceAreaSubTitle: '',
 } as any);

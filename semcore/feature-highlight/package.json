@@ -23,6 +23,7 @@
     "@semcore/base-trigger": "^18.0.0",
     "@semcore/button": "^18.0.0",
     "@semcore/checkbox": "^18.0.1",
+    "@semcore/icon": "^18.0.1",
     "@semcore/input": "^18.0.0",
     "@semcore/notice": "^18.0.0",
     "@semcore/pills": "^18.0.0",
