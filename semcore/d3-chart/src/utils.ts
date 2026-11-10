@@ -390,7 +390,7 @@ export function getHorizontalPathFromRect(data: RectData, radius = 12) {
   const { x, y, width, height } = data;
   const r = radius;
 
-  const path = `M ${x},${y} H ${x + width - r} Q ${x + width},${y} ${x + width},${y + r} V ${y + height - r} Q ${x + width},${y + height} ${x + width - r},${y + height} H ${x} Z`;
+  const path = `M ${x},${y + r} Q ${x},${y} ${x + r},${y} H ${x + width - 2 * r} Q ${x + width},${y} ${x + width},${y + r} V ${y + height - r} Q ${x + width},${y + height} ${x + width - 2 * r},${y + height} H ${x + r} Q ${x},${y + height} ${x},${y + height - 6} Z`;
 
   return path;
 }
