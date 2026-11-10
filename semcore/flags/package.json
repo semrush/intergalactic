@@ -14,7 +14,7 @@
     "require": "./lib/cjs/index.js"
   },
   "scripts": {
-    "build": "pnpm semcore-builder --source=js && pnpm vite build && tsm --require=../../.ci/tsm-filter-warnings.js ./generate.ts",
+    "build": "pnpm semcore-builder && pnpm vite build && tsm --require=../../.ci/tsm-filter-warnings.js ./generate.ts",
     "upload-static": "gcs-upload intergalactic-flags lib/sprites/*"
   },
   "dependencies": {
@@ -29,10 +29,12 @@
     "directory": "semcore/flags"
   },
   "devDependencies": {
-    "@semcore/core": "workspace:*",
     "@semcore/base-components": "workspace:*",
+    "@semcore/core": "workspace:*",
     "@semcore/testing-utils": "workspace:*",
     "@types/classnames": "2.2.6",
+    "@types/imagemin": "^9.0.1",
+    "@types/pngjs": "6.0.5",
     "imagemin": "9.0.1",
     "imagemin-pngquant": "9.0.2",
     "pngjs": "7.0.0"

@@ -633,11 +633,6 @@
       "import": "./radio/index.mjs",
       "require": "./radio/index.cjs"
     },
-    "./radio-cards": {
-      "types": "./radio-cards/index.d.ts",
-      "import": "./radio-cards/index.mjs",
-      "require": "./radio-cards/index.cjs"
-    },
     "./select": {
       "types": "./select/index.d.ts",
       "import": "./select/index.mjs",
@@ -647,6 +642,11 @@
       "types": "./input-tags/index.d.ts",
       "import": "./input-tags/index.mjs",
       "require": "./input-tags/index.cjs"
+    },
+    "./radio-cards": {
+      "types": "./radio-cards/index.d.ts",
+      "import": "./radio-cards/index.mjs",
+      "require": "./radio-cards/index.cjs"
     },
     "./side-panel": {
       "types": "./side-panel/index.d.ts",

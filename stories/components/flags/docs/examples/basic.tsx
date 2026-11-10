@@ -1,10 +1,11 @@
 import { Flex } from '@semcore/ui/base-components';
-import Flags, { iso2Name, type FlagsIso2 } from '@semcore/ui/flags';
+import type { NSFlags } from '@semcore/ui/flags';
+import Flags, { iso2Name } from '@semcore/ui/flags';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
-  const keys = Object.keys(iso2Name) as FlagsIso2[];
+  const keys = Object.keys(iso2Name) as NSFlags.Iso2Code[];
 
   return (
     <Flex flexWrap>

@@ -3,6 +3,7 @@ SFlags {
   display: inline-block;
   width: 16px;
   height: 16px;
+  clip-path: inset(3px 1px 2px 1px round 1px);
 
   &::after {
     content: '';
@@ -10,10 +11,11 @@ SFlags {
     top: 3px;
     left: 1px;
     display: block;
+    box-sizing: border-box;
     width: 14px;
     height: 11px;
-    background-color: var(--intergalactic-bg-secondary-neutral-active, oklch(0.96 0.005 232.5));
-    z-index: -1;
+    border: 0.5px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
+    border-radius: 1px;
   }
 }
 
@@ -22,6 +24,11 @@ SFlags[data-capital-letters] {
   justify-content: center;
   align-items: center;
   background: var(--intergalactic-bg-primary-neutral-active, oklch(0.96 0.005 232.5));
+  clip-path: none;
+
+  &::after {
+    display: none;
+  }
 
   &::before {
     content: attr(data-capital-letters);
