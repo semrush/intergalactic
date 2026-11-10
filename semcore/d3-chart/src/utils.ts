@@ -10,6 +10,7 @@ import {
   type NumberValue,
   scaleBand,
   scaleSqrt,
+  scaleLinear,
 } from 'd3-scale';
 import type React from 'react';
 
@@ -302,37 +303,35 @@ export const calculateBubbleDomain = (
   key: 'x' | 'y',
   range: [number, number],
 ): [min: number, max: number] => {
-  const miniestValue = data.reduce(
-    (acc, item) => {
-      if (item[key] - item.value < acc.min) {
-        acc.min = item[key] - item.value;
-        acc.value = item.value;
-      }
-      return acc;
-    },
-    { value: data[0].value, min: data[0][key] - data[0].value },
-  ).value;
-  const maxestValue = data.reduce(
-    (acc, item) => {
-      if (item.value + item[key] > acc.max) {
-        acc.max = item.value + item.x;
-        acc.value = item.value;
-      }
-      return acc;
-    },
-    { value: data[0].value, max: data[0].value + data[0][key] },
-  ).value;
+  if (!data.length) return [0, 1];
 
-  let [min, max] = minMax(data, key);
+  const [dataMin, dataMax] = minMax(data, key);
 
-  const pixelRatio = Math.abs(max - min) / Math.abs(range[0] - range[1]);
   const valueScale = getBubbleChartValueScale(data, 'value');
-  const minValueShift = valueScale(miniestValue) * pixelRatio;
-  const maxValueShift = valueScale(maxestValue) * pixelRatio;
-  min -= minValueShift * 2;
-  max += maxValueShift * 2;
+  const axisScale = scaleLinear().domain([dataMin, dataMax]).range(key === 'x' ? range : [range[1], range[0]]);
 
-  return [Math.floor(min), Math.floor(max)];
+  let minWithRadius = Infinity;
+  let maxWithRadius = -Infinity;
+
+  for (const item of data) {
+    const radiusPx = valueScale(item.value);
+    const centerPx = axisScale(item[key]);
+
+    const min = centerPx - radiusPx;
+    const max = centerPx + radiusPx;
+
+    if (min < minWithRadius) {
+      minWithRadius = min;
+    }
+    if (max > maxWithRadius) {
+      maxWithRadius = max;
+    }
+  }
+
+  const resultMin = Math.floor(axisScale.invert(Math.abs(minWithRadius))) * (minWithRadius < 0 ? -1 : 1);
+  const resultMax = Math.ceil(axisScale.invert(Math.abs(maxWithRadius))) * (maxWithRadius < 0 ? -1 : 1);
+
+  return [resultMin, resultMax];
 };
 
 type CommonEvents = {
