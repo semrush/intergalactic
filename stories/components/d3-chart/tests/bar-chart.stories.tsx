@@ -2,7 +2,7 @@ import type { BarChartProps } from '@semcore/ui/d3-chart';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BarPropsExample, { defaultProps as BarPropsDefaultProps } from './examples/bar-chart/bars-props';
-import BasicUsageExample, { defaultProps as BasicUsageProps } from './examples/bar-chart/basic-usage';
+import BasicUsageExample, { defaultProps as BasicUsageProps, categories } from './examples/bar-chart/basic-usage';
 import { getChartArgTypes, referenceControls } from './examples/stories_props_helper';
 
 const meta: Meta = {
@@ -28,12 +28,60 @@ export const BarProps: StoryObj = {
   args: BarPropsDefaultProps,
 };
 
+/**
+ * Knobs that belong to the story, not to `BarChart`: they pick values the component takes
+ * as data rather than as props.
+ */
+const storyKnob = { table: { category: 'Story data knobs' } } as const;
+const referenceKnob = referenceControls.withReferenceLine.table;
+
+/**
+ * The reference line and area sit on the x scale: categories for a vertical chart,
+ * numbers once `invertAxis` makes it horizontal. Each mode shows only its own knobs.
+ */
+const barReferenceControls = {
+  ...referenceControls,
+  referenceLineCategory: {
+    control: 'select',
+    options: categories,
+    if: { arg: 'invertAxis', truthy: false },
+    table: referenceKnob,
+  },
+  referenceLineValue: { control: 'number', if: { arg: 'invertAxis' }, table: referenceKnob },
+  referenceAreaStartCategory: {
+    control: 'select',
+    options: categories,
+    if: { arg: 'invertAxis', truthy: false },
+    table: referenceKnob,
+  },
+  referenceAreaEndCategory: {
+    control: 'select',
+    options: categories,
+    if: { arg: 'invertAxis', truthy: false },
+    table: referenceKnob,
+  },
+  referenceAreaStart: { control: 'number', if: { arg: 'invertAxis' }, table: referenceKnob },
+  referenceAreaEnd: { control: 'number', if: { arg: 'invertAxis' }, table: referenceKnob },
+};
+
 export const BasicUsage = {
   render: BasicUsageExample,
   argTypes: getChartArgTypes({
     type: { control: 'select', options: ['stack', 'group'] },
     maxBarSize: { control: { type: 'number', min: 0, max: 100, step: 1 } },
-    ...referenceControls,
+    // Applied to Category 0–2; `mixed` is good / insightful / bad.
+    highlightDots: {
+      control: 'select',
+      options: ['none', 'good', 'bad', 'insightful', 'mixed'],
+      ...storyKnob,
+    },
+    // Applied to Category 3–4; `both` is forecast / potential.
+    dataType: {
+      control: 'select',
+      options: ['none', 'forecast', 'potential', 'both'],
+      ...storyKnob,
+    },
+    ...barReferenceControls,
   }),
   args: BasicUsageProps,
 };
