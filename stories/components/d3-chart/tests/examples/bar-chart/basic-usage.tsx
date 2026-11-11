@@ -28,9 +28,10 @@ const dataTypesByKnob: Record<DataTypeKnob, Array<string | undefined>> = {
 
 const values = [2, 5, 7, 7, 9];
 
-const getData = (highlightDots: HighlightDots, dataType: DataTypeKnob) =>
+const getData = (highlightDots: HighlightDots, dataType: DataTypeKnob, secondSeries = false) =>
   categories.map((category, i) => {
     const item: Record<string, unknown> = { category, bar: values[i] };
+    if (secondSeries) item.bar2 = values[i] / 2;
     const highlight = highlightsByKnob[highlightDots][i];
     const type = dataTypesByKnob[dataType][i - 3];
 
@@ -45,6 +46,7 @@ const Demo = (props: BarChartProps) => {
     plotWidth, plotHeight,
     highlightDots = 'mixed',
     dataType = 'both',
+    secondSeries,
     withReferenceLine,
     withReferenceArea,
     referenceLineCategory,
@@ -65,7 +67,7 @@ const Demo = (props: BarChartProps) => {
   const barProps = {
     ...chartProps,
     // Tests pass their own `data`; the knobs build it only when none is given.
-    data: chartProps.data ?? getData(highlightDots, dataType),
+    data: chartProps.data ?? getData(highlightDots, dataType, secondSeries),
   };
 
   // The reference line is drawn along the x scale: categories when the chart is vertical,
@@ -126,6 +128,7 @@ export const defaultProps = getChartProps<BarChartProps>({
   },
   highlightDots: 'mixed',
   dataType: 'both',
+  secondSeries: false,
   withReferenceLine: false,
   withReferenceArea: false,
   referenceLineCategory: 'Category 1',

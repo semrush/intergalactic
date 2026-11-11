@@ -5,10 +5,30 @@ const meta: Meta = {
   title: 'Components/d3Charts/Tests/Score-Bar-Chart',
 };
 export default meta;
+
+/**
+ * Knobs that belong to the story, not to `ScoreBarChart`: they swap the data or pick a
+ * ready function for a function prop.
+ */
+const storyKnob = { table: { category: 'Story data knobs' } } as const;
+
 export const BasicUsage = {
   render: BasicUsageExample,
   argTypes: {
     mode: { control: 'select', options: ['default', 'compact'] },
+    // Unset = sum of all values.
+    totalValue: { control: 'number' },
+    showTooltip: { control: 'boolean' },
+    showTotalInTooltip: { control: 'boolean' },
+    duration: { control: { type: 'number', min: 0, max: 2000, step: 100 } },
+    locale: { control: 'select', options: ['de', 'en', 'es', 'fr', 'it', 'ja', 'ko', 'nl', 'pl', 'pt', 'sv', 'tr', 'vi', 'zh', 'uk'] },
+    colorMapVariant: { control: 'select', options: ['none', 'custom'], ...storyKnob },
+    valueFormat: { control: 'select', options: ['default', 'currency', 'thousands'], ...storyKnob },
+    titleFormat: { control: 'select', options: ['default', 'uppercase'], ...storyKnob },
+    // Adds `href` to every item.
+    withLinks: { control: 'boolean', ...storyKnob },
+    // Passes `onClickItem`; the last click is printed under the chart.
+    clickable: { control: 'boolean', ...storyKnob },
   },
   args: BasicUsageProps,
 };

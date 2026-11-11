@@ -1,82 +1,20 @@
-import type { Locator, Page } from '@semcore/testing-utils/playwright';
+import type { Locator } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
-import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { expectEachToHaveAttribute, loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-export const locators = {
-  plot: (page: Page) => page.locator('svg[data-ui-name="Plot"]'),
-  groupBarBar: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="GroupBar.Bar"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  groupBarHorizontalBar: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="GroupBar.HorizontalBar"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  bar: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="Bar"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  horizontalBar: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="HorizontalBar"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  horizontalBarBackground: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="HorizontalBar.Background"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  stackBarBar: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="StackBar.Bar"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  stackBarHorizontalBar: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="StackBar.HorizontalBar"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  stackGroupBar: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="StackGroupBar"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  stackGroupBarBar: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="StackGroupBar.Bar"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  lineDots: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="Line.Dots"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  legend: (page: Page) => page.getByLabel('Chart legend'),
-  legendItem: (page: Page, text?: string) =>
-    text ? page.getByText(text) : page.locator('[data-ui-name="Legend.Item"]'),
-  checkbox: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="Checkbox"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  tooltip: (page: Page) => page.locator('[data-ui-name="Bar.Tooltip"], [data-ui-name="HoverLine.Tooltip"], [data-ui-name="HoverRect.Tooltip"]'),
-};
-
-const getBarBoxes = async (locator: Locator, axis: 'x' | 'y' = 'x') => {
-  const boxes = await locator.evaluateAll((elements) =>
-    elements.map((element) => {
-      const { x, y, width, height } = (element as unknown as SVGGraphicsElement).getBBox();
-      return { x, y, width, height };
-    }),
-  );
-
-  return boxes.sort((a, b) => a[axis] - b[axis]);
-};
-
-/** Gaps between neighbouring bars along the given axis. */
-const getGaps = (
-  boxes: Array<{ x: number; y: number; width: number; height: number }>,
-  axis: 'x' | 'y' = 'x',
-) => {
-  const size = axis === 'x' ? 'width' : 'height';
-
-  return boxes
-    .slice(1)
-    .map((box, index) => Number((box[axis] - (boxes[index][axis] + boxes[index][size])).toFixed(2)));
-};
+import {
+  BAR_STORY,
+  countRoundedCorners,
+  dataTypeCases,
+  expectDataTypes,
+  getBarBoxes,
+  getCornerRadius,
+  getCurveCornerSizes,
+  getGaps,
+  hoverCenter,
+  locators,
+} from './bar-chart.helpers';
 
 /* =====================================================
 @visual
@@ -144,7 +82,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       }, async ({ page }) => {
         await loadPage(
           page,
-          'stories/components/d3-chart/tests/examples/bar-chart/basic-usage.tsx',
+          BAR_STORY,
           'en',
           vars,
         );
@@ -152,10 +90,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         await test.step('Verify chart with tooltip renders correctly', async () => {
           await locators.plot(page).waitFor({ state: 'visible' });
           await page.waitForTimeout(500);
-          const box = await page.locator('path').nth(2).boundingBox();
-          if (box) {
-            await page.mouse.move(box.x + 50, box.y + 50);
-          }
+          const bar = vars.invertAxis ? locators.groupBarHorizontalBar(page, 1) : locators.groupBarBar(page, 1);
+          await hoverCenter(page, bar);
 
           const tooltip = locators.tooltip(page);
           await tooltip.waitFor({ state: 'visible' });
@@ -188,7 +124,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       }, async ({ page }) => {
         await loadPage(
           page,
-          'stories/components/d3-chart/tests/examples/bar-chart/basic-usage.tsx',
+          BAR_STORY,
           'en',
           vars,
         );
@@ -246,8 +182,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify date format in bar chart', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart',
-        '@responsive'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -259,16 +194,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         const chart = locators.plot(page).first();
         await chart.waitFor({ state: 'visible' });
 
-        const box = await chart.boundingBox();
-        if (!box) throw new Error('Bounding box not found');
-
-        const targetX = 128.42;
-        const targetY = 190.53;
-
-        const hoverX = box.x + targetX;
-        const hoverY = box.y + targetY;
-
-        await page.mouse.move(hoverX, hoverY);
+        await hoverCenter(page, locators.groupBarBar(page, 1));
         await expect(page).toHaveScreenshot();
       });
     });
@@ -291,16 +217,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       });
 
       await test.step('Verify tooltip shown on hover', async () => {
-        const box = await chart.boundingBox();
-        if (!box) throw new Error('Bounding box not found');
-
-        const targetX = 128.42;
-        const targetY = 190.53;
-
-        const hoverX = box.x + targetX;
-        const hoverY = box.y + targetY;
-
-        await page.mouse.move(hoverX, hoverY);
+        await hoverCenter(page, locators.bar(page, 1));
         await page.waitForTimeout(300);
         await expect(page).toHaveScreenshot();
       });
@@ -320,16 +237,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await chart.waitFor({ state: 'visible' });
 
       await test.step('Verify looks good and tooltip shown on hover', async () => {
-        const box = await chart.boundingBox();
-        if (!box) throw new Error('Bounding box not found');
-
-        const targetX = 128.42;
-        const targetY = 190.53;
-
-        const hoverX = box.x + targetX;
-        const hoverY = box.y + targetY;
-
-        await page.mouse.move(hoverX, hoverY);
+        await hoverCenter(page, locators.bar(page, 1));
         await page.waitForTimeout(500);
         await expect(page).toHaveScreenshot();
       });
@@ -414,7 +322,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       }, async ({ page }) => {
         await loadPage(
           page,
-          'stories/components/d3-chart/tests/examples/bar-chart/basic-usage.tsx',
+          BAR_STORY,
           'en',
           variant.props,
         );
@@ -427,29 +335,14 @@ test.describe(`${TAG.VISUAL}`, () => {
         });
 
         await test.step('Verify tooltip on hover', async () => {
-          if (variant.props.type === 'group') {
-            const boxLocator = page.locator('path:nth-child(9)');
-            const box = await boxLocator.boundingBox();
-            if (!box) throw new Error('Bounding box not found');
+          const isStack = variant.props.type === 'stack';
+          const bars = variant.props.invertAxis
+            ? (isStack ? locators.stackBarHorizontalBar : locators.groupBarHorizontalBar)
+            : (isStack ? locators.stackBarBar : locators.groupBarBar);
 
-            const hoverX = box.x + box.width / 2;
-            const hoverY = box.y + box.height / 2;
-
-            await page.mouse.move(hoverX, hoverY);
-            await page.waitForTimeout(500);
-            await expect(page).toHaveScreenshot();
-          } else if (variant.props.type === 'stack') {
-            const boxLocator = page.locator('path:nth-child(37)');
-            const box = await boxLocator.boundingBox();
-            if (!box) throw new Error('Bounding box not found');
-
-            const hoverX = box.x + box.width / 2;
-            const hoverY = box.y + box.height / 2;
-
-            await page.mouse.move(hoverX, hoverY);
-            await page.waitForTimeout(500);
-            await expect(page).toHaveScreenshot();
-          }
+          await hoverCenter(page, bars(page, 2));
+          await page.waitForTimeout(500);
+          await expect(page).toHaveScreenshot();
         });
       });
     });
@@ -485,15 +378,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Tab');
 
-        const box = await chart.boundingBox();
-        if (!box) throw new Error('Bounding box not found');
-
-        const targetX = 128.42;
-        const targetY = 190.53;
-        const hoverX = box.x + targetX;
-        const hoverY = box.y + targetY;
-
-        await page.mouse.move(hoverX, hoverY);
+        await hoverCenter(page, locators.groupBarBar(page, 1));
         await page.waitForTimeout(500);
         await expect(page).toHaveScreenshot();
       });
@@ -517,8 +402,12 @@ test.describe(`${TAG.VISUAL}`, () => {
       });
 
       await test.step('Verify toggle and navigation behavior', async () => {
+        const firstItem = page.getByRole('checkbox').first();
+        await expect(firstItem).toBeFocused();
         await page.keyboard.press('Space');
+        await expect(firstItem).not.toBeChecked();
         await page.keyboard.press('Space');
+        await expect(firstItem).toBeChecked();
         await page.keyboard.press('Tab');
         await expect(page).toHaveScreenshot();
       });
@@ -600,7 +489,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       }, async ({ page }) => {
         await loadPage(
           page,
-          'stories/components/d3-chart/tests/examples/bar-chart/basic-usage.tsx',
+          BAR_STORY,
           'en',
           {
             data: dataVariant.data,
@@ -619,425 +508,26 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 
-  test.describe('Horizontal bars', () => {
-    test('Verify HorizontalBar implementation', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
-    }, async ({ page }) => {
-      await loadPage(
-        page,
-        'stories/components/d3-chart/docs/examples/bar-horizontal/horizontal-bar.tsx',
-        'en',
-      );
-
-      const chart = locators.plot(page).first();
-      await chart.waitFor({ state: 'visible' });
-
-      await test.step('Verify bar highlights on hover and tooltip shown', async () => {
-        await locators.horizontalBar(page, 2).hover();
-        await page.waitForTimeout(500);
-        await expect(page).toHaveScreenshot();
-      });
-    });
-
-    test('Verify horizontal bar with custom labels', {
-      tag: [TAG.PRIORITY_MEDIUM, '@horizontal-bar-chart', '@bar-chart', '@d3-chart'],
-    }, async ({ page }) => {
-      await loadPage(
-        page,
-        'stories/components/d3-chart/docs/examples/bar-horizontal/bar-labels.tsx',
-        'en',
-      );
-
-      await test.step('Verify chart renders with custom labels', async () => {
-        const chart = locators.plot(page).first();
-        await chart.waitFor({ state: 'visible' });
-        await page.waitForTimeout(500);
-        await expect(page).toHaveScreenshot();
-      });
-    });
-
-    test('Verify horizontal bar with background', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
-    }, async ({ page }) => {
-      await loadPage(
-        page,
-        'stories/components/d3-chart/docs/examples/bar-horizontal/background.tsx',
-        'en',
-      );
-
-      const chart = locators.plot(page).first();
-      await chart.waitFor({ state: 'visible' });
-      await page.waitForTimeout(500);
-
-      await test.step('Verify bar highlights on hover and tooltip shown', async () => {
-        const bar = locators.horizontalBarBackground(page, 1);
-        const bbox = await bar.boundingBox();
-        if (bbox) {
-          await page.mouse.move(bbox.x + bbox.width / 2, bbox.y + bbox.height / 2);
-          await locators.tooltip(page).waitFor({ state: 'visible' });
-          await expect(page).toHaveScreenshot();
-        }
-      });
-    });
-
-    test('Verify grouped horizontal bars', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
-    }, async ({ page }) => {
-      await loadPage(
-        page,
-        'stories/components/d3-chart/docs/examples/bar-horizontal/grouped-horizontal-bars.tsx',
-        'en',
-      );
-
-      const chart = locators.plot(page).first();
-      await chart.waitFor({ state: 'visible' });
-      await page.waitForTimeout(500);
-
-      await test.step('Verify bar highlights on hover and tooltip shown', async () => {
-        const box = await chart.boundingBox();
-        if (!box) throw new Error('Bounding box not found');
-
-        const targetX = 128.42;
-        const targetY = 190.53;
-        const hoverX = box.x + targetX;
-        const hoverY = box.y + targetY;
-
-        await page.mouse.move(hoverX, hoverY);
-        await locators.tooltip(page).waitFor({ state: 'visible' });
-        await expect(page).toHaveScreenshot();
-      });
-    });
-
-    const horizontalBarPropsVariations = [
-
-      {
-        name: 'with visual styling (color, array radius, transparency)',
-        props: {
-          color: '#3498db',
-          r: 6,
-          transparent: true,
-          duration: 0,
-        },
-      },
-      {
-        name: 'with size constraints (maxBarSize)',
-        props: {
-          maxBarSize: 25,
-          hMin: 50,
-          duration: 0,
-        },
-      },
-      {
-        name: 'with primaryText false',
-        props: {
-          primaryText: false,
-        },
-      },
+  test.describe('Data types and highlights', () => {
+    const dataTypeVisualCases = [
+      { dataType: 'both', highlightDots: 'mixed', patterns: false, priority: TAG.PRIORITY_HIGH },
+      { dataType: 'forecast', highlightDots: 'good', patterns: true, priority: TAG.PRIORITY_MEDIUM },
+      { dataType: 'potential', highlightDots: 'bad', patterns: false, priority: TAG.PRIORITY_MEDIUM },
+      { dataType: 'both', highlightDots: 'insightful', patterns: true, priority: TAG.PRIORITY_MEDIUM },
     ];
 
-    horizontalBarPropsVariations.forEach((variant) => {
-      test(`Verify horizontal bar props ${variant.name}`, {
-        tag: [TAG.PRIORITY_MEDIUM, '@horizontal-bar-chart', '@bar-chart', '@d3-chart'],
+    dataTypeVisualCases.forEach(({ priority, ...props }) => {
+      const name = `${props.dataType}-${props.highlightDots}${props.patterns ? '-patterns' : ''}`;
+
+      test(`Verify vertical bars with dataType ${props.dataType}, highlight ${props.highlightDots}, patterns ${props.patterns}`, {
+        tag: [priority, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
       }, async ({ page }) => {
-        await loadPage(
-          page,
-          'stories/components/d3-chart/tests/examples/bar-horizontal/horizontal-bar-props.tsx',
-          'en',
-          variant.props,
-        );
+        await loadPage(page, BAR_STORY, 'en', { ...props, duration: 0 });
 
-        await test.step('Verify chart renders correctly with current props', async () => {
-          await locators.plot(page).first().waitFor({ state: 'visible' });
-          await page.waitForTimeout(500);
-
-          await expect(page).toHaveScreenshot();
+        await test.step('Verify forecast stripes, potential gradient and highlights', async () => {
+          await locators.plot(page).waitFor({ state: 'visible' });
+          await expect(locators.plot(page)).toHaveScreenshot(`bar-data-types-${name}.png`);
         });
-      });
-    });
-
-    test('Verify horizontal bar legend and pattern fill mouse interaction', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@typography', '@checkbox'],
-    }, async ({ page }) => {
-      await loadPage(
-        page,
-        'stories/components/d3-chart/docs/examples/bar-horizontal/legend-and-pattern-fill.tsx',
-        'en',
-      );
-
-      const chart = locators.plot(page).first();
-      await chart.waitFor({ state: 'visible' });
-      await page.waitForTimeout(500);
-
-      const label = page.getByText('Bar 1');
-
-      await test.step('Verify highlights by hover on label', async () => {
-        await label.hover();
-        await page.waitForTimeout(200);
-        await expect(page).toHaveScreenshot();
-      });
-
-      await test.step('Verify not highlights when uncheck item and hover it', async () => {
-        await label.click();
-        await label.hover();
-        await page.waitForTimeout(200);
-        await expect(page).toHaveScreenshot();
-      });
-    });
-
-    test('Verify horizontal bar legend and pattern fill keyboard interaction', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@typography', '@checkbox'],
-    }, async ({ page }) => {
-      await loadPage(
-        page,
-        'stories/components/d3-chart/docs/examples/bar-horizontal/legend-and-pattern-fill.tsx',
-        'en',
-      );
-
-      const chart = locators.plot(page).first();
-      await chart.waitFor({ state: 'visible' });
-      await page.waitForTimeout(500);
-
-      await test.step('Verify keyboard focus state', async () => {
-        await page.keyboard.press('Tab');
-        await expect(page).toHaveScreenshot();
-      });
-
-      await test.step('Verify toggle and navigation behavior', async () => {
-        await page.keyboard.press('Space');
-        await page.keyboard.press('Space');
-        await page.waitForTimeout(200);
-
-        await page.keyboard.press('Tab');
-        await page.waitForTimeout(200);
-        await expect(page).toHaveScreenshot();
-      });
-    });
-  });
-
-  test.describe('Stacked bars', () => {
-    const stackBarPropsVariations = [
-      {
-        name: 'with visual styling (colors, radius, transparency)',
-        props: {
-          barColor1: '#e74c3c',
-          barColor2: '#f39c12',
-          barColor3: '#9b59b6',
-          barRadius: 6,
-          barTransparent: true,
-          duration: 0,
-        },
-      },
-      {
-        name: 'with size constraints (hMin, maxBarSize)',
-        props: {
-          barHMin: 15,
-          maxBarSize: 30,
-          duration: 0,
-        },
-      },
-    ];
-
-    stackBarPropsVariations.forEach((variant) => {
-      test(`Verify stacked bar props ${variant.name}`, {
-        tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart'],
-      }, async ({ page }) => {
-        await loadPage(
-          page,
-          'stories/components/d3-chart/tests/examples/stacked-bar-chart/stack-bar-props-cases.tsx',
-          'en',
-          variant.props,
-        );
-
-        await locators.plot(page).first().waitFor({ state: 'visible' });
-        await page.waitForTimeout(500);
-        await expect(page).toHaveScreenshot();
-      });
-    });
-
-    test('Verify stacked grouped bars', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
-    }, async ({ page }) => {
-      await loadPage(
-        page,
-        'stories/components/d3-chart/docs/examples/stacked-bar-chart/stacked-grouped-bar.tsx',
-        'en',
-      );
-
-      const chart = locators.plot(page).first();
-      await chart.waitFor({ state: 'visible' });
-      await page.waitForTimeout(500);
-
-      await test.step('Verify looks good and tooltip shown on hover', async () => {
-        const box = await locators.stackGroupBar(page).boundingBox();
-        if (!box) throw new Error('Bounding box not found');
-
-        const hoverX = box.x + box.x / 2;
-        const hoverY = box.y + box.y / 2;
-
-        await page.mouse.move(hoverX, hoverY);
-        await locators.tooltip(page).waitFor({ state: 'visible' });
-        await expect(page).toHaveScreenshot();
-      });
-    });
-
-    test('Verify stacked bar legend and pattern fill mouse interaction', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@card', '@chart-legend', '@checkbox'],
-    }, async ({ page }) => {
-      await loadPage(
-        page,
-        'stories/components/d3-chart/docs/examples/stacked-bar-chart/legend-and-pattern-fill.tsx',
-        'en',
-      );
-
-      const chart = locators.plot(page).first();
-      await chart.waitFor({ state: 'visible' });
-      await page.waitForTimeout(500);
-
-      const label = page.getByText('Category 1');
-      const label2 = page.getByText('Category 2');
-
-      await test.step('Verify default hover on legend label', async () => {
-        await label.hover();
-        await page.waitForTimeout(500);
-        await expect(page).toHaveScreenshot();
-      });
-
-      await test.step('Verify unchecked label behavior and switching hover', async () => {
-        await label.click();
-        await label.hover();
-        await page.waitForTimeout(500);
-
-        await label2.hover();
-        await page.waitForTimeout(500);
-        await expect(page).toHaveScreenshot();
-      });
-    });
-
-    test('Verify stacked bar legend and pattern fill keyboard interaction', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@card', '@chart-legend', '@checkbox'],
-    }, async ({ page }) => {
-      await loadPage(
-        page,
-        'stories/components/d3-chart/docs/examples/stacked-bar-chart/legend-and-pattern-fill.tsx',
-        'en',
-      );
-
-      const chart = locators.plot(page).first();
-      await chart.waitFor({ state: 'visible' });
-
-      await test.step('Verify highlights when focused', async () => {
-        await page.keyboard.press('Tab');
-        await page.waitForTimeout(500);
-        await expect(page).toHaveScreenshot();
-      });
-
-      await test.step('Verify highlights when checked and unchecked', async () => {
-        await page.keyboard.press('Space');
-        await page.keyboard.press('Space');
-        await page.waitForTimeout(500);
-        await expect(page).toHaveScreenshot();
-      });
-    });
-  });
-
-  test.describe('Stacked horizontal bars', () => {
-    test('Verify stacked horizontal bar chart with HoverRect tooltip', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
-    }, async ({ page }) => {
-      await loadPage(
-        page,
-        'stories/components/d3-chart/docs/examples/stacked-horizontal-bar/horizontal-stacked-bar.tsx',
-        'en',
-      );
-
-      const chart = locators.plot(page).first();
-      await chart.waitFor({ state: 'visible' });
-      await page.waitForTimeout(500);
-
-      await test.step('Verify bar highlights on hover and tooltip shown', async () => {
-        await locators.stackBarHorizontalBar(page, 1).hover();
-        await locators.tooltip(page).waitFor({ state: 'visible' });
-        await expect(page).toHaveScreenshot();
-      });
-    });
-
-    test('Verify stacked horizontal bar chart with negative values', {
-      tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography',
-        '@horizontal-bar-chart'],
-    }, async ({ page }) => {
-      await loadPage(
-        page,
-        'stories/components/d3-chart/tests/examples/stacked-bar-chart/horizontal-stacked-bar-negative.tsx',
-        'en',
-      );
-
-      await test.step('Verify chart renders correctly with negative values', async () => {
-        const chart = locators.plot(page).first();
-        await chart.waitFor({ state: 'visible' });
-        await page.waitForTimeout(500);
-        await expect(page).toHaveScreenshot();
-      });
-    });
-
-    test('Verify stacked horizontal bar legend and pattern fill mouse interaction', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@card', '@chart-legend', '@checkbox'],
-    }, async ({ page }) => {
-      await loadPage(
-        page,
-        'stories/components/d3-chart/docs/examples/stacked-horizontal-bar/legend-and-pattern-fill.tsx',
-        'en',
-      );
-
-      const chart = locators.plot(page).first();
-      await chart.waitFor({ state: 'visible' });
-      await page.waitForTimeout(500);
-
-      const label = page.getByText('Category 1');
-      const label2 = page.getByText('Category 2');
-
-      await test.step('Verify default hover on legend label', async () => {
-        await label.hover();
-        await page.waitForTimeout(500);
-        await expect(page).toHaveScreenshot();
-      });
-
-      await test.step('Verify unchecked label behavior and switching hover', async () => {
-        await label.click();
-        await label.hover();
-        await page.waitForTimeout(500);
-
-        await label2.hover();
-        await page.waitForTimeout(500);
-        await expect(page).toHaveScreenshot();
-      });
-    });
-
-    test('Verify stacked horizontal bar legend and pattern fill keyboard interaction', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@card', '@chart-legend', '@checkbox'],
-    }, async ({ page }) => {
-      await loadPage(
-        page,
-        'stories/components/d3-chart/docs/examples/stacked-horizontal-bar/legend-and-pattern-fill.tsx',
-        'en',
-      );
-
-      const chart = locators.plot(page).first();
-      await chart.waitFor({ state: 'visible' });
-
-      await test.step('Verify keyboard focus state', async () => {
-        await page.keyboard.press('Tab');
-        await page.waitForTimeout(500);
-        await expect(page).toHaveScreenshot();
-      });
-
-      await test.step('Verify toggle behavior and unchecked state', async () => {
-        await page.keyboard.press('Space');
-        await page.keyboard.press('Space');
-        await page.waitForTimeout(500);
-
-        await page.keyboard.press('Space');
-        await page.waitForTimeout(500);
-        await expect(page).toHaveScreenshot();
       });
     });
   });
@@ -1110,7 +600,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(
         page,
-        'stories/components/d3-chart/tests/examples/bar-chart/basic-usage.tsx',
+        BAR_STORY,
         'en',
         variant.props,
       );
@@ -1132,225 +622,57 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           barsLocator = locators.groupBarBar(page);
         }
 
-        await expect(barsLocator).not.toHaveCount(0);
-
-        for (const bar of await barsLocator.all()) {
-          await expect(bar).toHaveAttribute('aria-hidden', 'true');
-        }
+        await expectEachToHaveAttribute(barsLocator, 'aria-hidden', 'true');
       });
     });
   });
 
-  test('Verify bars with scaleBand attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart'],
-  }, async ({ page }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/docs/examples/bar-chart/bar.tsx',
-      'en',
-    );
+  const DOCS = 'stories/components/d3-chart/docs/examples/bar-chart';
 
-    await test.step('Verify bars have correct attributes', async () => {
-      await locators.plot(page).first().waitFor({ state: 'visible' });
+  const docsAttributeCases = [
+    {
+      title: 'Verify bars with scaleBand attributes',
+      tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart'],
+      story: `${DOCS}/bar.tsx`,
+      bars: locators.groupBarBar,
+    },
+    {
+      title: 'Verify negative values bars attributes',
+      tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
+      story: `${DOCS}/negative-values.tsx`,
+      bars: locators.bar,
+    },
+    {
+      title: 'Verify trend line attributes',
+      tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@line-chart'],
+      story: `${DOCS}/trend-line.tsx`,
+      bars: locators.bar,
+      withTrendDots: true,
+    },
+    {
+      title: 'Verify grouped bars count and attributes',
+      tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
+      story: `${DOCS}/grouped-bars.tsx`,
+      bars: locators.groupBarBar,
+      count: 10,
+    },
+  ];
 
-      await expect(locators.groupBarBar(page)).not.toHaveCount(0);
+  docsAttributeCases.forEach((c) => {
+    test(c.title, { tag: c.tag }, async ({ page }) => {
+      await loadPage(page, c.story, 'en');
+      await locators.plot(page).waitFor({ state: 'visible' });
 
-      for (const bar of await locators.groupBarBar(page).all()) {
-        await expect(bar).toHaveAttribute('aria-hidden', 'true');
-        await expect(bar).toHaveAttribute('r', '2');
-      }
-    });
-  });
+      await test.step('Verify bars are hidden from assistive technology and have radius 2', async () => {
+        if (c.count) await expect(c.bars(page)).toHaveCount(c.count);
+        await expectEachToHaveAttribute(c.bars(page), 'aria-hidden', 'true');
+        await expectEachToHaveAttribute(c.bars(page), 'r', '2');
+      });
 
-  test('Verify negative values bars attributes', {
-    tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
-  }, async ({ page }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/docs/examples/bar-chart/negative-values.tsx',
-      'en',
-    );
-
-    await test.step('Verify bars have correct attributes', async () => {
-      await locators.plot(page).first().waitFor({ state: 'visible' });
-
-      await expect(locators.bar(page)).not.toHaveCount(0);
-
-      for (const bar of await locators.bar(page).all()) {
-        await expect(bar).toHaveAttribute('aria-hidden', 'true');
-        await expect(bar).toHaveAttribute('r', '2');
-      }
-    });
-  });
-
-  test('Verify trend line attributes', {
-    tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart',
-      '@line-chart'],
-  }, async ({ page }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/docs/examples/bar-chart/trend-line.tsx',
-      'en',
-    );
-
-    await test.step('Verify bar with trend line has correct attributes', async () => {
-      await locators.plot(page).first().waitFor({ state: 'visible' });
-
-      await expect(locators.bar(page)).not.toHaveCount(0);
-
-      for (const bar of await locators.bar(page).all()) {
-        await expect(bar).toHaveAttribute('aria-hidden', 'true');
-        await expect(bar).toHaveAttribute('r', '2');
-      }
-
-      await expect(locators.lineDots(page)).not.toHaveCount(0);
-
-      for (const dot of await locators.lineDots(page).all()) {
-        await expect(dot).toHaveAttribute('aria-hidden', 'true');
-        await expect(dot).toHaveAttribute('r', '3.5');
-      }
-    });
-  });
-
-  test('Verify grouped bars count and attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
-  }, async ({ page }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/docs/examples/bar-chart/grouped-bars.tsx',
-      'en',
-    );
-
-    await test.step('Verify 10 grouped bars have correct attributes', async () => {
-      await locators.plot(page).first().waitFor({ state: 'visible' });
-      await expect(locators.groupBarBar(page)).toHaveCount(10);
-
-      for (const bar of await locators.groupBarBar(page).all()) {
-        await expect(bar).toHaveAttribute('aria-hidden', 'true');
-        await expect(bar).toHaveAttribute('r', '2');
-      }
-    });
-  });
-
-  test('Verify Chart.Bar with GroupBar.HorizontalBar aria-hidden attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart'],
-  }, async ({ page }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/docs/examples/bar-horizontal/basic-usage.tsx',
-      'en',
-    );
-
-    await test.step('Verify bars have aria-hidden', async () => {
-      await locators.plot(page).first().waitFor({ state: 'visible' });
-
-      await expect(locators.groupBarHorizontalBar(page)).not.toHaveCount(0);
-
-      for (const bar of await locators.groupBarHorizontalBar(page).all()) {
-        await expect(bar).toHaveAttribute('aria-hidden', 'true');
-      }
-    });
-  });
-
-  test('Verify HorizontalBar aria-hidden attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography',
-      '@horizontal-bar-chart'],
-  }, async ({ page }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/docs/examples/bar-horizontal/horizontal-bar.tsx',
-      'en',
-    );
-
-    await test.step('Verify bars have aria-hidden', async () => {
-      await locators.plot(page).first().waitFor({ state: 'visible' });
-
-      await expect(locators.horizontalBar(page)).not.toHaveCount(0);
-
-      for (const bar of await locators.horizontalBar(page).all()) {
-        await expect(bar).toHaveAttribute('aria-hidden', 'true');
-      }
-    });
-  });
-
-  test('Verify HorizontalBar.Background aria-hidden attributes', {
-    tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography',
-      '@horizontal-bar-chart'],
-  }, async ({ page }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/docs/examples/bar-horizontal/background.tsx',
-      'en',
-    );
-
-    await test.step('Verify backgrounds have aria-hidden', async () => {
-      await locators.plot(page).first().waitFor({ state: 'visible' });
-
-      await expect(locators.horizontalBarBackground(page)).not.toHaveCount(0);
-
-      for (const background of await locators.horizontalBarBackground(page).all()) {
-        await expect(background).toHaveAttribute('aria-hidden', 'true');
-      }
-    });
-  });
-
-  test('Verify StackBar.Bar aria-hidden attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
-  }, async ({ page }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/docs/examples/stacked-bar-chart/stacked-bar-chart.tsx',
-      'en',
-    );
-
-    await test.step('Verify bars have aria-hidden', async () => {
-      await locators.plot(page).first().waitFor({ state: 'visible' });
-
-      await expect(locators.stackBarBar(page)).not.toHaveCount(0);
-
-      for (const bar of await locators.stackBarBar(page).all()) {
-        await expect(bar).toHaveAttribute('aria-hidden', 'true');
-      }
-    });
-  });
-
-  test('Verify StackGroupBar.Bar aria-hidden attributes', {
-    tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
-  }, async ({ page }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/docs/examples/stacked-bar-chart/stacked-grouped-bar.tsx',
-      'en',
-    );
-
-    await test.step('Verify bars have aria-hidden', async () => {
-      await locators.plot(page).first().waitFor({ state: 'visible' });
-
-      await expect(locators.stackGroupBarBar(page)).not.toHaveCount(0);
-
-      for (const bar of await locators.stackGroupBarBar(page).all()) {
-        await expect(bar).toHaveAttribute('aria-hidden', 'true');
-      }
-    });
-  });
-
-  test('Verify StackBar.HorizontalBar aria-hidden attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
-  }, async ({ page }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/docs/examples/stacked-horizontal-bar/horizontal-stacked-bar.tsx',
-      'en',
-    );
-
-    await test.step('Verify bars have aria-hidden', async () => {
-      await locators.plot(page).first().waitFor({ state: 'visible' });
-
-      await expect(locators.stackBarHorizontalBar(page)).not.toHaveCount(0);
-
-      for (const bar of await locators.stackBarHorizontalBar(page).all()) {
-        await expect(bar).toHaveAttribute('aria-hidden', 'true');
-      }
+      await (c.withTrendDots ? test.step : test.step.skip)('Verify trend dots are hidden and have radius 3.5', async () => {
+        await expectEachToHaveAttribute(locators.lineDots(page), 'aria-hidden', 'true');
+        await expectEachToHaveAttribute(locators.lineDots(page), 'r', '3.5');
+      });
     });
   });
 
@@ -1412,11 +734,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   maxBarSizeVariations.forEach((variant) => {
     test(`Verify default maxBarSize limits ${variant.name} to ${MAX_BAR_SIZE}px`, {
-      tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@checkbox'],
+      tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@bar-chart', '@base-components', '@flex-box', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(
         page,
-        'stories/components/d3-chart/tests/examples/bar-chart/basic-usage.tsx',
+        BAR_STORY,
         'en',
         { ...variant.props, trend: undefined, duration: 0, maxBarSize: undefined },
       );
@@ -1443,11 +765,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify custom maxBarSize overrides the default', {
-    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@checkbox'],
+    tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@bar-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
-      'stories/components/d3-chart/tests/examples/bar-chart/basic-usage.tsx',
+      BAR_STORY,
       'en',
       {
         groupKey: 'category',
@@ -1472,11 +794,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify bars stay thinner than maxBarSize when the group has no room', {
-    tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@checkbox'],
+    tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@bar-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
-      'stories/components/d3-chart/tests/examples/bar-chart/basic-usage.tsx',
+      BAR_STORY,
       'en',
       {
         groupKey: 'category',
@@ -1524,7 +846,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test.fixme('Verify the gap between bars inside a group is 2px', {
-    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@checkbox'],
+    tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@bar-chart', '@base-components', '@flex-box', '@checkbox'],
     annotation: {
       type: 'issue',
       description: 'UIK-5880: GroupBar keeps paddingInner hardcoded to 0.1, so the gap is a share of the band step instead of a fixed 2px (3.74px at plotWidth 500, ~28px at plotWidth 800)',
@@ -1532,7 +854,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(
       page,
-      'stories/components/d3-chart/tests/examples/bar-chart/basic-usage.tsx',
+      BAR_STORY,
       'en',
       {
         groupKey: 'category',
@@ -1556,6 +878,130 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       for (const gap of withinGroup) {
         expect(gap).toBeCloseTo(2, 1);
       }
+    });
+  });
+
+  dataTypeCases.forEach((expected) => {
+    test(`Verify vertical bars render dataType ${expected.dataType} with highlight ${expected.highlightDots}`, {
+      tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+    }, async ({ page }) => {
+      await loadPage(page, BAR_STORY, 'en', {
+        dataType: expected.dataType,
+        highlightDots: expected.highlightDots,
+        duration: 0,
+      });
+
+      await locators.plot(page).waitFor({ state: 'visible' });
+
+      await test.step('Verify forecast masks, potential gradients and highlight count', async () => {
+        await expectDataTypes(page, expected);
+      });
+    });
+  });
+
+  test.fixme('Verify bar highlights are hidden from assistive technology like the bars', {
+    tag: [TAG.PRIORITY_LOW, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+    annotation: {
+      type: 'issue',
+      description: 'Bug doc B12: highlight paths from renderHighlight have no aria-hidden, bars have aria-hidden="true"',
+    },
+  }, async ({ page }) => {
+    await loadPage(page, BAR_STORY, 'en', { highlightDots: 'mixed', duration: 0 });
+
+    await test.step('Verify every highlight sits inside an aria-hidden element', async () => {
+      await expect(locators.highlights(page)).toHaveCount(3);
+
+      const exposed = await locators.highlights(page).evaluateAll((elements) =>
+        elements.filter((element) => !element.closest('[aria-hidden="true"]')).length,
+      );
+      expect(exposed).toBe(0);
+    });
+  });
+
+  test('Verify positive vertical bars are rounded only at the top', {
+    tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+  }, async ({ page }) => {
+    await loadPage(page, BAR_STORY, 'en', { dataType: 'none', highlightDots: 'none', duration: 0 });
+
+    await test.step('Verify each bar has 2 rounded corners of radius 2', async () => {
+      await expect(locators.groupBarBar(page)).toHaveCount(5);
+      const paths = await locators.groupBarBar(page).evaluateAll((elements) =>
+        elements.map((element) => element.getAttribute('d')),
+      );
+      expect(paths.length).toBe(5);
+
+      for (const d of paths) {
+        expect(countRoundedCorners(d)).toBe(2);
+        expect(getCornerRadius(d)).toBe(2);
+      }
+    });
+  });
+
+  test('Verify hover rect follows the pointer between bars and hides on leave', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+  }, async ({ page }) => {
+    await loadPage(page, BAR_STORY, 'en', { duration: 0 });
+    await locators.plot(page).waitFor({ state: 'visible' });
+
+    await test.step('Verify hover rect and tooltip appear over the first bar', async () => {
+      await hoverCenter(page, locators.groupBarBar(page, 0));
+      await expect(locators.hoverRect(page)).toBeVisible();
+      await expect(locators.tooltip(page)).toContainText('Category 0');
+    });
+
+    await test.step('Verify tooltip switches to the hovered bar', async () => {
+      await hoverCenter(page, locators.groupBarBar(page, 3));
+      await expect(locators.tooltip(page)).toContainText('Category 3');
+    });
+
+    await test.step('Verify hover rect and tooltip hide when the pointer leaves the plot', async () => {
+      await page.mouse.move(0, 0);
+      await expect(locators.hoverRect(page)).toHaveCount(0);
+      await expect(locators.tooltip(page)).toBeHidden();
+    });
+  });
+
+  test('Verify vertical hover rect is rounded at the top', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+  }, async ({ page }) => {
+    await loadPage(page, BAR_STORY, 'en', { duration: 0 });
+    await hoverCenter(page, locators.groupBarBar(page, 1));
+
+    await test.step('Verify the hover path has 2 rounded corners', async () => {
+      await expect(locators.hoverRect(page)).toBeVisible();
+      expect(countRoundedCorners(await locators.hoverRect(page).getAttribute('d'))).toBe(2);
+    });
+  });
+
+  test('Verify vertical hover rect corners have a 6px radius', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+  }, async ({ page }) => {
+    await loadPage(page, BAR_STORY, 'en', { duration: 0 });
+    await hoverCenter(page, locators.groupBarBar(page, 1));
+
+    await test.step('Verify both top corners are 6 by 6', async () => {
+      await expect(locators.hoverRect(page)).toBeVisible();
+      expect(getCurveCornerSizes(await locators.hoverRect(page).getAttribute('d'))).toEqual([[6, 6], [6, 6]]);
+    });
+  });
+
+  test.fixme('Verify hover rect keeps a valid shape on a narrow category band', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+    annotation: {
+      type: 'issue',
+      description: 'Bug doc B4: the 6px radius is not clamped, so a band narrower than 12px gives a self-intersecting path',
+    },
+  }, async ({ page }) => {
+    await loadPage(page, BAR_STORY, 'en', { plotWidth: 100, duration: 0 });
+    await hoverCenter(page, locators.groupBarBar(page, 1));
+
+    await test.step('Verify the top edge does not run backwards', async () => {
+      const d = await locators.hoverRect(page).getAttribute('d');
+      const match = d?.match(/Q\s*[-\d.]+,[-\d.]+\s+([-\d.]+),[-\d.]+\s*H\s*([-\d.]+)/);
+      expect(match).not.toBeNull();
+
+      const [curveEndX, topEdgeEndX] = match!.slice(1).map(Number);
+      expect(topEdgeEndX).toBeGreaterThanOrEqual(curveEndX);
     });
   });
 });

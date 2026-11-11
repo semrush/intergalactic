@@ -29,6 +29,8 @@ export const StackBarProps: StoryObj = {
     barTransparent: { control: 'boolean' },
     maxBarSize: { control: { type: 'number', min: 0, max: 100, step: 1 } },
     duration: { control: { type: 'number', min: 0, max: 2000, step: 100 } },
+    invertAxis: { control: 'boolean' },
+    dataSet: { control: 'select', options: ['positive', 'negative', 'edge'] },
   },
   args: StackBarPropsDefaultProps,
 };

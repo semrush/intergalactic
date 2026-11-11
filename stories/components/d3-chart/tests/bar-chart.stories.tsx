@@ -81,6 +81,8 @@ export const BasicUsage = {
       options: ['none', 'forecast', 'potential', 'both'],
       ...storyKnob,
     },
+    // Adds `bar2` (half of `bar`), so `type: stack` renders StackBar instead of a single GroupBar.
+    secondSeries: { control: 'boolean', ...storyKnob },
     ...barReferenceControls,
   }),
   args: BasicUsageProps,
