@@ -16,6 +16,8 @@ import {
   locators,
 } from './bar-chart.helpers';
 
+const HIDDEN_TAB_STORY = 'stories/components/d3-chart/tests/examples/bar-chart/hidden-tab-panel.tsx';
+
 /* =====================================================
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
@@ -915,6 +917,38 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         elements.filter((element) => !element.closest('[aria-hidden="true"]')).length,
       );
       expect(exposed).toBe(0);
+    });
+  });
+
+  test.fixme('Verify highlights use the mask of their own chart when an earlier chart is in a hidden tab', {
+    tag: [TAG.PRIORITY_LOW, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@tab-line'],
+    annotation: {
+      type: 'issue',
+      description: 'Bug doc B1: every Bar renders <mask id="fadeMask"> without uid, so highlights pick the mask of the first chart in the document',
+    },
+  }, async ({ page }) => {
+    await loadPage(page, HIDDEN_TAB_STORY, 'en');
+
+    const insightsTab = page.getByRole('tab', { name: 'Insights' });
+    const insightsPanel = page.locator('#panel-insights');
+
+    await test.step('Open the tab with highlights while the first chart stays mounted and hidden', async () => {
+      await insightsTab.click();
+      await expect(insightsTab).toHaveAttribute('aria-selected', 'true');
+      await expect(insightsPanel).toBeVisible();
+      await expect(page.locator('#panel-traffic')).toBeHidden();
+    });
+
+    await test.step('Verify every highlight mask resolves inside the visible panel', async () => {
+      await expect(insightsPanel.locator('path[mask]')).toHaveCount(3);
+
+      const maskOwners = await insightsPanel.locator('path[mask]').evaluateAll((elements) =>
+        elements.map((element) => {
+          const id = element.getAttribute('mask')!.match(/url\(#(.+)\)/)![1];
+          return document.getElementById(id)?.closest('[role="tabpanel"]')?.id;
+        }),
+      );
+      expect(maskOwners).toEqual(['panel-insights', 'panel-insights', 'panel-insights']);
     });
   });
 

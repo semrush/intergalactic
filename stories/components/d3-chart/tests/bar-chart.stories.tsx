@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BarPropsExample, { defaultProps as BarPropsDefaultProps } from './examples/bar-chart/bars-props';
 import BasicUsageExample, { defaultProps as BasicUsageProps, categories } from './examples/bar-chart/basic-usage';
+import HiddenTabPanelExample from './examples/bar-chart/hidden-tab-panel';
 import { getChartArgTypes, referenceControls } from './examples/stories_props_helper';
 
 const meta: Meta = {
@@ -86,4 +87,8 @@ export const BasicUsage = {
     ...barReferenceControls,
   }),
   args: BasicUsageProps,
+};
+
+export const HiddenTabPanel: StoryObj = {
+  render: HiddenTabPanelExample,
 };
