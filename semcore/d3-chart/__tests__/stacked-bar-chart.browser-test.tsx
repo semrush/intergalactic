@@ -317,8 +317,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test.fixme('Verify the highlight fade mask id is unique on a chart with several series', {
-    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+  test.fixme('Verify element ids are unique on a chart with several series', {
+    tag: [TAG.PRIORITY_LOW, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     annotation: {
       type: 'issue',
       description: 'Bug doc B1: every Bar renders <mask id="fadeMask"> and <linearGradient id="alphaGrad"> without uid',
@@ -327,9 +327,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await loadPage(page, STACK_STORY, 'en', { duration: 0 });
     await expect(locators.stackBarBar(page)).not.toHaveCount(0);
 
-    await test.step('Verify each id appears once', async () => {
-      await expect(page.locator('[id="fadeMask"]')).toHaveCount(1);
-      await expect(page.locator('[id="alphaGrad"]')).toHaveCount(1);
+    await test.step('Verify no id is repeated in the document', async () => {
+      const duplicateIds = await page.locator('[id]').evaluateAll((elements) => {
+        const ids = elements.map((element) => element.id);
+        return [...new Set(ids.filter((id, index) => ids.indexOf(id) !== index))];
+      });
+
+      expect(duplicateIds).toEqual([]);
     });
   });
 

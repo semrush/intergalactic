@@ -324,7 +324,7 @@ test.describe(`${TAG.VISUAL}`, () => {
           page,
           BAR_STORY,
           'en',
-          variant.props,
+          { ...variant.props, duration: 0 },
         );
 
         const chart = locators.plot(page).first();
