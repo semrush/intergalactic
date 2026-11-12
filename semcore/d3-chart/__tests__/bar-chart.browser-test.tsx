@@ -905,7 +905,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_LOW, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     annotation: {
       type: 'issue',
-      description: 'Bug doc B12: highlight paths from renderHighlight have no aria-hidden, bars have aria-hidden="true"',
+      description: 'Highlight paths from renderHighlight have no aria-hidden, bars have aria-hidden="true"',
     },
   }, async ({ page }) => {
     await loadPage(page, BAR_STORY, 'en', { highlightDots: 'mixed', duration: 0 });
@@ -953,7 +953,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     annotation: {
       type: 'issue',
-      description: 'Bug doc B18: Bar treats every bar without y0 as a non-first stack segment and cuts 2px at the axis',
+      description: 'Bar treats every bar without y0 as a non-first stack segment and cuts 2px at the axis',
     },
   }, async ({ page }) => {
     await loadPage(page, BAR_STORY, 'en', { dataType: 'none', highlightDots: 'none', duration: 0 });
@@ -1039,7 +1039,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     annotation: {
       type: 'issue',
-      description: 'Bug doc B4: the 6px radius is not clamped, so a band narrower than 12px gives a self-intersecting path',
+      description: 'The 6px radius is not clamped, so a band narrower than 12px gives a self-intersecting path',
     },
   }, async ({ page }) => {
     await loadPage(page, BAR_STORY, 'en', { plotWidth: 100, duration: 0 });

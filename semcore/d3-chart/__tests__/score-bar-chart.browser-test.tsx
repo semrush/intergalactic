@@ -116,7 +116,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test.fixme('Verify locale formats a percent above 100', {
     tag: [TAG.PRIORITY_LOW, ...TAGS],
-    annotation: { type: 'issue', description: 'Bug doc B15: percentFormatter skips Intl for values below 0 or above 100, so de gets 271% instead of 271 %' },
+    annotation: { type: 'issue', description: 'PercentFormatter skips Intl for values below 0 or above 100, so de gets 271% instead of 271 %' },
   }, async ({ page }) => {
     await loadPage(page, SCORE_BAR_STORY, 'de', { duration: 0, locale: 'de', totalValue: 50000 });
 
@@ -201,7 +201,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test.fixme('Verify valueFormatter and titleFormatter format the tooltip', {
     tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, ...TAGS],
-    annotation: { type: 'issue', description: 'Bug doc B11: the tooltip shows the raw category and the default number format' },
+    annotation: { type: 'issue', description: 'The tooltip shows the raw category and the default number format' },
   }, async ({ page }) => {
     await loadPage(page, SCORE_BAR_STORY, 'en', { duration: 0, valueFormat: 'currency', titleFormat: 'uppercase' });
 
@@ -234,7 +234,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test.fixme('Verify clickable rows are reachable and activated with the keyboard', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, ...TAGS],
-    annotation: { type: 'issue', description: 'Bug doc B13: with onClickItem the rows get no tabindex or role, so they are mouse-only' },
+    annotation: { type: 'issue', description: 'With onClickItem the rows get no tabindex or role, so they are mouse-only' },
   }, async ({ page }) => {
     await loadPage(page, SCORE_BAR_STORY, 'en', { duration: 0, clickable: true });
 

@@ -283,7 +283,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     annotation: {
       type: 'issue',
-      description: 'Bug doc B18: HorizontalBar treats every bar without x0 as a non-first stack segment and moves it 2px off the axis',
+      description: 'HorizontalBar treats every bar without x0 as a non-first stack segment and moves it 2px off the axis',
     },
   }, async ({ page }) => {
     await loadPage(page, BAR_STORY, 'en', { invertAxis: true, dataType: 'none', highlightDots: 'none', duration: 0 });
@@ -302,7 +302,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     annotation: {
       type: 'issue',
-      description: 'Bug doc B14: getHorizontalPathFromRect starts the right corners at width − 2r, so they are 12 by 6',
+      description: 'GetHorizontalPathFromRect starts the right corners at width − 2r, so they are 12 by 6',
     },
   }, async ({ page }) => {
     await loadPage(page, BAR_STORY, 'en', { invertAxis: true, duration: 0 });
@@ -318,7 +318,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     annotation: {
       type: 'issue',
-      description: 'Bug doc B4: the 6px radius is not clamped, so a band lower than 12px gives a self-intersecting path',
+      description: 'The 6px radius is not clamped, so a band lower than 12px gives a self-intersecting path',
     },
   }, async ({ page }) => {
     await loadPage(page, BAR_STORY, 'en', { invertAxis: true, plotHeight: 150, duration: 0 });

@@ -469,7 +469,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     annotation: {
       type: 'issue',
-      description: 'Bug doc B17: a 0 or null segment of StackBar.HorizontalBar is drawn as a 4px path with rounded corners next to the bar',
+      description: 'A 0 or null segment of StackBar.HorizontalBar is drawn as a 4px path with rounded corners next to the bar',
     },
   }, async ({ page }) => {
     await loadPage(page, BAR_STORY, 'en', {
