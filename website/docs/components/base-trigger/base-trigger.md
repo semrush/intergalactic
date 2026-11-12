@@ -14,40 +14,9 @@ tabs: Design('base-trigger'), A11y('base-trigger-a11y'), API('base-trigger-api')
 - `FilterTrigger`
 - `LinkTrigger`
 
-## Appearance
-
-Table: BaseTrigger sizes, margins and paddings
-
-| Size (height in px) | Appearance example                                       | Margins |
-| ------------------- | -------------------------------------------------------- | ------- |
-| M (28px)            | ![](static/base-trigger-m.png) ![](static/margins-m.png) | The button has `padding: 0 var(--intergalactic-spacing-2x)`, leading addon has `margin-right: var(--intergalactic-spacing-2x)`, trailing addon has `margin-left: var(--intergalactic-spacing-2x)`. |
-| L (40px)            | ![](static/base-trigger-l.png) ![](static/margins-l.png) | The button has `padding: 0 var(--intergalactic-spacing-3x)`, leading addon has `margin-right: var(--intergalactic-spacing-2x)`, trailing addon has `margin-left: var(--intergalactic-spacing-2x)`. |
-
-## Interaction
-
-Table: BaseTrigger states
-
-| State     | Appearance example                    | Styles |
-| --------- | ------------------------------------- | ------ |
-| Normal    | ![](static/base-trigger-normal.png)   | The background uses `--bg-primary-neutral` token. |
-| Hover     | ![](static/base-trigger-hover.png)    | The background changes to `--bg-primary-neutral-hover`. |
-| Active    | ![](static/base-trigger-active.png)   | The background reverts to `--bg-primary-neutral`, and border changes color to `--border-info-active`. |
-| Invalid   | ![](static/base-trigger-invalid.png)  | The border changes color to `--border-critical-active`. |
-| Valid     | ![](static/base-trigger-valid.png)    | The border changes color to `--border-success-active`. |
-| Disabled  | ![](static/base-trigger-disabled.png) | The component changes opacity to `--disabled-opacity`. |
-
 ## ButtonTrigger
 
-ButtonTrigger has the same sizes as BaseTrigger has.
-
-Table: ButtonTrigger sizes
-
-| Size (height in px) | Appearance example                      |
-| ------------------- | --------------------------------------- |
-| M (28px)            | ![](static/button-trigger-normal-m.png) |
-| L (40px)            | ![](static/button-trigger-normal-l.png) |
-
-### ButtonTrigger states
+### States
 
 Table: ButtonTrigger states
 
@@ -69,14 +38,7 @@ This type has separate detailed [FilterTrigger guide](/components/filter-trigger
 
 LinkTrigger has the styles of the [Link component](/components/link/link).
 
-Table: LinkTrigger sizes
-
-| Size (height in px) | Appearance example                    |
-| ------------------- | ------------------------------------- |
-| M (28px)            | ![](static/link-trigger-normal-m.png) |
-| L (40px)            | ![](static/link-trigger-normal-l.png) |
-
-### LinkTrigger states
+### States
 
 Table: LinkTrigger states
 
