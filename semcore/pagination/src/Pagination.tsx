@@ -313,7 +313,7 @@ class NextPage extends Component<NextPageProps> {
 
   render() {
     const SNextPage = Root;
-    return sstyled(this.asProps.styles)(<SNextPage render={Button} use='primary' theme='info' />);
+    return sstyled(this.asProps.styles)(<SNextPage render={Button} />);
   }
 }
 
