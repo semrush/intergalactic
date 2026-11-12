@@ -61,7 +61,6 @@ const Demo = (props: StoryProps) => {
         data={items}
         colorMap={colorMapVariant === 'custom' ? colorMap : undefined}
         valueFormatter={valueFormatters[valueFormat]}
-        // @ts-expect-error `tooltipValueFormatter` and `tooltipTitleFormatter` work in ScoreBarChart but are missing in its props type
         tooltipValueFormatter={valueFormatters[valueFormat]}
         titleFormatter={titleFormatters[titleFormat]}
         tooltipTitleFormatter={titleFormatters[titleFormat]}
