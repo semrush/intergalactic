@@ -387,6 +387,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           { category: 'Category 0', a: 5, b: 4, c: 1 },
           { category: 'Category 1', a: 20, b: 0, c: 0 },
         ]);
+        await expect(page.locator('line[data-ui-name="Axis"]')).toHaveCount(2);
         const valueAxisLength = await page.locator('line[data-ui-name="Axis"]').evaluateAll((lines, axis) => {
           const valueAxis = lines.find((line) =>
             axis === 'x' ? line.getAttribute('y1') === line.getAttribute('y2') : line.getAttribute('x1') === line.getAttribute('x2'),
@@ -460,17 +461,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     await test.step('Verify the segment has 4 rounded corners', async () => {
-      await expect(locators.stackBarHorizontalBar(page)).toHaveCount(2);
+      await expect(locators.stackBarHorizontalBar(page)).toHaveCount(1);
       expect(countRoundedCorners(await locators.stackBarHorizontalBar(page, 0).getAttribute('d'))).toBe(4);
     });
   });
 
-  test.fixme('Verify zero and empty horizontal stack segments are not drawn', {
+  test('Verify zero and empty horizontal stack segments are not drawn', {
     tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
-    annotation: {
-      type: 'issue',
-      description: 'A 0 or null segment of StackBar.HorizontalBar is drawn as a 4px path with rounded corners next to the bar',
-    },
   }, async ({ page }) => {
     await loadPage(page, BAR_STORY, 'en', {
       type: 'stack',
@@ -483,8 +480,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       ],
     });
 
-    await test.step('Verify only the two non-empty segments have a width', async () => {
-      await expect(locators.stackBarHorizontalBar(page)).toHaveCount(6);
+    await test.step('Verify only the two non-empty segments are drawn', async () => {
+      await expect(locators.stackBarHorizontalBar(page)).toHaveCount(2);
       const boxes = await getBarBoxes(locators.stackBarHorizontalBar(page));
       expect(boxes.filter((box) => box.width > 0)).toHaveLength(2);
     });

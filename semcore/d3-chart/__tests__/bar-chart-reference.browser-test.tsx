@@ -3,13 +3,15 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-import { BAR_STORY, locators as barLocators } from './bar-chart.helpers';
+import { BAR_STORY, getCurveCornerSizes, hoverCenter, locators as barLocators } from './bar-chart.helpers';
 
 const locators = {
   ...barLocators,
   chart: (page: Page) => page.locator('[data-ui-name="Chart.Bar"]').first(),
   referenceLine: (page: Page) => page.locator('[data-ui-name="ReferenceLine"]'),
-  referenceArea: (page: Page) => page.locator('path[fill$="-pattern)"][value]'),
+  // The area path carries its own aria-hidden; the reference line background is hidden by its parent group.
+  referenceArea: (page: Page) => page.locator('path[fill$="-pattern)"][aria-hidden]'),
+  referenceLineBackground: (page: Page) => page.locator('path[fill$="-pattern)"]:not([aria-hidden])'),
   referenceShapes: (page: Page) => page.locator('path[fill$="-pattern)"]'),
   plotText: (page: Page, text: string) => page.locator('svg[data-ui-name="Plot"] text', { hasText: text }),
 };
@@ -25,6 +27,8 @@ const lineX = async (line: Locator) => {
   const box = await getBox(line.locator('line').nth(1));
   return box.x + box.width / 2;
 };
+
+const HIDDEN_TAB_STORY = 'stories/components/d3-chart/tests/examples/bar-chart/hidden-tab-panel.tsx';
 
 const TITLE = 'Campaign';
 const SUB_TITLE = '+10%';
@@ -134,23 +138,38 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test('Verify vertical reference area spans from the start to the end category', {
-    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
-  }, async ({ page }) => {
-    await loadPage(page, BAR_STORY, 'en', {
-      duration: 0,
-      withReferenceArea: true,
-      referenceAreaStartCategory: 'Category 0',
-      referenceAreaEndCategory: 'Category 4',
-    });
+  const areaRangeCases = [
+    { start: 'Category 0', end: 'Category 4' },
+    { start: 'Category 1', end: 'Category 2' },
+  ];
 
-    await test.step('Verify area edges match the centres of the first and the last bar', async () => {
+  areaRangeCases.forEach(({ start, end }) => {
+    test(`Verify vertical reference area covers the categories from ${start} to ${end}`, {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+    }, async ({ page }) => {
+      await loadPage(page, BAR_STORY, 'en', {
+        duration: 0,
+        withReferenceArea: true,
+        referenceAreaStartCategory: start,
+        referenceAreaEndCategory: end,
+      });
       const area = await getBox(locators.referenceArea(page));
-      const first = await getBox(locators.groupBarBar(page, 0));
-      const last = await getBox(locators.groupBarBar(page, 4));
 
-      expect(Math.abs(area.x - (first.x + first.width / 2))).toBeLessThanOrEqual(1);
-      expect(Math.abs(area.x + area.width - (last.x + last.width / 2))).toBeLessThanOrEqual(1);
+      const categoryBand = async (category: string) => {
+        await hoverCenter(page, locators.groupBarBar(page, Number(category.slice(-1))));
+        await expect(locators.hoverRect(page)).toBeVisible();
+        return getBox(locators.hoverRect(page));
+      };
+
+      await test.step('Verify the area starts at the left edge of the start category', async () => {
+        const startBand = await categoryBand(start);
+        expect(Math.abs(area.x - startBand.x)).toBeLessThanOrEqual(1);
+      });
+
+      await test.step('Verify the area ends at the right edge of the end category', async () => {
+        const endBand = await categoryBand(end);
+        expect(Math.abs(area.x + area.width - (endBand.x + endBand.width))).toBeLessThanOrEqual(1);
+      });
     });
   });
 
@@ -196,12 +215,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test.fixme('Verify reference area on a single category is visible', {
+  test('Verify reference area on a single category is visible', {
     tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
-    annotation: {
-      type: 'issue',
-      description: 'A one-category referenceArea gets width = centre(end) − centre(start) = 0, the path runs backwards and only the title is visible',
-    },
   }, async ({ page }) => {
     await loadPage(page, BAR_STORY, 'en', {
       duration: 0,
@@ -219,5 +234,86 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       expect(topEdgeEndX).toBeGreaterThanOrEqual(curveEndX);
       expect(topEdgeEndX).toBeGreaterThan(startX);
     });
+  });
+
+  test.fixme('Verify reference area and reference line background use the hover rect radius', {
+    tag: [TAG.PRIORITY_LOW, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+    annotation: {
+      type: 'issue',
+      description: 'Reference.jsx calls getVerticalPathFromRect with the default radius 12, the hover rect uses 6',
+    },
+  }, async ({ page }) => {
+    await loadPage(page, BAR_STORY, 'en', {
+      duration: 0,
+      withReferenceArea: true,
+      withReferenceLine: true,
+      referenceLineArea: 40,
+    });
+    await expect(locators.referenceShapes(page)).toHaveCount(2);
+
+    await hoverCenter(page, locators.groupBarBar(page, 1));
+    await expect(locators.hoverRect(page)).toBeVisible();
+    const hoverCorners = getCurveCornerSizes(await locators.hoverRect(page).getAttribute('d'));
+
+    await test.step('Verify the reference area corners match the hover rect', async () => {
+      expect.soft(getCurveCornerSizes(await locators.referenceArea(page).getAttribute('d'))).toEqual(hoverCorners);
+    });
+
+    await test.step('Verify the reference line background corners match the hover rect', async () => {
+      expect.soft(getCurveCornerSizes(await locators.referenceLineBackground(page).getAttribute('d'))).toEqual(hoverCorners);
+    });
+  });
+
+  test.fixme('Verify reference area uses the gradient of its own chart when an earlier chart is in a hidden tab', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@tab-line'],
+    annotation: {
+      type: 'issue',
+      description: 'ReferenceArea is created from Area without uniqueIDEnhancement, so every area uses the id undefined-pattern',
+    },
+  }, async ({ page }) => {
+    await loadPage(page, HIDDEN_TAB_STORY, 'en', { withReferenceArea: true });
+
+    const insightsTab = page.getByRole('tab', { name: 'Insights' });
+    const insightsPanel = page.locator('#panel-insights');
+
+    await test.step('Open the second tab while the first chart stays mounted and hidden', async () => {
+      await expect(page.locator('#panel-traffic svg[data-ui-name="Plot"]')).toBeVisible();
+      await insightsTab.click();
+      await expect(insightsTab).toHaveAttribute('aria-selected', 'true');
+      await expect(page.locator('#panel-traffic')).toBeHidden();
+    });
+
+    await test.step('Verify the area gradient resolves inside the visible panel', async () => {
+      const area = insightsPanel.locator('path[fill$="-pattern)"][aria-hidden]');
+      await expect(area).toHaveCount(1);
+
+      const gradientOwner = await area.evaluate((element) => {
+        const id = element.getAttribute('fill')!.match(/url\(#(.+)\)/)![1];
+        return document.getElementById(id)?.closest('[role="tabpanel"]')?.id;
+      });
+      expect(gradientOwner).toBe('panel-insights');
+    });
+  });
+
+  test.fixme('Verify reference area title looks the same as in the line chart', {
+    tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+    annotation: {
+      type: 'issue',
+      description: 'ReferenceArea is created from Area without the reference styles, so the title and subtitle are unstyled',
+    },
+  }, async ({ page }) => {
+    const titleStyle = async (story: string) => {
+      await loadPage(page, story, 'en', { duration: 0, withReferenceArea: true, referenceAreaTitle: TITLE });
+      await expect(locators.plotText(page, TITLE)).toHaveCount(1);
+      return locators.plotText(page, TITLE).evaluate((element) => {
+        const { fill, fontSize } = getComputedStyle(element);
+        return { fill, fontSize };
+      });
+    };
+
+    const lineChartTitle = await titleStyle('stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx');
+    const barChartTitle = await titleStyle(BAR_STORY);
+
+    expect(barChartTitle).toEqual(lineChartTitle);
   });
 });

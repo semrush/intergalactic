@@ -949,16 +949,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test.fixme('Verify vertical bars start at the x axis', {
+  test('Verify vertical bars start at the x axis', {
     tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
-    annotation: {
-      type: 'issue',
-      description: 'Bar treats every bar without y0 as a non-first stack segment and cuts 2px at the axis',
-    },
   }, async ({ page }) => {
     await loadPage(page, BAR_STORY, 'en', { dataType: 'none', highlightDots: 'none', duration: 0 });
 
     await test.step('Verify the bottom of every bar is on the x axis line', async () => {
+      await expect(locators.groupBarBar(page)).toHaveCount(5);
+      await expect(page.locator('line[data-ui-name="Axis"]')).toHaveCount(2);
       const axisY = await page.locator('line[data-ui-name="Axis"]').evaluateAll((lines) =>
         Number(lines.find((line) => line.getAttribute('y1') === line.getAttribute('y2'))!.getAttribute('y1')),
       );

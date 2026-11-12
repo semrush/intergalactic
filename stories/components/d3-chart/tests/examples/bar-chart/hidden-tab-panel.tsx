@@ -20,7 +20,12 @@ const tabs = [
   { value: 'insights', title: 'Insights', data: insightsData },
 ];
 
-const Demo = () => {
+type StoryProps = {
+  // Adds the same reference area to the charts of both tabs.
+  withReferenceArea?: boolean;
+};
+
+const Demo = ({ withReferenceArea = false }: StoryProps) => {
   const [tab, setTab] = React.useState('traffic');
 
   return (
@@ -49,6 +54,7 @@ const Demo = () => {
             maxBarSize={12}
             showLegend={false}
             duration={0}
+            referenceArea={withReferenceArea ? { value: ['Category 2', 'Category 4'], use: 'good' } : undefined}
             aria-label={`${value} chart`}
           />
         </Box>

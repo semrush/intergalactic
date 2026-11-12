@@ -10,7 +10,7 @@ export const categories = ['Category 0', 'Category 1', 'Category 2', 'Category 3
 type HighlightDots = 'none' | 'good' | 'bad' | 'insightful' | 'mixed';
 type DataTypeKnob = 'none' | 'forecast' | 'potential' | 'both';
 
-const highlightsByKnob: Record<HighlightDots, Array<string | undefined>> = {
+const highlightsByKnob: Record<HighlightDots, Array<symbol | undefined>> = {
   none: [],
   good: [GOOD, GOOD, GOOD],
   bad: [BAD, BAD, BAD],
@@ -19,7 +19,7 @@ const highlightsByKnob: Record<HighlightDots, Array<string | undefined>> = {
 };
 
 // Applied to Category 3 and Category 4.
-const dataTypesByKnob: Record<DataTypeKnob, Array<string | undefined>> = {
+const dataTypesByKnob: Record<DataTypeKnob, Array<symbol | undefined>> = {
   none: [],
   forecast: [FORECAST, FORECAST],
   potential: [POTENTIAL, POTENTIAL],
@@ -39,7 +39,7 @@ export const applyDataKnobs = (
   secondSeries = false,
 ) =>
   rows.map((row, i) => {
-    const item: Record<string, unknown> = { ...row };
+    const item: Record<PropertyKey, unknown> = { ...row };
     if (secondSeries && item.bar2 === undefined && typeof item.bar === 'number') item.bar2 = item.bar / 2;
     const highlight = highlightsByKnob[highlightDots][i];
     const type = dataTypesByKnob[dataType][i - 3];

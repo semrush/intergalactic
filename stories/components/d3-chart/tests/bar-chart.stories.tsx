@@ -99,4 +99,8 @@ export const BasicUsage = {
 
 export const HiddenTabPanel: StoryObj = {
   render: HiddenTabPanelExample,
+  argTypes: {
+    withReferenceArea: { control: 'boolean' },
+  },
+  args: { withReferenceArea: false },
 };

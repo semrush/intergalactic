@@ -108,7 +108,7 @@ const Demo = (props: StackBarPropsStoryProps = {}) => {
     };
 
     return invertAxis
-      ? <StackBar.HorizontalBar key={key} x={key} wMin={barHMin} {...barProps} />
+      ? <StackBar.HorizontalBar key={key} x={key} {...barProps} />
       : <StackBar.Bar key={key} y={key} hMin={barHMin} {...barProps} />;
   });
 

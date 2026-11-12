@@ -1,5 +1,4 @@
 import { Box } from '@semcore/ui/base-components';
-import type { ScoreBarChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -9,7 +8,8 @@ import { getPropsToChart } from '../stories_props_helper';
 type ValueFormat = 'default' | 'currency' | 'thousands';
 type TitleFormat = 'default' | 'uppercase';
 
-type StoryProps = ScoreBarChartProps & {
+// `ScoreBarChartProps` is not exported from the package, so the props are taken from the component.
+type StoryProps = React.ComponentProps<typeof Chart.ScoreBar> & {
   colorMapVariant?: 'none' | 'custom';
   valueFormat?: ValueFormat;
   titleFormat?: TitleFormat;
@@ -26,10 +26,10 @@ const colorMap = {
   'Schema.org (JSON-LD)': 'chart-palette-order-5',
 };
 
-const valueFormatters: Record<ValueFormat, ((value: number) => string) | undefined> = {
+const valueFormatters: Record<ValueFormat, ((value: unknown) => string) | undefined> = {
   default: undefined,
-  currency: (value) => `$${value.toFixed(2)}`,
-  thousands: (value) => `${(value / 1000).toFixed(1)}k`,
+  currency: (value) => `$${Number(value).toFixed(2)}`,
+  thousands: (value) => `${(Number(value) / 1000).toFixed(1)}k`,
 };
 
 const titleFormatters: Record<TitleFormat, ((title?: string) => string) | undefined> = {
@@ -46,7 +46,7 @@ const Demo = (props: StoryProps) => {
     clickable,
     firstItemValue = 0,
     ...chartProps
-  } = getPropsToChart(props);
+  } = getPropsToChart<StoryProps>(props);
   const [clicked, setClicked] = React.useState<string>('');
   const items = data.map((item, index) => ({
     ...item,
@@ -61,6 +61,7 @@ const Demo = (props: StoryProps) => {
         data={items}
         colorMap={colorMapVariant === 'custom' ? colorMap : undefined}
         valueFormatter={valueFormatters[valueFormat]}
+        // @ts-expect-error `tooltipValueFormatter` and `tooltipTitleFormatter` work in ScoreBarChart but are missing in its props type
         tooltipValueFormatter={valueFormatters[valueFormat]}
         titleFormatter={titleFormatters[titleFormat]}
         tooltipTitleFormatter={titleFormatters[titleFormat]}

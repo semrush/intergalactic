@@ -189,12 +189,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await expect(locators.item(page, 'OPEN GRAPH')).toContainText('$9650.00');
   });
 
-  test.fixme('Verify the tooltip uses titleFormatter, valueFormatter and colorMap', {
+  test('Verify the tooltip uses tooltipTitleFormatter, tooltipValueFormatter and colorMap', {
     tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, ...TAGS],
-    annotation: {
-      type: 'issue',
-      description: 'renderTooltip shows the raw category, the default number format and a Tooltip.Dot without the colorMap color',
-    },
   }, async ({ page }) => {
     await loadPage(page, SCORE_BAR_STORY, 'en', {
       duration: 0,
