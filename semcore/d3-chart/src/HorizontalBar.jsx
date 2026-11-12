@@ -67,7 +67,7 @@ class HorizontalBarRoot extends Component {
 
     const offset = typeof offsetProps === 'function' ? offsetProps(i) : offsetProps;
     const [xScale, yScale] = scale;
-    const isFirstInStack = d[x0] === 0;
+    const isFirstInStack = d[x0] === undefined || d[x0] === 0;
     const absWidth = Math.abs(
       xScale(d[x]) - (isFirstInStack ? 0 : 2) - Math.max(xScale(xScale.domain()[0]), xScale(d[x0] ?? 0)),
     );
