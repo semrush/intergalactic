@@ -26,7 +26,7 @@ export { default as Radar, getLabelOffsetPosition } from './Radar';
 export { default as Tooltip } from './Tooltip';
 
 export { default as ResponsiveContainer } from './ResponsiveContainer';
-export { ReferenceLine, ReferenceBackground, ReferenceStripes } from './Reference';
+export { ReferenceLine, ReferenceBackground, ReferenceStripes, ReferenceArea } from './Reference';
 
 export { HoverLine, HoverRect } from './Hover';
 
