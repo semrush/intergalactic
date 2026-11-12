@@ -920,12 +920,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test.fixme('Verify highlights use the mask of their own chart when an earlier chart is in a hidden tab', {
+  test('Verify highlights use the mask of their own chart when an earlier chart is in a hidden tab', {
     tag: [TAG.PRIORITY_LOW, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@tab-line'],
-    annotation: {
-      type: 'issue',
-      description: 'Bug doc B1: every Bar renders <mask id="fadeMask"> without uid, so highlights pick the mask of the first chart in the document',
-    },
   }, async ({ page }) => {
     await loadPage(page, HIDDEN_TAB_STORY, 'en');
 
@@ -933,6 +929,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     const insightsPanel = page.locator('#panel-insights');
 
     await test.step('Open the tab with highlights while the first chart stays mounted and hidden', async () => {
+      await expect(page.locator('#panel-traffic svg[data-ui-name="Plot"]')).toBeVisible();
       await insightsTab.click();
       await expect(insightsTab).toHaveAttribute('aria-selected', 'true');
       await expect(insightsPanel).toBeVisible();
@@ -949,6 +946,25 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         }),
       );
       expect(maskOwners).toEqual(['panel-insights', 'panel-insights', 'panel-insights']);
+    });
+  });
+
+  test.fixme('Verify vertical bars start at the x axis', {
+    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+    annotation: {
+      type: 'issue',
+      description: 'Bug doc B18: Bar treats every bar without y0 as a non-first stack segment and cuts 2px at the axis',
+    },
+  }, async ({ page }) => {
+    await loadPage(page, BAR_STORY, 'en', { dataType: 'none', highlightDots: 'none', duration: 0 });
+
+    await test.step('Verify the bottom of every bar is on the x axis line', async () => {
+      const axisY = await page.locator('line[data-ui-name="Axis"]').evaluateAll((lines) =>
+        Number(lines.find((line) => line.getAttribute('y1') === line.getAttribute('y2'))!.getAttribute('y1')),
+      );
+      const boxes = await getBarBoxes(locators.groupBarBar(page));
+      expect(boxes).toHaveLength(5);
+      expect(boxes.map((box) => Number((box.y + box.height).toFixed(2)))).toEqual(boxes.map(() => axisY));
     });
   });
 

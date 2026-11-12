@@ -2,7 +2,7 @@ import type { BarChartProps } from '@semcore/ui/d3-chart';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BarPropsExample, { defaultProps as BarPropsDefaultProps } from './examples/bar-chart/bars-props';
-import BasicUsageExample, { defaultProps as BasicUsageProps, categories } from './examples/bar-chart/basic-usage';
+import BasicUsageExample, { applyDataKnobs, defaultProps as BasicUsageProps, categories, plainData } from './examples/bar-chart/basic-usage';
 import HiddenTabPanelExample from './examples/bar-chart/hidden-tab-panel';
 import { getChartArgTypes, referenceControls } from './examples/stories_props_helper';
 
@@ -66,7 +66,6 @@ const barReferenceControls = {
 };
 
 export const BasicUsage = {
-  render: BasicUsageExample,
   argTypes: getChartArgTypes({
     type: { control: 'select', options: ['stack', 'group'] },
     maxBarSize: { control: { type: 'number', min: 0, max: 100, step: 1 } },
@@ -86,7 +85,16 @@ export const BasicUsage = {
     secondSeries: { control: 'boolean', ...storyKnob },
     ...barReferenceControls,
   }),
-  args: BasicUsageProps,
+  // `data` holds plain rows so it can be edited as JSON; the render adds the highlight and
+  // data type knobs (Symbol keys) to them by row index.
+  args: { ...BasicUsageProps, data: plainData },
+  render: (args: any) =>
+    BasicUsageExample({
+      ...args,
+      data: Array.isArray(args.data)
+        ? applyDataKnobs(args.data, args.highlightDots, args.dataType, args.secondSeries)
+        : undefined,
+    }),
 };
 
 export const HiddenTabPanel: StoryObj = {

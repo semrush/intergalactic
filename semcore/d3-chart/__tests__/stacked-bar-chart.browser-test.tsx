@@ -355,13 +355,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
     });
 
-    const testOrFixme = variant.invertAxis ? test : test.fixme;
-
-    testOrFixme(`Verify ${variant.name} stack ends at its total value`, {
+    test(`Verify ${variant.name} stack ends at its total value`, {
       tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
-      annotation: variant.invertAxis
-        ? []
-        : { type: 'issue', description: 'Bug doc S4: vertical StackBar shifts segments by the 2px gaps, a 5 + 4 + 1 stack is 4px longer than a bar of 10' },
     }, async ({ page }) => {
       const size = variant.axis === 'y' ? 'height' : 'width';
       const crossAxis = variant.axis === 'y' ? 'x' : 'y';
@@ -387,12 +382,20 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         ));
       };
 
-      await test.step('Verify a 5 + 4 + 1 stack is as long as a single bar of 10 on the same scale', async () => {
-        const scaleAnchor = { category: 'Category 1', a: 20, b: 0, c: 0 };
-        const stacked = await shortestStackExtent([{ category: 'Category 0', a: 5, b: 4, c: 1 }, scaleAnchor]);
-        const single = await shortestStackExtent([{ category: 'Category 0', a: 10, b: 0, c: 0 }, scaleAnchor]);
+      await test.step('Verify a 5 + 4 + 1 stack is half of a value axis that ends at 20', async () => {
+        const stacked = await shortestStackExtent([
+          { category: 'Category 0', a: 5, b: 4, c: 1 },
+          { category: 'Category 1', a: 20, b: 0, c: 0 },
+        ]);
+        const valueAxisLength = await page.locator('line[data-ui-name="Axis"]').evaluateAll((lines, axis) => {
+          const valueAxis = lines.find((line) =>
+            axis === 'x' ? line.getAttribute('y1') === line.getAttribute('y2') : line.getAttribute('x1') === line.getAttribute('x2'),
+          )!;
+          const [start, end] = axis === 'x' ? ['x1', 'x2'] : ['y1', 'y2'];
+          return Math.abs(Number(valueAxis.getAttribute(end)) - Number(valueAxis.getAttribute(start)));
+        }, variant.axis);
 
-        expect(stacked).toBeCloseTo(single, 0);
+        expect(stacked).toBeCloseTo(valueAxisLength / 2, 0);
       });
     });
   });
@@ -445,12 +448,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test.fixme('Verify a single horizontal stack segment with a zero next segment is rounded at both ends', {
+  test('Verify a single horizontal stack segment with a zero next segment is rounded at both ends', {
     tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
-    annotation: {
-      type: 'issue',
-      description: 'Bug doc B3: fixed only for one visible series; with a zero segment after it StackBar still returns [r, 0], so the right end stays square',
-    },
   }, async ({ page }) => {
     await loadPage(page, BAR_STORY, 'en', {
       type: 'stack',
@@ -463,6 +462,31 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify the segment has 4 rounded corners', async () => {
       await expect(locators.stackBarHorizontalBar(page)).toHaveCount(2);
       expect(countRoundedCorners(await locators.stackBarHorizontalBar(page, 0).getAttribute('d'))).toBe(4);
+    });
+  });
+
+  test.fixme('Verify zero and empty horizontal stack segments are not drawn', {
+    tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+    annotation: {
+      type: 'issue',
+      description: 'Bug doc B17: a 0 or null segment of StackBar.HorizontalBar is drawn as a 4px path with rounded corners next to the bar',
+    },
+  }, async ({ page }) => {
+    await loadPage(page, BAR_STORY, 'en', {
+      type: 'stack',
+      invertAxis: true,
+      trend: undefined,
+      duration: 0,
+      data: [
+        { category: 'Category 0', a: 0, b: 4, c: 0 },
+        { category: 'Category 1', a: null, b: 2, c: null },
+      ],
+    });
+
+    await test.step('Verify only the two non-empty segments have a width', async () => {
+      await expect(locators.stackBarHorizontalBar(page)).toHaveCount(6);
+      const boxes = await getBarBoxes(locators.stackBarHorizontalBar(page));
+      expect(boxes.filter((box) => box.width > 0)).toHaveLength(2);
     });
   });
 });
