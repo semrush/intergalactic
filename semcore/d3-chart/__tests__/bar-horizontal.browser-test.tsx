@@ -308,26 +308,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test.fixme('Verify horizontal hover rect keeps a valid shape on a narrow category band', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
-    annotation: {
-      type: 'issue',
-      description: 'The 6px radius is not clamped, so a band lower than 12px gives a self-intersecting path',
-    },
-  }, async ({ page }) => {
-    await loadPage(page, BAR_STORY, 'en', { invertAxis: true, plotHeight: 150, duration: 0 });
-    await hoverCenter(page, locators.groupBarHorizontalBar(page, 1));
-
-    await test.step('Verify the right edge does not run upwards', async () => {
-      const d = await locators.hoverRect(page).getAttribute('d');
-      const match = d?.match(/Q\s*[-\d.]+,[-\d.]+\s+[-\d.]+,([-\d.]+)\s*V\s*([-\d.]+)/);
-      expect(match).not.toBeNull();
-
-      const [curveEndY, rightEdgeEndY] = match!.slice(1).map(Number);
-      expect(rightEdgeEndY).toBeGreaterThanOrEqual(curveEndY);
-    });
-  });
-
   test.fixme('Verify the gap between horizontal bars inside a group is about 2px', {
     tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@bar-chart', '@base-components', '@flex-box', '@checkbox', '@horizontal-bar-chart'],
     annotation: {

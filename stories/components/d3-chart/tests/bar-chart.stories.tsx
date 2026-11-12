@@ -2,7 +2,12 @@ import type { BarChartProps } from '@semcore/ui/d3-chart';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BarPropsExample, { defaultProps as BarPropsDefaultProps } from './examples/bar-chart/bars-props';
-import BasicUsageExample, { applyDataKnobs, defaultProps as BasicUsageProps, categories, plainData } from './examples/bar-chart/basic-usage';
+import BasicUsageExample, {
+  applyDataKnobs,
+  defaultProps as BasicUsageProps,
+  categories,
+  plainData,
+} from './examples/bar-chart/basic-usage';
 import HiddenTabPanelExample from './examples/bar-chart/hidden-tab-panel';
 import { getChartArgTypes, referenceControls } from './examples/stories_props_helper';
 
@@ -87,7 +92,16 @@ export const BasicUsage = {
   }),
   // `data` holds plain rows so it can be edited as JSON; the render adds the highlight and
   // data type knobs (Symbol keys) to them by row index.
-  args: { ...BasicUsageProps, data: plainData },
+  args: {
+    ...BasicUsageProps,
+    data: plainData,
+    withReferenceLine: true,
+    withReferenceArea: true,
+    referenceAreaStartCategory: 'Category 0',
+    referenceAreaEndCategory: 'Category 2',
+    referenceLineArea: 0,
+    referenceLineCount: 0,
+  },
   render: (args: any) =>
     BasicUsageExample({
       ...args,

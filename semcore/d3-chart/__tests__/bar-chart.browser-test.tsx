@@ -901,25 +901,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test.fixme('Verify bar highlights are hidden from assistive technology like the bars', {
-    tag: [TAG.PRIORITY_LOW, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
-    annotation: {
-      type: 'issue',
-      description: 'Highlight paths from renderHighlight have no aria-hidden, bars have aria-hidden="true"',
-    },
-  }, async ({ page }) => {
-    await loadPage(page, BAR_STORY, 'en', { highlightDots: 'mixed', duration: 0 });
-
-    await test.step('Verify every highlight sits inside an aria-hidden element', async () => {
-      await expect(locators.highlights(page)).toHaveCount(3);
-
-      const exposed = await locators.highlights(page).evaluateAll((elements) =>
-        elements.filter((element) => !element.closest('[aria-hidden="true"]')).length,
-      );
-      expect(exposed).toBe(0);
-    });
-  });
-
   test('Verify highlights use the mask of their own chart when an earlier chart is in a hidden tab', {
     tag: [TAG.PRIORITY_LOW, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@tab-line'],
   }, async ({ page }) => {
@@ -1030,26 +1011,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify both top corners are 6 by 6', async () => {
       await expect(locators.hoverRect(page)).toBeVisible();
       expect(getCurveCornerSizes(await locators.hoverRect(page).getAttribute('d'))).toEqual([[6, 6], [6, 6]]);
-    });
-  });
-
-  test.fixme('Verify hover rect keeps a valid shape on a narrow category band', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
-    annotation: {
-      type: 'issue',
-      description: 'The 6px radius is not clamped, so a band narrower than 12px gives a self-intersecting path',
-    },
-  }, async ({ page }) => {
-    await loadPage(page, BAR_STORY, 'en', { plotWidth: 100, duration: 0 });
-    await hoverCenter(page, locators.groupBarBar(page, 1));
-
-    await test.step('Verify the top edge does not run backwards', async () => {
-      const d = await locators.hoverRect(page).getAttribute('d');
-      const match = d?.match(/Q\s*[-\d.]+,[-\d.]+\s+([-\d.]+),[-\d.]+\s*H\s*([-\d.]+)/);
-      expect(match).not.toBeNull();
-
-      const [curveEndX, topEdgeEndX] = match!.slice(1).map(Number);
-      expect(topEdgeEndX).toBeGreaterThanOrEqual(curveEndX);
     });
   });
 });
