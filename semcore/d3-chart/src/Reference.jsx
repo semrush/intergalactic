@@ -248,9 +248,8 @@ function getColorByUse(use, resolveColor) {
   }
 }
 
-function Stripes(props) {
-  const { Element: SStripes, styles, scale, position = 'left', value, endValue, uid, use = 'neutral', title, subTitle, resolveColor } = props;
-  const positionProps = rectDirection2props[side2direction[position]](scale, value, endValue);
+function Area(props) {
+  const { Element: SStripes, styles, uid, use = 'neutral', title, subTitle, resolveColor, positionProps } = props;
   const patternId = `${uid}-pattern`;
   const STitle = SvgElement;
   const SSubTitle = SvgElement;
@@ -299,6 +298,12 @@ function Stripes(props) {
     </g>,
   );
 }
+
+function Stripes(props) {
+  const { scale, position = 'left', value, endValue } = props;
+  const positionProps = rectDirection2props[side2direction[position]](scale, value, endValue);
+  return (<ReferenceArea {...props} positionProps={positionProps} />);
+}
 Stripes.style = style;
 Stripes.enhance = [uniqueIDEnhancement()];
 
@@ -307,6 +312,8 @@ export const ReferenceLine = createElement(ReferenceLineRoot, {
   Background: Stripes,
   Stripes,
 });
+
+export const ReferenceArea = createElement(Area);
 
 export const ReferenceBackground = createElement(Stripes);
 export const ReferenceStripes = createElement(Stripes);

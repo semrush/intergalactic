@@ -8,9 +8,10 @@ import { AbstractChart } from './AbstractChart';
 import type { BaseLegendProps } from './AbstractChart.type';
 import type { BarChartData, BarChartProps, BarChartType, BarChartDefaultProps } from './BarChart.type';
 // @ts-ignore
-import { minMax, GroupBar, HoverRect, StackBar, Line, YAxis, XAxis, ReferenceLine, ReferenceStripes } from '../..';
+import { minMax, GroupBar, HoverRect, StackBar, Line, YAxis, XAxis, ReferenceLine, ReferenceArea } from '../..';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import type { BarProps } from '../../types';
+import { scaleOfBandwidth, scaleToBand } from '../../utils';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 
 class BarChartComponent extends AbstractChart<
@@ -198,9 +199,9 @@ class BarChartComponent extends AbstractChart<
   }
 
   protected renderReference() {
-    const { referenceLine, referenceArea } = this.asProps;
+    const { referenceLine, referenceArea, invertAxis } = this.asProps;
 
-    if (!referenceLine && !referenceArea) {
+    if ((!referenceLine && !referenceArea) || invertAxis) {
       return null;
     }
 
@@ -215,7 +216,8 @@ class BarChartComponent extends AbstractChart<
         )}
 
         {referenceArea && (
-          <ReferenceStripes
+          <ReferenceArea
+            positionProps={this.getReferenceAreaPosition(referenceArea)}
             value={referenceArea.value[0]}
             endValue={referenceArea.value[1]}
             use={referenceArea.use}
@@ -340,6 +342,28 @@ class BarChartComponent extends AbstractChart<
           : [plotHeight - marginX, this.plotPadding],
       )
       .domain([0, max]);
+  }
+
+  private getReferenceAreaPosition(referenceArea: ReferenceArea) {
+    const xBand = this.xScale;
+
+    if ('bandwidth' in xBand) {
+      const xPaddingInner = xBand.paddingInner();
+      const startPoint = xBand(referenceArea.value[0]) ?? 0;
+      const endPoint = xBand(referenceArea.value[1]) ?? 0;
+
+      const yRange = this.yScale.range();
+      const x = startPoint - (xBand.step() * xPaddingInner) / 2;
+      const width = endPoint + (xBand.step() * xPaddingInner) * 2 - x;
+      return {
+        x: x,
+        y: yRange[1],
+        width,
+        height: yRange[0] - yRange[1],
+      };
+    }
+
+    return { x: 0, y: 0, width: 0, height: 0 };
   }
 }
 
