@@ -85,8 +85,9 @@ class BarRoot extends Component {
     } = this.asProps;
     const offset = typeof offsetProps === 'function' ? offsetProps(i) : offsetProps;
     const [xScale, yScale] = scale;
+    const isFirstInStack = d[y0] === 0;
     const absHeight = Math.abs(
-      yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0)),
+      yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0) - (isFirstInStack ? 0 : 2)),
     );
     const height = Number(d[y] - (d[y0] ?? 0)) === 0 ? 0 : Math.max(absHeight, hMin);
     const bandWidth = widthProps || scaleToBand(xScale).bandwidth();

@@ -67,15 +67,16 @@ class HorizontalBarRoot extends Component {
 
     const offset = typeof offsetProps === 'function' ? offsetProps(i) : offsetProps;
     const [xScale, yScale] = scale;
+    const isFirstInStack = d[x0] === 0;
     const absWidth = Math.abs(
-      xScale(d[x]) - Math.max(xScale(xScale.domain()[0]), xScale(d[x0] ?? 0)),
+      xScale(d[x]) - (isFirstInStack ? 0 : 2) - Math.max(xScale(xScale.domain()[0]), xScale(d[x0] ?? 0)),
     );
     const bandHeight = heightProps || scaleToBand(yScale).bandwidth();
     const height = Math.min(bandHeight, maxBarSize);
     const width = Number(d[x] - (d[x0] ?? 0)) === 0 ? 0 : Math.max(absWidth, wMin);
     const barY = yScale(d[y]) + bandHeight / 2 - height / 2 + offset[1];
     const barX =
-      xScale(Math.min(d[x0] ?? 0, width <= wMin && d[x] < 0 ? 0 : d[x])) +
+      xScale(Math.min(d[x0] ?? 0, width <= wMin && d[x] < 0 ? 0 : d[x])) + (isFirstInStack ? 0 : 2) +
       offset[0] -
       calcPartBarX(d[x], wMin, width);
     const handleClick = (event) => onClick?.(d, event, i, x);
