@@ -89,11 +89,14 @@ SBar {
 
   SBarValue {
     height: 100%;
-    background-color: #0C0E13;
     border-radius: 2px;
     animation-name: valueWidthAnimation;
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
+  }
+
+  SBarValue[color] {
+    background-color: var(--color);
   }
 
   SBarBackground {

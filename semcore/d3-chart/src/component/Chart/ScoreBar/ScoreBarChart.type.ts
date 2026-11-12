@@ -46,13 +46,9 @@ export type ScoreBarChartProps = NSBox.Props & {
    */
   showTooltip?: boolean;
   /**
-   * Show sum of values for selected point in tooltip
-   */
-  showTotalInTooltip?: boolean;
-  /**
    * Function to format values
    */
-  valueFormatter?: (value: number) => string;
+  valueFormatter?: (value: unknown) => string;
   /**
    * Function to format title
    */

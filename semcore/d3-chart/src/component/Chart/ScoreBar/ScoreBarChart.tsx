@@ -1,6 +1,7 @@
 import { Box } from '@semcore/base-components';
 import { createComponent, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import colorResolverEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
@@ -42,6 +43,7 @@ class ScoreBarChartComponent extends AbstractChart<
   static enhance = [
     i18nEnhance(localizedMessages),
     uniqueIDEnhancement(),
+    colorResolverEnhance(),
     cssVariableEnhance({
       variable: '--intergalactic-duration-medium',
       fallback: '300',
@@ -60,7 +62,7 @@ class ScoreBarChartComponent extends AbstractChart<
 
   override render() {
     const SChart = Root;
-    const { mode, data, styles, onClickItem, uid, duration } = this.asProps;
+    const { mode, data, styles, onClickItem, uid, duration, valueFormatter, titleFormatter, resolveColor } = this.asProps;
 
     return sstyled(styles)(
       <SChart
@@ -71,6 +73,8 @@ class ScoreBarChartComponent extends AbstractChart<
         mode={mode}
       >
         {data.map((item, index) => {
+          const color = this.resolveColor(item.category);
+
           return (
             <ScoreBarItem
               key={item.category}
@@ -82,13 +86,19 @@ class ScoreBarChartComponent extends AbstractChart<
               eventEmitter={this.eventEmitter}
               uid={uid}
               duration={duration}
-              valueFormatter={this.valueFormatter}
+              valueFormatter={valueFormatter ?? this.valueFormatter}
+              titleFormatter={titleFormatter}
+              color={resolveColor(color)}
             />
           );
         })}
         {this.renderTooltip()}
       </SChart>,
     );
+  }
+
+  protected override resolveColor(id: string) {
+    return this.props.colorMap?.[id] ?? `chart-palette-order-1`;
   }
 
   protected renderTooltip(): React.ReactNode {

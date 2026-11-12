@@ -11,8 +11,10 @@ export type ScoreBarItemTypeProps = {
   totalValue: number;
   mode: ScoreBarChartProps['mode'];
   duration: number;
+  color: string;
 
   valueFormatter: (value?: unknown) => string;
+  titleFormatter?: (title?: string) => string;
   onClick: ScoreBarChartProps['onClickItem'];
   eventEmitter: EventEmitter<ScoreBarEvents>;
 };

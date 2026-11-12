@@ -33,7 +33,7 @@ class ScoreBarItemComponent extends Component<ScoreBarItemTypeProps> {
   });
 
   render() {
-    const { item, mode, totalValue, onClick, valueFormatter, duration } = this.asProps;
+    const { item, mode, totalValue, onClick, valueFormatter, duration, titleFormatter, color } = this.asProps;
     const SItem = Box;
     const SCategory = Text;
     const SPercent = Text;
@@ -46,6 +46,7 @@ class ScoreBarItemComponent extends Component<ScoreBarItemTypeProps> {
     const percent = parseInt((100 * (item.value / totalValue)).toFixed(0));
     const bg = 100 - percent;
     const displayValue = valueFormatter(item.value);
+    const displayCategory = titleFormatter ? titleFormatter(item.category) : item.category;
 
     return sstyled(style)(
       <SItem
@@ -59,7 +60,7 @@ class ScoreBarItemComponent extends Component<ScoreBarItemTypeProps> {
         onMouseLeave={this.handleMouseLeave}
       >
         <SCategory>
-          {item.category}
+          {displayCategory}
         </SCategory>
         <SPercent use='secondary'>
           {percent}%
@@ -75,7 +76,7 @@ class ScoreBarItemComponent extends Component<ScoreBarItemTypeProps> {
             )}
         {/* @ts-expect-error mode is for css only */}
         <SBar mode={mode} aria-hidden='true' duration={duration}>
-          <SBarValue />
+          <SBarValue color={color} />
           <SBarBackground style={{ width: `${bg}%` }} />
         </SBar>
       </SItem>,
