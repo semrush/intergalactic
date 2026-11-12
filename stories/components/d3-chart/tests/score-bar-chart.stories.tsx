@@ -26,6 +26,9 @@ export const BasicUsage = {
     titleFormat: { control: 'select', options: ['default', 'uppercase'], ...storyKnob },
     // Adds `href` to every item.
     withLinks: { control: 'boolean', ...storyKnob },
+    // Value of the first row, `Schema.org (Microdata)`. With `totalValue` below a row value the
+    // percent goes above 100; a negative value gives a negative percent.
+    firstItemValue: { control: 'number', ...storyKnob },
     // Passes `onClickItem`; the last click is printed under the chart.
     clickable: { control: 'boolean', ...storyKnob },
   },

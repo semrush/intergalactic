@@ -114,16 +114,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await expect(locators.item(page, 'Open graph')).toContainText(expected);
   });
 
-  test.fixme('Verify locale formats a percent above 100', {
-    tag: [TAG.PRIORITY_LOW, ...TAGS],
-    annotation: { type: 'issue', description: 'PercentFormatter skips Intl for values below 0 or above 100, so de gets 271% instead of 271 %' },
-  }, async ({ page }) => {
-    await loadPage(page, SCORE_BAR_STORY, 'de', { duration: 0, locale: 'de', totalValue: 50000 });
-
-    const expected = await page.evaluate(() => new Intl.NumberFormat('de', { style: 'percent' }).format(2.71));
-    await expect(locators.item(page, 'Schema.org (JSON-LD)')).toContainText(expected);
-  });
-
   test('Verify tooltip shows the hovered row and hides on leave', {
     tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, ...TAGS],
   }, async ({ page }) => {
@@ -199,15 +189,39 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await expect(locators.item(page, 'OPEN GRAPH')).toContainText('$9650.00');
   });
 
-  test.fixme('Verify valueFormatter and titleFormatter format the tooltip', {
+  test.fixme('Verify the tooltip uses titleFormatter, valueFormatter and colorMap', {
     tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, ...TAGS],
-    annotation: { type: 'issue', description: 'The tooltip shows the raw category and the default number format' },
+    annotation: {
+      type: 'issue',
+      description: 'renderTooltip shows the raw category, the default number format and a Tooltip.Dot without the colorMap color',
+    },
   }, async ({ page }) => {
-    await loadPage(page, SCORE_BAR_STORY, 'en', { duration: 0, valueFormat: 'currency', titleFormat: 'uppercase' });
+    await loadPage(page, SCORE_BAR_STORY, 'en', {
+      duration: 0,
+      valueFormat: 'currency',
+      titleFormat: 'uppercase',
+      colorMapVariant: 'custom',
+    });
+
+    await expect(locators.bars(page)).toHaveCount(5);
+    const barColor = await locators.bars(page).nth(1).evaluate((element) =>
+      getComputedStyle(element.firstElementChild!).backgroundColor,
+    );
 
     await locators.item(page, 'OPEN GRAPH').hover();
-    await expect(locators.tooltip(page)).toContainText('OPEN GRAPH');
-    await expect(locators.tooltip(page)).toContainText('$9650.00');
+    await expect(locators.tooltip(page)).toBeVisible();
+
+    await test.step('Verify the formatted title and value', async () => {
+      await expect.soft(locators.tooltip(page)).toContainText('OPEN GRAPH');
+      await expect.soft(locators.tooltip(page)).toContainText('$9650.00');
+    });
+
+    await test.step('Verify the dot has the bar color', async () => {
+      const dotColors = await locators.tooltip(page).locator('[data-ui-name="Tooltip.Dot"] *').evaluateAll((elements) =>
+        elements.map((element) => getComputedStyle(element).backgroundColor),
+      );
+      expect.soft(dotColors).toContain(barColor);
+    });
   });
 
   test('Verify colorMap colors the bars', {
