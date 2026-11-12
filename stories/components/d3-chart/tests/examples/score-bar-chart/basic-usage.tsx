@@ -54,7 +54,9 @@ const Demo = (props: StoryProps) => {
         data={withLinks ? data.map((item) => ({ ...item, href: '#' })) : data}
         colorMap={colorMapVariant === 'custom' ? colorMap : undefined}
         valueFormatter={valueFormatters[valueFormat]}
+        tooltipValueFormatter={valueFormatters[valueFormat]}
         titleFormatter={titleFormatters[titleFormat]}
+        tooltipTitleFormatter={titleFormatters[titleFormat]}
         onClickItem={clickable ? (item) => setClicked(`${item.category}, index ${item.index}`) : undefined}
         aria-label='ScoreBar chart'
       />

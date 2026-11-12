@@ -112,15 +112,18 @@ class ScoreBarChartComponent extends AbstractChart<
     return (
       <Tooltip eventEmitter={this.eventEmitter} plotId={uid}>
         {({ index }: { index: number }) => {
+          const item = data[index];
+          const color = this.resolveColor(item.category);
+
           return {
             children: (
               <>
                 <Tooltip.Title>
-                  {data[index].category}
+                  {this.tooltipTitleFormatter(item.category)}
                 </Tooltip.Title>
 
-                <Tooltip.Dot>
-                  {this.tooltipValueFormatter(data[index].value)}
+                <Tooltip.Dot color={color}>
+                  {this.tooltipValueFormatter(item.value)}
                 </Tooltip.Dot>
               </>
             ),
