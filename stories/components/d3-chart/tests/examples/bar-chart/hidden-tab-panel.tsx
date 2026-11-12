@@ -20,11 +20,6 @@ const tabs = [
   { value: 'insights', title: 'Insights', data: insightsData },
 ];
 
-/**
- * Both tab panels stay mounted and the inactive one gets `hidden`, a common way to keep
- * chart state between tabs. Open "Insights": its highlights are drawn with the mask of the
- * hidden "Traffic" chart (bug doc B1).
- */
 const Demo = () => {
   const [tab, setTab] = React.useState('traffic');
 

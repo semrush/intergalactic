@@ -89,7 +89,6 @@ const data = [
 export const defaultProps = {
   mode: 'default',
   showTooltip: true,
-  showTotalInTooltip: false,
   locale: 'en',
   colorMapVariant: 'none',
   valueFormat: 'default',

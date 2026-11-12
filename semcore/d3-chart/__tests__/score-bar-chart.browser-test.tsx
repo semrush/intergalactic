@@ -105,14 +105,23 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await expect(locators.item(page, 'Open graph')).toContainText('9.650');
   });
 
-  test.fixme('Verify locale formats the percent', {
+  test('Verify locale formats the percent', {
     tag: [TAG.PRIORITY_MEDIUM, ...TAGS],
-    annotation: { type: 'issue', description: 'Bug doc B15: ScoreBarItem renders `${percent}%` without Intl, so de/fr get 6% instead of 6 %' },
   }, async ({ page }) => {
     await loadPage(page, SCORE_BAR_STORY, 'de', { duration: 0, locale: 'de' });
 
     const expected = await page.evaluate(() => new Intl.NumberFormat('de', { style: 'percent' }).format(0.06));
     await expect(locators.item(page, 'Open graph')).toContainText(expected);
+  });
+
+  test.fixme('Verify locale formats a percent above 100', {
+    tag: [TAG.PRIORITY_LOW, ...TAGS],
+    annotation: { type: 'issue', description: 'PercentFormatter skips Intl for values below 0 or above 100, so de gets 271% instead of 271 %' },
+  }, async ({ page }) => {
+    await loadPage(page, SCORE_BAR_STORY, 'de', { duration: 0, locale: 'de', totalValue: 50000 });
+
+    const expected = await page.evaluate(() => new Intl.NumberFormat('de', { style: 'percent' }).format(2.71));
+    await expect(locators.item(page, 'Schema.org (JSON-LD)')).toContainText(expected);
   });
 
   test('Verify tooltip shows the hovered row and hides on leave', {
@@ -182,25 +191,27 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await expect(page.getByRole('link', { name: '9,650' })).toBeFocused();
   });
 
-  test.fixme('Verify valueFormatter formats the row and the tooltip', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, ...TAGS],
-    annotation: { type: 'issue', description: 'Bug doc B11: ScoreBarChart ignores valueFormatter' },
+  test('Verify valueFormatter and titleFormatter format the row', {
+    tag: [TAG.PRIORITY_HIGH, ...TAGS],
   }, async ({ page }) => {
-    await loadPage(page, SCORE_BAR_STORY, 'en', { duration: 0, valueFormat: 'currency' });
+    await loadPage(page, SCORE_BAR_STORY, 'en', { duration: 0, valueFormat: 'currency', titleFormat: 'uppercase' });
 
-    await test.step('Verify the formatted text in the row', async () => {
-      await expect(locators.item(page, 'Open graph')).toContainText('$9650.00');
-    });
-
-    await test.step('Verify the formatted text in the tooltip', async () => {
-      await locators.item(page, 'Open graph').hover();
-      await expect(locators.tooltip(page)).toContainText('$9650.00');
-    });
+    await expect(locators.item(page, 'OPEN GRAPH')).toContainText('$9650.00');
   });
 
-  test.fixme('Verify colorMap colors the bars', {
+  test.fixme('Verify valueFormatter and titleFormatter format the tooltip', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, ...TAGS],
+    annotation: { type: 'issue', description: 'The tooltip shows the raw category and the default number format' },
+  }, async ({ page }) => {
+    await loadPage(page, SCORE_BAR_STORY, 'en', { duration: 0, valueFormat: 'currency', titleFormat: 'uppercase' });
+
+    await locators.item(page, 'OPEN GRAPH').hover();
+    await expect(locators.tooltip(page)).toContainText('OPEN GRAPH');
+    await expect(locators.tooltip(page)).toContainText('$9650.00');
+  });
+
+  test('Verify colorMap colors the bars', {
     tag: [TAG.PRIORITY_HIGH, ...TAGS],
-    annotation: { type: 'issue', description: 'Bug doc B11: ScoreBarItem never applies colorMap' },
   }, async ({ page }) => {
     const barColors = async () => {
       await expect(locators.bars(page)).toHaveCount(5);
@@ -223,7 +234,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test.fixme('Verify clickable rows are reachable and activated with the keyboard', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, ...TAGS],
-    annotation: { type: 'issue', description: 'Bug doc B13: with onClickItem the rows get no tabindex or role, so they are mouse-only' },
+    annotation: { type: 'issue', description: 'With onClickItem the rows get no tabindex or role, so they are mouse-only' },
   }, async ({ page }) => {
     await loadPage(page, SCORE_BAR_STORY, 'en', { duration: 0, clickable: true });
 

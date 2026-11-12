@@ -200,7 +200,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     annotation: {
       type: 'issue',
-      description: 'Bug doc B9: width = centre(end) − centre(start) = 0, the area path runs backwards and only the title is visible',
+      description: 'A one-category referenceArea gets width = centre(end) − centre(start) = 0, the path runs backwards and only the title is visible',
     },
   }, async ({ page }) => {
     await loadPage(page, BAR_STORY, 'en', {
@@ -218,31 +218,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       const [startX, curveEndX, topEdgeEndX] = match!.slice(1).map(Number);
       expect(topEdgeEndX).toBeGreaterThanOrEqual(curveEndX);
       expect(topEdgeEndX).toBeGreaterThan(startX);
-    });
-  });
-
-  test.fixme('Verify overlapping reference lines do not produce duplicate React keys', {
-    tag: [TAG.PRIORITY_LOW, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
-    annotation: {
-      type: 'issue',
-      description: 'Bug doc B5: BarChart.renderReference uses value.toString() as the key',
-    },
-  }, async ({ page }) => {
-    const warnings: string[] = [];
-    page.on('console', (message) => {
-      if (message.text().includes('same key')) warnings.push(message.text());
-    });
-
-    await loadPage(page, BAR_STORY, 'en', {
-      duration: 0,
-      withReferenceLine: true,
-      referenceLineCount: 2,
-      referenceLinesOverlap: true,
-    });
-
-    await test.step('Verify both lines render and React reports no duplicate keys', async () => {
-      await expect(locators.referenceLine(page)).toHaveCount(2);
-      expect(warnings).toEqual([]);
     });
   });
 });

@@ -279,11 +279,30 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
+  test.fixme('Verify horizontal bars start at the y axis', {
+    tag: [TAG.PRIORITY_HIGH, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+    annotation: {
+      type: 'issue',
+      description: 'HorizontalBar treats every bar without x0 as a non-first stack segment and moves it 2px off the axis',
+    },
+  }, async ({ page }) => {
+    await loadPage(page, BAR_STORY, 'en', { invertAxis: true, dataType: 'none', highlightDots: 'none', duration: 0 });
+
+    await test.step('Verify the left edge of every bar is on the y axis line', async () => {
+      const axisX = await page.locator('line[data-ui-name="Axis"]').evaluateAll((lines) =>
+        Number(lines.find((line) => line.getAttribute('x1') === line.getAttribute('x2'))!.getAttribute('x1')),
+      );
+      const boxes = await getBarBoxes(locators.groupBarHorizontalBar(page), 'y');
+      expect(boxes).toHaveLength(5);
+      expect(boxes.map((box) => box.x)).toEqual(boxes.map(() => axisX));
+    });
+  });
+
   test.fixme('Verify horizontal hover rect corners have a 6px radius', {
     tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     annotation: {
       type: 'issue',
-      description: 'Bug doc B14: getHorizontalPathFromRect starts the right corners at width − 2r, so they are 12 by 6',
+      description: 'GetHorizontalPathFromRect starts the right corners at width − 2r, so they are 12 by 6',
     },
   }, async ({ page }) => {
     await loadPage(page, BAR_STORY, 'en', { invertAxis: true, duration: 0 });
@@ -299,7 +318,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     annotation: {
       type: 'issue',
-      description: 'Bug doc B4: the 6px radius is not clamped, so a band lower than 12px gives a self-intersecting path',
+      description: 'The 6px radius is not clamped, so a band lower than 12px gives a self-intersecting path',
     },
   }, async ({ page }) => {
     await loadPage(page, BAR_STORY, 'en', { invertAxis: true, plotHeight: 150, duration: 0 });

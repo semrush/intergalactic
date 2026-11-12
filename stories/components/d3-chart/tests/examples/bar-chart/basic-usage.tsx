@@ -28,10 +28,19 @@ const dataTypesByKnob: Record<DataTypeKnob, Array<string | undefined>> = {
 
 const values = [2, 5, 7, 7, 9];
 
-const getData = (highlightDots: HighlightDots, dataType: DataTypeKnob, secondSeries = false) =>
-  categories.map((category, i) => {
-    const item: Record<string, unknown> = { category, bar: values[i] };
-    if (secondSeries) item.bar2 = values[i] / 2;
+/** Rows without highlights and data types: they are Symbol keys and cannot be edited as JSON. */
+export const plainData = categories.map((category, i) => ({ category, bar: values[i] }));
+
+/** Adds the `highlightDots`, `dataType` and `secondSeries` knobs to the rows by their index. */
+export const applyDataKnobs = (
+  rows: Array<Record<string, unknown>>,
+  highlightDots: HighlightDots = 'mixed',
+  dataType: DataTypeKnob = 'both',
+  secondSeries = false,
+) =>
+  rows.map((row, i) => {
+    const item: Record<string, unknown> = { ...row };
+    if (secondSeries && item.bar2 === undefined && typeof item.bar === 'number') item.bar2 = item.bar / 2;
     const highlight = highlightsByKnob[highlightDots][i];
     const type = dataTypesByKnob[dataType][i - 3];
 
@@ -40,6 +49,9 @@ const getData = (highlightDots: HighlightDots, dataType: DataTypeKnob, secondSer
 
     return item;
   });
+
+const getData = (highlightDots: HighlightDots, dataType: DataTypeKnob, secondSeries = false) =>
+  applyDataKnobs(plainData, highlightDots, dataType, secondSeries);
 
 const Demo = (props: BarChartProps) => {
   const {

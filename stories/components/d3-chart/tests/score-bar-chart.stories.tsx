@@ -19,7 +19,6 @@ export const BasicUsage = {
     // Unset = sum of all values.
     totalValue: { control: 'number' },
     showTooltip: { control: 'boolean' },
-    showTotalInTooltip: { control: 'boolean' },
     duration: { control: { type: 'number', min: 0, max: 2000, step: 100 } },
     locale: { control: 'select', options: ['de', 'en', 'es', 'fr', 'it', 'ja', 'ko', 'nl', 'pl', 'pt', 'sv', 'tr', 'vi', 'zh', 'uk'] },
     colorMapVariant: { control: 'select', options: ['none', 'custom'], ...storyKnob },
