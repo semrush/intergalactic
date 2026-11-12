@@ -101,7 +101,7 @@ const redirects = {
   "/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact": "/intergalactic/data-display/score-bar-chart/score-bar-chart",
   "/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact-api": "/intergalactic/data-display/score-bar-chart/score-bar-chart-api",
   "/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact-a11y": "/intergalactic/data-display/score-bar-chart/score-bar-chart-a11y",
-  "/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact-code": "/intergalactic/data-displayscore-bar-chart/score-bar-chart-code",
+  "/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact-code": "/intergalactic/data-display/score-bar-chart/score-bar-chart-code",
   "/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact-changelog": "/intergalactic/data-display/score-bar-chart/score-bar-chart-changelog",
   "/intergalactic/data-display/stacked-horizontal-bar": "/intergalactic/data-display/stacked-horizontal-bar/stacked-horizontal-bar",
   "/intergalactic/data-display/bubble-chart": "/intergalactic/data-display/bubble-chart/bubble-chart",

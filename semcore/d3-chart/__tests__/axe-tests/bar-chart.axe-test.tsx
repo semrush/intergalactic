@@ -164,53 +164,6 @@ test.describe(`@d3-chart @bar-chart @horizontal-bar-chart ${TAG.ACCESSIBILITY}`,
   });
 });
 
-test.describe(`@d3-chart @bar-horizontal-compact ${TAG.ACCESSIBILITY}`, () => {
-  test('advanced-usage', async ({ page }) => {
-    await loadPage(page, 'stories/components/d3-chart/docs/examples/bar-horizontal-compact/advanced_usage.tsx', 'en');
-
-    await test.step('Verify initial state', async () => {
-      const violations = await getAccessibilityViolations({ page });
-      expect(violations).toEqual([]);
-    });
-  });
-
-  test('basic-usage', async ({ page }) => {
-    await loadPage(page, 'stories/components/d3-chart/docs/examples/bar-horizontal-compact/basic_usage.tsx', 'en');
-
-    await test.step('Verify initial state', async () => {
-      const violations = await getAccessibilityViolations({ page });
-      expect(violations).toEqual([]);
-    });
-  });
-
-  test('clickable-advanced', async ({ page }) => {
-    await loadPage(page, 'stories/components/d3-chart/docs/examples/bar-horizontal-compact/clickable_advanced.tsx', 'en');
-
-    await test.step('Verify initial state', async () => {
-      const violations = await getAccessibilityViolations({ page });
-      expect(violations).toEqual([]);
-    });
-  });
-
-  test('clickable-basic', async ({ page }) => {
-    await loadPage(page, 'stories/components/d3-chart/docs/examples/bar-horizontal-compact/clickable_basic.tsx', 'en');
-
-    await test.step('Verify initial state', async () => {
-      const violations = await getAccessibilityViolations({ page });
-      expect(violations).toEqual([]);
-    });
-  });
-
-  test('links', async ({ page }) => {
-    await loadPage(page, 'stories/components/d3-chart/docs/examples/bar-horizontal-compact/links.tsx', 'en');
-
-    await test.step('Verify initial state', async () => {
-      const violations = await getAccessibilityViolations({ page });
-      expect(violations).toEqual([]);
-    });
-  });
-});
-
 test.describe(`@d3-chart @bar-chart @stacked-bar-chart ${TAG.ACCESSIBILITY}`, () => {
   test('stacked-bar-chart', async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/stacked-bar-chart/stacked-bar-chart.tsx', 'en');
