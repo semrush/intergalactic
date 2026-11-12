@@ -1183,6 +1183,12 @@ importers:
       '@types/classnames':
         specifier: 2.2.6
         version: 2.2.6
+      '@types/imagemin':
+        specifier: ^9.0.1
+        version: 9.0.1
+      '@types/pngjs':
+        specifier: 6.0.5
+        version: 6.0.5
       imagemin:
         specifier: 9.0.1
         version: 9.0.1
@@ -1971,7 +1977,7 @@ importers:
         specifier: ^18.1.0
         version: link:../feedback-form
       '@semcore/flags':
-        specifier: ^18.1.0
+        specifier: ^18.0.0
         version: link:../flags
       '@semcore/fullscreen-modal':
         specifier: ^18.0.1
@@ -6035,6 +6041,9 @@ packages:
 
   '@types/http-proxy@1.17.17':
     resolution: {integrity: sha512-ED6LB+Z1AVylNTu7hdzuBqOgMnvG/ld6wGCG8wFnAzKX5uyW2K3WD52v0gnLCTK/VLpXtKckgWuyScYK6cSPaw==}
+
+  '@types/imagemin@9.0.1':
+    resolution: {integrity: sha512-xMWpvrUhtYxl6EeW+UhVH3rwUKhCRx21XddcoWByjDAasXZT5pQaCn0YVnXoTijX5hlTrGqV4TGQL/Htpp00+w==}
 
   '@types/istanbul-lib-coverage@2.0.6':
     resolution: {integrity: sha512-2QF/t/auWm0lsy8XtKVPG19v3sSOQlJe/YHZgfjb/KBBHOGSV+J2q/S671rcq9uTBrLAXmZpqJiaQbMT+zNU1w==}
@@ -19114,6 +19123,10 @@ snapshots:
   '@types/http-errors@2.0.5': {}
 
   '@types/http-proxy@1.17.17':
+    dependencies:
+      '@types/node': 25.5.2
+
+  '@types/imagemin@9.0.1':
     dependencies:
       '@types/node': 25.5.2
 

@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import { resolve as resolvePath } from 'path';
 import { fileURLToPath } from 'url';
 
-import imagemin from 'imagemin';
+import imagemin, { type Plugin as ImageminPlugin } from 'imagemin';
 import imageminPngquant from 'imagemin-pngquant';
 import { PNG } from 'pngjs';
 
@@ -26,8 +26,6 @@ const versionHash = version.split('.').join('_');
 await fs.mkdir(resolvePath(__dirname, 'lib/sprites'), { recursive: true });
 // Minimal size for png icon 14x11
 const flagSizes: any = { 1: 16, 2: 32 };
-// Offset for correct position
-const offset: any = { x: 1, y: 3 };
 
 for (const scaling of [1, 2]) {
   const spritesList = await fs.readdir(resolvePath(__dirname, `./png/${scaling}x`));
@@ -79,8 +77,8 @@ for (const scaling of [1, 2]) {
     const x = (i % spriteWidth) * partWidth;
     const y = Math.floor(i / spriteWidth) * partHeight;
     const { name, image } = parts[i];
-    const cssX = -x / scaling + offset['x'];
-    const cssY = -y / scaling + offset['y'];
+    const cssX = -x / scaling;
+    const cssY = -y / scaling;
     cssRules.push(`.flag-${name}-${versionHash} {\n  background-position: ${cssX}px ${cssY}px;\n}`);
     // for some weird reasons image.bitblt is undefined so here is a little trick with bind (I hate classes)
     (new PNG()).bitblt.bind(image)(sprite, 0, 0, image.width, image.height, x, y);
@@ -90,7 +88,8 @@ for (const scaling of [1, 2]) {
 
   const spriteBuffer = PNG.sync.write(sprite);
   const reducedBuffer = await imagemin.buffer(spriteBuffer, {
-    plugins: [imageminPngquant({ quality: [0.6, 0.8] })],
+    // imagemin-pngquant types its input as Buffer, while @types/imagemin uses Uint8Array; we pass a Buffer here
+    plugins: [imageminPngquant({ quality: [0.6, 0.8] }) as unknown as ImageminPlugin],
   });
   await fs.writeFile(
     resolvePath(__dirname, `./lib/sprites/sprite@${scaling}x.png`),

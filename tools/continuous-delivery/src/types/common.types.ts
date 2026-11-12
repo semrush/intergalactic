@@ -1,1 +1,1 @@
-export type SeparatedPackage = 'icon' | 'illustration';
+export type SeparatedPackage = 'icon' | 'illustration' | 'flags';
