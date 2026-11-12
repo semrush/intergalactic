@@ -209,7 +209,7 @@ class BarRoot extends Component {
 
     return (
       <>
-        <path d={dSvg} fill={this.resolveHighlightColor(highlight)} mask='url(#fadeMask)' />
+        <path d={dSvg} fill={this.resolveHighlightColor(highlight)} mask={`url(#${this.fadeMaskId})`} />
       </>
     );
   }
@@ -248,6 +248,12 @@ class BarRoot extends Component {
     return `${uid}-potential-gradient`;
   }
 
+  get fadeMaskId() {
+    const { uid } = this.asProps;
+
+    return `${uid}-fade-mask`;
+  }
+
   renderPotentialPattern() {
     return (
       <defs>
@@ -283,13 +289,13 @@ class BarRoot extends Component {
   renderFadeMask() {
     return (
       <defs>
-        <linearGradient id='alphaGrad' x1='0' y1='0' x2='0' y2='1'>
+        <linearGradient id={`${this.fadeMaskId}_alphaGrad`} x1='0' y1='0' x2='0' y2='1'>
           <stop offset='0%' stopColor='#fff' stopOpacity='0.4' />
           <stop offset='100%' stopColor='#000' />
         </linearGradient>
 
-        <mask id='fadeMask' maskUnits='objectBoundingBox' maskContentUnits='objectBoundingBox' x='0' y='0' width='1' height='1'>
-          <rect x='0' y='0' width='1' height='1' fill='url(#alphaGrad)' />
+        <mask id={this.fadeMaskId} maskUnits='objectBoundingBox' maskContentUnits='objectBoundingBox' x='0' y='0' width='1' height='1'>
+          <rect x='0' y='0' width='1' height='1' fill={`url(#${this.fadeMaskId}_alphaGrad)`} />
         </mask>
       </defs>
     );
