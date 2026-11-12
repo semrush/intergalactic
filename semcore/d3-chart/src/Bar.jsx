@@ -92,6 +92,11 @@ class BarRoot extends Component {
     const height = Number(d[y] - (d[y0] ?? 0)) === 0 ? 0 : Math.max(absHeight, hMin);
     const bandWidth = widthProps || scaleToBand(xScale).bandwidth();
     const width = Math.min(bandWidth, maxBarSize);
+
+    if (height === 0) {
+      return null;
+    }
+
     const barX = xScale(d[x]) + bandWidth / 2 - width / 2 + offset[0];
     const barY =
       yScale(Math.max(d[y0] ?? 0, height <= hMin && d[y] > 0 ? 0 : d[y])) +

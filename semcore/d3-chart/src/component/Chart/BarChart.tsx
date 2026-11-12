@@ -8,10 +8,11 @@ import { AbstractChart } from './AbstractChart';
 import type { BaseLegendProps } from './AbstractChart.type';
 import type { BarChartData, BarChartProps, BarChartType, BarChartDefaultProps } from './BarChart.type';
 // @ts-ignore
-import { minMax, GroupBar, HoverRect, StackBar, Line, YAxis, XAxis, ReferenceLine, ReferenceArea } from '../..';
+import { minMax, GroupBar, HoverRect, StackBar, Line, YAxis, XAxis, ReferenceLine } from '../..';
+// @ts-ignore
+import { ReferenceArea } from '../../Reference';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import type { BarProps } from '../../types';
-import { scaleOfBandwidth, scaleToBand } from '../../utils';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 
 class BarChartComponent extends AbstractChart<
@@ -218,8 +219,6 @@ class BarChartComponent extends AbstractChart<
         {referenceArea && (
           <ReferenceArea
             positionProps={this.getReferenceAreaPosition(referenceArea)}
-            value={referenceArea.value[0]}
-            endValue={referenceArea.value[1]}
             use={referenceArea.use}
             title={referenceArea.title}
             subTitle={referenceArea.subTitle}

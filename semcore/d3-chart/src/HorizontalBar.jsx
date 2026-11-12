@@ -74,6 +74,11 @@ class HorizontalBarRoot extends Component {
     const bandHeight = heightProps || scaleToBand(yScale).bandwidth();
     const height = Math.min(bandHeight, maxBarSize);
     const width = Number(d[x] - (d[x0] ?? 0)) === 0 ? 0 : Math.max(absWidth, wMin);
+
+    if (width === 0) {
+      return null;
+    }
+
     const barY = yScale(d[y]) + bandHeight / 2 - height / 2 + offset[1];
     const barX =
       xScale(Math.min(d[x0] ?? 0, width <= wMin && d[x] < 0 ? 0 : d[x])) + (isFirstInStack ? 0 : 2) +
