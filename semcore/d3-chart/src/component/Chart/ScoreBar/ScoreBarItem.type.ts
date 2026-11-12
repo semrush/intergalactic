@@ -12,6 +12,7 @@ export type ScoreBarItemTypeProps = {
   mode: ScoreBarChartProps['mode'];
   duration: number;
   color: string;
+  locale: ScoreBarChartProps['locale'];
 
   valueFormatter: (value?: unknown) => string;
   titleFormatter?: (title?: string) => string;

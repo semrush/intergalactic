@@ -62,7 +62,7 @@ class ScoreBarChartComponent extends AbstractChart<
 
   override render() {
     const SChart = Root;
-    const { mode, data, styles, onClickItem, uid, duration, valueFormatter, titleFormatter, resolveColor } = this.asProps;
+    const { mode, data, styles, onClickItem, uid, duration, valueFormatter, titleFormatter, resolveColor, locale } = this.asProps;
 
     return sstyled(styles)(
       <SChart
@@ -88,6 +88,7 @@ class ScoreBarChartComponent extends AbstractChart<
               duration={duration}
               valueFormatter={valueFormatter ?? this.valueFormatter}
               titleFormatter={titleFormatter}
+              locale={locale}
               color={resolveColor(color)}
             />
           );

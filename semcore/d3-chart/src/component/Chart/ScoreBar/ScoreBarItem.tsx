@@ -32,6 +32,14 @@ class ScoreBarItemComponent extends Component<ScoreBarItemTypeProps> {
     this.asProps.eventEmitter.emit(`setTooltipVisible_${uid}`, false);
   });
 
+  percentFormatter(value: number) {
+    if (value < 0 || value > 100) {
+      return `${value}%`;
+    }
+
+    return new Intl.NumberFormat(this.asProps.locale, { style: 'percent' }).format(value / 100);
+  };
+
   render() {
     const { item, mode, totalValue, onClick, valueFormatter, duration, titleFormatter, color } = this.asProps;
     const SItem = Box;
@@ -47,6 +55,7 @@ class ScoreBarItemComponent extends Component<ScoreBarItemTypeProps> {
     const bg = 100 - percent;
     const displayValue = valueFormatter(item.value);
     const displayCategory = titleFormatter ? titleFormatter(item.category) : item.category;
+    const displayPercent = this.percentFormatter(percent);
 
     return sstyled(style)(
       <SItem
@@ -63,7 +72,7 @@ class ScoreBarItemComponent extends Component<ScoreBarItemTypeProps> {
           {displayCategory}
         </SCategory>
         <SPercent use='secondary'>
-          {percent}%
+          {displayPercent}
         </SPercent>
         {item.href
           ? (
