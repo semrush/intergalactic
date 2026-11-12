@@ -15,6 +15,7 @@ type StoryProps = ScoreBarChartProps & {
   titleFormat?: TitleFormat;
   withLinks?: boolean;
   clickable?: boolean;
+  firstItemValue?: number;
 };
 
 const colorMap = {
@@ -43,15 +44,21 @@ const Demo = (props: StoryProps) => {
     titleFormat = 'default',
     withLinks,
     clickable,
+    firstItemValue = 0,
     ...chartProps
   } = getPropsToChart(props);
   const [clicked, setClicked] = React.useState<string>('');
+  const items = data.map((item, index) => ({
+    ...item,
+    value: index === 0 ? firstItemValue : item.value,
+    href: withLinks ? '#' : undefined,
+  }));
 
   return (
     <Box>
       <Chart.ScoreBar
         {...chartProps}
-        data={withLinks ? data.map((item) => ({ ...item, href: '#' })) : data}
+        data={items}
         colorMap={colorMapVariant === 'custom' ? colorMap : undefined}
         valueFormatter={valueFormatters[valueFormat]}
         titleFormatter={titleFormatters[titleFormat]}
@@ -95,6 +102,7 @@ export const defaultProps = {
   titleFormat: 'default',
   withLinks: false,
   clickable: false,
+  firstItemValue: 0,
 };
 
 Demo.defaultProps = defaultProps;
