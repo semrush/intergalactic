@@ -261,12 +261,13 @@ class BarRoot extends Component {
   }
 
   renderPotentialPattern() {
+    const { resolveColor } = this.asProps;
     return (
       <defs>
         <linearGradient id={this.potentialGradientId} x1='0%' y1='0%' x2='0%' y2='100%'>
-          <stop offset='0%' stopColor='#2de3a7' />
-          <stop offset='60%' stopColor='#9d67f5' />
-          <stop offset='100%' stopColor='#18181e' />
+          <stop offset='0%' stopColor={resolveColor('green-200')} />
+          <stop offset='60%' stopColor={resolveColor('violet-400')} />
+          <stop offset='100%' stopColor={resolveColor('gray-800')} />
         </linearGradient>
 
         <mask id={this.potentialPatternId}>
