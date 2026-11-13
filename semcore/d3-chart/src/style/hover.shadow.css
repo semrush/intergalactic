@@ -1,44 +1,4 @@
-SHoverLine, SHoverLine:focus-visible {
-  outline: none;
-  stroke: var(--intergalactic-chart-grid-x-axis, oklch(0.88 0.011 234.9));
-}
-
 SHoverRect, SHoverRect:focus-visible {
   outline: none;
   fill: var(--intergalactic-chart-grid-bar-hover, oklch(0.375 0.09 242.7 / 0.05));
-}
-
-SHoveredTickWrapper {
-  font-size: var(--intergalactic-fs-100, 12px);
-  font-variant-numeric: tabular-nums;
-  line-height: var(--intergalactic-lh-100, 1.3334);
-  color: var(--intergalactic-chart-grid-text-label, oklch(from oklch(0.182 0.045 244.8 / 0.593) l c h / 0.4));
-
-  text-align: center;
-
-  &[data-is-first='true'] {
-    text-align: start;
-  }
-
-  &[data-is-last='true'] {
-    text-align: end;
-  }
-
-  &[position='top'] {
-    SHoveredTickContent {
-      align-content: end;
-    }
-  }
-
-  /* FF fix */
-  SHoveredTickContent {
-    height: 100%;
-  }
-
-  SHoveredTick {
-    display: inline-block;
-    padding: 3px 12px;
-    border-radius: 6px;
-    background-color: var(--intergalactic-chart-x-axis-accent-tick, oklch(0.96 0.005 232.5));
-  }
 }

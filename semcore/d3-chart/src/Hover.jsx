@@ -1,29 +1,16 @@
 import { Component, sstyled, Root } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
-import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
-import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
 import React from 'react';
 
+import { HoveredTick } from './component/Hover/HoveredTick';
+import { HoverLine as InnerHoverLine } from './component/Hover/HoverLine';
 import createElement from './createElement';
 import style from './style/hover.shadow.css';
 import Tooltip from './Tooltip';
-import { scaleOfBandwidth, getIndexFromData, eventToPoint, invert, scaleToBand } from './utils';
+import { getIndexFromData, eventToPoint, invert, scaleToBand, formatValue } from './utils';
 
-const STROKE_WIDTH = 1;
-const NOTCH_WIDTH = 9;
-const NOTCH_DELTA = NOTCH_WIDTH / 2 - STROKE_WIDTH / 4;
-
-function formatValue(locale, value) {
-  if (value instanceof Date) {
-    return new Intl.DateTimeFormat(locale ?? 'en', {
-      day: 'numeric',
-      month: 'short',
-    }).format(value);
-  }
-  return value;
-}
 class Hover extends Component {
   static style = style;
 
@@ -115,51 +102,21 @@ class HoverLineRoot extends Hover {
       return null;
     }
 
-    const SHoverLine = this.Element;
-    const { styles, x, y, data, scale, dataHints, hideTickHover } = this.asProps;
-    const [xScale, yScale] = scale;
+    const { x, y, data, scale, dataHints, hideTickHover } = this.asProps;
 
-    const xRange = xScale.range();
-    const yRange = yScale.range();
-    const x1 = xIndex !== null ? scaleOfBandwidth(xScale, data[xIndex][x]) : undefined;
-    const y1 = yIndex !== null ? scaleOfBandwidth(yScale, data[yIndex][y]) : undefined;
-
-    return sstyled(styles)(
-      <>
-        {xIndex !== null
-          ? (
-              <>
-                <SHoverLine render='g' index={xIndex} stroke-width={STROKE_WIDTH} aria-hidden>
-                  <line x1={x1 - NOTCH_DELTA} x2={x1 + NOTCH_DELTA} y1={yRange[0]} y2={yRange[0]} />
-                  <line x1={x1} y1={yRange[0]} x2={x1} y2={yRange[1]} />
-                  <line x1={x1 - NOTCH_DELTA} x2={x1 + NOTCH_DELTA} y1={yRange[1]} y2={yRange[1]} />
-                </SHoverLine>
-                {!hideTickHover && (
-                  <HoveredTick
-                    size={meta.getTicksSize('horizontal')}
-                    position={meta.getTicksPosition('horizontal')}
-                    tickFormatter={dataHints.titles.getHorizontalAxesTitle ?? formatValue.bind(null, locale)}
-                    value={data[xIndex]?.[x]}
-                    isFirstTick={xIndex === 0}
-                    isLastTick={xIndex === data.length - 1}
-                    styles={styles}
-                    x={x1}
-                    yRange={yRange}
-                  />
-                )}
-              </>
-            )
-          : null}
-        {yIndex !== null
-          ? (
-              <SHoverLine render='g' index={yIndex} stroke-width={STROKE_WIDTH} aria-hidden>
-                <line x1={xRange[0]} y1={y1 - NOTCH_DELTA} x2={xRange[0]} y2={y1 + NOTCH_DELTA} />
-                <line x1={xRange[0]} y1={y1} x2={xRange[1]} y2={y1} />
-                <line x1={xRange[1]} y1={y1 - NOTCH_DELTA} x2={xRange[1]} y2={y1 + NOTCH_DELTA} />
-              </SHoverLine>
-            )
-          : null}
-      </>,
+    return (
+      <InnerHoverLine
+        data={data}
+        x={x}
+        y={y}
+        dataHints={dataHints}
+        hideTickHover={hideTickHover}
+        meta={meta}
+        scale={scale}
+        xIndex={xIndex}
+        yIndex={yIndex}
+        formatValue={formatValue.bind(null, locale)}
+      />
     );
   }
 }
@@ -208,7 +165,6 @@ class HoverRectRoot extends Hover {
                 position={meta.getTicksPosition('horizontal')}
                 tickFormatter={dataHints.titles.getHorizontalAxesTitle ?? formatValue.bind(null, locale)}
                 value={data[xIndex]?.[x]}
-                styles={styles}
                 x={xScale(data[xIndex][x]) + (xStep * (1 - xPaddingInner)) / 2}
                 yRange={yRange}
               />
@@ -229,63 +185,6 @@ class HoverRectRoot extends Hover {
       </>,
     );
   }
-}
-
-const HOVERED_TICK_MARGIN_Y = 8;
-const HOVERED_TICK_PADDING_Y = 3;
-const HOVERED_TICK_PADDING_X = 12;
-
-function HoveredTick(props) {
-  const { tickFormatter, value, isFirstTick = false, isLastTick = false, styles, x, yRange, size, position } = props;
-
-  const formattedValue = tickFormatter(value);
-
-  const contentRef = React.useRef(null);
-
-  const isRendered = size?.width !== undefined && size?.height !== undefined && position !== null;
-  const isMightBeInteractive = formattedValue !== null && typeof formattedValue === 'object';
-
-  useEnhancedEffect(() => {
-    if (!isRendered || !isMightBeInteractive || !contentRef.current) return;
-
-    getFocusableIn(contentRef.current).forEach((node) => node.setAttribute('tabindex', '-1'));
-  }, [value, isRendered, isMightBeInteractive]);
-
-  if (!isRendered) return null;
-
-  const { width, height } = size;
-
-  const SHoveredTickWrapper = 'foreignObject';
-  const SHoveredTickContent = 'div';
-  const SHoveredTick = 'span';
-
-  const w = width + HOVERED_TICK_PADDING_X * 2;
-  const tickX = isFirstTick
-    ? x
-    : isLastTick
-      ? x - w
-      : x - w / 2;
-  const tickY = position === 'top'
-    ? yRange[1] - height - HOVERED_TICK_MARGIN_Y + HOVERED_TICK_PADDING_Y
-    : yRange[0] + HOVERED_TICK_MARGIN_Y - HOVERED_TICK_PADDING_Y;
-
-  return sstyled(styles)(
-    <SHoveredTickWrapper
-      x={tickX}
-      y={tickY}
-      width={w}
-      height={height}
-      data-is-first={isFirstTick}
-      data-is-last={isLastTick}
-      position={position}
-      data-hovered-tick
-      aria-hidden='true'
-    >
-      <SHoveredTickContent ref={contentRef}>
-        <SHoveredTick>{formattedValue}</SHoveredTick>
-      </SHoveredTickContent>
-    </SHoveredTickWrapper>,
-  );
 }
 
 function HoverLineTooltip(props) {

@@ -6,7 +6,7 @@ import { scaleLinear, type ScaleLinear } from 'd3-scale';
 import React from 'react';
 
 // @ts-ignore
-import { Bubble, calculateBubbleDomain } from '../..';
+import { Bubble, calculateBubbleDomain, YAxis, XAxis, HoverLine } from '../..';
 import type { ChartState } from './AbstractChart';
 import { AbstractChart } from './AbstractChart';
 import type { BubbleChartData, BubbleChartProps, BubbleChartType, BubbleChartDefaultProps } from './BubbleChart.type';
@@ -25,13 +25,17 @@ class BubbleChartComponent extends AbstractChart<
 
   static enhance = [i18nEnhance(localizedMessages)] as const;
 
-  static defaultProps = {
-    direction: 'column',
-    showXAxis: true,
-    showYAxis: true,
-    showTooltip: true,
-    locale: 'en',
-  } as const;
+  static defaultProps = (props: BubbleChartProps) => {
+    return {
+      direction: 'column',
+      showXAxis: true,
+      showYAxis: true,
+      showTooltip: true,
+      locale: 'en',
+      xTicksCount: props.data.length,
+      yTicksCount: props.data.length,
+    } as const;
+  };
 
   protected plotPadding = 8;
 
@@ -75,7 +79,7 @@ class BubbleChartComponent extends AbstractChart<
     });
   }
 
-  get xScale() {
+  override get xScale() {
     const { xScale, marginY = 30, data } = this.asProps;
     const { plotWidth } = this;
 
@@ -89,7 +93,7 @@ class BubbleChartComponent extends AbstractChart<
     return scaleLinear().domain(domain).range(range);
   }
 
-  get yScale(): ScaleLinear<any, any> {
+  override get yScale(): ScaleLinear<any, any> {
     const { yScale, marginX = 30, data } = this.asProps;
     const { plotHeight } = this;
 
@@ -103,26 +107,36 @@ class BubbleChartComponent extends AbstractChart<
     return scaleLinear().domain(domain).range(range);
   }
 
-  defaultLegendProps() {
+  override defaultLegendProps() {
     return {
       shape: 'Circle' as const,
     };
   }
 
-  renderChart() {
-    const { onClickBubble } = this.asProps;
+  override get data() {
+    return this.asProps.data.toSorted((a, b) => {
+      return b.value - a.value;
+    });
+  }
+
+  override renderChart() {
+    const { onClickBubble, axisXValueFormatter, axisYValueFormatter } = this.asProps;
     const { dataDefinitions } = this.state;
 
     return (
-      <Bubble onClick={onClickBubble} x='x' y='y' value='value' color='color' label='label'>
-        {dataDefinitions.map(({ checked, id }, index) => (
-          <Bubble.Circle visible={checked} key={id} index={index} />
-        ))}
-      </Bubble>
+      <>
+        <Bubble onClick={onClickBubble} x='x' y='y' value='value' color='color' label='label' formatValue={[axisXValueFormatter, axisYValueFormatter]}>
+          {dataDefinitions.map(({ checked, id }, index) => {
+            return (
+              <Bubble.Circle visible={checked} key={id} uniq={id} index={index} />
+            );
+          })}
+        </Bubble>
+      </>
     );
   }
 
-  renderTooltip() {
+  override renderTooltip() {
     return (
       <Bubble.Tooltip>
         {({ index, data }: any) => {
@@ -152,8 +166,64 @@ class BubbleChartComponent extends AbstractChart<
     );
   }
 
-  protected getLegendAriaLabel(): string {
+  protected override getLegendAriaLabel(): string {
     return this.asProps.getI18nText('legendForChart', { chartType: 'Bubble' });
+  }
+
+  protected override renderAxis(): React.ReactNode {
+    const {
+      showXAxis,
+      showYAxis,
+      data,
+      axisXValueFormatter,
+      axisYValueFormatter,
+      multilineXTicks,
+      multilineYTicks,
+    } = this.asProps;
+
+    if (!Array.isArray(data)) {
+      return null;
+    }
+
+    const xTicks = this.xTicks;
+    const yTicks = this.yTicks;
+
+    const childrenX = axisXValueFormatter
+      ? ({ value }: any) => ({ children: axisXValueFormatter(value) })
+      : undefined;
+    const childrenY = axisYValueFormatter
+      ? ({ value }: any) => ({ children: axisYValueFormatter(value) })
+      : undefined;
+
+    return (
+      <>
+        {showYAxis && (
+          <YAxis>
+            {yTicks
+              ? (
+                  <YAxis.Ticks multiline={multilineYTicks} ticks={yTicks}>{childrenY}</YAxis.Ticks>
+                )
+              : (
+                  <YAxis.Ticks multiline={multilineYTicks}>{childrenY}</YAxis.Ticks>
+                )}
+            <YAxis.Grid ticks={yTicks} />
+          </YAxis>
+        )}
+
+        {showXAxis && (
+          <XAxis>
+            {xTicks
+              ? (
+                  <XAxis.Ticks multiline={multilineXTicks} ticks={xTicks}>{childrenX}</XAxis.Ticks>
+                )
+              : (
+                  <XAxis.Ticks multiline={multilineXTicks}>{childrenX}</XAxis.Ticks>
+                )}
+            <XAxis.Grid ticks={xTicks} />
+          </XAxis>
+        )}
+      </>
+    );
   }
 }
 
