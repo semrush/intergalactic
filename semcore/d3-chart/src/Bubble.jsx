@@ -188,7 +188,9 @@ function BubbleCircle(props) {
 
   const [xScale, yScale] = scale;
 
+  const SGroup = SvgElement;
   const SBubble = Element;
+  const SGradient = Element;
   const SCenter = 'text';
   const SLabel = 'text';
   const z = getBubbleChartValueScale(data, value);
@@ -205,8 +207,10 @@ function BubbleCircle(props) {
     left: xScale(circleData[x]) + offset[0] + z(circleData[value]),
   }[labelPosition];
 
+  const colorValue = resolveColor(circleData[color] ?? color);
+
   return sstyled(styles)(
-    <SvgElement
+    <SGroup
       tag='g'
       key={`circle(#${index})`}
       onClickCapture={callAllEventHandlers(onClickCircleRoot(index), onClick)}
@@ -214,6 +218,12 @@ function BubbleCircle(props) {
       onMouseLeave={bindHandlerTooltip(false, props, { xIndex: index, index, patterns })}
       visible={`${visible}`}
     >
+      <defs>
+        <SGradient render='radialGradient' id={`${uid}_${index}_radial-gradient`} cx='50%' cy='50%' r='50%'>
+          <stop offset='0%' stopColor='#fff' />
+          <stop offset='100%' stopColor={colorValue} />
+        </SGradient>
+      </defs>
       {markedCross && (
         <SCenter
           aria-hidden
@@ -221,7 +231,7 @@ function BubbleCircle(props) {
           y={yScale(circleData[y]) + offset[1]}
           dy='.3em'
           clipPath={`url(#${uid})`}
-          color={resolveColor(circleData[color] ?? color)}
+          color={colorValue}
           transparent={transparent}
         >
           &#43;
@@ -235,8 +245,8 @@ function BubbleCircle(props) {
         clipPath={`url(#${uid})`}
         cx={xScale(circleData[x]) + offset[0]}
         cy={yScale(circleData[y]) + offset[1]}
-        color={resolveColor(circleData[color])}
-        pattern={patterns ? `url(#${uid}-${index}-pattern)` : undefined}
+        color={colorValue}
+        pattern={patterns ? `url(#${uid}-${index}-pattern)` : `url(#${uid}_${index}_radial-gradient)`}
         r={z(circleData[value])}
         use:duration={`${duration}ms`}
         transparent={transparent}
@@ -264,7 +274,7 @@ function BubbleCircle(props) {
           {circleData[label]}
         </SLabel>
       )}
-    </SvgElement>,
+    </SGroup>,
   );
 }
 
