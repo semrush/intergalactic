@@ -58,6 +58,7 @@
     "@semcore/radio": "^18.0.1",
     "@semcore/select": "^18.0.1",
     "@semcore/input-tags": "^18.0.0",
+    "@semcore/limits": "^18.0.0",
     "@semcore/radio-cards": "^18.0.1",
     "@semcore/side-panel": "^18.0.1",
     "@semcore/slider": "^18.0.0",
@@ -633,11 +634,6 @@
       "import": "./radio/index.mjs",
       "require": "./radio/index.cjs"
     },
-    "./radio-cards": {
-      "types": "./radio-cards/index.d.ts",
-      "import": "./radio-cards/index.mjs",
-      "require": "./radio-cards/index.cjs"
-    },
     "./select": {
       "types": "./select/index.d.ts",
       "import": "./select/index.mjs",
@@ -647,6 +643,16 @@
       "types": "./input-tags/index.d.ts",
       "import": "./input-tags/index.mjs",
       "require": "./input-tags/index.cjs"
+    },
+    "./limits": {
+      "types": "./limits/index.d.ts",
+      "import": "./limits/index.mjs",
+      "require": "./limits/index.cjs"
+    },
+    "./radio-cards": {
+      "types": "./radio-cards/index.d.ts",
+      "import": "./radio-cards/index.mjs",
+      "require": "./radio-cards/index.cjs"
     },
     "./side-panel": {
       "types": "./side-panel/index.d.ts",
