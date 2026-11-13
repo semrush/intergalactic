@@ -15,6 +15,7 @@ const excludePackageNames = new Set([
   'tests',
   'advanced',
   'docs',
+  'tsconfig.json',
 ]);
 
 export async function getChangedFiles(command = 'HEAD^1'): Promise<Set<string>> {
