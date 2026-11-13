@@ -313,21 +313,21 @@ The `patterns` prop is inherited by all children components. So, you can apply i
 
 You can enforce use of build-in patterns by using it's names. The list of available patterns:
 
-1. `starSmall`
-1. `romb`
+1. `zigzag`
 1. `circleOutline`
-1. `triangleDown`
+1. `linesDouble`
+1. `trees`
 1. `rombOutline`
 1. `square`
-1. `trees`
 1. `wave`
+1. `triangleDown`
 1. `star`
 1. `cogwheel`
 1. `crossesDiagonal`
 1. `triangleOutline`
 1. `chain`
 1. `squama`
-1. `linesDouble`
+1. `romb`
 1. `zigzagVertical`
 1. `triangleDownOutline`
 1. `crosses`
@@ -336,7 +336,7 @@ You can enforce use of build-in patterns by using it's names. The list of availa
 1. `squareOutline`
 1. `triangle`
 1. `crescent`
-1. `zigzag`
+1. `starSmall`
 
 ::: sandbox
 
