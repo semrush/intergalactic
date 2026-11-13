@@ -8,6 +8,7 @@ import {
   type ScaleBand,
   type ScalePoint,
   type NumberValue,
+  type ScaleLinear,
   scaleBand,
   scaleSqrt,
   scaleLinear,
@@ -53,8 +54,8 @@ export const definedNullData = (x: number, y: number) => (plot: { [xOrY: number]
 export const definedData = (x: number, y: number) => (plot: { [xOrY: number]: unknown }) =>
   plot[x] !== null && plot[x] !== undefined && plot[y] !== null && plot[y] !== undefined;
 
-export const scaleOfBandwidth = <Scale extends ScaleBand<{}>>(scale: Scale, value: number) =>
-  scale.bandwidth ? scale(value)! + scale.bandwidth() / 2 : scale(value);
+export const scaleOfBandwidth = (scale: ScaleBand<any> | ScaleTime<any, any> | ScaleLinear<any, any>, value: number | Date): number =>
+  'bandwidth' in scale ? scale(value)! + scale.bandwidth() / 2 : scale(value);
 
 export const minMax = <
   Key extends string = string,
@@ -367,4 +368,14 @@ export function getDataOfType(data: ObjectData[], type: typeof FORECAST | typeof
   });
 
   return result;
+}
+
+export function formatValue(locale: string, value: unknown) {
+  if (value instanceof Date) {
+    return new Intl.DateTimeFormat(locale ?? 'en', {
+      day: 'numeric',
+      month: 'short',
+    }).format(value);
+  }
+  return value;
 }

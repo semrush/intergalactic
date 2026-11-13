@@ -113,20 +113,22 @@ class BubbleChartComponent extends AbstractChart<
     };
   }
 
-  override renderChart() {
-    const { onClickBubble, data } = this.asProps;
-    const { dataDefinitions } = this.state;
-    const sortedData = dataDefinitions.toSorted((a, b) => {
-      return data[a.id].value - data[b.id].value;
+  override get data() {
+    return this.asProps.data.toSorted((a, b) => {
+      return b.value - a.value;
     });
+  }
+
+  override renderChart() {
+    const { onClickBubble, axisXValueFormatter, axisYValueFormatter } = this.asProps;
+    const { dataDefinitions } = this.state;
 
     return (
       <>
-        <Bubble onClick={onClickBubble} x='x' y='y' value='value' color='color' label='label'>
-          {sortedData.map(({ checked, id }, index) => {
-            const key = `${data[id].x}_${data[id].y}_${data[id].value}`;
+        <Bubble onClick={onClickBubble} x='x' y='y' value='value' color='color' label='label' formatValue={[axisXValueFormatter, axisYValueFormatter]}>
+          {dataDefinitions.map(({ checked, id }, index) => {
             return (
-              <Bubble.Circle visible={checked} key={key} uniq={key} index={index} />
+              <Bubble.Circle visible={checked} key={id} uniq={id} index={index} />
             );
           })}
         </Bubble>
