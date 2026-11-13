@@ -8,7 +8,7 @@ const Demo = (props: NSLimitsUsageMeter.Props) => {
 
   return (
     <Box {...(theme === 'invert' && { bg: 'black' })} p={3}>
-      <UsageMeter {...props} />
+      <UsageMeter {...props} data-testid='usage-meter' />
     </Box>
   );
 };
