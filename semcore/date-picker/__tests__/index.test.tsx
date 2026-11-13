@@ -1,4 +1,4 @@
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, afterEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -8,6 +8,10 @@ import {
   DatePicker,
   DateRangePicker,
 } from '../src';
+
+describe('date-picker Translations exports', () => {
+  runTranslationsCheckTest('@semcore/date-picker');
+});
 
 describe('date-picker Dependency imports', () => {
   runDependencyCheckTests('date-picker');

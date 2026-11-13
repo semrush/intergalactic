@@ -1,10 +1,14 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, screen, userEvent, waitFor } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Select, { AutoSuggest, InputSearch } from '../src';
+
+describe('select Translations exports', () => {
+  runTranslationsCheckTest('@semcore/select');
+});
 
 describe('select Dependency imports', () => {
   runDependencyCheckTests('select');
@@ -90,6 +94,25 @@ describe('Select Trigger', () => {
     const callsAfterFirstClick = spy.mock.calls.length;
     await userEvent.click(getByTestId('option'));
     expect(spy.mock.calls.length).toBeGreaterThan(callsAfterFirstClick);
+  });
+
+  test('Verify an open Select cannot change its value after becoming disabled', async () => {
+    const onChange = vi.fn();
+    const options = [
+      { value: 'apple', label: 'Apple', children: 'Apple' },
+      { value: 'orange', label: 'Orange', children: 'Orange' },
+    ];
+    const props = { options, defaultValue: 'apple', onChange, animationsDisabled: true };
+    const { rerender } = render(<Select {...props} />);
+
+    await userEvent.click(screen.getByRole('combobox'));
+    const option = await screen.findByRole('option', { name: 'Orange' });
+
+    rerender(<Select {...props} disabled />);
+    await userEvent.click(option);
+
+    expect(onChange).not.toHaveBeenCalled();
+    expect(screen.getByRole('combobox')).toHaveAttribute('value', 'apple');
   });
 
   test('Verify highlights selected item', async () => {

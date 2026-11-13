@@ -55,6 +55,7 @@ export default defineConfig({
     projects: [
       'semcore/*/vitest.config.mts',
       'tools/process-css-unplugin',
+      'tools/i18n-unplugin',
     ],
     testTimeout: 60 * 1000,
     exclude: [

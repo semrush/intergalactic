@@ -1,5 +1,5 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import {
   act,
   render,
@@ -11,6 +11,10 @@ import React from 'react';
 
 import { NoticeBubbleContainer } from '../src';
 import { NoticeBubbleManager } from '../src/NoticeBubbleManager';
+
+describe('notice-bubble Translations exports', () => {
+  runTranslationsCheckTest('@semcore/notice-bubble');
+});
 
 describe('notice-bubble Dependency imports', () => {
   runDependencyCheckTests('notice-bubble');

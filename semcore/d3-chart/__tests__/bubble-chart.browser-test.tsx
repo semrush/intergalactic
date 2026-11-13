@@ -75,7 +75,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   variables.forEach((vars, index) => {
     test(`Verify bubble chart ${vars.description}`, {
-      tag: [TAG.PRIORITY_HIGH, '@bubble-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+      tag: [index === 0 ? TAG.PRIORITY_HIGH : TAG.PRIORITY_MEDIUM, '@bubble-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -90,21 +90,20 @@ test.describe(`${TAG.VISUAL}`, () => {
         await expect(page).toHaveScreenshot();
       });
 
-      if (vars.showTooltip) {
-        await test.step('Verify tooltip appears on hover', async () => {
-          const bubbleItem = locators.bubbleCircle(page, 2);
-          await bubbleItem.hover();
+      const tooltipStep = vars.showTooltip ? test.step : test.step.skip;
+      await tooltipStep('Verify tooltip appears on hover', async () => {
+        const bubbleItem = locators.bubbleCircle(page, 2);
+        await bubbleItem.hover();
 
-          const tooltip = locators.tooltip(page);
-          await tooltip.waitFor({ state: 'visible' });
-          await expect(tooltip).toBeVisible();
-        });
-      }
+        const tooltip = locators.tooltip(page);
+        await tooltip.waitFor({ state: 'visible' });
+        await expect(tooltip).toBeVisible();
+      });
     });
   });
 
   test('Verify bubble chart implementation', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bubble-chart', '@d3-chart', '@typography'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bubble-chart', '@d3-chart', '@typography'],
   }, async ({ page, browserName }) => {
     await loadPage(
       page,
@@ -164,7 +163,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify unchecking behavior and all disabled state', async () => {
+    await test.step('Verify first item hidden after unchecking', async () => {
       const firstCheckbox = locators.checkbox(page, 0);
       const firstGroup = locators.group(page, 0);
 
@@ -175,8 +174,9 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await expect(firstCheckbox).not.toBeChecked();
       await expect(firstGroup).toHaveCSS('display', 'none');
+    });
 
-      // Uncheck remaining elements to test all disabled state
+    await test.step('Verify all items hidden when all unchecked', async () => {
       const checkboxes = await locators.checkbox(page).all();
       const groups = await locators.group(page).all();
 
@@ -216,11 +216,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await locators.plot(page).first().waitFor({ state: 'visible' });
 
-      const gCount = await locators.group(page).count();
-      expect(gCount).toBe(5);
-
-      const circleCount = await locators.bubbleCircle(page).count();
-      expect(circleCount).toBe(5);
+      await expect(locators.group(page)).toHaveCount(5);
+      await expect(locators.bubbleCircle(page)).toHaveCount(5);
 
       const circles = await locators.bubbleCircle(page).all();
       for (const circle of circles) {

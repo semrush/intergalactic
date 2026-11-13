@@ -437,10 +437,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       await test.step('Verify calendar attributes', async () => {
-        const count = await locators.calendar(page).count();
-
-        for (let i = 0; i < count; i++) {
-          const calendar = locators.calendar(page).nth(i);
+        for (const calendar of await locators.calendar(page).all()) {
           await expect(calendar).toHaveAttribute('role', 'grid');
           await expect(calendar).toHaveAttribute('disabled', '');
         }
@@ -462,25 +459,20 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           const weekDaysRow = locators.weekDaysRow(page).nth(r);
           await expect(weekDaysRow).toHaveAttribute('role', 'row');
           const weekDays = weekDaysRow.locator('[data-ui-name="CalendarWeekDays.Unit"]');
-          const unitCount = await weekDays.count();
-          expect(unitCount).toBe(daysOfWeek.length);
+          await expect(weekDays).toHaveCount(daysOfWeek.length);
 
           for (let i = 0; i < daysOfWeek.length; i++) {
             const day = weekDays.nth(i);
             await expect(day).toHaveAttribute('role', 'columnheader');
             await expect(day).toHaveAttribute('aria-label', daysOfWeek[i]);
 
-            const text = (await day.textContent())?.trim();
-            expect(text).toBe(daysOfWeek[i].slice(0, 3));
+            await expect(day).toHaveText(daysOfWeek[i].slice(0, 3));
           }
         }
       });
 
       await test.step('Verify days attributes', async () => {
-        const cellCount = await locators.cells(page).count();
-
-        for (let i = 0; i < cellCount; i++) {
-          const cell = locators.cells(page).nth(i);
+        for (const cell of await locators.cells(page).all()) {
           const ariaLabel = await cell.getAttribute('aria-label');
           if (!ariaLabel) continue;
 
@@ -653,8 +645,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@flex-box',
         '@typography'],
     }, async ({ page, browserName }) => {
+      test.skip(browserName === 'webkit', 'TODO: refactor to support WebKit focus specifics');
       await loadPage(page, 'stories/components/date-picker/docs/examples/custom_date_ranges.tsx', 'en');
-      if (browserName == 'webkit') test.skip(); // todo refactor to support webkit specifics in focus
       const buttons = page.locator('[data-ui-name="Button"]');
       const input = page.locator('input[data-ui-name="DateRangePicker.Trigger"]');
       await test.step('Open date range picker by Enter', async () => {

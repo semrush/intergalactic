@@ -230,20 +230,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
 
       await test.step('Verify calendar attributes', async () => {
-        const count = await locators.calendar(page).count();
-
-        for (let i = 0; i < count; i++) {
-          const calendar = locators.calendar(page).nth(i);
+        for (const calendar of await locators.calendar(page).all()) {
           await expect(calendar).toHaveAttribute('role', 'grid');
           await expect(calendar).toHaveAttribute('disabled', '');
         }
       });
 
       await test.step('Verify days attributes', async () => {
-        const cellCount = await locators.cells(page).count();
-
-        for (let i = 0; i < cellCount; i++) {
-          const cell = locators.cells(page, i);
+        for (const cell of await locators.cells(page).all()) {
           const ariaLabel = await cell.getAttribute('aria-label');
           if (!ariaLabel) continue;
 
@@ -473,7 +467,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(buttons.first()).toBeFocused();
 
         await pressTab(4); // Apply
-        await expect(await locators.button(page, 'Apply')).toBeFocused();
+        await expect(locators.button(page, 'Apply')).toBeFocused();
 
         await pressTab(1); // Reset
         await expect(locators.button(page, 'Reset')).toBeFocused();
@@ -503,11 +497,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           input.nth(1).inputValue(),
         ]);
 
-        if (browserName !== 'webkit') {
-          // works unstable on webkit in non debug mode
+        await (browserName === 'webkit' ? test.step.skip : test.step)('Verify only the start month changed (skipped in WebKit: unstable in non-debug mode)', async () => {
           expect(start).not.toBe(initialLeft);
           expect(middle).toBe(initialRight);
-        }
+        });
         await page.keyboard.press('Space');
         await page.waitForTimeout(100);
 
@@ -515,11 +508,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           input.nth(0).inputValue(),
           input.nth(1).inputValue(),
         ]);
-        if (browserName !== 'webkit') {
-          // wprks unstable on webkit in non debug mode
+        await (browserName === 'webkit' ? test.step.skip : test.step)('Verify only the end month changed (skipped in WebKit: unstable in non-debug mode)', async () => {
           expect(confirmedStart).toBe(start);
           expect(confirmedEnd).not.toBe(middle);
-        }
+        });
         await page.keyboard.press('Escape');
         await locators.button(page, 'Previous year').waitFor({ state: 'hidden' });
 

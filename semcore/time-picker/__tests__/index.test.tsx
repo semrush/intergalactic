@@ -1,11 +1,15 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { render } from '@semcore/testing-utils/testing-library';
 import { describe, it, expect, test } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import TimePicker from '../src';
 import TimePickerEntity from '../src/entity/TimePickerEntity';
+
+describe('time-picker Translations exports', () => {
+  runTranslationsCheckTest('@semcore/time-picker');
+});
 
 describe('time-picker Dependency imports', () => {
   runDependencyCheckTests('time-picker');

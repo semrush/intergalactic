@@ -1,0 +1,41 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`UsageMeter > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "Text",
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "Text",
+                },
+              ],
+              "uiName": "Text",
+            },
+          ],
+          "uiName": "Flex",
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "Flex",
+            },
+          ],
+          "uiName": "Flex",
+        },
+      ],
+      "uiName": "Flex",
+    },
+  ],
+  "uiName": null,
+}
+`;

@@ -1,11 +1,14 @@
-import Button from '@semcore/button';
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { beforeEach, describe, expect, test } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import FeaturePopover from '../src';
+
+describe('feature-popover Translations exports', () => {
+  runTranslationsCheckTest('@semcore/feature-popover');
+});
 
 describe('feature-popover Dependency imports', () => {
   runDependencyCheckTests('feature-popover');
