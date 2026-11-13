@@ -196,7 +196,7 @@ class HoverRectRoot extends Hover {
         y: yRange[1],
         width: xStep - xPaddingInner / 2,
         height: yRange[0] - yRange[1],
-      }, 6);
+      });
     }
 
     return getHorizontalPathFromRect({
@@ -204,7 +204,7 @@ class HoverRectRoot extends Hover {
       y: yScale(data[yIndex][y]) - (yStep * yPaddingInner) / 2,
       width: xRange[1] - xRange[0],
       height: yStep - yPaddingInner / 2,
-    }, 6);
+    });
   }
 
   render() {

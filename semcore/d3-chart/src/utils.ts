@@ -377,7 +377,7 @@ type RectData = {
   height: number;
 };
 
-export function getVerticalPathFromRect(data: RectData, radius = 12) {
+export function getVerticalPathFromRect(data: RectData, radius = 6) {
   const { x, y, width, height } = data;
   const r = radius;
 
@@ -386,7 +386,7 @@ export function getVerticalPathFromRect(data: RectData, radius = 12) {
   return path;
 }
 
-export function getHorizontalPathFromRect(data: RectData, radius = 12) {
+export function getHorizontalPathFromRect(data: RectData, radius = 6) {
   const { x, y, width, height } = data;
   const r = radius;
 
