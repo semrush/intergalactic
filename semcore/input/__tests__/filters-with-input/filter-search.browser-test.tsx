@@ -49,6 +49,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@input',
       '@button',
+      '@neighbor-location',
       '@tooltip',
       '@base-components',
       '@button-link',
