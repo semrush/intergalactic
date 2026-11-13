@@ -17,6 +17,7 @@ export const defaultProps: NSLimitsUsageMeter.Props = {
   min: undefined,
   max: undefined,
   theme: undefined,
+  locale: undefined,
   value: 10,
   feature: 'Audit',
 };
