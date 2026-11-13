@@ -70,7 +70,7 @@ const barReferenceControls = {
   referenceAreaEnd: { control: 'number', if: { arg: 'invertAxis' }, table: referenceKnob },
 };
 
-export const BasicUsage = {
+export const BasicUsage: StoryObj = {
   argTypes: getChartArgTypes({
     type: { control: 'select', options: ['stack', 'group'] },
     maxBarSize: { control: { type: 'number', min: 0, max: 100, step: 1 } },

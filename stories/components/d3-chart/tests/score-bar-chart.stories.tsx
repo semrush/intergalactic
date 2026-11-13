@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react-vite';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicUsageExample, { defaultProps as BasicUsageProps } from './examples/score-bar-chart/basic-usage';
 const meta: Meta = {
@@ -12,7 +12,7 @@ export default meta;
  */
 const storyKnob = { table: { category: 'Story data knobs' } } as const;
 
-export const BasicUsage = {
+export const BasicUsage: StoryObj = {
   render: BasicUsageExample,
   argTypes: {
     mode: { control: 'select', options: ['default', 'compact'] },
