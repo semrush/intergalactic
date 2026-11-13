@@ -81,10 +81,11 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     triggerVariables.forEach((item) => {
       test(`Verify trigger size=${item.size} state=${item.state} disabled=${item.disabled} neighborLocation=${item.neighborLocation}`, {
-        tag: [TAG.PRIORITY_HIGH,
+        tag: [item.neighborLocation === 'right' ? TAG.PRIORITY_HIGH : TAG.PRIORITY_LOW,
           '@date-picker',
           '@base-components',
           '@button',
+          '@neighbor-location',
           '@flex-box',
           '@typography'],
       }, async ({ page }) => {
@@ -105,6 +106,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@date-picker',
         '@base-components',
         '@button',
+        '@neighbor-location',
         '@flex-box',
         '@typography'],
     }, async ({ page }) => {

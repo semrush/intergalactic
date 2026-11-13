@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import WrappingTestExample from './examples/wraping-test-combination';
+import WrappingTestExample, { defaultWrappingTestProps } from './examples/wraping-test-combination';
 
 const meta: Meta = {
   title: 'Components/Base Components/NeighborLocation/Tests',
@@ -8,6 +8,10 @@ const meta: Meta = {
 
 export default meta;
 
-export const WrappingTest: StoryObj = {
+export const WrappingTest: StoryObj<typeof defaultWrappingTestProps> = {
   render: WrappingTestExample,
+  argTypes: {
+    size: { control: { type: 'select' }, options: ['m', 'l'] },
+  },
+  args: defaultWrappingTestProps,
 };

@@ -5,14 +5,14 @@ import Button from '@semcore/ui/button';
 import type { NSButton } from '@semcore/ui/button';
 import React from 'react';
 
-import { themeFor } from '../themeUtils';
+import { styleFor, themeFor } from '../themeUtils';
 
 type ExampleProps = Exclude<NSButton.Props, 'theme' | 'use'> & { style?: any; theme: string };
 const Demo = (props: ExampleProps) => {
   const theme = themeFor(props);
   return (
 
-    <Flex direction='row' gap={2} mt={10} style={props.style}>
+    <Flex direction='row' gap={2} mt={10} style={styleFor(props, theme)}>
       <Flex gap={2} m={2}>
         <Button
           size={props.size}
