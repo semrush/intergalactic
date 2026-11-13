@@ -7,14 +7,14 @@ import { Text } from '@semcore/typography';
 import React from 'react';
 
 import style from './usage-meter.shadow.css';
-import type { NSUsageMeter } from './UsageMeter.type';
+import type { NSLimitsUsageMeter } from './UsageMeter.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 export const MIN = 0;
 export const MAX = 100;
 
 function UsageMeter(
-  props: Intergalactic.InternalTypings.InferComponentProps<NSUsageMeter.Component>,
+  props: Intergalactic.InternalTypings.InferComponentProps<NSLimitsUsageMeter.Component>,
   ref: React.Ref<HTMLDivElement>,
 ) {
   const SUsageMeter = Flex;
@@ -26,7 +26,7 @@ function UsageMeter(
   const getI18nText = useI18n(localizedMessages, locale);
 
   const validatedValue = value < min ? min : value > max ? max : value;
-  const filledValuePercent = (100 * validatedValue) / max;
+  const filledValuePercent = max > min ? (100 * (validatedValue - min)) / (max - min) : 0;
 
   const labelId = `igc-${useUID('limits-usage-meter')}-indicator-label`;
 
@@ -42,7 +42,7 @@ function UsageMeter(
             {validatedValue} {getI18nText('of')} {max}
           </SUsageMeterText>
           {' '}
-          used
+          {getI18nText('used')}
         </SUsageMeterText>
       </SUsageMeterHeader>
       <SUsageMeterIndicator
@@ -58,4 +58,4 @@ function UsageMeter(
   );
 }
 
-export default createBaseComponent<NSUsageMeter.Component>(UsageMeter);
+export default createBaseComponent<NSLimitsUsageMeter.Component>(UsageMeter);
