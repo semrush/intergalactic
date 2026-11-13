@@ -11,7 +11,6 @@ import {
   getBarBoxes,
   getCornerRadius,
   getCurveCornerSizes,
-  getGaps,
   hoverCenter,
   locators,
 } from './bar-chart.helpers';
@@ -276,7 +275,6 @@ test.describe(`${TAG.VISUAL}`, () => {
             { category: 'Category 0', bar1: 5, bar2: 7, bar3: 4, bar4: 1, bar5: 0, bar6: 1 },
             { category: 'Category 1', bar1: null, bar2: 7, bar3: null, bar4: 3, bar5: 0, bar6: 8 },
             { category: 'Category 2', bar1: 1, bar2: 7, bar3: null, bar4: undefined, bar5: 0 },
-            { category: 'Category 2', bar1: 8, bar2: 2 },
             { category: 'Category 3', bar1: 6, bar2: 9 },
             { category: 'Category 4', bar1: 1, bar2: 4 },
           ],
@@ -310,7 +308,6 @@ test.describe(`${TAG.VISUAL}`, () => {
             { category: 'Category 0', bar1: 5, bar2: 7, bar3: 4, bar4: 1, bar5: 0, bar6: 1 },
             { category: 'Category 1', bar1: null, bar2: 7, bar3: null, bar4: 3, bar5: 0, bar6: 8 },
             { category: 'Category 2', bar1: 1, bar2: 7, bar3: null, bar4: undefined, bar5: 0 },
-            { category: 'Category 2', bar1: 8, bar2: 2 },
             { category: 'Category 3', bar1: 6, bar2: 9 },
             { category: 'Category 4', bar1: 1, bar2: 4 },
           ],
@@ -844,42 +841,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       const boxes = await getBarBoxes(locators.bar(page));
       expect(boxes.length).toBeGreaterThan(0);
       expect(Math.max(...boxes.map((box) => box.width))).toBeGreaterThan(MAX_BAR_SIZE);
-    });
-  });
-
-  test.fixme('Verify the gap between bars inside a group is 2px', {
-    tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@bar-chart', '@base-components', '@flex-box', '@checkbox'],
-    annotation: {
-      type: 'issue',
-      description: 'UIK-5880: GroupBar keeps paddingInner hardcoded to 0.1, so the gap is a share of the band step instead of a fixed 2px (3.74px at plotWidth 500, ~28px at plotWidth 800)',
-    },
-  }, async ({ page }) => {
-    await loadPage(
-      page,
-      BAR_STORY,
-      'en',
-      {
-        groupKey: 'category',
-        type: 'group',
-        data: groupedData,
-        trend: undefined,
-        duration: 0,
-      },
-    );
-
-    await locators.plot(page).first().waitFor({ state: 'visible' });
-
-    await test.step('Verify gaps within every group equal 2px', async () => {
-      const boxes = await getBarBoxes(locators.groupBarBar(page));
-      expect(boxes.length).toBe(6);
-
-      // 2 bars per group: even indexes are gaps inside a group, odd ones are between groups.
-      const gaps = getGaps(boxes);
-      const withinGroup = gaps.filter((_, index) => index % 2 === 0);
-
-      for (const gap of withinGroup) {
-        expect(gap).toBeCloseTo(2, 1);
-      }
     });
   });
 

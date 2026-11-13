@@ -236,12 +236,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test.fixme('Verify reference area and reference line background use the hover rect radius', {
+  test('Verify reference area and reference line background use the hover rect radius', {
     tag: [TAG.PRIORITY_LOW, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
-    annotation: {
-      type: 'issue',
-      description: 'Reference.jsx calls getVerticalPathFromRect with the default radius 12, the hover rect uses 6',
-    },
   }, async ({ page }) => {
     await loadPage(page, BAR_STORY, 'en', {
       duration: 0,
@@ -264,12 +260,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test.fixme('Verify reference area uses the gradient of its own chart when an earlier chart is in a hidden tab', {
+  test('Verify reference area uses the gradient of its own chart when an earlier chart is in a hidden tab', {
     tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@tab-line'],
-    annotation: {
-      type: 'issue',
-      description: 'ReferenceArea is created from Area without uniqueIDEnhancement, so every area uses the id undefined-pattern',
-    },
   }, async ({ page }) => {
     await loadPage(page, HIDDEN_TAB_STORY, 'en', { withReferenceArea: true });
 
@@ -295,12 +287,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test.fixme('Verify reference area title looks the same as in the line chart', {
+  test('Verify reference area title looks the same as in the line chart', {
     tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
-    annotation: {
-      type: 'issue',
-      description: 'ReferenceArea is created from Area without the reference styles, so the title and subtitle are unstyled',
-    },
   }, async ({ page }) => {
     const titleStyle = async (story: string) => {
       await loadPage(page, story, 'en', { duration: 0, withReferenceArea: true, referenceAreaTitle: TITLE });

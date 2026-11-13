@@ -32,9 +32,9 @@ const valueFormatters: Record<ValueFormat, ((value: unknown) => string) | undefi
   thousands: (value) => `${(Number(value) / 1000).toFixed(1)}k`,
 };
 
-const titleFormatters: Record<TitleFormat, ((title?: string) => string) | undefined> = {
+const titleFormatters: Record<TitleFormat, ((title?: unknown) => string) | undefined> = {
   default: undefined,
-  uppercase: (title) => (title ?? '').toUpperCase(),
+  uppercase: (title) => String(title ?? '').toUpperCase(),
 };
 
 const Demo = (props: StoryProps) => {

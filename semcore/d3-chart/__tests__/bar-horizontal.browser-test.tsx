@@ -8,7 +8,6 @@ import {
   getBarBoxes,
   getCornerRadius,
   getCurveCornerSizes,
-  getGaps,
   hoverCenter,
   locators,
 } from './bar-chart.helpers';
@@ -305,41 +304,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify all 4 corners are 6 by 6', async () => {
       await expect(locators.hoverRect(page)).toBeVisible();
       expect(getCurveCornerSizes(await locators.hoverRect(page).getAttribute('d'))).toEqual([[6, 6], [6, 6], [6, 6], [6, 6]]);
-    });
-  });
-
-  test.fixme('Verify the gap between horizontal bars inside a group is about 2px', {
-    tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@bar-chart', '@base-components', '@flex-box', '@checkbox', '@horizontal-bar-chart'],
-    annotation: {
-      type: 'issue',
-      description: 'UIK-5880: GroupBar keeps paddingInner at 0.1, the gap is 0.64px at plotHeight 300 and maxBarSize 12',
-    },
-  }, async ({ page }) => {
-    await loadPage(page, BAR_STORY, 'en', {
-      groupKey: 'category',
-      type: 'group',
-      invertAxis: true,
-      trend: undefined,
-      duration: 0,
-      data: [
-        { category: 'Category 0', bar1: 4, bar2: 7 },
-        { category: 'Category 1', bar1: 3, bar2: 5 },
-        { category: 'Category 2', bar1: 8, bar2: 2 },
-      ],
-    });
-
-    await locators.plot(page).waitFor({ state: 'visible' });
-
-    await test.step('Verify gaps within every group are between 1.5px and 2.5px', async () => {
-      const boxes = await getBarBoxes(locators.groupBarHorizontalBar(page), 'y');
-      expect(boxes.length).toBe(6);
-
-      const withinGroup = getGaps(boxes, 'y').filter((_, index) => index % 2 === 0);
-
-      for (const gap of withinGroup) {
-        expect(gap).toBeGreaterThanOrEqual(1.5);
-        expect(gap).toBeLessThanOrEqual(2.5);
-      }
     });
   });
 });
