@@ -298,6 +298,8 @@ function Area(props) {
     </g>,
   );
 }
+Area.style = style;
+Area.enhance = [uniqueIDEnhancement()];
 
 function Stripes(props) {
   const { scale, position = 'left', value, endValue } = props;
