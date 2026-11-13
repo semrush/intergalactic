@@ -1,5 +1,5 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { afterEach, describe, expect, test } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -23,6 +23,10 @@ const getFilledValue = (container: HTMLElement) => {
 
   return Number(match![1]);
 };
+
+describe('limits Translations exports', () => {
+  runTranslationsCheckTest('@semcore/limits');
+});
 
 describe('limits Dependency imports', () => {
   runDependencyCheckTests('limits');

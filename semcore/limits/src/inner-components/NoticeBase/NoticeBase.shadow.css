@@ -1,0 +1,75 @@
+SNotice {
+  gap: var(--intergalactic-spacing-3x, 12px);
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  border-radius: var(--intergalactic-surface-rounded, 8px);
+  box-shadow: var(--intergalactic-box-shadow-card, 0px 0px 1px 0px oklch(0.324 0.077 242.1 / 0.079), 0px 1px 3px 0px oklch(0.324 0.077 242.1 / 0.079));
+  position: relative;
+  background-color: var(--intergalactic-limits-bg-neutral, oklch(1 0 0));
+
+  &[theme='default'] {
+    SNoticeActions {
+      background-color: var(--intergalactic-limits-bg-accent, oklch(0.93 0.019 185));
+    }
+  }
+
+  &[theme='accent'] {
+    background-color: var(--intergalactic-limits-bg-accent, oklch(0.93 0.019 185));
+
+    SNoticeBody {
+      padding-bottom: 0;
+    }
+
+    SNoticeBeforeActions {
+      padding-top: var(--intergalactic-spacing-4x, 16px);
+      padding-bottom: 0;
+    }
+  }
+}
+
+SNoticeContent {
+  flex-direction: column;
+  flex: 1;
+}
+
+SNoticeHeader {
+  padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-5x, 20px);
+  border-bottom: 1px solid var(--intergalactic-border-secondary, oklch(0.324 0.077 242.1 / 0.079));
+
+  &[with-aside] {
+    padding-right: var(--intergalactic-spacing-10x, 40px);
+  }
+}
+
+SNoticeBody {
+  flex-direction: column;
+  padding: var(--intergalactic-spacing-4x, 16px) var(--intergalactic-spacing-5x, 20px);
+  gap: var(--intergalactic-spacing-1x, 4px);
+
+  &[with-aside] {
+    padding-right: var(--intergalactic-spacing-10x, 40px);
+  }
+}
+
+SNoticeBeforeActions {
+  padding: 0 var(--intergalactic-spacing-5x, 20px) var(--intergalactic-spacing-4x, 16px);
+}
+
+SNoticeActions {
+  padding: var(--intergalactic-spacing-4x, 16px) var(--intergalactic-spacing-5x, 20px);
+  gap: var(--intergalactic-spacing-3x, 12px);
+  align-items: center;
+
+  SNoticeDivider {
+    min-height: 0;
+    height: 20px;
+    align-self: unset;
+  }
+}
+
+SNoticeAside {
+  position: absolute;
+  top: var(--intergalactic-spacing-2x, 8px);
+  right: var(--intergalactic-spacing-4x, 16px);
+}

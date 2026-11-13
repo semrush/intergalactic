@@ -1,0 +1,40 @@
+SNotice {
+  padding:
+    var(--intergalactic-spacing-3x, 12px)
+    var(--intergalactic-spacing-10x, 40px)
+    var(--intergalactic-spacing-4x, 16px)
+    var(--intergalactic-spacing-5x, 20px);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+SNoticeContent {
+  gap: var(--intergalactic-spacing-6x, 24px);
+}
+
+SNoticeBody {
+  padding: 0;
+  padding-top: var(--intergalactic-spacing-1x, 4px);
+  gap: var(--intergalactic-spacing-3x, 12px);
+}
+
+STitle {
+  border-bottom: 1px solid var(--intergalactic-border-secondary, oklch(0.324 0.077 242.1 / 0.079));
+  padding-bottom: var(--intergalactic-spacing-3x, 12px);
+}
+
+SNoticeBeforeActions,
+SNoticeActions {
+  padding: 0;
+}
+
+SNoticeLeading {
+  SBackButton {
+    height: 100%;
+    padding-top: var(--intergalactic-spacing-2x, 8px);
+
+    > :first-child {
+      align-items: flex-start;
+    }
+  }
+}

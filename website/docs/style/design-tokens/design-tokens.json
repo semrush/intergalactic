@@ -529,6 +529,7 @@
       "data-table",
       "date-picker",
       "dropdown",
+      "limits",
       "notice",
       "tooltip"
     ]
@@ -2138,7 +2139,9 @@
     "name": "--intergalactic-limits-bg-accent",
     "value": "oklch(0.93 0.019 185)",
     "description": "Accent background for Limits surfaces.",
-    "components": []
+    "components": [
+      "limits"
+    ]
   },
   {
     "name": "--intergalactic-limits-bg-gradient",
@@ -2150,7 +2153,9 @@
     "name": "--intergalactic-limits-bg-neutral",
     "value": "oklch(1 0 0)",
     "description": "Neutral background for Limits surfaces.",
-    "components": []
+    "components": [
+      "limits"
+    ]
   },
   {
     "name": "--intergalactic-limits-card-label",
@@ -3472,7 +3477,9 @@
     "name": "--intergalactic-box-shadow-card",
     "value": "0px 0px 1px 0px oklch(0.324 0.077 242.1 / 0.079), 0px 1px 3px 0px oklch(0.324 0.077 242.1 / 0.079)",
     "description": "Default shadow of the Card.",
-    "components": []
+    "components": [
+      "limits"
+    ]
   },
   {
     "name": "--intergalactic-box-shadow-card-hover",
@@ -3760,6 +3767,7 @@
       "card",
       "d3-chart",
       "feedback-form",
+      "limits",
       "notice"
     ]
   },
