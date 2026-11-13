@@ -12,7 +12,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 **Score bar chart** is a chart that visualizes the distribution of values by category for a part-to-whole comparison.
 
-![](static/hor-vs-compact.png)
+![](static/default-vs-compact.png)
 
 ### Usage
 
@@ -43,8 +43,8 @@ This chart type doesn't need a grid.
 
 ## Category labels
 
-- Labels use the primary text color (`--text-primary` token).
-- Use [ellipsis](../../utils/ellipsis/ellipsis) for long labels, with [hint](../../utils/hint/hint) showing the full name.
+- Use only the primary text color (`--text-primary` variable) for  the Y-axis labels.
+- Avoid using [ellipsis](../../utils/ellipsis/ellipsis) for long labels. Wrapping label to the next line is a more friendly solution.
 
 ![](static/hor-bar-compact-labels.png)
 
@@ -55,12 +55,6 @@ Legend is unnecessary for a single-category bar chart; clear chart naming is usu
 For the case with multiple categories, add a legend.
 
 ![](static/hor-bar-compact-legend.png)
-
-## Interaction
-
-Hovering highlights a bar with `--chart-grid-bar-hover`, indicating focus or clickability.
-
-![](static/hor-bar-compact-hover.png)
 
 ## Edge cases
 

@@ -18,6 +18,18 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 :::
 
+## Compact
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/d3-chart/docs/examples/score-bar-chart/compact-bar.tsx';
+</script>
+
+:::
+
+
+
 ## With links
 
 ::: sandbox
@@ -29,8 +41,6 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 :::
 
 ## Clickable bars
-
-This is a basic example.
 
 ::: sandbox
 
