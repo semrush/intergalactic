@@ -35,6 +35,9 @@ export const UsageMeter: StoryObj<typeof defaultUsageMeterExampleProps> = {
       control: { type: 'select' },
       options: ['en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'nl', 'pl', 'pt', 'ru', 'sv', 'tr', 'vi', 'zh'],
     },
+    w: {
+      control: { type: 'number' },
+    },
   },
   args: defaultUsageMeterExampleProps,
 };
