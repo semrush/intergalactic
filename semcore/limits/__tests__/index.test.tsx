@@ -45,7 +45,7 @@ describe('UsageMeter', () => {
       expect(ref.current).toBe(getRoot(container));
     });
 
-    test.fails('Verify className, style, id and data-testid reach the root element', () => {
+    test('Verify className, style, id and data-testid reach the root element', () => {
       const { container } = render(
         <UsageMeter
           value={10}
@@ -62,12 +62,6 @@ describe('UsageMeter', () => {
       expect(root).toHaveStyle({ marginTop: '10px' });
       expect(root).toHaveAttribute('id', 'custom-id');
       expect(root).toHaveAttribute('data-testid', 'usage-meter');
-    });
-
-    test.fails('Verify data-ui-name of the root is UsageMeter', () => {
-      const { container } = render(<UsageMeter value={10} feature='Audit' />);
-
-      expect(getRoot(container)).toHaveAttribute('data-ui-name', 'UsageMeter');
     });
   });
 

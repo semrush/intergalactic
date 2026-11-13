@@ -3,7 +3,7 @@ SUsageMeter {
   max-width: 340px;
 
   &[theme-value='invert'] {
-    SUsageMeterText {
+    SUsageMeterFeature, SUsageMeterUsage {
       color: var(--intergalactic-text-primary-invert, oklch(0.991 0.005 232.5 / 0.959));
     }
 
@@ -17,6 +17,14 @@ SUsageMeter {
       }
     }
   }
+}
+
+SUsageMeterFeature, SUsageMeterUsage {
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
+}
+
+SUsageMeterUsage {
+  text-wrap: nowrap;
 }
 
 SUsageMeterIndicator {
@@ -34,4 +42,9 @@ SUsageMeterIndicatorFilled {
   &[state-value='warning'] {
     background: var(--intergalactic-limits-indicator-value-critical, oklch(0.64 0.226 24.5));
   }
+}
+
+SUsageMeterHeader {
+  justify-content: space-between;
+  gap: var(--intergalactic-spacing-1x, 4px)
 }

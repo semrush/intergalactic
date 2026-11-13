@@ -1,7 +1,7 @@
 import { Flex } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
-import { createBaseComponent, sstyled } from '@semcore/core';
-import { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
+import { createBaseComponent, sstyled, Root } from '@semcore/core';
+import { Context as I18nContext, useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
 import { useUID } from '@semcore/core/lib/utils/uniqueID';
 import { Text } from '@semcore/typography';
 import React from 'react';
@@ -17,13 +17,18 @@ function UsageMeter(
   props: Intergalactic.InternalTypings.InferComponentProps<NSUsageMeter.Component>,
   ref: React.Ref<HTMLDivElement>,
 ) {
-  const SUsageMeter = Flex;
-  const SUsageMeterText = Text;
+  const SUsageMeter = Root;
+  const SUsageMeterFeature = Text;
+  const SUsageMeterUsage = Text;
   const SUsageMeterHeader = Flex;
   const SUsageMeterIndicator = Flex;
   const SUsageMeterIndicatorFilled = Flex;
+
   const { min = MIN, max = MAX, value = MIN, state = 'normal', theme = 'default', feature, locale } = props;
+
   const getI18nText = useI18n(localizedMessages, locale);
+  const resolvedLocale = React.useContext(I18nContext) ?? locale ?? 'en';
+  const numberFormatter = React.useMemo(() => new Intl.NumberFormat(resolvedLocale), [resolvedLocale]);
 
   const validatedValue = value < min ? min : value > max ? max : value;
   const filledValuePercent = (100 * validatedValue) / max;
@@ -32,18 +37,18 @@ function UsageMeter(
 
   // TODO: translate "used"
   return sstyled(style)(
-    <SUsageMeter ref={ref} gap={1} direction='column' theme-value={theme}>
-      <SUsageMeterHeader justifyContent='space-between'>
-        <SUsageMeterText size={200} id={labelId}>
+    <SUsageMeter render={Flex} ref={ref} gap={1} direction='column' theme-value={theme}>
+      <SUsageMeterHeader>
+        <SUsageMeterFeature size={200} id={labelId}>
           {feature}
-        </SUsageMeterText>
-        <SUsageMeterText size={200}>
-          <SUsageMeterText fontWeight='bold'>
-            {validatedValue} {getI18nText('of')} {max}
-          </SUsageMeterText>
+        </SUsageMeterFeature>
+        <SUsageMeterUsage size={200}>
+          <Text fontWeight='bold'>
+            {numberFormatter.format(validatedValue)} {getI18nText('of')} {numberFormatter.format(max)}
+          </Text>
           {' '}
           used
-        </SUsageMeterText>
+        </SUsageMeterUsage>
       </SUsageMeterHeader>
       <SUsageMeterIndicator
         role='meter'

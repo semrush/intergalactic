@@ -3261,6 +3261,7 @@
       "inline-input",
       "input",
       "input-mask",
+      "limits",
       "modal",
       "notice",
       "pagination",
