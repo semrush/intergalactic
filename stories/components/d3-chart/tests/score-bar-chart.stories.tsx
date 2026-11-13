@@ -12,7 +12,7 @@ export default meta;
  */
 const storyKnob = { table: { category: 'Story data knobs' } } as const;
 
-export const BasicUsage: StoryObj = {
+export const BasicUsage: StoryObj<typeof BasicUsageExample> = {
   render: BasicUsageExample,
   argTypes: {
     mode: { control: 'select', options: ['default', 'compact'] },

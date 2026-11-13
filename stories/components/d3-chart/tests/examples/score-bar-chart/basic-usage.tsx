@@ -95,7 +95,7 @@ const data = [
   },
 ];
 
-export const defaultProps = {
+export const defaultProps: Partial<StoryProps> = {
   mode: 'default',
   showTooltip: true,
   locale: 'en',
