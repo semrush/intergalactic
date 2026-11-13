@@ -159,9 +159,9 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
   test.describe('LegendFlex', () => {
-    flexPairwiseCases.forEach((c) => {
+    flexPairwiseCases.forEach((c, index) => {
       test(`Verify pairwise ${c.name}`, {
-        tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@chart-legend', '@checkbox'],
+        tag: [index === 0 ? TAG.PRIORITY_HIGH : TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@checkbox'],
       }, async ({ page }) => {
         await loadPage(page, FLEX_EXAMPLE, 'en', c.props);
 
@@ -172,9 +172,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test.describe('LegendTable', () => {
-    tablePairwiseCases.forEach((c) => {
+    tablePairwiseCases.forEach((c, index) => {
       test(`Verify pairwise ${c.name}`, {
-        tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@chart-legend', '@checkbox'],
+        tag: [index === 0 ? TAG.PRIORITY_HIGH : TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@checkbox'],
       }, async ({ page }) => {
         await loadPage(page, TABLE_EXAMPLE, 'en', c.props);
 
@@ -269,8 +269,8 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('LegendFlex', () => {
-    test('Verify checkbox roles and attributes', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@checkbox'],
+    test('Verify checkboxes have aria-invalid=false', {
+      tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@chart-legend', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, FLEX_EXAMPLE, 'en', { shape: 'Checkbox' });
 
@@ -285,12 +285,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       const first = locators.checkboxInput(page, 0);
       await expect(first).toBeChecked();
 
-      await test.step('Uncheck through the checkbox', async () => {
+      await test.step('Verify item unchecked by checkbox click', async () => {
         await locators.checkboxMark(page, 0).click();
         await expect(first).not.toBeChecked();
       });
 
-      await test.step('Check back through the label', async () => {
+      await test.step('Verify item checked back by label click', async () => {
         await page.locator('span[data-ui-name="LegendFlex.LegendItem"]').first().click();
         await expect(first).toBeChecked();
       });
@@ -396,23 +396,20 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       }
     });
 
-    /**
-     * A dimmed row has to fade as a whole. The label lives inside `SLegendItem` while the
-     * values are its grid siblings, so each side carries its own `transparent` rule and
-     * they are easy to let drift apart.
-     */
     test('Verify the value columns of a dimmed row are dimmed as well', {
       tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@checkbox'],
     }, async ({ page }) => {
       await loadPage(page, TABLE_EXAMPLE, 'en', { highlightedItem: 0, columnsCount: 2 });
 
-      // Row 1 is dimmed, so both of its value cells (index 2 and 3) are dimmed too.
-      await expect(locators.tableColumn(page, 2)).toHaveClass(/_transparent_/);
-      await expect(locators.tableColumn(page, 3)).toHaveClass(/_transparent_/);
+      await test.step('Verify both value cells of the dimmed second row are dimmed', async () => {
+        await expect(locators.tableColumn(page, 2)).toHaveClass(/_transparent_/);
+        await expect(locators.tableColumn(page, 3)).toHaveClass(/_transparent_/);
+      });
 
-      // The highlighted row stays fully opaque.
-      await expect(locators.tableColumn(page, 0)).not.toHaveClass(/_transparent_/);
-      await expect(locators.tableColumn(page, 1)).not.toHaveClass(/_transparent_/);
+      await test.step('Verify value cells of the highlighted row stay opaque', async () => {
+        await expect(locators.tableColumn(page, 0)).not.toHaveClass(/_transparent_/);
+        await expect(locators.tableColumn(page, 1)).not.toHaveClass(/_transparent_/);
+      });
     });
   });
 });

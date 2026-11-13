@@ -1,12 +1,16 @@
 import Button, { ButtonLink } from '@semcore/button';
 import Return from '@semcore/icon/Return/m';
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Pagination from '../src';
+
+describe('pagination Translations exports', () => {
+  runTranslationsCheckTest('@semcore/pagination');
+});
 
 describe('pagination Dependency imports', () => {
   runDependencyCheckTests('pagination');

@@ -1,10 +1,14 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup } from '@semcore/testing-utils/testing-library';
 import { describe, test, expect, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Badge from '../src';
+
+describe('badge Translations exports', () => {
+  runTranslationsCheckTest('@semcore/badge');
+});
 
 describe('Badge Dependency imports', () => {
   runDependencyCheckTests('badge');

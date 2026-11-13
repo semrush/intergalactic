@@ -110,7 +110,12 @@ test.describe(`${TAG.VISUAL}`, () => {
     await test.step('Verify long word without space', async () => {
       const link = page.getByRole('link').nth(1);
       const box = await link.boundingBox();
-      await link.hover({ position: { x: box!.width / 6, y: box!.height / 2 } });
+      // Hint is mounted only after Text detects ellipsis via ResizeObserver, so the first hover can be missed
+      await expect(async () => {
+        await page.mouse.move(0, 0);
+        await link.hover({ position: { x: box!.width / 6, y: box!.height / 2 } });
+        await expect(locators.hint(page)).toBeVisible({ timeout: 1000 });
+      }).toPass({ timeout: 10000 });
       await locators.hint(page).waitFor({ state: 'visible' });
       await waitForHintOpaque(page);
       await expect(page).toHaveScreenshot();

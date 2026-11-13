@@ -38,30 +38,11 @@ export const locators = {
     return typeof index === 'number' ? base.nth(index) : base;
   },
   tooltip: (page: Page) => page.locator('[data-ui-name="Line.Tooltip"], [data-ui-name="HoverLine.Tooltip"]'),
+  linePath: (page: Page) => page.locator('path[data-ui-name="Line"]'),
+  plotPath: (page: Page) => page.locator('svg[data-ui-name="Plot"] path'),
 };
 
 const BASIC_USAGE_STORY = 'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx';
-
-/** Hovers the middle of the plot, which lands on some point of the series. */
-const hoverPlotCentre = async (page: Page) => {
-  const plot = locators.plot(page).first();
-  await plot.waitFor({ state: 'visible' });
-
-  const box = await plot.boundingBox();
-  if (!box) throw new Error('Plot bounding box not found');
-
-  await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
-};
-
-const hoverFirstPoint = async (page: Page) => {
-  const plot = locators.plot(page).first();
-  await plot.waitFor({ state: 'visible' });
-
-  const dot = await locators.dots(page, 0).boundingBox();
-  if (!dot) throw new Error('First dot bounding box not found');
-
-  await page.mouse.move(dot.x + dot.width / 2, dot.y + dot.height / 2);
-};
 
 /* =====================================================
 @visual
@@ -181,7 +162,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       duration: 0,
     },
     {
-      name: ' Minimal features, medium size',
+      name: 'Minimal features, medium size',
       plotWidth: 450,
       plotHeight: 280,
       marginX: 30,
@@ -197,7 +178,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       duration: 0,
     },
     {
-      name: ' No legend, mixed features',
+      name: 'No legend, mixed features',
       plotWidth: 550,
       plotHeight: 320,
       marginX: 45,
@@ -214,29 +195,31 @@ test.describe(`${TAG.VISUAL}`, () => {
     },
   ];
 
-  variables.forEach((vars) => {
+  variables.forEach((vars, index) => {
     test(`Verify line chart with config ${vars.name}`, {
-      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+      tag: [
+        index === 0 ? TAG.PRIORITY_HIGH : TAG.PRIORITY_MEDIUM,
+        ...(vars.showTooltip ? [TAG.MOUSE] : []),
+        '@line-chart',
+        '@d3-chart',
+        '@base-components',
+        '@flex-box',
+        '@checkbox',
+      ],
     }, async ({ page }) => {
-      await loadPage(
-        page,
-        'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx',
-        'en',
-        vars,
-      );
+      await loadPage(page, BASIC_USAGE_STORY, 'en', vars);
       await locators.plot(page).waitFor({ state: 'visible' });
       await page.waitForTimeout(500);
       if (!vars.showTooltip) {
         await test.step('Verify chart renders correctly', async () => {
           await expect(page).toHaveScreenshot();
         });
-      } else if (vars.showTooltip) {
+      } else {
         await test.step('Verify tooltip appears on hover', async () => {
           const chart = locators.plot(page).first();
           const box = await chart.boundingBox();
-          if (box) {
-            await page.mouse.move(box.x + 50, box.y + 50);
-          }
+          if (!box) throw new Error('Plot bounding box not found');
+          await page.mouse.move(box.x + 50, box.y + 50);
 
           const tooltip = locators.tooltip(page);
           await tooltip.waitFor({ state: 'visible' });
@@ -248,7 +231,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify render and interactions with Line and Dots', {
-    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@line-chart', '@d3-chart'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -365,9 +348,8 @@ test.describe(`${TAG.VISUAL}`, () => {
     await test.step('Verify tooltip shows formatted date on hover', async () => {
       const chart = locators.plot(page).first();
       const box = await chart.boundingBox();
-      if (box) {
-        await page.mouse.move(box.x + 50, box.y + 50);
-      }
+      if (!box) throw new Error('Plot bounding box not found');
+      await page.mouse.move(box.x + 50, box.y + 50);
 
       const tooltip = locators.tooltip(page);
       await tooltip.waitFor({ state: 'visible' });
@@ -388,11 +370,9 @@ test.describe(`${TAG.VISUAL}`, () => {
     await page.waitForTimeout(500);
 
     await test.step('Verify custom tooltip appears on hover', async () => {
-      const chart = locators.plot(page).first();
       const box = await chart.boundingBox();
-      if (box) {
-        await page.mouse.move(box.x + 50, box.y + 50);
-      }
+      if (!box) throw new Error('Plot bounding box not found');
+      await page.mouse.move(box.x + 50, box.y + 50);
 
       const tooltip = locators.tooltip(page);
       await tooltip.waitFor({ state: 'visible' });
@@ -437,51 +417,43 @@ test.describe(`${TAG.VISUAL}`, () => {
     const chart = locators.plot(page).first();
     await chart.waitFor({ state: 'visible' });
     await page.waitForTimeout(500);
+    const firstCheckbox = page.getByRole('checkbox', { name: 'Line 1' });
+    const secondCheckbox = page.getByRole('checkbox', { name: 'Line 2' });
+
     await test.step('Verify highlights when focus the checkbox', async () => {
       await page.keyboard.press('Tab');
+      await expect(firstCheckbox).toBeFocused();
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify highlights when check and uncheck the checkbox', async () => {
+    await test.step('Verify highlights when uncheck and check the checkbox again', async () => {
       await page.keyboard.press('Space');
       await page.keyboard.press('Space');
       await page.waitForTimeout(200);
+      await expect(firstCheckbox).toBeChecked();
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify highlights focus next checkbox', async () => {
       await page.keyboard.press('Space');
+      await expect(firstCheckbox).not.toBeChecked();
       await page.keyboard.press('Tab');
       await page.waitForTimeout(200);
+      await expect(secondCheckbox).toBeFocused();
       await expect(page).toHaveScreenshot();
     });
   });
 
-  /**
-   * The redesign's three data-level decorations in one shot: the dashed forecast tail, the
-   * gradient-filled potential tail, and the highlight rings.
-   *
-   * The functional tests next door already assert the wiring — that the dash attribute is
-   * there and that the gradient reference resolves to a real `linearGradient`. What no
-   * attribute can say is whether the gradient actually paints a visible ramp, whether the
-   * dash rhythm reads as a forecast, and whether the ring sits concentric with its dot.
-   * That is what this baseline is for.
-   *
-   * Deliberately one test rather than three, so the branch gains 3 PNGs instead of 9.
-   */
   test('Verify forecast, potential and highlighted dots render', {
     tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart', '@checkbox'],
   }, async ({ page }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx',
-      'en',
-      { dataType: 'both', highlightDots: 'mixed', duration: 0 },
-    );
+    await loadPage(page, BASIC_USAGE_STORY, 'en', { dataType: 'both', highlightDots: 'mixed', duration: 0 });
     await locators.plot(page).first().waitFor({ state: 'visible' });
     await page.waitForTimeout(500);
 
-    await expect(page).toHaveScreenshot();
+    await test.step('Verify dashed forecast tail, gradient potential tail and highlight rings', async () => {
+      await expect(page).toHaveScreenshot();
+    });
   });
 });
 
@@ -491,7 +463,7 @@ Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
-  test('Verify duration props applies to all lines inside the chart', {
+  test('Verify duration prop is applied to the chart', {
     tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
   }, async ({ page }) => {
     await loadPage(
@@ -507,70 +479,35 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  /**
-   * Guards the redesign value rather than just letting the screenshots carry it: the data
-   * line went from 3 to 2. Snapshots do notice a change in line weight, but only as pixels
-   * that moved, and this branch regenerated 427 of them at once — exactly the setting in
-   * which a wrong stroke width gets baked into the baselines unnoticed.
-   *
-   * `stroke-width: 2` in the stylesheet is unitless, which in SVG means user units. The
-   * Plot carries no viewBox, so one user unit is one pixel and `toHaveCSS` reads back
-   * '2px'.
-   *
-   * Asserted on every line, not just the first: the forecast and potential segments added
-   * by the redesign are separate `SLine` paths, and they have to keep the same weight as
-   * the main line or the series visibly changes thickness partway along.
-   */
   test('Verify data line stroke width is 2px', {
     tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart', '@checkbox'],
   }, async ({ page }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx',
-      'en',
-      { dataType: 'both' },
-    );
+    await loadPage(page, BASIC_USAGE_STORY, 'en', { dataType: 'both' });
     await locators.plot(page).first().waitFor({ state: 'visible' });
 
-    const lines = page.locator('path[data-ui-name="Line"]');
+    const lines = locators.linePath(page);
     await expect(lines).not.toHaveCount(0);
 
-    for (let i = 0; i < (await lines.count()); i++) {
-      await expect(lines.nth(i)).toHaveCSS('stroke-width', '2px');
-    }
+    await test.step('Verify main, forecast and potential segments all keep 2px stroke', async () => {
+      for (let i = 0; i < (await lines.count()); i++) {
+        await expect(lines.nth(i)).toHaveCSS('stroke-width', '2px');
+      }
+    });
   });
 
-  /**
-   * `DATA_TYPE` markers pull points out of the main line into their own segments
-   * (`Line.renderForecast` / `Line.renderPotential`), which is what lets them be dashed
-   * while the rest of the series stays solid.
-   *
-   * The point count is the part worth asserting: it is the only thing that distinguishes
-   * "the tail was moved into its own path" from "the tail is drawn twice, once in the main
-   * path and once on top of it". The two look identical in a screenshot.
-   *
-   * Only the dash is checked on the forecast segment, not its colour — see the note on
-   * `renderForecast` about the gradient it defines but never references.
-   */
   test('Verify forecast and potential render as separate dashed segments', {
     tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart', '@checkbox'],
   }, async ({ page }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx',
-      'en',
-      { dataType: 'both', duration: 0 },
-    );
+    await loadPage(page, BASIC_USAGE_STORY, 'en', { dataType: 'both', duration: 0 });
     await locators.plot(page).first().waitFor({ state: 'visible' });
 
-    const lines = page.locator('svg[data-ui-name="Plot"] path');
+    const lines = locators.plotPath(page);
 
-    await test.step('Each series renders a main, a forecast and a potential path', async () => {
-      // Two series in the story dataset, three paths each.
+    await test.step('Verify each of the two series renders a main, a forecast and a potential path', async () => {
       await expect(lines).toHaveCount(6);
     });
 
-    await test.step('The tail segments are dashed and the main line is not', async () => {
+    await test.step('Verify tail segments are dashed and the main line is not', async () => {
       const dashed = await lines.evaluateAll((paths) =>
         paths.map((path) => path.getAttribute('stroke-dasharray')),
       );
@@ -579,9 +516,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       expect(dashed.filter((value) => value === null)).toHaveLength(2);
     });
 
-    await test.step('The main line stops before the tail instead of drawing it twice', async () => {
-      // The generator is curveLinear, so `d` is "M x,y L x,y …" and the number of `L`
-      // commands is one less than the number of points on that path.
+    await test.step('Verify main line stops before the tail instead of drawing it twice', async () => {
       const pointCounts = await lines.evaluateAll((paths) =>
         paths
           .map((path) => path.getAttribute('d'))
@@ -595,39 +530,27 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  /**
-   * The potential segment is the one place in Line that paints with a gradient rather than
-   * the series colour, so the reference has to resolve — a typo in the id would leave the
-   * path silently unpainted, which a screenshot shows as "the line is missing" without
-   * saying why.
-   *
-   * The id is built from a generated `uid`, so it cannot be hardcoded: the reference is
-   * read off the path and the gradient is then looked up by it.
-   */
   test('Verify the potential segment is painted by a gradient that exists', {
     tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart', '@checkbox'],
   }, async ({ page }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx',
-      'en',
-      { dataType: 'potential', duration: 0 },
-    );
+    await loadPage(page, BASIC_USAGE_STORY, 'en', { dataType: 'potential', duration: 0 });
     await locators.plot(page).first().waitFor({ state: 'visible' });
 
-    const potential = page
-      .locator('svg[data-ui-name="Plot"] path[stroke-dasharray="4 4"][d]')
-      .first();
-    const stroke = await potential.evaluate((el) => getComputedStyle(el).stroke);
+    const potential = page.locator('svg[data-ui-name="Plot"] path[stroke-dasharray="4 4"][d]').first();
 
-    expect(stroke).toMatch(/^url\(".*-potential-gradient-line"\)$/);
+    await test.step('Verify potential segment stroke references the potential gradient', async () => {
+      await expect(potential).toHaveCSS('stroke', /^url\(".*-potential-gradient-line"\)$/);
+    });
 
-    const gradientId = stroke.slice('url("#'.length, -'")'.length);
-    await expect(page.locator(`linearGradient[id="${gradientId}"]`)).toHaveCount(1);
+    await test.step('Verify referenced linearGradient exists in the DOM', async () => {
+      const stroke = await potential.evaluate((el) => getComputedStyle(el).stroke);
+      const gradientId = stroke.slice('url("#'.length, -'")'.length);
+      await expect(page.locator(`linearGradient[id="${gradientId}"]`)).toHaveCount(1);
+    });
   });
 
   test('Verify Line.Null attributes', {
-    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -653,8 +576,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     );
     await locators.plot(page).first().waitFor({ state: 'visible' });
 
-    await expect(locators.lineNull(page).first()).toHaveCSS('stroke', 'oklch(0.9 0.009 234)');
-    await expect(locators.lineNull(page).first()).toHaveCSS('stroke-dasharray', '4px');
+    await test.step('Verify Line.Null stroke colour and dash', async () => {
+      await expect(locators.lineNull(page).first()).toHaveCSS('stroke', 'oklch(0.9 0.009 234)');
+      await expect(locators.lineNull(page).first()).toHaveCSS('stroke-dasharray', '4px');
+    });
   });
 
   test('Verify interpolated points are dropped from the series without breaking it', {
@@ -663,7 +588,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await loadPage(page, BASIC_USAGE_STORY, 'en', { withInterpolatedGaps: true, duration: 0 });
     await locators.plot(page).first().waitFor({ state: 'visible' });
 
-    const lines = page.locator('path[data-ui-name="Line"]');
+    const lines = locators.linePath(page);
     await expect(lines).toHaveCount(2);
 
     const pointCounts = await lines.evaluateAll((paths) =>
@@ -673,33 +598,22 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         .map((d) => (d.match(/L/g)?.length ?? 0) + 1),
     );
 
-    await test.step('The untouched series keeps all 20 points', async () => {
+    await test.step('Verify untouched series keeps all 20 points', async () => {
       expect(pointCounts).toContain(20);
     });
 
-    await test.step('The gapped series is short by exactly the three marked points', async () => {
-      // A gap drops the point from the path; the line closes over it rather than breaking,
-      // so this stays a single path of 17 points instead of several segments.
+    await test.step('Verify gapped series stays one path, short by exactly the three marked points', async () => {
       expect(pointCounts).toContain(17);
     });
 
-    await test.step('No gap leaks into the geometry as NaN', async () => {
+    await test.step('Verify no gap leaks into the geometry as NaN', async () => {
       const ds = await lines.evaluateAll((paths) => paths.map((path) => path.getAttribute('d') ?? ''));
 
       expect(ds.filter((d) => d.includes('NaN'))).toEqual([]);
     });
   });
 
-  /* -----------------------------------------------------
-  plotWidth/plotHeight are optional: when omitted the chart fills its parent
-  and auto-derives the plot size. `aspect` sets height = width / aspect,
-  `hMin`/`hMax` clamp it, `onResize` reports the measured size. We assert on
-  the svg[data-ui-name="Plot"] width/height attributes (the plot size actually
-  used) plus the story's data-testid="responsive-size" readout.
-  ----------------------------------------------------- */
   test.describe('responsiveness', () => {
-    const STORY = 'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx';
-
     const readPlotSize = async (page: Page) => {
       const plot = locators.plot(page).first();
       await plot.waitFor({ state: 'visible' });
@@ -711,9 +625,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify chart auto-sizes to its container and aspect derives the height', {
       tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@responsive', '@base-components', '@flex-box', '@checkbox'],
     }, async ({ page }) => {
-      await test.step('Without plotWidth/plotHeight the Plot renders with a measured (non-zero) size', async () => {
-        // useExplicitPlotWidth is false by default - chart receives no plotWidth/plotHeight.
-        await loadPage(page, STORY, 'en');
+      await test.step('Verify Plot renders with a measured non-zero size without plotWidth/plotHeight', async () => {
+        await loadPage(page, BASIC_USAGE_STORY, 'en');
         await page.waitForTimeout(500);
 
         const { width, height } = await readPlotSize(page);
@@ -721,8 +634,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         expect(height).toBeGreaterThan(0);
       });
 
-      await test.step('With aspect the Plot height equals width / aspect, and onResize reports the size', async () => {
-        await loadPage(page, STORY, 'en', { aspect: 2 });
+      await test.step('Verify Plot height equals width / aspect and onResize reports the size', async () => {
+        await loadPage(page, BASIC_USAGE_STORY, 'en', { aspect: 2 });
         await page.waitForTimeout(500);
 
         const { width, height } = await readPlotSize(page);
@@ -736,13 +649,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify hMin clamps the aspect-derived height to the minimum', {
-      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@responsive', '@base-components', '@flex-box', '@checkbox'],
+      tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart', '@responsive', '@base-components', '@flex-box', '@checkbox'],
     }, async ({ page }) => {
-      // aspect 10 -> computed height (~width/10) is well below 120, so hMin must clamp it
-      await loadPage(page, STORY, 'en', { aspect: 10, hMin: 120 });
+      await loadPage(page, BASIC_USAGE_STORY, 'en', { aspect: 10, hMin: 120 });
       await page.waitForTimeout(500);
 
-      await test.step('Plot height is clamped up to hMin', async () => {
+      await test.step('Verify Plot height (aspect 10 gives ~width/10) is clamped up to hMin', async () => {
         const { height } = await readPlotSize(page);
         expect(Math.abs(height - 120)).toBeLessThanOrEqual(1);
       });
@@ -751,11 +663,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify hMax clamps the aspect-derived height to the maximum', {
       tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart', '@responsive', '@base-components', '@flex-box', '@checkbox'],
     }, async ({ page }) => {
-      // aspect 0.5 -> computed height (~2*width) is well above 180, so hMax must clamp it
-      await loadPage(page, STORY, 'en', { aspect: 0.5, hMax: 180 });
+      await loadPage(page, BASIC_USAGE_STORY, 'en', { aspect: 0.5, hMax: 180 });
       await page.waitForTimeout(500);
 
-      await test.step('Plot height is clamped down to hMax', async () => {
+      await test.step('Verify Plot height (aspect 0.5 gives ~2*width) is clamped down to hMax', async () => {
         const { height } = await readPlotSize(page);
         expect(Math.abs(height - 180)).toBeLessThanOrEqual(1);
       });
@@ -764,13 +675,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify explicit plotWidth takes priority over container measurement', {
       tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@responsive', '@base-components', '@flex-box', '@checkbox'],
     }, async ({ page }) => {
-      // useExplicitPlotWidth passes plotWidth straight to the chart; the 500px Box is ignored for width
-      await loadPage(page, STORY, 'en', { useExplicitPlotWidth: true, plotWidth: 250 });
+      await loadPage(page, BASIC_USAGE_STORY, 'en', { useExplicitPlotWidth: true, plotWidth: 250 });
       await page.waitForTimeout(500);
 
-      await test.step('Plot width equals the explicit plotWidth, not the container width', async () => {
-        const { width } = await readPlotSize(page);
-        expect(width).toBe(250);
+      await test.step('Verify Plot width equals the explicit plotWidth, not the 500px container width', async () => {
+        await expect(locators.plot(page).first()).toHaveAttribute('width', '250');
       });
     });
   });

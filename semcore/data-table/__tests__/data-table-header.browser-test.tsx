@@ -76,8 +76,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         const elements = page.locator('[data-ui-name="Head.Column"]');
         for (const element of await elements.all()) {
-          const alignItems = await element.evaluate((el) => window.getComputedStyle(el).alignItems);
-          expect(alignItems).toBe('flex-start');
+          await expect(element).toHaveCSS('align-items', 'flex-start');
         }
       });
 
@@ -496,7 +495,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       const menuItem = page.getByRole('option').first();
       const headerCell3 = page.locator('[data-ui-name="Head.Column"][aria-colindex="3"]');
 
-      await test.step('Verify mouse interactions ', async () => {
+      await test.step('Verify mouse interactions', async () => {
         await selectTrigger.click();
         await menuItem.waitFor({ state: 'visible' });
         await selectTrigger.click();
@@ -583,8 +582,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           '@typography',
         ],
       }, async ({ page, browserName }) => {
+        test.skip(browserName === 'firefox', 'Skipped in Firefox since UIK-4373, reason not documented');
         await loadPage(page, 'stories/components/data-table/docs/examples/sorting.tsx', 'en');
-        if (browserName === 'firefox') test.skip();
         const initialWidths = await Promise.all([1, 2, 3, 4].map((i) => getColumnWidth(page, i)));
 
         await test.step('Verify 1st click on not sorted icon activates sorting', async () => {
@@ -733,9 +732,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         });
 
         await locators.getHeadColumn(page, 1).hover();
-        const count = await page.locator('[data-ui-name="Head.Column"]').count();
-        for (let i = 1; i <= count; i++) {
-          await expect(locators.getHeadColumn(page, i)).not.toHaveAttribute('aria-sort');
+        const headColumns = await page.locator('[data-ui-name="Head.Column"]').all();
+        for (const column of headColumns) {
+          await expect(column).not.toHaveAttribute('aria-sort');
         }
         expect(messages.length).toBe(0);
         await locators.sortButton(page, 1).click();
@@ -748,8 +747,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await locators.sortButton(page, 1).click();
         await expect(locators.sortButton(page, 1)).toHaveAttribute('aria-label', 'ascending');
         await expect(locators.getHeadColumn(page, 1)).toHaveAttribute('aria-sort', 'ascending');
-        for (let i = 2; i <= count; i++) {
-          await expect(locators.getHeadColumn(page, i)).not.toHaveAttribute('aria-sort');
+        for (const column of headColumns.slice(1)) {
+          await expect(column).not.toHaveAttribute('aria-sort');
         }
         await expect(locators.getHeadColumn(page, 1)).toHaveAttribute('aria-sort');
 
@@ -776,9 +775,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         });
         await page.keyboard.press('Tab');
         await expect(locators.sortButton(page, 1)).toBeFocused();
-        const count = await page.locator('[data-ui-name="Head.Column"]').count();
-        for (let i = 1; i <= count; i++) {
-          await expect(locators.getHeadColumn(page, i)).not.toHaveAttribute('aria-sort');
+        const headColumns = await page.locator('[data-ui-name="Head.Column"]').all();
+        for (const column of headColumns) {
+          await expect(column).not.toHaveAttribute('aria-sort');
         }
         expect(messages.length).toBe(0);
 
@@ -856,9 +855,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@checkbox',
         '@description-tooltip'],
     }, async ({ page, browserName }) => {
+      test.skip(browserName === 'firefox', 'Skipped in Firefox since UIK-4373, reason not documented');
       await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/multi-level-with-interactive.tsx', 'en');
-
-      if (browserName === 'firefox') test.skip();
 
       const tooltipTrigger = locators.getDataTestId(page, 'tooltip-with-interactive-el');
       const tooltip = page.locator('[data-ui-name="DescriptionTooltip.Popper"]');
@@ -939,15 +937,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/borders.tsx', 'en');
 
-      const headGroup = page.locator('[data-ui-name="Head.Group"]');
-      const headGoupColumn = headGroup.nth(0).locator('[data-ui-name="Head.Column"]');
+      const headGroup = page.locator('[data-ui-name="Head.Group"]').first();
+      const headGroupColumns = headGroup.locator('..').locator('[data-ui-name="Head.Column"]');
 
-      const count = await headGoupColumn.count();
-      for (let i = 0; i < count; i++) {
-        await expect(headGoupColumn.nth(i)).toHaveAttribute('role', 'columnheader');
-        await expect(headGoupColumn.nth(i)).toHaveAttribute('aria-colindex', `${i + 2}`);
-        await expect(headGoupColumn.nth(i)).toHaveAttribute('aria-describedby');
-        await expect(headGoupColumn.nth(i)).toHaveAttribute('tabindex', '-1');
+      await expect(headGroupColumns).not.toHaveCount(0);
+      for (const [index, column] of (await headGroupColumns.all()).entries()) {
+        await expect(column).toHaveAttribute('role', 'columnheader');
+        await expect(column).toHaveAttribute('aria-colindex', `${index + 2}`);
+        await expect(column).toHaveAttribute('aria-describedby');
+        await expect(column).toHaveAttribute('tabindex', '-1');
       }
     });
 

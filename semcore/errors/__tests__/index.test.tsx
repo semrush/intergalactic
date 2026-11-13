@@ -1,10 +1,18 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, screen, userEvent } from '@semcore/testing-utils/testing-library';
 import { beforeEach, describe, it, expect, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import BaseError, { PageError } from '../src';
+
+describe('errors Translations exports', () => {
+  runTranslationsCheckTest('@semcore/errors', 'PageNotFound/translations');
+  runTranslationsCheckTest('@semcore/errors', 'ProjectNotFound/translations');
+  runTranslationsCheckTest('@semcore/errors', 'Maintenance/translations');
+  runTranslationsCheckTest('@semcore/errors', 'AccessDenied/translations');
+  runTranslationsCheckTest('@semcore/errors', 'PageError/translations');
+});
 
 describe('errors Dependency imports', () => {
   runDependencyCheckTests('errors');

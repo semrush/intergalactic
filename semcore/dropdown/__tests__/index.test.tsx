@@ -1,5 +1,5 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import {
   cleanup,
   render,
@@ -11,6 +11,10 @@ import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/v
 import React from 'react';
 
 import Dropdown from '../src';
+
+describe('dropdown Translations exports', () => {
+  runTranslationsCheckTest('@semcore/dropdown');
+});
 
 describe('dropdown Dependency imports', () => {
   runDependencyCheckTests('dropdown');

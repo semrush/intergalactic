@@ -1,5 +1,4 @@
-import { Plot, Bubble, XAxis, YAxis } from '@semcore/ui/d3-chart';
-import { Text } from '@semcore/ui/typography';
+import { Chart } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
@@ -18,43 +17,18 @@ const Demo = () => {
     .range([height - MARGIN, MARGIN])
     .domain([-1, 10]);
 
+  console.log(data);
+
   return (
-    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-      <YAxis>
-        <YAxis.Ticks />
-        <YAxis.Grid />
-      </YAxis>
-      <XAxis>
-        <XAxis.Ticks />
-      </XAxis>
-      <Bubble x='x' y='y' value='value' label='label' color='color' />
-      <Bubble.Tooltip>
-        {({ index }) => {
-          return {
-            children: (
-              <>
-                <Bubble.Tooltip.Title>Data</Bubble.Tooltip.Title>
-                <Text tag='div'>
-                  X axis
-                  {' '}
-                  {data[index].x}
-                </Text>
-                <Text tag='div'>
-                  Y axis
-                  {' '}
-                  {data[index].y}
-                </Text>
-                <Text tag='div'>
-                  Value
-                  {' '}
-                  {data[index].value}
-                </Text>
-              </>
-            ),
-          };
-        }}
-      </Bubble.Tooltip>
-    </Plot>
+    <Chart.Bubble
+      data={data}
+      plotWidth={width}
+      plotHeight={height}
+      xScale={xScale}
+      yScale={yScale}
+      showLegend={false}
+      aria-label='Bubble chart'
+    />
   );
 };
 

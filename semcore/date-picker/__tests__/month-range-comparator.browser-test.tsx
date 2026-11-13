@@ -78,10 +78,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       await test.step('Verify header and calendar styles', async () => {
         await checkStyle(locators.dateRangeHeader(page), { padding: '16px' });
 
-        const indicstors = page.locator('[data-ui-name="DateRange.Indicator"]');
-        const count = await indicstors.count();
-        for (let i = 0; i < count; i++) {
-          const calendar = indicstors.nth(i);
+        const indicators = page.locator('[data-ui-name="DateRange.Indicator"]');
+        for (const calendar of await indicators.all()) {
           await expect(calendar).toHaveAttribute('width', '16');
           await expect(calendar).toHaveAttribute('height', '16');
           await checkStyle(calendar, {
@@ -239,10 +237,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(checkbox).toHaveAttribute('type', 'checkbox');
         await expect(checkbox).toHaveAttribute('aria-invalid', 'false');
 
-        const count = await page.getByRole('textbox').count();
-
-        for (let i = 0; i < count; i++) {
-          const input = page.getByRole('textbox').nth(i);
+        for (const input of await page.getByRole('textbox').all()) {
           await expect(input).toHaveAttribute('type', 'text');
           await expect(input).toHaveAttribute('inputmode', 'numeric');
           await expect(input).toHaveAttribute('aria-invalid', 'false');
@@ -250,10 +245,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       await test.step('Verify calendar attributes', async () => {
-        const count = await locators.calendar(page).count();
-
-        for (let i = 0; i < count; i++) {
-          const calendar = locators.calendar(page).nth(i);
+        for (const calendar of await locators.calendar(page).all()) {
           await expect(calendar).toHaveAttribute('role', 'grid');
           await expect(calendar).toHaveAttribute('disabled', '');
         }
@@ -261,12 +253,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Verify days attributes', async () => {
         const cells = page.locator('[data-ui-name="CalendarMonths.Unit"]');
-        const cellCount = await cells.count();
-
-        for (let i = 0; i < cellCount; i++) {
-          const cell = cells.nth(i);
-
-          // Skip empty cells without aria-label
+        for (const cell of await cells.all()) {
           const ariaLabel = await cell.getAttribute('aria-label');
           if (!ariaLabel) continue;
 

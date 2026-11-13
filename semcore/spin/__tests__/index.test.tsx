@@ -1,10 +1,14 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests, runTranslationsCheckTest } from '@semcore/testing-utils/shared-tests';
 import { render } from '@semcore/testing-utils/testing-library';
 import { describe, expect, test } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Spin from '../src';
+
+describe('spin Translations exports', () => {
+  runTranslationsCheckTest('@semcore/spin');
+});
 
 describe('spin Dependency imports', () => {
   runDependencyCheckTests('spin');
