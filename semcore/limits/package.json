@@ -26,7 +26,8 @@
   },
   "devDependencies": {
     "@semcore/core": "workspace:*",
-    "@semcore/base-components": "workspace:*"
+    "@semcore/base-components": "workspace:*",
+    "@semcore/testing-utils": "workspace: *"
   },
   "peerDependencies": {
     "@semcore/base-components": "^18.0.0"

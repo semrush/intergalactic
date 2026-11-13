@@ -1418,6 +1418,9 @@ importers:
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
+      '@semcore/testing-utils':
+        specifier: 'workspace: *'
+        version: link:../../tools/testing-utils
 
   semcore/link:
     dependencies:
