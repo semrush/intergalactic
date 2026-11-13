@@ -267,7 +267,7 @@ SButton[neighborLocation='left'] {
 SButton[theme='secondary-muted'][neighborLocation='right'],
 SButton[theme='secondary-muted'][neighborLocation='both'],
 SButton[theme='secondary-muted'][neighborLocation='left'] {
-  border: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
+  border-color: var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
   border-style: solid;
 }
 
