@@ -2014,7 +2014,7 @@ importers:
         specifier: ^18.0.0
         version: link:../input-tags
       '@semcore/limits':
-        specifier: ^18.1.0
+        specifier: ^18.0.0
         version: link:../limits
       '@semcore/link':
         specifier: ^18.0.1
