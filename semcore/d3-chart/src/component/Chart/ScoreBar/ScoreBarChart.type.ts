@@ -63,6 +63,14 @@ export type ScoreBarChartProps = NSBox.Props & {
    * @default en
    * */
   locale?: NavigatorLanguage['language'];
+  /**
+   * Function to format values in tooltip
+   */
+  tooltipValueFormatter?: (value?: unknown) => string;
+  /**
+   * Function to format tooltip's title
+   */
+  tooltipTitleFormatter?: (title?: unknown) => string;
 };
 
 export type ScoreBarChartDefaultProps = {
