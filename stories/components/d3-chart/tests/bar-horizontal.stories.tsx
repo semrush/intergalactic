@@ -19,6 +19,7 @@ export const HorizontalBarProps: StoryObj = {
     maxBarSize: { control: { type: 'number', min: 0, max: 100, step: 1 } },
     duration: { control: { type: 'number', min: 0, max: 2000, step: 100 } },
     primaryText: { control: 'boolean' },
+    dataSet: { control: 'select', options: ['positive', 'edge'] },
   },
   args: HorizontalBarPropsDefaultProps,
 };

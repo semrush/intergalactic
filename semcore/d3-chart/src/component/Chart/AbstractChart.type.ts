@@ -256,3 +256,34 @@ export type LegendDataMap<T extends 'Flex' | 'Table'> = Record<
     defaultChecked?: boolean;
   } & (T extends 'Table' ? ({ columns?: React.ReactNode[] } | { rows?: React.ReactNode[] }) : { columns?: never; rows?: never })
 >;
+
+export type ReferenceLine = {
+  /**
+   * Simple reference line.
+   */
+  value: string | number | Date;
+
+  /**
+   * Size of area near line
+   */
+  area?: number;
+};
+
+export type ReferenceArea = {
+  /**
+   * Reference line with area.
+   */
+  value: [string | number | Date, string | number | Date];
+  /**
+   * @default neutral.
+   */
+  use?: 'neutral' | 'insight' | 'good' | 'bad';
+  /**
+   * Title of the area.
+   */
+  title?: string;
+  /**
+   * Custom subtitle with data.
+   */
+  subTitle?: string;
+};

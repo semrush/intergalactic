@@ -5,7 +5,7 @@ import React from 'react';
 import { SvgElement } from './component/SvgElement';
 import createElement from './createElement';
 import style from './style/reference.shadow.css';
-import { scaleOfBandwidth } from './utils';
+import { getVerticalPathFromRect, scaleOfBandwidth } from './utils';
 
 const STROKE_WIDTH = 1;
 const NOTCH_WIDTH = 9;
@@ -165,7 +165,7 @@ class ReferenceLineRoot extends Component {
 
             <SArea
               tag='path'
-              d={getReferenceAreaPath({ x: line.x1 - area / 2, y: line.y2, width: area, height: line.y1 - line.y2 })}
+              d={getVerticalPathFromRect({ x: line.x1 - area / 2, y: line.y2, width: area, height: line.y1 - line.y2 })}
               fill={`url(#${patternId})`}
             />
           </g>
@@ -248,17 +248,8 @@ function getColorByUse(use, resolveColor) {
   }
 }
 
-function getReferenceAreaPath({ x, y, width, height }) {
-  const r = 12;
-
-  const path = `M ${x},${y + r} Q ${x},${y} ${x + r},${y} H ${x + width - r} Q ${x + width},${y} ${x + width},${y + r} V ${y + height} H ${x} Z`;
-
-  return path;
-}
-
-function Stripes(props) {
-  const { Element: SStripes, styles, scale, position = 'left', value, endValue, uid, use = 'neutral', title, subTitle, resolveColor } = props;
-  const positionProps = rectDirection2props[side2direction[position]](scale, value, endValue);
+function Area(props) {
+  const { Element: SStripes, styles, uid, use = 'neutral', title, subTitle, resolveColor, positionProps } = props;
   const patternId = `${uid}-pattern`;
   const STitle = SvgElement;
   const SSubTitle = SvgElement;
@@ -276,7 +267,7 @@ function Stripes(props) {
 
       <SStripes
         render='path'
-        d={getReferenceAreaPath(positionProps)}
+        d={getVerticalPathFromRect(positionProps)}
         childrenPosition='inside'
         fill={`url(#${patternId})`}
       />
@@ -307,6 +298,14 @@ function Stripes(props) {
     </g>,
   );
 }
+Area.style = style;
+Area.enhance = [uniqueIDEnhancement()];
+
+function Stripes(props) {
+  const { scale, position = 'left', value, endValue } = props;
+  const positionProps = rectDirection2props[side2direction[position]](scale, value, endValue);
+  return (<ReferenceArea {...props} positionProps={positionProps} />);
+}
 Stripes.style = style;
 Stripes.enhance = [uniqueIDEnhancement()];
 
@@ -315,6 +314,8 @@ export const ReferenceLine = createElement(ReferenceLineRoot, {
   Background: Stripes,
   Stripes,
 });
+
+export const ReferenceArea = createElement(Area);
 
 export const ReferenceBackground = createElement(Stripes);
 export const ReferenceStripes = createElement(Stripes);

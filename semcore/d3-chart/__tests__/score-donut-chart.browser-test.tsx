@@ -5,7 +5,7 @@ import { TAG } from '@semcore/testing-utils/shared/tags';
 
 const STORY = 'stories/components/d3-chart/tests/examples/score-donut-chart/basic-usage.tsx';
 
-const COMPONENT_TAGS = ['@score-donut-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'];
+const COMPONENT_TAGS = ['@score-donut-chart', '@d3-chart', '@base-components', '@flex-box', '@divider', '@typography'];
 
 export const locators = {
   plot: (page: Page) => page.locator('svg[data-ui-name="Plot"]'),

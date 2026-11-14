@@ -585,9 +585,9 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Horizontal bar chart',
           },
           {
-            link: '/data-display/bar-horizontal-compact/bar-horizontal-compact',
-            activeMatch: '/data-display/bar-horizontal-compact/',
-            text: 'Compact horizontal bar chart',
+            link: '/data-display/score-bar-chart/score-bar-chart',
+            activeMatch: '/data-display/score-bar-chart/',
+            text: 'Score bar chart',
           },
           {
             link: '/data-display/stacked-horizontal-bar/stacked-horizontal-bar',

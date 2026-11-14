@@ -98,6 +98,11 @@ const redirects = {
   "/intergalactic/data-display/stacked-bar-chart": "/intergalactic/data-display/stacked-bar-chart/stacked-bar-chart",
   "/intergalactic/data-display/bar-horizontal": "/intergalactic/data-display/bar-horizontal/bar-horizontal",
   "/intergalactic/data-display/bar-horizontal-compact": "/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact",
+  "/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact": "/intergalactic/data-display/score-bar-chart/score-bar-chart",
+  "/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact-api": "/intergalactic/data-display/score-bar-chart/score-bar-chart-api",
+  "/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact-a11y": "/intergalactic/data-display/score-bar-chart/score-bar-chart-a11y",
+  "/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact-code": "/intergalactic/data-display/score-bar-chart/score-bar-chart-code",
+  "/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact-changelog": "/intergalactic/data-display/score-bar-chart/score-bar-chart-changelog",
   "/intergalactic/data-display/stacked-horizontal-bar": "/intergalactic/data-display/stacked-horizontal-bar/stacked-horizontal-bar",
   "/intergalactic/data-display/bubble-chart": "/intergalactic/data-display/bubble-chart/bubble-chart",
   "/intergalactic/data-display/cigarette-chart": "/intergalactic/data-display/cigarette-chart/cigarette-chart",
@@ -165,7 +170,7 @@ const renamed = {
   "/intergalactic/filter-group/filter-kd-positions-volume": "/intergalactic/filter-group/filter-custom-range/filter-custom-range",
   "/intergalactic/filter-group/filter-kd-positions-volume/filter-kd-positions-volume": "/intergalactic/filter-group/filter-custom-range/filter-custom-range",
   "/intergalactic/filter-group/filter-kd-positions-volume/filter-kd-positions-volume-code": "/intergalactic/filter-group/filter-custom-range/filter-custom-range-code",
-  
+
   // June 2025: pages moved or renamed for better page title generation; can be removed in a few months, if there's no visits
   "/intergalactic/components/feedback": "/intergalactic/components/feedback-form/feedback-form",
   "/intergalactic/components/feedback/feedback": "/intergalactic/components/feedback-form/feedback-form",

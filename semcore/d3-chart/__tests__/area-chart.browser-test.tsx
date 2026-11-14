@@ -306,7 +306,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify stacked area when part of the chart has no data or only one value', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@stacked-area-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@area-chart', '@base-components', '@flex-box', '@stacked-area-chart', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/stacked-area-chart/edge-cases.tsx', 'en');
 
@@ -323,7 +323,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify stacked area chart rendering', {
-    tag: [TAG.PRIORITY_MEDIUM, '@stacked-area-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
+    tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@area-chart', '@base-components', '@flex-box', '@stacked-area-chart', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/stacked-area-chart/stacked-area.tsx', 'en');
 
@@ -361,7 +361,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify stacked area chart legend hover styles', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@stacked-area-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@typography', '@checkbox'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@area-chart', '@base-components', '@flex-box', '@chart-legend', '@checkbox', '@stacked-area-chart', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/stacked-area-chart/legend-and-pattern-fill.tsx', 'en');
 
@@ -546,7 +546,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   gradientRules.forEach(({ description, props, gradient }) => {
     test(`Verify area gradient is ${gradient ? 'applied' : 'suppressed'}: ${description}`, {
-      tag: ['patterns' in props ? TAG.PRIORITY_MEDIUM : TAG.PRIORITY_HIGH, '@area-chart', '@d3-chart', '@checkbox'],
+      tag: ['patterns' in props ? TAG.PRIORITY_MEDIUM : TAG.PRIORITY_HIGH, '@area-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
     }, async ({ page }) => {
       await openAreaStory(page, props);
 
@@ -555,7 +555,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify the area gradient follows the legend rather than the data', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@area-chart', '@d3-chart', '@checkbox'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@area-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await openAreaStory(page, {
       stacked: false,
@@ -586,7 +586,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify highlighted dots survive a hover', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@area-chart', '@d3-chart', '@checkbox'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@area-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await openAreaStory(page, { highlightDots: 'mixed', singleSeries: true, showDots: false });
 
@@ -604,7 +604,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify forecast does not use the pattern fill when patterns are enabled', {
-    tag: [TAG.PRIORITY_HIGH, TAG.ACCESSIBILITY, '@area-chart', '@d3-chart', '@checkbox'],
+    tag: [TAG.PRIORITY_HIGH, TAG.ACCESSIBILITY, '@area-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await openAreaStory(page, { dataType: 'forecast', singleSeries: true, patterns: true });
 
@@ -615,7 +615,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify forecast segments differ in colour between two series', {
-    tag: [TAG.PRIORITY_HIGH, '@area-chart', '@d3-chart', '@checkbox'],
+    tag: [TAG.PRIORITY_HIGH, '@area-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await openAreaStory(page, { dataType: 'forecast' });
 
@@ -632,7 +632,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify interpolated points bridge the gap instead of breaking the series', {
-    tag: [TAG.PRIORITY_MEDIUM, '@area-chart', '@d3-chart', '@checkbox'],
+    tag: [TAG.PRIORITY_MEDIUM, '@area-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await openAreaStory(page, {
       withInterpolatedGaps: true,
