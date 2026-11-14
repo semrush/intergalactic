@@ -1,7 +1,6 @@
 import { Box } from '@semcore/base-components';
 import { Component, createComponent, sstyled } from '@semcore/core';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
-import Link from '@semcore/link';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
@@ -40,13 +39,12 @@ class ScoreBarItemComponent extends Component<ScoreBarItemTypeProps> {
     return new Intl.NumberFormat(this.asProps.locale, { style: 'percent' }).format(value / 100);
   };
 
-  render() {
-    const { item, mode, totalValue, onClick, valueFormatter, duration, titleFormatter, color } = this.asProps;
-    const SItem = Box;
+  renderContent() {
+    const { item, mode, totalValue, valueFormatter, duration, titleFormatter, color } = this.asProps;
+
     const SCategory = Text;
     const SPercent = Text;
     const SValue = Text;
-    const SValueLink = Link;
     const SBar = Box;
     const SBarValue = Box;
     const SBarBackground = Box;
@@ -58,36 +56,50 @@ class ScoreBarItemComponent extends Component<ScoreBarItemTypeProps> {
     const displayPercent = this.percentFormatter(percent);
 
     return sstyled(style)(
-      <SItem
-        tag='li'
-        // @ts-expect-error custom css variables
-        style={{ '--global-target-width': percent }}
-        mode={mode}
-        clickable={Boolean(onClick)}
-        onClick={this.handleClick}
-        onMouseMove={this.handleMouseMove}
-        onMouseLeave={this.handleMouseLeave}
-      >
+      <>
         <SCategory>
           {displayCategory}
         </SCategory>
         <SPercent use='secondary'>
           {displayPercent}
         </SPercent>
-        {item.href
-          ? (
-              <SValueLink href={item.href} onClick={(e) => e.stopPropagation()}>{displayValue}</SValueLink>
-            )
-          : (
-              <SValue>
-                {displayValue}
-              </SValue>
-            )}
+        <SValue>
+          {displayValue}
+        </SValue>
         {/* @ts-expect-error mode is for css only */}
         <SBar mode={mode} aria-hidden='true' duration={duration}>
           <SBarValue color={color} />
           <SBarBackground style={{ width: `${bg}%` }} />
         </SBar>
+      </>,
+    );
+  }
+
+  render() {
+    const { item, mode, totalValue, onClick } = this.asProps;
+    const SItem = Box;
+    const SContainer = Box;
+
+    const percent = parseInt((100 * (item.value / totalValue)).toFixed(0));
+
+    return sstyled(style)(
+      <SItem
+        tag='li'
+        // @ts-expect-error custom css variables
+        style={{ '--global-target-width': percent }}
+      >
+        <SContainer
+          tag={item.href ? 'a' : (onClick ? 'button' : undefined)}
+          onClick={this.handleClick}
+          onMouseMove={this.handleMouseMove}
+          onMouseLeave={this.handleMouseLeave}
+          tabIndex={(Boolean(onClick) || Boolean(item.href)) ? 0 : undefined}
+          // @ts-expect-error css only
+          mode={mode}
+          href={item.href}
+        >
+          {this.renderContent()}
+        </SContainer>
       </SItem>,
     );
   }

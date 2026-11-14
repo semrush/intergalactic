@@ -30,28 +30,33 @@ SChart {
 }
 
 SItem {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: subgrid;
-  grid-template-rows: auto auto;
-  row-gap: var(--intergalactic-spacing-2x, 8px);
-  align-items: center;
-  position: relative;
+  display: contents;
 
-  &[mode='compact'] {
-    grid-template-rows: auto;
-  }
+  SContainer {
+    all: unset;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-template-rows: auto auto;
+    row-gap: var(--intergalactic-spacing-2x, 8px);
+    align-items: center;
+    position: relative;
 
-  &[clickable]:hover {
-    cursor: pointer;
+    &[mode='compact'] {
+      grid-template-rows: auto;
+    }
 
-    &::before {
-      content: '';
-      position: absolute;
-      inset: calc(-1 * var(--intergalactic-spacing-2x, 8px));
-      background-color: var(--intergalactic-chart-grid-bar-hover, oklch(0.375 0.09 242.7 / 0.05));
-      border-radius: var(--intergalactic-rounded-medium, 6px);
-      z-index: -1;
+    &[tabIndex='0']:hover {
+      cursor: pointer;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: calc(-1 * var(--intergalactic-spacing-2x, 8px));
+        background-color: var(--intergalactic-chart-grid-bar-hover, oklch(0.375 0.09 242.7 / 0.05));
+        border-radius: var(--intergalactic-rounded-medium, 6px);
+        z-index: -1;
+      }
     }
   }
 }
