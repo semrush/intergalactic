@@ -202,11 +202,12 @@ class BarRoot extends Component {
     width,
     height,
   }) {
-    const newHeight = Math.max(height * 0.2, 20);
+    const overflowTop = 4;
+    const newHeight = Math.min(Math.max(height * 0.2, 20), height + overflowTop);
 
     const dSvg = getRect({
       x: barX - 3,
-      y: barY - 4,
+      y: barY - overflowTop,
       width: width + 6,
       height: newHeight,
       radius: 4,
