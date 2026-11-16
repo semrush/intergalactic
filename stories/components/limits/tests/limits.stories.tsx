@@ -2,8 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import LimitsDemoReportNoticeExample, { defaultProps as defaultLimitsDemoReportNoticeExampleProps } from './examples/demo-report-notice';
 import LimitsNoticeExample, { defaultProps as defaultLimitsNoticeExampleProps } from './examples/notice';
-import TrustLineExample, { defaultProps as defaultTrustLineExampleProps } from './examples/trust-line';
-import UsageMeterExample, { defaultProps as defaultUsageMeterExampleProps } from './examples/usage-meter';
 
 const meta: Meta = {
   title: 'Components/Limits/Tests',
@@ -12,54 +10,6 @@ const meta: Meta = {
 export default meta;
 
 const locales = ['en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'nl', 'pt', 'sv', 'tr', 'vi', 'zh', 'pl', 'ru'];
-
-export const UsageMeter: StoryObj<typeof defaultUsageMeterExampleProps> = {
-  render: UsageMeterExample,
-  argTypes: {
-    min: {
-      control: { type: 'number' },
-    },
-    max: {
-      control: { type: 'number' },
-    },
-    value: {
-      control: { type: 'number' },
-    },
-    feature: {
-      control: { type: 'text' },
-    },
-    theme: {
-      control: { type: 'select' },
-      options: ['default', 'invert'],
-    },
-    state: {
-      control: { type: 'select' },
-      options: ['normal', 'warning'],
-    },
-    locale: {
-      control: { type: 'select' },
-      options: ['en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'nl', 'pl', 'pt', 'ru', 'sv', 'tr', 'vi', 'zh'],
-    },
-    w: {
-      control: { type: 'number' },
-    },
-  },
-  args: defaultUsageMeterExampleProps,
-};
-
-export const TrustLine: StoryObj<typeof defaultTrustLineExampleProps> = {
-  render: TrustLineExample,
-  argTypes: {
-    description: {
-      control: { type: 'text' },
-    },
-    locale: {
-      control: { type: 'select' },
-      options: locales,
-    },
-  },
-  args: defaultTrustLineExampleProps,
-};
 
 export const LimitsNotice: StoryObj<typeof defaultLimitsNoticeExampleProps> = {
   render: LimitsNoticeExample,
