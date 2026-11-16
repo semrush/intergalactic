@@ -41,6 +41,7 @@ SItem {
     row-gap: var(--intergalactic-spacing-2x, 8px);
     align-items: center;
     position: relative;
+    color: var(--intergalactic-text-link-primary, oklch(0.23 0.009 245));
 
     &[mode='compact'] {
       grid-template-rows: auto;
@@ -48,6 +49,7 @@ SItem {
 
     &[tabIndex='0']:hover {
       cursor: pointer;
+      color: var(--intergalactic-text-link-primary-hover-active, oklch(0.23 0.009 245));
 
       &::before {
         content: '';

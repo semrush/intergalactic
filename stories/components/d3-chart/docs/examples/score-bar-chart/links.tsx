@@ -16,7 +16,7 @@ const data = BarMockData.WithValue.map((item) => {
   return {
     category: item.category,
     value: item.value,
-    href: 'google.com',
+    href: '#',
   };
 });
 
