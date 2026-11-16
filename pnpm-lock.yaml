@@ -2184,6 +2184,9 @@ importers:
         specifier: 9.22.6
         version: 9.22.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
+      '@semcore/flags':
+        specifier: workspace:*
+        version: link:../semcore/flags
       '@semcore/icon':
         specifier: workspace:*
         version: link:../semcore/icon

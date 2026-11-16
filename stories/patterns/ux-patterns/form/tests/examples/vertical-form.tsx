@@ -1,7 +1,7 @@
+import Flag, { iso2Name } from '@semcore/flags';
 import { Flex } from '@semcore/ui/base-components';
 import BulkTextarea from '@semcore/ui/bulk-textarea';
 import Button from '@semcore/ui/button';
-import Flag, { iso2Name } from '@semcore/ui/flags';
 import Input from '@semcore/ui/input';
 import InputTags from '@semcore/ui/input-tags';
 import Textarea from '@semcore/ui/textarea';

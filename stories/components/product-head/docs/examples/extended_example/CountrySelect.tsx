@@ -1,7 +1,7 @@
+import type { NSFlags } from '@semcore/flags';
+import Flags, { iso2Name } from '@semcore/flags';
 import { ScreenReaderOnly } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
-import type { NSFlags } from '@semcore/ui/flags';
-import Flags, { iso2Name } from '@semcore/ui/flags';
 import { Info } from '@semcore/ui/product-head';
 import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';

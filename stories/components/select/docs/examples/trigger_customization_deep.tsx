@@ -1,6 +1,6 @@
+import type { NSFlags } from '@semcore/flags';
+import Flags, { iso2Name } from '@semcore/flags';
 import { Flex } from '@semcore/ui/base-components';
-import type { NSFlags } from '@semcore/ui/flags';
-import Flags, { iso2Name } from '@semcore/ui/flags';
 import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

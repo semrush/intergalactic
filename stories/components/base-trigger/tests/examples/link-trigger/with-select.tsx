@@ -1,4 +1,5 @@
 import type { Intergalactic } from '@semcore/core';
+import Flags from '@semcore/flags';
 import MathPlusAltL from '@semcore/icon/MathPlusAlt/l';
 import MathPlusAltM from '@semcore/icon/MathPlusAlt/m';
 import Badge from '@semcore/ui/badge';
@@ -6,7 +7,6 @@ import { Flex } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import type { LinkTriggerProps } from '@semcore/ui/base-trigger';
 import Counter, { type NSCounter } from '@semcore/ui/counter';
-import Flags from '@semcore/ui/flags';
 import Select from '@semcore/ui/select';
 import Tag, { type NSTag } from '@semcore/ui/tag';
 import type { NSText } from '@semcore/ui/typography';

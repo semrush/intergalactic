@@ -1,7 +1,7 @@
+import Flag, { iso2Name } from '@semcore/flags';
 import CloseM from '@semcore/icon/Close/m';
 import { Flex } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
-import Flag, { iso2Name } from '@semcore/ui/flags';
 import Input from '@semcore/ui/input';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
