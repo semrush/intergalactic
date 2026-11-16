@@ -39,6 +39,22 @@ class BubbleChartComponent extends AbstractChart<
 
   protected plotPadding = 8;
 
+  private cachedData: BubbleChartData = [];
+
+  constructor(props: BubbleChartProps) {
+    super(props);
+
+    this.cachedData = this.getSortedData(props.data);
+  }
+
+  componentDidUpdate(prevProps: BubbleChartProps): void {
+    super.componentDidUpdate(prevProps);
+
+    if (prevProps.data !== this.props.data) {
+      this.cachedData = this.getSortedData(this.props.data);
+    }
+  }
+
   protected get dataKeys(): string[] {
     const { data } = this.props;
 
@@ -114,9 +130,7 @@ class BubbleChartComponent extends AbstractChart<
   }
 
   override get data() {
-    return this.asProps.data.toSorted((a, b) => {
-      return b.value - a.value;
-    });
+    return this.cachedData;
   }
 
   override renderChart() {
@@ -224,6 +238,12 @@ class BubbleChartComponent extends AbstractChart<
         )}
       </>
     );
+  }
+
+  private getSortedData(data: BubbleChartData) {
+    return data.toSorted((a, b) => {
+      return b.value - a.value;
+    });
   }
 }
 
