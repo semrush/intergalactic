@@ -1,3 +1,4 @@
+import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
@@ -146,7 +147,7 @@ describe('UsageMeter', () => {
   });
 
   describe('i18n', () => {
-    test.fails.each([
+    test.each([
       { locale: 'en', value: 732, max: 1000 },
       { locale: 'de', value: 732, max: 1000 },
       { locale: 'es', value: 732, max: 10000 },
@@ -154,16 +155,29 @@ describe('UsageMeter', () => {
       { locale: 'ru', value: 33.5, max: 1000 },
       { locale: 'ja', value: 732, max: 1000 },
       { locale: 'tr', value: 732, max: 1000 },
-    ])('Verify counter for locale=$locale with value=$value and max=$max', ({ locale, value, max }) => {
+    ])('Verify numbers are formatted for locale=$locale with value=$value and max=$max', ({ locale, value, max }) => {
       const { container } = render(<UsageMeter value={value} max={max} locale={locale} feature='Audit' />);
       const text = getCounter(container).textContent!;
       const format = new Intl.NumberFormat(locale).format;
 
       expect(text).toContain(format(value));
       expect(text).toContain(format(max));
-      if (locale !== 'en') {
-        expect(text).not.toContain('used');
-      }
+    });
+
+    test('Verify locale from I18nProvider formats numbers', () => {
+      const { container } = render(
+        <I18nProvider value='de'>
+          <UsageMeter value={732} max={1000} feature='Audit' />
+        </I18nProvider>,
+      );
+
+      expect(getCounter(container).textContent).toContain('732 von 1.000');
+    });
+
+    test.fails.each(['de', 'ru', 'ja', 'tr'])('Verify "used" is translated for locale=%s', (locale) => {
+      const { container } = render(<UsageMeter value={732} max={1000} locale={locale} feature='Audit' />);
+
+      expect(getCounter(container).textContent).not.toContain('used');
     });
 
     test('Verify "of" is translated for locale=ru', () => {

@@ -26,10 +26,10 @@ const pairwiseMatrix = [
   { state: 'warning', theme: 'invert', value: 0, feature: LONG_FEATURE },
 ] as const;
 
-/** Decision table: which token colors the fill and the text for each state × theme. The default theme inherits the text color. */
+/** Decision table: which token colors the fill and the text for each state × theme. */
 const colorTable = [
-  { state: 'normal', theme: 'default', fill: '--intergalactic-limits-indicator-value-normal', text: undefined },
-  { state: 'warning', theme: 'default', fill: '--intergalactic-limits-indicator-value-critical', text: undefined },
+  { state: 'normal', theme: 'default', fill: '--intergalactic-limits-indicator-value-normal', text: '--intergalactic-text-primary' },
+  { state: 'warning', theme: 'default', fill: '--intergalactic-limits-indicator-value-critical', text: '--intergalactic-text-primary' },
   { state: 'normal', theme: 'invert', fill: '--intergalactic-limits-indicator-value-normal-invert', text: '--intergalactic-text-primary-invert' },
   { state: 'warning', theme: 'invert', fill: '--intergalactic-limits-indicator-value-critical', text: '--intergalactic-text-primary-invert' },
 ] as const;
@@ -44,6 +44,14 @@ const resolveTokenColor = (page: Page, token: string) =>
 
     return color;
   }, token);
+
+const countTextLines = (locator: ReturnType<Page['locator']>) =>
+  locator.evaluate((element) => {
+    const range = document.createRange();
+    range.selectNodeContents(element);
+
+    return new Set([...range.getClientRects()].map((rect) => Math.round(rect.top))).size;
+  });
 
 const getBox = async (locator: ReturnType<Page['locator']>) => {
   const box = await locator.boundingBox();
@@ -119,8 +127,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.fill(page)).toHaveCSS('background-color', await resolveTokenColor(page, fill));
       });
 
-      await (text ? test.step : test.step.skip)('Verify title and counter colors', async () => {
-        const color = await resolveTokenColor(page, text!);
+      await test.step('Verify title and counter colors', async () => {
+        const color = await resolveTokenColor(page, text);
         await expect(locators.title(page)).toHaveCSS('color', color);
         await expect(locators.counter(page)).toHaveCSS('color', color);
       });
@@ -142,20 +150,18 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       expect(counter.y).toBe(title.y);
     });
 
-    test.fixme('Verify counter stays on one line', {
+    test('Verify counter stays on one line', {
       tag: [TAG.PRIORITY_MEDIUM, ...COMPONENT_TAGS],
     }, async ({ page }) => {
-      // The counter wraps word by word: "732 of / 1000 / used" next to a long title.
       await loadPage(page, USAGE_METER, 'de', { ...figmaCase, feature: LONG_FEATURE });
 
-      const counter = await getBox(locators.counter(page));
-      expect(counter.height).toBe(20);
+      expect(await countTextLines(locators.title(page))).toBeGreaterThan(1);
+      expect(await countTextLines(locators.counter(page))).toBe(1);
     });
 
-    test.fixme('Verify at least 4px gap between title and counter', {
+    test('Verify at least 4px gap between title and counter', {
       tag: [TAG.PRIORITY_MEDIUM, ...COMPONENT_TAGS],
     }, async ({ page }) => {
-      // Only justify-content: space-between separates them, so a long word touches the counter.
       await loadPage(page, USAGE_METER, 'de', { ...figmaCase, feature: 'Seitenzugriffsberechtigungsverwaltung' });
 
       const title = await getBox(locators.title(page));
@@ -166,7 +172,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test.fixme('Verify long word in the title does not overflow the container', {
       tag: [TAG.PRIORITY_MEDIUM, ...COMPONENT_TAGS],
     }, async ({ page }) => {
-      // An unbreakable title pushes the counter past the right edge of the root.
+      // An unbreakable title does not shrink, so the one-line counter is pushed past the right edge of the root.
       await loadPage(page, USAGE_METER, 'de', { ...figmaCase, feature: 'Seitenzugriffsberechtigungsverwaltung' });
 
       const root = await getBox(locators.root(page));
