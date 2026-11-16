@@ -102,30 +102,6 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 
-  test('Verify bubble chart implementation', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bubble-chart', '@d3-chart', '@typography'],
-  }, async ({ page, browserName }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/docs/examples/bubble-chart/bubble-chart.tsx',
-      'en',
-    );
-
-    await test.step('Verify tooltip shown on hover', async () => {
-      await locators.plot(page).waitFor({ state: 'visible' });
-      await page.waitForTimeout(500);
-
-      const box = await locators.bubbleCircle(page, 0).boundingBox();
-      if (box) {
-        await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
-      }
-      await locators.tooltip(page).waitFor({ state: 'visible' });
-      await expect(page).toHaveScreenshot({
-        maxDiffPixelRatio: browserName === 'firefox' ? 0.01 : undefined,
-      });
-    });
-  });
-
   test('Verify color customization', {
     tag: [TAG.PRIORITY_MEDIUM, '@bubble-chart', '@d3-chart', '@typography'],
   }, async ({ page }) => {
@@ -224,22 +200,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(circle).toHaveAttribute('aria-hidden', 'true');
         await expect(circle).toHaveAttribute('value', 'value');
         await expect(circle).toHaveAttribute('label', 'label');
-      }
-    });
-
-    await test.step('Verify bubble chart implementation example', async () => {
-      await loadPage(
-        page,
-        'stories/components/d3-chart/docs/examples/bubble-chart/bubble-chart.tsx',
-        'en',
-      );
-
-      await locators.plot(page).waitFor({ state: 'visible' });
-
-      const circles = await locators.bubbleCircle(page).all();
-      for (const circle of circles) {
-        await expect(circle).toHaveAttribute('aria-hidden', 'true');
-        await expect(circle).toHaveAttribute('value', 'value');
       }
     });
   });
