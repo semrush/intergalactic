@@ -457,7 +457,6 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       accordionRowIndex,
       accordionDuration,
       use,
-      shadowVertical,
       variant,
       flatRows,
       sideIndents,
@@ -603,8 +602,7 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                 accordionRowIndex={accordionRowIndex}
                 rows={rows}
                 aria-hidden={isCellHidden}
-                style={this.cellStyle.get(column.name)}
-                shadowVertical={column.showShadowVertical ? shadowVertical : undefined}
+                // style={this.cellStyle.get(column.name)}
                 data-aria-level={index === 0 ? ariaLevel : undefined}
                 withoutBorder={withoutBorder}
               />
@@ -681,7 +679,6 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
             rawData={rawData}
             aria-level={ariaLevel}
             tableRef={tableRef}
-            shadowVertical={shadowVertical}
             variant={variant}
             limit={limit}
             renderCell={renderCell}

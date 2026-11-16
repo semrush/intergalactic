@@ -306,14 +306,14 @@ const createColumns = (columnCount: number, fixedRight: boolean, metricMode: Met
   const mode = METRIC_MODES.find((item) => item.value === metricMode) ?? METRIC_MODES[0];
   const columns: Column[] = [
     // Empty fixed column for the accordion toggle, as in product tables.
-    { name: 'accordion', children: null, gtcWidth: 'max-content', fixed: 'left' },
-    {
-      name: 'checkbox',
-      children: <HeaderCheckbox />,
-      gtcWidth: CHECKBOX_COLUMN_WIDTH,
-      justifyContent: 'center',
-      fixed: 'left',
-    },
+    // { name: 'accordion', children: null, gtcWidth: 'max-content', fixed: 'left' },
+    // {
+    //   name: 'checkbox',
+    //   children: <HeaderCheckbox />,
+    //   gtcWidth: CHECKBOX_COLUMN_WIDTH,
+    //   justifyContent: 'center',
+    //   fixed: 'left',
+    // },
     {
       name: 'keyword',
       children: 'Keyword',

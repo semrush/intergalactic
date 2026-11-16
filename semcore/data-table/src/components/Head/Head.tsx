@@ -119,18 +119,13 @@ class HeadRoot<
 
   getGroupProps(props: any, index: number) {
     const { columns } = props;
-    const { use, gridAreaGroupMap, children, getFixedStyle, shadowVertical, top, scrollDirection, sort } = this.asProps;
-    const groupColumns = columns ?? [];
-
-    const firstColumn = groupColumns[0];
-    const lastColumn = groupColumns[groupColumns.length - 1];
+    const { use, gridAreaGroupMap, children, getFixedStyle, top, scrollDirection, sort } = this.asProps;
 
     return {
       use,
       gridArea: gridAreaGroupMap.get(index),
       withConfig: children === undefined,
       getFixedStyle,
-      shadowVertical: (firstColumn.showShadowVertical || lastColumn.showShadowVertical) ? shadowVertical : undefined,
       style: this.columnStyle.get(props.name),
       scrollDirection,
       top: top && scrollDirection !== 'horizontal' ? `${top}px` : undefined,
@@ -152,7 +147,6 @@ class HeadRoot<
       selectedRows,
       h,
       onCellClick,
-      shadowVertical,
       scrollDirection,
       headerNodesMap,
     } = this.asProps;
@@ -180,7 +174,6 @@ class HeadRoot<
       gridTemplateAreas,
       h,
       'onClick': onCellClick,
-      'shadowVertical': column.showShadowVertical ? shadowVertical : undefined,
       scrollDirection,
       headerNodesMap,
       'top': top && scrollDirection !== 'horizontal' ? `${top}px` : undefined,

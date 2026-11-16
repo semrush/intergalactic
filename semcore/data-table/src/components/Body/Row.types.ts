@@ -95,7 +95,6 @@ export type DataTableRowProps<Data extends DataTableData, UniqKeyType> = {
   'tableRef': React.RefObject<HTMLDivElement>;
   'onCellClick': DataTableCellProps<Data, UniqKeyType>['onClick'];
   'rawData': DataRowItem[];
-  'shadowVertical'?: '' | 'end' | 'start' | 'median';
   'expandedRows': Set<UniqKeyType>;
   'accordionMode'?: DataTableProps<any, any, any>['accordionMode'];
   'rowsHeightMap': Map<number, [number, number, HTMLElement | null]>;

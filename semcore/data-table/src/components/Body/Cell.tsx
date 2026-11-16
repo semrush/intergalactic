@@ -71,7 +71,6 @@ class CellRoot<Data extends DataTableData, UniqKeyType>
       column,
       columnIndex,
       gridRowIndex,
-      shadowVertical,
     } = this.asProps;
 
     const cell = row[column.name];
@@ -104,7 +103,7 @@ class CellRoot<Data extends DataTableData, UniqKeyType>
         gridArea={gridArea}
         fixed={column.fixed}
         style={style}
-        shadowVertical={shadowVertical}
+        data-cell-name={column.name}
       >
         <SCell
           ref={this.cellRef}
