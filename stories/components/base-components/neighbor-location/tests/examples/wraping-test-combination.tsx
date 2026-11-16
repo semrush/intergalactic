@@ -72,7 +72,7 @@ const Demo = ({ size }: ExampleProps) => {
           <Input size={size} w={200} disabled>
             <Input.Value placeholder='Placeholder' aria-label='disabled input with button' />
           </Input>
-          <Button size={size}>Button</Button>
+          <Button size={size} disabled>Button</Button>
         </NeighborLocation>
 
         <Flex role='group' aria-label='select and button'>
