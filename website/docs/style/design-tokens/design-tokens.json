@@ -3082,6 +3082,7 @@
     "description": "Default primary link color.",
     "components": [
       "button",
+      "d3-chart",
       "link",
       "typography"
     ]
@@ -3092,6 +3093,7 @@
     "description": "Hover and active states for the primary link.",
     "components": [
       "button",
+      "d3-chart",
       "link",
       "typography"
     ]

@@ -233,17 +233,6 @@ class AreaRoot extends Component {
 
     return sstyled(styles)(
       <>
-        {!advancedMode && (
-          <SAreaLine
-            tag='path'
-            aria-hidden
-            clipPath={`url(#${uid}-animation)`}
-            d={d3Line(data)}
-            color={resolveColor(color)}
-            use:duration={`${duration}ms`}
-            transparent={transparent}
-          />
-        )}
         {this.renderForecast()}
         {this.renderPotential()}
         <SArea
@@ -259,6 +248,17 @@ class AreaRoot extends Component {
           onClickCapture={this.handlerOnClick.bind(this)}
           withGradient={patterns ? undefined : withGradient}
         />
+        {!advancedMode && (
+          <SAreaLine
+            tag='path'
+            aria-hidden
+            clipPath={`url(#${uid}-animation)`}
+            d={d3Line(data)}
+            color={resolveColor(color)}
+            use:duration={`${duration}ms`}
+            transparent={transparent}
+          />
+        )}
         {duration && <AnimatedClipPath duration={duration} id={uid} width={0} height={size[1]} />}
         {duration && <AnimatedClipPath duration={duration} id={`${uid}-animation`} width={0} height={size[1]} />}
         {patterns && (
