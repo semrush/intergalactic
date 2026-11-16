@@ -4,7 +4,7 @@ import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { afterEach, describe, expect, test } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
-import { UsageMeter } from '../src';
+import UsageMeter from '../src/inner-components/UsageMeter/UsageMeter';
 
 const getMeter = (container: HTMLElement) => {
   const meter = container.querySelector<HTMLElement>('[role="meter"]');
