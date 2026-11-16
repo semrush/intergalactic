@@ -47,17 +47,23 @@ SItem {
       grid-template-rows: auto;
     }
 
+    &[tabIndex='0']::before {
+      content: '';
+      opacity: 0;
+      position: absolute;
+      inset: calc(-1 * var(--intergalactic-spacing-2x, 8px));
+      background-color: var(--intergalactic-chart-grid-bar-hover, oklch(0.375 0.09 242.7 / 0.05));
+      border-radius: var(--intergalactic-rounded-medium, 6px);
+      z-index: -1;
+      pointer-events: none;
+    }
+
     &[tabIndex='0']:hover {
       cursor: pointer;
       color: var(--intergalactic-text-link-primary-hover-active, oklch(0.23 0.009 245));
 
       &::before {
-        content: '';
-        position: absolute;
-        inset: calc(-1 * var(--intergalactic-spacing-2x, 8px));
-        background-color: var(--intergalactic-chart-grid-bar-hover, oklch(0.375 0.09 242.7 / 0.05));
-        border-radius: var(--intergalactic-rounded-medium, 6px);
-        z-index: -1;
+        opacity: 1;
       }
     }
   }
