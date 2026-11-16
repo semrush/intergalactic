@@ -111,7 +111,3 @@ SAdditionalLabel[size='l']::before {
 SAdditionalLabel[size='m']::before {
   margin-top: 8px;
 }
-
-SPatternSymbol {
-  transform: scale(0.8);
-}
