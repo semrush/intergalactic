@@ -147,6 +147,7 @@ SInput[state='normal'] {
 
   &:has(SValue:focus-visible) SOutline {
     @mixin focus-outline-mixin {
+      outline-width: 1px;
       outline-offset: 0;
       transition-property: outline-color, outline-width;
     }
@@ -161,6 +162,7 @@ SInput[state='valid'] {
 
   &:has(SValue:focus-visible) SOutline {
     @mixin focus-outline-mixin {
+      outline-width: 1px;
       outline-offset: 0;
       transition-property: outline-color, outline-width;
     }
@@ -176,6 +178,7 @@ SInput[state='invalid'] {
 
   &:has(SValue:focus-visible) SOutline {
     @mixin focus-outline-mixin {
+      outline-width: 1px;
       outline-offset: 0;
       transition-property: outline-color, outline-width;
     }

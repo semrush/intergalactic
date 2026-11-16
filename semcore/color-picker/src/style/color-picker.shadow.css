@@ -110,6 +110,7 @@ SDefaultTrigger {
   cursor: pointer;
   gap: var(--intergalactic-spacing-1-5x, 6px);
   border: 0;
+  border-radius: var(--intergalactic-rounded-extra-small, 2px);
   background: transparent;
   padding: 0;
 }
