@@ -225,8 +225,8 @@ function BubbleCircle(props) {
       ? 'right'
       : 'left';
   const labelDistance = {
-    right: xScale(circleData[x]) + offset[0] - z(circleData[value]),
-    left: xScale(circleData[x]) + offset[0] + z(circleData[value]),
+    right: xScale(circleData[x]) + offset[0] - z(circleData[value]) - 4,
+    left: xScale(circleData[x]) + offset[0] + z(circleData[value]) + 4,
   }[labelPosition];
 
   const colorValue = resolveColor(circleData[color] ?? color);
