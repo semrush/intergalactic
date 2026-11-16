@@ -1,5 +1,6 @@
 import ShowYesM from '@semcore/icon/ShowYes/m';
 import { Box, Flex, NeighborLocation } from '@semcore/ui/base-components';
+import { ButtonTrigger } from '@semcore/ui/base-trigger';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import { DatePicker } from '@semcore/ui/date-picker';
 import Input from '@semcore/ui/input';
@@ -110,8 +111,70 @@ const Demo = ({ size }: ExampleProps) => {
         </NeighborLocation>
       </Flex>
 
+      <Flex direction='column' gap={4} role='group' aria-label='Trigger compositions'>
+        <Text size={300} bold>Trigger compositions</Text>
+
+        <NeighborLocation tag={Flex} role='group' aria-label='trigger and button'>
+          <ButtonTrigger size={size} w={140}>Option 1</ButtonTrigger>
+          <Button size={size}>Button</Button>
+        </NeighborLocation>
+
+        <NeighborLocation tag={Flex} role='group' aria-label='trigger and primary button'>
+          <ButtonTrigger size={size} w={140}>Option 1</ButtonTrigger>
+          <Button size={size} use='primary'>Button</Button>
+        </NeighborLocation>
+
+        <NeighborLocation tag={Flex} role='group' aria-label='input and trigger'>
+          <Input size={size} w={200}>
+            <Input.Value placeholder='Placeholder' aria-label='input with trigger' />
+          </Input>
+          <ButtonTrigger size={size} w={140}>Option 1</ButtonTrigger>
+        </NeighborLocation>
+
+        <NeighborLocation tag={Flex} role='group' aria-label='input, trigger and button'>
+          <Input size={size} w={200}>
+            <Input.Value placeholder='Placeholder' aria-label='input with trigger and button' />
+          </Input>
+          <ButtonTrigger size={size} w={140}>Option 1</ButtonTrigger>
+          <Button size={size}>Button</Button>
+        </NeighborLocation>
+
+        <NeighborLocation tag={Flex} role='group' aria-label='input and two triggers'>
+          <Input size={size} w={200}>
+            <Input.Value placeholder='Placeholder' aria-label='input with two triggers' />
+          </Input>
+          <ButtonTrigger size={size} w={140}>Option 1</ButtonTrigger>
+          <ButtonTrigger size={size} w={140}>Option 2</ButtonTrigger>
+        </NeighborLocation>
+
+        <NeighborLocation tag={Flex} role='group' aria-label='input, trigger and two button'>
+          <Input size={size} w={200}>
+            <Input.Value placeholder='Placeholder' aria-label='input with trigger and two button' />
+          </Input>
+          <ButtonTrigger size={size} w={140}>Option 1</ButtonTrigger>
+          <Button size={size}>Apply</Button>
+          <Button size={size}>Reset</Button>
+        </NeighborLocation>
+
+        <NeighborLocation tag={Flex} role='group' aria-label='grouped triggers'>
+          <ButtonTrigger size={size} w={140}>First</ButtonTrigger>
+          <ButtonTrigger size={size} w={140}>Middle</ButtonTrigger>
+          <ButtonTrigger size={size} w={140}>Last</ButtonTrigger>
+        </NeighborLocation>
+
+        <NeighborLocation tag={Flex} role='group' aria-label='invalid trigger and button'>
+          <ButtonTrigger size={size} w={140} state='invalid'>Option 1</ButtonTrigger>
+          <Button size={size}>Button</Button>
+        </NeighborLocation>
+
+        <NeighborLocation tag={Flex} role='group' aria-label='disabled trigger and button'>
+          <ButtonTrigger size={size} w={140} disabled>Option 1</ButtonTrigger>
+          <Button size={size} disabled>Button</Button>
+        </NeighborLocation>
+      </Flex>
+
       <Flex direction='column' gap={4} role='group' aria-label='Smoke compositions'>
-        <Text size={300} bold>Smoke: button before input</Text>
+        <Text size={300} bold>Smoke: button before control</Text>
 
         <NeighborLocation tag={Flex} role='group' aria-label='button and input'>
           <Button size={size}>Button</Button>
@@ -126,6 +189,13 @@ const Demo = ({ size }: ExampleProps) => {
             <Input.Value placeholder='Placeholder' aria-label='input between buttons' />
           </Input>
           <Button size={size}>Right</Button>
+        </NeighborLocation>
+
+        <NeighborLocation tag={Flex} role='group' aria-label='button and trigger'>
+          <Button size={size}>Button</Button>
+          <Input size={size} w={200}>
+            <Input.Value placeholder='Placeholder' aria-label='input between buttons' />
+          </Input>
         </NeighborLocation>
       </Flex>
     </Flex>
