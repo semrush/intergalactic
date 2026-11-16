@@ -80,7 +80,7 @@
     "react-dom": "16.8 - 19",
     "@semcore/icon": "^18.0.1",
     "@semcore/illustration": "^18.0.0",
-    "@semcore/flags": "^18.0.0"
+    "@semcore/flags": "^18.1.0"
   },
   "devDependencies": {
     "@semcore/continuous-delivery": "workspace:*",
