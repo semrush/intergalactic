@@ -4,6 +4,7 @@ SFlags {
   width: 16px;
   height: 16px;
   clip-path: inset(3px 1px 2px 1px round 1px);
+  background-color: var(--intergalactic-bg-secondary-neutral-active, oklch(0.96 0.005 232.5));
 
   &::after {
     content: '';
@@ -16,7 +17,6 @@ SFlags {
     height: 11px;
     border: 0.5px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
     border-radius: 1px;
-    background-color: var(--intergalactic-bg-secondary-neutral-active, oklch(0.96 0.005 232.5));
   }
 }
 
