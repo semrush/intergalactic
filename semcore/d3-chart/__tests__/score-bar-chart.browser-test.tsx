@@ -12,6 +12,8 @@ const locators = {
   bars: (page: Page) => page.locator('[data-ui-name="Chart.ScoreBar"] [aria-hidden="true"]'),
   tooltip: (page: Page) => page.locator('[data-ui-name="Tooltip"]'),
   clicked: (page: Page) => page.getByText(/^Clicked:/),
+  rowControl: (page: Page, role: 'link' | 'button', category: string) =>
+    locators.item(page, category).getByRole(role),
 };
 
 const TAGS = ['@score-bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'];
@@ -32,7 +34,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     const name = `${props.mode}${props.withLinks ? '-links' : ''}`;
 
     test(`Verify score bar chart in ${props.mode} mode${props.withLinks ? ' with links' : ''}`, {
-      tag: [priority, TAG.MOUSE, ...TAGS, ...(props.withLinks ? ['@link'] : [])],
+      tag: [priority, TAG.MOUSE, ...TAGS],
     }, async ({ page }) => {
       await loadPage(page, SCORE_BAR_STORY, 'en', { ...props, duration: 0 });
       await expect(locators.items(page)).toHaveCount(5);
@@ -155,30 +157,43 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await expect(locators.clicked(page)).toHaveText('Clicked: Open graph, index 1');
   });
 
-  test('Verify links render per row and a link click does not trigger onClickItem', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, ...TAGS, '@link'],
-  }, async ({ page }) => {
-    await loadPage(page, SCORE_BAR_STORY, 'en', { duration: 0, withLinks: true, clickable: true });
+  const rowRoleCases = [
+    { name: 'static rows', props: {}, links: 0, buttons: 0 },
+    { name: 'onClickItem', props: { clickable: true }, links: 0, buttons: 5 },
+    { name: 'href', props: { withLinks: true }, links: 5, buttons: 0 },
+    { name: 'href and onClickItem', props: { withLinks: true, clickable: true }, links: 5, buttons: 0 },
+  ];
 
-    await test.step('Verify every value is a link', async () => {
-      await expect(page.getByRole('link')).toHaveCount(5);
-    });
+  rowRoleCases.forEach((c) => {
+    test(`Verify the row role with ${c.name}`, {
+      tag: [TAG.PRIORITY_HIGH, ...TAGS],
+    }, async ({ page }) => {
+      await loadPage(page, SCORE_BAR_STORY, 'en', { duration: 0, ...c.props });
 
-    await test.step('Verify clicking a link leaves onClickItem untouched', async () => {
-      await page.getByRole('link', { name: '9,650' }).click();
-      await expect(locators.clicked(page)).toHaveText('Clicked: —');
+      await expect(locators.items(page)).toHaveCount(5);
+      await expect(page.getByRole('link')).toHaveCount(c.links);
+      await expect(page.getByRole('button')).toHaveCount(c.buttons);
     });
   });
 
+  test('Verify a row link is named by the whole row', {
+    tag: [TAG.PRIORITY_MEDIUM, ...TAGS],
+  }, async ({ page }) => {
+    await loadPage(page, SCORE_BAR_STORY, 'en', { duration: 0, withLinks: true });
+
+    await expect(locators.rowControl(page, 'link', 'Open graph')).toHaveAccessibleName('Open graph 6% 9,650');
+    await expect(locators.rowControl(page, 'link', 'Open graph')).toHaveAttribute('href', '#');
+  });
+
   test('Verify links are reachable with Tab in row order', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, ...TAGS, '@link'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, ...TAGS],
   }, async ({ page }) => {
     await loadPage(page, SCORE_BAR_STORY, 'en', { duration: 0, withLinks: true });
 
     await page.keyboard.press('Tab');
-    await expect(page.getByRole('link', { name: '0', exact: true })).toBeFocused();
+    await expect(locators.rowControl(page, 'link', 'Schema.org (Microdata)')).toBeFocused();
     await page.keyboard.press('Tab');
-    await expect(page.getByRole('link', { name: '9,650' })).toBeFocused();
+    await expect(locators.rowControl(page, 'link', 'Open graph')).toBeFocused();
   });
 
   test('Verify valueFormatter and titleFormatter format the row', {
@@ -242,15 +257,36 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test.fixme('Verify clickable rows are reachable and activated with the keyboard', {
+  test('Verify clickable rows are reachable and activated with the keyboard', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, ...TAGS],
-    annotation: { type: 'issue', description: 'With onClickItem the rows get no tabindex or role, so they are mouse-only' },
   }, async ({ page }) => {
     await loadPage(page, SCORE_BAR_STORY, 'en', { duration: 0, clickable: true });
 
+    await test.step('Verify Enter activates the first row', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.rowControl(page, 'button', 'Schema.org (Microdata)')).toBeFocused();
+      await page.keyboard.press('Enter');
+      await expect(locators.clicked(page)).toHaveText('Clicked: Schema.org (Microdata), index 0');
+    });
+
+    await test.step('Verify Space activates the next row', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.rowControl(page, 'button', 'Open graph')).toBeFocused();
+      await page.keyboard.press('Space');
+      await expect(locators.clicked(page)).toHaveText('Clicked: Open graph, index 1');
+    });
+  });
+
+  test('Verify the focused row shows the keyboard focus outline', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, ...TAGS],
+  }, async ({ page }) => {
+    await loadPage(page, SCORE_BAR_STORY, 'en', { duration: 0, withLinks: true });
+
     await page.keyboard.press('Tab');
-    await expect(locators.items(page).first()).toBeFocused();
-    await page.keyboard.press('Enter');
-    await expect(locators.clicked(page)).toHaveText('Clicked: Schema.org (Microdata), index 0');
+    const row = locators.rowControl(page, 'link', 'Schema.org (Microdata)');
+    await expect(row).toBeFocused();
+    await expect(row).toHaveCSS('outline-style', 'solid');
+    await expect(row).toHaveCSS('outline-width', '2px');
+    await expect(row).toHaveCSS('outline-offset', '2px');
   });
 });

@@ -9,6 +9,12 @@ test.describe(`@d3-chart @score-bar-chart ${TAG.ACCESSIBILITY}`, () => {
     expect(violations).toEqual([]);
   });
 
+  test('compact-bar', async ({ page }) => {
+    await loadPage(page, 'stories/components/d3-chart/docs/examples/score-bar-chart/compact-bar.tsx', 'en');
+    const violations = await getAccessibilityViolations({ page });
+    expect(violations).toEqual([]);
+  });
+
   test('links', async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/score-bar-chart/links.tsx', 'en');
     const violations = await getAccessibilityViolations({ page });
