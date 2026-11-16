@@ -185,6 +185,27 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await expect(locators.rowControl(page, 'link', 'Open graph')).toHaveAttribute('href', '#');
   });
 
+  test('Verify a click on the bar of a link row follows the link', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, ...TAGS],
+  }, async ({ page }) => {
+    await loadPage(page, SCORE_BAR_STORY, 'en', { duration: 0, withLinks: true });
+
+    const row = locators.rowControl(page, 'link', 'Open graph');
+    await row.locator('[aria-hidden="true"]').click();
+    await expect(page).toHaveURL(/#$/);
+  });
+
+  test('Verify Enter on a focused link row follows the link', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, ...TAGS],
+  }, async ({ page }) => {
+    await loadPage(page, SCORE_BAR_STORY, 'en', { duration: 0, withLinks: true });
+
+    await page.keyboard.press('Tab');
+    await expect(locators.rowControl(page, 'link', 'Schema.org (Microdata)')).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(page).toHaveURL(/#$/);
+  });
+
   test('Verify links are reachable with Tab in row order', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, ...TAGS],
   }, async ({ page }) => {
