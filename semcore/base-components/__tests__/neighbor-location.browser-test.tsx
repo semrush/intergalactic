@@ -9,6 +9,7 @@ const componentTags = [
   '@neighbor-location',
   '@button',
   '@button-link',
+  '@base-trigger',
   '@input',
   '@input-number',
   '@select',
@@ -30,6 +31,14 @@ test.describe(`${TAG.VISUAL}`, () => {
       await loadPage(page, storyPath, 'en', { size });
 
       await expect(page.getByRole('group', { name: 'Product compositions' })).toHaveScreenshot();
+    });
+
+    test(`Verify trigger compositions size=${size}`, {
+      tag: [TAG.PRIORITY_HIGH, ...componentTags],
+    }, async ({ page }) => {
+      await loadPage(page, storyPath, 'en', { size });
+
+      await expect(page.getByRole('group', { name: 'Trigger compositions' })).toHaveScreenshot();
     });
   });
 
@@ -89,6 +98,53 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify last button', async () => {
       await expect(reset).toHaveCSS('border-left-width', '0px');
       await expect(reset).toHaveCSS('border-right-width', '1px');
+    });
+  });
+
+  test('Verify NeighborLocation squares inner corners of grouped triggers', {
+    tag: [TAG.PRIORITY_HIGH, ...componentTags],
+  }, async ({ page }) => {
+    await loadPage(page, storyPath, 'en', { size: 'm' });
+
+    const triggers = page.getByRole('group', { name: 'grouped triggers' }).getByRole('button');
+    await expect(triggers).toHaveCount(3);
+
+    await test.step('Verify first trigger', async () => {
+      await expect(triggers.nth(0)).toHaveCSS('border-top-left-radius', '6px');
+      await expect(triggers.nth(0)).toHaveCSS('border-top-right-radius', '0px');
+    });
+
+    await test.step('Verify middle trigger', async () => {
+      await expect(triggers.nth(1)).toHaveCSS('border-top-left-radius', '0px');
+      await expect(triggers.nth(1)).toHaveCSS('border-top-right-radius', '0px');
+      await expect(triggers.nth(1)).toHaveCSS('margin-left', '-1px');
+    });
+
+    await test.step('Verify last trigger', async () => {
+      await expect(triggers.nth(2)).toHaveCSS('border-top-left-radius', '0px');
+      await expect(triggers.nth(2)).toHaveCSS('border-top-right-radius', '6px');
+      await expect(triggers.nth(2)).toHaveCSS('margin-left', '-1px');
+    });
+  });
+
+  test('Verify button after trigger does not draw a border on the trigger side', {
+    tag: [TAG.PRIORITY_HIGH, ...componentTags],
+  }, async ({ page }) => {
+    await loadPage(page, storyPath, 'en', { size: 'm' });
+
+    const group = page.getByRole('group', { name: 'trigger and button', exact: true });
+    const trigger = group.getByRole('button', { name: 'Option 1' });
+    const button = group.getByRole('button', { name: 'Button' });
+
+    await test.step('Verify trigger', async () => {
+      await expect(trigger).toHaveCSS('border-top-right-radius', '0px');
+      await expect(trigger).toHaveCSS('border-right-width', '1px');
+    });
+
+    await test.step('Verify button', async () => {
+      await expect(button).toHaveCSS('border-top-left-radius', '0px');
+      await expect(button).toHaveCSS('border-left-width', '0px');
+      await expect(button).toHaveCSS('border-right-width', '1px');
     });
   });
 });
