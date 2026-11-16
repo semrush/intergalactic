@@ -862,6 +862,38 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
+  // The highlight is 20% of the bar, at least 20px, and never lower than the bar bottom.
+  [120, 300, 800].forEach((plotHeight) => {
+    test(`Verify highlight size follows its bar at plotHeight ${plotHeight}`, {
+      tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+    }, async ({ page }) => {
+      await loadPage(page, BAR_STORY, 'en', { dataType: 'none', highlightDots: 'good', plotHeight, duration: 0 });
+
+      await expect(locators.groupBarBar(page)).toHaveCount(5);
+      const pairs = await locators.groupBarBar(page).evaluateAll((elements) =>
+        elements
+          .filter((bar) => bar.previousElementSibling?.getAttribute('mask')?.endsWith('-fade-mask)'))
+          .map((bar) => {
+            const box = (element: Element) => {
+              const { x, y, width, height } = (element as SVGGraphicsElement).getBBox();
+              return { x, y, width, height };
+            };
+            return { bar: box(bar), highlight: box(bar.previousElementSibling!) };
+          }),
+      );
+      expect(pairs).toHaveLength(3);
+
+      for (const { bar, highlight } of pairs) {
+        const expectedHeight = Math.min(Math.max(bar.height * 0.2, 20), bar.height + 4);
+
+        expect.soft(highlight.x).toBeCloseTo(bar.x - 3, 1);
+        expect.soft(highlight.width).toBeCloseTo(bar.width + 6, 1);
+        expect.soft(highlight.y).toBeCloseTo(bar.y - 4, 1);
+        expect.soft(highlight.height).toBeCloseTo(expectedHeight, 1);
+      }
+    });
+  });
+
   test('Verify highlights use the mask of their own chart when an earlier chart is in a hidden tab', {
     tag: [TAG.PRIORITY_LOW, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@tab-line'],
   }, async ({ page }) => {

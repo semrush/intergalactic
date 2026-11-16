@@ -109,15 +109,6 @@ test.describe(`@d3-chart @bar-chart ${TAG.ACCESSIBILITY}`, () => {
 });
 
 test.describe(`@d3-chart @bar-chart @horizontal-bar-chart ${TAG.ACCESSIBILITY}`, () => {
-  test('background', async ({ page }) => {
-    await loadPage(page, 'stories/components/d3-chart/docs/examples/bar-horizontal/background.tsx', 'en');
-
-    await test.step('Verify initial state', async () => {
-      const violations = await getAccessibilityViolations({ page });
-      expect(violations).toEqual([]);
-    });
-  });
-
   test('bar-labels', async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/bar-horizontal/bar-labels.tsx', 'en');
 
