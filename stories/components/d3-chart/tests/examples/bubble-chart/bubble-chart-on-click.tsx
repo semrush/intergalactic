@@ -1,4 +1,6 @@
+import { Flex } from '@semcore/ui/base-components';
 import { Chart } from '@semcore/ui/d3-chart';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type BaseExampleProps = {
@@ -6,11 +8,17 @@ type BaseExampleProps = {
 };
 const Demo = (props: BaseExampleProps) => {
   const { showLegend } = props;
-  const onClickHandler = () => {
-    console.log('Clicked bubble chart');
+  const [clicked, setClicked] = React.useState<number | null>(null);
+
+  // `onClickBubble` should return the index in `data` as passed by the consumer,
+  // so the label printed below must match the label of the clicked bubble.
+  const onClickHandler = (index: number) => {
+    console.log('Clicked bubble chart', index, data[index]?.label);
+    setClicked(index);
   };
+
   return (
-    <>
+    <Flex direction='column' gap={2}>
       { /* @ts-ignore: the value is not statically known, but it's valid at runtime */}
       <Chart.Bubble
         data={data}
@@ -20,7 +28,12 @@ const Demo = (props: BaseExampleProps) => {
         aria-label='Bubble chart'
         showLegend={showLegend}
       />
-    </>
+      <Text data-testid='clicked-bubble'>
+        {clicked === null
+          ? 'Click a bubble'
+          : `onClickBubble index: ${clicked}, data[index].label: ${data[clicked]?.label}`}
+      </Text>
+    </Flex>
   );
 };
 
