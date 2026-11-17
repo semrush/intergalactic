@@ -1,6 +1,6 @@
 import { Box } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
-import type { NSLimits, NSLimitsUsageMeter } from '@semcore/ui/limits';
+import type { NSLimits } from '@semcore/ui/limits';
 import { LimitsNotice } from '@semcore/ui/limits';
 import Link from '@semcore/ui/link';
 import React from 'react';
@@ -12,7 +12,7 @@ type Props = Pick<NSLimits.Notice.Props, 'title' | 'text' | 'theme' | 'closable'
   showUsage: boolean;
   usageValue: number;
   usageFeature: string;
-  usageState: NSLimitsUsageMeter.Props['state'];
+  usageState: NonNullable<NSLimits.Notice.Props['usage']>['state'];
 };
 
 const Demo = (props: Props) => {

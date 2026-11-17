@@ -1,0 +1,29 @@
+SDropdownNotice {
+  display: flex;
+  flex-direction: column;
+  gap: var(--intergalactic-spacing-2x, 8px);
+  padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px);
+  background-color: var(--intergalactic-limits-bg-accent, oklch(0.93 0.019 185));
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+SDropdownNoticeBody {
+  flex-direction: column;
+  gap: var(--intergalactic-spacing-1x, 4px);
+}
+
+SDropdownNoticeTitle,
+SDropdownNoticeText {
+  color: var(--intergalactic-text-primary);
+}
+
+SDropdownNoticeActions {
+  align-items: center;
+  gap: var(--intergalactic-spacing-2x, 8px);
+}
+
+SDropdownNoticeFooter {
+  flex-direction: column;
+  gap: var(--intergalactic-spacing-3x, 12px);
+}
