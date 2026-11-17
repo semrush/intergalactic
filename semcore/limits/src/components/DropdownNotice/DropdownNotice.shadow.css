@@ -15,7 +15,7 @@ SDropdownNoticeBody {
 
 SDropdownNoticeTitle,
 SDropdownNoticeText {
-  color: var(--intergalactic-text-primary);
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
 }
 
 SDropdownNoticeActions {

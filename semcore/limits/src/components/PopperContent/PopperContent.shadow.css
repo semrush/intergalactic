@@ -7,7 +7,7 @@ SPopper {
 }
 
 SPopperHeader {
-  border-bottom: 1px solid var(--intergalactic-border-primary);
+  border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
   padding-bottom: var(--intergalactic-spacing-5x, 20px);
 }
 
@@ -24,7 +24,7 @@ SPopperContent {
 
 SPopperTitle,
 SPopperText {
-  color: var(--intergalactic-text-primary);
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
 }
 
 SPopperUsageList {
