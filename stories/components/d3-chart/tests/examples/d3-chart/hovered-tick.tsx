@@ -9,6 +9,12 @@ type HoveredTickStoryProps = {
   hideTickHover?: boolean;
   /** Hides the whole hover line / hover rect. */
   hideHoverLine?: boolean;
+  /**
+   * `Line` only: passes `x` as numeric strings (`'0'`, `'1'`, …), as data often comes from a JSON
+   * API. d3 scales coerce them, so the line and dots stay in place; the hover line and its tick
+   * pill should follow the hovered point the same way.
+   */
+  numericStringX?: boolean;
   width?: number;
   height?: number;
 };
@@ -31,6 +37,7 @@ const Demo = (props: HoveredTickStoryProps) => {
     hoverType = 'Line',
     hideTickHover = false,
     hideHoverLine = false,
+    numericStringX = false,
     width = 500,
     height = 300,
   } = props;
@@ -69,8 +76,12 @@ const Demo = (props: HoveredTickStoryProps) => {
     .range([MARGIN, width - MARGIN])
     .domain(minMax(linearData, 'x'));
 
+  const lineData = numericStringX
+    ? linearData.map((item) => ({ ...item, x: String(item.x) }))
+    : linearData;
+
   return (
-    <Plot data={linearData} scale={[xScale, yScale]} width={width} height={height}>
+    <Plot data={lineData} scale={[xScale, yScale]} width={width} height={height}>
       <YAxis>
         <YAxis.Ticks />
         <YAxis.Grid />
@@ -90,6 +101,7 @@ export const defaultProps: HoveredTickStoryProps = {
   hoverType: 'Line',
   hideTickHover: false,
   hideHoverLine: false,
+  numericStringX: false,
   width: 500,
   height: 300,
 };
