@@ -1,4 +1,5 @@
 import { Component, sstyled } from '@semcore/core';
+import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import React from 'react';
 
 import style from './hover.shadow.css';
@@ -17,9 +18,9 @@ class HoverLineComponent extends Component<HoverLineProps> {
 
   Element!: React.FC<{ children?: React.ReactNode; render: string }>;
 
-  isEquals(a: number | Date, b: number | Date) {
-    if (typeof a === 'number' && typeof b === 'number') {
-      return a === b;
+  isEquals(a: ReturnType<typeof this.getValue>, b: ReturnType<typeof this.getValue>) {
+    if (a === b) {
+      return true;
     }
 
     if (a instanceof Date && b instanceof Date) {
@@ -27,6 +28,27 @@ class HoverLineComponent extends Component<HoverLineProps> {
     }
 
     return false;
+  }
+
+  getValue(index: number | null, key: string | symbol) {
+    const { data } = this.asProps;
+    if (typeof key === 'string') {
+      const value = index !== null ? data[index]?.[key] : undefined;
+
+      return value;
+    }
+
+    return undefined;
+  }
+
+  getInitPoint(scale: ScaleBand<any> | ScaleTime<any, any> | ScaleLinear<any, any>, value: ReturnType<typeof this.getValue>) {
+    if (typeof value === 'string' || typeof value === 'number' || value instanceof Date) {
+      const initPoint = value !== undefined ? scaleOfBandwidth(scale, value) : undefined;
+
+      return initPoint;
+    }
+
+    return undefined;
   }
 
   render() {
@@ -37,13 +59,11 @@ class HoverLineComponent extends Component<HoverLineProps> {
 
     const xRange = xScale.range();
     const yRange = yScale.range();
-    const xRawValue = xIndex !== null ? data[xIndex]?.[x] : undefined;
-    const yRawValue = yIndex !== null ? data[yIndex]?.[y] : undefined;
-    const xValue = typeof xRawValue === 'number' || xRawValue instanceof Date ? xRawValue : undefined;
-    const yValue = typeof yRawValue === 'number' || yRawValue instanceof Date ? yRawValue : undefined;
+    const xValue = this.getValue(xIndex, x);
+    const yValue = this.getValue(yIndex, y);
 
-    const x1 = xValue !== undefined ? scaleOfBandwidth(xScale, xValue) : undefined;
-    const y1 = yValue !== undefined ? scaleOfBandwidth(yScale, yValue) : undefined;
+    const x1 = this.getInitPoint(xScale, xValue);
+    const y1 = this.getInitPoint(yScale, yValue);
 
     const xTicks = xScale.domain?.() ?? [];
     const yTicks = yScale.domain?.() ?? [];
