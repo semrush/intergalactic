@@ -13,6 +13,11 @@ export const locators = {
     const base = page.locator('g');
     return typeof index === 'number' ? base.nth(index) : base;
   },
+  // Bubbles are drawn sorted by value, so a bubble group is found by its label, not by position.
+  bubbleGroup: (page: Page, label: string) =>
+    page
+      .locator('g:has(> circle[data-ui-name="Bubble.Circle"])')
+      .filter({ has: page.getByText(label, { exact: true }) }),
   legend: (page: Page) => page.getByLabel('Chart legend'),
   legendItem: (page: Page, text?: string) =>
     text ? page.getByText(text) : page.locator('[data-ui-name="Legend.Item"]'),
@@ -141,7 +146,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await test.step('Verify first item hidden after unchecking', async () => {
       const firstCheckbox = locators.checkbox(page, 0);
-      const firstGroup = locators.group(page, 0);
+      const firstGroup = locators.bubbleGroup(page, 'label 1');
 
       await expect(firstCheckbox).toBeChecked();
       await expect(firstGroup).toBeVisible();
