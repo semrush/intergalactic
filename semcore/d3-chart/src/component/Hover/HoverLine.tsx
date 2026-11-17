@@ -42,8 +42,8 @@ class HoverLineComponent extends Component<HoverLineProps> {
     const xValue = typeof xRawValue === 'number' || xRawValue instanceof Date ? xRawValue : undefined;
     const yValue = typeof yRawValue === 'number' || yRawValue instanceof Date ? yRawValue : undefined;
 
-    const x1 = xValue ? scaleOfBandwidth(xScale, xValue) : undefined;
-    const y1 = yValue ? scaleOfBandwidth(yScale, yValue) : undefined;
+    const x1 = xValue !== undefined ? scaleOfBandwidth(xScale, xValue) : undefined;
+    const y1 = yValue !== undefined ? scaleOfBandwidth(yScale, yValue) : undefined;
 
     const xTicks = xScale.domain?.() ?? [];
     const yTicks = yScale.domain?.() ?? [];
