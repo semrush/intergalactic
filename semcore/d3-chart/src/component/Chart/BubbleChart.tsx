@@ -13,6 +13,10 @@ import type { BubbleChartData, BubbleChartProps, BubbleChartType, BubbleChartDef
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 
+const uniqKey = Symbol('uniqKey');
+
+type BubbleChartInnerData = Array<BubbleChartData[number] & { [uniqKey]: string }>;
+
 class BubbleChartComponent extends AbstractChart<
   BubbleChartData,
   BubbleChartProps,
@@ -39,7 +43,7 @@ class BubbleChartComponent extends AbstractChart<
 
   protected plotPadding = 8;
 
-  private cachedData: BubbleChartData = [];
+  private cachedData: BubbleChartInnerData = [];
 
   constructor(props: BubbleChartProps) {
     super(props);
@@ -129,7 +133,7 @@ class BubbleChartComponent extends AbstractChart<
     };
   }
 
-  override get data() {
+  override get data(): BubbleChartInnerData {
     return this.cachedData;
   }
 
@@ -140,9 +144,10 @@ class BubbleChartComponent extends AbstractChart<
     return (
       <>
         <Bubble onClick={onClickBubble} x='x' y='y' value='value' color='color' label='label' formatValue={[axisXValueFormatter, axisYValueFormatter]}>
-          {dataDefinitions.map(({ checked, id }, index) => {
+          {this.data.map((item, index) => {
+            const dataDefinition = dataDefinitions.find((dataDef) => dataDef.id === item[uniqKey]);
             return (
-              <Bubble.Circle visible={checked} key={id} uniq={id} index={index} />
+              <Bubble.Circle visible={dataDefinition?.checked} key={index} uniq={index} index={index} />
             );
           })}
         </Bubble>
@@ -241,9 +246,24 @@ class BubbleChartComponent extends AbstractChart<
   }
 
   private getSortedData(data: BubbleChartData) {
-    return data.toSorted((a, b) => {
+    const sortedData = data.toSorted((a, b) => {
       return b.value - a.value;
     });
+
+    const result: BubbleChartInnerData = [];
+
+    sortedData.forEach((dataItem) => {
+      const initIndex = data.findIndex((item) => {
+        return item.x === dataItem.x && item.y === dataItem.y && item.value === dataItem.value;
+      });
+
+      result.push({
+        ...dataItem,
+        [uniqKey]: initIndex.toString(),
+      });
+    });
+
+    return result;
   }
 }
 
