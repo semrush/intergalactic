@@ -143,11 +143,21 @@ class BubbleChartComponent extends AbstractChart<
 
     return (
       <>
-        <Bubble onClick={onClickBubble} x='x' y='y' value='value' color='color' label='label' formatValue={[axisXValueFormatter, axisYValueFormatter]}>
+        <Bubble x='x' y='y' value='value' color='color' label='label' formatValue={[axisXValueFormatter, axisYValueFormatter]}>
           {this.data.map((item, index) => {
             const dataDefinition = dataDefinitions.find((dataDef) => dataDef.id === item[uniqKey]);
+
+            if (!dataDefinition) {
+              return null;
+            }
+
             return (
-              <Bubble.Circle visible={dataDefinition?.checked} key={index} uniq={index} index={index} />
+              <Bubble.Circle
+                visible={dataDefinition.checked}
+                key={dataDefinition.id}
+                index={index}
+                onClick={(e: React.SyntheticEvent) => onClickBubble?.(Number(dataDefinition.id), e)}
+              />
             );
           })}
         </Bubble>
