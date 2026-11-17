@@ -1977,7 +1977,7 @@ importers:
         specifier: ^18.1.0
         version: link:../feedback-form
       '@semcore/flags':
-        specifier: ^18.0.0
+        specifier: ^18.1.0
         version: link:../flags
       '@semcore/fullscreen-modal':
         specifier: ^18.0.1
