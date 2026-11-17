@@ -737,7 +737,6 @@ export const PatternFill = ({
         viewBox={fill.viewBox}
         patternUnits='userSpaceOnUse'
       >
-        <rect width='100%' height='100%' fill='#FFF' />
         {fill.children}
       </pattern>
     );
