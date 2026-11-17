@@ -13,6 +13,6 @@ export type HoverLineProps = {
   xIndex: number | null;
   yIndex: number | null;
   hideTickHover?: boolean;
-  dataHints: ReturnType<makeDataHintsContainer>;
+  dataHints: ReturnType<typeof makeDataHintsContainer>;
   formatValue: (value: unknown) => string | [((value: unknown) => string), ((value: unknown) => string)];
 };

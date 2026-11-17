@@ -156,7 +156,7 @@ class BubbleChartComponent extends AbstractChart<
                 visible={dataDefinition.checked}
                 key={dataDefinition.id}
                 index={index}
-                onClick={(e: React.SyntheticEvent) => onClickBubble?.(Number(dataDefinition.id), e)}
+                onClick={onClickBubble ? (e: React.SyntheticEvent) => onClickBubble(Number(dataDefinition.id), e) : undefined}
               />
             );
           })}
