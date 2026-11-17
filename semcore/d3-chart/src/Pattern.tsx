@@ -643,7 +643,6 @@ export const getPatternSymbolSize = ({
 }: {
   patternKey: string;
   patterns?: PatternsConfig;
-  scale?: number;
 }): [width: number, height: number] => {
   const patternData = resolvePattern(patternKey, patterns);
   if (!patternData?.symbol?.size) return [10 * scale, 10 * scale];
@@ -656,8 +655,6 @@ export const PatternSymbol: React.FC<
     color: string;
     patternKey: string;
     patterns?: PatternsConfig;
-    scale?: number;
-    sizeScale?: number;
   } & React.ComponentProps<'svg'>
 > = ({ color, patternKey, patterns, scale = 1, sizeScale, ...props }) => {
   const DefaultSymbol = React.useMemo(() => {
