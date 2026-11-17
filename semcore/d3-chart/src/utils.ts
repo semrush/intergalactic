@@ -306,33 +306,57 @@ export const calculateBubbleDomain = (
 ): [min: number, max: number] => {
   if (!data.length) return [0, 1];
 
-  const [dataMin, dataMax] = minMax(data, key);
-
   const valueScale = getBubbleChartValueScale(data, 'value');
-  const axisScale = scaleLinear().domain([dataMin, dataMax]).range(key === 'x' ? range : [range[1], range[0]]);
+  const axisLengthPx = Math.abs(range[1] - range[0]);
 
-  let minWithRadius = Infinity;
-  let maxWithRadius = -Infinity;
+  const points = data.map((dataItem) => ({
+    x: dataItem[key],
+    r: valueScale(dataItem.value) + 1, // stroke-width/2
+  }));
 
-  for (const item of data) {
-    const radiusPx = valueScale(item.value);
-    const centerPx = axisScale(item[key]);
+  if (points.length === 1) {
+    const x = points[0].x;
+    return [Math.floor(x - 1), Math.ceil(x + 1)];
+  }
 
-    const min = centerPx - radiusPx;
-    const max = centerPx + radiusPx;
+  let maxK = 0;
 
-    if (min < minWithRadius) {
-      minWithRadius = min;
-    }
-    if (max > maxWithRadius) {
-      maxWithRadius = max;
+  for (let i = 0; i < points.length; i++) {
+    for (let j = 0; j < points.length; j++) {
+      if (i === j) continue;
+
+      const dx = points[j].x - points[i].x;
+      if (dx <= 0) continue;
+
+      const availablePx = axisLengthPx - points[i].r - points[j].r;
+      if (availablePx <= 0) continue;
+
+      const k = dx / availablePx;
+      if (k > maxK) {
+        maxK = k;
+      }
     }
   }
 
-  const resultMin = Math.floor(axisScale.invert(Math.abs(minWithRadius))) * (minWithRadius < 0 ? -1 : 1);
-  const resultMax = Math.ceil(axisScale.invert(Math.abs(maxWithRadius))) * (maxWithRadius < 0 ? -1 : 1);
+  if (maxK === 0) {
+    const x = points[0].x;
+    return [Math.floor(x - 1), Math.ceil(x + 1)];
+  }
 
-  return [resultMin, resultMax];
+  let domainMin = Infinity;
+  let domainMax = -Infinity;
+
+  for (const point of points) {
+    const min = point.x - point.r * maxK;
+    const max = point.x + point.r * maxK;
+    if (min < domainMin) domainMin = min;
+    if (max > domainMax) domainMax = max;
+  }
+
+  return [
+    Math.floor(domainMin),
+    Math.ceil(domainMax),
+  ];
 };
 
 type CommonEvents = {
