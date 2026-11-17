@@ -528,6 +528,8 @@ declare namespace NSFlags {
 }
 
 /** @deprecated It will be removed in v19. */
+export type FlagsProps = NSFlags.Props;
+/** @deprecated It will be removed in v19. */
 export type FlagsIso2 = NSFlags.Iso2;
 /** @deprecated It will be removed in v19. */
 export type FlagsIso3 = NSFlags.Iso3;
