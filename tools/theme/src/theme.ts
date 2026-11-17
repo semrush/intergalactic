@@ -1448,6 +1448,42 @@ export const theme: Theme = {
         value: success.opaqueAt(L_BORDER_FOCUS),
         description: 'Color for keyboard focus outline styles for elements with valid state.',
       },
+      limits_bg_accent: {
+        value: colors.mint['75'].value,
+        description: 'Accent background for Limits surfaces.',
+      },
+      limits_bg_gradient: {
+        value: 'linear-gradient(180deg, {baseTokens.colors.mint.75} 0%, {baseTokens.colors.violet.100} 106.09%, {baseTokens.colors.white} 151.56%)',
+        description: 'Background gradient for Limits surfaces.',
+      },
+      limits_bg_neutral: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Neutral background for Limits surfaces.',
+      },
+      limits_card_label: {
+        value: '{semanticTokens.colors.brand_secondary}',
+        description: 'Label color on Limits cards.',
+      },
+      limits_indicator_bg_base: {
+        value: '{semanticTokens.colors.progress_bar_bg_DEFAULT}',
+        description: 'Background of the Limits usage indicator.',
+      },
+      limits_indicator_bg_base_invert: {
+        value: '{semanticTokens.colors.progress_bar_bg_invert_DEFAULT}',
+        description: 'Inverted background of the Limits usage indicator.',
+      },
+      limits_indicator_value_critical: {
+        value: '{semanticTokens.colors.bg_primary_critical}',
+        description: 'Fill of the Limits usage indicator in the critical state.',
+      },
+      limits_indicator_value_normal: {
+        value: '{semanticTokens.colors.brand_secondary}',
+        description: 'Fill of the Limits usage indicator in the normal state.',
+      },
+      limits_indicator_value_normal_invert: {
+        value: '{semanticTokens.colors.control_text_primary_invert}',
+        description: 'Inverted fill of the Limits usage indicator in the normal state.',
+      },
       neighbor_location_invert: {
         value: 'oklch(0 0 0 / 0.5)',
         description: 'Inverted border of the components that are combined with neighbor-location property.',
@@ -3229,6 +3265,23 @@ type SemanticColors = {
       invert: {
         outline: Value;
       };
+    };
+  };
+  limits: {
+    bg: {
+      accent: Value;
+      gradient: Value;
+      neutral: Value;
+    };
+    card: {
+      label: Value;
+    };
+    indicator: {
+      bg_base: Value;
+      bg_base_invert: Value;
+      value_critical: Value;
+      value_normal: Value;
+      value_normal_invert: Value;
     };
   };
   overlay: {
