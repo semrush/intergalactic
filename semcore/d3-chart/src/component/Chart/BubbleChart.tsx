@@ -254,7 +254,10 @@ class BubbleChartComponent extends AbstractChart<
 
     sortedData.forEach((dataItem) => {
       const initIndex = data.findIndex((item) => {
-        return item.x === dataItem.x && item.y === dataItem.y && item.value === dataItem.value;
+        return Object.keys(item).every((key) => {
+          // @ts-expect-error
+          return item[key] === dataItem[key];
+        });
       });
 
       result.push({
