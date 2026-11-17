@@ -13,7 +13,7 @@ type AreaItem = {
   y1: number;
 };
 
-export type LineChartData = Array<Record<string, string | number | typeof interpolateValue | Date>>;
+export type LineChartData = Array<Record<string, number | typeof interpolateValue | Date>>;
 
 type ReferenceLine = {
   /**
