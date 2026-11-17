@@ -212,7 +212,7 @@ function BubbleCircle(props) {
 
   const SGroup = SvgElement;
   const SBubble = Element;
-  const SGradient = Element;
+  const SGradient = SvgElement;
   const SCenter = 'text';
   const SLabel = 'text';
   const z = getBubbleChartValueScale(data, value);
@@ -241,7 +241,7 @@ function BubbleCircle(props) {
       visible={`${visible}`}
     >
       <defs>
-        <SGradient render='radialGradient' id={`${uid}_${index}_radial-gradient`} cx='50%' cy='50%' r='50%'>
+        <SGradient tag='radialGradient' id={`${uid}_${index}_radial-gradient`} cx='50%' cy='50%' r='50%'>
           <stop offset='0%' stopColor='#fff' />
           <stop offset='100%' stopColor={colorValue} />
         </SGradient>
