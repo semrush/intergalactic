@@ -76,7 +76,6 @@ export const HoveredTick: StoryObj<typeof HoveredTickProps> = {
     hoverType: { control: 'select', options: ['Line', 'Rect'] },
     hideTickHover: { control: 'boolean' },
     hideHoverLine: { control: 'boolean' },
-    numericStringX: { control: 'boolean' },
     width: { control: { type: 'number' } },
     height: { control: { type: 'number' } },
   },

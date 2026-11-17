@@ -240,4 +240,25 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       expect(messages).toEqual(['I call on mount']);
     });
   });
+
+  test('Verify onClickBubble returns the index in data', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bubble-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/tests/examples/bubble-chart/bubble-chart-on-click.tsx',
+      'en',
+    );
+
+    const clicked = page.getByTestId('clicked-bubble');
+
+    for (const [index, label] of ['label 1', 'label 2', 'label 3', 'label 4', 'label 5'].entries()) {
+      await test.step(`Verify click on ${label}`, async () => {
+        const box = await locators.bubbleGroup(page, label).locator('circle').boundingBox();
+        expect(box).not.toBeNull();
+        await page.mouse.click(box!.x + box!.width / 2, box!.y + box!.height / 2);
+        await expect(clicked).toHaveText(`onClickBubble index: ${index}, data[index].label: ${label}`);
+      });
+    }
+  });
 });

@@ -32,11 +32,6 @@ type LineChartStoryProps = LineChartProps & {
    */
   deltaOverride?: 'off' | keyof typeof deltaOverrides;
   withInterpolatedGaps?: boolean;
-  /**
-   * Passes the `groupKey` values as numeric strings (`'0'`, `'1'`, …), as data often comes from a
-   * JSON API. `LineChartData` allows strings, so the chart should look the same as with numbers.
-   */
-  numericStringX?: boolean;
 
   withReferenceLine?: boolean;
   withReferenceArea?: boolean;
@@ -133,7 +128,6 @@ const Demo = (props: LineChartStoryProps) => {
     titleFormat,
     deltaOverride,
     withInterpolatedGaps,
-    numericStringX,
     withReferenceLine,
     withReferenceArea,
     referenceLineValue,
@@ -153,16 +147,14 @@ const Demo = (props: LineChartStoryProps) => {
   const suppliedData = (chartProps as LineChartProps).data;
   const groupKey = (chartProps as LineChartProps).groupKey ?? 'x';
 
-  const chartData = React.useMemo(() => {
-    const pipedData = dataPipeline(
-      { highlightDots, withInterpolatedGaps, dataType },
-      suppliedData ?? baseData,
-    );
-
-    return numericStringX
-      ? pipedData.map((item) => ({ ...item, [groupKey]: String(item[groupKey]) }))
-      : pipedData;
-  }, [suppliedData, highlightDots, withInterpolatedGaps, dataType, numericStringX, groupKey]);
+  const chartData = React.useMemo(
+    () =>
+      dataPipeline(
+        { highlightDots, withInterpolatedGaps, dataType },
+        suppliedData ?? baseData,
+      ),
+    [suppliedData, highlightDots, withInterpolatedGaps, dataType],
+  );
 
   const handleResize: NonNullable<LineChartProps['onResize']> = (size, entries) => {
     setMeasuredSize(size);
@@ -248,7 +240,6 @@ export const defaultProps = getChartProps<LineChartStoryProps>({
   highlightDots: 'none',
   dataType: 'none',
   withInterpolatedGaps: false,
-  numericStringX: false,
   titleFormat: 'off',
   deltaOverride: 'off',
   withReferenceLine: false,

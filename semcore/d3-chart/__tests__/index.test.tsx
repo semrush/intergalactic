@@ -691,6 +691,12 @@ describe('Chart.Bubble', () => {
       y: parseFloat(bubble.getAttribute('cy') || '0'),
     }));
 
+    // Bubbles are drawn sorted by value, so the expected index is looked up by the bubble's label.
+    const dataIndexOf = (bubble: Element) => {
+      const texts = Array.from(bubble.parentElement?.querySelectorAll('text') ?? [], (text) => text.textContent);
+      return ChartOptions.bubble.data.findIndex((item) => texts.includes(item.label));
+    };
+
     const firstCallIndex = 0;
     const secondCallIndex = bubbles.length - 1;
 
@@ -703,8 +709,8 @@ describe('Chart.Bubble', () => {
     });
 
     expect(onClickHandler).toHaveBeenCalledTimes(2);
-    expect(onClickHandler.mock.calls[0][0]).toBe(firstCallIndex);
-    expect(onClickHandler.mock.calls[1][0]).toBe(secondCallIndex);
+    expect(onClickHandler.mock.calls[0][0]).toBe(dataIndexOf(bubbles[firstCallIndex]));
+    expect(onClickHandler.mock.calls[1][0]).toBe(dataIndexOf(bubbles[secondCallIndex]));
   });
 
   test.concurrent('should not throw if onClickBubble is not provided', () => {
