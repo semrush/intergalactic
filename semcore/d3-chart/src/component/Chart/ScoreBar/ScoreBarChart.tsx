@@ -166,7 +166,7 @@ class ScoreBarChartComponent extends AbstractChart<
 /**
  * ScoreBarChart
  *
- * {@link https://developer.semrush.com/intergalactic/data-display/???/|API} | {@link https://developer.semrush.com/intergalactic/data-display/???/|Examples}
+ * {@link https://developer.semrush.com/intergalactic/data-display/score-bar-chart/score-bar-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/score-bar-chart/score-bar-chart-code/|Examples}
  */
 export const ScoreBarChart = createComponent<
   ScoreBarChartType,
