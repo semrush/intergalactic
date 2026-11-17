@@ -54,8 +54,9 @@ export const definedNullData = (x: number, y: number) => (plot: { [xOrY: number]
 export const definedData = (x: number, y: number) => (plot: { [xOrY: number]: unknown }) =>
   plot[x] !== null && plot[x] !== undefined && plot[y] !== null && plot[y] !== undefined;
 
-export const scaleOfBandwidth = (scale: ScaleBand<any> | ScaleTime<any, any> | ScaleLinear<any, any>, value: number | Date | string): number =>
-  'bandwidth' in scale ? scale(value)! + scale.bandwidth() / 2 : (typeof value !== 'string' ? scale(value) : 0);
+export const scaleOfBandwidth = (scale: ScaleBand<any> | ScaleTime<any, any> | ScaleLinear<any, any>, value: number | Date | string): number => {
+  return 'bandwidth' in scale ? scale(value)! + scale.bandwidth() / 2 : (typeof value !== 'string' ? scale(value) : 0);
+};
 
 export const minMax = <
   Key extends string = string,
