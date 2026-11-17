@@ -169,10 +169,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       expect(counter.x - (title.x + title.width)).toBeGreaterThanOrEqual(4);
     });
 
-    test.fixme('Verify long word in the title does not overflow the container', {
+    test('Verify long word in the title does not overflow the container', {
       tag: [TAG.PRIORITY_MEDIUM, ...COMPONENT_TAGS],
     }, async ({ page }) => {
-      // An unbreakable title does not shrink, so the one-line counter is pushed past the right edge of the root.
       await loadPage(page, USAGE_METER, 'de', { ...figmaCase, feature: 'Seitenzugriffsberechtigungsverwaltung' });
 
       const root = await getBox(locators.root(page));
