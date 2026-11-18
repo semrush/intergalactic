@@ -783,12 +783,12 @@ h6[class] {
   text-decoration: underline;
 }
 
-.vp-doc ul a,
-.vp-doc ul a:visited {
+.vp-doc ul a:not([class]),
+.vp-doc ul a:not([class]):visited {
   color: var(--vp-c-indigo-2);
 }
 
-.vp-doc ul a:hover {
+.vp-doc ul a:not([class]):hover {
   color: var(--vp-c-indigo-1) !important;
 }
 
