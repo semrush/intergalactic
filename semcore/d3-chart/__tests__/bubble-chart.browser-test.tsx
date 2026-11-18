@@ -261,4 +261,47 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
     }
   });
+
+  test('Verify bubbles look clickable only with onClickBubble', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bubble-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
+  }, async ({ page }) => {
+    await test.step('Verify default cursor without onClickBubble', async () => {
+      await loadPage(page, 'stories/components/d3-chart/tests/examples/bubble-chart/basic-usage.tsx', 'en');
+      await expect(locators.bubbleCircle(page, 0)).toHaveCSS('cursor', 'auto');
+    });
+
+    await test.step('Verify pointer cursor with onClickBubble', async () => {
+      await loadPage(page, 'stories/components/d3-chart/tests/examples/bubble-chart/bubble-chart-on-click.tsx', 'en');
+      await expect(locators.bubbleCircle(page, 0)).toHaveCSS('cursor', 'pointer');
+    });
+  });
+
+  test('Verify legend toggles each of the bubbles with the same x, y and value', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bubble-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@checkbox'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/d3-chart/tests/examples/bubble-chart/basic-usage.tsx', 'en', {
+      showLegend: true,
+      data: [
+        { x: 2, y: 3, value: 500, label: 'label 1' },
+        { x: 2, y: 3, value: 500, label: 'label 2' },
+        { x: 6, y: 7, value: 900, label: 'label 3' },
+      ],
+    });
+
+    const first = locators.bubbleGroup(page, 'label 1');
+    const second = locators.bubbleGroup(page, 'label 2');
+
+    await test.step('Verify unchecking "label 1" hides only its bubble', async () => {
+      await locators.checkbox(page, 0).click();
+      await expect(first).toHaveCSS('display', 'none');
+      await expect(second).not.toHaveCSS('display', 'none');
+    });
+
+    await test.step('Verify unchecking "label 2" hides only its bubble', async () => {
+      await locators.checkbox(page, 0).click();
+      await locators.checkbox(page, 1).click();
+      await expect(first).not.toHaveCSS('display', 'none');
+      await expect(second).toHaveCSS('display', 'none');
+    });
+  });
 });
