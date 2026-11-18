@@ -88,6 +88,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       '@input-number',
       '@base-components',
       '@button',
+      '@neighbor-location',
       '@flex-box',
       '@typography'],
   }, async ({ page }) => {

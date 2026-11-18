@@ -25,10 +25,13 @@ export const StackBarProps: StoryObj = {
       options: ['#db309fff', 'violet'],
     },
     barRadius: { control: { type: 'number', min: 0, max: 20, step: 1 } },
-    barHMin: { control: { type: 'number', min: 0, max: 50, step: 1 } },
+    // `hMin` of the vertical bars; HorizontalBar has no typed counterpart.
+    barHMin: { control: { type: 'number', min: 0, max: 50, step: 1 }, if: { arg: 'invertAxis', truthy: false } },
     barTransparent: { control: 'boolean' },
     maxBarSize: { control: { type: 'number', min: 0, max: 100, step: 1 } },
     duration: { control: { type: 'number', min: 0, max: 2000, step: 100 } },
+    invertAxis: { control: 'boolean' },
+    dataSet: { control: 'select', options: ['positive', 'negative', 'edge'] },
   },
   args: StackBarPropsDefaultProps,
 };

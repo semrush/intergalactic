@@ -14,9 +14,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 **Horizontal bar chart** visualizes distribution of values by category for value comparison.
 
-We have a compact version of the horizontal bar chart — **[Compact horizontal bar chart](/data-display/bar-horizontal-compact/bar-horizontal-compact)**. Use it when values of all categories add up to 100%, and you need to save space in the interface, and the category names can be long (for example, in localization).
-
-![](static/hor-vs-compact.png)
+For the cases where values of all categories add up to 100%, use the **[Score bar chart](/data-display/score-bar-chart/score-bar-chart)**.
 
 ### Usage
 
@@ -30,20 +28,11 @@ We have a compact version of the horizontal bar chart — **[Compact horizontal 
 
 - Displaying trends (use [Line chart](/data-display/line-chart/line-chart)).
 - Showing data over time (use [Bar chart](/data-display/bar-chart/bar-chart) or [Line chart](/data-display/line-chart/line-chart)).
-- All categories add up to 100% (use [Donut chart](/data-display/donut-chart/donut-chart)).
-
-### Bar chart vs. Histogram
-
-- [Histogram](../histogram-chart/histogram-chart) shows quantitative data distribution. Each bar represents a range of numerical values, such as age. The bar length shows how many values fall into that range.
-- Bar chart displays qualitative data distribution, with bars representing nominal categories, such as countries. Unlike histograms, bar charts have visual gaps between bars to emphasize the discrete character of the categories.
-
-![](static/histogram-vs-bar-chart.png)
+- All categories add up to 100% (use [Score donut chart](/data-display/donut-chart/donut-chart-code#score-donut) or [Score bar chart](/data-display/score-bar-chart/score-bar-chart)).
 
 ## Appearance
 
 ![](static/one-cat.png)
-
-For the grouped bars aim for at least a 20% margin between bars in the group to avoid clutter.
 
 ![](static/two-cat.png)
 
@@ -51,7 +40,7 @@ For more than 3-4 categories, consider using the [Stacked horizontal bar chart](
 
 ### Margins
 
-Ensure clear margins for readability and to avoid clutter, such as 8px top and bottom and 16px between category labels and bars.
+Ensure clear margins for readability and to avoid clutter.
 
 Table: Margins for Horizontal bar chart
 
@@ -59,30 +48,20 @@ Table: Margins for Horizontal bar chart
 | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
 | `margin: 8px 0px`                                                                                          | ![bar-chart margins](static/margins-1.png) |
 | The margin between categories and values on the Y-axis and bars is 16px. The margin between values is 8px. | ![](static/margins-2.png)                  |
-| The margin between categories shall be 20px minimum. Otherwise, the data becomes a mess.                   | ![](static/margins-3.png)                  |
 
 ## Grid and axes
 
 ### No grid
 
-Omit grid and axes when showing category values as a percentage of 100.
+You can omit grid if necessary.
 
-![](static/one-cat.png)
+![](static/no-grid.png)
 
-### With grid
+<!-- TODO: Update the part below later -->
+<!-- ## Category labels
 
-Use axes and grids for displaying distribution without percentage constraints.
-
-![](static/grid.png)
-
-::: tip
-Allocate space for category labels on both sides of the chart.
-:::
-
-## Category labels
-
-- Y-axis labels use the primary text color (`--text-primary` token).
-- Use [ellipsis](../../utils/ellipsis/ellipsis) for long labels, with [hint](../../utils/hint/hint) showing the full name.
+- Use only the primary text color (`--text-primary` variable) for  the Y-axis labels.
+- Avoid using [ellipsis](../../utils/ellipsis/ellipsis) for long labels. Wrapping label to the next line is a more friendly solution.
 
 ![](static/label.png)
 
@@ -95,17 +74,6 @@ Legend is unnecessary for a single-category bar chart; clear chart naming is usu
 Use legends for multiple categories.
 
 ![](static/hor-legend.png)
-
-## Interaction
-
-Hovering highlights a bar with `--chart-grid-bar-hover`, indicating focus or clickability. The hover takes up half of the bars margin on the top and bottom sides.
-
-Table: Horizontal bar chart interaction
-
-| Categories count                  | Appearance example      |
-| --------------------------------- | ----------------------- |
-| Chart with one category           | ![](static/hover-1.png) |
-| Chart with two or more categories | ![](static/hover-2.png) |
 
 ## Edge cases
 
@@ -143,7 +111,7 @@ Use the `--skeleton-bg` color token for the skeleton's background.
 
 ![](static/skeleton.png)
 
-Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other empty states.
+Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other empty states. -->
 
 ## Usage in UX/UI
 

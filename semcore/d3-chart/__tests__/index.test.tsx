@@ -673,6 +673,86 @@ describe('Chart.Area', () => {
   });
 });
 
+const barHighlights = (container: HTMLElement) => container.querySelectorAll('path[mask$="-fade-mask)"]');
+
+const renderBar = (data: Record<PropertyKey, unknown>[]) =>
+  render(<Chart.Bar groupKey='category' data={data} aria-label='Bar chart' {...PLOT} />);
+
+describe('Chart.Bar', () => {
+  describe('HIGHLIGHT_DOT equivalence classes', () => {
+    beforeEach(cleanup);
+
+    test('each class resolves to its own colour reference', () => {
+      const { container } = renderBar([
+        { category: 'Category 0', bar: 5, [HIGHLIGHT_DOT]: GOOD },
+        { category: 'Category 1', bar: 5, [HIGHLIGHT_DOT]: BAD },
+        { category: 'Category 2', bar: 5, [HIGHLIGHT_DOT]: INSIGHTFUL },
+      ]);
+      const fills = Array.from(barHighlights(container), (highlight) => highlight.getAttribute('fill') ?? '');
+
+      expect(fills).toHaveLength(3);
+      expect(fills[0]).toContain('chart-data-success');
+      expect(fills[1]).toContain('chart-data-critical');
+      // INSIGHTFUL is the only class that points at a gradient rather than a flat token.
+      const gradientId = fills[2].match(/^url\(#(.+-potential-gradient)\)$/)?.[1];
+      expect(gradientId).toBeDefined();
+      expect(container.querySelector(`[id="${gradientId}"]`)).not.toBeNull();
+    });
+
+    test('a zero value draws neither the bar nor its highlight', () => {
+      const { container } = renderBar([
+        { category: 'Category 0', bar: 5, [HIGHLIGHT_DOT]: GOOD },
+        { category: 'Category 1', bar: 0, [HIGHLIGHT_DOT]: GOOD },
+        { category: 'Category 2', bar: 3, [HIGHLIGHT_DOT]: GOOD },
+      ]);
+
+      expect(queryAllByAttribute('data-ui-name', container, 'GroupBar.Bar')).toHaveLength(2);
+      expect(barHighlights(container)).toHaveLength(2);
+    });
+  });
+});
+
+const scoreBarRow = (container: HTMLElement, category: string) =>
+  Array.from(container.querySelectorAll('li')).find((row) => row.textContent?.startsWith(category));
+
+const renderScoreBar = (data: { category: string; value: number }[]) =>
+  render(<Chart.ScoreBar data={data} duration={0} aria-label='ScoreBar chart' />);
+
+describe('Chart.ScoreBar', () => {
+  describe('percent boundary values', () => {
+    beforeEach(cleanup);
+
+    test.each([
+      [4, '0%'],
+      [5, '1%'],
+    ])('a value of %i out of 1000 shows %s', (value, percent) => {
+      const { container } = renderScoreBar([
+        { category: 'Small', value },
+        { category: 'Rest', value: 1000 - value },
+      ]);
+
+      expect(scoreBarRow(container, 'Small')?.textContent).toContain(percent);
+    });
+
+    test('the background fills the rest of the row', () => {
+      const { container } = renderScoreBar([
+        { category: 'Small', value: 5 },
+        { category: 'Rest', value: 995 },
+      ]);
+      const background = scoreBarRow(container, 'Small')?.querySelector('[aria-hidden] > :last-child');
+
+      expect(background?.getAttribute('style')).toContain('width: 99%');
+    });
+  });
+
+  test('an empty dataset renders an empty list', () => {
+    const { container } = renderScoreBar([]);
+
+    expect(container.querySelector('ul')).not.toBeNull();
+    expect(container.querySelectorAll('li')).toHaveLength(0);
+  });
+});
+
 describe('Chart.Bubble', () => {
   beforeEach(cleanup);
 

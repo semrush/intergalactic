@@ -9,7 +9,14 @@ import { HoverLine as InnerHoverLine } from './component/Hover/HoverLine';
 import createElement from './createElement';
 import style from './style/hover.shadow.css';
 import Tooltip from './Tooltip';
-import { getIndexFromData, eventToPoint, invert, scaleToBand, formatValue } from './utils';
+import {
+  getIndexFromData,
+  eventToPoint,
+  invert,
+  scaleToBand,
+  getVerticalPathFromRect,
+  getHorizontalPathFromRect,
+} from './utils';
 
 class Hover extends Component {
   static style = style;
@@ -124,15 +131,8 @@ class HoverLineRoot extends Hover {
 class HoverRectRoot extends Hover {
   static displayName = 'HoverRect';
 
-  render() {
-    const { hideHoverLine, meta } = this.asProps;
-
-    if (hideHoverLine) {
-      return null;
-    }
-
-    const SHoverRect = this.Element;
-    const { styles, x, y, data, scale, dataHints, hideTickHover, locale } = this.asProps;
+  getRectPath(orientation) {
+    const { x, y, data, scale } = this.asProps;
     const { xIndex, yIndex } = this.state;
     const [xScale, yScale] = scale;
 
@@ -146,18 +146,50 @@ class HoverRectRoot extends Hover {
     const yStep = yBand.step();
     const yPaddingInner = yBand.paddingInner();
 
+    if (orientation === 'vertical') {
+      return getVerticalPathFromRect({
+        x: xScale(data[xIndex][x]) - (xStep * xPaddingInner) / 2,
+        y: yRange[1],
+        width: xStep - xPaddingInner / 2,
+        height: yRange[0] - yRange[1],
+      });
+    }
+
+    return getHorizontalPathFromRect({
+      x: xRange[0],
+      y: yScale(data[yIndex][y]) - (yStep * yPaddingInner) / 2,
+      width: xRange[1] - xRange[0],
+      height: yStep - yPaddingInner / 2,
+    });
+  }
+
+  render() {
+    const { hideHoverLine, meta } = this.asProps;
+
+    if (hideHoverLine) {
+      return null;
+    }
+
+    const SHoverRect = this.Element;
+    const { styles, x, y, data, scale, dataHints, hideTickHover, locale } = this.asProps;
+    const { xIndex, yIndex } = this.state;
+    const [xScale, yScale] = scale;
+
+    const yRange = yScale.range();
+    const xBand = scaleToBand(xScale);
+
+    const xStep = xBand.step();
+    const xPaddingInner = xBand.paddingInner();
+
     return sstyled(styles)(
       <>
         {xIndex !== null && (
           <>
             <SHoverRect
               aria-hidden
-              render='rect'
+              render='path'
               index={xIndex}
-              width={xStep - xPaddingInner / 2}
-              height={yRange[0] - yRange[1]}
-              x={xScale(data[xIndex][x]) - (xStep * xPaddingInner) / 2}
-              y={yRange[1]}
+              d={this.getRectPath('vertical')}
             />
             {!hideTickHover && (
               <HoveredTick
@@ -174,12 +206,9 @@ class HoverRectRoot extends Hover {
         {yIndex !== null && (
           <SHoverRect
             aria-hidden
-            render='rect'
+            render='path'
             index={yIndex}
-            width={xRange[1] - xRange[0]}
-            height={yStep - yPaddingInner / 2}
-            x={xRange[0]}
-            y={yScale(data[yIndex][y]) - (yStep * yPaddingInner) / 2}
+            d={this.getRectPath('horizontal')}
           />
         )}
       </>,

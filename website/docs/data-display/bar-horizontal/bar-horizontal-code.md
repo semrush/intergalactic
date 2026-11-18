@@ -60,15 +60,11 @@ The `<GroupBar.HorizontalBar/>` component is a customized `<HorizontalBar/>` tha
 
 ## Background
 
-Use the `<Bar.Background/>` and `<HorizontalBar.Background/>` components if you need to add a background to a chart plot.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/d3-chart/docs/examples/bar-horizontal/background.tsx';
-</script>
-
+::: warning
+`<Bar.Background/>` and `<HorizontalBar.Background/>` have been deprecated.
 :::
+
+For cases where you need to show the distribution of values by category as parts of a whole, use the [Score bar chart](/data-display/score-bar-chart/score-bar-chart-code).
 
 ## Legend and pattern fill
 
