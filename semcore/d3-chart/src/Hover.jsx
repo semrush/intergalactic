@@ -10,6 +10,7 @@ import createElement from './createElement';
 import style from './style/hover.shadow.css';
 import Tooltip from './Tooltip';
 import {
+  formatValue,
   getIndexFromData,
   eventToPoint,
   invert,
