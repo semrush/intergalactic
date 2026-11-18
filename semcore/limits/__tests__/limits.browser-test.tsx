@@ -196,5 +196,15 @@ test.describe(`${TAG.ACCESSIBILITY}`, () => {
     await expect(meter).toHaveAttribute('aria-valuemin', '50');
     await expect(meter).toHaveAttribute('aria-valuemax', '500');
     await expect(meter).toHaveAttribute('aria-valuenow', '120');
+    await expect(meter).toHaveAttribute('aria-valuetext', '120 of 500 used');
+  });
+
+  test('Verify screen readers get only the meter, not the visible header text', {
+    tag: [TAG.PRIORITY_HIGH, ...COMPONENT_TAGS],
+  }, async ({ page }) => {
+    await loadPage(page, USAGE_METER, 'en', { max: 1000, value: 732, feature: 'Audit' });
+
+    expect(await locators.root(page).ariaSnapshot()).toBe('- meter "Audit"');
+    await expect(locators.meter(page)).toHaveAttribute('aria-valuetext', '732 of 1,000 used');
   });
 });

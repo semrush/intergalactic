@@ -102,6 +102,7 @@ describe('UsageMeter', () => {
 
       expect(getCounter(container).textContent).not.toContain('NaN');
       expect(getMeter(container).getAttribute('aria-valuenow')).not.toBe('NaN');
+      expect(getMeter(container).getAttribute('aria-valuetext')).not.toContain('NaN');
     });
   });
 
@@ -125,6 +126,22 @@ describe('UsageMeter', () => {
 
       expect(meters).toHaveLength(2);
       expect(meters[0].getAttribute('aria-labelledby')).not.toBe(meters[1].getAttribute('aria-labelledby'));
+    });
+
+    test.each([
+      { locale: 'en', value: 732, max: 1000 },
+      { locale: 'de', value: 732, max: 1000 },
+      { locale: 'ru', value: 33.5, max: 1000 },
+    ])('Verify aria-valuetext matches the visible counter for locale=$locale', ({ locale, value, max }) => {
+      const { container } = render(<UsageMeter value={value} max={max} locale={locale} feature='Audit' />);
+
+      expect(getMeter(container)).toHaveAttribute('aria-valuetext', getCounter(container).textContent!);
+    });
+
+    test('Verify visible header is hidden from screen readers', () => {
+      const { container } = render(<UsageMeter value={10} feature='Audit' />);
+
+      expect(getRoot(container).firstElementChild).toHaveAttribute('aria-hidden', 'true');
     });
   });
 
@@ -197,6 +214,7 @@ describe('UsageMeter', () => {
 
         expect(getMeter(container)).toHaveAttribute('aria-valuenow', String(valueNow));
         expect(getCounter(container).textContent).toBe(`${valueNow} of 100 used`);
+        expect(getMeter(container)).toHaveAttribute('aria-valuetext', `${valueNow} of 100 used`);
         expect(getMeter(container)).toHaveAttribute('aria-labelledby', labelId!);
       }
     });
