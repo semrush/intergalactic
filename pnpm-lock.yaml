@@ -1406,6 +1406,22 @@ importers:
         specifier: workspace:*
         version: link:../typography
 
+  semcore/limits:
+    dependencies:
+      '@semcore/typography':
+        specifier: ^18.0.0
+        version: link:../typography
+    devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
+      '@semcore/core':
+        specifier: workspace:*
+        version: link:../core
+      '@semcore/testing-utils':
+        specifier: 'workspace: *'
+        version: link:../../tools/testing-utils
+
   semcore/link:
     dependencies:
       '@semcore/icon':
@@ -2000,6 +2016,9 @@ importers:
       '@semcore/input-tags':
         specifier: ^18.0.0
         version: link:../input-tags
+      '@semcore/limits':
+        specifier: ^18.0.0
+        version: link:../limits
       '@semcore/link':
         specifier: ^18.0.1
         version: link:../link
