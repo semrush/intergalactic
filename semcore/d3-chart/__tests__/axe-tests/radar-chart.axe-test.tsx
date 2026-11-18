@@ -66,7 +66,7 @@ test.describe(`@d3-chart @radar-chart ${TAG.ACCESSIBILITY}`, () => {
     });
   });
 
-  // TODO: needs UIK ticket. Skipped because of an a11y issue in the example
+  // TODO: UIK-4550. Skipped because of an a11y issue in the example
   test.skip('rotated', async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/radar-chart/rotated.tsx', 'en');
 

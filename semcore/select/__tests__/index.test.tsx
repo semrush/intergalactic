@@ -96,6 +96,25 @@ describe('Select Trigger', () => {
     expect(spy.mock.calls.length).toBeGreaterThan(callsAfterFirstClick);
   });
 
+  test('Verify an open Select cannot change its value after becoming disabled', async () => {
+    const onChange = vi.fn();
+    const options = [
+      { value: 'apple', label: 'Apple', children: 'Apple' },
+      { value: 'orange', label: 'Orange', children: 'Orange' },
+    ];
+    const props = { options, defaultValue: 'apple', onChange, animationsDisabled: true };
+    const { rerender } = render(<Select {...props} />);
+
+    await userEvent.click(screen.getByRole('combobox'));
+    const option = await screen.findByRole('option', { name: 'Orange' });
+
+    rerender(<Select {...props} disabled />);
+    await userEvent.click(option);
+
+    expect(onChange).not.toHaveBeenCalled();
+    expect(screen.getByRole('combobox')).toHaveAttribute('value', 'apple');
+  });
+
   test('Verify highlights selected item', async () => {
     let highlightedIndex: number | null = null;
 

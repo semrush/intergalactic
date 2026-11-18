@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import BackgroundExample from './examples/bar-horizontal/background';
 import BarLabelsExample from './examples/bar-horizontal/bar-labels';
 import BasicUsageExample from './examples/bar-horizontal/basic-usage';
 import GroupedHorizontalExample from './examples/bar-horizontal/grouped-horizontal-bars';
@@ -12,10 +11,6 @@ const meta: Meta = {
 };
 
 export default meta;
-
-export const Background: StoryObj = {
-  render: BackgroundExample,
-};
 
 export const BarLabels: StoryObj = {
   render: BarLabelsExample,

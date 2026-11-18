@@ -19,12 +19,25 @@ const normalizeThemeProps = <T extends { theme?: string }>(props: T) => {
   return theme ? { ...props, use, [`theme_${use}`]: theme } : props;
 };
 
+const expectNeighborBorders = async (page: Page, theme: string) => {
+  const border = theme.startsWith('secondary-') ? '1px' : '0px';
+  const sides = [[border, '0px'], ['0px', '0px'], ['0px', border]];
+
+  for (const [index, [left, right]] of sides.entries()) {
+    const button = locators.button(page, index);
+    await expect(button).toHaveCSS('border-top-width', border);
+    await expect(button).toHaveCSS('border-bottom-width', border);
+    await expect(button).toHaveCSS('border-left-width', left);
+    await expect(button).toHaveCSS('border-right-width', right);
+  }
+};
+
 /* =====================================================
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL} `, () => {
-  const neighborThemes = ['primary-info', 'secondary-muted', 'tertiary-muted'];
+  const neighborThemes = ['primary-info', 'secondary-muted', 'secondary-invert', 'tertiary-muted'];
   const isNeighborVariant = (item: { theme: string; loading: boolean }) =>
     neighborThemes.includes(item.theme) && !item.loading;
 
@@ -132,6 +145,10 @@ test.describe(`${TAG.VISUAL} `, () => {
           '@flex-box'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/button/tests/examples/button-neighbor-location.tsx', 'en', normalizeThemeProps(item));
+
+        await test.step('Verify neighbour borders at the seams', async () => {
+          await expectNeighborBorders(page, item.theme);
+        });
 
         await page.keyboard.press('Tab');
         const count = await locators.button(page).count();
@@ -338,6 +355,10 @@ test.describe(`${TAG.VISUAL} `, () => {
           '@flex-box'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/button/tests/examples/button-neighbor-location.tsx', 'en', normalizeThemeProps(item));
+
+        await test.step('Verify neighbour borders at the seams', async () => {
+          await expectNeighborBorders(page, item.theme);
+        });
 
         await page.keyboard.press('Tab');
         const count = await locators.button(page).count();
@@ -548,6 +569,10 @@ test.describe(`${TAG.VISUAL} `, () => {
           '@flex-box'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/button/tests/examples/button-neighbor-location.tsx', 'en', normalizeThemeProps(item));
+
+        await test.step('Verify neighbour borders at the seams', async () => {
+          await expectNeighborBorders(page, item.theme);
+        });
 
         await page.keyboard.press('Tab');
         const count = await locators.button(page).count();

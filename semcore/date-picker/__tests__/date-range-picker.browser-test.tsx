@@ -97,8 +97,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       { size: 'm', state: 'normal', disabled: false, neighborLocation: 'right' },
       { size: 'l', state: 'normal', disabled: false, neighborLocation: 'right' },
       { size: 'm', state: 'invalid', disabled: false, neighborLocation: 'right' },
-      { size: 'm', state: 'valid', disabled: false, neighborLocation: 'left' },
-      { size: 'm', state: 'normal', disabled: true, neighborLocation: 'both' },
+      { size: 'm', state: 'valid', disabled: false, neighborLocation: 'right' },
+      { size: 'm', state: 'normal', disabled: true, neighborLocation: 'right' },
 
     ];
 
@@ -108,6 +108,7 @@ test.describe(`${TAG.VISUAL}`, () => {
           '@date-picker',
           '@base-components',
           '@button',
+          '@neighbor-location',
           '@flex-box',
           '@typography'],
       }, async ({ page }) => {
@@ -128,6 +129,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@date-picker',
         '@base-components',
         '@button',
+        '@neighbor-location',
         '@flex-box',
         '@typography'],
     }, async ({ page }) => {

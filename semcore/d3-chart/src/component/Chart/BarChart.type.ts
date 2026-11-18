@@ -3,7 +3,7 @@ import type { Intergalactic } from '@semcore/core';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import type React from 'react';
 
-import type { AriaNameProps, BaseChartProps } from './AbstractChart.type';
+import type { AriaNameProps, BaseChartProps, ReferenceArea, ReferenceLine } from './AbstractChart.type';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 
 type TrendItem = {
@@ -32,6 +32,14 @@ export type BarChartProps = BaseChartProps<BarChartData> & {
   onClickBar?: (barItem: number, barKey: BarKey, e: React.SyntheticEvent) => void;
   /** The maximum width of a bar */
   maxBarSize?: number;
+  /**
+   * Settings for render reference line.
+   */
+  referenceLine?: ReferenceLine | ReferenceLine[];
+  /**
+   * Settings for render reference area.
+   */
+  referenceArea?: ReferenceArea;
 };
 
 export type BarChartDefaultProps = {

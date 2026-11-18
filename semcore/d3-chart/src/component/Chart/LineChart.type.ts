@@ -3,7 +3,7 @@ import type { Intergalactic } from '@semcore/core';
 import type { ScaleLinear, ScaleTime } from 'd3-scale';
 import type { CurveFactory } from 'd3-shape';
 
-import type { BaseChartProps } from './AbstractChart.type';
+import type { BaseChartProps, ReferenceLine, ReferenceArea } from './AbstractChart.type';
 import type { interpolateValue } from '../../utils';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 
@@ -14,37 +14,6 @@ type AreaItem = {
 };
 
 export type LineChartData = Array<Record<string, string | number | typeof interpolateValue | Date>>;
-
-type ReferenceLine = {
-  /**
-   * Simple reference line.
-   */
-  value: string | number | Date;
-
-  /**
-   * Size of area near line
-   */
-  area?: number;
-};
-
-type ReferenceArea = {
-  /**
-   * Reference line with area.
-   */
-  value: [string | number | Date, string | number | Date];
-  /**
-   * @default neutral.
-   */
-  use?: 'neutral' | 'insight' | 'good' | 'bad';
-  /**
-   * Title of the area.
-   */
-  title?: string;
-  /**
-   * Custom subtitle with data.
-   */
-  subTitle?: string;
-};
 
 export type LineChartProps = BaseChartProps<LineChartData> & {
   /**  Field name that groups the data points */
