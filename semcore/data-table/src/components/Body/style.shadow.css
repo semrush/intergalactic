@@ -362,48 +362,6 @@ SCollapseRow {
   }
 }
 
-/*SCellWrapper[fixed][shadowVertical] {*/
-/*  &:after {*/
-/*    content: '';*/
-/*    position: absolute;*/
-/*    pointer-events: none;*/
-/*    display: none;*/
-/*    top: 0;*/
-/*    width: 5px;*/
-/*    height: 100%;*/
-/*    z-index: 5;*/
-/*  }*/
-/*}*/
-
-/*SCellWrapper[fixed='left'][shadowVertical='median'],*/
-/*SCellWrapper[fixed='left'][shadowVertical='start'] {*/
-/*  margin-right: -5px;*/
-
-/*  &:after {*/
-/*    display: block;*/
-/*    right: 0;*/
-/*    background: var(--intergalactic-scroll-area-shadow-left,*/
-/*    linear-gradient(to right, oklch(from oklch(0.23 0.009 245) l c h / 0.08) 20.55%, transparent 100%));*/
-/*  }*/
-/*  SCell {*/
-/*    margin-right: 5px;*/
-/*  }*/
-/*}*/
-/*SCellWrapper[fixed='right'][shadowVertical='median'],*/
-/*SCellWrapper[fixed='right'][shadowVertical='end'] {*/
-/*  margin-left: -5px;*/
-/*  &:after {*/
-/*    display: block;*/
-/*    left: 0;*/
-/*    background: var(--intergalactic-scroll-area-shadow-right,*/
-/*    linear-gradient(to left, oklch(from oklch(0.23 0.009 245) l c h / 0.08) 20.55%, transparent 100%));*/
-/*  }*/
-
-/*  SCell {*/
-/*    margin-left: 5px;*/
-/*  }*/
-/*}*/
-
 SLimitOverlayCellWrapper[gridArea] {
   width: 100%;
   height: 100%;

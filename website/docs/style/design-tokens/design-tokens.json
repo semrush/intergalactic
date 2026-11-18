@@ -2362,7 +2362,8 @@
     "value": "linear-gradient(to right, oklch(from oklch(0.23 0.009 245) l c h / 0.08) 20.55%, transparent 100%)",
     "description": "Left-to-right fade shadow for the ScrollArea.",
     "components": [
-      "base-components"
+      "base-components",
+      "data-table"
     ]
   },
   {
@@ -2370,7 +2371,8 @@
     "value": "linear-gradient(to left, oklch(from oklch(0.23 0.009 245) l c h / 0.08) 20.55%, transparent 100%)",
     "description": "Right-to-left fade shadow for the ScrollArea.",
     "components": [
-      "base-components"
+      "base-components",
+      "data-table"
     ]
   },
   {

@@ -602,7 +602,6 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                 accordionRowIndex={accordionRowIndex}
                 rows={rows}
                 aria-hidden={isCellHidden}
-                // style={this.cellStyle.get(column.name)}
                 data-aria-level={index === 0 ? ariaLevel : undefined}
                 withoutBorder={withoutBorder}
               />

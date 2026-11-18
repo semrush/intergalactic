@@ -124,6 +124,8 @@ class DataTableRoot<
   private scrollAreaRef = React.createRef<HTMLDivElement>();
   private scrollBarInstanceRef = React.createRef<NSScrollArea.Bar.Instance>();
 
+  private headShadowRef = React.createRef<HTMLDivElement>();
+
   private tableContainerRef = React.createRef<HTMLDivElement>();
   private tableRef = React.createRef<HTMLDivElement>();
   private headerRef = React.createRef<HTMLDivElement>();
@@ -181,9 +183,10 @@ class DataTableRoot<
       requestAnimationFrame(() => {
         this.setState({
           scrollOffset: this.getScrollOffsetValue(),
+        }, () => {
+          this.calculateVerticalShadow();
+          this.calculateContainerHeight();
         });
-        this.calculateVerticalShadow();
-        this.calculateContainerHeight();
       });
     }
 
@@ -804,7 +807,7 @@ class DataTableRoot<
   });
 
   calculateVerticalShadow = () => {
-    if (!this.tableContainerRef.current) return;
+    if (!this.tableContainerRef.current || !this.headShadowRef.current) return;
 
     const { scrollWidth, clientWidth, scrollLeft } =
             this.tableContainerRef.current;
@@ -826,39 +829,7 @@ class DataTableRoot<
       shadow = 'median';
     }
 
-    this.fixedCellsSizeCache.entries().forEach(([name, { width }]) => {
-      const columnElements = this.tableContainerRef.current?.querySelectorAll(`[data-cell-name="${name}"]`) ?? [];
-      const columnIndex = this.columns.findIndex((col) => col.name === name);
-
-      if (columnIndex !== -1 && columnElements) {
-        const side = this.columns[columnIndex]?.fixed;
-
-        if (side) {
-          const startIndexSideMap = {
-            left: 0,
-            right: columnIndex + 1,
-          };
-          const endIndexSideMap = {
-            left: columnIndex,
-            right: this.columns.length,
-          };
-          const columnsFixed = this.columns.slice(startIndexSideMap[side], endIndexSideMap[side]);
-
-          const sum = columnsFixed.reduce(
-            (acc, column) => acc + (this.fixedCellsSizeCache.get(column.name)?.width ?? 0),
-            0,
-          );
-
-          for (const columnElement of columnElements) {
-            if (columnElement instanceof HTMLElement) {
-              columnElement.dataset[side] = sum.toString();
-            }
-          }
-        }
-      }
-    });
-
-    // todo: add to header
+    this.headShadowRef.current.dataset.shadow = shadow;
   };
 
   handleFocus = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
@@ -969,6 +940,7 @@ class DataTableRoot<
 
   render() {
     const SDataTable = Root;
+    const SHeadShadow = Box;
     const {
       Children,
       styles,
@@ -1080,6 +1052,15 @@ class DataTableRoot<
           scrollBarInstanceRef={this.scrollBarInstanceRef}
         />
 
+        {headerProps?.sticky && (
+          <SHeadShadow
+            ref={this.headShadowRef}
+            h={headerHeight}
+            left={`${offsetLeftSum}px`}
+            right={`${offsetRightSum}px`}
+          />
+        )}
+
         {selectedRows !== undefined && !Array.isArray(selectedRows) && (
           <SRReactiveAnnouncer selectedRows={selectedRows} getI18nText={getI18nText} />
         )}
@@ -1111,6 +1092,38 @@ class DataTableRoot<
       },
       [0, 0] as [leftOffset: number, rightOffset: number],
     );
+
+    this.fixedCellsSizeCache.entries().forEach(([name, { width }]) => {
+      const columnElements = this.tableContainerRef.current?.querySelectorAll(`[data-cell-name="${name}"]`) ?? [];
+      const columnIndex = this.columns.findIndex((col) => col.name === name);
+
+      if (columnIndex !== -1 && columnElements) {
+        const side = this.columns[columnIndex]?.fixed;
+
+        if (side) {
+          const startIndexSideMap = {
+            left: 0,
+            right: columnIndex + 1,
+          };
+          const endIndexSideMap = {
+            left: columnIndex,
+            right: this.columns.length,
+          };
+          const columnsFixed = this.columns.slice(startIndexSideMap[side], endIndexSideMap[side]);
+
+          const sum = columnsFixed.reduce(
+            (acc, column) => acc + (this.fixedCellsSizeCache.get(column.name)?.width ?? 0),
+            0,
+          );
+
+          for (const columnElement of columnElements) {
+            if (columnElement instanceof HTMLElement) {
+              columnElement.dataset[side] = sum.toString();
+            }
+          }
+        }
+      }
+    });
 
     return offsets;
   };

@@ -2,7 +2,7 @@ import { Box, Flex } from '@semcore/ui/base-components';
 import Checkbox from '@semcore/ui/checkbox';
 import { Plot, Line, XAxis, YAxis, minMax } from '@semcore/ui/d3-chart';
 import type { DataTableSort } from '@semcore/ui/data-table';
-import { DataTable, ACCORDION } from '@semcore/ui/data-table';
+import { DataTable, ACCORDION, SelectableRows } from '@semcore/ui/data-table';
 import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import { scaleLinear } from 'd3-scale';
@@ -189,106 +189,11 @@ type SelectionStore = {
   setIds: (ids: string[]) => void;
 };
 
-const createSelectionStore = (): SelectionStore => {
-  let ids: string[] = [];
-  let selected = new Set<string>();
-  const listeners = new Set<() => void>();
-  let headerState: HeaderState = { checked: false, indeterminate: false };
-
-  const refreshHeader = () => {
-    let count = 0;
-    for (const id of ids) {
-      if (selected.has(id)) count += 1;
-    }
-    const checked = ids.length > 0 && count === ids.length;
-    const indeterminate = count > 0 && count < ids.length;
-    if (headerState.checked === checked && headerState.indeterminate === indeterminate) return false;
-    headerState = { checked, indeterminate };
-    return true;
-  };
-
-  const emit = () => {
-    listeners.forEach((listener) => listener());
-  };
-
-  return {
-    subscribe(listener) {
-      listeners.add(listener);
-      return () => {
-        listeners.delete(listener);
-      };
-    },
-    has(id) {
-      return selected.has(id);
-    },
-    getHeaderState() {
-      return headerState;
-    },
-    toggle(id) {
-      if (selected.has(id)) selected.delete(id);
-      else selected.add(id);
-      refreshHeader();
-      emit();
-    },
-    toggleAll() {
-      const allSelected = ids.length > 0 && ids.every((id) => selected.has(id));
-      selected = allSelected ? new Set() : new Set(ids);
-      refreshHeader();
-      emit();
-    },
-    setIds(next) {
-      ids = next;
-      if (refreshHeader()) emit();
-    },
-  };
-};
-
-const SelectionContext = React.createContext<SelectionStore | null>(null);
-
 const EMPTY_HEADER: HeaderState = { checked: false, indeterminate: false };
 const getEmptyHeader = () => EMPTY_HEADER;
 const subscribeNothing = () => () => {};
 
 const stopRowToggle = (event: React.SyntheticEvent) => event.stopPropagation();
-
-const HeaderCheckbox = () => {
-  const store = React.useContext(SelectionContext);
-  const state = React.useSyncExternalStore(
-    store?.subscribe ?? subscribeNothing,
-    store?.getHeaderState ?? getEmptyHeader,
-  );
-
-  return (
-    <Checkbox
-      aria-label='Select all rows'
-      checked={state.checked}
-      indeterminate={state.indeterminate}
-      onClick={stopRowToggle}
-      onChange={store ? store.toggleAll : undefined}
-    >
-      <Checkbox.Value />
-    </Checkbox>
-  );
-};
-
-const RowCheckbox = React.memo(({ id }: { id: string }) => {
-  const store = React.useContext(SelectionContext);
-  const checked = React.useSyncExternalStore(
-    store?.subscribe ?? subscribeNothing,
-    () => (store ? store.has(id) : false),
-  );
-
-  return (
-    <Checkbox
-      aria-label={`Select ${id}`}
-      checked={checked}
-      onClick={stopRowToggle}
-      onChange={store ? () => store.toggle(id) : undefined}
-    >
-      <Checkbox.Value />
-    </Checkbox>
-  );
-});
 
 type Column = {
   name: string;
@@ -305,15 +210,6 @@ const createColumns = (columnCount: number, fixedRight: boolean, metricMode: Met
   const metrics = metricCount(columnCount);
   const mode = METRIC_MODES.find((item) => item.value === metricMode) ?? METRIC_MODES[0];
   const columns: Column[] = [
-    // Empty fixed column for the accordion toggle, as in product tables.
-    // { name: 'accordion', children: null, gtcWidth: 'max-content', fixed: 'left' },
-    // {
-    //   name: 'checkbox',
-    //   children: <HeaderCheckbox />,
-    //   gtcWidth: CHECKBOX_COLUMN_WIDTH,
-    //   justifyContent: 'center',
-    //   fixed: 'left',
-    // },
     {
       name: 'keyword',
       children: 'Keyword',
@@ -392,7 +288,7 @@ const createData = (
 const Demo = (props: PerformanceStressProps) => {
   const wrapperRef = React.useRef<HTMLDivElement>(null);
   const visibleWidth = useVisibleWidth(wrapperRef);
-  const selection = React.useMemo(() => createSelectionStore(), []);
+  const selection = React.useMemo(() => new SelectableRows<string>(), []);
   // DataTable mutates this Set (add/delete) before onAccordionToggle, then force-updates that row.
   // A new Set here changes the prop: DataTable is a PureComponent and re-renders every row.
   // The same reference, already holding the toggled key, leaves the other rows unrendered.
@@ -414,37 +310,24 @@ const Demo = (props: PerformanceStressProps) => {
     [props.columns, props.fixedRight, metricMode],
   );
 
-  const rowIds = React.useMemo(() => data.map((row) => row.id), [data]);
-  React.useLayoutEffect(() => {
-    selection.setIds(rowIds);
-  }, [rowIds]);
-
   const handleAccordionToggle = React.useCallback(() => {
     // The toggled key is already on `expandedRows`. Replacing the Set re-renders every row.
   }, []);
 
   const renderCell = React.useCallback(
-    ({
-      columnName,
-      rawData,
-      defaultRender,
-    }: {
+    (props: {
       columnName: string | symbol;
       rawData: PerformanceRow;
       defaultRender: () => any;
     }) => {
+      const {
+        columnName,
+        rawData,
+        defaultRender,
+      } = props;
+
       if (columnName === ACCORDION) {
         return { p: 0 };
-      }
-      if (columnName === 'accordion') {
-        return { justifyContent: 'center', children: null };
-      }
-      if (columnName === 'checkbox') {
-        return {
-          'justifyContent': 'center',
-          'data-row-selector': true,
-          'children': <RowCheckbox id={rawData.id} />,
-        };
       }
       const mode = METRIC_MODES.find((item) => item.value === metricMode);
       if (mode && (columnName === mode.sort || columnName === mode.diffSort)) {
@@ -485,6 +368,7 @@ const Demo = (props: PerformanceStressProps) => {
       aria-label='Data table performance stress'
       {...sizes}
       headerProps={headerProps}
+      selectedRows={selection}
       uniqueRowKey='id'
       expandedRows={expandedRows}
       onAccordionToggle={handleAccordionToggle}
@@ -502,33 +386,31 @@ const Demo = (props: PerformanceStressProps) => {
   );
 
   return (
-    <SelectionContext.Provider value={selection}>
-      <VisibleWidthContext.Provider value={visibleWidth}>
-        <Box ref={wrapperRef} wMax={TABLE_WIDTH}>
-          <Flex alignItems='center' gap={2} mb={3}>
-            <Select
-              aria-label='Metric mode'
-              value={metricMode}
-              onChange={setMetricMode}
-              options={METRIC_MODES.map((mode) => ({ value: mode.value, children: mode.label }))}
-              w={160}
-            />
-            <Text size={200} color='text-secondary' tag='div'>
-              Rows already contain every metric. Switching the mode only renames two columns.
-            </Text>
-          </Flex>
-          {props.scrollMode === 'page' && props.stickyTop > 0 && (
-            <Box
-              h={props.stickyTop}
-              style={{ position: 'sticky', top: 0, zIndex: 20, background: 'var(--intergalactic-bg-primary-neutral, #fff)' }}
-            >
-              Sticky page header ({props.stickyTop}px)
-            </Box>
-          )}
-          {table}
-        </Box>
-      </VisibleWidthContext.Provider>
-    </SelectionContext.Provider>
+    <VisibleWidthContext.Provider value={visibleWidth}>
+      <Box ref={wrapperRef} wMax={TABLE_WIDTH}>
+        <Flex alignItems='center' gap={2} mb={3}>
+          <Select
+            aria-label='Metric mode'
+            value={metricMode}
+            onChange={setMetricMode}
+            options={METRIC_MODES.map((mode) => ({ value: mode.value, children: mode.label }))}
+            w={160}
+          />
+          <Text size={200} color='text-secondary' tag='div'>
+            Rows already contain every metric. Switching the mode only renames two columns.
+          </Text>
+        </Flex>
+        {props.scrollMode === 'page' && props.stickyTop > 0 && (
+          <Box
+            h={props.stickyTop}
+            style={{ position: 'sticky', top: 0, zIndex: 20, background: 'var(--intergalactic-bg-primary-neutral, #fff)' }}
+          >
+            Sticky page header ({props.stickyTop}px)
+          </Box>
+        )}
+        {table}
+      </Box>
+    </VisibleWidthContext.Provider>
   );
 };
 
