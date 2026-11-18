@@ -5,6 +5,7 @@ import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import cssToIntDefault from '@semcore/core/lib/utils/cssToIntDefault';
+import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
 import Divider from '@semcore/divider';
 import DiffDown from '@semcore/icon/DiffDown/m';
@@ -13,15 +14,24 @@ import { Text } from '@semcore/typography';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import React, { Fragment } from 'react';
 
-import type { BaseChartProps, BaseLegendProps, ListData, ObjectData, ObjectDataKey } from './AbstractChart.type';
+import type {
+  BaseChartProps,
+  BaseLegendProps,
+  ChartEvents,
+  ListData,
+  ObjectData,
+  ObjectDataKey,
+} from './AbstractChart.type';
 // @ts-ignore
 import type { HoverLine, HoverRect } from '../..';
 // @ts-ignore
-import { Plot, XAxis, YAxis } from '../..';
+import { Plot, XAxis, YAxis as YAxisOld } from '../..';
 import { makeDataHintsContainer, makeDataHintsHandlers } from '../../a11y/hints';
 import style from '../../style/abstract-chart.shadow.css';
 import { interpolateValue } from '../../utils';
+import { YAxis } from '../Axis/YAxis';
 import ChartLegend, { ChartLegendTable } from '../ChartLegend';
+import type { ScoreBarChartProps } from './ScoreBar/ScoreBarChart.type';
 import type { LegendFlexProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
 import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 import type { LegendTableProps } from '../ChartLegend/LegendTable/LegendTable.type';
@@ -62,8 +72,12 @@ export abstract class AbstractChart<
 
   private observer: ResizeObserver | undefined;
 
+  protected readonly eventEmitter: EventEmitter<ChartEvents>;
+
   constructor(props: Props) {
     super(props);
+
+    this.eventEmitter = props.eventEmitter || new EventEmitter<ChartEvents>();
 
     this.handleResize = trottle(this.handleResize.bind(this));
 
@@ -493,9 +507,7 @@ export abstract class AbstractChart<
       showYAxis,
       data,
       axisXValueFormatter,
-      axisYValueFormatter,
       multilineXTicks,
-      multilineYTicks,
     } = this.asProps;
 
     if (!Array.isArray(data)) {
@@ -508,23 +520,13 @@ export abstract class AbstractChart<
     const childrenX = axisXValueFormatter
       ? ({ value }: any) => ({ children: axisXValueFormatter(value) })
       : undefined;
-    const childrenY = axisYValueFormatter
-      ? ({ value }: any) => ({ children: axisYValueFormatter(value) })
-      : undefined;
 
     return (
       <>
         {showYAxis && (
-          <YAxis>
-            {yTicks
-              ? (
-                  <YAxis.Ticks multiline={multilineYTicks} ticks={yTicks}>{childrenY}</YAxis.Ticks>
-                )
-              : (
-                  <YAxis.Ticks multiline={multilineYTicks}>{childrenY}</YAxis.Ticks>
-                )}
-            {invertAxis !== true && (yTicks ? <YAxis.Grid ticks={yTicks} /> : <YAxis.Grid />)}
-          </YAxis>
+          <YAxisOld>
+            {invertAxis !== true && (yTicks ? <YAxisOld.Grid ticks={yTicks} /> : <YAxisOld.Grid />)}
+          </YAxisOld>
         )}
 
         {showXAxis && (
@@ -663,40 +665,63 @@ export abstract class AbstractChart<
     );
   }
 
+  protected renderYAxis(): React.ReactNode {
+    const { yTicksCount, showYAxis, axisYValueFormatter, yAxisPosition } = this.asProps;
+
+    if (!showYAxis) {
+      return null;
+    }
+
+    return (
+      <YAxis
+        scale={this.yScale}
+        ticksCount={yTicksCount}
+        valueFormatter={axisYValueFormatter ?? this.valueFormatter}
+        yAxisPosition={yAxisPosition}
+        eventEmitter={this.eventEmitter}
+      />
+    );
+  }
+
   protected renderReference(): React.ReactNode {
     return null;
   }
 
   public render() {
     const SChart = Root;
-    const { styles, data, patterns, a11yAltTextConfig, duration, eventEmitter, showTooltip, locale } =
+    const SChartContainer = Flex;
+    const { styles, data, patterns, a11yAltTextConfig, duration, showTooltip, locale, yAxisPosition = 'left' } =
       this.asProps;
     const { plotWidth, plotHeight } = this;
 
     const { extractedAriaProps } = extractAriaProps(this.asProps);
 
     return sstyled(styles)(
-      <SChart render={Flex} gap={5} __excludeProps={['data', 'eventEmitter']} role='group' ref={this.chartRef}>
+      <SChart render={Flex} gap={5} __excludeProps={['data']} role='group' ref={this.chartRef}>
         {this.renderLegend()}
-        <Plot
-          data={data}
-          scale={[this.xScale, this.yScale]}
-          width={plotWidth}
-          height={plotHeight}
-          dataHints={this.dataHints}
-          dataHintsHandlers={this.dataHintsHandlers}
-          a11yAltTextConfig={a11yAltTextConfig}
-          patterns={patterns}
-          duration={duration}
-          eventEmitter={eventEmitter}
-          locale={locale}
-          {...extractedAriaProps}
-        >
-          {this.renderAxis()}
-          {this.renderReference()}
-          {!showTooltip ? null : this.renderTooltip()}
-          {this.renderChart()}
-        </Plot>
+        <SChartContainer>
+          {yAxisPosition === 'left' && this.renderYAxis()}
+          <Plot
+            data={data}
+            scale={[this.xScale, this.yScale]}
+            width={plotWidth}
+            height={plotHeight}
+            dataHints={this.dataHints}
+            dataHintsHandlers={this.dataHintsHandlers}
+            a11yAltTextConfig={a11yAltTextConfig}
+            patterns={patterns}
+            duration={duration}
+            eventEmitter={this.eventEmitter}
+            locale={locale}
+            {...extractedAriaProps}
+          >
+            {this.renderAxis()}
+            {this.renderReference()}
+            {!showTooltip ? null : this.renderTooltip()}
+            {this.renderChart()}
+          </Plot>
+          {yAxisPosition === 'right' && this.renderYAxis()}
+        </SChartContainer>
       </SChart>,
     );
   }

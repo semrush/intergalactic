@@ -10,13 +10,13 @@ import React from 'react';
 
 import type { ChartState } from '../AbstractChart';
 import { AbstractChart } from '../AbstractChart';
-import type { BaseLegendProps } from '../AbstractChart.type';
+import type { BaseLegendProps, ChartEvents } from '../AbstractChart.type';
 import style from './scoreBarChart.shadow.css';
 import type {
   ScoreBarChartData,
   ScoreBarChartProps,
   ScoreBarChartType,
-  ScoreBarChartDefaultProps, ScoreBarEvents,
+  ScoreBarChartDefaultProps,
 } from './ScoreBarChart.type';
 import { ScoreBarItem } from './ScoreBarItem';
 // @ts-ignore
@@ -52,7 +52,7 @@ class ScoreBarChartComponent extends AbstractChart<
     }),
   ] as const;
 
-  private readonly eventEmitter: EventEmitter<ScoreBarEvents>;
+  private readonly eventEmitter: EventEmitter<ChartEvents>;
 
   constructor(props: ScoreBarChartProps) {
     super(props);

@@ -94,6 +94,11 @@ class RadarChartComponent extends AbstractChart<
     return null;
   }
 
+  // We don't need Y axis in this type of charts
+  protected override renderYAxis(): React.ReactNode {
+    return null;
+  }
+
   protected get dataKeys(): string[] {
     const { data, groupKey } = this.props;
 

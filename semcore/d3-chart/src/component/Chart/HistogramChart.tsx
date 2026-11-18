@@ -34,7 +34,7 @@ class HistogramChartComponent extends AbstractChart<
   get xScale() {
     const {
       xScale,
-      marginY = 30,
+      marginY = 8,
       marginX = 30,
       invertAxis,
       data,

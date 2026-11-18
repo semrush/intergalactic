@@ -40,7 +40,7 @@ class AreaChartComponent extends AbstractChart<
   } as const;
 
   get xScale() {
-    const { xScale, marginY = 40, data, groupKey } = this.asProps;
+    const { xScale, marginY = 8, data, groupKey } = this.asProps;
     const { plotWidth } = this;
 
     if (xScale) {

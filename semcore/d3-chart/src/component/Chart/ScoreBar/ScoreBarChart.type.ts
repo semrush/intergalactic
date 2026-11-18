@@ -79,8 +79,3 @@ export type ScoreBarChartDefaultProps = {
 };
 
 export type ScoreBarChartType = Intergalactic.Component<NSBox.Component, ScoreBarChartProps>;
-
-export type ScoreBarEvents =
-  Record<`setTooltipPosition_${string}`, (clientX: number, clientY: number) => void> &
-  Record<`setTooltipRenderingProps_${string}`, (_: {}, params: { index: number }) => void> &
-  Record<`setTooltipVisible_${string}`, (isVisible: boolean) => void>;

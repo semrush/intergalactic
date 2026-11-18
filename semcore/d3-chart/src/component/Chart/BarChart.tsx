@@ -8,11 +8,12 @@ import { AbstractChart } from './AbstractChart';
 import type { BaseLegendProps } from './AbstractChart.type';
 import type { BarChartData, BarChartProps, BarChartType, BarChartDefaultProps } from './BarChart.type';
 // @ts-ignore
-import { minMax, GroupBar, HoverRect, StackBar, Line, YAxis, XAxis, ReferenceLine } from '../..';
+import { minMax, GroupBar, HoverRect, StackBar, Line, YAxis as YAxisOld, XAxis, ReferenceLine } from '../..';
 // @ts-ignore
 import { ReferenceArea } from '../../Reference';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import type { BarProps } from '../../types';
+import { YAxis } from '../Axis/YAxis';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 
 class BarChartComponent extends AbstractChart<
@@ -228,6 +229,18 @@ class BarChartComponent extends AbstractChart<
     );
   }
 
+  protected override renderYAxis(): React.ReactNode {
+    const { yTicksCount, showYAxis, axisYValueFormatter, invertAxis } = this.asProps;
+
+    if (!showYAxis) {
+      return null;
+    }
+
+    return (
+      <YAxis scale={this.yScale} ticksCount={yTicksCount} primaryText={!!invertAxis} valueFormatter={axisYValueFormatter ?? this.valueFormatter} />
+    );
+  }
+
   protected override renderAxis(): React.ReactNode {
     const {
       invertAxis,
@@ -257,16 +270,16 @@ class BarChartComponent extends AbstractChart<
     return (
       <>
         {showYAxis && (
-          <YAxis>
+          <YAxisOld>
             {yTicks
               ? (
-                  <YAxis.Ticks primaryText={invertAxis} multiline={multilineYTicks} ticks={yTicks}>{childrenY}</YAxis.Ticks>
+                  <YAxisOld.Ticks primaryText={invertAxis} multiline={multilineYTicks} ticks={yTicks}>{childrenY}</YAxisOld.Ticks>
                 )
               : (
-                  <YAxis.Ticks primaryText={invertAxis} multiline={multilineYTicks}>{childrenY}</YAxis.Ticks>
+                  <YAxisOld.Ticks primaryText={invertAxis} multiline={multilineYTicks}>{childrenY}</YAxisOld.Ticks>
                 )}
-            {invertAxis !== true && (yTicks ? <YAxis.Grid ticks={yTicks} /> : <YAxis.Grid />)}
-          </YAxis>
+            {invertAxis !== true && (yTicks ? <YAxisOld.Grid ticks={yTicks} /> : <YAxisOld.Grid />)}
+          </YAxisOld>
         )}
 
         {showXAxis && (
@@ -304,7 +317,7 @@ class BarChartComponent extends AbstractChart<
 
   private get categoryScale() {
     const {
-      marginY = 40,
+      marginY = 8,
       marginX = 32,
       invertAxis,
       data,
@@ -329,7 +342,7 @@ class BarChartComponent extends AbstractChart<
   }
 
   private get valueScale() {
-    const { marginY = 40, marginX = 32, invertAxis, type } = this.asProps;
+    const { marginY = 8, marginX = 32, invertAxis, type } = this.asProps;
     const { plotWidth, plotHeight } = this;
 
     const max = type === 'stack' ? super.maxStackedValue : Math.max(...super.flatValues);

@@ -50,7 +50,7 @@ class PlotRoot extends Component {
       if (pX >= minX && pX <= maxX && pY >= minY) {
         const isTickUnder = pY >= maxY;
 
-        this.eventEmitter.emit('onMouseMoveChart', e, this.rootRef.current, isTickUnder);
+        this.eventEmitter.emit('onMouseMoveChart', e, this.rootRef.current, isTickUnder, [pX, pY]);
       } else {
         this.eventEmitter.emit('onMouseLeaveChart', e);
       }

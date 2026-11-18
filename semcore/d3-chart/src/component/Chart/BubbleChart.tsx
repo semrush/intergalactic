@@ -76,7 +76,7 @@ class BubbleChartComponent extends AbstractChart<
   }
 
   get xScale() {
-    const { xScale, marginY = 30, data } = this.asProps;
+    const { xScale, marginY = 8, data } = this.asProps;
     const { plotWidth } = this;
 
     if (xScale) {

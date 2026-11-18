@@ -34,7 +34,7 @@ class LineChartComponent extends AbstractChart<
   } as const;
 
   protected get xScale() {
-    const { xScale, marginY = 30, data, groupKey } = this.asProps;
+    const { xScale, marginY = 8, data, groupKey } = this.asProps;
     const { plotWidth } = this;
 
     if (xScale) {

@@ -1,12 +1,14 @@
 import type { NSFlex } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
+import type EventEmitter from '@semcore/core/lib/utils/eventEmitter';
 import type Icon from '@semcore/icon';
 import type React from 'react';
 
 import type { PatternsConfig } from '../../Pattern';
 // @ts-ignore
 import type { PlotSummarizerConfig } from '../../Plot';
-import type { interpolateValue, PlotEventEmitter } from '../../utils';
+import type { interpolateValue } from '../../utils';
+import type { NSYAxis } from '../Axis/YAxis.type';
 import type { BaseChartLegendProps } from '../ChartLegend/BaseLegend.type';
 import type { TrendProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
@@ -89,6 +91,7 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
   patterns?: PatternsConfig;
   /**
    * Margin (for Y axis points) from left side of chart container to Y axis
+   * @deprecated you shouldn't use it at all. Margin will calculate automatically.
    */
   marginY?: number;
   /**
@@ -110,6 +113,12 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
    * @default true (for charts with axis: Area, Line, Bar, ScatterPlot, ...)
    */
   showYAxis?: boolean;
+
+  /**
+   * Position of Y axis.
+   * @default 'left'
+   */
+  yAxisPosition?: NSYAxis.Props['yAxisPosition'];
   /**
    * Map with colors for data items
    */
@@ -179,7 +188,7 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
   /**
    * Custom event emitter. Could be useful to handle event on few charts at the same time.
    */
-  eventEmitter?: InstanceType<typeof PlotEventEmitter>;
+  eventEmitter?: EventEmitter<ChartEvents>;
   /**
    * Config for a11y summary
    */
@@ -286,4 +295,19 @@ export type ReferenceArea = {
    * Custom subtitle with data.
    */
   subTitle?: string;
+};
+
+type BaseEvents = {
+  onMouseMoveChart: (e: React.MouseEvent, rootElement: SVGSVGElement, isTickUnder: boolean, point: [number, number]) => void;
+  onMouseLeaveChart: (e: React.MouseEvent) => void;
+};
+
+type CommonEvents = {
+  setTooltipPosition: (clientX: number, clientY: number) => void;
+  setTooltipRenderingProps: (_: {}, params: { index: number }) => void;
+  setTooltipVisible: (isVisible: boolean) => void;
+};
+
+export type ChartEvents = BaseEvents & {
+  [K in keyof CommonEvents as `${K}_${string}`]: CommonEvents[K];
 };

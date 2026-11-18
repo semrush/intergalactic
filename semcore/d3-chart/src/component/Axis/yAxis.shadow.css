@@ -1,0 +1,23 @@
+SYAxis {
+  position: relative;
+  display: grid;
+  align-items: start;
+
+  STick {
+    grid-area: 1/1;
+    display: block;
+    font-variant-numeric: tabular-nums;
+    color: var(--intergalactic-chart-grid-text-label, oklch(from oklch(0.182 0.045 244.8 / 0.593) l c h / 0.4));
+  }
+
+  &[position='left'] > STick {
+    text-align: end;
+  }
+  &[position='right'] > STick {
+    text-align: start;
+  }
+
+  &[primaryText] > STick {
+    color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
+  }
+}

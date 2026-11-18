@@ -484,6 +484,7 @@ class CigaretteChartComponent extends AbstractChart<
               height={plotHeight}
               dataHints={this.dataHints}
               patterns={patterns}
+              eventEmitter={this.eventEmitter}
               a11yAltTextConfig={a11yAltTextConfig}
               onMouseMove={this.onPlotMouseMove}
               onMouseLeave={this.onPlotMouseLeave}
