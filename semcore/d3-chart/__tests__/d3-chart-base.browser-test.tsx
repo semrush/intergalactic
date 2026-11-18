@@ -757,8 +757,19 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         const patterns = page.locator('pattern[viewBox]');
 
         await expectEachToHaveAttribute(patterns, 'patternUnits', 'userSpaceOnUse');
-        await expectEachToHaveAttribute(patterns, 'width', '12');
-        await expectEachToHaveAttribute(patterns, 'height', '12');
+
+        const tiles = await patterns.evaluateAll((elements) =>
+          elements.map((element) => {
+            const [, , viewBoxWidth, viewBoxHeight] = element.getAttribute('viewBox')!.split(/\s+/).map(Number);
+
+            return {
+              expected: [viewBoxWidth / 2, viewBoxHeight / 2],
+              actual: [Number(element.getAttribute('width')), Number(element.getAttribute('height'))],
+            };
+          }),
+        );
+
+        expect(tiles.map(({ actual }) => actual)).toEqual(tiles.map(({ expected }) => expected));
       });
 
       await test.step('Verify the hovered dot is drawn as a <use> of the pattern symbol', async () => {
