@@ -198,9 +198,9 @@ function Shape(
 
   if (shape === 'Pattern') {
     return sstyled(styles)(
-      <Box mr={1} mt='1px' mb='-1px'>
+      <SPointShape render={Box}>
         <SPatternSymbol color={color} patternKey={patternKey} aria-hidden />
-      </Box>,
+      </SPointShape>,
     );
   }
 
