@@ -639,15 +639,14 @@ export const PatternFill = ({
 export const getPatternSymbolSize = ({
   patternKey,
   patterns,
-  scale = 1,
 }: {
   patternKey: string;
   patterns?: PatternsConfig;
 }): [width: number, height: number] => {
   const patternData = resolvePattern(patternKey, patterns);
-  if (!patternData?.symbol?.size) return [10 * scale, 10 * scale];
+  if (!patternData?.symbol?.size) return [10, 10];
 
-  return [patternData.symbol.size[0] * scale, patternData.symbol.size[1] * scale];
+  return [patternData.symbol.size[0], patternData.symbol.size[1]];
 };
 
 export const PatternSymbol: React.FC<
@@ -656,19 +655,13 @@ export const PatternSymbol: React.FC<
     patternKey: string;
     patterns?: PatternsConfig;
   } & React.ComponentProps<'svg'>
-> = ({ color, patternKey, patterns, scale = 1, sizeScale, ...props }) => {
+> = ({ color, patternKey, patterns, ...props }) => {
   const DefaultSymbol = React.useMemo(() => {
     const patternData = resolvePattern(patternKey, patterns);
     const children = patternData?.symbol.children;
     const viewBox = patternData?.symbol.viewBox;
-    const resolvedScale =
-      typeof sizeScale === 'number' && Number.isFinite(sizeScale)
-        ? sizeScale
-        : typeof scale === 'number' && Number.isFinite(scale)
-          ? scale
-          : 1;
-    const width = patternData?.symbol.size[0] * resolvedScale;
-    const height = patternData?.symbol.size[1] * resolvedScale;
+    const width = patternData?.symbol.size[0];
+    const height = patternData?.symbol.size[1];
     return (props: React.ComponentProps<'svg'>) => (
       <svg
         fill={color}
@@ -683,7 +676,7 @@ export const PatternSymbol: React.FC<
         {children}
       </svg>
     );
-  }, [patternKey, color, patterns, scale, sizeScale]);
+  }, [patternKey, color, patterns]);
 
   return <DefaultSymbol {...props} />;
 };
