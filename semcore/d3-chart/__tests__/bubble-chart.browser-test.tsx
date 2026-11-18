@@ -26,6 +26,9 @@ export const locators = {
     return typeof index === 'number' ? base.nth(index) : base;
   },
   tooltip: (page: Page) => page.locator('[data-ui-name="Bubble.Tooltip"]'),
+  // The tick pill under the hovered tick on each axis; the hash part of the class name changes between builds.
+  hoveredTickText: (page: Page) =>
+    page.locator('svg[data-ui-name="Plot"] foreignObject[class*="SHoveredTickWrapper"] span'),
 };
 
 /* =====================================================
@@ -260,6 +263,27 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(clicked).toHaveText(`onClickBubble index: ${index}, data[index].label: ${label}`);
       });
     }
+  });
+
+  test('Verify hovered ticks appear on both axes for a bubble at 0, 0', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bubble-chart', '@d3-chart', '@base-components', '@flex-box'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/d3-chart/tests/examples/bubble-chart/basic-usage.tsx', 'en', {
+      data: [
+        { x: 0, y: 0, value: 500, label: 'zero' },
+        { x: 5, y: 5, value: 300, label: 'label 2' },
+        { x: 9, y: 9, value: 200, label: 'label 3' },
+      ],
+    });
+
+    await test.step('Verify both tick pills show 0 on hover', async () => {
+      const box = await locators.bubbleGroup(page, 'zero').locator('circle').boundingBox();
+      expect(box).not.toBeNull();
+      await page.mouse.move(box!.x + box!.width / 2, box!.y + box!.height / 2);
+
+      await expect(locators.hoveredTickText(page)).toHaveCount(2);
+      await expect(locators.hoveredTickText(page)).toHaveText(['0', '0']);
+    });
   });
 
   test('Verify bubbles look clickable only with onClickBubble', {
