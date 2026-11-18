@@ -10,7 +10,7 @@ type PatternDasharrayStoryProps = {
 };
 
 const POINTS = 12;
-const DASHARRAYS_COUNT = 8;
+const DASHARRAYS_COUNT = 12;
 
 // Parallel lines with a fixed gap, so the dash of each series is easy to compare.
 const getData = (seriesCount: number) =>
@@ -54,7 +54,7 @@ const Demo = (props: PatternDasharrayStoryProps) => {
           stroke-dasharray by series
         </Text>
         {dashes.map((dash, index) => {
-          // There are 8 distinct dasharrays, so a repeat is expected only after a full cycle of 8 series.
+          // There are 12 distinct dasharrays, so a repeat is expected only after a full cycle of 12 series.
           const sameAs = dashes.slice(0, index).lastIndexOf(dash);
           const isTooClose = dash !== null && sameAs !== -1 && index - sameAs < DASHARRAYS_COUNT;
 

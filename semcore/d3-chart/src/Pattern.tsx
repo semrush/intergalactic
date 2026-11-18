@@ -31,7 +31,7 @@ export type Pattern = {
   dasharray?: string;
 };
 
-const defaultDasharrays = ['4 4', '8 8', '2 4', '4 8', '8 2', '8 4', '12 4', '2 2'];
+const defaultDasharrays = ['4 4', '8 8', '2 4', '4 8', '8 2', '8 4', '12 4', '2 2', '2 8', '4 2', '12 8', '16 4'];
 
 const defaultPatterns = {
   zigzag: {
@@ -48,7 +48,7 @@ const defaultPatterns = {
         <path d='M14.81 11.56 20 6.38v4.24l-5.23 5.23-7.38-7.71L0 15.54v-4.24l7.44-7.44z' />
       ),
     },
-    dasharray: defaultDasharrays[7],
+    dasharray: defaultDasharrays[0],
   },
   circleOutline: {
     fill: {
@@ -70,7 +70,7 @@ const defaultPatterns = {
         />
       ),
     },
-    dasharray: defaultDasharrays[2],
+    dasharray: defaultDasharrays[1],
   },
   linesDouble: {
     fill: {
@@ -86,7 +86,7 @@ const defaultPatterns = {
         <path d='M8 15H6V2h2zm5 0h-2V2h2z' />
       ),
     },
-    dasharray: defaultDasharrays[6],
+    dasharray: defaultDasharrays[2],
   },
   trees: {
     fill: {
@@ -105,7 +105,7 @@ const defaultPatterns = {
         </>
       ),
     },
-    dasharray: defaultDasharrays[6],
+    dasharray: defaultDasharrays[3],
   },
   rombOutline: {
     fill: {
@@ -159,7 +159,7 @@ const defaultPatterns = {
         <path d='M6.5 6.5c1.84 0 3.62.94 4.75 2.68.61.93 1.47 1.32 2.25 1.32s1.63-.39 2.25-1.32C16.78 7.6 18.34 6.68 20 6.53v3.03c-.63.13-1.26.53-1.75 1.27-1.13 1.73-2.91 2.67-4.75 2.67s-3.62-.94-4.75-2.67C8.13 9.89 7.28 9.5 6.5 9.5s-1.63.39-2.25 1.32C3.22 12.4 1.66 13.32 0 13.47v-3.03c.63-.13 1.26-.53 1.75-1.27C2.88 7.44 4.66 6.5 6.5 6.5' />
       ),
     },
-    dasharray: defaultDasharrays[7],
+    dasharray: defaultDasharrays[6],
   },
   triangleDown: {
     fill: {
@@ -175,7 +175,7 @@ const defaultPatterns = {
         <path d='M12.06 18.42 22.12 1H2z' />
       ),
     },
-    dasharray: defaultDasharrays[3],
+    dasharray: defaultDasharrays[7],
   },
   star: {
     fill: {
@@ -191,7 +191,7 @@ const defaultPatterns = {
         <path d='M11.41 2.46c.2-.61 1.07-.61 1.27 0l1.91 5.89a1 1 0 0 0 .64.46h6.19c.65 0 .92.83.39 1.21l-5.01 3.64a1 1 0 0 0-.24.75l1.91 5.89c.2.61-.5 1.13-1.02.75l-5.01-3.64a1 1 0 0 0-.79 0l-5.01 3.64c-.52.38-1.23-.13-1.03-.75l1.91-5.89a1 1 0 0 0-.24-.75L2.28 10.02c-.52-.38-.26-1.21.39-1.21h6.19a1 1 0 0 0 .64-.46z' />
       ),
     },
-    dasharray: defaultDasharrays[0],
+    dasharray: defaultDasharrays[8],
   },
   cogwheel: {
     fill: {
@@ -213,7 +213,7 @@ const defaultPatterns = {
         />
       ),
     },
-    dasharray: defaultDasharrays[1],
+    dasharray: defaultDasharrays[9],
   },
   crossesDiagonal: {
     fill: {
@@ -235,7 +235,7 @@ const defaultPatterns = {
         />
       ),
     },
-    dasharray: defaultDasharrays[2],
+    dasharray: defaultDasharrays[10],
   },
   triangleOutline: {
     fill: {
@@ -257,7 +257,7 @@ const defaultPatterns = {
         />
       ),
     },
-    dasharray: defaultDasharrays[3],
+    dasharray: defaultDasharrays[11],
   },
   chain: {
     fill: {
@@ -279,7 +279,7 @@ const defaultPatterns = {
         />
       ),
     },
-    dasharray: defaultDasharrays[4],
+    dasharray: defaultDasharrays[0],
   },
   squama: {
     fill: {
@@ -295,7 +295,7 @@ const defaultPatterns = {
         <path d='M15.14 16c3.91-3.91 3.91-10.24 0-14.14L1 16c3.91 3.91 10.24 3.91 14.14 0z' />
       ),
     },
-    dasharray: defaultDasharrays[5],
+    dasharray: defaultDasharrays[1],
   },
   romb: {
     fill: {
@@ -311,7 +311,7 @@ const defaultPatterns = {
         <path d='M20 10 10 0 0 10l10 10 10-10Z' />
       ),
     },
-    dasharray: defaultDasharrays[1],
+    dasharray: defaultDasharrays[2],
   },
   zigzagVertical: {
     fill: {
@@ -327,7 +327,7 @@ const defaultPatterns = {
         <path d='M13.56 0 8.24 5.31 15.98 13.05 8.71 20H4.37L11.69 13 4 5.31 9.31 0z' />
       ),
     },
-    dasharray: defaultDasharrays[7],
+    dasharray: defaultDasharrays[3],
   },
   triangleDownOutline: {
     fill: {
@@ -349,7 +349,7 @@ const defaultPatterns = {
         />
       ),
     },
-    dasharray: defaultDasharrays[0],
+    dasharray: defaultDasharrays[4],
   },
   crosses: {
     fill: {
@@ -365,7 +365,7 @@ const defaultPatterns = {
         <path d='M8.57 2.93a1.5 1.5 0 1 1 3 0v5.57h5.57a1.5 1.5 0 0 1 0 3h-5.57v5.57a1.5 1.5 0 0 1-3 0v-5.57H3a1.5 1.5 0 0 1 0-3h5.57z' />
       ),
     },
-    dasharray: defaultDasharrays[1],
+    dasharray: defaultDasharrays[5],
   },
   linesDoubleHorizontal: {
     fill: {
@@ -381,7 +381,7 @@ const defaultPatterns = {
         <path d='M15 11v2H2v-2zm0-5v2H2V6z' />
       ),
     },
-    dasharray: defaultDasharrays[2],
+    dasharray: defaultDasharrays[6],
   },
   waveVertical: {
     fill: {
@@ -397,7 +397,7 @@ const defaultPatterns = {
         <path d='M13.5 6.5c0 1.84-.94 3.62-2.68 4.75-.93.61-1.32 1.47-1.32 2.25s.39 1.63 1.32 2.25C12.4 16.78 13.32 18.34 13.47 20h-3.03c-.13-.63-.53-1.26-1.27-1.75C7.44 17.12 6.5 15.34 6.5 13.5s.94-3.62 2.67-4.75C10.11 8.13 10.5 7.28 10.5 6.5s-.39-1.63-1.32-2.25C7.6 3.22 6.68 1.66 6.53 0h3.03c.13.63.53 1.26 1.27 1.75C12.56 2.88 13.5 4.66 13.5 6.5' />
       ),
     },
-    dasharray: defaultDasharrays[3],
+    dasharray: defaultDasharrays[7],
   },
   squareOutline: {
     fill: {
@@ -416,7 +416,7 @@ const defaultPatterns = {
         <path fillRule='evenodd' d='M18 2v16H2V2zm-13 13h10V5H5z' />
       ),
     },
-    dasharray: defaultDasharrays[4],
+    dasharray: defaultDasharrays[8],
   },
   triangle: {
     fill: {
@@ -432,7 +432,7 @@ const defaultPatterns = {
         <path d='M12.14 1 2 18.55h20.27z' />
       ),
     },
-    dasharray: defaultDasharrays[5],
+    dasharray: defaultDasharrays[9],
   },
   crescent: {
     fill: {
@@ -448,7 +448,7 @@ const defaultPatterns = {
         <path d='M20.38 18.75c.27-.29.02-.75-.38-.75-4.97 0-9-4.03-9-9 0-2.33.89-4.46 2.34-6.06.32-.35.13-.94-.34-.94C7.48 2 3 6.48 3 12s4.48 10 10 10c2.92 0 5.55-1.25 7.38-3.25z' />
       ),
     },
-    dasharray: defaultDasharrays[6],
+    dasharray: defaultDasharrays[10],
   },
   starSmall: {
     fill: {
@@ -464,7 +464,7 @@ const defaultPatterns = {
         <path d='M11.06 2.53c.32-.87 1.56-.87 1.88 0l2.14 5.8a1 1 0 0 0 .59.59l5.8 2.14c.87.32.87 1.56 0 1.88l-5.8 2.14a1 1 0 0 0-.59.59l-2.14 5.8c-.32.87-1.56.87-1.88 0l-2.14-5.8a1 1 0 0 0-.59-.59l-5.8-2.14c-.87-.32-.87-1.56 0-1.88l5.8-2.14a1 1 0 0 0 .59-.59z' />
       ),
     },
-    dasharray: defaultDasharrays[0],
+    dasharray: defaultDasharrays[11],
   },
 } satisfies Record<string, Pattern>;
 
