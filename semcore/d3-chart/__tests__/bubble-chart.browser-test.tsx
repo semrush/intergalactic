@@ -328,4 +328,49 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(second).toHaveCSS('display', 'none');
     });
   });
+
+  test('Verify legend item highlights only its bubble', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, TAG.KEYBOARD, '@bubble-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@checkbox'],
+  }, async ({ page }) => {
+    // Bubbles are drawn sorted by value, so the draw order differs from the legend order.
+    await loadPage(page, 'stories/components/d3-chart/tests/examples/bubble-chart/basic-usage.tsx', 'en', {
+      showLegend: true,
+      data: [
+        { x: 2, y: 3, value: 200, label: 'label 1' },
+        { x: 5, y: 5, value: 900, label: 'label 2' },
+        { x: 8, y: 7, value: 500, label: 'label 3' },
+      ],
+    });
+
+    const labels = ['label 1', 'label 2', 'label 3'];
+    const expectHighlighted = async (highlighted: string | null) => {
+      for (const label of labels) {
+        const group = locators.bubbleGroup(page, label);
+        const opacity = highlighted === null || highlighted === label ? '1' : '0.3';
+        await expect(group.locator('circle[data-ui-name="Bubble.Circle"]')).toHaveCSS('opacity', opacity);
+        await expect(group.getByText(label, { exact: true })).toHaveCSS('opacity', opacity);
+      }
+    };
+
+    await test.step('Verify all bubbles are opaque by default', async () => {
+      await expectHighlighted(null);
+    });
+
+    await test.step('Verify hovering a legend item highlights its bubble', async () => {
+      await locators.legend(page).getByText('label 2', { exact: true }).hover();
+      await expectHighlighted('label 2');
+      await locators.legend(page).getByText('label 1', { exact: true }).hover();
+      await expectHighlighted('label 1');
+    });
+
+    await test.step('Verify leaving the legend removes the highlight', async () => {
+      await page.mouse.move(0, 0);
+      await expectHighlighted(null);
+    });
+
+    await test.step('Verify focusing a legend item by keyboard highlights its bubble', async () => {
+      await locators.checkbox(page, 2).locator('input').focus();
+      await expectHighlighted('label 3');
+    });
+  });
 });
