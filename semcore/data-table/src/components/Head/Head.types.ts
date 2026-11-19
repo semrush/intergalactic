@@ -66,7 +66,6 @@ export type HeadPropsInner<
     cell: Pick<DTColumn, 'name' | 'fixed'>,
   ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
   onCellClick: DataTableCellProps<Data, UniqKeyType>['onClick'];
-  shadowVertical?: BodyPropsInner<Data, UniqKeyType>['shadowVertical'];
   scrollDirection?: ColumnPropsInner<Data, UniqKey, UniqKeyType>['scrollDirection'];
   isDataEmpty: boolean;
 

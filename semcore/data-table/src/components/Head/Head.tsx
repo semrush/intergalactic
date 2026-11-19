@@ -16,8 +16,6 @@ import type { DTRow } from '../Body/Row.types';
 import { DataTable, type ROW_GROUP, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DataTableData } from '../DataTable/DataTable.types';
 
-// @ts-expect-error treeColumns and rows are internal properties, and we can't see them in types
-@propsObserver(['treeColumns', 'rows'])
 class HeadRoot<
   Data extends DataTableData,
   UniqKey extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? keyof Data[number][typeof ROW_GROUP][number] : keyof Data[number]),
@@ -31,16 +29,12 @@ class HeadRoot<
   static displayName = 'Head';
   static style = style;
 
-  private readonly columnStyle = new Map<string, React.CSSProperties>();
-
   private unsubscribeSelectAll: undefined | (() => void) = undefined;
   private unsubscribeSetIndeterminate: undefined | (() => void) = undefined;
   private unsubscribeMaxLimitReached: undefined | (() => void) = undefined;
 
   componentDidMount() {
     const { selectedRows } = this.asProps;
-
-    this.recalculateColumnStyle();
 
     if (selectedRows && !Array.isArray(selectedRows)) {
       this.unsubscribeSelectAll = selectedRows.on(SelectableRows.SELECT_ALL_EVENT, () => {
@@ -61,55 +55,6 @@ class HeadRoot<
     this.unsubscribeSelectAll?.();
     this.unsubscribeSetIndeterminate?.();
     this.unsubscribeMaxLimitReached?.();
-
-    this.columnStyle.clear();
-  }
-
-  onPropsChange(changedProps: Record<string, unknown>) {
-    if ('treeColumns' in changedProps || 'rows' in changedProps) {
-      requestAnimationFrame(() => {
-        this.recalculateColumnStyle();
-        this.forceUpdate();
-      });
-    }
-  }
-
-  recalculateColumnStyle() {
-    const { treeColumns, getFixedStyle, selectedRows } = this.asProps;
-
-    const setForColumn = (column: DTColumn) => {
-      const isParentContainer = (column: DTColumn): column is (Omit<DTColumn, 'columns'> & { columns: DTColumn[] }) => {
-        return Boolean('columns' in column && column.columns);
-      };
-
-      if (isParentContainer(column)) {
-        column.name = column.columns.map((column) => column.name).join('/');
-      }
-
-      if (column.fixed) {
-        const styles: React.CSSProperties = {};
-        this.columnStyle.set(column.name, styles);
-
-        const [name, value] = getFixedStyle(column);
-        if (name !== undefined && value !== undefined) {
-          styles[name] = value;
-        }
-
-        if (isParentContainer(column)) {
-          column.columns.forEach((column) => setForColumn(column));
-        }
-      } else {
-        this.columnStyle.delete(column.name);
-      }
-    };
-
-    treeColumns.forEach((column, index) => {
-      setForColumn(column);
-
-      if (selectedRows && index === 0 && column.fixed) {
-        this.columnStyle.set(SELECT_ALL, { left: 0 });
-      }
-    });
   }
 
   sortableColumnDescribeId() {
@@ -119,19 +64,13 @@ class HeadRoot<
 
   getGroupProps(props: any, index: number) {
     const { columns } = props;
-    const { use, gridAreaGroupMap, children, getFixedStyle, shadowVertical, top, scrollDirection, sort } = this.asProps;
-    const groupColumns = columns ?? [];
-
-    const firstColumn = groupColumns[0];
-    const lastColumn = groupColumns[groupColumns.length - 1];
+    const { use, gridAreaGroupMap, children, getFixedStyle, top, scrollDirection, sort } = this.asProps;
 
     return {
       use,
       gridArea: gridAreaGroupMap.get(index),
       withConfig: children === undefined,
       getFixedStyle,
-      shadowVertical: (firstColumn.showShadowVertical || lastColumn.showShadowVertical) ? shadowVertical : undefined,
-      style: this.columnStyle.get(props.name),
       scrollDirection,
       top: top && scrollDirection !== 'horizontal' ? `${top}px` : undefined,
       sort,
@@ -152,7 +91,6 @@ class HeadRoot<
       selectedRows,
       h,
       onCellClick,
-      shadowVertical,
       scrollDirection,
       headerNodesMap,
     } = this.asProps;
@@ -165,7 +103,6 @@ class HeadRoot<
     return {
       use,
       'aria-colindex': index + 1,
-      'style': this.columnStyle.get(column.name),
       'gridArea': column.gridArea,
       'fixed': column.fixed,
       sticky,
@@ -180,7 +117,6 @@ class HeadRoot<
       gridTemplateAreas,
       h,
       'onClick': onCellClick,
-      'shadowVertical': column.showShadowVertical ? shadowVertical : undefined,
       scrollDirection,
       headerNodesMap,
       'top': top && scrollDirection !== 'horizontal' ? `${top}px` : undefined,

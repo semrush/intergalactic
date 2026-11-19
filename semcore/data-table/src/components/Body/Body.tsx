@@ -154,7 +154,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       tableRef,
       onCellClick,
       rawData,
-      shadowVertical,
       accordionMode,
       virtualScroll,
       limit,
@@ -200,7 +199,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       expandedRows,
       rowsHeightMap: this.rowsHeightMap,
       setRowHeight: this.setRowHeight,
-      shadowVertical,
       accordionMode,
       componentsMap: this.rowsComponentsMap,
       calculateAriaRowIndex: this.calculateAriaRowIndex,
@@ -260,7 +258,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       selectedRows,
       hasGroups,
       scrollBarInstanceRef,
-      shadowVertical,
     } = this.asProps;
 
     let rowsToRender = rows;
@@ -398,7 +395,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
                 columns={columns}
                 startIndex={this.startIndex}
                 rowIndex={index}
-                shadowVertical={shadowVertical}
                 componentRef={this.handleComponentRef}
                 getPropsToRow={this.getPropsToRow}
               />

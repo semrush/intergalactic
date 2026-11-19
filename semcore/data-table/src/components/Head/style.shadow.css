@@ -202,6 +202,14 @@ SHead[sticky] SColumn[fixed], SHead SColumn[fixed], SHead SGroup[fixed] {
   z-index: 19;
 }
 
+SGroup[fixed], SColumn[fixed] {
+  --global-left: attr(data-left px, 0);
+  --global-right: attr(data-right px, 0);
+
+  left: var(--global-left);
+  right: var(--global-right);
+}
+
 SColumn[sortable]:hover {
   cursor: pointer;
 }
@@ -253,65 +261,5 @@ SHeadCheckboxCol {
 
   &[disabled] {
     cursor: default;
-  }
-}
-
-
-SColumn[fixed][shadowVertical], SGroup[fixed][shadowVertical] {
-  &:after {
-    content: '';
-    position: absolute;
-    pointer-events: none;
-    display: none;
-    top: 0;
-    width: 5px;
-    height: 100%;
-    z-index: 5;
-  }
-}
-
-
-/*SColumnChildrenWrapper*/
-
-SColumn[fixed='left'][shadowVertical='median'],
-SColumn[fixed='left'][shadowVertical='start'],
-SGroup[fixed='left'][shadowVertical='median'],
-SGroup[fixed='left'][shadowVertical='start'] {
-  margin-right: -5px;
-  border-right-color: transparent;
-
-  &[use='primary'] {
-    padding-right: calc(var(--intergalactic-spacing-3x, 12px) + 5px);
-  }
-  &[use='secondary'] {
-    padding-right: calc(var(--intergalactic-spacing-2x, 8px) + 5px);
-  }
-
-  &:after {
-    display: block;
-    right: 0;
-    background: var(--intergalactic-scroll-area-shadow-left,
-    linear-gradient(to right, oklch(from oklch(0.23 0.009 245) l c h / 0.08) 20.55%, transparent 100%));
-  }
-}
-SColumn[fixed='right'][shadowVertical='median'],
-SColumn[fixed='right'][shadowVertical='end'],
-SGroup[fixed='right'][shadowVertical='median'],
-SGroup[fixed='right'][shadowVertical='end'] {
-  margin-left: -5px;
-  border-left-color: transparent;
-
-  &[use='primary'] {
-    padding-left: calc(var(--intergalactic-spacing-3x, 12px) + 5px);
-  }
-  &[use='secondary'] {
-    padding-left: calc(var(--intergalactic-spacing-2x, 8px) + 5px);
-  }
-
-  &:after {
-    display: block;
-    left: 0;
-    background: var(--intergalactic-scroll-area-shadow-right,
-    linear-gradient(to left, oklch(from oklch(0.23 0.009 245) l c h / 0.08) 20.55%, transparent 100%));
   }
 }

@@ -1,7 +1,6 @@
 import type { Property } from 'csstype';
 import type * as React from 'react';
 
-import type { BodyPropsInner } from '../Body/Body.types';
 import type { DataTableCellProps } from '../Body/Cell.types';
 import type { ROW_GROUP } from '../DataTable/DataTable';
 import type {
@@ -99,7 +98,6 @@ export type ColumnPropsInner<
   gridTemplateAreas: string[];
   sticky: boolean;
   onClick: DataTableCellProps<Data, UniqKeyType>['onClick'];
-  shadowVertical?: BodyPropsInner<Data, UniqKeyType>['shadowVertical'];
   scrollDirection?: 'horizontal' | 'vertical' | 'both';
   headerNodesMap: Map<string, React.RefObject<HTMLDivElement>>;
 };
