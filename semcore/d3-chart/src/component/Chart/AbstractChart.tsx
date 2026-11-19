@@ -687,10 +687,14 @@ export abstract class AbstractChart<
     return null;
   }
 
+  protected get data() {
+    return this.asProps.data;
+  }
+
   public render() {
     const SChart = Root;
     const SChartContainer = Flex;
-    const { styles, data, patterns, a11yAltTextConfig, duration, showTooltip, locale, yAxisPosition = 'left' } =
+    const { styles, patterns, a11yAltTextConfig, duration, showTooltip, locale, yAxisPosition = 'left' } =
       this.asProps;
     const { plotWidth, plotHeight } = this;
 
@@ -702,7 +706,7 @@ export abstract class AbstractChart<
         <SChartContainer>
           {yAxisPosition === 'left' && this.renderYAxis()}
           <Plot
-            data={data}
+            data={this.data}
             scale={[this.xScale, this.yScale]}
             width={plotWidth}
             height={plotHeight}

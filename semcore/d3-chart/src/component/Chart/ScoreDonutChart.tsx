@@ -189,40 +189,7 @@ class ScoreDonutChartComponent extends AbstractChart<
     );
   }
 
-  public override render() {
-    const SChart = Root;
-    const { styles, data, patterns, a11yAltTextConfig, duration, eventEmitter, showTooltip, locale } =
-      this.asProps;
-    const { plotWidth, plotHeight } = this;
-
-    const { extractedAriaProps } = extractAriaProps(this.asProps);
-
-    return sstyled(styles)(
-      <SChart render={Flex} gap={5} __excludeProps={['data', 'eventEmitter']} role='group' ref={this.chartRef}>
-        {this.renderLegend()}
-        <Plot
-          data={this.data}
-          scale={[this.xScale, this.yScale]}
-          width={plotWidth}
-          height={plotHeight}
-          dataHints={this.dataHints}
-          dataHintsHandlers={this.dataHintsHandlers}
-          a11yAltTextConfig={a11yAltTextConfig}
-          patterns={patterns}
-          duration={duration}
-          eventEmitter={eventEmitter}
-          locale={locale}
-          {...extractedAriaProps}
-        >
-          {this.renderAxis()}
-          {!showTooltip ? null : this.renderTooltip()}
-          {this.renderChart()}
-        </Plot>
-      </SChart>,
-    );
-  }
-
-  private get data() {
+  protected override get data() {
     return {
       value: this.asProps.data.value,
       other: 100 - this.asProps.data.value,
