@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import CustomPatternsExample from './examples/d3-chart/custom-patterns';
 import GridAxisPropsExample, { defaultProps as BasicUsageProps } from './examples/d3-chart/grid-axis-props';
 import HoveredTickExample, { defaultProps as HoveredTickProps } from './examples/d3-chart/hovered-tick';
-import PatternSymbolSizeExample, { defaultProps as PatternSymbolSizeProps } from './examples/d3-chart/pattern-symbol-size';
 import PlotAndA11yPropsExample from './examples/d3-chart/plot-props';
 import ReferenceLinePropsExample from './examples/d3-chart/reference-line-props';
 import TooltipDefaultFormatExample, { defaultProps as TooltipDefaultFormatProps } from './examples/d3-chart/tooltip-default-format';
@@ -83,17 +83,8 @@ export const HoveredTick: StoryObj<typeof HoveredTickProps> = {
   args: HoveredTickProps,
 };
 
-export const PatternSymbolSize: StoryObj<typeof PatternSymbolSizeProps> = {
-  render: PatternSymbolSizeExample,
-  argTypes: {
-    patterns: {
-      control: 'select',
-      options: ['zigzag', 'circleOutline', 'linesDouble', 'trees', 'star', 'triangle', 'starSmall'],
-    },
-    width: { control: { type: 'number' } },
-    height: { control: { type: 'number' } },
-  },
-  args: PatternSymbolSizeProps,
+export const CustomPatterns: StoryObj = {
+  render: CustomPatternsExample,
 };
 
 export const TooltipDeltaEdgeCases = {

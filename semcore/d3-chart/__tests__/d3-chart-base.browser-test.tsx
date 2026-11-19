@@ -76,6 +76,11 @@ const AREA_CHART_EXAMPLE = 'stories/components/d3-chart/tests/examples/area-char
 const LINE_CHART_EXAMPLE = 'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx';
 const BAR_CHART_EXAMPLE = 'stories/components/d3-chart/tests/examples/bar-chart/basic-usage.tsx';
 const DELTA_EDGE_CASES_EXAMPLE = 'stories/components/d3-chart/tests/examples/d3-chart/tooltip-delta-edge-cases.tsx';
+const CUSTOM_PATTERNS_EXAMPLE = 'stories/components/d3-chart/tests/examples/d3-chart/custom-patterns.tsx';
+
+/** symbol.viewBox of the custom pattern in CUSTOM_PATTERNS_EXAMPLE and of the default zigzag. */
+const CUSTOM_SYMBOL_VIEWBOX = '0 0 20.6 24';
+const DEFAULT_SYMBOL_VIEWBOX = '0 0 20 20';
 
 /**
  * `HoverLine.Tooltip` renders the hover line as the tooltip anchor (`<Tooltip tag={HoverLine}>`),
@@ -408,12 +413,43 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot();
     });
 
-    test('Verify low level component use', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart'],
+    test('Verify tooltip dot uses the custom pattern symbol', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@area-chart', '@base-components', '@flex-box'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/low-level-components-use.tsx', 'en');
+      await loadPage(page, CUSTOM_PATTERNS_EXAMPLE, 'en');
 
-      await expect(page).toHaveScreenshot();
+      await hoverPlotCenter(page);
+
+      const tooltipSymbol = locators.tooltip(page).locator('[data-ui-name="HoverLine.Tooltip.Dot"] svg');
+      await expect(tooltipSymbol).toHaveCount(1);
+      await expect(tooltipSymbol).toHaveAttribute('viewBox', CUSTOM_SYMBOL_VIEWBOX);
+    });
+
+    test('Verify dots of each chart reference their own pattern symbol', {
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@area-chart', '@base-components', '@flex-box'],
+    }, async ({ page }) => {
+      await loadPage(page, CUSTOM_PATTERNS_EXAMPLE, 'en');
+      await expect(locators.plot(page)).toHaveCount(2);
+
+      const charts = await locators.plot(page).evaluateAll((plots) =>
+        plots.map((plot) => {
+          const href = plot.querySelector('use[data-ui-name="Area.Dots"]')?.getAttribute('href') ?? '';
+          const symbol = href ? document.getElementById(href.slice(1)) : null;
+
+          return {
+            symbolInSamePlot: Boolean(symbol && plot.contains(symbol)),
+            viewBox: symbol?.getAttribute('viewBox'),
+          };
+        }),
+      );
+
+      await test.step('Verify each chart resolves its dot symbol inside its own plot', async () => {
+        expect(charts.map(({ symbolInSamePlot }) => symbolInSamePlot)).toEqual([true, true]);
+      });
+
+      await test.step('Verify the custom and the default chart get different symbols', async () => {
+        expect(charts.map(({ viewBox }) => viewBox)).toEqual([CUSTOM_SYMBOL_VIEWBOX, DEFAULT_SYMBOL_VIEWBOX]);
+      });
     });
   });
 
