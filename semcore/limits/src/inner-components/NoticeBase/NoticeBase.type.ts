@@ -11,32 +11,32 @@ declare namespace NSLimitsNoticeBase {
     'theme' | 'icon' | 'illustration' | 'hidden' | 'visible'
   > & {
     /**
-     * Notice title. Also used as an accessible name of the notice.
+     * Notice title. Also used as an accessible name of the notice
      */
     title: React.ReactNode;
     /**
-     * Notice description.
+     * Notice description
      */
     text: React.ReactNode;
     /**
-     * Main call to action, usually a primary button.
+     * Main call to action, usually a primary button
      */
     primaryCta: React.ReactNode;
     /**
-     * Secondary call to action, usually a link or secondary button.
+     * Secondary call to action, usually a link or secondary button
      */
     secondaryCta?: React.ReactNode;
     /**
-     * Shows the "Cancel anytime" trust line in the actions area. Pass an object to add a tooltip with details.
+     * Shows the "Cancel anytime" trust line in the actions area. Pass an object to add a tooltip with details
      */
     trustLine?: true | NSLimitsTrustLine.Props;
     /**
-     * Color theme. `accent` fills the whole notice, `default` fills only the actions area.
+     * Color theme. `accent` fills the whole notice, `default` fills only the actions area
      * @default default
      */
     theme?: Theme;
     /**
-     * Locale for the built-in texts.
+     * Locale for the built-in texts
      */
     locale?: string;
   };

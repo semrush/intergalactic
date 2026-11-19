@@ -5,7 +5,7 @@ import Divider from '@semcore/divider';
 import SemcoreNotice from '@semcore/notice';
 import React from 'react';
 
-import style from './NoticeBase.shadow.css';
+import style from './notice-base.shadow.css';
 import type { NSLimitsNoticeBase } from './NoticeBase.type';
 import TrustLine from '../TrustLine/TrustLine';
 

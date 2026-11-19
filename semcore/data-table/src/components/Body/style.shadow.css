@@ -401,11 +401,23 @@ SCellWrapper[fixed='right'][shadowVertical='end'] {
 SLimitOverlayCellWrapper[gridArea] {
   width: 100%;
   height: 100%;
-  align-items: center;
-  justify-content: center;
   z-index: 16;
   grid-area: var(--gridArea);
   backdrop-filter: blur(6px);
+  /*
+    Cell takes full size and the table has overflow: hidden, so the focus outline is drawn inside to avoid clipping
+  */
+  SLimitOverlayCell {
+    outline-offset: -2px;
+  }
+}
+
+SLimitOverlayCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 SLimitOverlayCellWrapper[left] {

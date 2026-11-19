@@ -3,7 +3,7 @@ import type { Intergalactic } from '@semcore/core';
 declare namespace NSLimitsTrustLine {
     type Props = {
       /**
-       * Additional details shown in a tooltip next to the "Cancel anytime" text. If not set, the info icon with the tooltip isn't rendered.
+       * Additional details shown in a tooltip next to the "Cancel anytime" text. If not set, the info icon with the tooltip isn't rendered
        */
       description?: string;
       /**

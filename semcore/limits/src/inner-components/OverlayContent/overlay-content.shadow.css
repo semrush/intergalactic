@@ -1,0 +1,18 @@
+SOverlayContent {
+  flex-direction: column;
+  gap: var(--intergalactic-spacing-4x, 16px);
+  padding: var(--intergalactic-spacing-4x, 16px) 0;
+}
+
+SOverlayContentHeader {
+  flex-direction: column;
+  gap: var(--intergalactic-spacing-3x, 12px);
+}
+
+SOverlayContentTitle {
+  margin: 0;
+}
+
+SOverlayContentUsageMeter {
+  padding-bottom: var(--intergalactic-spacing-2x, 8px);
+}

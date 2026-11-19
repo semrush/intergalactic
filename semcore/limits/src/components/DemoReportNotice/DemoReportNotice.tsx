@@ -5,7 +5,7 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import UndoM from '@semcore/icon/Undo/m';
 import React from 'react';
 
-import style from './DemoReportNotice.shadow.css';
+import style from './demo-report-notice.shadow.css';
 import type { NSLimitsDemoReportNotice } from './DemoReportNotice.type';
 import NoticeBase from '../../inner-components/NoticeBase/NoticeBase';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';

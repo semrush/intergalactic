@@ -102,6 +102,7 @@ class LimitOverlayRoot<UniqKeyType> extends Component<LimitOverlayProps<UniqKeyT
 
   render() {
     const SLimitOverlayCellWrapper = Flex;
+    const SLimitOverlayCell = Box;
     const { columns, rows, styles, limit } = this.asProps;
 
     const rowsLimit = limit.fromRow;
@@ -122,7 +123,7 @@ class LimitOverlayRoot<UniqKeyType> extends Component<LimitOverlayProps<UniqKeyT
         left={left ? left : undefined}
         onClick={(e: React.SyntheticEvent) => e.stopPropagation()}
       >
-        <Box
+        <SLimitOverlayCell
           role='gridcell'
           aria-colindex={colIndex}
           aria-colspan={colSpan}
@@ -132,7 +133,7 @@ class LimitOverlayRoot<UniqKeyType> extends Component<LimitOverlayProps<UniqKeyT
           onKeyDown={this.handleFocusableCellKeyDown}
         >
           {renderOverlay?.()}
-        </Box>
+        </SLimitOverlayCell>
       </SLimitOverlayCellWrapper>,
     );
   }

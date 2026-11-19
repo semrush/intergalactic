@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import LimitsDemoReportNoticeExample, { defaultProps as defaultLimitsDemoReportNoticeExampleProps } from './examples/demo-report-notice';
 import LimitsNoticeExample, { defaultProps as defaultLimitsNoticeExampleProps } from './examples/notice';
+import LimitsOverlayExample, { defaultProps as defaultLimitsOverlayExampleProps } from './examples/overlay';
 
 const meta: Meta = {
   title: 'Components/Limits/Tests',
@@ -88,4 +89,56 @@ export const LimitsDemoReportNotice: StoryObj<typeof defaultLimitsDemoReportNoti
     },
   },
   args: defaultLimitsDemoReportNoticeExampleProps,
+};
+
+export const LimitsOverlay: StoryObj<typeof defaultLimitsOverlayExampleProps> = {
+  render: LimitsOverlayExample,
+  argTypes: {
+    title: {
+      control: { type: 'text' },
+    },
+    description: {
+      control: { type: 'text' },
+    },
+    headingLevel: {
+      control: { type: 'select' },
+      options: [1, 2, 3, 4, 5],
+    },
+    locale: {
+      control: { type: 'select' },
+      options: locales,
+    },
+    content: {
+      control: { type: 'select' },
+      options: ['tiers', 'features', 'none'],
+    },
+    promoLabel: {
+      control: { type: 'text' },
+      if: { arg: 'content', eq: 'tiers' },
+    },
+    showTrustLine: {
+      control: { type: 'boolean' },
+    },
+    trustLineDescription: {
+      control: { type: 'text' },
+      if: { arg: 'showTrustLine' },
+    },
+    showUsage: {
+      control: { type: 'boolean' },
+    },
+    usageValue: {
+      control: { type: 'number' },
+      if: { arg: 'showUsage' },
+    },
+    usageFeature: {
+      control: { type: 'text' },
+      if: { arg: 'showUsage' },
+    },
+    usageState: {
+      control: { type: 'select' },
+      options: ['normal', 'warning'],
+      if: { arg: 'showUsage' },
+    },
+  },
+  args: defaultLimitsOverlayExampleProps,
 };

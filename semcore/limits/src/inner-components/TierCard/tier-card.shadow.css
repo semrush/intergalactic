@@ -1,0 +1,49 @@
+STierCard {
+  position: relative;
+  padding: var(--intergalactic-spacing-4x, 16px);
+  flex-direction: column;
+  gap: var(--intergalactic-spacing-4x, 16px);
+  border-radius: var(--intergalactic-surface-rounded);
+  border: 1px solid var(--intergalactic-border-secondary);
+
+  &[theme='accent'] {
+    background-color: var(--intergalactic-limits-bg-accent);
+    border-color: transparent;
+  }
+
+  SPromoLabel {
+    position: absolute;
+    top: 0;
+    right: var(--intergalactic-spacing-2x, 8px);
+    transform: translateY(-50%);
+    display: flex;
+    padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
+    border-radius: var(--intergalactic-tag-rounded);
+    background: var(--intergalactic-limits-card-label);
+    color: var(--intergalactic-text-primary-invert);
+    line-height: normal;
+  }
+}
+
+SHeader {
+  gap: var(--intergalactic-spacing-2x, 8px);
+  align-items: center;
+}
+
+STierPrice {
+  color: var(--intergalactic-text-secondary);
+  font-size: var(--intergalactic-fs-300, 16px);
+  font-weight: var(--intergalactic-medium, 500);
+  line-height: var(--intergalactic-lh-400);
+  align-items: center;
+  gap: var(--intergalactic-spacing-05x);
+}
+
+STierName {
+  margin: 0;
+}
+
+STierName,
+SDescription {
+  color: var(--intergalactic-text-primary);
+}
