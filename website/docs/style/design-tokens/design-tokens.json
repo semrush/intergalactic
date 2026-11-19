@@ -2161,7 +2161,9 @@
     "name": "--intergalactic-limits-card-label",
     "value": "oklch(0.22 0.008 245)",
     "description": "Label color on Limits cards.",
-    "components": []
+    "components": [
+      "limits"
+    ]
   },
   {
     "name": "--intergalactic-limits-indicator-bg-base",
@@ -2243,6 +2245,7 @@
     "description": "Use as a secondary cover of the content under the messages about limitations.",
     "components": [
       "data-table",
+      "limits",
       "spin-container"
     ]
   },
@@ -3308,6 +3311,7 @@
       "dropdown",
       "dropdown-menu",
       "flags",
+      "limits",
       "pills",
       "radio-cards",
       "slider",
@@ -3785,6 +3789,7 @@
     "value": "24px",
     "description": "Corner radius for Tag (including removable tags) in dense UI.",
     "components": [
+      "limits",
       "tag"
     ]
   },

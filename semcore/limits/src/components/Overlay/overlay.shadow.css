@@ -4,7 +4,7 @@ SOverlay {
   align-items: center;
   justify-content: center;
   gap: var(--intergalactic-spacing-4x, 16px);
-  background: var(--intergalactic-overlay-limitation-secondary);
+  background: var(--intergalactic-overlay-limitation-secondary, oklch(1 0 0 / 0.85));
   box-sizing: border-box;
   width: 100%;
   height: 100%;
