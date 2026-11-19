@@ -56,6 +56,22 @@ class TooltipRoot extends Component {
   componentDidMount() {
     const { eventEmitter, plotId } = this.asProps;
 
+    const setCoordinates = (x, y) => {
+      this.virtualElementPosition.x = x;
+      this.virtualElementPosition.y = y;
+      if (this.virtualTriggerElement === null) {
+        this.virtualTriggerElement = {};
+        setTimeout(() => {
+          this.setPopperTrigger(this.virtualTriggerElement);
+        }, 0);
+      }
+      this.virtualTriggerElement.getBoundingClientRect = () => {
+        const { x, y } = this.virtualElementPosition;
+        return { width: 0, height: 0, top: y, right: x, bottom: y, left: x };
+      };
+      this.popper.current?.update();
+    };
+
     this.unsubscribe.push(
       eventEmitter.subscribe(`setTooltipRenderingProps_${plotId}`, (anchorProps, tooltipProps) => {
         this.setState({ anchorProps, tooltipProps });
@@ -63,20 +79,14 @@ class TooltipRoot extends Component {
       eventEmitter.subscribe(`setTooltipVisible_${plotId}`, (visible) =>
         this.setState({ $visible: visible }),
       ),
-      eventEmitter.subscribe(`setTooltipPosition_${plotId}`, (x, y) => {
-        this.virtualElementPosition.x = x;
-        this.virtualElementPosition.y = y;
-        if (this.virtualTriggerElement === null) {
-          this.virtualTriggerElement = {};
-          setTimeout(() => {
-            this.setPopperTrigger(this.virtualTriggerElement);
-          }, 0);
-        }
-        this.virtualTriggerElement.getBoundingClientRect = () => {
-          const { x, y } = this.virtualElementPosition;
-          return { width: 0, height: 0, top: y, right: x, bottom: y, left: x };
-        };
-        this.popper.current?.update();
+      eventEmitter.subscribe(`setTooltipPosition_${plotId}`, setCoordinates),
+      eventEmitter.subscribe(`hoverPosition_${plotId}`, setCoordinates),
+      eventEmitter.subscribe(`hoverListItem_${plotId}`, (index, invertAxis) => {
+        this.setState({
+          tooltipProps: {
+            [invertAxis ? 'yIndex' : 'xIndex']: index,
+          },
+        });
       }),
     );
   }

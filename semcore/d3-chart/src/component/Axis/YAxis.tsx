@@ -6,6 +6,7 @@ import * as React from 'react';
 import styles from './yAxis.shadow.css';
 import type { NSYAxis } from './YAxis.type';
 import { scaleOfBandwidth } from '../../utils';
+import type { ChartEvents } from '../Chart/AbstractChart/AbstractChart.type';
 
 class YAxisComponent extends Component<NSYAxis.Props, [], {}, {}, NSYAxis.State, NSYAxis.DefaultProps> {
   static defaultProps: NSYAxis.DefaultProps = {
@@ -13,8 +14,18 @@ class YAxisComponent extends Component<NSYAxis.Props, [], {}, {}, NSYAxis.State,
   };
 
   state: NSYAxis.State = {
-    hoveredValue: null,
-    yTranslate: 0,
+    dataIndex: -1,
+  };
+
+  componentDidMount() {
+    this.asProps.eventEmitter.on(`hoverListItem_${this.asProps.uid}`, this.handleMoveEnterData);
+    this.asProps.eventEmitter.on('leaveChart', () => this.setState({ dataIndex: -1 }));
+  }
+
+  handleMoveEnterData: ChartEvents[`hoverListItem_${string}`] = (index, invertAxis) => {
+    if (invertAxis) {
+      this.setState({ dataIndex: index });
+    }
   };
 
   get ticks() {
@@ -26,15 +37,38 @@ class YAxisComponent extends Component<NSYAxis.Props, [], {}, {}, NSYAxis.State,
     });
   }
 
+  renderHoveredTick() {
+    const SHoveredTick = Text;
+
+    const { scale, valueFormatter, data, dataKey } = this.asProps;
+    const { dataIndex } = this.state;
+
+    const item = data[dataIndex];
+
+    if (!item || dataIndex === -1) {
+      return null;
+    }
+
+    const hoveredYTranslate = scaleOfBandwidth(scale, item?.[dataKey]) ?? 0;
+    const style = {
+      transform: `translateY(calc(${hoveredYTranslate}px - 50%))`,
+    };
+
+    return sstyled(styles)(
+      <SHoveredTick size={100} style={style}>
+        {valueFormatter(item[dataKey])}
+      </SHoveredTick>,
+    );
+  }
+
   render() {
     const SYAxis = Root;
     const STick = Text;
-    const SHoveredTick = Text;
-    const { primaryText, valueFormatter, yAxisPosition, hideTickHover } = this.asProps;
-    const { hoveredValue, yTranslate } = this.state;
+
+    const { primaryText, valueFormatter, yAxisPosition } = this.asProps;
 
     return sstyled(styles)(
-      <SYAxis render={Box} primaryText={primaryText} position={yAxisPosition}>
+      <SYAxis render={Box} primaryText={primaryText} position={yAxisPosition} __excludeProps={['data']}>
         {this.ticks.map((tick, index) => {
           const style = {
             transform: `translateY(calc(${tick.yTranslate}px - 50%))`,
@@ -46,11 +80,7 @@ class YAxisComponent extends Component<NSYAxis.Props, [], {}, {}, NSYAxis.State,
             </STick>,
           );
         })}
-        {!hideTickHover && hoveredValue && (
-          <SHoveredTick style={{ transform: `translateY(calc(${yTranslate}px - 50%))` }}>
-            {valueFormatter(hoveredValue)}
-          </SHoveredTick>
-        )}
+        {this.renderHoveredTick()}
       </SYAxis>,
     );
   }

@@ -7,8 +7,8 @@ import React from 'react';
 
 // @ts-ignore
 import { minMax, ScatterPlot, getScatterPlotRadius } from '../..';
-import type { ChartState } from './AbstractChart';
-import { AbstractChart } from './AbstractChart';
+import type { ChartState } from './AbstractChart/AbstractChart';
+import { AbstractChart } from './AbstractChart/AbstractChart';
 import type {
   ScatterPlotChartData,
   ScatterPlotChartDefaultProps,
@@ -44,7 +44,7 @@ class ScatterPlotChartComponent extends AbstractChart<
   }
 
   protected get xScale() {
-    const { xScale, marginY = 8, data, groupKey, valueKey } = this.asProps;
+    const { xScale, marginY = 0, data, groupKey, valueKey } = this.asProps;
     const { plotWidth } = this;
 
     if (xScale) {
@@ -64,7 +64,7 @@ class ScatterPlotChartComponent extends AbstractChart<
   }
 
   protected get yScale(): ScaleLinear<any, any> {
-    const { yScale, marginX = 30, valueKey } = this.asProps;
+    const { yScale, marginX = 0, valueKey } = this.asProps;
     const { plotHeight } = this;
 
     if (yScale) {

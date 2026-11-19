@@ -17,7 +17,7 @@ import type React from 'react';
 
 import type { FORECAST, POTENTIAL } from './component/Chart';
 import { DATA_TYPE } from './component/Chart';
-import type { ObjectData, ObjectDataKey } from './component/Chart/AbstractChart.type';
+import type { ObjectData, ObjectDataKey } from './component/Chart/AbstractChart/AbstractChart.type';
 
 export const eventToPoint = (event: React.MouseEvent<HTMLElement>, svgRoot: SVGElement) => {
   const node = (event.currentTarget || event.target) as HTMLElement;

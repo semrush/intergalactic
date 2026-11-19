@@ -3,13 +3,13 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { type ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
-import type { ObjectData } from './AbstractChart.type';
-import { HIGHLIGHT_DOT } from './AbstractChart.type';
+import type { ObjectData } from './AbstractChart/AbstractChart.type';
+import { HIGHLIGHT_DOT } from './AbstractChart/AbstractChart.type';
 import type { LineChartData, LineChartDefaultProps, LineChartProps, LineChartType } from './LineChart.type';
 // @ts-ignore
-import { Line, minMax, HoverLine, ReferenceLine, ReferenceStripes } from '../..';
-import type { ChartState } from './AbstractChart';
-import { AbstractChart } from './AbstractChart';
+import { Line, minMax, Tooltip, ReferenceLine, ReferenceStripes } from '../..';
+import type { ChartState } from './AbstractChart/AbstractChart';
+import { AbstractChart } from './AbstractChart/AbstractChart';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 class LineChartComponent extends AbstractChart<
@@ -34,7 +34,7 @@ class LineChartComponent extends AbstractChart<
   } as const;
 
   protected get xScale() {
-    const { xScale, marginY = 8, data, groupKey } = this.asProps;
+    const { xScale, marginY = 0, data, groupKey } = this.asProps;
     const { plotWidth } = this;
 
     if (xScale) {
@@ -53,7 +53,7 @@ class LineChartComponent extends AbstractChart<
   }
 
   protected get yScale(): ScaleLinear<any, any> {
-    const { yScale, marginX = 32 } = this.asProps;
+    const { yScale, marginX = 0 } = this.asProps;
     const { plotHeight } = this;
 
     if (yScale) {
@@ -100,19 +100,19 @@ class LineChartComponent extends AbstractChart<
     const { data, groupKey, showXAxis } = this.asProps;
 
     return (
-      <HoverLine.Tooltip x={groupKey} wMin={100} hideTickHover={!showXAxis}>
+      <Tooltip x={groupKey} wMin={100} hideTickHover={!showXAxis}>
         {({ xIndex }: any) => {
           const dataItem = data[xIndex];
 
           return {
             children: this.getTooltipChildren({
-              Tooltip: HoverLine.Tooltip,
+              Tooltip: Tooltip,
               dataItem,
               index: xIndex,
             }),
           };
         }}
-      </HoverLine.Tooltip>
+      </Tooltip>
     );
   }
 

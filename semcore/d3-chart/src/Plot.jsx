@@ -30,7 +30,7 @@ class PlotRoot extends Component {
 
   static enhance = [colorResolverEnhance(), i18nEnhance(localizedMessages)];
 
-  plotId = uniqueId();
+  plotId = this.props.uid ?? uniqueId();
 
   rootRef = React.createRef();
 

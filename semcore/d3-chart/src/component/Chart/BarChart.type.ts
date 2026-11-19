@@ -3,7 +3,7 @@ import type { Intergalactic } from '@semcore/core';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import type React from 'react';
 
-import type { AriaNameProps, BaseChartProps, ReferenceArea, ReferenceLine } from './AbstractChart.type';
+import type { AriaNameProps, BaseChartProps, ReferenceArea, ReferenceLine } from './AbstractChart/AbstractChart.type';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 
 type TrendItem = {

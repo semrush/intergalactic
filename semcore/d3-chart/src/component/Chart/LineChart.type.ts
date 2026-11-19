@@ -3,7 +3,7 @@ import type { Intergalactic } from '@semcore/core';
 import type { ScaleLinear, ScaleTime } from 'd3-scale';
 import type { CurveFactory } from 'd3-shape';
 
-import type { BaseChartProps, ReferenceLine, ReferenceArea } from './AbstractChart.type';
+import type { BaseChartProps, ReferenceLine, ReferenceArea } from './AbstractChart/AbstractChart.type';
 import type { interpolateValue } from '../../utils';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 

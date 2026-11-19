@@ -2,7 +2,7 @@ import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 
 import type { makeDataHintsContainer } from '../../a11y/hints';
 import type { ChartMetaData } from '../../ChartMetaData';
-import type { ListData } from '../Chart/AbstractChart.type';
+import type { ListData } from '../Chart/AbstractChart/AbstractChart.type';
 
 export type HoverLineProps = {
   data: ListData;

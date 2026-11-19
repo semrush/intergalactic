@@ -3,7 +3,7 @@ import type { NSBox, NSFlex } from '@semcore/base-components';
 import type { LegendItem, LegendItemKey, ShapeType } from './LegendItem/LegendItem.type';
 import type { DataStructureHints } from '../../a11y/hints';
 import type { PatternsConfig } from '../../Pattern';
-import type { AriaNameProps } from '../Chart/AbstractChart.type';
+import type { AriaNameProps } from '../Chart/AbstractChart/AbstractChart.type';
 
 export type LSize = 'm' | 'l';
 

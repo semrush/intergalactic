@@ -9,8 +9,8 @@ import React from 'react';
 
 // @ts-ignore
 import { Donut, Plot } from '../..';
-import type { ChartState } from './AbstractChart';
-import { NOT_A_VALUE, AbstractChart } from './AbstractChart';
+import type { ChartState } from './AbstractChart/AbstractChart';
+import { NOT_A_VALUE, AbstractChart } from './AbstractChart/AbstractChart';
 import type { ScoreDonutChartData, ScoreDonutChartDefaultProps, ScoreDonutChartProps, ScoreDonutChartType } from './ScoreDonutChart.type';
 import { DefaultStrokePattern } from '../../Pattern';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';

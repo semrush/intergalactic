@@ -3,9 +3,9 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { scaleBand, scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
-import type { ChartState } from './AbstractChart';
-import { AbstractChart } from './AbstractChart';
-import type { BaseLegendProps } from './AbstractChart.type';
+import type { ChartState } from './AbstractChart/AbstractChart';
+import { AbstractChart } from './AbstractChart/AbstractChart';
+import type { BaseLegendProps } from './AbstractChart/AbstractChart.type';
 import type { BarChartData, BarChartProps, BarChartType, BarChartDefaultProps } from './BarChart.type';
 // @ts-ignore
 import { minMax, GroupBar, HoverRect, StackBar, Line, YAxis as YAxisOld, XAxis, ReferenceLine } from '../..';
@@ -237,11 +237,18 @@ class BarChartComponent extends AbstractChart<
     }
 
     return (
-      <YAxis scale={this.yScale} ticksCount={yTicksCount} primaryText={!!invertAxis} valueFormatter={axisYValueFormatter ?? this.valueFormatter} />
+      <YAxis
+        scale={this.yScale}
+        ticksCount={yTicksCount}
+        primaryText={!!invertAxis}
+        valueFormatter={axisYValueFormatter ?? this.valueFormatter}
+        data={this.data}
+        eventEmitter={this.eventEmitter}
+      />
     );
   }
 
-  protected override renderAxis(): React.ReactNode {
+  protected override renderGrid(): React.ReactNode {
     const {
       invertAxis,
       showXAxis,
@@ -317,8 +324,8 @@ class BarChartComponent extends AbstractChart<
 
   private get categoryScale() {
     const {
-      marginY = 8,
-      marginX = 32,
+      marginY = 0,
+      marginX = 0,
       invertAxis,
       data,
       groupKey,
@@ -342,7 +349,7 @@ class BarChartComponent extends AbstractChart<
   }
 
   private get valueScale() {
-    const { marginY = 8, marginX = 32, invertAxis, type } = this.asProps;
+    const { marginY = 0, marginX = 0, invertAxis, type } = this.asProps;
     const { plotWidth, plotHeight } = this;
 
     const max = type === 'stack' ? super.maxStackedValue : Math.max(...super.flatValues);

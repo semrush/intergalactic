@@ -57,3 +57,9 @@ STooltipDeltaWrapper {
     align-self: center;
   }
 }
+
+
+SChartContainer {
+  display: grid;
+  grid-template: 'yAxis plot' '. xAxis';
+}

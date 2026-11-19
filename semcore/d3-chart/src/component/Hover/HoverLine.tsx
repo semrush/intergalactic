@@ -78,19 +78,19 @@ class HoverLineComponent extends Component<HoverLineProps> {
                   <line x1={x1} y1={yRange[0]} x2={x1} y2={yRange[1]} />
                   <line x1={x1 - NOTCH_DELTA} x2={x1 + NOTCH_DELTA} y1={yRange[1]} y2={yRange[1]} />
                 </SHoverLine>
-                {!hideTickHover && xValue !== undefined && (
-                  <HoveredTick
-                    size={meta.getTicksSize('horizontal')}
-                    position={meta.getTicksPosition('horizontal')}
-                    tickFormatter={dataHints.titles.getHorizontalAxesTitle ?? xFormatValue}
-                    value={xValue}
-                    isFirstTick={this.isEquals(xValue, xTicks.at(0))}
-                    isLastTick={this.isEquals(xValue, xTicks.at(-1))}
-                    x={x1}
-                    xRange={xRange}
-                    yRange={yRange}
-                  />
-                )}
+                {/* {!hideTickHover && xValue !== undefined && ( */}
+                {/*  <HoveredTick */}
+                {/*    size={meta.getTicksSize('horizontal')} */}
+                {/*    position={meta.getTicksPosition('horizontal')} */}
+                {/*    tickFormatter={dataHints.titles.getHorizontalAxesTitle ?? xFormatValue} */}
+                {/*    value={xValue} */}
+                {/*    isFirstTick={this.isEquals(xValue, xTicks.at(0))} */}
+                {/*    isLastTick={this.isEquals(xValue, xTicks.at(-1))} */}
+                {/*    x={x1} */}
+                {/*    xRange={xRange} */}
+                {/*    yRange={yRange} */}
+                {/*  /> */}
+                {/* )} */}
               </>
             )
           : null}
@@ -102,19 +102,19 @@ class HoverLineComponent extends Component<HoverLineProps> {
                   <line x1={xRange[0]} y1={y1} x2={xRange[1]} y2={y1} />
                   <line x1={xRange[1]} y1={y1 - NOTCH_DELTA} x2={xRange[1]} y2={y1 + NOTCH_DELTA} />
                 </SHoverLine>
-                {!hideTickHover && yValue !== undefined && (
-                  <HoveredTick
-                    size={meta.getTicksSize('vertical')}
-                    position={meta.getTicksPosition('vertical')}
-                    tickFormatter={dataHints.titles.getVerticalAxesTitle ?? yFormatValue}
-                    value={yValue}
-                    isFirstTick={this.isEquals(yValue, yTicks.at(0))}
-                    isLastTick={this.isEquals(yValue, yTicks.at(-1))}
-                    y={y1}
-                    xRange={xRange}
-                    yRange={yRange}
-                  />
-                )}
+                {/* {!hideTickHover && yValue !== undefined && ( */}
+                {/*  <HoveredTick */}
+                {/*    size={meta.getTicksSize('vertical')} */}
+                {/*    position={meta.getTicksPosition('vertical')} */}
+                {/*    tickFormatter={dataHints.titles.getVerticalAxesTitle ?? yFormatValue} */}
+                {/*    value={yValue} */}
+                {/*    isFirstTick={this.isEquals(yValue, yTicks.at(0))} */}
+                {/*    isLastTick={this.isEquals(yValue, yTicks.at(-1))} */}
+                {/*    y={y1} */}
+                {/*    xRange={xRange} */}
+                {/*    yRange={yRange} */}
+                {/*  /> */}
+                {/* )} */}
               </>
             )
           : null}
@@ -123,4 +123,4 @@ class HoverLineComponent extends Component<HoverLineProps> {
   }
 }
 
-export const HoverLine = createElement(HoverLineComponent);
+export const HoverLine = createElement(HoverLineComponent) as React.FC<HoverLineProps>;

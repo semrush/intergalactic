@@ -3,9 +3,9 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { scaleBand, scaleLinear } from 'd3-scale';
 import React from 'react';
 
-import type { ChartState } from './AbstractChart';
-import { AbstractChart } from './AbstractChart';
-import type { BaseLegendProps } from './AbstractChart.type';
+import type { ChartState } from './AbstractChart/AbstractChart';
+import { AbstractChart } from './AbstractChart/AbstractChart';
+import type { BaseLegendProps } from './AbstractChart/AbstractChart.type';
 import type {
   CompactHorizontalBarChartData,
   CompactHorizontalBarChartDefaultProps,

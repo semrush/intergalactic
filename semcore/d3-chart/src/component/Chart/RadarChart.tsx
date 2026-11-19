@@ -3,8 +3,8 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { scaleLinear, type ScaleLinear } from 'd3-scale';
 import React from 'react';
 
-import type { ChartState } from './AbstractChart';
-import { AbstractChart } from './AbstractChart';
+import type { ChartState } from './AbstractChart/AbstractChart';
+import { AbstractChart } from './AbstractChart/AbstractChart';
 import type { RadarChartData, RadarChartDefaultProps, RadarChartProps, RadarChartType } from './RadarChart.type';
 // @ts-ignore
 import { Radar } from '../..';

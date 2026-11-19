@@ -4,14 +4,14 @@ import type EventEmitter from '@semcore/core/lib/utils/eventEmitter';
 import type Icon from '@semcore/icon';
 import type React from 'react';
 
-import type { PatternsConfig } from '../../Pattern';
+import type { PatternsConfig } from '../../../Pattern';
 // @ts-ignore
-import type { PlotSummarizerConfig } from '../../Plot';
-import type { interpolateValue } from '../../utils';
-import type { NSYAxis } from '../Axis/YAxis.type';
-import type { BaseChartLegendProps } from '../ChartLegend/BaseLegend.type';
-import type { TrendProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
-import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
+import type { PlotSummarizerConfig } from '../../../Plot';
+import type { interpolateValue } from '../../../utils';
+import type { NSYAxis } from '../../Axis/YAxis.type';
+import type { BaseChartLegendProps } from '../../ChartLegend/BaseLegend.type';
+import type { TrendProps } from '../../ChartLegend/LegendFlex/LegendFlex.type';
+import type { LegendItemKey } from '../../ChartLegend/LegendItem/LegendItem.type';
 
 export const GOOD = Symbol('GOOD');
 export const BAD = Symbol('BAD');
@@ -300,12 +300,22 @@ export type ReferenceArea = {
 type BaseEvents = {
   onMouseMoveChart: (e: React.MouseEvent, rootElement: SVGSVGElement, isTickUnder: boolean, point: [number, number]) => void;
   onMouseLeaveChart: (e: React.MouseEvent) => void;
+
+  leaveChart: () => void;
 };
 
 type CommonEvents = {
   setTooltipPosition: (clientX: number, clientY: number) => void;
   setTooltipRenderingProps: (_: {}, params: { index: number }) => void;
   setTooltipVisible: (isVisible: boolean) => void;
+
+  hoverPosition: (clientX: number, clientY: number) => void;
+  hoverListItem: (index: number, invertAxis: boolean) => void;
+
+  // moveOverChart: (clientX: number, clientY: number) => void;
+  // moveOverListItem: (index: number) => void;
+  //
+  // leaveChart: () => void;
 };
 
 export type ChartEvents = BaseEvents & {

@@ -8,9 +8,6 @@ import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
-import type { ChartState } from '../AbstractChart';
-import { AbstractChart } from '../AbstractChart';
-import type { BaseLegendProps, ChartEvents } from '../AbstractChart.type';
 import style from './scoreBarChart.shadow.css';
 import type {
   ScoreBarChartData,
@@ -22,6 +19,9 @@ import { ScoreBarItem } from './ScoreBarItem';
 // @ts-ignore
 import { Tooltip } from '../../../';
 import { localizedMessages } from '../../../translations/__intergalactic-dynamic-locales';
+import { AbstractChart } from '../AbstractChart/AbstractChart';
+import type { ChartState } from '../AbstractChart/AbstractChart';
+import type { BaseLegendProps, ChartEvents } from '../AbstractChart/AbstractChart.type';
 
 class ScoreBarChartComponent extends AbstractChart<
   ScoreBarChartData,
