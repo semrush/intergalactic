@@ -1,5 +1,20 @@
 import { interpolateValue, GOOD, HIGHLIGHT_DOT, BAD, INSIGHTFUL, DATA_TYPE, FORECAST, POTENTIAL } from '@semcore/ui/d3-chart';
 
+type InterpolationPoint = { time: Date; line1: number; line2: number | typeof interpolateValue };
+
+const interpolation: InterpolationPoint[] = [
+  { time: new Date(2025, 0, 1), line1: 5, line2: 3 },
+  { time: new Date(2025, 0, 5), line1: 8, line2: interpolateValue },
+  { time: new Date(2025, 0, 10), line1: 4, line2: 8 },
+  { time: new Date(2025, 0, 15), line1: 5, line2: interpolateValue },
+  { time: new Date(2025, 0, 20), line1: 5, line2: interpolateValue },
+  { time: new Date(2025, 0, 25), line1: 4, line2: interpolateValue },
+  { time: new Date(2025, 0, 30), line1: 3, line2: 5 },
+  { time: new Date(2025, 1, 4), line1: 3, line2: interpolateValue },
+  { time: new Date(2025, 1, 9), line1: 4, line2: interpolateValue },
+  { time: new Date(2025, 1, 14), line1: 1, line2: 6 },
+];
+
 export default {
   Default: [
     { time: new Date(2025, 0, 1), line: 3 },
@@ -11,18 +26,7 @@ export default {
     { time: new Date(2025, 0, 30), line: 2, [HIGHLIGHT_DOT]: BAD } as const,
     { time: new Date(2025, 1, 4), line: 8 },
   ],
-  Interpolation: [
-    { time: new Date(2025, 0, 1), line1: 5, line2: 3 },
-    { time: new Date(2025, 0, 5), line1: 8, line2: interpolateValue } as const,
-    { time: new Date(2025, 0, 10), line1: 4, line2: 8 },
-    { time: new Date(2025, 0, 15), line1: 5, line2: interpolateValue } as const,
-    { time: new Date(2025, 0, 20), line1: 5, line2: interpolateValue } as const,
-    { time: new Date(2025, 0, 25), line1: 4, line2: interpolateValue } as const,
-    { time: new Date(2025, 0, 30), line1: 3, line2: 5 },
-    { time: new Date(2025, 1, 4), line1: 3, line2: interpolateValue } as const,
-    { time: new Date(2025, 1, 9), line1: 4, line2: interpolateValue } as const,
-    { time: new Date(2025, 1, 14), line1: 1, line2: 6 },
-  ],
+  Interpolation: interpolation,
   XY: [
     { x: 0, y: 3 },
     { x: 1, y: 7 },
