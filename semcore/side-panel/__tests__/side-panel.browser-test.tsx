@@ -100,11 +100,21 @@ test.describe(`${TAG.VISUAL} `, () => {
 
       await test.step('Verify hovered title', async () => {
         await locators.title(page).hover();
+        await page.waitForFunction(() => {
+          const hints = Array.from(document.querySelectorAll('[data-ui-name="Hint"]'));
+          return hints.length === 1 && getComputedStyle(hints[0]).opacity === '1';
+        });
         await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
       });
 
       await test.step('Verify focused back button', async () => {
         await page.keyboard.press('Tab');
+        await expect(locators.backButton(page)).toBeFocused();
+        await locators.hint(page).filter({ hasText: 'Back to' }).waitFor({ state: 'visible' });
+        await page.waitForFunction(() => {
+          const hints = Array.from(document.querySelectorAll('[data-ui-name="Hint"]'));
+          return hints.length === 1 && hints[0].textContent?.includes('Back to') && getComputedStyle(hints[0]).opacity === '1';
+        });
         await expect(page).toHaveScreenshot();
       });
     });
