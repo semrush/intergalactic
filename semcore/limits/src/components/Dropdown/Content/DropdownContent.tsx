@@ -4,26 +4,26 @@ import { Text } from '@semcore/typography';
 import React from 'react';
 
 import style from './dropdown-content.shadow.css';
-import type { NSLimitsPopperContent } from './DropdownContent.type';
+import type { NSLimitsDropdownContent } from './DropdownContent.type';
 import TrustLine from '../../../inner-components/TrustLine/TrustLine';
 import UsageMeter from '../../../inner-components/UsageMeter/UsageMeter';
 
-class PopperContentRoot extends Component<
-  Intergalactic.InternalTypings.InferComponentProps<NSLimitsPopperContent.Component>
+class DropdownContentRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSLimitsDropdownContent.Component>
 > {
   static style = style;
   static displayName = 'Limits.PopperContent';
 
   render() {
-    const SPopper = Root;
-    const SPopperHeader = Box;
-    const SPopperBody = Flex;
-    const SPopperContent = Flex;
-    const SPopperTitle = Text;
-    const SPopperText = Text;
-    const SPopperUsageList = Flex;
-    const SPopperFooter = Flex;
-    const SPopperActions = Flex;
+    const SDropdownContent = Root;
+    const SDropdownContentHeader = Box;
+    const SDropdownContentBody = Flex;
+    const SDropdownContentContent = Flex;
+    const SDropdownContentTitle = Text;
+    const SDropdownContentText = Text;
+    const SDropdownContentUsageList = Flex;
+    const SDropdownContentFooter = Flex;
+    const SDropdownContentActions = Flex;
 
     const {
       title,
@@ -40,41 +40,41 @@ class PopperContentRoot extends Component<
     const usageHeader = usage && !Array.isArray(usage) ? usage : undefined;
 
     return sstyled(styles)(
-      <SPopper render={Flex} __excludeProps={['title']}>
-        <SPopperBody>
+      <SDropdownContent render={Flex} __excludeProps={['title']}>
+        <SDropdownContentBody>
           {usageHeader && (
-            <SPopperHeader>
+            <SDropdownContentHeader>
               <UsageMeter locale={locale} {...usageHeader} />
-            </SPopperHeader>
+            </SDropdownContentHeader>
           )}
-          <SPopperContent>
-            <SPopperTitle tag='div' size={200} fontWeight='bold'>
+          <SDropdownContentContent>
+            <SDropdownContentTitle tag='div' size={200} fontWeight='bold'>
               {title}
-            </SPopperTitle>
-            <SPopperText tag='div' size={200}>
+            </SDropdownContentTitle>
+            <SDropdownContentText tag='div' size={200}>
               {text}
-            </SPopperText>
+            </SDropdownContentText>
             {usageList && usageList.length > 0 && (
-              <SPopperUsageList>
+              <SDropdownContentUsageList>
                 {usageList.map((usageProps, index) => (
                   <UsageMeter key={index} locale={locale} {...usageProps} />
                 ))}
-              </SPopperUsageList>
+              </SDropdownContentUsageList>
             )}
-          </SPopperContent>
-        </SPopperBody>
-        <SPopperFooter>
-          <SPopperActions>
+          </SDropdownContentContent>
+        </SDropdownContentBody>
+        <SDropdownContentFooter>
+          <SDropdownContentActions>
             {primaryCta}
             {secondaryCta}
-          </SPopperActions>
+          </SDropdownContentActions>
           {trustLine && <TrustLine locale={locale} {...(typeof trustLine === 'object' ? trustLine : {})} />}
-        </SPopperFooter>
-      </SPopper>,
+        </SDropdownContentFooter>
+      </SDropdownContent>,
     );
   }
 }
 
-const PopperContent = createComponent<NSLimitsPopperContent.Component, typeof PopperContentRoot>(PopperContentRoot);
+const DropdownContent = createComponent<NSLimitsDropdownContent.Component, typeof DropdownContentRoot>(DropdownContentRoot);
 
-export default PopperContent;
+export default DropdownContent;

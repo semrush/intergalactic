@@ -1,4 +1,4 @@
-SPopper {
+SDropdownContent {
   display: flex;
   flex-direction: column;
   border-radius: inherit;
@@ -6,28 +6,28 @@ SPopper {
   overflow: hidden;
 }
 
-SPopperHeader {
+SDropdownContentHeader {
   border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
   padding-bottom: var(--intergalactic-spacing-5x, 20px);
 }
 
-SPopperBody {
+SDropdownContentBody {
   flex-direction: column;
   padding: var(--intergalactic-spacing-5x, 20px);
   gap: var(--intergalactic-spacing-5x, 20px);
 }
 
-SPopperContent {
+SDropdownContentContent {
   flex-direction: column;
   gap: var(--intergalactic-spacing-1x, 4px);
 }
 
-SPopperTitle,
-SPopperText {
+SDropdownContentTitle,
+SDropdownContentText {
   color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
 }
 
-SPopperUsageList {
+SDropdownContentUsageList {
   flex-direction: column;
   gap: var(--intergalactic-spacing-3x, 12px);
   margin-top: var(--intergalactic-spacing-5x, 20px);
@@ -35,14 +35,14 @@ SPopperUsageList {
   border-top: 1px solid var(--intergalactic-border-secondary, oklch(0.324 0.077 242.1 / 0.079));
 }
 
-SPopperFooter {
+SDropdownContentFooter {
   flex-direction: column;
   padding: var(--intergalactic-spacing-4x, 16px) var(--intergalactic-spacing-5x, 20px);
   gap: var(--intergalactic-spacing-4x, 16px);
   background-color: var(--intergalactic-limits-bg-accent, oklch(0.93 0.019 185));
 }
 
-SPopperActions {
+SDropdownContentActions {
   align-items: center;
   gap: var(--intergalactic-spacing-4x, 16px);
 }

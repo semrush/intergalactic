@@ -4,7 +4,7 @@ import type { Intergalactic } from '@semcore/core';
 import type { NSLimitsTrustLine } from '../../../inner-components/TrustLine/TrustLine.type';
 import type { NSLimitsUsageMeter } from '../../../inner-components/UsageMeter/UsageMeter.type';
 
-declare namespace NSLimitsPopperContent {
+declare namespace NSLimitsDropdownContent {
     type Props = NSFlex.Props & {
       /**
        * Popper content title.
@@ -40,4 +40,4 @@ declare namespace NSLimitsPopperContent {
     type Component = Intergalactic.Component<'div', Props>;
 }
 
-export type { NSLimitsPopperContent };
+export type { NSLimitsDropdownContent };
