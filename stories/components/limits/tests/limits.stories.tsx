@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import LimitsDemoReportNoticeExample, { defaultProps as defaultLimitsDemoReportNoticeExampleProps } from './examples/demo-report-notice';
+import LimitsDropdownContentExample, { defaultProps as defaultLimitsDropdownContentExampleProps } from './examples/dropdown-content';
 import LimitsDropdownNoticeExample, { defaultProps as defaultLimitsDropdownNoticeExampleProps } from './examples/dropdown-notice';
 import LimitsNoticeExample, { defaultProps as defaultLimitsNoticeExampleProps } from './examples/notice';
-import LimitsPopperContentExample, { defaultProps as defaultLimitsPopperContentExampleProps } from './examples/popper-content';
 
 const meta: Meta = {
   title: 'Components/Limits/Tests',
@@ -123,8 +123,8 @@ export const LimitsDemoReportNotice: StoryObj<typeof defaultLimitsDemoReportNoti
   args: defaultLimitsDemoReportNoticeExampleProps,
 };
 
-export const LimitsPopperContent: StoryObj<typeof defaultLimitsPopperContentExampleProps> = {
-  render: LimitsPopperContentExample,
+export const LimitsDropdownContent: StoryObj<typeof defaultLimitsDropdownContentExampleProps> = {
+  render: LimitsDropdownContentExample,
   argTypes: {
     title: {
       control: { type: 'text' },
@@ -160,7 +160,7 @@ export const LimitsPopperContent: StoryObj<typeof defaultLimitsPopperContentExam
       if: { arg: 'usageVariant', eq: 'header' },
     },
   },
-  args: defaultLimitsPopperContentExampleProps,
+  args: defaultLimitsDropdownContentExampleProps,
 };
 
 export const LimitsDropdownNotice: StoryObj<typeof defaultLimitsDropdownNoticeExampleProps> = {

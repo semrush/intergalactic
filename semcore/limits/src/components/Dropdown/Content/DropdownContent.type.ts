@@ -1,8 +1,8 @@
 import type { NSFlex } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 
-import type { NSLimitsTrustLine } from '../../inner-components/TrustLine/TrustLine.type';
-import type { NSLimitsUsageMeter } from '../../inner-components/UsageMeter/UsageMeter.type';
+import type { NSLimitsTrustLine } from '../../../inner-components/TrustLine/TrustLine.type';
+import type { NSLimitsUsageMeter } from '../../../inner-components/UsageMeter/UsageMeter.type';
 
 declare namespace NSLimitsPopperContent {
     type Props = NSFlex.Props & {

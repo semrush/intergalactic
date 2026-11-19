@@ -3,9 +3,9 @@ import { Component, createComponent, Root, sstyled, type Intergalactic } from '@
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-import style from './DropdownNotice.shadow.css';
+import style from './dropdown-notice.shadow.css';
 import type { NSLimitsDropdownNotice } from './DropdownNotice.type';
-import TrustLine from '../../inner-components/TrustLine/TrustLine';
+import TrustLine from '../../../inner-components/TrustLine/TrustLine';
 
 class DropdownNoticeRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSLimitsDropdownNotice.Component>

@@ -3,10 +3,10 @@ import { Component, createComponent, Root, sstyled, type Intergalactic } from '@
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-import style from './PopperContent.shadow.css';
-import type { NSLimitsPopperContent } from './PopperContent.type';
-import TrustLine from '../../inner-components/TrustLine/TrustLine';
-import UsageMeter from '../../inner-components/UsageMeter/UsageMeter';
+import style from './dropdown-content.shadow.css';
+import type { NSLimitsPopperContent } from './DropdownContent.type';
+import TrustLine from '../../../inner-components/TrustLine/TrustLine';
+import UsageMeter from '../../../inner-components/UsageMeter/UsageMeter';
 
 class PopperContentRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSLimitsPopperContent.Component>

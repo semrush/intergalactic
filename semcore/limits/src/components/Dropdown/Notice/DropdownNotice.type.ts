@@ -1,7 +1,7 @@
 import type { NSFlex } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 
-import type { NSLimitsTrustLine } from '../../inner-components/TrustLine/TrustLine.type';
+import type { NSLimitsTrustLine } from '../../../inner-components/TrustLine/TrustLine.type';
 
 declare namespace NSLimitsDropdownNotice {
     type Props = NSFlex.Props & {

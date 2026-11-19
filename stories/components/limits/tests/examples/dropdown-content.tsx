@@ -2,13 +2,13 @@ import { Box } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import Dropdown from '@semcore/ui/dropdown';
 import type { NSLimits } from '@semcore/ui/limits';
-import { LimitsPopperContent } from '@semcore/ui/limits';
+import { LimitsDropdownContent } from '@semcore/ui/limits';
 import Link from '@semcore/ui/link';
 import React from 'react';
 
-type UsageMeterProps = Extract<NSLimits.PopperContent.Props['usage'], { feature: string }>;
+type UsageMeterProps = Extract<NSLimits.DropdownContent.Props['usage'], { feature: string }>;
 
-type Props = Pick<NSLimits.PopperContent.Props, 'title' | 'text' | 'locale'> & {
+type Props = Pick<NSLimits.DropdownContent.Props, 'title' | 'text' | 'locale'> & {
   showSecondaryCta: boolean;
   showTrustLine: boolean;
   trustLineDescription: string;
@@ -44,7 +44,7 @@ const Demo = (props: Props) => {
           About
         </Dropdown.Trigger>
         <Dropdown.Popper aria-labelledby='dropdown-basic'>
-          <LimitsPopperContent
+          <LimitsDropdownContent
             title={title}
             text={text}
             locale={locale}
