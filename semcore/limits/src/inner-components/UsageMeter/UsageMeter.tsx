@@ -31,21 +31,22 @@ function UsageMeter(
   const numberFormatter = React.useMemo(() => new Intl.NumberFormat(resolvedLocale), [resolvedLocale]);
 
   const validatedValue = value < min ? min : value > max ? max : value;
-  const filledValuePercent = max > min ? (100 * (validatedValue - min)) / (max - min) : 0;
+  const filledValuePercent = (100 * validatedValue) / max;
 
   const labelId = `igc-${useUID('limits-usage-meter')}-indicator-label`;
 
+  const usageAmountText = `${numberFormatter.format(validatedValue)} ${getI18nText('of')} ${numberFormatter.format(max)}`;
   // TODO: translate "used"
+  const usedText = 'used';
+
   return sstyled(style)(
     <SUsageMeter render={Flex} ref={ref} gap={1} direction='column' theme-value={theme}>
-      <SUsageMeterHeader>
+      <SUsageMeterHeader aria-hidden='true'>
         <SUsageMeterFeature size={200} id={labelId}>
           {feature}
         </SUsageMeterFeature>
         <SUsageMeterUsage size={200}>
-          <Text fontWeight='bold'>
-            {numberFormatter.format(validatedValue)} {getI18nText('of')} {numberFormatter.format(max)}
-          </Text>
+          <Text fontWeight='bold'>{usageAmountText}</Text>
           {' '}
           {getI18nText('used')}
         </SUsageMeterUsage>
@@ -56,6 +57,7 @@ function UsageMeter(
         aria-valuemin={min}
         aria-valuemax={max}
         aria-valuenow={validatedValue}
+        aria-valuetext={`${usageAmountText} ${usedText}`}
       >
         <SUsageMeterIndicatorFilled state-value={state} filled-value={filledValuePercent} />
       </SUsageMeterIndicator>

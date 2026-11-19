@@ -126,13 +126,13 @@ Functional behavior, interactions, and states.
 //         await expect(locators.fill(page)).toHaveCSS('background-color', await resolveTokenColor(page, fill));
 //       });
 
-//     await test.step('Verify title and counter colors', async () => {
-//       const color = await resolveTokenColor(page, text);
-//       await expect(locators.title(page)).toHaveCSS('color', color);
-//       await expect(locators.counter(page)).toHaveCSS('color', color);
+//       await test.step('Verify title and counter colors', async () => {
+//         const color = await resolveTokenColor(page, text);
+//         await expect(locators.title(page)).toHaveCSS('color', color);
+//         await expect(locators.counter(page)).toHaveCSS('color', color);
+//       });
 //     });
 //   });
-// });
 
 //   test.describe('Long values in a 246px container', () => {
 //     const figmaCase = { value: 732, max: 1000, feature: 'Titel des Indikators', w: 246 };
@@ -149,30 +149,29 @@ Functional behavior, interactions, and states.
 //       expect(counter.y).toBe(title.y);
 //     });
 
-// test('Verify counter stays on one line', {
-//   tag: [TAG.PRIORITY_MEDIUM, ...COMPONENT_TAGS],
-// }, async ({ page }) => {
-//   await loadPage(page, USAGE_METER, 'de', { ...figmaCase, feature: LONG_FEATURE });
+//     test('Verify counter stays on one line', {
+//       tag: [TAG.PRIORITY_MEDIUM, ...COMPONENT_TAGS],
+//     }, async ({ page }) => {
+//       await loadPage(page, USAGE_METER, 'de', { ...figmaCase, feature: LONG_FEATURE });
 
-//   expect(await countTextLines(locators.title(page))).toBeGreaterThan(1);
-//   expect(await countTextLines(locators.counter(page))).toBe(1);
-// });
+//       expect(await countTextLines(locators.title(page))).toBeGreaterThan(1);
+//       expect(await countTextLines(locators.counter(page))).toBe(1);
+//     });
 
-// test('Verify at least 4px gap between title and counter', {
-//   tag: [TAG.PRIORITY_MEDIUM, ...COMPONENT_TAGS],
-// }, async ({ page }) => {
-//   await loadPage(page, USAGE_METER, 'de', { ...figmaCase, feature: 'Seitenzugriffsberechtigungsverwaltung' });
+//     test('Verify at least 4px gap between title and counter', {
+//       tag: [TAG.PRIORITY_MEDIUM, ...COMPONENT_TAGS],
+//     }, async ({ page }) => {
+//       await loadPage(page, USAGE_METER, 'de', { ...figmaCase, feature: 'Seitenzugriffsberechtigungsverwaltung' });
 
 //       const title = await getBox(locators.title(page));
 //       const counter = await getBox(locators.counter(page));
 //       expect(counter.x - (title.x + title.width)).toBeGreaterThanOrEqual(4);
 //     });
 
-// test.fixme('Verify long word in the title does not overflow the container', {
-//   tag: [TAG.PRIORITY_MEDIUM, ...COMPONENT_TAGS],
-// }, async ({ page }) => {
-//   // An unbreakable title does not shrink, so the one-line counter is pushed past the right edge of the root.
-//   await loadPage(page, USAGE_METER, 'de', { ...figmaCase, feature: 'Seitenzugriffsberechtigungsverwaltung' });
+//     test('Verify long word in the title does not overflow the container', {
+//       tag: [TAG.PRIORITY_MEDIUM, ...COMPONENT_TAGS],
+//     }, async ({ page }) => {
+//       await loadPage(page, USAGE_METER, 'de', { ...figmaCase, feature: 'Seitenzugriffsberechtigungsverwaltung' });
 
 //       const root = await getBox(locators.root(page));
 //       const counter = await getBox(locators.counter(page));
@@ -196,5 +195,15 @@ Roles, names and ARIA attributes.
 //     await expect(meter).toHaveAttribute('aria-valuemin', '50');
 //     await expect(meter).toHaveAttribute('aria-valuemax', '500');
 //     await expect(meter).toHaveAttribute('aria-valuenow', '120');
+//     await expect(meter).toHaveAttribute('aria-valuetext', '120 of 500 used');
+//   });
+
+//   test('Verify screen readers get only the meter, not the visible header text', {
+//     tag: [TAG.PRIORITY_HIGH, ...COMPONENT_TAGS],
+//   }, async ({ page }) => {
+//     await loadPage(page, USAGE_METER, 'en', { max: 1000, value: 732, feature: 'Audit' });
+
+//     expect(await locators.root(page).ariaSnapshot()).toBe('- meter "Audit"');
+//     await expect(locators.meter(page)).toHaveAttribute('aria-valuetext', '732 of 1,000 used');
 //   });
 // });
