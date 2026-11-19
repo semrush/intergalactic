@@ -42,7 +42,7 @@ const Demo = (props: PatternDasharrayStoryProps) => {
           groupKey='x'
           plotWidth={500}
           plotHeight={400}
-          patterns={patterns}
+          patterns={patterns || undefined}
           showDots={false}
           showLegend
           duration={0}
