@@ -1,3 +1,7 @@
+SSliderRating {
+  border-radius: var(--intergalactic-rounded-extra-small, 2px);
+}
+
 SSliderRating SStar {
   transition: all calc(var(--intergalactic-duration-control, 200) * 1ms) ease-out;
 }
