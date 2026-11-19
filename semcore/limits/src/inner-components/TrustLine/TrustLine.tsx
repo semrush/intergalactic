@@ -26,7 +26,7 @@ function TrustLine(
     <Flex ref={ref} gap={1} data-ui-name={displayName}>
       <Text use='secondary' size={200}>{getI18nText('cancelAnytime')}</Text>
       {Boolean(description) && (
-        <DescriptionTooltip>
+        <DescriptionTooltip placement='right'>
           <DescriptionTooltip.Trigger
             tag={ButtonLink}
             addonLeft={InfoM}

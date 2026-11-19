@@ -38,7 +38,7 @@ SNoticeHeader {
   border-bottom: 1px solid var(--intergalactic-border-secondary, oklch(0.324 0.077 242.1 / 0.079));
 
   &[with-aside] {
-    padding-right: var(--intergalactic-spacing-10x, 40px);
+    padding-right: var(--intergalactic-spacing-14x, 56px);
   }
 }
 

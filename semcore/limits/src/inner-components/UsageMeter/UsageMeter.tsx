@@ -39,7 +39,6 @@ function UsageMeter(
   // TODO: translate "used"
   const usedText = 'used';
 
-  // TODO: translate "used"
   return sstyled(style)(
     <SUsageMeter render={Flex} ref={ref} gap={1} direction='column' theme-value={theme}>
       <SUsageMeterHeader aria-hidden='true'>
