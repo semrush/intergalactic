@@ -44,6 +44,7 @@ export class Group extends Component<
           __excludeProps={['title']}
           id={this.groupId}
           isSorted={isSorted}
+          data-cell-name={groupColumns[0]?.name}
         >
           {withConfig ? <Children /> : title}
         </SGroup>

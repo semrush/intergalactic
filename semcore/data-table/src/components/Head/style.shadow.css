@@ -202,7 +202,7 @@ SHead[sticky] SColumn[fixed], SHead SColumn[fixed], SHead SGroup[fixed] {
   z-index: 19;
 }
 
-SColumn[fixed] {
+SGroup[fixed], SColumn[fixed] {
   --global-left: attr(data-left px, 0);
   --global-right: attr(data-right px, 0);
 
