@@ -31,7 +31,7 @@ function UsageMeter(
   const numberFormatter = React.useMemo(() => new Intl.NumberFormat(resolvedLocale), [resolvedLocale]);
 
   const validatedValue = value < min ? min : value > max ? max : value;
-  const filledValuePercent = max > min ? (100 * (validatedValue - min)) / (max - min) : 0;
+  const filledValuePercent = (100 * validatedValue) / max;
 
   const labelId = `igc-${useUID('limits-usage-meter')}-indicator-label`;
 
