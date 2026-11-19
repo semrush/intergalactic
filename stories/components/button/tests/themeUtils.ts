@@ -22,3 +22,7 @@ export const themeArg = (use: Use) => ({
   options: THEMES[use],
   if: { arg: 'use', eq: use },
 });
+
+// Invert themes are only visible on a dark background.
+export const styleFor = (args: any, theme: NSButton.Props['theme']) =>
+  args.style ?? (theme === 'invert' ? { backgroundColor: '#191B23' } : undefined);

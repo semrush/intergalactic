@@ -1,7 +1,7 @@
 @import url('@semcore/theme/light.css');
 @import url('@semcore/theme/highlights-light.css');
-  /* Second import for Halloween only */
-@import url('./halloween/fonts.css');
+/* Second import for Halloween only
+@import url('./halloween/fonts.css'); */
 
 /**
  * Customize default theme styling by overriding CSS variables:
@@ -10,6 +10,7 @@
 
  /* Here Halloween styles start  */
 
+/*
 :root {
   --halloween-ink: #181b1e;
   --halloween-blood: #EB1000;
@@ -19,14 +20,15 @@
   --vp-home-hero-image-background-image: var(--halloween-gradient);
   --vp-home-hero-image-filter: blur(40px);
 }
+*/
 
 .dark {
-  --halloween-ink: var(--vp-c-text-1);
   --vp-c-brand-1: #C18DFF !important;
   --vp-c-brand-2: #C18DFF !important;
   --vp-c-brand-3: #A261FD !important;
 }
 
+/*
 .VPHero[data-ui-name], h1 {
   font-family: 'Nosifer-Regular', -apple-system, serif, Garamond !important;
 }
@@ -51,6 +53,7 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+*/
 
 /* Here Halloween styles end  */
 
@@ -113,17 +116,13 @@
 
  /* For Halloween you need to comment this root section */
 
-/* :root {
-  --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: var(--vp-c-brand-2);
+:root {
+  --vp-home-hero-name-color: var(--vp-c-text-1);
+  --vp-home-hero-name-background: none;
 
   --vp-home-hero-image-background-image: linear-gradient(315deg, #8932FF 35%, #91E4FF 65%);
   --vp-home-hero-image-filter: blur(40px);
 }
-
-.dark {
-  --vp-home-hero-name-background: var(--vp-c-brand-1);
-} */
 
 .image-container {
   width: 240px !important;
@@ -784,12 +783,12 @@ h6[class] {
   text-decoration: underline;
 }
 
-.vp-doc ul a,
-.vp-doc ul a:visited {
+.vp-doc ul a:not([class]),
+.vp-doc ul a:not([class]):visited {
   color: var(--vp-c-indigo-2);
 }
 
-.vp-doc ul a:hover {
+.vp-doc ul a:not([class]):hover {
   color: var(--vp-c-indigo-1) !important;
 }
 

@@ -3,6 +3,9 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
+/** CompactHorizontalBar is deprecated (replaced by ScoreBarChart): only smoke tests are kept. */
+const STORY = 'stories/components/d3-chart/tests/examples/bar-horizontal-compact/basic_usage.tsx';
+
 export const locators = {
   plot: (page: Page) => page.locator('svg[data-ui-name="Plot"]'),
   barBackground: (page: Page, index?: number) => {
@@ -13,10 +16,6 @@ export const locators = {
     const base = page.locator('[data-ui-name="CompactHorizontalBar.Bar.Fill"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
-  link: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="Link.Text"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
   tooltip: (page: Page) => page.locator('[data-ui-name="CompactHorizontalBar.Tooltip"]'),
 };
 
@@ -25,10 +24,10 @@ export const locators = {
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
-  const variables = [
-    {
-      description: 'Standard: all features, medium size, with axis',
-      priority: TAG.PRIORITY_HIGH,
+  test('Verify bar horizontal compact with config 1 (Standard: all features, medium size, with axis)', {
+    tag: [TAG.PRIORITY_LOW, TAG.MOUSE, '@bar-horizontal-compact', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+  }, async ({ page }) => {
+    await loadPage(page, STORY, 'en', {
       plotHeight: 350,
       marginX: 40,
       marginY: 40,
@@ -36,99 +35,17 @@ test.describe(`${TAG.VISUAL}`, () => {
       showTooltip: true,
       patterns: false,
       duration: 0,
-    },
-    {
-      description: 'Patterns: no margins, no axis, patterns enabled',
-      priority: TAG.PRIORITY_MEDIUM,
-      plotHeight: 450,
-      marginX: 0,
-      marginY: 0,
-      showXAxis: false,
-      showTooltip: true,
-      patterns: true,
-      duration: 0,
-    },
-    {
-      description: 'Standard: no margins, no tooltip',
-      priority: TAG.PRIORITY_MEDIUM,
-      plotHeight: 250,
-      marginX: 0,
-      marginY: 0,
-      showXAxis: false,
-      showTooltip: false,
-      patterns: false,
-      duration: 0,
-    },
-  ];
-
-  variables.forEach(({ priority, ...vars }, index) => {
-    test(`Verify bar horizontal compact with config ${index + 1} (${vars.description})`, {
-      tag: [priority, '@bar-horizontal-compact', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
-    }, async ({ page }) => {
-      await loadPage(
-        page,
-        'stories/components/d3-chart/tests/examples/bar-horizontal-compact/basic_usage.tsx',
-        'en',
-        vars,
-      );
-
-      await test.step('Verify chart renders correctly with current configuration', async () => {
-        await locators.plot(page).first().waitFor({ state: 'visible' });
-        await page.waitForTimeout(500);
-        await expect(page).toHaveScreenshot();
-      });
-
-      if (vars.showTooltip) {
-        await test.step('Verify tooltip appears on hover', async () => {
-          await locators.barFill(page, 1).hover();
-          const tooltip = locators.tooltip(page);
-          await tooltip.waitFor({ state: 'visible' });
-          await expect(tooltip).toBeVisible();
-        });
-      }
     });
-  });
 
-  test('Verify advanced usage of bar horizontal compact', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-horizontal-compact', '@d3-chart', '@base-components', '@flex-box', '@typography'],
-  }, async ({ page }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/docs/examples/bar-horizontal-compact/advanced_usage.tsx',
-      'en',
-    );
-
-    await test.step('Verify chart renders correctly', async () => {
+    await test.step('Verify chart renders correctly with current configuration', async () => {
       await locators.plot(page).first().waitFor({ state: 'visible' });
       await page.waitForTimeout(500);
       await expect(page).toHaveScreenshot();
     });
 
-    await test.step('Verify bar highlights on hover and tooltip shown', async () => {
+    await test.step('Verify tooltip appears on hover', async () => {
       await locators.barFill(page, 1).hover();
-      await page.waitForTimeout(500);
-      await expect(page).toHaveScreenshot();
-    });
-  });
-
-  test('Verify bar horizontal compact with links', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@bar-horizontal-compact', '@d3-chart', '@base-components', '@flex-box', '@link', '@typography'],
-  }, async ({ page }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/docs/examples/bar-horizontal-compact/links.tsx',
-      'en',
-    );
-
-    await locators.plot(page).first().waitFor({ state: 'visible' });
-    await page.waitForTimeout(500);
-
-    await test.step('Verify links hover and keyboard navigation', async () => {
-      await locators.link(page, 2).hover();
-
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
+      await expect(locators.tooltip(page)).toBeVisible();
     });
   });
 });
@@ -140,13 +57,9 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify bar elements aria-hidden attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@bar-horizontal-compact', '@d3-chart', '@base-components', '@flex-box'],
+    tag: [TAG.PRIORITY_LOW, '@bar-horizontal-compact', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
-    await loadPage(
-      page,
-      'stories/components/d3-chart/docs/examples/bar-horizontal-compact/basic_usage.tsx',
-      'en',
-    );
+    await loadPage(page, STORY, 'en', { duration: 0 });
 
     await test.step('Verify bar backgrounds have aria-hidden', async () => {
       await locators.plot(page).first().waitFor({ state: 'visible' });
