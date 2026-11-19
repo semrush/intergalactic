@@ -7,15 +7,15 @@ declare namespace NSLimitsDemoReportNotice {
 
     type Props = NSLimitsNoticeBase.Props & {
       /**
-       * Called when the back button is clicked.
+       * Called when the back button is clicked
        */
       onBack?: (event: React.SyntheticEvent) => void;
       /**
-       * Accessible name of the back button.
+       * Accessible name of the back button
        * @default Back
        */
       backLabel?: string;
-      /** Actions before primary button. It might be anything, e.g input/list. */
+      /** Actions before primary button. It might be anything, e.g input/list */
       beforeActions?: React.ReactNode;
     };
 

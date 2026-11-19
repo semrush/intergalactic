@@ -1,0 +1,49 @@
+STierCard {
+  position: relative;
+  padding: var(--intergalactic-spacing-4x, 16px);
+  flex-direction: column;
+  gap: var(--intergalactic-spacing-4x, 16px);
+  border-radius: var(--intergalactic-surface-rounded, 8px);
+  border: 1px solid var(--intergalactic-border-secondary, oklch(0.324 0.077 242.1 / 0.079));
+
+  &[theme='accent'] {
+    background-color: var(--intergalactic-limits-bg-accent, oklch(0.93 0.019 185));
+    border-color: transparent;
+  }
+
+  SPromoLabel {
+    position: absolute;
+    top: 0;
+    right: var(--intergalactic-spacing-2x, 8px);
+    transform: translateY(-50%);
+    display: flex;
+    padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
+    border-radius: var(--intergalactic-tag-rounded, 24px);
+    background: var(--intergalactic-limits-card-label, oklch(0.22 0.008 245));
+    color: var(--intergalactic-text-primary-invert, oklch(0.991 0.005 232.5 / 0.959));
+    line-height: normal;
+  }
+}
+
+SHeader {
+  gap: var(--intergalactic-spacing-2x, 8px);
+  align-items: center;
+}
+
+STierPrice {
+  color: var(--intergalactic-text-secondary, oklch(0.182 0.045 244.8 / 0.593));
+  font-size: var(--intergalactic-fs-300, 16px);
+  font-weight: var(--intergalactic-medium, 500);
+  line-height: var(--intergalactic-lh-400, 1.2);
+  align-items: center;
+  gap: var(--intergalactic-spacing-05x, 2px);
+}
+
+STierName {
+  margin: 0;
+}
+
+STierName,
+SDescription {
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
+}
