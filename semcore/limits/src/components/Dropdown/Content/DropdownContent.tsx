@@ -12,7 +12,7 @@ class DropdownContentRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSLimitsDropdownContent.Component>
 > {
   static style = style;
-  static displayName = 'Limits.PopperContent';
+  static displayName = 'Limits.DropdownContent';
 
   render() {
     const SDropdownContent = Root;
