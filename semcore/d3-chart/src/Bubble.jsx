@@ -203,6 +203,7 @@ function BubbleCircle(props) {
     clickable,
     onClick,
     onClickCircleRoot,
+    hovered,
   } = props;
   const circleData = data[index];
 
@@ -213,7 +214,8 @@ function BubbleCircle(props) {
   const SGroup = SvgElement;
   const SBubble = Element;
   const SGradient = SvgElement;
-  const SCenter = 'text';
+  const SCenter = 'path';
+  const SCenterHover = 'path';
   const SLabel = 'text';
   const z = getBubbleChartValueScale(data, value);
 
@@ -231,6 +233,9 @@ function BubbleCircle(props) {
 
   const colorValue = resolveColor(circleData[color] ?? color);
 
+  const cx = xScale(circleData[x]) + offset[0];
+  const cy = yScale(circleData[y]) + offset[1];
+
   return sstyled(styles)(
     <SGroup
       tag='g'
@@ -239,6 +244,7 @@ function BubbleCircle(props) {
       onMouseMove={bindHandlerTooltip(true, props, { xIndex: index, index, patterns })}
       onMouseLeave={bindHandlerTooltip(false, props, { xIndex: index, index, patterns })}
       visible={`${visible}`}
+      hovered={hovered}
     >
       <defs>
         <SGradient tag='radialGradient' id={`${uid}_${index}_radial-gradient`} cx='50%' cy='50%' r='50%'>
@@ -246,34 +252,35 @@ function BubbleCircle(props) {
           <stop offset='100%' stopColor={colorValue} />
         </SGradient>
       </defs>
-      {markedCross && (
-        <SCenter
-          aria-hidden
-          x={xScale(circleData[x]) + offset[0]}
-          y={yScale(circleData[y]) + offset[1]}
-          dy='.3em'
-          clipPath={`url(#${uid})`}
-          color={colorValue}
-          transparent={transparent}
-        >
-          &#43;
-        </SCenter>
-      )}
       <SBubble
         aria-hidden
         id={`${uid}${uid}`}
         index={index}
         render='circle'
         clipPath={`url(#${uid})`}
-        cx={xScale(circleData[x]) + offset[0]}
-        cy={yScale(circleData[y]) + offset[1]}
+        cx={cx}
+        cy={cy}
         color={colorValue}
         pattern={patterns ? `url(#${uid}-${index}-pattern)` : `url(#${uid}_${index}_radial-gradient)`}
         r={z(circleData[value])}
         use:duration={`${duration}ms`}
-        transparent={transparent}
         clickable={clickable || Boolean(onClick)}
       />
+      {markedCross && (
+        <>
+          <SCenterHover
+            aria-hidden
+            d={`M ${cx - 3.5} ${cy} H ${cx + 3.5} M ${cx} ${cy - 3.5} V ${cy + 3.5}`}
+            clipPath={`url(#${uid})`}
+          />
+          <SCenter
+            aria-hidden
+            d={`M ${cx - 2.5} ${cy} H ${cx + 2.5} M ${cx} ${cy - 2.5} V ${cy + 2.5}`}
+            clipPath={`url(#${uid})`}
+            color={colorValue}
+          />
+        </>
+      )}
       {patterns && (
         <PatternFill
           id={`${uid}-${index}-pattern`}
@@ -291,7 +298,6 @@ function BubbleCircle(props) {
           clipPath={`url(#${uid})`}
           position={labelPosition}
           color={resolveColor(circleData[color])}
-          transparent={transparent}
         >
           {circleData[label]}
         </SLabel>
