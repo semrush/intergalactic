@@ -6,14 +6,21 @@ SBubble {
   transition-timing-function: ease-in-out;
 
   fill-opacity: 0.1;
-
-  &:hover {
-    fill-opacity: 0.5;
-  }
 }
 
-g[visible='false'] {
+SGroup[visible='false'] {
   display: none;
+}
+
+SGroup[hovered], SGroup:hover {
+  & > SBubble {
+    fill-opacity: 0.5;
+  }
+
+  & > SCenterHover {
+    opacity: 1;
+    filter: drop-shadow(0 1px 2px rgba(26, 30, 26, 0.17))
+  }
 }
 
 SBubble[clickable] {
@@ -28,21 +35,15 @@ SBubble[pattern] {
   fill: var(--pattern);
 }
 
-SBubble[transparent] {
-  opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
-}
-
-SCenter {
-  text-anchor: middle;
-  font-size: var(--intergalactic-fs-100, 12px);
-}
-
 SCenter[color] {
-  fill: var(--color);
+  stroke: var(--color);
+  stroke-width: 1px;
 }
 
-SCenter[transparent] {
-  opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
+SCenterHover {
+  opacity: 0;
+  stroke: var(--intergalactic-chart-grid-border, #ffffff);
+  stroke-width: 3px;
 }
 
 SLabel {
@@ -59,8 +60,4 @@ SLabel[position='left'] {
 
 SLabel[color] {
   fill: var(--color);
-}
-
-SLabel[transparent] {
-  opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
 }

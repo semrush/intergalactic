@@ -156,7 +156,7 @@ class BubbleChartComponent extends AbstractChart<
             return (
               <Bubble.Circle
                 visible={dataDefinition.checked}
-                transparent={highlightedItem !== -1 && highlightedItem.toString() !== dataDefinition.id}
+                hovered={highlightedItem !== -1 && highlightedItem.toString() === dataDefinition.id}
                 key={dataDefinition.id}
                 index={index}
                 onClick={onClickBubble ? (e: React.SyntheticEvent) => onClickBubble(Number(dataDefinition.id), e) : undefined}
