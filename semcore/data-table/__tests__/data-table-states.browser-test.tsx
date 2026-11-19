@@ -461,8 +461,16 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('First data column (keyword) is fixed-left too', async () => {
         const keywordCell = locators.getCell(page, 2, 2);
-        const left = await keywordCell.evaluate((el) => window.getComputedStyle(el).left);
-        expect(left).not.toBe('auto');
+        const selectorBox = await selectorCell.boundingBox();
+        const keywordBefore = await keywordCell.boundingBox();
+
+        await locators.dataTable(page).hover();
+        await page.mouse.wheel(300, 0);
+        await page.waitForTimeout(500);
+
+        const keywordAfter = await keywordCell.boundingBox();
+        expect(keywordAfter?.x).toBe(keywordBefore?.x);
+        expect(Math.abs(keywordAfter!.x - (selectorBox!.x + selectorBox!.width))).toBeLessThan(1);
       });
     });
 
