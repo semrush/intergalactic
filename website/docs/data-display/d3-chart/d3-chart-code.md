@@ -354,78 +354,8 @@ The fill data is used for rendering charts like an `Area` while symbol data is n
 
 ::: sandbox
 
-<script  lang="tsx">
-import React from 'react';
-import { Chart, Pattern } from '@semcore/ui/d3-chart';
-
-const customPattern: Pattern = {
-  fill: {
-    viewBox: '0 0 21 20',
-    children: (
-      <>
-        <path d='M9.17 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .951.69h3.461c.969 0 1.372 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.839-.197-1.54-1.118l1.07-3.292a1 1 0 0 0-.363-1.118L3.1 8.72c-.784-.57-.381-1.81.587-1.81H7.15a1 1 0 0 0 .95-.69l1.07-3.292Z' />
-      </>
-    ),
-  },
-  symbol: {
-    viewBox: '0 0 33 32',
-    size: [16.41, 15.66],
-    children: (
-      <>
-        <path d='M15.049.927c.3-.921 1.603-.921 1.902 0l2.866 8.82a1 1 0 0 0 .95.69h9.274c.97 0 1.372 1.24.588 1.81l-7.502 5.45a1 1 0 0 0-.364 1.119l2.866 8.82c.3.92-.755 1.687-1.539 1.117l-7.502-5.45a1 1 0 0 0-1.176 0l-7.502 5.45c-.784.57-1.838-.196-1.54-1.118l2.867-8.82a1 1 0 0 0-.364-1.117l-7.502-5.451c-.784-.57-.381-1.81.588-1.81h9.273a1 1 0 0 0 .951-.69L15.05.927Z' />
-      </>
-    ),
-  },
-}
-
-const Demo = () => {
-  return (
-    <Chart.Line
-      data={data}
-      plotWidth={500}
-      plotHeight={200}
-      groupKey={'x'}
-      xTicksCount={data.length / 2}
-      patterns={customPattern}
-      showDots
-      showTooltip
-      aria-label="Area chart"
-    />
-  );
-};
-
-const data = Array(20)
-  .fill({})
-  .map((d, i) => ({
-    x: i,
-    y1: Math.random() * 10,
-  }));
-</script>
-
-:::
-
-You can also provide a list of patterns.
-
-::: sandbox
-
 <script lang="tsx">
   export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/custom-patterns.tsx';
-</script>
-
-:::
-
-### Low level components use
-
-You can access `PatternFill` and `PatternSymbol` components for low level use.
-
-`PatternFill` allows you to initialize [svg pattern](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Patterns) and use it for customized charts.
-
-`PatternSymbol` allows you to render symbols, you can use pattern key to sync it with `PatternFill` that use same pattern key.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/low-level-components-use.tsx';
 </script>
 
 :::
