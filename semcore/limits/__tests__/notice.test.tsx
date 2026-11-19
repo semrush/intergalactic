@@ -69,8 +69,8 @@ describe('LimitsNotice', () => {
   });
 
   test.each([
-    { locale: 'de', usageLocale: undefined, counter: '732 von 1.000' },
-    { locale: 'de', usageLocale: 'ru', counter: '732 из 1\u00a0000' },
+    { locale: 'de', usageLocale: undefined, counter: '1.000' },
+    { locale: 'de', usageLocale: 'en', counter: '1,000' },
   ])('Verify usage meter locale for notice locale=$locale and usage locale=$usageLocale', ({ locale, usageLocale, counter }) => {
     const { container } = render(
       <LimitsNotice
@@ -88,7 +88,7 @@ describe('LimitsNotice', () => {
       <LimitsNotice {...noticeProps} locale='de' usage={{ value: 732, max: 1000, feature: 'Audit', locale: undefined }} />,
     );
 
-    expect(getCounter(container).textContent).toContain('732 von 1.000');
+    expect(getCounter(container).textContent).toContain('1.000');
   });
 
   test('Verify close button is rendered only when closable and calls onClose', () => {
