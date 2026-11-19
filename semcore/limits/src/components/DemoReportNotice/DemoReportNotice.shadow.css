@@ -16,7 +16,7 @@ SNotice {
 }
 
 SNoticeContent {
-  gap: var(--intergalactic-spacing-6x, 24px);
+  gap: var(--intergalactic-spacing-4x, 16px);
 }
 
 SNoticeBody {
@@ -32,7 +32,6 @@ SNoticeActions {
 
 SNoticeLeading {
   SBackButton {
-    height: 100%;
     padding-top: var(--intergalactic-spacing-2x, 8px);
 
     > :first-child {
