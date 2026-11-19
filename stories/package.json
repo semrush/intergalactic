@@ -19,6 +19,7 @@
     "@types/react-virtualized": "9.22.0",
     "@semcore/ui": "workspace:*",
     "@semcore/illustration": "workspace:*",
-    "@semcore/icon": "workspace:*"
+    "@semcore/icon": "workspace:*",
+    "@semcore/flags": "workspace:*"
   }
 }

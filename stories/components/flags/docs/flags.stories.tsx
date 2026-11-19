@@ -1,4 +1,4 @@
-import Flags from '@semcore/ui/flags';
+import Flags from '@semcore/flags';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AriaLabelExample from './examples/aria-label';

@@ -17,8 +17,9 @@ export const gitUtils = {
     const semcoreUiPatch = packages.find((item) => item.name === '@semcore/ui');
     const isIcon = packages.length === 1 && packages[0].name === '@semcore/icon';
     const isIllustration = packages.length === 1 && packages[0].name === '@semcore/illustration';
+    const isFlags = packages.length === 1 && packages[0].name === '@semcore/flags';
 
-    if (semcoreUiPatch || isIcon || isIllustration) {
+    if (semcoreUiPatch || isIcon || isIllustration || isFlags) {
       const newPrereleaseBranch = `prerelease/${version}`;
       await git.checkout(['-b', newPrereleaseBranch]);
 
@@ -65,6 +66,8 @@ export const gitUtils = {
       match = `--match "icon*"`;
     } else if (currentBranch.startsWith('prerelease/illustration')) {
       match = `--match "illustrations*"`;
+    } else if (currentBranch.startsWith('prerelease/flags')) {
+      match = `--match "flags*"`;
     }
 
     const tag = execSync(`git describe --tags ${match} --abbrev=0`, {
