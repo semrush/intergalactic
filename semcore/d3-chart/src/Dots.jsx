@@ -40,7 +40,7 @@ function Dots(props) {
   const bisect = bisector((d) => d[x]).center;
   const [activeIndex, setActiveIndex] = React.useState(null);
   const patternKey = color || getChartDefaultColorName(0);
-  const svgPatternId = `template_${patternKey}`;
+  const svgPatternId = `template_${uid}_${patternKey}`;
   const data = React.useMemo(
     () => props.data.filter((item) => item[y] !== interpolateValue),
     [props.data],
