@@ -3,7 +3,7 @@ SUsageMeter {
   max-width: 340px;
 
   &[theme-value='invert'] {
-    SUsageMeterFeature, SUsageMeterUsage {
+    SUsageMeterFeature, SUsageMeterUsage, SUsageMeterText {
       color: var(--intergalactic-text-primary-invert, oklch(0.991 0.005 232.5 / 0.959));
     }
 
@@ -19,11 +19,11 @@ SUsageMeter {
   }
 }
 
-SUsageMeterFeature {
+SUsageMeterFeature, SUsageMeterText {
   overflow-wrap: anywhere;
 }
 
-SUsageMeterFeature, SUsageMeterUsage {
+SUsageMeterFeature, SUsageMeterUsage, SUsageMeterText {
   color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
 }
 

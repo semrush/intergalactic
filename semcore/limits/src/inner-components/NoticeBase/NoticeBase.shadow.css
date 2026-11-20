@@ -68,6 +68,11 @@ SNoticeActions {
   }
 }
 
+SNoticeCtas {
+  gap: var(--intergalactic-spacing-2x, 8px);
+  align-items: center;
+}
+
 SNoticeAside {
   position: absolute;
   top: var(--intergalactic-spacing-2x, 8px);
