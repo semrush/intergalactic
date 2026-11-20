@@ -42,6 +42,9 @@ export type HorizontalBarProps = Context & {
   patterns?: PatternsConfig;
 };
 
+/**
+ * @deprecated. You should use Chart.Bar for charts.
+ */
 declare const HorizontalBar: IntergalacticD3Component<'path', HorizontalBarProps, BarContext> & {
   /**
    * @deprecated. Since the new design was applied, you shouldn't use it anymore for Bar charts.

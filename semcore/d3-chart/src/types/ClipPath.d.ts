@@ -20,6 +20,9 @@ export type ClipPath = {
   setAttributeTag?: (rect: React.ReactNode) => void;
 };
 
+/**
+ * @deprecated.
+ */
 declare const ClipPath: IntergalacticD3Component<'clipPath', ClipPath>;
 
 export default ClipPath;

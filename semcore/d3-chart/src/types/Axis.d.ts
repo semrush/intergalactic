@@ -83,12 +83,18 @@ export type AxisTicksContext = {
   size: [width: number, height: number];
 };
 
+/**
+ * @deprecated. You should use Chart.* for charts with axis out of the box.
+ */
 declare const XAxis: IntergalacticD3Component<'path', XAxisProps> & {
   Ticks: IntergalacticD3Component<'path', AxisTicksProps, AxisTicksContext>;
   Grid: IntergalacticD3Component<'path', AxisGridProps>;
   Title: IntergalacticD3Component<'text', AxisTitleProps>;
 };
 
+/**
+ * @deprecated. You should use Chart.* for charts with axis out of the box.
+ */
 declare const YAxis: IntergalacticD3Component<'path', YAxisProps> & {
   Ticks: IntergalacticD3Component<'path', AxisTicksProps, AxisTicksContext>;
   Grid: IntergalacticD3Component<'path', AxisGridProps>;
