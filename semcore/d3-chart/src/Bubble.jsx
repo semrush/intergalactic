@@ -265,6 +265,7 @@ function BubbleCircle(props) {
         r={z(circleData[value])}
         use:duration={`${duration}ms`}
         clickable={clickable || Boolean(onClick)}
+        transparent={transparent}
       />
       {markedCross && (
         <>
@@ -272,12 +273,14 @@ function BubbleCircle(props) {
             aria-hidden
             d={`M ${cx - 3.5} ${cy} H ${cx + 3.5} M ${cx} ${cy - 3.5} V ${cy + 3.5}`}
             clipPath={`url(#${uid})`}
+            transparent={transparent}
           />
           <SCenter
             aria-hidden
             d={`M ${cx - 2.5} ${cy} H ${cx + 2.5} M ${cx} ${cy - 2.5} V ${cy + 2.5}`}
             clipPath={`url(#${uid})`}
             color={colorValue}
+            transparent={transparent}
           />
         </>
       )}
@@ -298,6 +301,7 @@ function BubbleCircle(props) {
           clipPath={`url(#${uid})`}
           position={labelPosition}
           color={resolveColor(circleData[color])}
+          transparent={transparent}
         >
           {circleData[label]}
         </SLabel>

@@ -26,7 +26,10 @@ export type BubbleProps = Context & {
    * @default 500
    */
   duration?: number;
-  /** Enables element transparency */
+  /**
+   * Enables element transparency
+   * @deprecated You shouldn't use it in the redesign.
+   */
   transparent?: boolean;
   /** Enables charts patterns that enhances charts accessibility */
   patterns?: PatternsConfig;
