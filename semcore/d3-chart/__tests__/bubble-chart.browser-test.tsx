@@ -100,8 +100,9 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       const tooltipStep = vars.showTooltip ? test.step : test.step.skip;
       await tooltipStep('Verify tooltip appears on hover', async () => {
-        const bubbleItem = locators.bubbleCircle(page, 2);
-        await bubbleItem.hover();
+        // The center cross is drawn over the circle, so the pointer goes to the center by coordinates.
+        const box = await locators.bubbleCircle(page, 2).boundingBox();
+        await page.mouse.move(box!.x + box!.width / 2, box!.y + box!.height / 2);
 
         const tooltip = locators.tooltip(page);
         await tooltip.waitFor({ state: 'visible' });
@@ -331,7 +332,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test('Verify legend item highlights only its bubble', {
     tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, TAG.KEYBOARD, '@bubble-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@checkbox'],
-  }, async ({ page }) => {
+  }, async ({ page, browserName }) => {
     // Bubbles are drawn sorted by value, so the draw order differs from the legend order.
     await loadPage(page, 'stories/components/d3-chart/tests/examples/bubble-chart/basic-usage.tsx', 'en', {
       showLegend: true,
@@ -346,13 +347,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     const expectHighlighted = async (highlighted: string | null) => {
       for (const label of labels) {
         const group = locators.bubbleGroup(page, label);
-        const opacity = highlighted === null || highlighted === label ? '1' : '0.3';
-        await expect(group.locator('circle[data-ui-name="Bubble.Circle"]')).toHaveCSS('opacity', opacity);
-        await expect(group.getByText(label, { exact: true })).toHaveCSS('opacity', opacity);
+        const isHighlighted = highlighted === label;
+        await expect(group.locator('circle[data-ui-name="Bubble.Circle"]')).toHaveCSS('fill-opacity', isHighlighted ? '0.5' : '0.1');
+        await expect(group.locator('path[class*="SCenterHover"]')).toHaveCSS('opacity', isHighlighted ? '1' : '0');
+        await expect(group.locator('circle[data-ui-name="Bubble.Circle"]')).toHaveCSS('opacity', '1');
+        await expect(group.getByText(label, { exact: true })).toHaveCSS('opacity', '1');
       }
     };
 
-    await test.step('Verify all bubbles are opaque by default', async () => {
+    await test.step('Verify no bubble is highlighted by default', async () => {
       await expectHighlighted(null);
     });
 
@@ -371,6 +374,109 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify focusing a legend item by keyboard highlights its bubble', async () => {
       await locators.checkbox(page, 2).locator('input').focus();
       await expectHighlighted('label 3');
+      await locators.checkbox(page, 2).locator('input').blur();
+      await expectHighlighted(null);
+    });
+
+    // In WebKit the axis tick foreignObject intercepts the pointer over the labels.
+    const labelHoverStep = browserName === 'webkit' ? test.step.skip : test.step;
+    await labelHoverStep('Verify hovering a bubble label highlights its bubble', async () => {
+      await locators.bubbleGroup(page, 'label 1').getByText('label 1', { exact: true }).hover();
+      await expectHighlighted('label 1');
+    });
+  });
+
+  test('Verify legend hover does not highlight bubbles with disableHoverItems', {
+    tag: [TAG.PRIORITY_LOW, TAG.MOUSE, '@bubble-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@checkbox'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/d3-chart/tests/examples/bubble-chart/basic-usage.tsx', 'en', {
+      showLegend: true,
+      legendProps: { disableHoverItems: true },
+      data: [
+        { x: 2, y: 3, value: 200, label: 'label 1' },
+        { x: 5, y: 5, value: 900, label: 'label 2' },
+      ],
+    });
+
+    await test.step('Verify hovering a legend item keeps the bubble as is', async () => {
+      await locators.legend(page).getByText('label 2', { exact: true }).hover();
+      const group = locators.bubbleGroup(page, 'label 2');
+      await expect(group.locator('circle[data-ui-name="Bubble.Circle"]')).toHaveCSS('fill-opacity', '0.1');
+      await expect(group.locator('path[class*="SCenterHover"]')).toHaveCSS('opacity', '0');
+    });
+  });
+
+  test('Verify legend item with defaultChecked false starts hidden', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bubble-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@checkbox'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/d3-chart/tests/examples/bubble-chart/basic-usage.tsx', 'en', {
+      showLegend: true,
+      legendProps: { legendMap: { 1: { defaultChecked: false } } },
+      data: [
+        { x: 2, y: 3, value: 200, label: 'label 1' },
+        { x: 5, y: 5, value: 900, label: 'label 2' },
+      ],
+    });
+
+    await test.step('Verify only "label 2" is unchecked and hidden', async () => {
+      await expect(locators.checkbox(page, 0).locator('input')).toBeChecked();
+      await expect(locators.checkbox(page, 1).locator('input')).not.toBeChecked();
+      await expect(locators.bubbleGroup(page, 'label 1')).not.toHaveCSS('display', 'none');
+      await expect(locators.bubbleGroup(page, 'label 2')).toHaveCSS('display', 'none');
+    });
+
+    await test.step('Verify checking "label 2" shows its bubble', async () => {
+      await locators.checkbox(page, 1).click();
+      await expect(locators.bubbleGroup(page, 'label 2')).not.toHaveCSS('display', 'none');
+    });
+  });
+
+  test('Verify axis value formatters apply to axis labels and hovered tick pills', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bubble-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
+  }, async ({ page }) => {
+    // The story formats X as `${value} px` and Y as `$${value}`.
+    await loadPage(page, 'stories/components/d3-chart/tests/examples/bubble-chart/basic-usage.tsx', 'en', {
+      showLegend: false,
+      axisValueFormat: 'units',
+      data: [
+        { x: 2, y: 3, value: 500, label: 'label 1' },
+        { x: 6, y: 7, value: 300, label: 'label 2' },
+      ],
+    });
+
+    await test.step('Verify every axis label is formatted', async () => {
+      const xTicks = page.locator('[data-ui-name="Axis.Ticks"][class*="_position_bottom"]');
+      const yTicks = page.locator('[data-ui-name="Axis.Ticks"][class*="_position_left"]');
+      await expect(xTicks.first()).toHaveText(/ px$/);
+      await expect(yTicks.first()).toHaveText(/^\$/);
+      const xLabels = await xTicks.allTextContents();
+      const yLabels = await yTicks.allTextContents();
+      for (const label of xLabels) expect(label).toMatch(/^-?[\d.]+ px$/);
+      for (const label of yLabels) expect(label).toMatch(/^\$-?[\d.]+$/);
+    });
+
+    await test.step('Verify the hovered tick pills use the same format', async () => {
+      const box = await locators.bubbleGroup(page, 'label 1').locator('circle').boundingBox();
+      await page.mouse.move(box!.x + box!.width / 2, box!.y + box!.height / 2);
+      await expect(locators.hoveredTickText(page)).toHaveText(['2 px', '$3']);
+    });
+  });
+
+  test('Verify colorMap sets the bubble color by its index', {
+    tag: [TAG.PRIORITY_MEDIUM, '@bubble-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@checkbox'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/d3-chart/tests/examples/bubble-chart/basic-usage.tsx', 'en', {
+      showLegend: true,
+      colorMap: { 1: '#ff0000' },
+      data: [
+        { x: 2, y: 3, value: 200, label: 'label 1' },
+        { x: 5, y: 5, value: 900, label: 'label 2' },
+      ],
+    });
+
+    await test.step('Verify only the mapped bubble gets the color', async () => {
+      await expect(locators.bubbleGroup(page, 'label 2').locator('circle')).toHaveCSS('stroke', 'rgb(255, 0, 0)');
+      await expect(locators.bubbleGroup(page, 'label 1').locator('circle')).not.toHaveCSS('stroke', 'rgb(255, 0, 0)');
     });
   });
 });

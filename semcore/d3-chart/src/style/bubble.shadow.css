@@ -61,3 +61,7 @@ SLabel[position='left'] {
 SLabel[color] {
   fill: var(--color);
 }
+
+SBubble[transparent], SCenter[transparent], SLabel[transparent] {
+  opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
+}
