@@ -1,0 +1,145 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`LimitsNotice > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [],
+                          "uiName": "Text",
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [],
+                              "uiName": "Text",
+                            },
+                          ],
+                          "uiName": "Text",
+                        },
+                      ],
+                      "uiName": "Flex",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [],
+                          "uiName": "Flex",
+                        },
+                      ],
+                      "uiName": "Flex",
+                    },
+                  ],
+                  "uiName": "Flex",
+                },
+              ],
+              "uiName": "Box",
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "Notice.Title",
+                },
+                {
+                  "children": [],
+                  "uiName": "Notice.Text",
+                },
+              ],
+              "uiName": "Flex",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "Flex",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": "Text",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [],
+                                      "uiName": null,
+                                    },
+                                  ],
+                                  "uiName": "Info",
+                                },
+                              ],
+                              "uiName": "Link.Addon",
+                            },
+                          ],
+                          "uiName": "DescriptionTooltip.Trigger.InnerWrapper",
+                        },
+                      ],
+                      "uiName": "DescriptionTooltip.Trigger",
+                    },
+                  ],
+                  "uiName": "Limits.TrustLine",
+                },
+              ],
+              "uiName": "Flex",
+            },
+          ],
+          "uiName": "Flex",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [],
+                              "uiName": null,
+                            },
+                          ],
+                          "uiName": "Close",
+                        },
+                      ],
+                      "uiName": "Button.Addon",
+                    },
+                  ],
+                  "uiName": "Notice.Close.InnerWrapper",
+                },
+              ],
+              "uiName": "Notice.Close",
+            },
+          ],
+          "uiName": "Box",
+        },
+      ],
+      "uiName": "Limits.Notice",
+    },
+  ],
+  "uiName": null,
+}
+`;

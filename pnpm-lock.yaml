@@ -1408,8 +1408,23 @@ importers:
 
   semcore/limits:
     dependencies:
-      '@semcore/typography':
+      '@semcore/button':
         specifier: ^18.0.0
+        version: link:../button
+      '@semcore/divider':
+        specifier: ^18.0.0
+        version: link:../divider
+      '@semcore/icon':
+        specifier: ^18.0.1
+        version: link:../icon
+      '@semcore/notice':
+        specifier: ^18.0.1
+        version: link:../notice
+      '@semcore/tooltip':
+        specifier: ^18.0.0
+        version: link:../tooltip
+      '@semcore/typography':
+        specifier: ^18.0.1
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1419,7 +1434,7 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@semcore/testing-utils':
-        specifier: 'workspace: *'
+        specifier: workspace:*
         version: link:../../tools/testing-utils
 
   semcore/link:

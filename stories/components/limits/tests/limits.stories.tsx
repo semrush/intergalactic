@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import UsageMeterExample, { defaultProps as defaultUsageMeterExampleProps } from './examples/usage-meter';
+import LimitsDemoReportNoticeExample, { defaultProps as defaultLimitsDemoReportNoticeExampleProps } from './examples/demo-report-notice';
+import LimitsNoticeExample, { defaultProps as defaultLimitsNoticeExampleProps } from './examples/notice';
 
 const meta: Meta = {
   title: 'Components/Limits/Tests',
@@ -8,36 +9,114 @@ const meta: Meta = {
 
 export default meta;
 
-export const UsageMeter: StoryObj<typeof defaultUsageMeterExampleProps> = {
-  render: UsageMeterExample,
+const locales = ['en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'nl', 'pt', 'sv', 'tr', 'vi', 'zh', 'pl', 'ru'];
+
+const sharedArgTypes = {
+  title: {
+    control: { type: 'text' },
+    table: { category: 'Notice props' },
+  },
+  text: {
+    control: { type: 'text' },
+    table: { category: 'Notice props' },
+  },
+  locale: {
+    control: { type: 'select' },
+    options: locales,
+    table: { category: 'Notice props' },
+  },
+  secondaryCta: {
+    control: { type: 'select' },
+    options: ['none', 'link', 'button'],
+    table: { category: 'Actions' },
+  },
+  showTrustLine: {
+    control: { type: 'boolean' },
+    table: { category: 'Actions' },
+  },
+  trustLineDescription: {
+    control: { type: 'text' },
+    if: { arg: 'showTrustLine' },
+    table: { category: 'Actions' },
+  },
+  w: {
+    control: { type: 'number' },
+    description: 'Container width',
+    table: { category: 'Layout' },
+  },
+} as const;
+
+export const LimitsNotice: StoryObj<typeof defaultLimitsNoticeExampleProps> = {
+  render: LimitsNoticeExample,
   argTypes: {
-    min: {
-      control: { type: 'number' },
-    },
-    max: {
-      control: { type: 'number' },
-    },
-    value: {
-      control: { type: 'number' },
-    },
-    feature: {
-      control: { type: 'text' },
-    },
+    ...sharedArgTypes,
     theme: {
       control: { type: 'select' },
-      options: ['default', 'invert'],
+      options: ['default', 'accent'],
+      table: { category: 'Notice props' },
     },
-    state: {
+    closable: {
+      control: { type: 'boolean' },
+      table: { category: 'Notice props' },
+    },
+    showUsage: {
+      control: { type: 'boolean' },
+      table: { category: 'Usage meter' },
+    },
+    usageMin: {
+      control: { type: 'number' },
+      if: { arg: 'showUsage' },
+      table: { category: 'Usage meter' },
+    },
+    usageMax: {
+      control: { type: 'number' },
+      if: { arg: 'showUsage' },
+      table: { category: 'Usage meter' },
+    },
+    usageValue: {
+      control: { type: 'number' },
+      if: { arg: 'showUsage' },
+      table: { category: 'Usage meter' },
+    },
+    usageFeature: {
+      control: { type: 'text' },
+      if: { arg: 'showUsage' },
+      table: { category: 'Usage meter' },
+    },
+    usageState: {
       control: { type: 'select' },
       options: ['normal', 'warning'],
+      if: { arg: 'showUsage' },
+      table: { category: 'Usage meter' },
     },
-    locale: {
+    usageTheme: {
       control: { type: 'select' },
-      options: ['en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'nl', 'pl', 'pt', 'ru', 'sv', 'tr', 'vi', 'zh'],
+      options: ['default', 'invert'],
+      if: { arg: 'showUsage' },
+      table: { category: 'Usage meter' },
     },
-    w: {
-      control: { type: 'number' },
+    usageLocale: {
+      control: { type: 'select' },
+      options: locales,
+      if: { arg: 'showUsage' },
+      table: { category: 'Usage meter' },
     },
   },
-  args: defaultUsageMeterExampleProps,
+  args: defaultLimitsNoticeExampleProps,
+};
+
+export const LimitsDemoReportNotice: StoryObj<typeof defaultLimitsDemoReportNoticeExampleProps> = {
+  render: LimitsDemoReportNoticeExample,
+  argTypes: {
+    ...sharedArgTypes,
+    backLabel: {
+      control: { type: 'text' },
+      table: { category: 'Notice props' },
+    },
+    showBeforeActions: {
+      control: { type: 'boolean' },
+      table: { category: 'Actions' },
+    },
+  },
+  args: defaultLimitsDemoReportNoticeExampleProps,
 };
