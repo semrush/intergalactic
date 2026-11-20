@@ -30,7 +30,7 @@ class PlotRoot extends Component {
 
   static enhance = [colorResolverEnhance(), i18nEnhance(localizedMessages)];
 
-  plotId = uniqueId();
+  plotId = this.props.uid ?? uniqueId();
 
   rootRef = React.createRef();
 
@@ -50,7 +50,7 @@ class PlotRoot extends Component {
       if (pX >= minX && pX <= maxX && pY >= minY) {
         const isTickUnder = pY >= maxY;
 
-        this.eventEmitter.emit('onMouseMoveChart', e, this.rootRef.current, isTickUnder);
+        this.eventEmitter.emit('onMouseMoveChart', e, this.rootRef.current, isTickUnder, [pX, pY]);
       } else {
         this.eventEmitter.emit('onMouseLeaveChart', e);
       }

@@ -1,0 +1,56 @@
+SXAxis, SYAxis {
+  position: relative;
+  display: grid;
+  align-items: start;
+
+  SHoveredTick, STick {
+    grid-area: 1/1;
+    display: block;
+    width: fit-content;
+    font-variant-numeric: tabular-nums;
+    color: var(--intergalactic-chart-grid-text-label, oklch(from oklch(0.182 0.045 244.8 / 0.593) l c h / 0.4));
+  }
+
+  SHoveredTick {
+    padding: 3px 12px;
+    border-radius: 6px;
+    background-color: var(--intergalactic-chart-x-axis-accent-tick, oklch(0.96 0.005 232.5));
+  }
+}
+
+SXAxis {
+  grid-area: xAxis;
+  padding-top: 8px;
+  border-top: 1px solid var(--intergalactic-chart-grid-x-axis, oklch(0.88 0.011 234.9));
+
+  SHoveredTick, STick {
+    margin: 0 0 3px 0;
+  }
+
+  SHoveredTick {
+    margin-top: -3px;
+    margin-bottom: 0;
+  }
+}
+
+SYAxis {
+  SHoveredTick, STick {
+    margin: 0 12px;
+  }
+
+  &[position='left'] {
+    justify-items: end;
+  }
+  &[position='right'] {
+    justify-items: start;
+  }
+
+  &[primaryText] > STick {
+    color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
+  }
+
+  SHoveredTick {
+    margin: 0;
+  }
+}
+

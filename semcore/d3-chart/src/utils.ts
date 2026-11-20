@@ -17,9 +17,9 @@ import type React from 'react';
 
 import type { FORECAST, POTENTIAL } from './component/Chart';
 import { DATA_TYPE } from './component/Chart';
-import type { ObjectData, ObjectDataKey } from './component/Chart/AbstractChart.type';
+import type { ObjectData, ObjectDataKey } from './component/Chart/AbstractChart/AbstractChart.type';
 
-export const eventToPoint = (event: React.MouseEvent<HTMLElement>, svgRoot: SVGElement) => {
+export const eventToPoint = (event: React.MouseEvent<HTMLElement | SVGElement>, svgRoot: SVGElement) => {
   const node = (event.currentTarget || event.target) as HTMLElement;
   const rect = svgRoot.getBoundingClientRect();
   return [event.clientX - rect.left - node.clientLeft, event.clientY - rect.top - node.clientTop];
@@ -227,13 +227,13 @@ export const roundedPath = (
   return result;
 };
 
-export const scaleToBand = (scale: ScaleBand<{}>) => {
+export const scaleToBand = (scale: ScaleBand<any> | ScaleLinear<any, any> | ScaleTime<any, any>): ScaleBand<any> => {
   if ('bandwidth' in scale) {
     return scale;
   }
 
   const band = scaleBand()
-    .range((scale as any).range())
+    .range(scale.range())
     .domain((scale as any).domain());
 
   return band;

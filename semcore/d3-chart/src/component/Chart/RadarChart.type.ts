@@ -2,7 +2,7 @@ import type { Flex } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type { ScaleLinear } from 'd3-scale';
 
-import type { BaseChartProps } from './AbstractChart.type';
+import type { BaseChartProps } from './AbstractChart/AbstractChart.type';
 
 export type RadarChartData = Record<string, string[] | number[]>;
 
@@ -26,8 +26,6 @@ export type RadarChartProps = Intergalactic.InternalTypings.EfficientOmit<
 
 export type RadarChartDefaultProps = {
   direction: 'column';
-  showXAxis: true;
-  showYAxis: true;
   showTooltip: true;
   locale: 'en';
 };

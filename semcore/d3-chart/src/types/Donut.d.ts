@@ -59,6 +59,9 @@ export type LabelProps = Context & {
   label?: string;
 };
 
+/**
+ * @deprecated. You should use Chart.Donut for charts.
+ */
 declare const Donut: IntergalacticD3Component<'g', DonutProps> & {
   Pie: IntergalacticD3Component<'path', PieProps>;
   EmptyData: IntergalacticD3Component<'path', EmptyDataProps>;

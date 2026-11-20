@@ -68,6 +68,9 @@ export type IntersectionProps = Context &
     transparent?: boolean;
   };
 
+/**
+ * @deprecated. You should use Chart.Venn for charts.
+ */
 declare const Venn: IntergalacticD3Component<'g', VennProps, Context> & {
   Circle: IntergalacticD3Component<'circle', CircleProps, Context>;
   Intersection: IntergalacticD3Component<'path', IntersectionProps, Context>;

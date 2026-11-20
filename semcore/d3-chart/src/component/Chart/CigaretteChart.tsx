@@ -12,9 +12,9 @@ import React from 'react';
 import type { CigaretteChartData, CigaretteChartDataKey, CigaretteChartDefaultProps, CigaretteChartProps, CigaretteChartType } from './CigaretteChart.type';
 // @ts-ignore
 import { HoverRect, Plot } from '../..';
-import type { ChartState } from './AbstractChart';
-import { AbstractChart, NOT_A_VALUE } from './AbstractChart';
-import type { ObjectData } from './AbstractChart.type';
+import type { ChartState } from './AbstractChart/AbstractChart';
+import { AbstractChart, NOT_A_VALUE } from './AbstractChart/AbstractChart';
+import type { ObjectData } from './AbstractChart/AbstractChart.type';
 // @ts-ignore
 import AnimatedClipPath from '../../AnimatedClipPath';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
@@ -77,8 +77,6 @@ class CigaretteChartComponent extends AbstractChart<
       pY: null,
     };
   }
-
-  private plotRef = React.createRef<SVGElement>();
 
   protected override plotPadding = 0;
 
@@ -484,6 +482,7 @@ class CigaretteChartComponent extends AbstractChart<
               height={plotHeight}
               dataHints={this.dataHints}
               patterns={patterns}
+              eventEmitter={this.eventEmitter}
               a11yAltTextConfig={a11yAltTextConfig}
               onMouseMove={this.onPlotMouseMove}
               onMouseLeave={this.onPlotMouseLeave}

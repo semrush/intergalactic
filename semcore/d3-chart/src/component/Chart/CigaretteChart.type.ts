@@ -1,7 +1,7 @@
 import type { Intergalactic } from '@semcore/core';
 import type React from 'react';
 
-import type { BaseChartProps } from './AbstractChart.type';
+import type { BaseChartProps } from './AbstractChart/AbstractChart.type';
 import type { interpolateValue } from '../../utils';
 
 export type CigaretteChartDataKey = string;

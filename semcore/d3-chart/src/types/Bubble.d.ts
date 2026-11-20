@@ -52,6 +52,9 @@ export type BubbleCircleProps = {
   visible?: boolean;
 };
 
+/**
+ * @deprecated. You should use Chart.Bubble for charts.
+ */
 declare const Bubble: IntergalacticD3Component<Intergalactic.Tag, BubbleProps, BubbleContext> & {
   Tooltip: TooltipType<
     BubbleProps & {

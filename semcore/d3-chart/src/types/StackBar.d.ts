@@ -34,6 +34,9 @@ export type StackBarContext = {
   series: any[];
 };
 
+/**
+ * @deprecated. You should use Chart.Bar for charts.
+ */
 declare const StackBar: IntergalacticD3Component<'g', StackBarProps, StackBarContext> & {
   Bar: IntergalacticD3Component<'path', BarProps, BarContext>;
   HorizontalBar: IntergalacticD3Component<'path', HorizontalBarProps, BarContext>;

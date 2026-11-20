@@ -7,8 +7,8 @@ import React from 'react';
 
 // @ts-ignore
 import { Donut } from '../..';
-import type { ChartState } from './AbstractChart';
-import { AbstractChart } from './AbstractChart';
+import type { ChartState } from './AbstractChart/AbstractChart';
+import { AbstractChart } from './AbstractChart/AbstractChart';
 import type { DonutChartData, DonutChartDefaultProps, DonutChartProps, DonutChartType } from './DonutChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 

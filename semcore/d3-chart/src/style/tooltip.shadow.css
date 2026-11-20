@@ -10,6 +10,7 @@ STooltip {
   box-sizing: border-box;
   box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.324 0.077 242.1 / 0.079));
   padding: var(--intergalactic-spacing-3x, 12px);
+  pointer-events: none;
 }
 
 STitle {

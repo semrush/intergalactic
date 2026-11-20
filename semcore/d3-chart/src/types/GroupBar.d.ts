@@ -21,6 +21,9 @@ export type GroupBarProps = Context & {
   maxBarSize?: number;
 };
 
+/**
+ * @deprecated. You should use Chart.Bar for charts.
+ */
 declare const GroupBar: IntergalacticD3Component<'g', GroupBarProps> & {
   Bar: IntergalacticD3Component<'path', BarProps>;
   HorizontalBar: IntergalacticD3Component<'path', HorizontalBarProps, BarContext>;

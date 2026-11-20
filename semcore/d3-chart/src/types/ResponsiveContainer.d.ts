@@ -21,6 +21,9 @@ export type ResponsiveContainerContext = {
   height?: number;
 };
 
+/**
+ * @deprecated. You should use Chart.* for charts.
+ */
 declare const ResponsiveContainer: IntergalacticD3Component<
   'div',
   ResponsiveContainerProps,

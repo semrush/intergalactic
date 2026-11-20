@@ -3,11 +3,12 @@ import type { Intergalactic } from '@semcore/core';
 import type { ScaleLinear, ScaleTime } from 'd3-scale';
 import type { CurveFactory } from 'd3-shape';
 
-import type { AriaNameProps, BaseChartProps, ObjectData } from './AbstractChart.type';
+import type { AbstractAxisChartProps } from './AbstractChart/AbstractAxisChart.type';
+import type { AriaNameProps, ObjectData } from './AbstractChart/AbstractChart.type';
 
 export type AreaChartData = Array<ObjectData>;
 
-export type AreaChartProps = BaseChartProps<AreaChartData> & {
+export type AreaChartProps = AbstractAxisChartProps<AreaChartData> & {
   /** Field name that groups the data points */
   groupKey: string;
   /** Custom x-axis scale */

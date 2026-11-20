@@ -44,10 +44,16 @@ type HoverContext = {
   index: number;
 };
 
+/**
+ * @deprecated. You should use Chart.* for charts with HoverLines out of the box.
+ */
 declare const HoverLine: IntergalacticD3Component<'g', HoverProps, HoverContext> & {
   Tooltip: HoverTooltip;
 };
 
+/**
+ * @deprecated. You should use Chart.* for charts with HoverRects out of the box.
+ */
 declare const HoverRect: IntergalacticD3Component<'g', HoverProps, HoverContext> & {
   Tooltip: HoverTooltip;
 };

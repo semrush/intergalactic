@@ -1,15 +1,17 @@
 import type { NSFlex } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
+import type EventEmitter from '@semcore/core/lib/utils/eventEmitter';
 import type Icon from '@semcore/icon';
 import type React from 'react';
 
-import type { PatternsConfig } from '../../Pattern';
+import type { PatternsConfig } from '../../../Pattern';
 // @ts-ignore
-import type { PlotSummarizerConfig } from '../../Plot';
-import type { interpolateValue, PlotEventEmitter } from '../../utils';
-import type { BaseChartLegendProps } from '../ChartLegend/BaseLegend.type';
-import type { TrendProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
-import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
+import type { PlotSummarizerConfig } from '../../../Plot';
+import type { interpolateValue } from '../../../utils';
+import type { NSAxis } from '../../Axis/Axis.type';
+import type { BaseChartLegendProps } from '../../ChartLegend/BaseLegend.type';
+import type { TrendProps } from '../../ChartLegend/LegendFlex/LegendFlex.type';
+import type { LegendItemKey } from '../../ChartLegend/LegendItem/LegendItem.type';
 
 export const GOOD = Symbol('GOOD');
 export const BAD = Symbol('BAD');
@@ -89,27 +91,37 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
   patterns?: PatternsConfig;
   /**
    * Margin (for Y axis points) from left side of chart container to Y axis
+   * @deprecated you shouldn't use it at all. Margin will calculate automatically.
    */
   marginY?: number;
   /**
    * Margin (for X axis points) from bottom of chart container to X axis
+   *
+   * @deprecated you shouldn't use it at all. Margin will calculate automatically.
    */
   marginX?: number;
   /**
    * invert axis and show horizontal charts (only for Bars!)
+   * @deprecated. Use in only in Bars
    */
   invertAxis?: boolean;
 
   /**
    * Show X axis
-   * @default true (for charts with axis: Area, Line, Bar, ScatterPlot, ...)
+   * @deprecated. Axis can be only in AbstractAxisChart
    */
   showXAxis?: boolean;
   /**
    * Show Y axis
-   * @default true (for charts with axis: Area, Line, Bar, ScatterPlot, ...)
+   * @deprecated. Axis can be only in AbstractAxisChart
    */
   showYAxis?: boolean;
+
+  /**
+   * Position of Y axis.
+   * @deprecated. Axis can be only in AbstractAxisChart
+   */
+  yAxisPosition?: NSAxis.Props['yAxisPosition'];
   /**
    * Map with colors for data items
    */
@@ -147,10 +159,12 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
   yScale?: unknown;
   /**
    * Count of ticks for X axis
+   * @deprecated. Axis can be only in AbstractAxisChart
    */
   xTicksCount?: number;
   /**
    * Count of ticks for Y axis
+   * @deprecated. Axis can be only in AbstractAxisChart
    */
   yTicksCount?: number;
   /** Enables multiline tick labels for X axis, applicable only for band scales */
@@ -165,6 +179,7 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
   groupKey?: string;
   /**
    * function for format axis item text
+   * @deprecated. Axis can be only in AbstractAxisChart
    */
   axisXValueFormatter?: (value: unknown) => React.ReactNode;
   axisYValueFormatter?: (value: unknown) => React.ReactNode;
@@ -179,7 +194,7 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
   /**
    * Custom event emitter. Could be useful to handle event on few charts at the same time.
    */
-  eventEmitter?: InstanceType<typeof PlotEventEmitter>;
+  eventEmitter?: EventEmitter<ChartEvents>;
   /**
    * Config for a11y summary
    */
@@ -286,4 +301,29 @@ export type ReferenceArea = {
    * Custom subtitle with data.
    */
   subTitle?: string;
+};
+
+type BaseEvents = {
+  onMouseMoveChart: (e: React.MouseEvent, rootElement: SVGSVGElement, isTickUnder: boolean, point: [number, number]) => void;
+  onMouseLeaveChart: (e: React.MouseEvent) => void;
+
+  leaveChart: () => void;
+};
+
+type CommonEvents = {
+  setTooltipPosition: (clientX: number, clientY: number) => void;
+  setTooltipRenderingProps: (_: {}, params: { index: number }) => void;
+  setTooltipVisible: (isVisible: boolean) => void;
+
+  hoverPosition: (clientX: number, clientY: number) => void;
+  hoverListItem: (index: number, invertAxis: boolean) => void;
+
+  // moveOverChart: (clientX: number, clientY: number) => void;
+  // moveOverListItem: (index: number) => void;
+  //
+  // leaveChart: () => void;
+};
+
+export type ChartEvents = BaseEvents & {
+  [K in keyof CommonEvents as `${K}_${string}`]: CommonEvents[K];
 };

@@ -5,6 +5,7 @@ import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import cssToIntDefault from '@semcore/core/lib/utils/cssToIntDefault';
+import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
 import Divider from '@semcore/divider';
 import DiffDown from '@semcore/icon/DiffDown/m';
@@ -13,18 +14,26 @@ import { Text } from '@semcore/typography';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import React, { Fragment } from 'react';
 
-import type { BaseChartProps, BaseLegendProps, ListData, ObjectData, ObjectDataKey } from './AbstractChart.type';
+import style from './AbstractChart.shadow.css';
+import type {
+  BaseChartProps,
+  BaseLegendProps,
+  ChartEvents,
+  ListData,
+  ObjectData,
+  ObjectDataKey,
+} from './AbstractChart.type';
 // @ts-ignore
-import type { HoverLine, HoverRect } from '../..';
+import type { HoverRect, Tooltip as TooltipComponent } from '../../..';
 // @ts-ignore
-import { Plot, XAxis, YAxis } from '../..';
-import { makeDataHintsContainer, makeDataHintsHandlers } from '../../a11y/hints';
-import style from '../../style/abstract-chart.shadow.css';
-import { interpolateValue } from '../../utils';
-import ChartLegend, { ChartLegendTable } from '../ChartLegend';
-import type { LegendFlexProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
-import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
-import type { LegendTableProps } from '../ChartLegend/LegendTable/LegendTable.type';
+import { Plot } from '../../..';
+import { makeDataHintsContainer, makeDataHintsHandlers } from '../../../a11y/hints';
+import { interpolateValue, uniqueId } from '../../../utils';
+import { ElementRect } from '../../../utils/ElementRect';
+import ChartLegend, { ChartLegendTable } from '../../ChartLegend';
+import type { LegendFlexProps } from '../../ChartLegend/LegendFlex/LegendFlex.type';
+import type { LegendItem } from '../../ChartLegend/LegendItem/LegendItem.type';
+import type { LegendTableProps } from '../../ChartLegend/LegendTable/LegendTable.type';
 
 type TooltipPercentDeltaTrend = 'upward' | 'downward' | 'stable' | 'unknown';
 
@@ -49,6 +58,7 @@ export abstract class AbstractChart<
 > extends Component<Props, Enhancers, Readonly<{}>, InnerProps, State, DefaultProps> {
   public static style = style;
 
+  public readonly plotId = uniqueId();
   /**
    * Padding from the end's of chart to the container (except axis sides)
    */
@@ -59,11 +69,18 @@ export abstract class AbstractChart<
 
   protected chartRef = React.createRef<HTMLElement>();
   protected legendRef = React.createRef<HTMLDivElement>();
+  protected plotRef = React.createRef<SVGElement>();
+
+  protected plotBoundaryRect = new ElementRect();
 
   private observer: ResizeObserver | undefined;
 
+  protected readonly eventEmitter: EventEmitter<ChartEvents>;
+
   constructor(props: Props) {
     super(props);
+
+    this.eventEmitter = props.eventEmitter || new EventEmitter<ChartEvents>();
 
     this.handleResize = trottle(this.handleResize.bind(this));
 
@@ -73,8 +90,8 @@ export abstract class AbstractChart<
 
     this.setHighlightedItem = this.setHighlightedItem.bind(this);
     this.handleChangeVisible = this.handleChangeVisible.bind(this);
-    this.handleMouseEnter = this.handleMouseEnter.bind(this);
-    this.handleMouseLeave = this.handleMouseLeave.bind(this);
+    this.handleMouseEnterLegendItem = this.handleMouseEnterLegendItem.bind(this);
+    this.handleMouseLeaveLegendItem = this.handleMouseLeaveLegendItem.bind(this);
     this.resolveColor = this.resolveColor.bind(this);
     this.valueFormatter = this.valueFormatter.bind(this);
     this.tooltipValueFormatter = this.tooltipValueFormatter.bind(this);
@@ -92,6 +109,9 @@ export abstract class AbstractChart<
   public componentDidMount(): void {
     if (this.chartRef.current) {
       this.observer?.observe(this.chartRef.current);
+    }
+    if (this.plotRef.current) {
+      this.plotBoundaryRect.setFromElement(this.plotRef.current);
     }
   }
 
@@ -194,42 +214,6 @@ export abstract class AbstractChart<
     }
 
     return dataKeys;
-  }
-
-  protected get xTicks(): number[] | Date[] | undefined {
-    const { data, invertAxis, xTicksCount, yTicksCount } = this.asProps;
-
-    const scale = this.xScale;
-
-    if (Array.isArray(data) && 'ticks' in scale) {
-      if (invertAxis && yTicksCount) {
-        return scale.ticks(yTicksCount);
-      } else if (xTicksCount) {
-        return scale.ticks(xTicksCount);
-      }
-
-      return undefined;
-    }
-
-    return undefined;
-  }
-
-  protected get yTicks(): number[] | Date[] | undefined {
-    const { data, invertAxis, xTicksCount, yTicksCount } = this.asProps;
-
-    const scale = this.yScale;
-
-    if (Array.isArray(data) && 'ticks' in scale) {
-      if (invertAxis && xTicksCount) {
-        return scale.ticks(xTicksCount);
-      } else if (yTicksCount) {
-        return scale.ticks(yTicksCount);
-      }
-
-      return undefined;
-    }
-
-    return undefined;
   }
 
   protected get flatValues(): Set<number> {
@@ -362,11 +346,11 @@ export abstract class AbstractChart<
     this.setState({ withTrend: isVisible });
   }
 
-  protected handleMouseEnter(id: string) {
+  protected handleMouseEnterLegendItem(id: string) {
     this.setHighlightedItem(this.state.dataDefinitions.findIndex((line) => line.id === id));
   }
 
-  protected handleMouseLeave() {
+  protected handleMouseLeaveLegendItem() {
     this.setHighlightedItem(-1);
   }
 
@@ -460,10 +444,10 @@ export abstract class AbstractChart<
         : callAllEventHandlers(lProps.onChangeVisibleItem, this.handleChangeVisible),
       'onMouseEnterItem': lProps.disableHoverItems
         ? undefined
-        : callAllEventHandlers(lProps.onMouseEnterItem, this.handleMouseEnter),
+        : callAllEventHandlers(lProps.onMouseEnterItem, this.handleMouseEnterLegendItem),
       'onMouseLeaveItem': lProps.disableHoverItems
         ? undefined
-        : callAllEventHandlers(lProps.onMouseLeaveItem, this.handleMouseLeave),
+        : callAllEventHandlers(lProps.onMouseLeaveItem, this.handleMouseLeaveLegendItem),
       'aria-label': this.getLegendAriaLabel(),
     };
 
@@ -484,63 +468,6 @@ export abstract class AbstractChart<
     }
 
     return <ChartLegend {...(commonLegendProps as LegendFlexProps)} ref={this.legendRef} />;
-  }
-
-  protected renderAxis(): React.ReactNode {
-    const {
-      invertAxis,
-      showXAxis,
-      showYAxis,
-      data,
-      axisXValueFormatter,
-      axisYValueFormatter,
-      multilineXTicks,
-      multilineYTicks,
-    } = this.asProps;
-
-    if (!Array.isArray(data)) {
-      return null;
-    }
-
-    const xTicks = this.xTicks;
-    const yTicks = this.yTicks;
-
-    const childrenX = axisXValueFormatter
-      ? ({ value }: any) => ({ children: axisXValueFormatter(value) })
-      : undefined;
-    const childrenY = axisYValueFormatter
-      ? ({ value }: any) => ({ children: axisYValueFormatter(value) })
-      : undefined;
-
-    return (
-      <>
-        {showYAxis && (
-          <YAxis>
-            {yTicks
-              ? (
-                  <YAxis.Ticks multiline={multilineYTicks} ticks={yTicks}>{childrenY}</YAxis.Ticks>
-                )
-              : (
-                  <YAxis.Ticks multiline={multilineYTicks}>{childrenY}</YAxis.Ticks>
-                )}
-            {invertAxis !== true && (yTicks ? <YAxis.Grid ticks={yTicks} /> : <YAxis.Grid />)}
-          </YAxis>
-        )}
-
-        {showXAxis && (
-          <XAxis>
-            {xTicks
-              ? (
-                  <XAxis.Ticks multiline={multilineXTicks} ticks={xTicks}>{childrenX}</XAxis.Ticks>
-                )
-              : (
-                  <XAxis.Ticks multiline={multilineXTicks}>{childrenX}</XAxis.Ticks>
-                )}
-            {invertAxis === true && (xTicks ? <XAxis.Grid ticks={xTicks} /> : <XAxis.Grid />)}
-          </XAxis>
-        )}
-      </>
-    );
   }
 
   protected getPercentDelta(key: ObjectDataKey, index: number, data: Data) {
@@ -571,7 +498,7 @@ export abstract class AbstractChart<
   }
 
   protected getTooltipChildren<D extends ObjectData>(options: {
-    Tooltip: typeof HoverLine['Tooltip'] | typeof HoverRect['Tooltip'];
+    Tooltip: typeof TooltipComponent | typeof HoverRect['Tooltip'];
     dataItem: D;
     index: number;
   }) {
@@ -667,22 +594,28 @@ export abstract class AbstractChart<
     return null;
   }
 
-  protected get data() {
+  protected get data(): Data {
     return this.asProps.data;
   }
 
   public render() {
     const SChart = Root;
-    const { styles, patterns, a11yAltTextConfig, duration, eventEmitter, showTooltip, locale } =
+    const SChartContainer = Box;
+    const { styles, patterns, a11yAltTextConfig, duration, showTooltip, locale } =
       this.asProps;
     const { plotWidth, plotHeight } = this;
 
     const { extractedAriaProps } = extractAriaProps(this.asProps);
 
     return sstyled(styles)(
-      <SChart render={Flex} gap={5} __excludeProps={['data', 'eventEmitter']} role='group' ref={this.chartRef}>
+      <SChart render={Flex} gap={5} __excludeProps={['data']} role='group' ref={this.chartRef}>
         {this.renderLegend()}
+        {/* <SChartContainer */}
+        {/*  onMouseMove={this.handleMouseMoveChartContainer} */}
+        {/*  onMouseLeave={this.handleMouseLeaveChartContainer} */}
+        {/* > */}
         <Plot
+          uid={this.plotId}
           data={this.data}
           scale={[this.xScale, this.yScale]}
           width={plotWidth}
@@ -692,15 +625,18 @@ export abstract class AbstractChart<
           a11yAltTextConfig={a11yAltTextConfig}
           patterns={patterns}
           duration={duration}
-          eventEmitter={eventEmitter}
+          eventEmitter={this.eventEmitter}
           locale={locale}
           {...extractedAriaProps}
+          ref={this.plotRef}
+          // onMouseMove={this.preventPlotMoveEvents}
+          // onMouseLeave={this.preventPlotMoveEvents}
         >
-          {this.renderAxis()}
           {this.renderReference()}
           {!showTooltip ? null : this.renderTooltip()}
           {this.renderChart()}
         </Plot>
+        {/* </SChartContainer> */}
       </SChart>,
     );
   }
@@ -726,6 +662,14 @@ export abstract class AbstractChart<
       }
     }
 
+    // @ts-expect-error yAxisRef is in AbstractAxisChart only
+    const yAxisRect = this.yAxisRef?.current?.getBoundingClientRect();
+    // @ts-expect-error yAxisRef is in AbstractAxisChart only
+    const xAxisRef = this.xAxisRef?.current?.getBoundingClientRect();
+
+    width = width - (yAxisRect?.width ?? 0);
+    height = height - ((yAxisRect?.height ?? 0) + (xAxisRef?.height ?? 0));
+
     if (aspect) {
       const minHeight = cssToIntDefault(computedStyles.getPropertyValue('min-height'), -1);
       const maxHeight = cssToIntDefault(computedStyles.getPropertyValue('max-height'), -1);
@@ -742,6 +686,10 @@ export abstract class AbstractChart<
     this.setState({
       plotWidth: plotWidth ? 0 : width,
       plotHeight: plotHeight ? 0 : height,
+    }, () => {
+      if (this.plotRef.current) {
+        this.plotBoundaryRect.setFromElement(this.plotRef.current);
+      }
     });
 
     onResize?.([width, height], entities);

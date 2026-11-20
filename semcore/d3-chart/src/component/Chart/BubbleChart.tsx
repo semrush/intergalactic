@@ -6,9 +6,13 @@ import { scaleLinear, type ScaleLinear } from 'd3-scale';
 import React from 'react';
 
 // @ts-ignore
-import { Bubble, calculateBubbleDomain, YAxis, XAxis, HoverLine } from '../..';
-import type { ChartState } from './AbstractChart';
-import { AbstractChart } from './AbstractChart';
+import { Bubble, calculateBubbleDomain, YAxis as YAxisOld, XAxis as XAxisOld, Tooltip } from '../..';
+import { XAxis } from '../Axis/XAxis';
+import { YAxis } from '../Axis/YAxis';
+import { HoverLine } from '../Hover/HoverLine';
+import { AbstractAxisChart } from './AbstractChart/AbstractAxisChart';
+import type { ChartState } from './AbstractChart/AbstractChart';
+import { AbstractChart } from './AbstractChart/AbstractChart';
 import type { BubbleChartData, BubbleChartProps, BubbleChartType, BubbleChartDefaultProps } from './BubbleChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
@@ -17,7 +21,7 @@ const uniqKey = Symbol('uniqKey');
 
 type BubbleChartInnerData = Array<BubbleChartData[number] & { [uniqKey]: string }>;
 
-class BubbleChartComponent extends AbstractChart<
+class BubbleChartComponent extends AbstractAxisChart<
   BubbleChartData,
   BubbleChartProps,
   typeof BubbleChartComponent.enhance,
@@ -100,7 +104,7 @@ class BubbleChartComponent extends AbstractChart<
   }
 
   override get xScale() {
-    const { xScale, marginY = 30, data } = this.asProps;
+    const { xScale, marginY = 0, data } = this.asProps;
     const { plotWidth } = this;
 
     if (xScale) {
@@ -114,7 +118,7 @@ class BubbleChartComponent extends AbstractChart<
   }
 
   override get yScale(): ScaleLinear<any, any> {
-    const { yScale, marginX = 30, data } = this.asProps;
+    const { yScale, marginX = 0, data } = this.asProps;
     const { plotHeight } = this;
 
     if (yScale) {
@@ -168,15 +172,16 @@ class BubbleChartComponent extends AbstractChart<
 
   override renderTooltip() {
     return (
-      <Bubble.Tooltip>
-        {({ index, data }: any) => {
+      <Tooltip>
+        {(props: any) => {
+          const { index, data } = props;
           const { styles } = this.asProps;
           const STooltipChildrenWrapper = Box;
 
           return {
             children: sstyled(styles)(
               <Flex direction='column'>
-                <Bubble.Tooltip.Title>Data</Bubble.Tooltip.Title>
+                <Tooltip.Title>Data</Tooltip.Title>
                 <STooltipChildrenWrapper
                   // @ts-ignore
                   columnsCount={2}
@@ -192,7 +197,54 @@ class BubbleChartComponent extends AbstractChart<
             ),
           };
         }}
-      </Bubble.Tooltip>
+      </Tooltip>
+    );
+  }
+
+  protected override renderYAxis(): React.ReactNode {
+    const { yTicksCount, showYAxis, axisYValueFormatter, yAxisPosition } = this.asProps;
+
+    if (!showYAxis) {
+      return null;
+    }
+
+    return (
+      <YAxis
+        ref={this.yAxisRef}
+        uid={this.plotId}
+        data={this.data}
+        plotBoundaryRect={this.plotBoundaryRect}
+        dataKey='y'
+        scale={this.yScale}
+        ticksCount={yTicksCount}
+        valueFormatter={axisYValueFormatter ?? this.valueFormatter}
+        yAxisPosition={yAxisPosition}
+        eventEmitter={this.eventEmitter}
+        onMouseMove={() => false}
+      />
+    );
+  }
+
+  protected override renderXAxis(): React.ReactNode {
+    const { xTicksCount, showXAxis, axisXValueFormatter } = this.asProps;
+
+    if (!showXAxis) {
+      return null;
+    }
+
+    return (
+      <XAxis
+        ref={this.xAxisRef}
+        uid={this.plotId}
+        plotBoundaryRect={this.plotBoundaryRect}
+        data={this.data}
+        dataKey='x'
+        scale={this.xScale}
+        ticksCount={xTicksCount}
+        valueFormatter={axisXValueFormatter ?? this.valueFormatter}
+        eventEmitter={this.eventEmitter}
+        onMouseMove={() => false}
+      />
     );
   }
 
@@ -200,15 +252,11 @@ class BubbleChartComponent extends AbstractChart<
     return this.asProps.getI18nText('legendForChart', { chartType: 'Bubble' });
   }
 
-  protected override renderAxis(): React.ReactNode {
+  protected override renderGrid(): React.ReactNode {
     const {
       showXAxis,
       showYAxis,
       data,
-      axisXValueFormatter,
-      axisYValueFormatter,
-      multilineXTicks,
-      multilineYTicks,
     } = this.asProps;
 
     if (!Array.isArray(data)) {
@@ -218,39 +266,32 @@ class BubbleChartComponent extends AbstractChart<
     const xTicks = this.xTicks;
     const yTicks = this.yTicks;
 
-    const childrenX = axisXValueFormatter
-      ? ({ value }: any) => ({ children: axisXValueFormatter(value) })
-      : undefined;
-    const childrenY = axisYValueFormatter
-      ? ({ value }: any) => ({ children: axisYValueFormatter(value) })
-      : undefined;
-
     return (
       <>
         {showYAxis && (
-          <YAxis>
-            {yTicks
-              ? (
-                  <YAxis.Ticks multiline={multilineYTicks} ticks={yTicks}>{childrenY}</YAxis.Ticks>
-                )
-              : (
-                  <YAxis.Ticks multiline={multilineYTicks}>{childrenY}</YAxis.Ticks>
-                )}
-            <YAxis.Grid ticks={yTicks} />
-          </YAxis>
+          <YAxisOld>
+            <HoverLine
+              uid={this.plotId}
+              data={this.data}
+              keyX='x'
+              scale={[this.xScale, this.yScale]}
+              eventEmitter={this.eventEmitter}
+            />
+            <YAxisOld.Grid ticks={yTicks} />
+          </YAxisOld>
         )}
 
         {showXAxis && (
-          <XAxis>
-            {xTicks
-              ? (
-                  <XAxis.Ticks multiline={multilineXTicks} ticks={xTicks}>{childrenX}</XAxis.Ticks>
-                )
-              : (
-                  <XAxis.Ticks multiline={multilineXTicks}>{childrenX}</XAxis.Ticks>
-                )}
-            <XAxis.Grid ticks={xTicks} />
-          </XAxis>
+          <XAxisOld>
+            <HoverLine
+              uid={this.plotId}
+              data={this.data}
+              keyY='y'
+              scale={[this.xScale, this.yScale]}
+              eventEmitter={this.eventEmitter}
+            />
+            <XAxisOld.Grid ticks={xTicks} />
+          </XAxisOld>
         )}
       </>
     );
@@ -278,6 +319,10 @@ class BubbleChartComponent extends AbstractChart<
     });
 
     return result;
+  }
+
+  protected override handleMouseMoveChartContainer() {
+    return false;
   }
 }
 

@@ -123,6 +123,9 @@ export type RadialPolygonDotsProps = {
 export interface IRadarHoverProps extends RadarHoverProps, UnknownProperties {}
 export type RadarHoverProps = NSBox.Props & Context & {};
 
+/**
+ * @deprecated. You should use Chart.Radar for charts.
+ */
 declare const Radar: IntergalacticD3Component<'g', RadarProps, Context> & {
   Axis: IntergalacticD3Component<'path', RadarAxisProps, Context> & {
     Ticks: IntergalacticD3Component<'path', RadarAxisTicksProps, Context>;

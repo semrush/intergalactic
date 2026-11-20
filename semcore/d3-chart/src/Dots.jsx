@@ -4,7 +4,7 @@ import { useUID } from '@semcore/core/lib/utils/uniqueID';
 import { bisector } from 'd3-array';
 import React from 'react';
 
-import { HIGHLIGHT_DOT, GOOD, BAD, INSIGHTFUL } from './component/Chart/AbstractChart.type';
+import { HIGHLIGHT_DOT, GOOD, BAD, INSIGHTFUL } from './component/Chart/AbstractChart/AbstractChart.type';
 import createElement from './createElement';
 import { PatternSymbol, getPatternSymbolSize, PotentialGradient } from './Pattern';
 import style from './style/dot.shadow.css';

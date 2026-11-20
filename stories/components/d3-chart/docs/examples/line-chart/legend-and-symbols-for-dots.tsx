@@ -5,7 +5,7 @@ import React from 'react';
 import LineMockData from '../../../__mocks__/line';
 
 const Demo = () => {
-  const MARGIN = 30;
+  const MARGIN = 0;
   const width = 500;
   const height = 300;
 

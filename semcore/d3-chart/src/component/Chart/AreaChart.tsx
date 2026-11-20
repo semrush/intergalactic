@@ -5,10 +5,11 @@ import React from 'react';
 
 // @ts-ignore
 import { Area, minMax, HoverLine, StackedArea } from '../..';
-import type { ChartState } from './AbstractChart';
-import { AbstractChart } from './AbstractChart';
-import type { ObjectData } from './AbstractChart.type';
-import { HIGHLIGHT_DOT } from './AbstractChart.type';
+import { AbstractAxisChart } from './AbstractChart/AbstractAxisChart';
+import type { ChartState } from './AbstractChart/AbstractChart';
+import { AbstractChart } from './AbstractChart/AbstractChart';
+import type { ObjectData } from './AbstractChart/AbstractChart.type';
+import { HIGHLIGHT_DOT } from './AbstractChart/AbstractChart.type';
 import type {
   AreaChartData,
   AreaChartProps,
@@ -17,7 +18,7 @@ import type {
 } from './AreaChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
-class AreaChartComponent extends AbstractChart<
+class AreaChartComponent extends AbstractAxisChart<
   AreaChartData,
   AreaChartProps,
   typeof AreaChartComponent.enhance,
@@ -40,7 +41,7 @@ class AreaChartComponent extends AbstractChart<
   } as const;
 
   get xScale() {
-    const { xScale, marginY = 40, data, groupKey } = this.asProps;
+    const { xScale, marginY = 0, data, groupKey } = this.asProps;
     const { plotWidth } = this;
 
     if (xScale) {
@@ -59,7 +60,7 @@ class AreaChartComponent extends AbstractChart<
   }
 
   get yScale(): ScaleLinear<any, any> {
-    const { yScale, marginX = 32, stacked } = this.asProps;
+    const { yScale, marginX = 0, stacked } = this.asProps;
     const { plotHeight } = this;
 
     if (yScale) {
