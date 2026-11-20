@@ -750,20 +750,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await page.keyboard.press('ArrowDown');
         await page.keyboard.press('Space');
-        const [value1_2, value2_2] = await Promise.all([
-          input.nth(2).inputValue(),
-          input.nth(3).inputValue(),
-        ]);
-        expect(value1_2).not.toBe(value1_1);
-        expect(value2_2).toBe(value2_1);
+        await expect(input.nth(2)).not.toHaveValue(value1_1);
+        await expect(input.nth(3)).toHaveValue(value2_1);
+        const value1_2 = await input.nth(2).inputValue();
 
         await page.keyboard.press('Space');
-        const [value1_3, value2_3] = await Promise.all([
-          input.nth(2).inputValue(),
-          input.nth(3).inputValue(),
-        ]);
-        expect(value1_3).toBe(value1_2);
-        expect(value2_3).not.toBe(value2_2);
+        await expect(input.nth(3)).not.toHaveValue(value2_1);
+        await expect(input.nth(2)).toHaveValue(value1_2);
 
         await page.keyboard.press('Escape');
         await locators.button(page, 'Apply').waitFor({ state: 'hidden', timeout: 5000 });
