@@ -30,6 +30,7 @@ export const PatternDasharray: StoryObj<typeof PatternDasharrayProps> = {
   argTypes: {
     seriesCount: { control: { type: 'number', min: 1, max: 24, step: 1 } },
     patterns: { control: 'boolean' },
+    customPatterns: { control: 'boolean' },
   },
   args: PatternDasharrayProps,
 };

@@ -43,6 +43,17 @@ export const locators = {
 };
 
 const BASIC_USAGE_STORY = 'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx';
+const PATTERN_DASHARRAY_STORY = 'stories/components/d3-chart/tests/examples/line-chart/pattern-dasharray.tsx';
+
+/** Series count covering every default pattern, and the number of distinct default dasharrays. */
+const PATTERN_SERIES_COUNT = 24;
+const DASHARRAYS_COUNT = 12;
+/** CUSTOM_DASHARRAYS of PATTERN_DASHARRAY_STORY ('3 3', '10 2', '1 5') as computed style. */
+const CUSTOM_DASHES = ['3px, 3px', '10px, 2px', '1px, 5px'];
+
+/** The dash each line is drawn with: '4.0 4' and '4 4' read the same, an invalid value reads 'none'. */
+const readDashes = (lines: Locator) =>
+  lines.evaluateAll((paths) => paths.map((path) => getComputedStyle(path).strokeDasharray));
 
 /* =====================================================
 @visual
@@ -492,6 +503,53 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       for (let i = 0; i < (await lines.count()); i++) {
         await expect(lines.nth(i)).toHaveCSS('stroke-width', '2px');
       }
+    });
+  });
+
+  test.describe('Pattern dashes', () => {
+    test('Verify any 12 neighbouring pattern lines get distinct dashes', {
+      tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@line-chart', '@base-components', '@flex-box', '@typography', '@checkbox'],
+    }, async ({ page }) => {
+      await loadPage(page, PATTERN_DASHARRAY_STORY, 'en', { seriesCount: PATTERN_SERIES_COUNT, patterns: true });
+
+      const lines = locators.linePath(page);
+      await expect(lines).toHaveCount(PATTERN_SERIES_COUNT);
+
+      const dashes = await readDashes(lines);
+
+      await test.step('Verify every line is dashed', async () => {
+        expect(dashes.filter((dash) => dash === 'none')).toEqual([]);
+      });
+
+      await test.step('Verify a dash repeats only after a full cycle of 12 series', async () => {
+        for (let start = 0; start <= PATTERN_SERIES_COUNT - DASHARRAYS_COUNT; start++) {
+          const window = dashes.slice(start, start + DASHARRAYS_COUNT);
+
+          expect(new Set(window).size, `series ${start + 1}–${start + DASHARRAYS_COUNT}`).toBe(DASHARRAYS_COUNT);
+        }
+      });
+    });
+
+    test('Verify lines are solid without patterns', {
+      tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@line-chart', '@base-components', '@flex-box', '@typography', '@checkbox'],
+    }, async ({ page }) => {
+      await loadPage(page, PATTERN_DASHARRAY_STORY, 'en', { seriesCount: 3, patterns: false });
+
+      const lines = locators.linePath(page);
+      await expect(lines).toHaveCount(3);
+
+      expect(await readDashes(lines)).toEqual(['none', 'none', 'none']);
+    });
+
+    test('Verify custom patterns apply their own dasharrays', {
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@line-chart', '@base-components', '@flex-box', '@typography', '@checkbox'],
+    }, async ({ page }) => {
+      await loadPage(page, PATTERN_DASHARRAY_STORY, 'en', { seriesCount: 4, customPatterns: true });
+
+      const lines = locators.linePath(page);
+      await expect(lines).toHaveCount(4);
+
+      expect(await readDashes(lines)).toEqual([...CUSTOM_DASHES, CUSTOM_DASHES[0]]);
     });
   });
 
