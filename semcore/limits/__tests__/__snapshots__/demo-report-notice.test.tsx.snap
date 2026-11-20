@@ -1,0 +1,79 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`LimitsDemoReportNotice > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [],
+                              "uiName": null,
+                            },
+                          ],
+                          "uiName": "Undo",
+                        },
+                      ],
+                      "uiName": "Button.Addon",
+                    },
+                  ],
+                  "uiName": "Button.InnerWrapper",
+                },
+              ],
+              "uiName": "Button",
+            },
+          ],
+          "uiName": "Box",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "Notice.Title",
+                },
+                {
+                  "children": [],
+                  "uiName": "Notice.Text",
+                },
+              ],
+              "uiName": "Flex",
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": null,
+                },
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": "Text",
+                    },
+                  ],
+                  "uiName": "Limits.TrustLine",
+                },
+              ],
+              "uiName": "Flex",
+            },
+          ],
+          "uiName": "Flex",
+        },
+      ],
+      "uiName": "Limits.ReportNotice",
+    },
+  ],
+  "uiName": null,
+}
+`;
