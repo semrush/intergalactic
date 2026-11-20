@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicUsageExample from './examples/bubble-chart/basic-usage';
-import BubbleChartExample from './examples/bubble-chart/bubble-chart';
 import ColorCustomizationExample from './examples/bubble-chart/color-customization';
 import InitialdataLoadingExample from './examples/bubble-chart/initial-data-loading';
 import LegendAndPatternFillExample from './examples/bubble-chart/legend-and-pattern-fill';
@@ -11,10 +10,6 @@ const meta: Meta = {
 };
 
 export default meta;
-
-export const BubbleChart: StoryObj = {
-  render: BubbleChartExample,
-};
 
 export const BasicUsage: StoryObj = {
   render: BasicUsageExample,

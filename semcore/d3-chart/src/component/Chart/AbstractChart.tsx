@@ -667,9 +667,13 @@ export abstract class AbstractChart<
     return null;
   }
 
+  protected get data() {
+    return this.asProps.data;
+  }
+
   public render() {
     const SChart = Root;
-    const { styles, data, patterns, a11yAltTextConfig, duration, eventEmitter, showTooltip, locale } =
+    const { styles, patterns, a11yAltTextConfig, duration, eventEmitter, showTooltip, locale } =
       this.asProps;
     const { plotWidth, plotHeight } = this;
 
@@ -679,7 +683,7 @@ export abstract class AbstractChart<
       <SChart render={Flex} gap={5} __excludeProps={['data', 'eventEmitter']} role='group' ref={this.chartRef}>
         {this.renderLegend()}
         <Plot
-          data={data}
+          data={this.data}
           scale={[this.xScale, this.yScale]}
           width={plotWidth}
           height={plotHeight}

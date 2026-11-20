@@ -27,7 +27,7 @@ import {
   // @ts-expect-error src/index.js has no declarations, and DATA_TYPE/FORECAST/HIGHLIGHT_DOT are missing from src/types
 } from '../src';
 import { PlotA11yView } from '../src/a11y/PlotA11yView';
-import { getIndexFromData } from '../src/utils';
+import { calculateBubbleDomain, getBubbleChartValueScale, getIndexFromData } from '../src/utils';
 import { TextMeasurer } from '../src/utils/TextMeasurer';
 
 const width = 500;
@@ -753,6 +753,45 @@ describe('Chart.ScoreBar', () => {
   });
 });
 
+describe('calculateBubbleDomain', () => {
+  const shift = (key: 'x' | 'y', delta: number) =>
+    ChartOptions.bubble.data.map((item) => ({ ...item, [key]: item[key] + delta }));
+
+  const datasets = {
+    'basic data': ChartOptions.bubble.data,
+    'y shifted by +100': shift('y', 100),
+    'y shifted by -50': shift('y', -50),
+    'x shifted by +100': shift('x', 100),
+  };
+  // Ranges as Chart.Bubble builds them for a 500x200 plot: X grows to the right, Y grows upwards.
+  const ranges = { x: [30, 492], y: [170, 8] } as const;
+
+  for (const [name, data] of Object.entries(datasets)) {
+    for (const key of ['x', 'y'] as const) {
+      test(`should fit every bubble on the ${key} axis without an empty band for ${name}`, () => {
+        const range: [number, number] = [...ranges[key]];
+        const domain = calculateBubbleDomain(data, key, range);
+        const scale = scaleLinear().domain(domain).range(range);
+        const radius = getBubbleChartValueScale(data, 'value');
+        const [low, high] = [Math.min(...range), Math.max(...range)];
+
+        for (const item of data) {
+          const center = scale(item[key]);
+          const r = radius(item.value);
+          expect(center - r).toBeGreaterThanOrEqual(low - 1);
+          expect(center + r).toBeLessThanOrEqual(high + 1);
+        }
+
+        const values = data.map((item) => item[key]);
+        const [min, max] = [Math.min(...values), Math.max(...values)];
+        const span = max - min;
+        expect(domain[0]).toBeGreaterThanOrEqual(min - span);
+        expect(domain[1]).toBeLessThanOrEqual(max + span);
+      });
+    }
+  }
+});
+
 describe('Chart.Bubble', () => {
   beforeEach(cleanup);
 
@@ -771,6 +810,12 @@ describe('Chart.Bubble', () => {
       y: parseFloat(bubble.getAttribute('cy') || '0'),
     }));
 
+    // Bubbles are drawn sorted by value, so the expected index is looked up by the bubble's label.
+    const dataIndexOf = (bubble: Element) => {
+      const texts = Array.from(bubble.parentElement?.querySelectorAll('text') ?? [], (text) => text.textContent);
+      return ChartOptions.bubble.data.findIndex((item) => texts.includes(item.label));
+    };
+
     const firstCallIndex = 0;
     const secondCallIndex = bubbles.length - 1;
 
@@ -783,8 +828,8 @@ describe('Chart.Bubble', () => {
     });
 
     expect(onClickHandler).toHaveBeenCalledTimes(2);
-    expect(onClickHandler.mock.calls[0][0]).toBe(firstCallIndex);
-    expect(onClickHandler.mock.calls[1][0]).toBe(secondCallIndex);
+    expect(onClickHandler.mock.calls[0][0]).toBe(dataIndexOf(bubbles[firstCallIndex]));
+    expect(onClickHandler.mock.calls[1][0]).toBe(dataIndexOf(bubbles[secondCallIndex]));
   });
 
   test.concurrent('should not throw if onClickBubble is not provided', () => {

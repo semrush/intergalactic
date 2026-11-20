@@ -12,15 +12,6 @@ test.describe(`@d3-chart @bubble-chart ${TAG.ACCESSIBILITY}`, () => {
     });
   });
 
-  test('bubble-chart', async ({ page }) => {
-    await loadPage(page, 'stories/components/d3-chart/docs/examples/bubble-chart/bubble-chart.tsx', 'en');
-
-    await test.step('Verify initial state', async () => {
-      const violations = await getAccessibilityViolations({ page });
-      expect(violations).toEqual([]);
-    });
-  });
-
   test('color-customization', async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/bubble-chart/color-customization.tsx', 'en');
 

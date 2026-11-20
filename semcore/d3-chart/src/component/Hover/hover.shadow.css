@@ -1,0 +1,4 @@
+SHoverLine, SHoverLine:focus-visible {
+  outline: none;
+  stroke: var(--intergalactic-chart-grid-x-axis, oklch(0.88 0.011 234.9));
+}

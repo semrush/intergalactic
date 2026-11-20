@@ -82,8 +82,9 @@ const DELTA_EDGE_CASES_EXAMPLE = 'stories/components/d3-chart/tests/examples/d3-
  * so on a high level chart the line carries `data-ui-name="Tooltip.Trigger"` and not
  * `"HoverLine"`. Only a bare `<HoverLine>` keeps its own name.
  */
-const readHoverTrigger = async (page: Page) => {
-  const trigger = page.locator('svg[data-ui-name="Plot"] [data-ui-name="Tooltip.Trigger"]').first();
+// HoverLine renders its own `g[data-ui-name="HoverLine"]`; HoverRect is a `Tooltip.Trigger`.
+const readHoverTrigger = async (page: Page, uiName: 'Tooltip.Trigger' | 'HoverLine' = 'Tooltip.Trigger') => {
+  const trigger = page.locator(`svg[data-ui-name="Plot"] [data-ui-name="${uiName}"]`).first();
   await expect(trigger).toBeAttached();
 
   return trigger.evaluate((el) => ({
@@ -939,7 +940,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await hoverPlotCenter(page);
 
-        const { tag, lines } = await readHoverTrigger(page);
+        const { tag, lines } = await readHoverTrigger(page, 'HoverLine');
         const [bottomCap, line, topCap] = lines;
 
         await test.step('Verify the hover trigger is a group of three lines', async () => {

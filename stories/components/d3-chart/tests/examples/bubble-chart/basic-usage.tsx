@@ -16,10 +16,43 @@ type BubbleChartStoryProps = BubbleChartProps & {
    * which hides the defect entirely.
    */
   fractionalValues?: boolean;
+  /**
+   * Passes `axisXValueFormatter` / `axisYValueFormatter` to the chart.
+   *
+   * The hovered tick pills (shown on both axes when a bubble is hovered) should use the same
+   * format as the axis tick labels next to them: with `units` the X pill reads `2 px` and the
+   * Y pill reads `$3` for the bubble at x 2, y 3.
+   */
+  axisValueFormat?: 'off' | 'units';
+  /** Swaps in a dataset of 30 bubbles spread over 0–100 on both axes. */
+  manyBubbles?: boolean;
+  /**
+   * Leaves `xTicksCount` / `yTicksCount` out, so the chart falls back to its own default
+   * instead of the story's 10. Combined with `manyBubbles`, each axis should still get a
+   * readable number of ticks.
+   */
+  defaultTicksCount?: boolean;
 };
 
+const formatAxisX = (value: unknown) => `${value} px`;
+const formatAxisY = (value: unknown) => `$${value}`;
+
 const Demo = (props: BubbleChartStoryProps) => {
-  const { plotWidth, plotHeight, fractionalValues, ...chartProps } = getPropsToChart(props);
+  const {
+    plotWidth,
+    plotHeight,
+    fractionalValues,
+    axisValueFormat,
+    manyBubbles,
+    defaultTicksCount,
+    xTicksCount,
+    yTicksCount,
+    ...chartProps
+  } = getPropsToChart(props);
+  const axisFormatters = axisValueFormat === 'units'
+    ? { axisXValueFormatter: formatAxisX, axisYValueFormatter: formatAxisY }
+    : {};
+  const ticksCount = defaultTicksCount ? {} : { xTicksCount, yTicksCount };
 
   return (
     <Box
@@ -33,6 +66,9 @@ const Demo = (props: BubbleChartStoryProps) => {
       <Chart.Bubble
         {...(chartProps as BubbleChartProps)}
         aria-label='Bubble chart'
+        {...ticksCount}
+        {...axisFormatters}
+        {...(manyBubbles ? { data: manyBubblesData } : {})}
         {...(fractionalValues ? { data: fractionalData } : {})}
       />
     </Box>
@@ -68,11 +104,21 @@ const fractionalData = [
   { x: 6, y: 4, value: 5040, label: 'whole numbers' },
 ];
 
+const manyBubblesData = Array.from({ length: 20 }, (_, index) => ({
+  x: (index * 37) % 100,
+  y: (index * 53) % 100,
+  value: 100 + ((index * 71) % 900),
+  label: `item ${index + 1}`,
+}));
+
 export const defaultProps = getChartProps<BubbleChartStoryProps>({
   data,
   // Off by default: the existing visual tests screenshot this story, and swapping the
   // dataset would move every bubble.
   fractionalValues: false,
+  axisValueFormat: 'off',
+  manyBubbles: false,
+  defaultTicksCount: false,
 });
 
 Demo.defaultProps = defaultProps;

@@ -1,19 +1,26 @@
 SBubble {
-  fill: var(--intergalactic-chart-palette-order-1, oklch(0.23 0.009 245));
   stroke: var(--intergalactic-chart-grid-border, #ffffff);
   stroke-width: 2px;
   transition-property: cx, cy;
   transition-duration: var(--duration);
   transition-timing-function: ease-in-out;
-  opacity: 0.5;
 
-  &:hover {
-    opacity: 0.8;
-  }
+  fill-opacity: 0.1;
 }
 
-g[visible='false'] {
+SGroup[visible='false'] {
   display: none;
+}
+
+SGroup[hovered], SGroup:hover {
+  & > SBubble {
+    fill-opacity: 0.5;
+  }
+
+  & > SCenterHover {
+    opacity: 1;
+    filter: drop-shadow(0 1px 2px rgba(26, 30, 26, 0.17))
+  }
 }
 
 SBubble[clickable] {
@@ -21,32 +28,22 @@ SBubble[clickable] {
 }
 
 SBubble[color] {
-  fill: var(--color);
-}
-
-SBubble[pattern][color] {
-  fill: var(--pattern);
   stroke: var(--color);
-  stroke-width: 1px;
 }
 
-SBubble[transparent] {
-  opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
-}
-
-SCenter {
-  text-anchor: middle;
-  /* disable-tokens-validator */
-  font-size: calc(var(--intergalactic-fs-100, 12px) - 1px);
-  stroke: var(--intergalactic-chart-palette-order-1, oklch(0.23 0.009 245));
+SBubble[pattern] {
+  fill: var(--pattern);
 }
 
 SCenter[color] {
   stroke: var(--color);
+  stroke-width: 1px;
 }
 
-SCenter[transparent] {
-  opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
+SCenterHover {
+  opacity: 0;
+  stroke: var(--intergalactic-chart-grid-border, #ffffff);
+  stroke-width: 3px;
 }
 
 SLabel {
@@ -65,6 +62,6 @@ SLabel[color] {
   fill: var(--color);
 }
 
-SLabel[transparent] {
+SBubble[transparent], SCenter[transparent], SLabel[transparent] {
   opacity: var(--intergalactic-chart-transparent-opacity, 0.3);
 }
