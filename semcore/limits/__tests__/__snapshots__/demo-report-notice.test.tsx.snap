@@ -52,8 +52,13 @@ exports[`LimitsDemoReportNotice > Verify data-ui-name 1`] = `
             {
               "children": [
                 {
-                  "children": [],
-                  "uiName": null,
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "Flex",
                 },
                 {
                   "children": [

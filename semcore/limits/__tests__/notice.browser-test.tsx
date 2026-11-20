@@ -337,20 +337,27 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
     });
 
-    test.fixme('Verify accent theme shows the counter text without the progress bar', {
+    test('Verify accent theme shows the counter text without the progress bar', {
       tag: [TAG.PRIORITY_HIGH, ...NOTICE_TAGS],
     }, async ({ page }) => {
-      // Figma: in the accent theme the header is "{X} of {X} {feature} used" in 16px, without the bar; the full usage meter is rendered.
       await loadPage(page, NOTICE, 'en', { ...noticeProps, theme: 'accent', w: FIGMA_WIDTH });
 
       await expect(page.getByText('75 of 100 Audit used')).toBeVisible();
-      await expect(locators.fill(page)).toBeHidden();
+      await expect(page.getByRole('meter')).toHaveCount(0);
     });
 
-    test.fixme('Verify 8px between primary and secondary CTA', {
+    test.fixme('Verify accent theme counter text is 16px', {
       tag: [TAG.PRIORITY_LOW, ...NOTICE_TAGS],
     }, async ({ page }) => {
-      // Figma: the buttons group has an 8px gap; all action gaps are 12px.
+      // Figma: in the accent theme the header "{X} of {X} {feature} used" is 16px; it is 14px.
+      await loadPage(page, NOTICE, 'en', { ...noticeProps, theme: 'accent', w: FIGMA_WIDTH });
+
+      await expect(page.getByText('75 of 100 Audit used')).toHaveCSS('font-size', '16px');
+    });
+
+    test('Verify 8px between primary and secondary CTA', {
+      tag: [TAG.PRIORITY_LOW, ...NOTICE_TAGS],
+    }, async ({ page }) => {
       await loadPage(page, NOTICE, 'en', { ...noticeProps, secondaryCta: 'button', w: FIGMA_WIDTH });
 
       const cta = await getBox(page.getByRole('button', { name: 'Start free 7-day trial' }));

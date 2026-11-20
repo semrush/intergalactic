@@ -15,7 +15,7 @@ describe('LimitsNotice', () => {
 
   test('Verify data-ui-name', () => {
     const { container } = render(
-      <LimitsNotice {...noticeProps} usage={{ value: 10, feature: 'Audit' }} trustLine={{ description: 'Details' }} closable />,
+      <LimitsNotice {...noticeProps} theme='default' usage={{ value: 10, feature: 'Audit' }} trustLine={{ description: 'Details' }} closable />,
     );
 
     expect(extractUIName(container)).toMatchSnapshot();
@@ -59,13 +59,20 @@ describe('LimitsNotice', () => {
   test('Verify usage meter is rendered only with the usage prop', () => {
     const { container: without } = render(<LimitsNotice {...noticeProps} />);
     const { container: withUsage } = render(
-      <LimitsNotice {...noticeProps} usage={{ value: 732, max: 1000, feature: 'Audit', state: 'warning' }} />,
+      <LimitsNotice {...noticeProps} theme='default' usage={{ value: 732, max: 1000, feature: 'Audit', state: 'warning' }} />,
     );
 
     expect(without.querySelector('[role="meter"]')).toBeNull();
     expect(getMeter(withUsage)).toHaveAttribute('aria-valuenow', '732');
     expect(getMeter(withUsage)).toHaveAttribute('aria-valuemax', '1000');
     expect(getCounter(withUsage).textContent).toBe('732 of 1,000 used');
+  });
+
+  test.fails('Verify usage meter is shown when the theme is not set', () => {
+    // theme defaults to default, but the meter is shown only for an explicit theme='default'; without it only the counter text is rendered.
+    const { container } = render(<LimitsNotice {...noticeProps} usage={{ value: 732, max: 1000, feature: 'Audit' }} />);
+
+    expect(container.querySelector('[role="meter"]')).not.toBeNull();
   });
 
   test.each([
@@ -75,6 +82,7 @@ describe('LimitsNotice', () => {
     const { container } = render(
       <LimitsNotice
         {...noticeProps}
+        theme='default'
         locale={locale}
         usage={{ value: 732, max: 1000, feature: 'Audit', ...(usageLocale && { locale: usageLocale }) }}
       />,
@@ -85,7 +93,7 @@ describe('LimitsNotice', () => {
 
   test.fails('Verify usage locale=undefined does not override the notice locale', () => {
     const { container } = render(
-      <LimitsNotice {...noticeProps} locale='de' usage={{ value: 732, max: 1000, feature: 'Audit', locale: undefined }} />,
+      <LimitsNotice {...noticeProps} theme='default' locale='de' usage={{ value: 732, max: 1000, feature: 'Audit', locale: undefined }} />,
     );
 
     expect(getCounter(container).textContent).toContain('1.000');
