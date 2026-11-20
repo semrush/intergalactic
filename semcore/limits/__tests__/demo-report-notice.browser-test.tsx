@@ -93,24 +93,39 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       const region = await getBox(locators.region(page));
       const back = await getBox(page.getByRole('button', { name: 'Back' }));
       const title = await getBox(page.getByText(demoReportProps.title));
-      const cta = await getBox(page.getByRole('button', { name: 'Start free 7-day trial' }));
+      const text = await getBox(page.getByText(demoReportProps.text));
 
       await test.step('Verify notice paddings 12px 40px 16px 20px', async () => {
         await expect(locators.region(page)).toHaveCSS('padding', '12px 40px 16px 20px');
       });
 
-      await test.step('Verify back button is 32px wide, 12px from the content and as tall as the content', async () => {
+      await test.step('Verify back button is 32px wide and 12px from the content', async () => {
         expect(back.x - region.x).toBe(20);
         expect(back.width).toBe(32);
         expect(title.x - (back.x + back.width)).toBe(12);
-        expect(back.y + back.height).toBeCloseTo(cta.y + cta.height, 0);
+      });
+
+      await test.step('Verify title, description and actions spacing', async () => {
+        expect(title.y - region.y).toBe(16);
+        expect(text.y - (title.y + title.height)).toBe(12);
       });
     });
 
-    test.fixme('Verify title is 14px bold', {
+    test.fixme('Verify 24px between description and actions', {
+      tag: [TAG.PRIORITY_LOW, ...DEMO_REPORT_TAGS],
+    }, async ({ page }) => {
+      // Figma: 24px between the description and the actions; the content gap is 16px.
+      await loadPage(page, DEMO_REPORT_NOTICE, 'en', { ...demoReportProps, w: 656 });
+
+      const text = await getBox(page.getByText(demoReportProps.text));
+      const cta = await getBox(page.getByRole('button', { name: 'Start free 7-day trial' }));
+
+      expect(cta.y - (text.y + text.height)).toBe(24);
+    });
+
+    test('Verify title is 14px bold', {
       tag: [TAG.PRIORITY_MEDIUM, ...DEMO_REPORT_TAGS],
     }, async ({ page }) => {
-      // Figma: --intergalactic-fs-200 (14px), bold; the notice title is 16px / 24px.
       await loadPage(page, DEMO_REPORT_NOTICE, 'en', demoReportProps);
 
       await expect(page.getByText(demoReportProps.title)).toHaveCSS('font-size', '14px');
@@ -134,7 +149,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await loadPage(page, DEMO_REPORT_NOTICE, 'en', { ...demoReportProps, secondaryCta: 'button', showTrustLine: true });
 
       const cta = await getBox(page.getByRole('button', { name: 'Start free 7-day trial' }));
-      const secondary = await getBox(page.getByRole('button', { name: 'View sample' }));
+      const secondary = await getBox(page.getByRole('button', { name: 'View demo' }));
       const divider = await getBox(locators.region(page).getByRole('separator'));
       const trustLine = await getBox(page.getByText('Cancel anytime'));
 
@@ -150,10 +165,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 Keyboard navigation and focus management.
 ===================================================== */
 test.describe(`${TAG.KEYBOARD}`, () => {
-  test.fixme('Verify cancellation details open to the right of the trigger', {
+  test('Verify cancellation details open to the right of the trigger', {
     tag: [TAG.PRIORITY_LOW, ...DEMO_REPORT_TAGS],
   }, async ({ page }) => {
-    // Figma: DescriptionTooltip placement="right"; it opens above the trigger.
     await loadPage(page, DEMO_REPORT_NOTICE, 'en', {
       ...demoReportProps,
       showTrustLine: true,

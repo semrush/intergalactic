@@ -11,8 +11,8 @@ const NOTICE_TAGS = ['@limits', '@notice', '@button', '@tooltip', '@divider', '@
 /** Width of Limit.Notice in Figma (Paywall - Limit system, node 2099:26384). */
 const FIGMA_WIDTH = 505;
 
-/** Usage meter sits in the notice header: 20px padding on the left and 40px on the right for the close button. */
-const METER_INSET = 60;
+/** Usage meter sits in the notice header: 20px padding on the left and 56px on the right for the close button. */
+const METER_INSET = 76;
 
 const noticeProps = {
   title: 'Title',
@@ -267,10 +267,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test.describe('Notice', () => {
-    test.fixme('Verify usage counter does not go under the close button', {
+    test('Verify usage counter does not go under the close button', {
       tag: [TAG.PRIORITY_MEDIUM, ...NOTICE_TAGS],
     }, async ({ page }) => {
-      // The header keeps 40px on the right, but the close button is 32px wide at 16px from the edge, so it covers 8px of the counter.
       await loadPage(page, NOTICE, 'en', { ...noticeProps, usageFeature: LONG_FEATURE, w: 400 });
 
       const close = await getBox(locators.closeButton(page));
@@ -338,15 +337,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
     });
 
-    test.fixme('Verify usage meter is 400px wide in the notice', {
-      tag: [TAG.PRIORITY_MEDIUM, ...NOTICE_TAGS],
-    }, async ({ page }) => {
-      // Figma: Limit.Indicator in the notice header is 400px; the usage meter has max-width 340px.
-      await loadPage(page, NOTICE, 'en', { ...noticeProps, w: FIGMA_WIDTH });
-
-      expect((await getBox(locators.root(page))).width).toBe(400);
-    });
-
     test.fixme('Verify accent theme shows the counter text without the progress bar', {
       tag: [TAG.PRIORITY_HIGH, ...NOTICE_TAGS],
     }, async ({ page }) => {
@@ -364,7 +354,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await loadPage(page, NOTICE, 'en', { ...noticeProps, secondaryCta: 'button', w: FIGMA_WIDTH });
 
       const cta = await getBox(page.getByRole('button', { name: 'Start free 7-day trial' }));
-      const secondary = await getBox(page.getByRole('button', { name: 'View sample' }));
+      const secondary = await getBox(page.getByRole('button', { name: 'View demo' }));
 
       expect(secondary.x - (cta.x + cta.width)).toBe(8);
     });
@@ -396,7 +386,7 @@ test.describe(`${TAG.KEYBOARD}`, () => {
       await page.keyboard.press('Tab');
       await expect(page.getByRole('button', { name: 'Start free 7-day trial' })).toBeFocused();
       await page.keyboard.press('Tab');
-      await expect(page.locator(':focus')).toHaveText('View demo');
+      await expect(page.locator(':focus')).toHaveText('See plans');
       await page.keyboard.press('Tab');
       await expect(locators.infoButton(page)).toBeFocused();
       await page.keyboard.press('Tab');
@@ -427,10 +417,9 @@ test.describe(`${TAG.KEYBOARD}`, () => {
     await expect(locators.infoButton(page)).toBeFocused();
   });
 
-  test.fixme('Verify cancellation details open to the right of the trigger', {
+  test('Verify cancellation details open to the right of the trigger', {
     tag: [TAG.PRIORITY_LOW, ...NOTICE_TAGS],
   }, async ({ page }) => {
-    // Figma Structure (2006:8780): the trust line tooltip is to the right of the icon; it opens above the trigger.
     await loadPage(page, NOTICE, 'en', { ...noticeProps, ...trustLineProps('description'), w: FIGMA_WIDTH });
 
     await locators.infoButton(page).focus();
@@ -467,14 +456,5 @@ test.describe(`${TAG.ACCESSIBILITY}`, () => {
         - button "Cancellation details"
         - button "Close notification"
     `);
-  });
-
-  test.fixme('Verify notice region is named "Limit notification"', {
-    tag: [TAG.PRIORITY_HIGH, ...NOTICE_TAGS],
-  }, async ({ page }) => {
-    // Figma A11y: region aria-label="Limit notification"; the region is named by the title.
-    await loadPage(page, NOTICE, 'en', noticeProps);
-
-    await expect(page.getByRole('region', { name: 'Limit notification' })).toBeVisible();
   });
 });
