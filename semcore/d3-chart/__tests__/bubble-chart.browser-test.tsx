@@ -378,8 +378,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expectHighlighted(null);
     });
 
-    // In WebKit the axis tick foreignObject intercepts the pointer over the labels.
-    const labelHoverStep = browserName === 'webkit' ? test.step.skip : test.step;
+    // WebKit: the axis tick foreignObject intercepts the pointer over the labels.
+    // Firefox: headless Linux reports `(hover: hover)` as false, so the CSS :hover rules never apply.
+    const labelHoverStep = browserName === 'chromium' ? test.step : test.step.skip;
     await labelHoverStep('Verify hovering a bubble label highlights its bubble', async () => {
       await locators.bubbleGroup(page, 'label 1').getByText('label 1', { exact: true }).hover();
       await expectHighlighted('label 1');
