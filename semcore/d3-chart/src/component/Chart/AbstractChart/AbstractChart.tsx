@@ -31,6 +31,7 @@ import type { HoverRect, Tooltip } from '../../..';
 import { Plot, XAxis as XAxisOld, YAxis as YAxisOld } from '../../..';
 import { makeDataHintsContainer, makeDataHintsHandlers } from '../../../a11y/hints';
 import { eventToPoint, getIndexFromData, interpolateValue, invert, uniqueId } from '../../../utils';
+import { ElementRect } from '../../../utils/ElementRect';
 import { XAxis } from '../../Axis/XAxis';
 import { YAxis } from '../../Axis/YAxis';
 import ChartLegend, { ChartLegendTable } from '../../ChartLegend';
@@ -48,8 +49,6 @@ export type ChartState = {
 
   plotWidth: number;
   plotHeight: number;
-
-  hoverdIndex: number;
 };
 
 export const NOT_A_VALUE = 'n/a';
@@ -79,6 +78,8 @@ export abstract class AbstractChart<
   protected xAxisRef = React.createRef<HTMLDivElement>();
   protected yAxisRef = React.createRef<HTMLDivElement>();
 
+  protected plotBoundaryRect = new ElementRect();
+
   private observer: ResizeObserver | undefined;
 
   protected readonly eventEmitter: EventEmitter<ChartEvents>;
@@ -102,6 +103,8 @@ export abstract class AbstractChart<
     this.valueFormatter = this.valueFormatter.bind(this);
     this.tooltipValueFormatter = this.tooltipValueFormatter.bind(this);
     this.handleWithTrendChange = this.handleWithTrendChange.bind(this);
+    this.handleMouseMoveChartContainer = this.handleMouseMoveChartContainer.bind(this);
+    this.handleMouseLeaveChartContainer = this.handleMouseLeaveChartContainer.bind(this);
 
     this.state = {
       dataDefinitions: this.getDefaultDataDefinitions(),
@@ -109,13 +112,15 @@ export abstract class AbstractChart<
       withTrend: false,
       plotWidth: 0,
       plotHeight: 0,
-      hoverdIndex: -1,
     } as State;
   }
 
   public componentDidMount(): void {
     if (this.chartRef.current) {
       this.observer?.observe(this.chartRef.current);
+    }
+    if (this.plotRef.current) {
+      this.plotBoundaryRect.setFromElement(this.plotRef.current);
     }
   }
 
@@ -531,16 +536,13 @@ export abstract class AbstractChart<
           <YAxisOld>
             {invertAxis !== true && (
               <>
-                {groupKey !== undefined && this.state.hoverdIndex !== -1 && (
+                {groupKey !== undefined && (
                   <HoverLine
+                    uid={this.plotId}
                     data={this.data}
-                    x={groupKey}
-                    xIndex={this.state.hoverdIndex}
-                    yIndex={null}
+                    keyX={groupKey}
                     scale={[this.xScale, this.yScale]}
-                    dataHints={this.dataHints}
-                    formatValue={this.formatValue}
-                    meta={this.meta}
+                    eventEmitter={this.eventEmitter}
                   />
                 )}
                 {yTicks ? <YAxisOld.Grid ticks={yTicks} /> : <YAxisOld.Grid />}
@@ -713,6 +715,7 @@ export abstract class AbstractChart<
         uid={this.plotId}
         data={this.data}
         dataKey={groupKey}
+        plotBoundaryRect={this.plotBoundaryRect}
         scale={this.xScale}
         ticksCount={xTicksCount}
         valueFormatter={axisXValueFormatter ?? this.valueFormatter}
@@ -815,12 +818,16 @@ export abstract class AbstractChart<
     this.setState({
       plotWidth: plotWidth ? 0 : width,
       plotHeight: plotHeight ? 0 : height,
+    }, () => {
+      if (this.plotRef.current) {
+        this.plotBoundaryRect.setFromElement(this.plotRef.current);
+      }
     });
 
     onResize?.([width, height], entities);
   }
 
-  protected handleMouseMoveChartContainer = trottle((event: React.MouseEvent<HTMLElement | SVGElement>) => {
+  protected handleMouseMoveChartContainer(event: React.MouseEvent<HTMLElement | SVGElement>) {
     const target = event.target;
     const plotElement = this.plotRef.current;
     const yAxisElement = this.yAxisRef.current;
@@ -829,26 +836,24 @@ export abstract class AbstractChart<
       return;
     }
 
-    const point = eventToPoint(event, plotElement);
+    const rect = plotElement.getBoundingClientRect();
+    const point = [event.clientX - rect.left - target.clientLeft, event.clientY - rect.top - target.clientTop];
 
-    if (hasParent(target, yAxisElement)) {
-      const yValue = invert(this.yScale, point[1]);
-
-      this.eventEmitter.emit('moveOverYAxis', { rawValue: yValue, yPoint: point[1] });
-    } else if (hasParent(target, plotElement)) {
+    if (hasParent(target, plotElement)) {
       const { invertAxis } = this.asProps;
       const value = invert(this.xScale, point[invertAxis ? 1 : 0]);
       const index = this.getIndexByValue(value);
 
-      this.setState({ hoverdIndex: index });
-
-      this.eventEmitter.emit(`hoverPosition_${this.plotId}`, point[0], point[1]);
+      this.eventEmitter.emit(`hoverPosition_${this.plotId}`, point[0] + rect.x, event.clientY);
       this.eventEmitter.emit(`hoverListItem_${this.plotId}`, index, Boolean(invertAxis));
       this.eventEmitter.emit(`setTooltipVisible_${this.plotId}`, index !== -1);
     }
-  });
 
-  protected handleMouseLeaveChartContainer = () => {
+    this.eventEmitter.emit('onMouseMoveChart', event);
+  };
+
+  protected handleMouseLeaveChartContainer() {
+    this.eventEmitter.emit('onMouseLeaveChart');
     this.eventEmitter.emit('leaveChart');
     this.eventEmitter.emit(`setTooltipVisible_${this.plotId}`, false);
   };

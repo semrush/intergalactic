@@ -9,6 +9,7 @@ import React from 'react';
 import { Bubble, calculateBubbleDomain, YAxis as YAxisOld, XAxis as XAxisOld, Tooltip } from '../..';
 import { XAxis } from '../Axis/XAxis';
 import { YAxis } from '../Axis/YAxis';
+import { HoverLine } from '../Hover/HoverLine';
 import type { ChartState } from './AbstractChart/AbstractChart';
 import { AbstractChart } from './AbstractChart/AbstractChart';
 import type { BubbleChartData, BubbleChartProps, BubbleChartType, BubbleChartDefaultProps } from './BubbleChart.type';
@@ -171,7 +172,8 @@ class BubbleChartComponent extends AbstractChart<
   override renderTooltip() {
     return (
       <Tooltip>
-        {({ index, data }: any) => {
+        {(props: any) => {
+          const { index, data } = props;
           const { styles } = this.asProps;
           const STooltipChildrenWrapper = Box;
 
@@ -216,6 +218,7 @@ class BubbleChartComponent extends AbstractChart<
         valueFormatter={axisYValueFormatter ?? this.valueFormatter}
         yAxisPosition={yAxisPosition}
         eventEmitter={this.eventEmitter}
+        onMouseMove={() => false}
       />
     );
   }
@@ -237,6 +240,7 @@ class BubbleChartComponent extends AbstractChart<
         ticksCount={xTicksCount}
         valueFormatter={axisXValueFormatter ?? this.valueFormatter}
         eventEmitter={this.eventEmitter}
+        onMouseMove={() => false}
       />
     );
   }
@@ -263,12 +267,26 @@ class BubbleChartComponent extends AbstractChart<
       <>
         {showYAxis && (
           <YAxisOld>
+            <HoverLine
+              uid={this.plotId}
+              data={this.data}
+              keyX='x'
+              scale={[this.xScale, this.yScale]}
+              eventEmitter={this.eventEmitter}
+            />
             <YAxisOld.Grid ticks={yTicks} />
           </YAxisOld>
         )}
 
         {showXAxis && (
           <XAxisOld>
+            <HoverLine
+              uid={this.plotId}
+              data={this.data}
+              keyY='y'
+              scale={[this.xScale, this.yScale]}
+              eventEmitter={this.eventEmitter}
+            />
             <XAxisOld.Grid ticks={xTicks} />
           </XAxisOld>
         )}
@@ -298,6 +316,10 @@ class BubbleChartComponent extends AbstractChart<
     });
 
     return result;
+  }
+
+  protected override handleMouseMoveChartContainer() {
+    return false;
   }
 }
 

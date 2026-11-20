@@ -19,7 +19,7 @@ import type { FORECAST, POTENTIAL } from './component/Chart';
 import { DATA_TYPE } from './component/Chart';
 import type { ObjectData, ObjectDataKey } from './component/Chart/AbstractChart/AbstractChart.type';
 
-export const eventToPoint = (event: React.MouseEvent<HTMLElement>, svgRoot: SVGElement) => {
+export const eventToPoint = (event: React.MouseEvent<HTMLElement | SVGElement>, svgRoot: SVGElement) => {
   const node = (event.currentTarget || event.target) as HTMLElement;
   const rect = svgRoot.getBoundingClientRect();
   return [event.clientX - rect.left - node.clientLeft, event.clientY - rect.top - node.clientTop];

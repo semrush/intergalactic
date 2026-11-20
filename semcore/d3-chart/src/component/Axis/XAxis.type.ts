@@ -4,7 +4,8 @@ import type EventEmitter from '@semcore/core/lib/utils/eventEmitter';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import type * as React from 'react';
 
-import type { ChartEvents } from '../Chart/AbstractChart/AbstractChart.type';
+import type { ElementRect } from '../../utils/ElementRect';
+import type { ChartEvents, ListData } from '../Chart/AbstractChart/AbstractChart.type';
 
 declare namespace NSXAxis {
 
@@ -13,8 +14,9 @@ declare namespace NSXAxis {
     eventEmitter: EventEmitter<ChartEvents>;
     scale: ScaleBand<any> | ScaleLinear<any, any> | ScaleTime<any, any>;
     valueFormatter: (value: unknown) => React.ReactNode;
-    data: any;
-    dataKey: string;
+    data: ListData;
+    dataKey: keyof Props['data'][number];
+    plotBoundaryRect: ElementRect;
     /**
      * @default true
      */

@@ -3,36 +3,55 @@ import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import React from 'react';
 
 import style from './hover.shadow.css';
-import { HoveredTick } from './HoveredTick';
-import type { HoverLineProps } from './HoverLine.type';
+import type { NSHoverLine } from './HoverLine.type';
 import createElement from '../../createElement';
 import { scaleOfBandwidth } from '../../utils';
+import type { ChartEvents } from '../Chart/AbstractChart/AbstractChart.type';
 
 const STROKE_WIDTH = 1;
 const NOTCH_WIDTH = 9;
 const NOTCH_DELTA = NOTCH_WIDTH / 2 - STROKE_WIDTH / 4;
 
-class HoverLineComponent extends Component<HoverLineProps> {
+class HoverLineComponent extends Component<NSHoverLine.Props, [], NSHoverLine.UncontrolledProps, {}, {}, NSHoverLine.DefaultProps> {
   static displayName = 'HoverLine';
   static style = style;
 
-  Element!: React.FC<{ children?: React.ReactNode; render: string }>;
+  static defaultProps = {
+    defaultIndex: -1,
+  };
 
-  isEquals(a: ReturnType<typeof this.getValue>, b: ReturnType<typeof this.getValue>) {
-    if (a === b) {
-      return true;
-    }
-
-    if (a instanceof Date && b instanceof Date) {
-      return a.getTime() === b.getTime();
-    }
-
-    return false;
+  uncontrolledProps(): NSHoverLine.UncontrolledProps {
+    return {
+      index: -1,
+    };
   }
 
-  getValue(index: number | null, key: string | symbol) {
-    const { data } = this.asProps;
-    if (typeof key === 'string') {
+  Element!: React.FC<{ children?: React.ReactNode; render: string }>;
+
+  componentDidMount() {
+    const { eventEmitter, uid } = this.asProps;
+
+    eventEmitter.on(`hoverListItem_${uid}`, this.handleHoverListItemEvent);
+    eventEmitter.on('leaveChart', this.handleLeaveChartEvent);
+  }
+
+  componentWillUnmount(): void {
+    const { eventEmitter, uid } = this.asProps;
+    eventEmitter.off(`hoverListItem_${uid}`, this.handleHoverListItemEvent);
+    eventEmitter.off(`leaveChart`, this.handleLeaveChartEvent);
+  }
+
+  handleHoverListItemEvent: ChartEvents[`hoverListItem_${string}`] = (index, invertAxis) => {
+    this.handlers.index(index);
+  };
+
+  handleLeaveChartEvent: ChartEvents['leaveChart'] = () => {
+    this.handlers.index(-1);
+  };
+
+  getValue(key: undefined | string | symbol) {
+    const { data, index } = this.asProps;
+    if (typeof key === 'string' && index > -1) {
       const value = index !== null ? data[index]?.[key] : undefined;
 
       return value;
@@ -53,24 +72,20 @@ class HoverLineComponent extends Component<HoverLineProps> {
 
   render() {
     const SHoverLine = this.Element;
-    const { meta, xIndex, yIndex, styles, x, y, data, scale, dataHints, hideTickHover, formatValue } = this.asProps;
+    const { styles, keyX, keyY, scale } = this.asProps;
     const [xScale, yScale] = scale;
-    const [xFormatValue, yFormatValue] = Array.isArray(formatValue) ? formatValue : [formatValue, formatValue];
 
     const xRange = xScale.range();
     const yRange = yScale.range();
-    const xValue = this.getValue(xIndex, x);
-    const yValue = this.getValue(yIndex, y);
+    const xValue = this.getValue(keyX);
+    const yValue = this.getValue(keyY);
 
     const x1 = this.getInitPoint(xScale, xValue);
     const y1 = this.getInitPoint(yScale, yValue);
 
-    const xTicks = xScale.domain?.() ?? [];
-    const yTicks = yScale.domain?.() ?? [];
-
     return sstyled(styles)(
       <>
-        {xIndex !== null && typeof x1 === 'number'
+        {typeof x1 === 'number'
           ? (
               <>
                 <SHoverLine render='g' stroke-width={STROKE_WIDTH} aria-hidden>
@@ -78,23 +93,10 @@ class HoverLineComponent extends Component<HoverLineProps> {
                   <line x1={x1} y1={yRange[0]} x2={x1} y2={yRange[1]} />
                   <line x1={x1 - NOTCH_DELTA} x2={x1 + NOTCH_DELTA} y1={yRange[1]} y2={yRange[1]} />
                 </SHoverLine>
-                {/* {!hideTickHover && xValue !== undefined && ( */}
-                {/*  <HoveredTick */}
-                {/*    size={meta.getTicksSize('horizontal')} */}
-                {/*    position={meta.getTicksPosition('horizontal')} */}
-                {/*    tickFormatter={dataHints.titles.getHorizontalAxesTitle ?? xFormatValue} */}
-                {/*    value={xValue} */}
-                {/*    isFirstTick={this.isEquals(xValue, xTicks.at(0))} */}
-                {/*    isLastTick={this.isEquals(xValue, xTicks.at(-1))} */}
-                {/*    x={x1} */}
-                {/*    xRange={xRange} */}
-                {/*    yRange={yRange} */}
-                {/*  /> */}
-                {/* )} */}
               </>
             )
           : null}
-        {yIndex !== null && typeof y1 === 'number'
+        {typeof y1 === 'number'
           ? (
               <>
                 <SHoverLine render='g' stroke-width={STROKE_WIDTH} aria-hidden>
@@ -102,19 +104,6 @@ class HoverLineComponent extends Component<HoverLineProps> {
                   <line x1={xRange[0]} y1={y1} x2={xRange[1]} y2={y1} />
                   <line x1={xRange[1]} y1={y1 - NOTCH_DELTA} x2={xRange[1]} y2={y1 + NOTCH_DELTA} />
                 </SHoverLine>
-                {/* {!hideTickHover && yValue !== undefined && ( */}
-                {/*  <HoveredTick */}
-                {/*    size={meta.getTicksSize('vertical')} */}
-                {/*    position={meta.getTicksPosition('vertical')} */}
-                {/*    tickFormatter={dataHints.titles.getVerticalAxesTitle ?? yFormatValue} */}
-                {/*    value={yValue} */}
-                {/*    isFirstTick={this.isEquals(yValue, yTicks.at(0))} */}
-                {/*    isLastTick={this.isEquals(yValue, yTicks.at(-1))} */}
-                {/*    y={y1} */}
-                {/*    xRange={xRange} */}
-                {/*    yRange={yRange} */}
-                {/*  /> */}
-                {/* )} */}
               </>
             )
           : null}
@@ -123,4 +112,4 @@ class HoverLineComponent extends Component<HoverLineProps> {
   }
 }
 
-export const HoverLine = createElement(HoverLineComponent) as React.FC<HoverLineProps>;
+export const HoverLine = createElement(HoverLineComponent) as React.FC<NSHoverLine.Props>;
