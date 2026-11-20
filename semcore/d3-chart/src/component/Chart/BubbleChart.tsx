@@ -10,6 +10,7 @@ import { Bubble, calculateBubbleDomain, YAxis as YAxisOld, XAxis as XAxisOld, To
 import { XAxis } from '../Axis/XAxis';
 import { YAxis } from '../Axis/YAxis';
 import { HoverLine } from '../Hover/HoverLine';
+import { AbstractAxisChart } from './AbstractChart/AbstractAxisChart';
 import type { ChartState } from './AbstractChart/AbstractChart';
 import { AbstractChart } from './AbstractChart/AbstractChart';
 import type { BubbleChartData, BubbleChartProps, BubbleChartType, BubbleChartDefaultProps } from './BubbleChart.type';
@@ -20,7 +21,7 @@ const uniqKey = Symbol('uniqKey');
 
 type BubbleChartInnerData = Array<BubbleChartData[number] & { [uniqKey]: string }>;
 
-class BubbleChartComponent extends AbstractChart<
+class BubbleChartComponent extends AbstractAxisChart<
   BubbleChartData,
   BubbleChartProps,
   typeof BubbleChartComponent.enhance,
@@ -234,6 +235,7 @@ class BubbleChartComponent extends AbstractChart<
       <XAxis
         ref={this.xAxisRef}
         uid={this.plotId}
+        plotBoundaryRect={this.plotBoundaryRect}
         data={this.data}
         dataKey='x'
         scale={this.xScale}

@@ -26,8 +26,6 @@ export type RadarChartProps = Intergalactic.InternalTypings.EfficientOmit<
 
 export type RadarChartDefaultProps = {
   direction: 'column';
-  showXAxis: true;
-  showYAxis: true;
   showTooltip: true;
   locale: 'en';
 };

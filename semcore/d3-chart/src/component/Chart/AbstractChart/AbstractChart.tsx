@@ -6,13 +6,11 @@ import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import cssToIntDefault from '@semcore/core/lib/utils/cssToIntDefault';
 import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
-import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
 import Divider from '@semcore/divider';
 import DiffDown from '@semcore/icon/DiffDown/m';
 import DiffUp from '@semcore/icon/DiffUp/m';
 import { Text } from '@semcore/typography';
-import { bisector } from 'd3-array';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import React, { Fragment } from 'react';
 
@@ -26,19 +24,16 @@ import type {
   ObjectDataKey,
 } from './AbstractChart.type';
 // @ts-ignore
-import type { HoverRect, Tooltip } from '../../..';
+import type { HoverRect, Tooltip as TooltipComponent } from '../../..';
 // @ts-ignore
-import { Plot, XAxis as XAxisOld, YAxis as YAxisOld } from '../../..';
+import { Plot } from '../../..';
 import { makeDataHintsContainer, makeDataHintsHandlers } from '../../../a11y/hints';
-import { eventToPoint, getIndexFromData, interpolateValue, invert, uniqueId } from '../../../utils';
+import { interpolateValue, uniqueId } from '../../../utils';
 import { ElementRect } from '../../../utils/ElementRect';
-import { XAxis } from '../../Axis/XAxis';
-import { YAxis } from '../../Axis/YAxis';
 import ChartLegend, { ChartLegendTable } from '../../ChartLegend';
 import type { LegendFlexProps } from '../../ChartLegend/LegendFlex/LegendFlex.type';
 import type { LegendItem } from '../../ChartLegend/LegendItem/LegendItem.type';
 import type { LegendTableProps } from '../../ChartLegend/LegendTable/LegendTable.type';
-import { HoverLine } from '../../Hover/HoverLine';
 
 type TooltipPercentDeltaTrend = 'upward' | 'downward' | 'stable' | 'unknown';
 
@@ -75,8 +70,6 @@ export abstract class AbstractChart<
   protected chartRef = React.createRef<HTMLElement>();
   protected legendRef = React.createRef<HTMLDivElement>();
   protected plotRef = React.createRef<SVGElement>();
-  protected xAxisRef = React.createRef<HTMLDivElement>();
-  protected yAxisRef = React.createRef<HTMLDivElement>();
 
   protected plotBoundaryRect = new ElementRect();
 
@@ -103,8 +96,6 @@ export abstract class AbstractChart<
     this.valueFormatter = this.valueFormatter.bind(this);
     this.tooltipValueFormatter = this.tooltipValueFormatter.bind(this);
     this.handleWithTrendChange = this.handleWithTrendChange.bind(this);
-    this.handleMouseMoveChartContainer = this.handleMouseMoveChartContainer.bind(this);
-    this.handleMouseLeaveChartContainer = this.handleMouseLeaveChartContainer.bind(this);
 
     this.state = {
       dataDefinitions: this.getDefaultDataDefinitions(),
@@ -223,42 +214,6 @@ export abstract class AbstractChart<
     }
 
     return dataKeys;
-  }
-
-  protected get xTicks(): number[] | Date[] | undefined {
-    const { data, invertAxis, xTicksCount, yTicksCount } = this.asProps;
-
-    const scale = this.xScale;
-
-    if (Array.isArray(data) && 'ticks' in scale) {
-      if (invertAxis && yTicksCount) {
-        return scale.ticks(yTicksCount);
-      } else if (xTicksCount) {
-        return scale.ticks(xTicksCount);
-      }
-
-      return undefined;
-    }
-
-    return undefined;
-  }
-
-  protected get yTicks(): number[] | Date[] | undefined {
-    const { data, invertAxis, xTicksCount, yTicksCount } = this.asProps;
-
-    const scale = this.yScale;
-
-    if (Array.isArray(data) && 'ticks' in scale) {
-      if (invertAxis && xTicksCount) {
-        return scale.ticks(xTicksCount);
-      } else if (yTicksCount) {
-        return scale.ticks(yTicksCount);
-      }
-
-      return undefined;
-    }
-
-    return undefined;
   }
 
   protected get flatValues(): Set<number> {
@@ -515,51 +470,6 @@ export abstract class AbstractChart<
     return <ChartLegend {...(commonLegendProps as LegendFlexProps)} ref={this.legendRef} />;
   }
 
-  protected renderGrid(): React.ReactNode {
-    const {
-      invertAxis,
-      showXAxis,
-      showYAxis,
-      groupKey,
-    } = this.asProps;
-
-    if (!Array.isArray(this.data)) {
-      return null;
-    }
-
-    const xTicks = this.xTicks;
-    const yTicks = this.yTicks;
-
-    return (
-      <>
-        {showYAxis && (
-          <YAxisOld>
-            {invertAxis !== true && (
-              <>
-                {groupKey !== undefined && (
-                  <HoverLine
-                    uid={this.plotId}
-                    data={this.data}
-                    keyX={groupKey}
-                    scale={[this.xScale, this.yScale]}
-                    eventEmitter={this.eventEmitter}
-                  />
-                )}
-                {yTicks ? <YAxisOld.Grid ticks={yTicks} /> : <YAxisOld.Grid />}
-              </>
-            )}
-          </YAxisOld>
-        )}
-
-        {showXAxis && (
-          <XAxisOld>
-            {invertAxis === true && (xTicks ? <XAxisOld.Grid ticks={xTicks} /> : <XAxisOld.Grid />)}
-          </XAxisOld>
-        )}
-      </>
-    );
-  }
-
   protected getPercentDelta(key: ObjectDataKey, index: number, data: Data) {
     const { getPercentDelta: customGetPercentDelta } = this.asProps;
 
@@ -588,7 +498,7 @@ export abstract class AbstractChart<
   }
 
   protected getTooltipChildren<D extends ObjectData>(options: {
-    Tooltip: typeof Tooltip | typeof HoverRect['Tooltip'];
+    Tooltip: typeof TooltipComponent | typeof HoverRect['Tooltip'];
     dataItem: D;
     index: number;
   }) {
@@ -680,62 +590,18 @@ export abstract class AbstractChart<
     );
   }
 
-  protected renderYAxis(): React.ReactNode {
-    const { yTicksCount, showYAxis, axisYValueFormatter, yAxisPosition, groupKey, invertAxis } = this.asProps;
-
-    if (!showYAxis || !groupKey) {
-      return null;
-    }
-
-    return (
-      <YAxis
-        ref={this.yAxisRef}
-        uid={this.plotId}
-        data={this.data}
-        dataKey={groupKey}
-        scale={this.yScale}
-        ticksCount={yTicksCount}
-        valueFormatter={axisYValueFormatter ?? this.valueFormatter}
-        yAxisPosition={yAxisPosition}
-        eventEmitter={this.eventEmitter}
-      />
-    );
-  }
-
-  protected renderXAxis(): React.ReactNode {
-    const { xTicksCount, showXAxis, axisXValueFormatter, groupKey, invertAxis } = this.asProps;
-
-    if (!showXAxis || !groupKey) {
-      return null;
-    }
-
-    return (
-      <XAxis
-        ref={this.xAxisRef}
-        uid={this.plotId}
-        data={this.data}
-        dataKey={groupKey}
-        plotBoundaryRect={this.plotBoundaryRect}
-        scale={this.xScale}
-        ticksCount={xTicksCount}
-        valueFormatter={axisXValueFormatter ?? this.valueFormatter}
-        eventEmitter={this.eventEmitter}
-      />
-    );
-  }
-
   protected renderReference(): React.ReactNode {
     return null;
   }
 
-  protected get data() {
+  protected get data(): Data {
     return this.asProps.data;
   }
 
   public render() {
     const SChart = Root;
-    const SChartContainer = Flex;
-    const { styles, patterns, a11yAltTextConfig, duration, showTooltip, locale, yAxisPosition = 'left' } =
+    const SChartContainer = Box;
+    const { styles, patterns, a11yAltTextConfig, duration, showTooltip, locale } =
       this.asProps;
     const { plotWidth, plotHeight } = this;
 
@@ -744,39 +610,33 @@ export abstract class AbstractChart<
     return sstyled(styles)(
       <SChart render={Flex} gap={5} __excludeProps={['data']} role='group' ref={this.chartRef}>
         {this.renderLegend()}
-        <SChartContainer
-          w='fit-content'
-          display='grid'
-          onMouseMove={this.handleMouseMoveChartContainer}
-          onMouseLeave={this.handleMouseLeaveChartContainer}
+        {/* <SChartContainer */}
+        {/*  onMouseMove={this.handleMouseMoveChartContainer} */}
+        {/*  onMouseLeave={this.handleMouseLeaveChartContainer} */}
+        {/* > */}
+        <Plot
+          uid={this.plotId}
+          data={this.data}
+          scale={[this.xScale, this.yScale]}
+          width={plotWidth}
+          height={plotHeight}
+          dataHints={this.dataHints}
+          dataHintsHandlers={this.dataHintsHandlers}
+          a11yAltTextConfig={a11yAltTextConfig}
+          patterns={patterns}
+          duration={duration}
+          eventEmitter={this.eventEmitter}
+          locale={locale}
+          {...extractedAriaProps}
+          ref={this.plotRef}
+          // onMouseMove={this.preventPlotMoveEvents}
+          // onMouseLeave={this.preventPlotMoveEvents}
         >
-          {yAxisPosition === 'left' && this.renderYAxis()}
-          <Plot
-            uid={this.plotId}
-            data={this.data}
-            scale={[this.xScale, this.yScale]}
-            width={plotWidth}
-            height={plotHeight}
-            dataHints={this.dataHints}
-            dataHintsHandlers={this.dataHintsHandlers}
-            a11yAltTextConfig={a11yAltTextConfig}
-            patterns={patterns}
-            duration={duration}
-            eventEmitter={this.eventEmitter}
-            locale={locale}
-            {...extractedAriaProps}
-            ref={this.plotRef}
-            onMouseMove={this.preventPlotMoveEvents}
-            onMouseLeave={this.preventPlotMoveEvents}
-          >
-            {this.renderGrid()}
-            {this.renderReference()}
-            {!showTooltip ? null : this.renderTooltip()}
-            {this.renderChart()}
-          </Plot>
-          {yAxisPosition === 'right' && this.renderYAxis()}
-          {this.renderXAxis()}
-        </SChartContainer>
+          {this.renderReference()}
+          {!showTooltip ? null : this.renderTooltip()}
+          {this.renderChart()}
+        </Plot>
+        {/* </SChartContainer> */}
       </SChart>,
     );
   }
@@ -802,6 +662,14 @@ export abstract class AbstractChart<
       }
     }
 
+    // @ts-expect-error yAxisRef is in AbstractAxisChart only
+    const yAxisRect = this.yAxisRef?.current?.getBoundingClientRect();
+    // @ts-expect-error yAxisRef is in AbstractAxisChart only
+    const xAxisRef = this.xAxisRef?.current?.getBoundingClientRect();
+
+    width = width - (yAxisRect?.width ?? 0);
+    height = height - ((yAxisRect?.height ?? 0) + (xAxisRef?.height ?? 0));
+
     if (aspect) {
       const minHeight = cssToIntDefault(computedStyles.getPropertyValue('min-height'), -1);
       const maxHeight = cssToIntDefault(computedStyles.getPropertyValue('max-height'), -1);
@@ -825,59 +693,5 @@ export abstract class AbstractChart<
     });
 
     onResize?.([width, height], entities);
-  }
-
-  protected handleMouseMoveChartContainer(event: React.MouseEvent<HTMLElement | SVGElement>) {
-    const target = event.target;
-    const plotElement = this.plotRef.current;
-    const yAxisElement = this.yAxisRef.current;
-
-    if (!plotElement || !yAxisElement || !(target instanceof Element)) {
-      return;
-    }
-
-    const rect = plotElement.getBoundingClientRect();
-    const point = [event.clientX - rect.left - target.clientLeft, event.clientY - rect.top - target.clientTop];
-
-    if (hasParent(target, plotElement)) {
-      const { invertAxis } = this.asProps;
-      const value = invert(this.xScale, point[invertAxis ? 1 : 0]);
-      const index = this.getIndexByValue(value);
-
-      this.eventEmitter.emit(`hoverPosition_${this.plotId}`, point[0] + rect.x, event.clientY);
-      this.eventEmitter.emit(`hoverListItem_${this.plotId}`, index, Boolean(invertAxis));
-      this.eventEmitter.emit(`setTooltipVisible_${this.plotId}`, index !== -1);
-    }
-
-    this.eventEmitter.emit('onMouseMoveChart', event);
-  };
-
-  protected handleMouseLeaveChartContainer() {
-    this.eventEmitter.emit('onMouseLeaveChart');
-    this.eventEmitter.emit('leaveChart');
-    this.eventEmitter.emit(`setTooltipVisible_${this.plotId}`, false);
-  };
-
-  protected preventPlotMoveEvents = () => {
-    return false;
-  };
-
-  protected getIndexByValue(value: unknown): number {
-    const { groupKey } = this.asProps;
-    const scale = this.xScale;
-
-    if (!groupKey || !Array.isArray(this.data)) {
-      return -1;
-    }
-
-    if ('invert' in scale && typeof scale.invert === 'function') { // detect line chart
-      const bisect = bisector((d: { [key: string]: number }) => d[groupKey]).center;
-      return bisect(this.data, value);
-    } else if ('step' in scale && typeof scale.step !== 'undefined') { // detect bar chart
-      const index = this.data.findIndex((d) => d[groupKey] === value);
-      return index;
-    }
-
-    return -1;
   }
 }

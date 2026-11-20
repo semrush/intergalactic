@@ -3,16 +3,16 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { type ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
+import { AbstractAxisChart } from './AbstractChart/AbstractAxisChart';
 import type { ObjectData } from './AbstractChart/AbstractChart.type';
 import { HIGHLIGHT_DOT } from './AbstractChart/AbstractChart.type';
 import type { LineChartData, LineChartDefaultProps, LineChartProps, LineChartType } from './LineChart.type';
 // @ts-ignore
 import { Line, minMax, Tooltip, ReferenceLine, ReferenceStripes } from '../..';
 import type { ChartState } from './AbstractChart/AbstractChart';
-import { AbstractChart } from './AbstractChart/AbstractChart';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
-class LineChartComponent extends AbstractChart<
+class LineChartComponent extends AbstractAxisChart<
   LineChartData,
   LineChartProps,
   typeof LineChartComponent.enhance,

@@ -2,3 +2,8 @@ SHoverLine, SHoverLine:focus-visible {
   outline: none;
   stroke: var(--intergalactic-chart-grid-x-axis, oklch(0.88 0.011 234.9));
 }
+
+SHoverRect, SHoverRect:focus-visible {
+  outline: none;
+  fill: var(--intergalactic-chart-grid-bar-hover, oklch(0.375 0.09 242.7 / 0.05));
+}

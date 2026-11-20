@@ -22,8 +22,6 @@ const Demo = () => {
       groupKey='date_chart'
       data={data}
       plotHeight={300}
-      marginX={40}
-      marginY={40}
       yTicksCount={4}
       axisXValueFormatter={formatXAxisValue}
       showTooltip={false}

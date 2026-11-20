@@ -1,6 +1,5 @@
 import { Flex } from '@semcore/base-components';
-import { createComponent, Root, sstyled } from '@semcore/core';
-import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
+import { createComponent } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { Text } from '@semcore/typography';
@@ -8,13 +7,12 @@ import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
 // @ts-ignore
-import { Donut, Plot } from '../..';
+import { Donut } from '../..';
 import type { ChartState } from './AbstractChart/AbstractChart';
-import { NOT_A_VALUE, AbstractChart } from './AbstractChart/AbstractChart';
+import { AbstractChart } from './AbstractChart/AbstractChart';
 import type { ScoreDonutChartData, ScoreDonutChartDefaultProps, ScoreDonutChartProps, ScoreDonutChartType } from './ScoreDonutChart.type';
 import { DefaultStrokePattern } from '../../Pattern';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-import { interpolateValue } from '../../utils';
 import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 
 class ScoreDonutChartComponent extends AbstractChart<

@@ -5,6 +5,7 @@ import React from 'react';
 
 // @ts-ignore
 import { Area, minMax, HoverLine, StackedArea } from '../..';
+import { AbstractAxisChart } from './AbstractChart/AbstractAxisChart';
 import type { ChartState } from './AbstractChart/AbstractChart';
 import { AbstractChart } from './AbstractChart/AbstractChart';
 import type { ObjectData } from './AbstractChart/AbstractChart.type';
@@ -17,7 +18,7 @@ import type {
 } from './AreaChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
-class AreaChartComponent extends AbstractChart<
+class AreaChartComponent extends AbstractAxisChart<
   AreaChartData,
   AreaChartProps,
   typeof AreaChartComponent.enhance,

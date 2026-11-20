@@ -2,13 +2,13 @@ import type { Flex } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type { ScaleLinear, ScaleTime } from 'd3-scale';
 
-import type { BaseChartProps } from './AbstractChart/AbstractChart.type';
+import type { AbstractAxisChartProps } from './AbstractChart/AbstractAxisChart.type';
 import type { interpolateValue } from '../../utils';
 
 export type ScatterPlotChartData = Array<Record<string, number | typeof interpolateValue | Date>>;
 
 export type ScatterPlotChartProps = Intergalactic.InternalTypings.EfficientOmit<
-  BaseChartProps<ScatterPlotChartData>,
+  AbstractAxisChartProps<ScatterPlotChartData>,
   'showTotalInTooltip' | 'showDeltaPercentInTooltip' | 'getPercentDelta' | 'deltaPercentGrowthColor'
 > & {
   /** Field name that groups the data points */

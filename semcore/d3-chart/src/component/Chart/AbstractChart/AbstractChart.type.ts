@@ -96,27 +96,30 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
   marginY?: number;
   /**
    * Margin (for X axis points) from bottom of chart container to X axis
+   *
+   * @deprecated you shouldn't use it at all. Margin will calculate automatically.
    */
   marginX?: number;
   /**
    * invert axis and show horizontal charts (only for Bars!)
+   * @deprecated. Use in only in Bars
    */
   invertAxis?: boolean;
 
   /**
    * Show X axis
-   * @default true (for charts with axis: Area, Line, Bar, ScatterPlot, ...)
+   * @deprecated. Axis can be only in AbstractAxisChart
    */
   showXAxis?: boolean;
   /**
    * Show Y axis
-   * @default true (for charts with axis: Area, Line, Bar, ScatterPlot, ...)
+   * @deprecated. Axis can be only in AbstractAxisChart
    */
   showYAxis?: boolean;
 
   /**
    * Position of Y axis.
-   * @default 'left'
+   * @deprecated. Axis can be only in AbstractAxisChart
    */
   yAxisPosition?: NSYAxis.Props['yAxisPosition'];
   /**
@@ -156,10 +159,12 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
   yScale?: unknown;
   /**
    * Count of ticks for X axis
+   * @deprecated. Axis can be only in AbstractAxisChart
    */
   xTicksCount?: number;
   /**
    * Count of ticks for Y axis
+   * @deprecated. Axis can be only in AbstractAxisChart
    */
   yTicksCount?: number;
   /** Enables multiline tick labels for X axis, applicable only for band scales */
@@ -174,6 +179,7 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
   groupKey?: string;
   /**
    * function for format axis item text
+   * @deprecated. Axis can be only in AbstractAxisChart
    */
   axisXValueFormatter?: (value: unknown) => React.ReactNode;
   axisYValueFormatter?: (value: unknown) => React.ReactNode;

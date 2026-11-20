@@ -78,8 +78,6 @@ class CigaretteChartComponent extends AbstractChart<
     };
   }
 
-  private plotRef = React.createRef<SVGElement>();
-
   protected override plotPadding = 0;
 
   private offset = 0;

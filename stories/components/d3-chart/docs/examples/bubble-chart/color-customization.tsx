@@ -5,7 +5,7 @@ import React from 'react';
 import BubbleMockData from '../../../__mocks__/bubble';
 
 const Demo = () => {
-  const MARGIN = 40;
+  const MARGIN = 0;
   const width = 500;
   const height = 300;
 

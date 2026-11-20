@@ -3,20 +3,22 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { scaleBand, scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
+import { AbstractAxisChart } from './AbstractChart/AbstractAxisChart';
 import type { ChartState } from './AbstractChart/AbstractChart';
-import { AbstractChart } from './AbstractChart/AbstractChart';
 import type { BaseLegendProps } from './AbstractChart/AbstractChart.type';
 import type { BarChartData, BarChartProps, BarChartType, BarChartDefaultProps } from './BarChart.type';
 // @ts-ignore
-import { minMax, GroupBar, HoverRect, StackBar, Line, YAxis as YAxisOld, XAxis, ReferenceLine } from '../..';
+import { minMax, GroupBar, StackBar, Line, YAxis as YAxisOld, XAxis as XAxisOld, ReferenceLine, Tooltip } from '../..';
 // @ts-ignore
 import { ReferenceArea } from '../../Reference';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import type { BarProps } from '../../types';
+import { XAxis } from '../Axis/XAxis';
 import { YAxis } from '../Axis/YAxis';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
+import { HoverRect } from '../Hover/HoverRect';
 
-class BarChartComponent extends AbstractChart<
+class BarChartComponent extends AbstractAxisChart<
   BarChartData,
   BarChartProps,
   typeof BarChartComponent.enhance,
@@ -177,7 +179,7 @@ class BarChartComponent extends AbstractChart<
     const { data, groupKey, invertAxis, onClickHoverRect, showXAxis } = this.asProps;
 
     return (
-      <HoverRect.Tooltip
+      <Tooltip
         x={invertAxis ? undefined : groupKey}
         y={invertAxis ? groupKey : undefined}
         wMin={100}
@@ -190,13 +192,13 @@ class BarChartComponent extends AbstractChart<
 
           return {
             children: this.getTooltipChildren({
-              Tooltip: HoverRect.Tooltip,
+              Tooltip: Tooltip,
               dataItem,
               index,
             }),
           };
         }}
-      </HoverRect.Tooltip>
+      </Tooltip>
     );
   }
 
@@ -230,7 +232,7 @@ class BarChartComponent extends AbstractChart<
   }
 
   protected override renderYAxis(): React.ReactNode {
-    const { yTicksCount, showYAxis, axisYValueFormatter, invertAxis } = this.asProps;
+    const { yTicksCount, showYAxis, axisYValueFormatter, groupKey, invertAxis } = this.asProps;
 
     if (!showYAxis) {
       return null;
@@ -238,12 +240,39 @@ class BarChartComponent extends AbstractChart<
 
     return (
       <YAxis
+        uid={this.plotId}
+        ref={this.yAxisRef}
+        dataKey={groupKey}
         scale={this.yScale}
         ticksCount={yTicksCount}
         primaryText={!!invertAxis}
         valueFormatter={axisYValueFormatter ?? this.valueFormatter}
         data={this.data}
         eventEmitter={this.eventEmitter}
+        onMouseMove={!invertAxis ? () => false : undefined}
+      />
+    );
+  }
+
+  protected renderXAxis(): React.ReactNode {
+    const { xTicksCount, showXAxis, axisXValueFormatter, groupKey, invertAxis } = this.asProps;
+
+    if (!showXAxis || !groupKey) {
+      return null;
+    }
+
+    return (
+      <XAxis
+        ref={this.xAxisRef}
+        uid={this.plotId}
+        data={this.data}
+        dataKey={groupKey}
+        plotBoundaryRect={this.plotBoundaryRect}
+        scale={this.xScale}
+        ticksCount={xTicksCount}
+        valueFormatter={axisXValueFormatter ?? this.axisValueFormatter}
+        eventEmitter={this.eventEmitter}
+        onMouseMove={invertAxis ? () => false : undefined}
       />
     );
   }
@@ -254,52 +283,42 @@ class BarChartComponent extends AbstractChart<
       showXAxis,
       showYAxis,
       data,
-      axisXValueFormatter,
-      axisYValueFormatter,
-      multilineXTicks,
-      multilineYTicks,
+      groupKey,
     } = this.asProps;
-
-    if (!Array.isArray(data)) {
-      return null;
-    }
 
     const xTicks = this.xTicks;
     const yTicks = this.yTicks;
-
-    const childrenX = axisXValueFormatter
-      ? ({ value }: any) => ({ children: axisXValueFormatter(value) })
-      : undefined;
-    const childrenY = axisYValueFormatter
-      ? ({ value }: any) => ({ children: axisYValueFormatter(value) })
-      : undefined;
 
     return (
       <>
         {showYAxis && (
           <YAxisOld>
-            {yTicks
-              ? (
-                  <YAxisOld.Ticks primaryText={invertAxis} multiline={multilineYTicks} ticks={yTicks}>{childrenY}</YAxisOld.Ticks>
-                )
-              : (
-                  <YAxisOld.Ticks primaryText={invertAxis} multiline={multilineYTicks}>{childrenY}</YAxisOld.Ticks>
-                )}
+            {invertAxis !== true && (
+              <HoverRect
+                data={this.data}
+                uid={this.plotId}
+                eventEmitter={this.eventEmitter}
+                scale={[this.xScale, this.yScale]}
+                keyX={groupKey}
+              />
+            )}
             {invertAxis !== true && (yTicks ? <YAxisOld.Grid ticks={yTicks} /> : <YAxisOld.Grid />)}
           </YAxisOld>
         )}
 
         {showXAxis && (
-          <XAxis>
-            {xTicks
-              ? (
-                  <XAxis.Ticks multiline={multilineXTicks} ticks={xTicks}>{childrenX}</XAxis.Ticks>
-                )
-              : (
-                  <XAxis.Ticks multiline={multilineXTicks}>{childrenX}</XAxis.Ticks>
-                )}
-            {invertAxis === true && (xTicks ? <XAxis.Grid ticks={xTicks} /> : <XAxis.Grid />)}
-          </XAxis>
+          <XAxisOld>
+            {invertAxis === true && (
+              <HoverRect
+                data={this.data}
+                uid={this.plotId}
+                eventEmitter={this.eventEmitter}
+                scale={[this.xScale, this.yScale]}
+                keyY={groupKey}
+              />
+            )}
+            {invertAxis === true && (xTicks ? <XAxisOld.Grid ticks={xTicks} /> : <XAxisOld.Grid />)}
+          </XAxisOld>
         )}
       </>
     );

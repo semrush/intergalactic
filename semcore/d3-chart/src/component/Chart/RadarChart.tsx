@@ -22,8 +22,6 @@ class RadarChartComponent extends AbstractChart<
 
   static defaultProps = {
     direction: 'column',
-    showXAxis: true,
-    showYAxis: true,
     showTooltip: true,
     locale: 'en',
   } as const;
@@ -91,11 +89,6 @@ class RadarChartComponent extends AbstractChart<
   // By default, tooltip will render in Plot component.
   // In RadarChart, we need to render it in Radar component, so we use renderRadarTooltip method
   protected renderTooltip(): React.ReactNode {
-    return null;
-  }
-
-  // We don't need Y axis in this type of charts
-  protected override renderYAxis(): React.ReactNode {
     return null;
   }
 

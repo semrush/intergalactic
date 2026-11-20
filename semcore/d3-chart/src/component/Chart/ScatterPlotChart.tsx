@@ -7,8 +7,10 @@ import React from 'react';
 
 // @ts-ignore
 import { minMax, ScatterPlot, getScatterPlotRadius } from '../..';
+import { XAxis } from '../Axis/XAxis';
+import { YAxis } from '../Axis/YAxis';
+import { AbstractAxisChart } from './AbstractChart/AbstractAxisChart';
 import type { ChartState } from './AbstractChart/AbstractChart';
-import { AbstractChart } from './AbstractChart/AbstractChart';
 import type {
   ScatterPlotChartData,
   ScatterPlotChartDefaultProps,
@@ -17,7 +19,7 @@ import type {
 } from './ScatterPlotChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
-class ScatterPlotChartComponent extends AbstractChart<
+class ScatterPlotChartComponent extends AbstractAxisChart<
   ScatterPlotChartData,
   ScatterPlotChartProps,
   typeof ScatterPlotChartComponent.enhance,
@@ -150,6 +152,60 @@ class ScatterPlotChartComponent extends AbstractChart<
   protected getLegendAriaLabel(): string {
     return this.asProps.getI18nText('legendForChart', { chartType: 'ScatterPlot' });
   }
+
+  protected override renderYAxis(): React.ReactNode {
+    const { yTicksCount, showYAxis, axisYValueFormatter, yAxisPosition } = this.asProps;
+
+    if (!showYAxis) {
+      return null;
+    }
+
+    return (
+      <YAxis
+        ref={this.yAxisRef}
+        uid={this.plotId}
+        data={this.data}
+        dataKey='y'
+        scale={this.yScale}
+        ticksCount={yTicksCount}
+        valueFormatter={axisYValueFormatter ?? this.valueFormatter}
+        yAxisPosition={yAxisPosition}
+        eventEmitter={this.eventEmitter}
+        onMouseMove={() => false}
+      />
+    );
+  }
+
+  protected override renderXAxis(): React.ReactNode {
+    const { xTicksCount, showXAxis, axisXValueFormatter } = this.asProps;
+
+    if (!showXAxis) {
+      return null;
+    }
+
+    return (
+      <XAxis
+        ref={this.xAxisRef}
+        uid={this.plotId}
+        data={this.data}
+        plotBoundaryRect={this.plotBoundaryRect}
+        dataKey='x'
+        scale={this.xScale}
+        ticksCount={xTicksCount}
+        valueFormatter={axisXValueFormatter ?? this.valueFormatter}
+        eventEmitter={this.eventEmitter}
+        onMouseMove={() => false}
+      />
+    );
+  }
+
+  protected override handleMouseMoveChartContainer() {
+    return false;
+  }
+
+  protected preventPlotMoveEvents() {
+    return true;
+  };
 }
 
 /**

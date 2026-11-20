@@ -2,6 +2,7 @@ import type { Flex } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type { ScaleLinear } from 'd3-scale';
 
+import type { AbstractAxisChartProps } from './AbstractChart/AbstractAxisChart.type';
 import type { BaseChartProps } from './AbstractChart/AbstractChart.type';
 
 export type ScaledValues = {
@@ -18,7 +19,7 @@ export type BubbleChartData = Array<{
 }>;
 
 export type BubbleChartProps = Intergalactic.InternalTypings.EfficientOmit<
-  BaseChartProps<BubbleChartData>,
+  AbstractAxisChartProps<BubbleChartData>,
   'showTotalInTooltip' | 'showDeltaPercentInTooltip' | 'getPercentDelta' | 'deltaPercentGrowthColor'
 > & {
   /** Field name that groups the data points */
