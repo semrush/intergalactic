@@ -4,7 +4,7 @@ import type EventEmitter from '@semcore/core/lib/utils/eventEmitter';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import type * as React from 'react';
 
-import type { ChartEvents } from '../Chart/AbstractChart/AbstractChart.type';
+import type { ChartEvents, ListData } from '../Chart/AbstractChart/AbstractChart.type';
 
 declare namespace NSYAxis {
 
@@ -13,7 +13,7 @@ declare namespace NSYAxis {
     eventEmitter: EventEmitter<ChartEvents>;
     scale: ScaleBand<any> | ScaleLinear<any, any> | ScaleTime<any, any>;
     valueFormatter: (value: unknown) => React.ReactNode;
-    data: any;
+    data: ListData;
     dataKey: string;
     /**
      * @default true

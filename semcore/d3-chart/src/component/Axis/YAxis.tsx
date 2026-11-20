@@ -49,7 +49,12 @@ class YAxisComponent extends Component<NSYAxis.Props, [], {}, {}, NSYAxis.State,
       return null;
     }
 
-    const hoveredYTranslate = scaleOfBandwidth(scale, item?.[dataKey]) ?? 0;
+    const value = item?.[dataKey];
+    if (!(typeof value === 'number' || typeof value === 'string' || value instanceof Date)) {
+      return null;
+    }
+
+    const hoveredYTranslate = scaleOfBandwidth(scale, value) ?? 0;
     const style = {
       transform: `translateY(calc(${hoveredYTranslate}px - 50%))`,
     };
@@ -68,7 +73,7 @@ class YAxisComponent extends Component<NSYAxis.Props, [], {}, {}, NSYAxis.State,
     const { primaryText, valueFormatter, yAxisPosition } = this.asProps;
 
     return sstyled(styles)(
-      <SYAxis render={Box} primaryText={primaryText} position={yAxisPosition} __excludeProps={['data']}>
+      <SYAxis render={Box} primaryText={primaryText} position={yAxisPosition} __excludeProps={['data', 'scale']}>
         {this.ticks.map((tick, index) => {
           const style = {
             transform: `translateY(calc(${tick.yTranslate}px - 50%))`,

@@ -227,13 +227,13 @@ export const roundedPath = (
   return result;
 };
 
-export const scaleToBand = (scale: ScaleBand<{}>) => {
+export const scaleToBand = (scale: ScaleBand<any> | ScaleLinear<any, any> | ScaleTime<any, any>): ScaleBand<any> => {
   if ('bandwidth' in scale) {
     return scale;
   }
 
   const band = scaleBand()
-    .range((scale as any).range())
+    .range(scale.range())
     .domain((scale as any).domain());
 
   return band;

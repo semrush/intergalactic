@@ -249,6 +249,7 @@ export abstract class AbstractAxisChart<
 
     if ('invert' in scale && typeof scale.invert === 'function') { // detect line chart
       const bisect = bisector((d: { [key: string]: number }) => d[groupKey]).center;
+      // @ts-expect-error difficult to type it because of history  reasons
       return bisect(this.data, value);
     } else if ('step' in scale && typeof scale.step !== 'undefined') { // detect bar chart
       const index = this.data.findIndex((d) => d[groupKey] === value);

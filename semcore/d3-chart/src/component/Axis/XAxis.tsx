@@ -79,7 +79,12 @@ class XAxisComponent extends Component<NSXAxis.Props, [], {}, {}, NSXAxis.State>
       return null;
     }
 
-    const hoveredYTranslate = scaleOfBandwidth(scale, item?.[dataKey]) ?? 0;
+    const value = item?.[dataKey];
+    if (!(typeof value === 'number' || typeof value === 'string' || value instanceof Date)) {
+      return null;
+    }
+
+    const hoveredYTranslate = scaleOfBandwidth(scale, value) ?? 0;
     const style = {
       transform: `translateX(calc(${hoveredYTranslate}px - 50%))`,
     };
@@ -100,6 +105,7 @@ class XAxisComponent extends Component<NSXAxis.Props, [], {}, {}, NSXAxis.State>
 
     if ('invert' in scale && typeof scale.invert === 'function') { // detect line chart
       const bisect = bisector((d: { [key: string]: number }) => d[dataKey]).center;
+      // @ts-expect-error difficult to type it because of history  reasons
       return bisect(data, value);
     } else if ('step' in scale && typeof scale.step !== 'undefined') { // detect bar chart
       const index = data.findIndex((d) => d[dataKey] === value);
@@ -116,7 +122,7 @@ class XAxisComponent extends Component<NSXAxis.Props, [], {}, {}, NSXAxis.State>
     const { valueFormatter } = this.asProps;
 
     return sstyled(styles)(
-      <SXAxis render={Box} __excludeProps={['data']} onMouseMove={this.handleMoveOverAxis}>
+      <SXAxis render={Box} __excludeProps={['data', 'scale']} onMouseMove={this.handleMoveOverAxis}>
         {this.ticks.map((tick, index) => {
           const style = {
             transform: `translateX(calc(${tick.translate}px - 50%))`,

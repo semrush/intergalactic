@@ -83,7 +83,7 @@ class HoverRectComponent extends Component<NSHoverRect.Props, [], NSHoverRect.Un
     const xValue = keyX !== undefined ? data[index]?.[keyX] : undefined;
     const yValue = keyY !== undefined ? data[index]?.[keyY] : undefined;
 
-    if (xValue !== undefined) {
+    if (typeof xValue === 'number' || xValue instanceof Date) {
       return getVerticalPathFromRect({
         x: xScale(xValue) - (xStep * xPaddingInner) / 2,
         y: yRange[1],
@@ -92,7 +92,7 @@ class HoverRectComponent extends Component<NSHoverRect.Props, [], NSHoverRect.Un
       });
     }
 
-    if (yValue !== undefined) {
+    if (typeof yValue === 'number' || yValue instanceof Date) {
       return getHorizontalPathFromRect({
         x: xRange[0],
         y: yScale(yValue) - (yStep * yPaddingInner) / 2,
@@ -118,6 +118,7 @@ class HoverRectComponent extends Component<NSHoverRect.Props, [], NSHoverRect.Un
       <SHoverRect
         aria-hidden
         render='path'
+        // @ts-expect-error error in types for chart elements
         d={path}
       />,
     );
