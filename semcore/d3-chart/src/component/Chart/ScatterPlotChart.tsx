@@ -168,6 +168,7 @@ class ScatterPlotChartComponent extends AbstractAxisChart<
         dataKey='y'
         scale={this.yScale}
         ticksCount={yTicksCount}
+        plotBoundaryRect={this.plotBoundaryRect}
         valueFormatter={axisYValueFormatter ?? this.valueFormatter}
         yAxisPosition={yAxisPosition}
         eventEmitter={this.eventEmitter}

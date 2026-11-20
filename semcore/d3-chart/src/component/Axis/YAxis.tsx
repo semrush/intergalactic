@@ -1,94 +1,59 @@
 import { Box } from '@semcore/base-components';
-import { Component, createComponent, Root, sstyled } from '@semcore/core';
-import { Text } from '@semcore/typography';
+import { createComponent, Root, sstyled } from '@semcore/core';
 import * as React from 'react';
 
-import styles from './yAxis.shadow.css';
-import type { NSYAxis } from './YAxis.type';
-import { scaleOfBandwidth } from '../../utils';
-import type { ChartEvents } from '../Chart/AbstractChart/AbstractChart.type';
+import { AbstractAxisComponent } from './Axis';
+import styles from './axis.shadow.css';
+import type { NSAxis } from './Axis.type';
+import { invert } from '../../utils';
 
-class YAxisComponent extends Component<NSYAxis.Props, [], {}, {}, NSYAxis.State, NSYAxis.DefaultProps> {
-  static defaultProps: NSYAxis.DefaultProps = {
+class YAxisComponent extends AbstractAxisComponent {
+  static style = styles;
+
+  static defaultProps: NSAxis.DefaultProps = {
     yAxisPosition: 'left',
   };
 
-  state: NSYAxis.State = {
-    dataIndex: -1,
+  override getCssTranslate(translate: number): string {
+    return `translateY(calc(${translate}px - 50%))`;
   };
 
-  componentDidMount() {
-    this.asProps.eventEmitter.on(`hoverListItem_${this.asProps.uid}`, this.handleMoveEnterData);
-    this.asProps.eventEmitter.on('leaveChart', () => this.setState({ dataIndex: -1 }));
-  }
-
-  handleMoveEnterData: ChartEvents[`hoverListItem_${string}`] = (index, invertAxis) => {
+  override handleHoverListItemEvent(index: number, invertAxis: boolean) {
     if (invertAxis) {
       this.setState({ dataIndex: index });
     }
   };
 
-  get ticks() {
-    const { scale, ticksCount } = this.asProps;
-    const ticks: Array<string | number | Date> = 'ticks' in scale ? scale.ticks(ticksCount) : scale.domain();
+  override handleMoveOverAxis(event: React.MouseEvent<HTMLElement>) {
+    const target = event.currentTarget;
 
-    return ticks.map((tick) => {
-      return { value: tick, yTranslate: scaleOfBandwidth(scale, tick) ?? 0 };
-    });
-  }
-
-  renderHoveredTick() {
-    const SHoveredTick = Text;
-
-    const { scale, valueFormatter, data, dataKey } = this.asProps;
-    const { dataIndex } = this.state;
-
-    const item = data[dataIndex];
-
-    if (!item || dataIndex === -1) {
-      return null;
+    if (!(target instanceof Element)) {
+      return;
     }
 
-    const value = item?.[dataKey];
-    if (!(typeof value === 'number' || typeof value === 'string' || value instanceof Date)) {
-      return null;
-    }
+    const { eventEmitter, uid, scale, plotBoundaryRect } = this.asProps;
 
-    const hoveredYTranslate = scaleOfBandwidth(scale, value) ?? 0;
-    const style = {
-      transform: `translateY(calc(${hoveredYTranslate}px - 50%))`,
-    };
+    const rect = target.getBoundingClientRect();
+    const xPoint = event.clientX - rect.left;
+    const value = invert(scale, xPoint);
+    const index = this.getIndexByValue(value);
 
-    return sstyled(styles)(
-      <SHoveredTick size={100} style={style}>
-        {valueFormatter(item[dataKey])}
-      </SHoveredTick>,
-    );
-  }
+    const yPoint = plotBoundaryRect.top + plotBoundaryRect.height / 2;
+
+    eventEmitter.emit(`setTooltipVisible_${uid}`, true);
+    eventEmitter.emit(`hoverPosition_${uid}`, xPoint + rect.left, yPoint);
+    eventEmitter.emit(`hoverListItem_${uid}`, index, false);
+  };
 
   render() {
     const SYAxis = Root;
-    const STick = Text;
-
-    const { primaryText, valueFormatter, yAxisPosition } = this.asProps;
 
     return sstyled(styles)(
-      <SYAxis render={Box} primaryText={primaryText} position={yAxisPosition} __excludeProps={['data', 'scale']}>
-        {this.ticks.map((tick, index) => {
-          const style = {
-            transform: `translateY(calc(${tick.yTranslate}px - 50%))`,
-          };
-
-          return sstyled(styles)(
-            <STick key={`${index}_${tick.value}`} size={100} style={style}>
-              {valueFormatter(tick.value)}
-            </STick>,
-          );
-        })}
-        {this.renderHoveredTick()}
+      <SYAxis render={Box} onMouseMove={this.handleMoveOverAxis} __excludeProps={['data', 'scale']}>
+        {this.renderTicks()}
       </SYAxis>,
     );
   }
 }
 
-export const YAxis = createComponent<NSYAxis.Component, typeof YAxisComponent>(YAxisComponent);
+export const YAxis = createComponent<NSAxis.Component, typeof YAxisComponent>(YAxisComponent);

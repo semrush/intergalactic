@@ -127,6 +127,7 @@ export abstract class AbstractAxisChart<
         uid={this.plotId}
         data={this.data}
         dataKey={groupKey}
+        plotBoundaryRect={this.plotBoundaryRect}
         scale={this.yScale}
         ticksCount={yTicksCount}
         valueFormatter={axisYValueFormatter ?? this.axisValueFormatter}

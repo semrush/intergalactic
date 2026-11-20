@@ -213,6 +213,7 @@ class BubbleChartComponent extends AbstractAxisChart<
         ref={this.yAxisRef}
         uid={this.plotId}
         data={this.data}
+        plotBoundaryRect={this.plotBoundaryRect}
         dataKey='y'
         scale={this.yScale}
         ticksCount={yTicksCount}

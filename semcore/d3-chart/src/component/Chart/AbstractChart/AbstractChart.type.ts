@@ -8,7 +8,7 @@ import type { PatternsConfig } from '../../../Pattern';
 // @ts-ignore
 import type { PlotSummarizerConfig } from '../../../Plot';
 import type { interpolateValue } from '../../../utils';
-import type { NSYAxis } from '../../Axis/YAxis.type';
+import type { NSAxis } from '../../Axis/Axis.type';
 import type { BaseChartLegendProps } from '../../ChartLegend/BaseLegend.type';
 import type { TrendProps } from '../../ChartLegend/LegendFlex/LegendFlex.type';
 import type { LegendItemKey } from '../../ChartLegend/LegendItem/LegendItem.type';
@@ -121,7 +121,7 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
    * Position of Y axis.
    * @deprecated. Axis can be only in AbstractAxisChart
    */
-  yAxisPosition?: NSYAxis.Props['yAxisPosition'];
+  yAxisPosition?: NSAxis.Props['yAxisPosition'];
   /**
    * Map with colors for data items
    */

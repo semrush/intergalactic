@@ -1,7 +1,7 @@
 import type React from 'react';
 
 import type { BaseChartProps, ListData } from './AbstractChart.type';
-import type { NSYAxis } from '../../Axis/YAxis.type';
+import type { NSAxis } from '../../Axis/Axis.type';
 
 export type AbstractAxisChartProps<D extends ListData = ListData> = BaseChartProps<D> & {
   /**
@@ -23,7 +23,7 @@ export type AbstractAxisChartProps<D extends ListData = ListData> = BaseChartPro
    * Position of Y axis.
    * @default 'left'
    */
-  yAxisPosition?: NSYAxis.Props['yAxisPosition'];
+  yAxisPosition?: NSAxis.Props['yAxisPosition'];
 
   /**
    * Count of ticks for X axis

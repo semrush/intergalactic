@@ -243,6 +243,7 @@ class BarChartComponent extends AbstractAxisChart<
         uid={this.plotId}
         ref={this.yAxisRef}
         dataKey={groupKey}
+        plotBoundaryRect={this.plotBoundaryRect}
         scale={this.yScale}
         ticksCount={yTicksCount}
         primaryText={!!invertAxis}
