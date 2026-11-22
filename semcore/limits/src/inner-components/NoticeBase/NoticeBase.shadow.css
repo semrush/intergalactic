@@ -52,6 +52,10 @@ SNoticeBody {
   }
 }
 
+SNoticeText {
+  max-width: 700px;
+}
+
 SNoticeBeforeActions {
   padding: 0 var(--intergalactic-spacing-5x, 20px) var(--intergalactic-spacing-4x, 16px);
 }
@@ -60,6 +64,7 @@ SNoticeActions {
   padding: var(--intergalactic-spacing-4x, 16px) var(--intergalactic-spacing-5x, 20px);
   gap: var(--intergalactic-spacing-3x, 12px);
   align-items: center;
+  flex-wrap: wrap;
 
   SNoticeDivider {
     min-height: 0;
@@ -71,6 +76,7 @@ SNoticeActions {
 SNoticeCtas {
   gap: var(--intergalactic-spacing-2x, 8px);
   align-items: center;
+  flex-wrap: wrap;
 }
 
 SNoticeAside {
