@@ -30,7 +30,7 @@ const Demo = () => {
       yScale={yScale}
       legendProps={legendProps}
       patterns
-      aria-label='Bubble chart'
+      aria-label='Bubble chart with pattern fill'
     />
   );
 };
