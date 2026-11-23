@@ -27,7 +27,7 @@ SDataTable[gridTemplateRows] {
 }
 
 @supports ((animation-timeline: view()) and (animation-range: normal)) {
-  SScrollAreaBarInHeader {
+  SScrollAreaBarInHeader, SHeadShadowLeft, SHeadShadowRight {
     animation-name: moveBarWithScroll;
     animation-timeline: --table-sticky-timeline;
     animation-range-start: exit-crossing calc(-1 * var(--global-header-top));
