@@ -64,8 +64,6 @@ export type DTColumn = ColumnItemConfig &
     children?: React.ReactNode | React.FC;
 
     gridArea?: string;
-
-    showShadowVertical?: boolean;
   };
 
 export type DataTableColumnProps = CommonColumnType & {

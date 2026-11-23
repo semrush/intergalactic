@@ -62,9 +62,6 @@ export type HeadPropsInner<
   onChangeSelectAll?: (selectedRows: UniqKeyType[], event?: React.SyntheticEvent<HTMLElement>) => void;
   flatRows: DTRow<UniqKeyType>[];
 
-  getFixedStyle: (
-    cell: Pick<DTColumn, 'name' | 'fixed'>,
-  ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
   onCellClick: DataTableCellProps<Data, UniqKeyType>['onClick'];
   scrollDirection?: ColumnPropsInner<Data, UniqKey, UniqKeyType>['scrollDirection'];
   isDataEmpty: boolean;

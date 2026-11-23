@@ -368,7 +368,6 @@ class DataTableRoot<
       selectedRows,
       flatRows: this.getFlatRows(),
       onChangeSelectAll: Array.isArray(selectedRows) ? this.handleSelectAllRows : undefined,
-      getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
       scrollDirection: this.scrollDirection,
       isDataEmpty: this.isDataEmpty,
@@ -1248,19 +1247,6 @@ class DataTableRoot<
       return 'columns' in child;
     };
 
-    const setShowShadows = (col: DTColumn, i: number): void => {
-      let prevCol = treeColumns[i - 1];
-      if ('columns' in prevCol && prevCol.columns) {
-        prevCol = prevCol.columns[prevCol.columns.length - 1];
-      }
-
-      if (prevCol.fixed && !col.fixed) {
-        prevCol.showShadowVertical = true;
-      } else if (!prevCol.fixed && col.fixed) {
-        col.showShadowVertical = true;
-      }
-    };
-
     columns.forEach((child, i) => {
       if (childIsColumn(child)) {
         const col = makeColumn(child);
@@ -1273,10 +1259,6 @@ class DataTableRoot<
 
         calculatedColumns.push(col);
         treeColumns.push(col);
-
-        if (i > 0) {
-          setShowShadows(col, i);
-        }
       } else if (childIsGroup(child)) {
         const Group = makeColumn(child);
         const childCount = child.columns.length;
@@ -1303,10 +1285,6 @@ class DataTableRoot<
           gridColumnIndex++;
 
           calculatedColumns.push(col);
-
-          if (isFirst && i > 0) {
-            setShowShadows(col, i);
-          }
 
           Group.columns?.push(col);
         });
