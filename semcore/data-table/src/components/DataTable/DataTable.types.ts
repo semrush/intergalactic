@@ -243,6 +243,11 @@ export type ColumnGroupConfig = {
 
 export type ColumnsConfig = Array<ColumnItemConfig | ColumnGroupConfig>;
 
+export type FixedColumnsConfig = {
+  left: { name: string; gridColumnStart: string };
+  right: { name: string; gridColumnStart: string };
+};
+
 export type VirtualScroll =
   | boolean
   | { rowsBuffer?: number; aproxRowsOnPage?: number }
