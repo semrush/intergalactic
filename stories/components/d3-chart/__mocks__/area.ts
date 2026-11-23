@@ -1,5 +1,20 @@
 import { interpolateValue, GOOD, HIGHLIGHT_DOT, BAD, INSIGHTFUL, DATA_TYPE, FORECAST, POTENTIAL } from '@semcore/ui/d3-chart';
 
+type InterpolationPoint = { time: Date; line1: number; line2: number | typeof interpolateValue };
+
+const interpolation: InterpolationPoint[] = [
+  { time: new Date(2025, 0, 1), line1: 5, line2: 3 },
+  { time: new Date(2025, 0, 5), line1: 8, line2: interpolateValue },
+  { time: new Date(2025, 0, 10), line1: 4, line2: 8 },
+  { time: new Date(2025, 0, 15), line1: 5, line2: interpolateValue },
+  { time: new Date(2025, 0, 20), line1: 5, line2: interpolateValue },
+  { time: new Date(2025, 0, 25), line1: 4, line2: interpolateValue },
+  { time: new Date(2025, 0, 30), line1: 3, line2: 5 },
+  { time: new Date(2025, 1, 4), line1: 3, line2: interpolateValue },
+  { time: new Date(2025, 1, 9), line1: 4, line2: interpolateValue },
+  { time: new Date(2025, 1, 14), line1: 1, line2: 6 },
+];
+
 export default {
   Default: [
     { time: new Date(2025, 0, 1), line: 3 },
@@ -11,18 +26,7 @@ export default {
     { time: new Date(2025, 0, 30), line: 2, [HIGHLIGHT_DOT]: BAD } as const,
     { time: new Date(2025, 1, 4), line: 8 },
   ],
-  Interpolation: [
-    { time: new Date(2025, 0, 1), line1: 5, line2: 3 },
-    { time: new Date(2025, 0, 5), line1: 8, line2: interpolateValue },
-    { time: new Date(2025, 0, 10), line1: 4, line2: 8 },
-    { time: new Date(2025, 0, 15), line1: 5, line2: interpolateValue },
-    { time: new Date(2025, 0, 20), line1: 5, line2: interpolateValue },
-    { time: new Date(2025, 0, 25), line1: 4, line2: interpolateValue },
-    { time: new Date(2025, 0, 30), line1: 3, line2: 5 },
-    { time: new Date(2025, 1, 4), line1: 3, line2: interpolateValue },
-    { time: new Date(2025, 1, 9), line1: 4, line2: interpolateValue },
-    { time: new Date(2025, 1, 14), line1: 1, line2: 6 },
-  ],
+  Interpolation: interpolation,
   XY: [
     { x: 0, y: 3 },
     { x: 1, y: 7 },
@@ -62,5 +66,27 @@ export default {
     { time: new Date(2025, 1, 14), line: 5 },
     { time: new Date(2025, 1, 18), line: 7, [DATA_TYPE]: POTENTIAL } as const,
     { time: new Date(2025, 1, 28), line: 8, [DATA_TYPE]: POTENTIAL, [HIGHLIGHT_DOT]: INSIGHTFUL } as const,
+  ],
+  CustomPattern: [
+    { x: 0, y1: 5.2 },
+    { x: 1, y1: 2.1 },
+    { x: 2, y1: 3.4 },
+    { x: 3, y1: 1.2 },
+    { x: 4, y1: 4.8 },
+    { x: 5, y1: 7.6 },
+    { x: 6, y1: 8.9 },
+    { x: 7, y1: 2.4 },
+    { x: 8, y1: 6.1 },
+    { x: 9, y1: 9.3 },
+    { x: 10, y1: 7.8 },
+    { x: 11, y1: 5.4 },
+    { x: 12, y1: 1.6 },
+    { x: 13, y1: 3.7 },
+    { x: 14, y1: 6.8 },
+    { x: 15, y1: 8.2 },
+    { x: 16, y1: 4.1 },
+    { x: 17, y1: 2.9 },
+    { x: 18, y1: 6.5 },
+    { x: 19, y1: 7.4 },
   ],
 };
