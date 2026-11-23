@@ -20,49 +20,42 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 - To show data dimensions using bubble size and color.
 
 ::: tip
-Bubble charts add dimensions to scatterplots. Not that they can become cluttered with more than 3-4 sets.
+Bubble charts add dimensions to scatterplots. Note that they can become cluttered with more than 3-4 sets.
 :::
 
 ## Appearance
 
-Bubble chart plot must has:
+Bubble chart plot usually has:
 
-- Both vertical and horizontal lines.
-- Clear X and Y axis labels.
-- A legend for different categories if they vary in color.
+- both vertical and horizontal lines
+- clear X and Y axis labels
+- a legend for each color, if more than one is used
 
 ::: tip
 Make sure to clarify what the bubble size means.
 :::
 
-Table: Bubble chart styles
+By default, bubble chart uses [different colors](../color-palette/color-palette#basic-pack) for each data point. You can use custom colors if necessary ([example](./bubble-chart-code#color-customization)).
 
-| Case             | Appearance example                                     | Styles                                                                                                                                                                                                                                                                                                           |
-| ---------------- | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| One data set      | ![](static/positive-correlation-1.png)      | The default color for the category is `--chart-palette-order-blue` (or `--blue-300`) with 50% transparency. If necessary, you can select any other color from the [chart palette](/data-display/color-palette/color-palette). A bubble always has a 2px white stroke. The center of the bubble is marked with a cross in the same color as the circle itself. |
-| Several data sets | ![](static/positive-correlation-2.png) | Use colors from the [chart palette](/data-display/color-palette/color-palette).   |
+![](static/positive-correlation-2.png)
 
-### Text labels for bubbles
+### Text labels
 
-Use captions for bubbles sparingly to avoid clutter, especially on dense charts.
-
-::: tip
-Remember to check contrast for the text labels. We don’t recommend to use light colors from the palette for the Bubble chart data. Use colors with 400 shade and higher from the [color palette](/data-display/color-palette/color-palette), they have the minimum necessary contrast with the white background.
-:::
+Use bubble labels sparingly to avoid clutter, especially on dense charts.
 
 ![](static/labels.png)
 
 ## Legend
 
-- Add a legend for multiple data sets, with clear values for each.
-- A vertical legend layout is preferred for easier reading and values comparing.
+- Add a legend when using more than 2 colors, with clear values for each.
+- A vertical legend layout is preferred for easier reading and comparing values.
 
 ![](static/positive-correlation-2.png)
 
 ## Interaction
 
-- Bubbles increase opacity to 80% on hover, displaying specific values.
-- The cursor changes to a `pointer` for clickable bubbles.
+- Bubbles become darker on hover and show a tooltip with X, Y, and size values.
+- Bubbles can perform a certain action on click.
 
 ![](static/hover-1.png)
 
@@ -72,7 +65,7 @@ Tooltips should show:
 
 - X-axis and Y-axis values.
 - Additional values influencing bubble size.
-- Focus tooltips information on values, incorporating colors for multiple data sets.
+- Data color if several colors are used.
 
 Table: Bubble chart tooltips
 
@@ -83,7 +76,9 @@ Table: Bubble chart tooltips
 
 ### Bubbles intersection
 
-Only show values for the hovered bubble, not intersections.
+Bubble intersection areas don't have separate hover behavior, hover effects and the data in the tooltip always relate to an entire bubble.
+
+Smaller bubbles appear on top of larger ones in z-index to make interaction easier.
 
 ![](static/hover-1.png)
 
@@ -93,7 +88,7 @@ Only show values for the hovered bubble, not intersections.
 
 To prevent small values from being lost under the large ones (outliers), the bubble has a minimum size – 11px by 11px.
 
-![](static/outliers-1.png) ![](static/outliers-2.png)
+![](static/outliers-2.png)
 
 ### Null values
 
@@ -109,8 +104,6 @@ Zero counts as data. 0 ≠ n/a.
 
 Omit points without data on the chart and reflect this in the legend.
 
-![](static/n-a-1.png)
-
 ![](static/n-a-2.png)
 
 ### Bubbles near axes
@@ -121,9 +114,7 @@ The chart will scale automatically if the bubble is near the axes.
 
 ## Initial data loading
 
-Show [Skeleton](/components/skeleton/skeleton) during initial loading. If the chart has a title, display it to inform users about what's loading. Refer to [Skeleton](/components/skeleton/skeleton) for more details.
-
-Use the `--skeleton-bg` color token for the skeleton's background.
+Show [Skeleton](./bubble-chart-code#initial-data-loading) during initial loading. If the chart has a title, display it to inform users about what's loading.
 
 ![](static/bubble-chart-skeleton.png)
 
@@ -139,7 +130,7 @@ Accompany the chart with details on what influences bubble size.
 
 ### Axes
 
-Label both the X and Y axes. Avoind coloring the axis labels, this can make the data harder to read.
+Label both X and Y axes. Avoid coloring the axis labels, this can make the data harder to read.
 
 ![](static/color-yes-no.png)
 
@@ -149,9 +140,9 @@ Avoid placing bubble charts in small widgets to ensure data is readable and comp
 
 ![](static/size-yes-no.png)
 
-### Data sets number
+### Number of data points
 
-Limit the number of datasets to maintain chart readability.
+Limit the number of data points to maintain chart readability.
 
 ![](static/categories-yes-no.png)
 
