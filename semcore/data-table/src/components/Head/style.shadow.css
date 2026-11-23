@@ -90,6 +90,18 @@ SGroup[borders='both'], SColumn[borders='both'], SGroup[borders='right'], SColum
   border-right: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
 }
 
+SHead[data-shadow='end'], SHead[data-shadow='median'] {
+  SGroup[borders='both'], SColumn[borders='both'], SGroup[borders='left'], SColumn[borders='left'] {
+    border-left-color: var(--intergalactic-border-secondary)
+  }
+}
+
+SHead[data-shadow='start'], SHead[data-shadow='median'] {
+  SGroup[borders='both'], SColumn[borders='both'], SGroup[borders='right'], SColumn[borders='right'] {
+    border-right-color: var(--intergalactic-border-secondary)
+  }
+}
+
 SColumn[use='primary'] {
   padding: var(--intergalactic-spacing-3x, 12px);
   border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
