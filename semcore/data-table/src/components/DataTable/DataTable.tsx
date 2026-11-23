@@ -1063,11 +1063,10 @@ class DataTableRoot<
         {headerProps?.sticky && (
           <SHeadShadowContainer
             ref={this.headShadowRef}
-            h={headerHeight}
             left={`${offsetLeftSum}px`}
             right={`${offsetRightSum}px`}
           >
-            <SHeadShadow /> {/* Need this for the right scrolling */}
+            <SHeadShadow h={headerHeight} position='sticky' /> {/* Need this for the right scrolling */}
           </SHeadShadowContainer>
         )}
 

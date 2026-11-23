@@ -35,28 +35,12 @@ SDataTable[gridTemplateRows] {
     animation-timing-function: linear;
     animation-fill-mode: both;
   }
-  SHeadShadowContainer {
-    animation-name: moveHeadShadowWithScroll;
-    animation-timeline: --table-sticky-timeline;
-    animation-range-start: exit-crossing calc(-1 * var(--global-header-top));
-    animation-range-end: exit-crossing calc(100% - var(--global-header-top));
-    animation-timing-function: linear;
-    animation-fill-mode: both;
-  }
   @keyframes moveBarWithScroll {
     from {
       transform: translateY(0);
     }
     to {
       transform: translateY(calc(var(--global-scroll-to) - var(--global-header-height)));
-    }
-  }
-  @keyframes moveHeadShadowWithScroll {
-    from {
-      transform: translateY(0);
-    }
-    to {
-      transform: translateY(calc(var(--global-scroll-to)));
     }
   }
 }
@@ -69,7 +53,7 @@ SHeadShadowContainer {
   z-index: 20;
   pointer-events: none;
 
-  &::before, &::after {
+  SHeadShadow::before, SHeadShadow::after {
     content: '';
     position: absolute;
     width: 5px;
@@ -78,23 +62,23 @@ SHeadShadowContainer {
     opacity: 0;
   }
 
-  &::before {
+  SHeadShadow::before {
     left: 0;
     background: var(--intergalactic-scroll-area-shadow-left, linear-gradient(to right, oklch(from oklch(0.23 0.009 245) l c h / 0.08) 20.55%, transparent 100%));
   }
 
-  &::after {
+  SHeadShadow::after {
     right: 0;
     background: var(--intergalactic-scroll-area-shadow-right, linear-gradient(to left, oklch(from oklch(0.23 0.009 245) l c h / 0.08) 20.55%, transparent 100%));
   }
 
-  &[data-shadow="start"]::before {
+  &[data-shadow="start"] SHeadShadow::before {
     opacity: 1;
   }
-  &[data-shadow="end"]::after {
+  &[data-shadow="end"] SHeadShadow::after {
     opacity: 1;
   }
-  &[data-shadow="median"]::before, &[data-shadow="median"]::after {
+  &[data-shadow="median"] SHeadShadow::before, &[data-shadow="median"] SHeadShadow::after {
     opacity: 1;
   }
 }
