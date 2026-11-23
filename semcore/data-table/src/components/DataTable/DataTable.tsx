@@ -355,6 +355,7 @@ class DataTableRoot<
       use,
       tableRef: this.tableRef,
       compact: Boolean(compact),
+      hasGroups: this.hasGroups,
       sort,
       onSortChange,
       getI18nText,
@@ -812,7 +813,7 @@ class DataTableRoot<
   });
 
   calculateVerticalShadow = () => {
-    if (!this.tableContainerRef.current || !this.headShadowRef.current) return;
+    if (!this.tableContainerRef.current) return;
 
     const { scrollWidth, clientWidth, scrollLeft } =
             this.tableContainerRef.current;
@@ -833,8 +834,6 @@ class DataTableRoot<
     } else if (roundedScroll > 0) {
       shadow = 'median';
     }
-
-    this.headShadowRef.current.dataset.shadow = shadow;
 
     if (this.headerRef.current) {
       this.headerRef.current.dataset.shadow = shadow;
@@ -1062,15 +1061,15 @@ class DataTableRoot<
           scrollBarInstanceRef={this.scrollBarInstanceRef}
         />
 
-        {headerProps?.sticky && (
-          <SHeadShadowContainer
-            ref={this.headShadowRef}
-            left={`${offsetLeftSum}px`}
-            right={`${offsetRightSum}px`}
-          >
-            <SHeadShadow h={headerHeight} position='sticky' /> {/* Need this for the right scrolling */}
-          </SHeadShadowContainer>
-        )}
+        {/* {headerProps?.sticky && ( */}
+        {/* <SHeadShadowContainer */}
+        {/*  ref={this.headShadowRef} */}
+        {/*  left={`${offsetLeftSum}px`} */}
+        {/*  right={`${offsetRightSum}px`} */}
+        {/* > */}
+        {/*  <SHeadShadow h={headerHeight} position='sticky' /> /!* Need this for the right scrolling *!/ */}
+        {/* </SHeadShadowContainer> */}
+        {/* )} */}
 
         {selectedRows !== undefined && !Array.isArray(selectedRows) && (
           <SRReactiveAnnouncer selectedRows={selectedRows} getI18nText={getI18nText} />

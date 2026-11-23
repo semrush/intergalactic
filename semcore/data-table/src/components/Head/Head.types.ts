@@ -51,6 +51,7 @@ export type HeadPropsInner<
   getI18nText: (key: string) => string;
   uid: string;
   ref: React.Ref<HTMLDivElement>;
+  hasGroups: boolean;
 
   gridAreaGroupMap: Map<number, string>;
   gridTemplateColumns: string[];

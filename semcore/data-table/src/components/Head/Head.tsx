@@ -1,6 +1,7 @@
 import { Box, ScreenReaderOnly } from '@semcore/base-components';
 import Checkbox from '@semcore/checkbox';
 import { Component, createComponent, type Intergalactic, Root, sstyled } from '@semcore/core';
+import propsObserver from '@semcore/core/lib/decorators/propsObserver';
 import type Tooltip from '@semcore/tooltip';
 import React from 'react';
 
@@ -15,6 +16,8 @@ import type { DTRow } from '../Body/Row.types';
 import { DataTable, type ROW_GROUP, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DataTableData } from '../DataTable/DataTable.types';
 
+// @ts-expect-error treeColumns and rows are internal properties, and we can't see them in types
+@propsObserver(['treeColumns', 'rows'])
 class HeadRoot<
   Data extends DataTableData,
   UniqKey extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? keyof Data[number][typeof ROW_GROUP][number] : keyof Data[number]),
@@ -27,6 +30,9 @@ class HeadRoot<
   > {
   static displayName = 'Head';
   static style = style;
+
+  private shadowLeft = React.createRef<HTMLDivElement>();
+  private shadowRight = React.createRef<HTMLDivElement>();
 
   private unsubscribeSelectAll: undefined | (() => void) = undefined;
   private unsubscribeSetIndeterminate: undefined | (() => void) = undefined;
@@ -48,12 +54,56 @@ class HeadRoot<
         this.forceUpdate();
       });
     }
+
+    this.calculateShadows();
   }
 
   componentWillUnmount() {
     this.unsubscribeSelectAll?.();
     this.unsubscribeSetIndeterminate?.();
     this.unsubscribeMaxLimitReached?.();
+  }
+
+  onPropsChange(changedProps: Record<string, unknown>) {
+    if ('treeColumns' in changedProps || 'rows' in changedProps) {
+      requestAnimationFrame(() => {
+        this.calculateShadows();
+        this.forceUpdate();
+      });
+    }
+  }
+
+  calculateShadows() {
+    let leftShadowGridArea: string | undefined;
+    let leftColumnName: string | undefined;
+    let rightShadowGridArea: string | undefined;
+    let rightColumnName: string | undefined;
+
+    this.asProps.columns.forEach((column) => {
+      if (column.fixed === 'left') {
+        leftShadowGridArea = column.gridArea;
+        leftColumnName = column.name;
+      }
+      if (column.fixed === 'right' && rightShadowGridArea === undefined) {
+        rightShadowGridArea = column.gridArea;
+        rightColumnName = column.name;
+      }
+    });
+
+    if (this.shadowLeft.current && leftShadowGridArea) {
+      if (this.asProps.hasGroups && leftShadowGridArea[0] !== '1') {
+        leftShadowGridArea = `1${leftShadowGridArea.slice(1)}`;
+      }
+      this.shadowLeft.current.style.setProperty('grid-area', leftShadowGridArea);
+      this.shadowLeft.current.dataset.cellName = leftColumnName;
+    }
+    if (this.shadowRight.current) {
+      if (!rightColumnName) {
+        rightShadowGridArea = `1 / -1 / ${this.asProps.hasGroups ? 3 : 2} / -2`;
+      }
+      this.shadowRight.current.style.setProperty('grid-area', rightShadowGridArea!);
+      this.shadowRight.current.dataset.cellName = rightColumnName ?? '';
+    }
   }
 
   sortableColumnDescribeId() {
@@ -197,6 +247,8 @@ class HeadRoot<
   render() {
     const SHead = Root;
     const SHeadCheckboxCol = Head.Column;
+    const SHeadShadowLeft = Box;
+    const SHeadShadowRight = Box;
     const { Children, styles, getI18nText, children, treeColumns, selectedRows, sticky, animationDuration, isDataEmpty, gridTemplateColumns } = this.asProps;
 
     const areAllRowsSelected = this.areAllRowsSelected;
@@ -260,6 +312,8 @@ class HeadRoot<
                   })}
                 </>
               )}
+          <SHeadShadowLeft ref={this.shadowLeft} />
+          <SHeadShadowRight ref={this.shadowRight} />
         </SHead>
 
         <ScreenReaderOnly aria-hidden={true} id={this.sortableColumnDescribeId()}>
