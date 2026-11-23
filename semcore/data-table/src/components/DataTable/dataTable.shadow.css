@@ -35,7 +35,7 @@ SDataTable[gridTemplateRows] {
     animation-timing-function: linear;
     animation-fill-mode: both;
   }
-  SHeadShadow {
+  SHeadShadowContainer {
     animation-name: moveHeadShadowWithScroll;
     animation-timeline: --table-sticky-timeline;
     animation-range-start: exit-crossing calc(-1 * var(--global-header-top));
@@ -61,7 +61,7 @@ SDataTable[gridTemplateRows] {
   }
 }
 
-SHeadShadow {
+SHeadShadowContainer {
   position: absolute;
   left: 0;
   right: 0;

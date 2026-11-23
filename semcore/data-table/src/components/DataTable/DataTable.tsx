@@ -454,6 +454,7 @@ class DataTableRoot<
     const tableContainerTop = tableRect.top;
     const { headerProps } = this.asProps;
     const headerContainer = this.headerRef.current;
+    const headerShadowContainer = this.headShadowRef.current;
     const top = tableContainerTop - (headerProps?.top ?? 0);
     const headerScrollBar = headerProps?.withScrollBar
       ? this.scrollAreaRef.current?.querySelector(`[role=scrollbar][aria-orientation=horizontal]`)
@@ -473,6 +474,10 @@ class DataTableRoot<
       if (headerScrollBar instanceof HTMLElement) {
         headerScrollBar.style.setProperty('transform', translate);
       }
+
+      if (headerShadowContainer instanceof HTMLElement) {
+        headerShadowContainer.style.setProperty('transform', translate);
+      }
     } else {
       if (headerContainer instanceof HTMLElement) {
         headerContainer.style.removeProperty('--global-scroll-translate');
@@ -480,6 +485,10 @@ class DataTableRoot<
 
       if (headerScrollBar instanceof HTMLElement) {
         headerScrollBar.style.removeProperty('transform');
+      }
+
+      if (headerShadowContainer instanceof HTMLElement) {
+        headerShadowContainer.style.removeProperty('transform');
       }
     }
   });
@@ -940,6 +949,7 @@ class DataTableRoot<
 
   render() {
     const SDataTable = Root;
+    const SHeadShadowContainer = Box;
     const SHeadShadow = Box;
     const {
       Children,
@@ -1053,12 +1063,14 @@ class DataTableRoot<
         />
 
         {headerProps?.sticky && (
-          <SHeadShadow
+          <SHeadShadowContainer
             ref={this.headShadowRef}
             h={headerHeight}
             left={`${offsetLeftSum}px`}
             right={`${offsetRightSum}px`}
-          />
+          >
+            <SHeadShadow /> {/* Need this for the right scrolling */}
+          </SHeadShadowContainer>
         )}
 
         {selectedRows !== undefined && !Array.isArray(selectedRows) && (

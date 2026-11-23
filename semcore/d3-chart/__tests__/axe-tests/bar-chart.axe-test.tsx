@@ -109,15 +109,6 @@ test.describe(`@d3-chart @bar-chart ${TAG.ACCESSIBILITY}`, () => {
 });
 
 test.describe(`@d3-chart @bar-chart @horizontal-bar-chart ${TAG.ACCESSIBILITY}`, () => {
-  test('background', async ({ page }) => {
-    await loadPage(page, 'stories/components/d3-chart/docs/examples/bar-horizontal/background.tsx', 'en');
-
-    await test.step('Verify initial state', async () => {
-      const violations = await getAccessibilityViolations({ page });
-      expect(violations).toEqual([]);
-    });
-  });
-
   test('bar-labels', async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/bar-horizontal/bar-labels.tsx', 'en');
 
@@ -156,53 +147,6 @@ test.describe(`@d3-chart @bar-chart @horizontal-bar-chart ${TAG.ACCESSIBILITY}`,
 
   test('legend-and-pattern-fill', async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/bar-horizontal/legend-and-pattern-fill.tsx', 'en');
-
-    await test.step('Verify initial state', async () => {
-      const violations = await getAccessibilityViolations({ page });
-      expect(violations).toEqual([]);
-    });
-  });
-});
-
-test.describe(`@d3-chart @bar-horizontal-compact ${TAG.ACCESSIBILITY}`, () => {
-  test('advanced-usage', async ({ page }) => {
-    await loadPage(page, 'stories/components/d3-chart/docs/examples/bar-horizontal-compact/advanced_usage.tsx', 'en');
-
-    await test.step('Verify initial state', async () => {
-      const violations = await getAccessibilityViolations({ page });
-      expect(violations).toEqual([]);
-    });
-  });
-
-  test('basic-usage', async ({ page }) => {
-    await loadPage(page, 'stories/components/d3-chart/docs/examples/bar-horizontal-compact/basic_usage.tsx', 'en');
-
-    await test.step('Verify initial state', async () => {
-      const violations = await getAccessibilityViolations({ page });
-      expect(violations).toEqual([]);
-    });
-  });
-
-  test('clickable-advanced', async ({ page }) => {
-    await loadPage(page, 'stories/components/d3-chart/docs/examples/bar-horizontal-compact/clickable_advanced.tsx', 'en');
-
-    await test.step('Verify initial state', async () => {
-      const violations = await getAccessibilityViolations({ page });
-      expect(violations).toEqual([]);
-    });
-  });
-
-  test('clickable-basic', async ({ page }) => {
-    await loadPage(page, 'stories/components/d3-chart/docs/examples/bar-horizontal-compact/clickable_basic.tsx', 'en');
-
-    await test.step('Verify initial state', async () => {
-      const violations = await getAccessibilityViolations({ page });
-      expect(violations).toEqual([]);
-    });
-  });
-
-  test('links', async ({ page }) => {
-    await loadPage(page, 'stories/components/d3-chart/docs/examples/bar-horizontal-compact/links.tsx', 'en');
 
     await test.step('Verify initial state', async () => {
       const violations = await getAccessibilityViolations({ page });

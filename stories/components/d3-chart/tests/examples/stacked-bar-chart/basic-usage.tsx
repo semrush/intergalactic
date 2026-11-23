@@ -26,7 +26,7 @@ const Demo = (props: BarChartProps) => {
   );
 };
 
-const data = StackedBarMockData.Default;
+const data = StackedBarMockData.ThreeBars;
 
 export const defaultProps = getChartProps<BarChartProps>({
   groupKey: 'bar',
