@@ -94,7 +94,7 @@ export { default as Metric } from './component/Metric/Metric';
 export * from './Pattern';
 
 export { default as Chart } from './component/Chart';
-export * from './component/Chart/AbstractChart.type';
+export * from './component/Chart/AbstractChart/AbstractChart.type';
 export * from './component/Chart/LineChart.type';
 export * from './component/Chart/BarChart.type';
 export * from './component/Chart/HistogramChart.type';
