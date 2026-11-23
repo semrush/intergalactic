@@ -800,12 +800,10 @@ class DataTableRoot<
     if (this.asProps.virtualScroll) {
       const scrollTop = e.target.scrollTop;
 
-      if (scrollTop === this.state.scrollTop) {
-        return;
+      if (scrollTop !== this.state.scrollTop) {
+        const scrollDirection = scrollTop > this.state.scrollTop ? 'down' : 'up';
+        this.setState({ scrollTop, scrollDirection });
       }
-
-      const scrollDirection = scrollTop > this.state.scrollTop ? 'down' : 'up';
-      this.setState({ scrollTop, scrollDirection });
     }
 
     if (this.hasFixedColumn) {
