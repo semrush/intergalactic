@@ -101,11 +101,13 @@ class HeadRoot<
       if (!rightColumnName) {
         rightShadowGridArea = `1 / -1 / ${this.asProps.hasGroups ? 3 : 2} / -2`;
       }
-      if (this.asProps.hasGroups && rightShadowGridArea[0] !== '1') {
-        rightShadowGridArea = `1${rightShadowGridArea.slice(1)}`;
+      if (rightShadowGridArea) {
+        if (this.asProps.hasGroups && rightShadowGridArea[0] !== '1') {
+          rightShadowGridArea = `1${rightShadowGridArea.slice(1)}`;
+        }
+        this.shadowRight.current.style.setProperty('grid-area', rightShadowGridArea);
+        this.shadowRight.current.dataset.cellName = rightColumnName ?? '';
       }
-      this.shadowRight.current.style.setProperty('grid-area', rightShadowGridArea!);
-      this.shadowRight.current.dataset.cellName = rightColumnName ?? '';
     }
   }
 
