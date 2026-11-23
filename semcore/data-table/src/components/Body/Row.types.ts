@@ -85,10 +85,6 @@ export type DataTableRowProps<Data extends DataTableData, UniqKeyType> = {
   'uid': string;
   'sideIndents'?: 'wide';
 
-  'getFixedStyle': (
-    cell: Pick<DTColumn, 'name' | 'fixed'>,
-  ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
-
   'renderCell'?: (props: CellRenderProps<Data[number], UniqKeyType>) => React.ReactNode | Record<string, any>;
   'getI18nText': (key: string) => string;
   'virtualScroll'?: VirtualScroll;

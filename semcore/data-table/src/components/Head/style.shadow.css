@@ -202,14 +202,6 @@ SHead[sticky] SColumn[fixed], SHead SColumn[fixed], SHead SGroup[fixed] {
   z-index: 19;
 }
 
-SGroup[fixed], SColumn[fixed] {
-  --global-left: attr(data-left px, 0);
-  --global-right: attr(data-right px, 0);
-
-  left: var(--global-left);
-  right: var(--global-right);
-}
-
 SColumn[sortable]:hover {
   cursor: pointer;
 }

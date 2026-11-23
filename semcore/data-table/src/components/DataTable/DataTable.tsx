@@ -434,7 +434,6 @@ class DataTableRoot<
       sideIndents,
       selectedRows,
       onSelectRow: Array.isArray(selectedRows) ? this.handleSelectRow : undefined,
-      getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
       rawData,
       renderCellOverlay,
@@ -1129,7 +1128,7 @@ class DataTableRoot<
 
           for (const columnElement of columnElements) {
             if (columnElement instanceof HTMLElement) {
-              columnElement.dataset[side] = sum.toString();
+              columnElement.style.setProperty(side, `${sum}px`);
             }
           }
         }
@@ -1137,40 +1136,6 @@ class DataTableRoot<
     });
 
     return offsets;
-  };
-
-  private getFixedStyle = (
-    cell: Pick<DTColumn, 'name' | 'fixed'>,
-  ): [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined] => {
-    const side = cell.fixed;
-    if (!side) return [undefined, undefined];
-    const names = cell.name.split('/');
-    const nameSideMap = {
-      left: names[0],
-      right: names[names.length - 1],
-    };
-    const name = nameSideMap[side];
-    const index = this.columns.findIndex((column) => column.name === name);
-    if (index === -1) return [undefined, undefined];
-
-    const startIndexSideMap = {
-      left: 0,
-      right: index + 1,
-    };
-    const endIndexSideMap = {
-      left: index,
-      right: this.columns.length,
-    };
-    const columnsFixed = this.columns.slice(startIndexSideMap[side], endIndexSideMap[side]);
-
-    if (columnsFixed.length < 1) return [side, 0];
-
-    const sum = columnsFixed.reduce(
-      (acc, column) => acc + (this.fixedCellsSizeCache.get(column.name)?.width ?? 0),
-      0,
-    );
-
-    return [side, `${sum}px`];
   };
 
   private calculateColumnsFromConfig(): [DTColumn[], DTColumn[]] {

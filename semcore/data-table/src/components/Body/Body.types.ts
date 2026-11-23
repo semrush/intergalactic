@@ -84,9 +84,6 @@ export type BodyPropsInner<Data extends DataTableData, UniqKeyType> = DataTableB
   ) => void;
   renderEmptyData: () => React.ReactNode;
   sideIndents?: 'wide';
-  getFixedStyle: (
-    cell: Pick<DTColumn, 'name' | 'fixed'>,
-  ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
   accordionDuration: number | [number, number];
   onCellClick: DataTableCellProps<Data, UniqKeyType>['onClick'];
   rawData: DataRowItem[];

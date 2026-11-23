@@ -282,12 +282,6 @@ SCheckboxCell[aria-hidden] {
 SCellWrapper[fixed] {
   position: sticky;
   z-index: 2;
-
-  --global-left: attr(data-left px, 0);
-  --global-right: attr(data-right px, 0);
-
-  left: var(--global-left);
-  right: var(--global-right);
 }
 
 SSpinContainer {
