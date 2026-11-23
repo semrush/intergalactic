@@ -100,10 +100,10 @@ test.describe(`${TAG.VISUAL}`, () => {
     await loadPage(page, 'stories/components/data-table/advanced/examples/fixed_columns_width_with_shadows.tsx', 'en');
 
     const lastColumn = page.locator('[data-ui-name="Head.Column"]').last();
-    const headShadow = page.locator('[data-shadow]:not([role="row"])');
-    const headShadowLayer = headShadow.locator(':scope > *');
+    const headShadow = page.locator('[data-ui-name="DataTable.Head"]');
+    const rightShadow = headShadow.locator(':scope > :last-child');
 
-    const rightShadowOpacity = () => headShadowLayer.evaluate((node) =>
+    const rightShadowOpacity = () => rightShadow.evaluate((node) =>
       window.getComputedStyle(node, '::after').getPropertyValue('opacity'));
 
     await test.step('No right shadow while the table fits the screen', async () => {
@@ -118,9 +118,9 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(headShadow).toHaveAttribute('data-shadow', 'end');
       await expect.poll(rightShadowOpacity, { timeout: 5000 }).toBe('1');
 
-      const shadowBox = await headShadowLayer.boundingBox();
+      const shadowBox = await rightShadow.boundingBox();
       const columnBox = await lastColumn.boundingBox();
-      expect(Math.abs(shadowBox!.x + shadowBox!.width - columnBox!.x)).toBeLessThan(1);
+      expect(Math.abs(shadowBox!.x - columnBox!.x)).toBeLessThan(1);
     });
   });
 });
