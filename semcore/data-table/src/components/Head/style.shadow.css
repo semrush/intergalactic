@@ -92,13 +92,13 @@ SGroup[borders='both'], SColumn[borders='both'], SGroup[borders='right'], SColum
 
 SHead[data-shadow='end'], SHead[data-shadow='median'] {
   SGroup[borders='both'], SColumn[borders='both'], SGroup[borders='left'], SColumn[borders='left'] {
-    border-left-color: var(--intergalactic-border-secondary)
+    border-left-color: var(--intergalactic-border-secondary, oklch(0.324 0.077 242.1 / 0.079))
   }
 }
 
 SHead[data-shadow='start'], SHead[data-shadow='median'] {
   SGroup[borders='both'], SColumn[borders='both'], SGroup[borders='right'], SColumn[borders='right'] {
-    border-right-color: var(--intergalactic-border-secondary)
+    border-right-color: var(--intergalactic-border-secondary, oklch(0.324 0.077 242.1 / 0.079))
   }
 }
 
