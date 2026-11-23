@@ -1,12 +1,11 @@
 import { Box, ScreenReaderOnly } from '@semcore/base-components';
 import Checkbox from '@semcore/checkbox';
 import { Component, createComponent, type Intergalactic, Root, sstyled } from '@semcore/core';
-import propsObserver from '@semcore/core/lib/decorators/propsObserver';
 import type Tooltip from '@semcore/tooltip';
 import React from 'react';
 
 import { Column } from './Column';
-import type { DataTableColumnProps, DTColumn } from './Column.types';
+import type { DataTableColumnProps } from './Column.types';
 import { Group } from './Group';
 import type { DataTableGroupProps } from './Group.type';
 import type { DataTableHeadProps, HeadPropsInner } from './Head.types';
@@ -62,15 +61,13 @@ class HeadRoot<
     return `${uid}-column-sortable-describer`;
   }
 
-  getGroupProps(props: any, index: number) {
-    const { columns } = props;
-    const { use, gridAreaGroupMap, children, getFixedStyle, top, scrollDirection, sort } = this.asProps;
+  getGroupProps(_: any, index: number) {
+    const { use, gridAreaGroupMap, children, top, scrollDirection, sort } = this.asProps;
 
     return {
       use,
       gridArea: gridAreaGroupMap.get(index),
       withConfig: children === undefined,
-      getFixedStyle,
       scrollDirection,
       top: top && scrollDirection !== 'horizontal' ? `${top}px` : undefined,
       sort,

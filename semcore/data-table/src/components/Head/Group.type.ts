@@ -19,8 +19,5 @@ export type DataTableGroupProps = {
 export type GroupPropsInner = {
   use: DTUse;
   withConfig: boolean;
-  getFixedStyle: (
-    cell: Pick<DTColumn, 'name' | 'fixed'>,
-  ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
   sort?: DataTableProps<any, any, any>['sort'];
 };
