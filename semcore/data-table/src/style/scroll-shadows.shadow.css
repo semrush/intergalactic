@@ -8,6 +8,7 @@ SScrollArea {
 
     &[scrollDirection='both'] {
       overflow: auto;
+      overscroll-behavior: none;
 
       &[loading] {
         overflow: hidden;
@@ -16,6 +17,7 @@ SScrollArea {
     &[scrollDirection='horizontal'] {
       overflow-x: auto;
       overflow-y: unset;
+      overscroll-behavior-x: none;
 
       &[loading] {
         overflow: hidden;
@@ -24,6 +26,7 @@ SScrollArea {
     &[scrollDirection='vertical'] {
       overflow-x: unset;
       overflow-y: auto;
+      overscroll-behavior-y: none;
 
       &[loading] {
         overflow: hidden;
