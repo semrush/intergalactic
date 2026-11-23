@@ -61,7 +61,7 @@ SDataTable[gridTemplateRows] {
   }
 }
 
-SHeadShadow {
+SHeadShadowContainer {
   position: absolute;
   left: 0;
   right: 0;

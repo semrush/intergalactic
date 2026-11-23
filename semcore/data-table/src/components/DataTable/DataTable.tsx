@@ -940,6 +940,7 @@ class DataTableRoot<
 
   render() {
     const SDataTable = Root;
+    const SHeadShadowContainer = Box;
     const SHeadShadow = Box;
     const {
       Children,
@@ -1053,12 +1054,14 @@ class DataTableRoot<
         />
 
         {headerProps?.sticky && (
-          <SHeadShadow
+          <SHeadShadowContainer
             ref={this.headShadowRef}
             h={headerHeight}
             left={`${offsetLeftSum}px`}
             right={`${offsetRightSum}px`}
-          />
+          >
+            <SHeadShadow /> {/* Need this for the right scrolling */}
+          </SHeadShadowContainer>
         )}
 
         {selectedRows !== undefined && !Array.isArray(selectedRows) && (
