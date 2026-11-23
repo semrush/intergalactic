@@ -280,6 +280,10 @@ SHead[data-shadow="end"], SHead[data-shadow="median"] {
   }
 }
 
+SHeadShadowLeft::before, SHeadShadowRight::after {
+  content: '';
+}
+
 SHeadShadowLeft, SHeadShadowRight {
   position: sticky;
   top: 0;
@@ -289,7 +293,6 @@ SHeadShadowLeft, SHeadShadowRight {
   z-index: 20;
 
   &::before, &::after {
-    content: '';
     position: absolute;
     width: 5px;
     top: 0;
