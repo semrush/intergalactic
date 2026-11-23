@@ -523,9 +523,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Verify a dash repeats only after a full cycle of 12 series', async () => {
         for (let start = 0; start <= PATTERN_SERIES_COUNT - DASHARRAYS_COUNT; start++) {
-          const window = dashes.slice(start, start + DASHARRAYS_COUNT);
+          const neighbours = dashes.slice(start, start + DASHARRAYS_COUNT);
+          const uniqDashes = new Set(neighbours);
 
-          expect(new Set(window).size, `series ${start + 1}–${start + DASHARRAYS_COUNT}`).toBe(DASHARRAYS_COUNT);
+          expect(uniqDashes.size, `series ${start + 1}–${start + DASHARRAYS_COUNT}`).toBe(DASHARRAYS_COUNT);
         }
       });
     });
