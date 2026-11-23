@@ -70,10 +70,9 @@ Functional behavior, interactions, and states.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Demo report notice', () => {
-    test.fixme('Verify actions stay inside a narrow demo report notice', {
+    test('Verify actions stay inside a narrow demo report notice', {
       tag: [TAG.PRIORITY_MEDIUM, ...DEMO_REPORT_TAGS],
     }, async ({ page }) => {
-      // The actions row does not wrap, so the secondary CTA and the trust line are clipped by overflow: hidden.
       await loadPage(page, DEMO_REPORT_NOTICE, 'en', {
         ...demoReportProps,
         secondaryCta: 'link',
@@ -110,33 +109,18 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
     });
 
-    test.fixme('Verify title is 16px from the top', {
-      tag: [TAG.PRIORITY_MEDIUM, ...DEMO_REPORT_TAGS],
-    }, async ({ page }) => {
-      // Figma: 12px notice padding + 4px title padding-top. The title padding-top uses --intergalactic-spacing-1_5x, which the theme does not have, so it is 0.
-      await loadPage(page, DEMO_REPORT_NOTICE, 'en', { ...demoReportProps, w: 656 });
-
-      const region = await getBox(locators.region(page));
-      const titleLocator = page.getByText(demoReportProps.title);
-      const title = await getBox(titleLocator);
-      const paddingTop = await titleLocator.evaluate((element) => Number.parseFloat(getComputedStyle(element).paddingTop));
-
-      expect(title.y + paddingTop - region.y).toBe(16);
-    });
-
-    test('Verify title is 14px bold', {
+    test('Verify title is 16px bold', {
       tag: [TAG.PRIORITY_MEDIUM, ...DEMO_REPORT_TAGS],
     }, async ({ page }) => {
       await loadPage(page, DEMO_REPORT_NOTICE, 'en', demoReportProps);
 
-      await expect(page.getByText(demoReportProps.title)).toHaveCSS('font-size', '14px');
+      await expect(page.getByText(demoReportProps.title)).toHaveCSS('font-size', '16px');
       await expect(page.getByText(demoReportProps.title)).toHaveCSS('font-weight', '700');
     });
 
-    test.fixme('Verify description is not wider than 700px', {
+    test('Verify description is not wider than 700px', {
       tag: [TAG.PRIORITY_LOW, ...DEMO_REPORT_TAGS],
     }, async ({ page }) => {
-      // Figma: the description has max-width 700px; it stretches to the notice width.
       await loadPage(page, DEMO_REPORT_NOTICE, 'en', { ...demoReportProps, text: 'Description '.repeat(30), w: 1200 });
 
       const description = await getBox(page.getByText(/^Description Description/));

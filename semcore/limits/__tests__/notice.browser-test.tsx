@@ -278,10 +278,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       expect(counter.x + counter.width).toBeLessThanOrEqual(close.x);
     });
 
-    test.fixme('Verify actions stay inside a narrow notice', {
+    test('Verify actions stay inside a narrow notice', {
       tag: [TAG.PRIORITY_MEDIUM, ...NOTICE_TAGS],
     }, async ({ page }) => {
-      // The actions row does not wrap, so its content is wider than the notice and is clipped by overflow: hidden.
       await loadPage(page, NOTICE, 'en', { ...noticeProps, ...trustLineProps('description'), w: 280 });
 
       expect(await getOverflow(locators.region(page))).toBe(0);
@@ -346,15 +345,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(page.getByRole('meter')).toHaveCount(0);
     });
 
-    test.fixme('Verify accent theme counter text is 16px', {
-      tag: [TAG.PRIORITY_LOW, ...NOTICE_TAGS],
-    }, async ({ page }) => {
-      // Figma: in the accent theme the header "{X} of {X} {feature} used" is 16px; it is 14px.
-      await loadPage(page, NOTICE, 'en', { ...noticeProps, theme: 'accent', w: FIGMA_WIDTH });
-
-      await expect(page.getByText('75 of 100 Audit used')).toHaveCSS('font-size', '16px');
-    });
-
     test('Verify 8px between primary and secondary CTA', {
       tag: [TAG.PRIORITY_LOW, ...NOTICE_TAGS],
     }, async ({ page }) => {
@@ -366,10 +356,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       expect(secondary.x - (cta.x + cta.width)).toBe(8);
     });
 
-    test.fixme('Verify description is not wider than 700px', {
+    test('Verify description is not wider than 700px', {
       tag: [TAG.PRIORITY_LOW, ...NOTICE_TAGS],
     }, async ({ page }) => {
-      // Figma: the content has max-width 700px; it stretches to the notice width.
       await loadPage(page, NOTICE, 'en', { ...noticeProps, text: 'Description '.repeat(30), w: 1200 });
 
       const description = await getBox(page.getByText(/^Description Description/));

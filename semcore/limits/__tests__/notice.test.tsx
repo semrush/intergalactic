@@ -68,8 +68,7 @@ describe('LimitsNotice', () => {
     expect(getCounter(withUsage).textContent).toBe('732 of 1,000 used');
   });
 
-  test.fails('Verify usage meter is shown when the theme is not set', () => {
-    // theme defaults to default, but the meter is shown only for an explicit theme='default'; without it only the counter text is rendered.
+  test('Verify usage meter is shown when the theme is not set', () => {
     const { container } = render(<LimitsNotice {...noticeProps} usage={{ value: 732, max: 1000, feature: 'Audit' }} />);
 
     expect(container.querySelector('[role="meter"]')).not.toBeNull();
