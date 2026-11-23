@@ -20,11 +20,12 @@ function UsageMeter(
   const SUsageMeter = Root;
   const SUsageMeterFeature = Text;
   const SUsageMeterUsage = Text;
+  const SUsageMeterText = Text;
   const SUsageMeterHeader = Flex;
   const SUsageMeterIndicator = Flex;
   const SUsageMeterIndicatorFilled = Flex;
 
-  const { min = MIN, max = MAX, value = MIN, state = 'normal', theme = 'default', feature, locale } = props;
+  const { min = MIN, max = MAX, value = MIN, state = 'normal', theme = 'default', feature, locale, withMeterIndicator = false } = props;
 
   const getI18nText = useI18n(localizedMessages, locale);
   const resolvedLocale = React.useContext(I18nContext) ?? locale ?? 'en';
@@ -36,8 +37,21 @@ function UsageMeter(
   const labelId = `igc-${useUID('limits-usage-meter')}-indicator-label`;
 
   const usageAmountText = `${numberFormatter.format(validatedValue)} ${getI18nText('of')} ${numberFormatter.format(max)}`;
-  // TODO: translate "used"
-  const usedText = 'used';
+  const usedText = getI18nText('used');
+
+  if (!withMeterIndicator) {
+    return sstyled(style)(
+      <SUsageMeter render={Flex} ref={ref} theme-value={theme}>
+        <SUsageMeterText size={200}>
+          <Text fontWeight='bold'>{usageAmountText}</Text>
+          {' '}
+          {feature}
+          {' '}
+          {usedText}
+        </SUsageMeterText>
+      </SUsageMeter>,
+    );
+  }
 
   return sstyled(style)(
     <SUsageMeter render={Flex} ref={ref} gap={1} direction='column' theme-value={theme}>
@@ -48,7 +62,7 @@ function UsageMeter(
         <SUsageMeterUsage size={200}>
           <Text fontWeight='bold'>{usageAmountText}</Text>
           {' '}
-          {getI18nText('used')}
+          {usedText}
         </SUsageMeterUsage>
       </SUsageMeterHeader>
       <SUsageMeterIndicator

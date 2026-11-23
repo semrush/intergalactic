@@ -27,8 +27,8 @@ const Demo = (props: Props) => {
           locale={locale}
           primaryCta={<Button use='primary'>Start free 7-day trial</Button>}
           secondaryCta={secondaryCta === 'button'
-            ? <Button use='secondary'>View sample</Button>
-            : secondaryCta === 'link' ? <Link>View pricing</Link> : undefined}
+            ? <Button use='secondary'>View demo</Button>
+            : secondaryCta === 'link' ? <Link>See plans</Link> : undefined}
           trustLine={showTrustLine ? (trustLineDescription ? { description: trustLineDescription } : true) : undefined}
           beforeActions={showBeforeActions
             ? (

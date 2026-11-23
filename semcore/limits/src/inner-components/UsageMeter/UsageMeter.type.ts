@@ -34,6 +34,11 @@ declare namespace NSLimitsUsageMeter {
        */
       theme?: NSLimitsUsageMeter.Theme;
       /**
+       * Shows the meter indicator. If `false`, only the text "{value} of {max} {feature} used" is rendered
+       * @default false
+       */
+      withMeterIndicator?: boolean;
+      /**
        * Locale for the built-in texts
        */
       locale?: string;

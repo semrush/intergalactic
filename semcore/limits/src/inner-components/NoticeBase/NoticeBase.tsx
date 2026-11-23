@@ -26,6 +26,7 @@ class NoticeBaseRoot extends Component<
     const SNoticeTitle = SemcoreNotice.Title;
     const SNoticeText = SemcoreNotice.Text;
     const SNoticeActions = Flex;
+    const SNoticeCtas = Flex;
     const SNoticeAside = Box;
     const SNoticeDivider = Divider;
 
@@ -64,9 +65,11 @@ class NoticeBaseRoot extends Component<
             <SNoticeText m={0}>{text}</SNoticeText>
           </SNoticeBody>
           <SNoticeActions>
-            {beforeActions}
-            {primaryCta}
-            {secondaryCta}
+            <SNoticeCtas>
+              {beforeActions}
+              {primaryCta}
+              {secondaryCta}
+            </SNoticeCtas>
             {secondaryCta && trustLine && <SNoticeDivider orientation='vertical' />}
             {trustLine && <TrustLine locale={locale} {...(typeof trustLine === 'object' ? trustLine : {})} />}
           </SNoticeActions>

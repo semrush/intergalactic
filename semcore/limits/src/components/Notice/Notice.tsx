@@ -13,12 +13,12 @@ class NoticeRoot extends Component<Intergalactic.InternalTypings.InferComponentP
     const SNotice = Root;
     const SNoticeClose = SemcoreNotice.Close;
 
-    const { closable = false, onClose, usage, locale } = this.asProps;
+    const { closable = false, onClose, usage, locale, theme = 'default' } = this.asProps;
 
     return (
       <SNotice
         render={NoticeBase}
-        header={usage && <UsageMeter locale={locale} {...usage} />}
+        header={usage && <UsageMeter locale={locale} {...usage} withMeterIndicator={theme === 'default'} />}
         aside={closable && <SNoticeClose m={0} onClick={onClose} />}
       />
     );
