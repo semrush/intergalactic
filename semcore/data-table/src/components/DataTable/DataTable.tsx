@@ -835,6 +835,9 @@ class DataTableRoot<
     if (this.tableRef.current) {
       this.tableRef.current.dataset.shadow = shadow;
     }
+    if (this.headerRef.current) {
+      this.headerRef.current.dataset.shadow = shadow;
+    }
   };
 
   handleFocus = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {

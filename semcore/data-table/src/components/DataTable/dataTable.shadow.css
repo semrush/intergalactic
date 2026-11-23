@@ -61,13 +61,20 @@ SHeadShadowLeft::before, SHeadShadowRight::after, SBodyShadowLeft::before, SBody
   content: '';
 }
 
+SHeadShadowLeft, SHeadShadowRight {
+  z-index: 20;
+}
+
+SBodyShadowLeft, SBodyShadowRight {
+  z-index: 10;
+}
+
 SHeadShadowLeft, SHeadShadowRight, SBodyShadowLeft, SBodyShadowRight {
   position: sticky;
   top: 0;
   left: 0;
   right: 0;
   height: 100%;
-  z-index: 20;
   pointer-events: none;
 
   &::before, &::after {
