@@ -553,6 +553,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
       await page.keyboard.press('Tab');
       await locators.options(page).first().waitFor({ state: 'visible' });
+      await expect(locators.timeBoxes(page).first()).toHaveAttribute('aria-activedescendant', /option/);
 
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
