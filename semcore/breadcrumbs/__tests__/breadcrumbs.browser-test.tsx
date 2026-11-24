@@ -3,6 +3,25 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
+const waitForHintsOpaque = (page: Page, count = 1) => page.waitForFunction(
+  (expected) => {
+    const hints = Array.from(document.querySelectorAll('[data-ui-name="Hint"]'));
+    return hints.length === expected && hints.every((el) => getComputedStyle(el).opacity === '1');
+  },
+  count,
+);
+
+const waitForFocusedItemHint = (page: Page) => page.waitForFunction(() => {
+  const focused = document.activeElement;
+  if (!focused) return false;
+  const focusedRect = focused.getBoundingClientRect();
+  const focusedCenter = focusedRect.x + focusedRect.width / 2;
+  return Array.from(document.querySelectorAll('[data-ui-name="Hint"]')).some((el) => {
+    const rect = el.getBoundingClientRect();
+    return getComputedStyle(el).opacity === '1' && Math.abs(rect.x + rect.width / 2 - focusedCenter) < 2;
+  });
+});
+
 const expectBreadcrumbsStructure = async (page: Page, { ariaLabel, itemsCount }: { ariaLabel: string; itemsCount: number }) => {
   const nav = page.locator('nav');
 
@@ -80,6 +99,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@ellipsis'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/breadcrumbs/tests/examples/item-truncation.tsx', 'en', item);
+      await page.waitForTimeout(200); // wait for finish ellipsis calculation
 
       const breadcrumbLinks = page.locator('[data-ui-name="Breadcrumbs.Item"]');
       const hint = page.locator('[data-ui-name="Hint"]');
@@ -89,11 +109,14 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await breadcrumbLinks.first().hover();
       await hint.first().waitFor({ state: 'visible' });
+      await waitForHintsOpaque(page, 2);
 
       await expect(page).toHaveScreenshot();
       if (!item.active) {
         await page.keyboard.press('Tab');
         await hint.nth(1).waitFor({ state: 'visible' });
+        await waitForFocusedItemHint(page);
+        await waitForHintsOpaque(page, 2);
 
         await expect(page).toHaveScreenshot();
       }
@@ -119,6 +142,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(breadcrumb).toBeFocused();
       await breadcrumb.hover();
       await hint.waitFor({ state: 'visible' });
+      await waitForHintsOpaque(page);
       await expect(page).toHaveScreenshot();
     });
   });
@@ -144,6 +168,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await breadcrumb.hover();
     await hint.waitFor({ state: 'visible' });
+    await waitForHintsOpaque(page);
     await expect(page).toHaveScreenshot();
   });
 

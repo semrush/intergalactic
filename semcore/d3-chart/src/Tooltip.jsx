@@ -208,6 +208,7 @@ function Dot(props) {
               <SDotPattern
                 color={resolveColor(color ?? defaultColor)}
                 patternKey={color ?? defaultColor}
+                patterns={patterns}
               />
             </SDot>
           )

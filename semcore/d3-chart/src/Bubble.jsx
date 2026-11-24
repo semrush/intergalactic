@@ -5,6 +5,7 @@ import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { transition } from 'd3-transition';
 import React from 'react';
 
+import { HoverLine } from './component/Hover/HoverLine';
 import { SvgElement } from './component/SvgElement';
 import createElement from './createElement';
 import { PatternFill } from './Pattern';
@@ -23,12 +24,18 @@ class BubbleRoot extends Component {
     markedCross: true,
   };
 
+  state = {
+    hoveredIndex: null,
+  };
+
   generateGetBoundingClientRect(x = 0, y = 0) {
     return () => ({ width: 0, height: 0, top: y, right: x, bottom: y, left: x });
   }
 
   bindHandlerTooltip = (visible, props, tooltipProps) => ({ clientX, clientY }) => {
     const { eventEmitter, plotId } = this.asProps;
+
+    this.setState({ hoveredIndex: visible ? props.index : null });
 
     eventEmitter.emit(`setTooltipPosition_${plotId}`, clientX, clientY);
     eventEmitter.emit(`setTooltipRenderingProps_${plotId}`, props, tooltipProps);
@@ -124,8 +131,9 @@ class BubbleRoot extends Component {
   }
 
   render() {
-    const { data, uid, scale, x, y, value, Children } = this.asProps;
+    const { data, uid, scale, x, y, value, Children, xFormatValue, yFormatValue, locale } = this.asProps;
     const [xScale, yScale] = scale;
+    const { hoveredIndex } = this.state;
     const xSize = Math.abs(xScale.range()[0] - xScale.range()[1]);
     const ySize = Math.abs(yScale.range()[0] - yScale.range()[1]);
     const xMargin = Math.min(xScale.range()[0], xScale.range()[1]);
@@ -174,6 +182,7 @@ function BubbleCircle(props) {
     markedCross,
     size,
     data,
+    transparent,
     resolveColor,
     patterns,
     index,
@@ -184,7 +193,6 @@ function BubbleCircle(props) {
     onClick,
     onClickCircleRoot,
     hovered,
-    transparent,
   } = props;
   const circleData = data[index];
 
@@ -243,6 +251,7 @@ function BubbleCircle(props) {
         cy={cy}
         color={colorValue}
         pattern={patterns ? `url(#${uid}-${index}-pattern)` : `url(#${uid}_${index}_radial-gradient)`}
+        withPatterns={Boolean(patterns)}
         r={z(circleData[value])}
         use:duration={`${duration}ms`}
         clickable={clickable || Boolean(onClick)}

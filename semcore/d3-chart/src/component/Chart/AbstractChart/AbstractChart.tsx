@@ -600,7 +600,6 @@ export abstract class AbstractChart<
 
   public render() {
     const SChart = Root;
-    const SChartContainer = Box;
     const { styles, patterns, a11yAltTextConfig, duration, showTooltip, locale } =
       this.asProps;
     const { plotWidth, plotHeight } = this;
@@ -610,10 +609,6 @@ export abstract class AbstractChart<
     return sstyled(styles)(
       <SChart render={Flex} gap={5} __excludeProps={['data']} role='group' ref={this.chartRef}>
         {this.renderLegend()}
-        {/* <SChartContainer */}
-        {/*  onMouseMove={this.handleMouseMoveChartContainer} */}
-        {/*  onMouseLeave={this.handleMouseLeaveChartContainer} */}
-        {/* > */}
         <Plot
           uid={this.plotId}
           data={this.data}
@@ -629,14 +624,11 @@ export abstract class AbstractChart<
           locale={locale}
           {...extractedAriaProps}
           ref={this.plotRef}
-          // onMouseMove={this.preventPlotMoveEvents}
-          // onMouseLeave={this.preventPlotMoveEvents}
         >
           {this.renderReference()}
           {!showTooltip ? null : this.renderTooltip()}
           {this.renderChart()}
         </Plot>
-        {/* </SChartContainer> */}
       </SChart>,
     );
   }

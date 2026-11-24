@@ -24,6 +24,7 @@
     "publish:website": "pnpm --filter intergalactiс-migrate run build && tsm --require=./.ci/tsm-filter-warnings.js ./.ci/trigger-website-publish.ts",
     "build:icons": "pnpm --filter @semcore/icon run build",
     "build:illustration": "pnpm --filter @semcore/illustration run build",
+    "build:flags": "pnpm --filter @semcore/flags build",
     "clean": "tsm --require=./.ci/tsm-filter-warnings.js clean.ts && pnpm clean:icon && pnpm clean:illustration",
     "clean:icon": "pnpm --filter @semcore/icon run clean",
     "clean:illustration": "pnpm --filter @semcore/illustration run clean",

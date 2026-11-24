@@ -337,7 +337,11 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify legend and pattern fill hover and focus styles', {
     tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@area-chart', '@d3-chart', '@chart-legend', '@checkbox'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/d3-chart/docs/examples/area-chart/legend-and-pattern-fill.tsx', 'en');
+    await openAreaStory(page, {
+      stacked: false,
+      patterns: true,
+      legendProps: { legendMap: { line: { label: 'Line 1' }, line2: { label: 'Line 2' } } },
+    });
 
     await test.step('Verify legend item hover state', async () => {
       await locators.plot(page).waitFor({ state: 'visible' });

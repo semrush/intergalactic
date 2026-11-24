@@ -27,7 +27,7 @@ const Demo = () => {
       xScale={xScale}
       yScale={yScale}
       showLegend={false}
-      aria-label='Bubble chart'
+      aria-label='Bubble chart with custom colors'
     />
   );
 };

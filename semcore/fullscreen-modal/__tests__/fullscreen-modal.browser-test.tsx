@@ -410,6 +410,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify closed by Escape after opening by click', async () => {
       await locators.button(page).click();
       await locators.button(page, 'Close').waitFor({ state: 'visible' });
+      await expect(locators.button(page, 'Close')).toBeFocused();
       await page.keyboard.press('Escape');
       await locators.button(page, 'Close').waitFor({ state: 'hidden' });
       await expect(locators.button(page)).toBeFocused();
@@ -473,6 +474,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify closed by Escape after opening by keyboard', async () => {
       await openModalByKeyboard(page);
+      await expect(page.locator('[role="dialog"]:focus-within')).toHaveCount(1);
       await page.keyboard.press('Escape');
       await locators.modal(page).waitFor({ state: 'hidden' });
     });
@@ -480,6 +482,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify closed by Escape after opening by click', async () => {
       await locators.button(page).click();
       await locators.modal(page).waitFor({ state: 'visible' });
+      await expect(page.locator('[role="dialog"]:focus-within')).toHaveCount(1);
       await page.keyboard.press('Escape');
       await locators.modal(page).waitFor({ state: 'hidden' });
       await expect(locators.modal(page)).toHaveCount(0);
