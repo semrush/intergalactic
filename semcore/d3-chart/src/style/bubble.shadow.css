@@ -6,6 +6,10 @@ SBubble {
   transition-timing-function: ease-in-out;
 
   fill-opacity: 0.1;
+
+  &[withPatterns] {
+    fill-opacity: 0.5;
+  }
 }
 
 SGroup[visible='false'] {
@@ -15,6 +19,10 @@ SGroup[visible='false'] {
 SGroup[hovered], SGroup:hover {
   & > SBubble {
     fill-opacity: 0.3;
+
+    &[withPatterns] {
+      fill-opacity: 1;
+    }
   }
 
   & > SCenterHover {

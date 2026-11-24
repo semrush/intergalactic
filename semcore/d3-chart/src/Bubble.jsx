@@ -262,6 +262,7 @@ function BubbleCircle(props) {
         cy={cy}
         color={colorValue}
         pattern={patterns ? `url(#${uid}-${index}-pattern)` : `url(#${uid}_${index}_radial-gradient)`}
+        withPatterns={Boolean(patterns)}
         r={z(circleData[value])}
         use:duration={`${duration}ms`}
         clickable={clickable || Boolean(onClick)}
