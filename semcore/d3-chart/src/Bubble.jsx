@@ -184,6 +184,7 @@ function BubbleCircle(props) {
     onClick,
     onClickCircleRoot,
     hovered,
+    transparent,
   } = props;
   const circleData = data[index];
 
