@@ -101,7 +101,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     const lastColumn = page.locator('[data-ui-name="Head.Column"]').last();
     const headShadow = page.locator('[data-ui-name="DataTable.Head"]');
-    const rightShadow = headShadow.locator(':scope > :last-child');
+    const rightShadow = page.locator('[data-ui-name="DataTable"] > :nth-last-child(3)');
 
     const rightShadowOpacity = () => rightShadow.evaluate((node) =>
       window.getComputedStyle(node, '::after').getPropertyValue('opacity'));
