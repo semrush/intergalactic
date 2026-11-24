@@ -989,7 +989,7 @@ class DataTableRoot<
       gridTemplateRows = `${this.hasGroups ? 'auto auto' : 'auto'} repeat(${this.totalRows}, ${virtualScroll.rowHeight}px)`;
     }
 
-    const headerShadowWithAnimation = headerProps?.sticky && this.scrollDirection === 'horizontal' && !this.isDataEmpty;
+    const headerShadowWithAnimation = Boolean(headerProps?.sticky && this.scrollDirection === 'horizontal' && !this.isDataEmpty);
 
     return sstyled(styles)(
       <ScrollArea
