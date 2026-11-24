@@ -71,7 +71,6 @@ SBodyShadowLeft, SBodyShadowRight {
 
 SHeadShadowLeft, SHeadShadowRight, SBodyShadowLeft, SBodyShadowRight {
   position: sticky;
-  top: 0;
   left: 0;
   right: 0;
   height: 100%;
@@ -95,9 +94,15 @@ SHeadShadowLeft, SHeadShadowRight, SBodyShadowLeft, SBodyShadowRight {
     background: var(--intergalactic-scroll-area-shadow-right, linear-gradient(to left, oklch(from oklch(0.23 0.009 245) l c h / 0.08) 20.55%, transparent 100%));
   }
 
-  &[data-cell-name=""]::after {
-    left: unset;
-    right: 0;
+  &[data-cell-name=""] {
+    z-index: 16;
+    &::before {
+      left: 0;
+    }
+    &::after {
+      left: unset;
+      right: 0;
+    }
   }
 }
 

@@ -340,6 +340,7 @@ SRow[sideIndents='wide'], SCollapseRow[sideIndents='wide'] {
 
 SCollapseRow {
   position: relative;
+  z-index: 14;
 }
 
 SRow[isAccordionRow] SCellWrapper:first-child,

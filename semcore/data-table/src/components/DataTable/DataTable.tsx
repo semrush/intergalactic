@@ -804,7 +804,7 @@ class DataTableRoot<
       }
     }
 
-    if (this.hasFixedColumn) {
+    if (this.hasFixedColumn || this.scrollDirection === 'both' || this.scrollDirection === 'horizontal') {
       this.calculateVerticalShadow();
     }
   });
@@ -1155,7 +1155,7 @@ class DataTableRoot<
 
   private setShadows() {
     if (this.headerShadowLeftRef.current) {
-      const leftShadowGridArea = `1 / ${this.fixedCellsData.left.gridColumnStart || 0} / ${this.hasGroups ? 3 : 2} / ${this.fixedCellsData.left.gridColumnStart || 0}`;
+      const leftShadowGridArea = `1 / ${this.fixedCellsData.left.gridColumnStart || 1} / ${this.hasGroups ? 3 : 2} / ${this.fixedCellsData.left.gridColumnStart || 1}`;
       this.headerShadowLeftRef.current.style.setProperty('grid-area', leftShadowGridArea);
       this.headerShadowLeftRef.current.dataset.cellName = this.fixedCellsData.left.name;
     }
@@ -1169,7 +1169,7 @@ class DataTableRoot<
     }
 
     if (this.bodyShadowLeftRef.current) {
-      const leftShadowGridArea = `${this.hasGroups ? 3 : 2} / ${this.fixedCellsData.left.gridColumnStart || 0} / 10000 / ${this.fixedCellsData.left.gridColumnStart || 0}`;
+      const leftShadowGridArea = `${this.hasGroups ? 3 : 2} / ${this.fixedCellsData.left.gridColumnStart || 1} / 10000 / ${this.fixedCellsData.left.gridColumnStart || 1}`;
       this.bodyShadowLeftRef.current.style.setProperty('grid-area', leftShadowGridArea);
       this.bodyShadowLeftRef.current.dataset.cellName = this.fixedCellsData.left.name;
     }
