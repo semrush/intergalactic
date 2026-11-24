@@ -108,7 +108,7 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
           };
 
           return sstyled(styles)(
-            <STick key={`${index}_${tick.value}`} size={100} style={style}>
+            <STick key={`${index}_${tick.value}`} size={100} style={style} data-ui-name='Axis.Ticks'>
               {valueFormatter(tick.value)}
             </STick>,
           );

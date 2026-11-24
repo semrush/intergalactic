@@ -16,8 +16,8 @@ export const baseLegendProps: Omit<BaseLegendProps, 'withTrend' | 'trendIsVisibl
 export const baseChartProps: StoryChartProps<BaseChartProps<any>> = {
   plotWidth: 500,
   plotHeight: 300,
-  marginX: 40,
-  marginY: 40,
+  marginX: 0,
+  marginY: 0,
   invertAxis: false,
   showXAxis: true,
   showYAxis: true,

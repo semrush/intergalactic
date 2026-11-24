@@ -15,6 +15,7 @@ import { Plot, YAxis as YAxisOld } from '../../..';
 import { invert } from '../../../utils';
 import { XAxis } from '../../Axis/XAxis';
 import { YAxis } from '../../Axis/YAxis';
+import { Grid } from '../../Grid/Grid';
 import { HoverLine } from '../../Hover/HoverLine';
 
 export abstract class AbstractAxisChart<
@@ -97,18 +98,7 @@ export abstract class AbstractAxisChart<
     return (
       <>
         {showYAxis && (
-          <YAxisOld>
-            {groupKey !== undefined && (
-              <HoverLine
-                uid={this.plotId}
-                data={this.data}
-                keyX={groupKey}
-                scale={[this.xScale, this.yScale]}
-                eventEmitter={this.eventEmitter}
-              />
-            )}
-            {yTicks ? <YAxisOld.Grid ticks={yTicks} /> : <YAxisOld.Grid />}
-          </YAxisOld>
+          <Grid scale={[this.xScale, this.yScale]} orientation='horizontal' dataHintsHandler={this.dataHintsHandlers} ticksCount={yTicks?.length} />
         )}
       </>
     );

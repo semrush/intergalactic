@@ -8,6 +8,7 @@ import type { NSAxis } from './Axis.type';
 import { invert } from '../../utils';
 
 class YAxisComponent extends AbstractAxisComponent {
+  static displayName = 'Axis';
   static style = styles;
 
   static defaultProps: NSAxis.DefaultProps = {

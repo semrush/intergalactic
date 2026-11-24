@@ -8,6 +8,7 @@ import type { NSAxis } from './Axis.type';
 import { invert } from '../../utils';
 
 class XAxisComponent extends AbstractAxisComponent {
+  static displayName = 'Axis';
   static style = styles;
 
   override getCssTranslate(translate: number): string {

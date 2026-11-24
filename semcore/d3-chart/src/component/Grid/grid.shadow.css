@@ -1,0 +1,6 @@
+SGrid {
+  fill: transparent;
+  stroke: var(--intergalactic-chart-grid-line, oklch(0.7 0.021 242));
+  stroke-dasharray: 0 6;
+  stroke-linecap: round;
+}

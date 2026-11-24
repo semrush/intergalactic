@@ -7,7 +7,6 @@ import React from 'react';
 import { Area, minMax, HoverLine, StackedArea } from '../..';
 import { AbstractAxisChart } from './AbstractChart/AbstractAxisChart';
 import type { ChartState } from './AbstractChart/AbstractChart';
-import { AbstractChart } from './AbstractChart/AbstractChart';
 import type { ObjectData } from './AbstractChart/AbstractChart.type';
 import { HIGHLIGHT_DOT } from './AbstractChart/AbstractChart.type';
 import type {

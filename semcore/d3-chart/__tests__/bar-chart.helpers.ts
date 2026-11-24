@@ -24,7 +24,7 @@ export const locators = {
   forecastBars: (page: Page) => page.locator('[data-ui-name][mask$="-forecast-mask)"]'),
   potentialBars: (page: Page) => page.locator('[data-ui-name][mask$="-potential-mask)"]'),
   legend: (page: Page) => page.getByLabel('Chart legend'),
-  tooltip: (page: Page) => page.locator('[data-ui-name="Bar.Tooltip"], [data-ui-name="HoverLine.Tooltip"], [data-ui-name="HoverRect.Tooltip"]'),
+  tooltip: (page: Page) => page.locator('[data-ui-name="Tooltip"]'),
 };
 
 export type Box = { x: number; y: number; width: number; height: number };
