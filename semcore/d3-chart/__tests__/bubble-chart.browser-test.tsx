@@ -457,7 +457,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify the hovered tick pills use the same format', async () => {
       const box = await locators.bubbleGroup(page, 'label 1').locator('circle').boundingBox();
       await page.mouse.move(box!.x + box!.width / 2, box!.y + box!.height / 2);
-      await expect(locators.hoveredTickText(page)).toHaveText(['2 px', '$3']);
+      await expect(page.locator('[data-ui-name="Axis"][class*="_SXAxis"] [data-ui-name="Text"]')).toHaveText('2 px');
+      await expect(page.locator('[data-ui-name="Axis"][class*="_SYAxis"] [data-ui-name="Text"]')).toHaveText('$3');
     });
   });
 

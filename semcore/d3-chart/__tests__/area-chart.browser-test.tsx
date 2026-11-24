@@ -30,7 +30,7 @@ export const locators = {
   },
   highlightRing: (page: Page) => page.locator('circle[r="11.5"]'),
   highlightHalo: (page: Page) => page.locator('circle[r="8.5"]'),
-  tooltip: (page: Page) => page.locator('[data-ui-name="AreaChart.Tooltip"], [data-ui-name="Chart.Tooltip"], [data-ui-name="HoverLine.Tooltip"]'),
+  tooltip: (page: Page) => page.locator('[data-ui-name="Tooltip"]'),
 };
 
 const AREA_STORY = 'stories/components/d3-chart/tests/examples/area-chart/basic-usage.tsx';

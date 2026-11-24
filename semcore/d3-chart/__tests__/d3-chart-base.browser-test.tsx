@@ -44,21 +44,8 @@ export const locators = {
     const base = page.locator('[data-ui-name="Area.Dots"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
-  /**
-   * The hovered tick pill is rendered by plain tags, so it has no data-ui-name. Since the
-   * tick rework it is a `foreignObject` wrapping HTML rather than a `<g>` of `<rect>` and
-   * `<text>`, so the generated class name is the stable anchor. Only the name part is
-   * matched; the hash suffix changes between builds.
-   */
-  hoveredTick: (page: Page) =>
-    page.locator('svg[data-ui-name="Plot"] foreignObject[class*="SHoveredTickWrapper"]'),
-  /**
-   * The rounded background and the label now live on the same `<span>`, so both locators
-   * resolve to one node. They are kept apart because the assertions mean different things:
-   * one checks the pill box, the other its text.
-   */
-  hoveredTickRect: (page: Page) => locators.hoveredTick(page).locator('span'),
-  hoveredTickText: (page: Page) => locators.hoveredTick(page).locator('span'),
+
+  hoveredTick: (page: Page) => page.locator('[data-ui-name="Axis"] [data-ui-name="Text"]'),
   diffUp: (page: Page) => page.locator('[data-ui-name="DiffUp"]'),
   diffDown: (page: Page) => page.locator('[data-ui-name="DiffDown"]'),
   tooltipTitle: (page: Page) => page.locator('[data-ui-name="Tooltip.Title"]'),
@@ -83,8 +70,8 @@ const DELTA_EDGE_CASES_EXAMPLE = 'stories/components/d3-chart/tests/examples/d3-
  * `"HoverLine"`. Only a bare `<HoverLine>` keeps its own name.
  */
 // HoverLine renders its own `g[data-ui-name="HoverLine"]`; HoverRect is a `Tooltip.Trigger`.
-const readHoverTrigger = async (page: Page, uiName: 'Tooltip.Trigger' | 'HoverLine' = 'Tooltip.Trigger') => {
-  const trigger = page.locator(`svg[data-ui-name="Plot"] [data-ui-name="${uiName}"]`).first();
+const readHoverTrigger = async (page: Page, uiName: 'HoverRect' | 'HoverLine' = 'HoverRect') => {
+  const trigger = page.locator(`[data-ui-name="${uiName}"]`).first();
   await expect(trigger).toBeAttached();
 
   return trigger.evaluate((el) => ({
@@ -427,8 +414,8 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await hoverPlotCenter(page);
 
-        await expect(locators.hoveredTickText(page)).toHaveCount(1);
-        await expect(locators.hoveredTickRect(page)).toHaveCount(1);
+        await expect(locators.hoveredTick(page)).toHaveCount(1);
+        await expect(locators.hoveredTick(page)).toHaveCount(1);
         await expect(page).toHaveScreenshot();
       });
     });
@@ -859,8 +846,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await hoverPlotCenter(page);
 
-        await expect(locators.hoveredTickText(page)).toHaveCount(0);
-        await expect(locators.hoveredTickRect(page)).toHaveCount(0);
+        await expect(locators.hoveredTick(page)).toHaveCount(0);
+        await expect(locators.hoveredTick(page)).toHaveCount(0);
       });
 
       test(`Verify the tick pill is rendered on hover for Hover${hoverType}`, {
@@ -870,8 +857,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await hoverPlotCenter(page);
 
-        await expect(locators.hoveredTickText(page)).toHaveCount(1);
-        await expect(locators.hoveredTickRect(page)).toHaveCount(1);
+        await expect(locators.hoveredTick(page)).toHaveCount(1);
+        await expect(locators.hoveredTick(page)).toHaveCount(1);
       });
     });
 
@@ -897,7 +884,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await test.step(`Verify the pill on the ${name} tick`, async () => {
           await page.mouse.move(plotBox.x + plotBox.width * ratio, plotBox.y + plotBox.height / 2);
 
-          const pill = locators.hoveredTickRect(page).first();
+          const pill = locators.hoveredTick(page).first();
           await expect(pill).toBeVisible();
 
           const pillBox = await pill.boundingBox();
@@ -992,7 +979,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await hoverPlotCenter(page);
 
       await expect(locators.hoverLine(page)).toHaveCount(0);
-      await expect(locators.hoveredTickText(page)).toHaveCount(0);
+      await expect(locators.hoveredTick(page)).toHaveCount(0);
     });
 
     test('Verify hovering the axis area below the plot keeps the tooltip open', {
@@ -1015,7 +1002,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.mouse.move(box.x + box.width / 2, box.y + box.height - 20);
       });
 
-      await expect(locators.hoveredTickText(page)).toHaveCount(1);
+      await expect(locators.hoveredTick(page)).toHaveCount(1);
     });
 
     (
@@ -1261,7 +1248,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Hover the second band, which carries every case', async () => {
         await page.mouse.move(box.x + box.width * 0.72, box.y + box.height / 2);
-        await expect(page.locator('[data-ui-name="HoverRect.Tooltip.Title"]')).toHaveText('after');
+        await expect(page.locator('[data-ui-name="Tooltip.Title"]')).toHaveText('after');
       });
 
       const rows = await page
@@ -1407,7 +1394,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Verify the pill shows x=7 on hover', async () => {
         await hoverDot(page, '[data-ui-name="Line.Dots"]', 7);
-        await expect(locators.hoveredTickText(page)).toHaveText('7');
+        await expect(locators.hoveredTick(page)).toHaveText('7');
       });
 
       await test.step('Verify the X axis does not label x=7', async () => {
@@ -1423,7 +1410,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Verify the pill shows Jan 21 on hover', async () => {
         await hoverDot(page, '[data-ui-name="Area.Dots"]', 4);
-        await expect(locators.hoveredTickText(page)).toHaveText('Jan 21');
+        await expect(locators.hoveredTick(page)).toHaveText('Jan 21');
       });
 
       await test.step('Verify the X axis labels Jan 21 the same way', async () => {
@@ -1444,7 +1431,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       await test.step('Verify the pill shows the hovered category', async () => {
-        await expect(locators.hoveredTickText(page)).toHaveText('Category 2');
+        await expect(locators.hoveredTick(page)).toHaveText('Category 2');
       });
     });
   });

@@ -22,6 +22,7 @@ SXAxis {
   grid-area: xAxis;
   padding-top: 8px;
   border-top: 1px solid var(--intergalactic-chart-grid-x-axis, oklch(0.88 0.011 234.9));
+  overflow: hidden;
 
   SHoveredTick, STick {
     margin: 0 0 3px 0;
