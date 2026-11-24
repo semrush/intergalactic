@@ -27,7 +27,7 @@ SDataTable[gridTemplateRows] {
 }
 
 @supports ((animation-timeline: view()) and (animation-range: normal)) {
-  SScrollAreaBarInHeader {
+  SScrollAreaBarInHeader, SHeadShadowLeft, SHeadShadowRight {
     animation-name: moveBarWithScroll;
     animation-timeline: --table-sticky-timeline;
     animation-range-start: exit-crossing calc(-1 * var(--global-header-top));
@@ -44,3 +44,60 @@ SDataTable[gridTemplateRows] {
     }
   }
 }
+
+
+SDataTable[data-shadow="start"], SDataTable[data-shadow="median"] {
+  SHeadShadowLeft::before, SBodyShadowLeft::before {
+    opacity: 1;
+  }
+}
+SDataTable[data-shadow="end"], SDataTable[data-shadow="median"] {
+  SHeadShadowRight::after, SBodyShadowRight::after {
+    opacity: 1;
+  }
+}
+
+SHeadShadowLeft::before, SHeadShadowRight::after, SBodyShadowLeft::before, SBodyShadowRight::after  {
+  content: '';
+}
+
+SHeadShadowLeft, SHeadShadowRight {
+  z-index: 20;
+}
+
+SBodyShadowLeft, SBodyShadowRight {
+  z-index: 10;
+}
+
+SHeadShadowLeft, SHeadShadowRight, SBodyShadowLeft, SBodyShadowRight {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  pointer-events: none;
+
+  &::before, &::after {
+    position: absolute;
+    width: 5px;
+    top: 0;
+    bottom: 0;
+    opacity: 0;
+  }
+
+  &::before {
+    left: 100%;
+    background: var(--intergalactic-scroll-area-shadow-left, linear-gradient(to right, oklch(from oklch(0.23 0.009 245) l c h / 0.08) 20.55%, transparent 100%));
+  }
+
+  &::after {
+    left: -5px;
+    background: var(--intergalactic-scroll-area-shadow-right, linear-gradient(to left, oklch(from oklch(0.23 0.009 245) l c h / 0.08) 20.55%, transparent 100%));
+  }
+
+  &[data-cell-name=""]::after {
+    left: unset;
+    right: 0;
+  }
+}
+

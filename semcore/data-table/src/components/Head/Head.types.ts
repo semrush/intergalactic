@@ -2,7 +2,6 @@ import type * as React from 'react';
 
 import type { ColumnPropsInner, DTColumn } from './Column.types';
 import type { ISelectedRows } from '../../store/SelectableRows';
-import type { BodyPropsInner } from '../Body/Body.types';
 import type { DataTableCellProps } from '../Body/Cell.types';
 import type { DTRow } from '../Body/Row.types';
 import type { ROW_GROUP } from '../DataTable/DataTable';
@@ -51,7 +50,6 @@ export type HeadPropsInner<
   getI18nText: (key: string) => string;
   uid: string;
   ref: React.Ref<HTMLDivElement>;
-  hasGroups: boolean;
 
   gridAreaGroupMap: Map<number, string>;
   gridTemplateColumns: string[];
