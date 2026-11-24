@@ -206,10 +206,15 @@ class DataTableRoot<
     }
   }
 
-  componentDidUpdate(prevProps: any) {
+  componentDidUpdate(prevProps: DataTableProps<Data, UniqKey, UniqKeyType>) {
     const { data, selectedRows, columns } = this.asProps;
 
     if (prevProps.data !== data || prevProps.columns !== columns) {
+      this.fixedCellsData.left.name = '';
+      this.fixedCellsData.right.name = '';
+      this.fixedCellsData.left.gridColumnStart = '';
+      this.fixedCellsData.right.gridColumnStart = '';
+
       if (this.hasFixedColumn) {
         this.calculateVerticalShadow();
       }
