@@ -85,6 +85,7 @@ class TooltipRoot extends Component {
         this.setState({
           tooltipProps: {
             [invertAxis ? 'yIndex' : 'xIndex']: index,
+            index, // fallback
           },
         });
       }),

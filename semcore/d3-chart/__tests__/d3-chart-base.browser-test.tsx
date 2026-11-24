@@ -61,7 +61,7 @@ export const locators = {
   hoveredTickText: (page: Page) => locators.hoveredTick(page).locator('span'),
   diffUp: (page: Page) => page.locator('[data-ui-name="DiffUp"]'),
   diffDown: (page: Page) => page.locator('[data-ui-name="DiffDown"]'),
-  tooltipTitle: (page: Page) => page.locator('[data-ui-name="HoverLine.Tooltip.Title"]'),
+  tooltipTitle: (page: Page) => page.locator('[data-ui-name="Tooltip.Title"]'),
   hoverLine: (page: Page) => page.locator('g[data-ui-name="HoverLine"]'),
 };
 
@@ -1545,7 +1545,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await hoverPlotCenter(page);
 
-      const tooltip = page.locator('[data-ui-name="HoverLine.Tooltip"]').first();
+      const tooltip = page.locator('[data-ui-name="Tooltip"]').first();
       await expect(locators.tooltipTitle(page)).toHaveText('Mar 15');
 
       await test.step('Verify values keep the built-in numeric formatting', async () => {

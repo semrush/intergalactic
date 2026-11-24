@@ -26,9 +26,8 @@ export const locators = {
     return typeof index === 'number' ? base.nth(index) : base;
   },
   tooltip: (page: Page) => page.locator('[data-ui-name="Bubble.Tooltip"]'),
-  // The tick pill under the hovered tick on each axis; the hash part of the class name changes between builds.
   hoveredTickText: (page: Page) =>
-    page.locator('svg[data-ui-name="Plot"] foreignObject[class*="SHoveredTickWrapper"] span'),
+    page.locator('[data-ui-name="Axis"] [data-ui-name="Text"]'),
 };
 
 /* =====================================================
@@ -445,8 +444,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     await test.step('Verify every axis label is formatted', async () => {
-      const xTicks = page.locator('[data-ui-name="Axis.Ticks"][class*="_position_bottom"]');
-      const yTicks = page.locator('[data-ui-name="Axis.Ticks"][class*="_position_left"]');
+      const xTicks = page.locator('[data-ui-name="Axis"][class*="_SXAxis"] [data-ui-name="Axis.Ticks"]');
+      const yTicks = page.locator('[data-ui-name="Axis"][class*="_SYAxis"] [data-ui-name="Axis.Ticks"]');
       await expect(xTicks.first()).toHaveText(/ px$/);
       await expect(yTicks.first()).toHaveText(/^\$/);
       const xLabels = await xTicks.allTextContents();

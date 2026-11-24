@@ -90,6 +90,7 @@ export abstract class AbstractAxisChart<
   protected renderGrid(): React.ReactNode {
     const {
       showYAxis,
+      groupKey,
     } = this.asProps;
 
     const yTicks = this.yTicks;
@@ -97,7 +98,16 @@ export abstract class AbstractAxisChart<
     return (
       <>
         {showYAxis && (
-          <Grid scale={[this.xScale, this.yScale]} orientation='horizontal' dataHintsHandler={this.dataHintsHandlers} ticksCount={yTicks?.length} />
+          <>
+            <Grid scale={[this.xScale, this.yScale]} orientation='horizontal' dataHintsHandler={this.dataHintsHandlers} ticksCount={yTicks?.length} />
+            <HoverLine
+              data={this.data}
+              scale={[this.xScale, this.yScale]}
+              uid={this.plotId}
+              eventEmitter={this.eventEmitter}
+              keyX={groupKey}
+            />
+          </>
         )}
       </>
     );

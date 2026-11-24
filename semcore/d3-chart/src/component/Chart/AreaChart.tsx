@@ -4,7 +4,7 @@ import { type ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
 // @ts-ignore
-import { Area, minMax, HoverLine, StackedArea } from '../..';
+import { Area, minMax, Tooltip, StackedArea } from '../..';
 import { AbstractAxisChart } from './AbstractChart/AbstractAxisChart';
 import type { ChartState } from './AbstractChart/AbstractChart';
 import type { ObjectData } from './AbstractChart/AbstractChart.type';
@@ -130,19 +130,19 @@ class AreaChartComponent extends AbstractAxisChart<
     const { data, groupKey, showXAxis } = this.asProps;
 
     return (
-      <HoverLine.Tooltip x={groupKey} wMin={100} hideTickHover={!showXAxis}>
+      <Tooltip x={groupKey} wMin={100} hideTickHover={!showXAxis}>
         {({ xIndex }: any) => {
           const dataItem = data[xIndex];
 
           return {
             children: this.getTooltipChildren({
-              Tooltip: HoverLine.Tooltip,
+              Tooltip: Tooltip,
               dataItem,
               index: xIndex,
             }),
           };
         }}
-      </HoverLine.Tooltip>
+      </Tooltip>
     );
   }
 
