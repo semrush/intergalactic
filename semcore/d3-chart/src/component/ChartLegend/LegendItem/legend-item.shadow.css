@@ -50,6 +50,13 @@ SPointShape[shape='Circle'][size='m'] {
 SPointShape[shape='Pattern'] {
   background-color: transparent;
   margin-right: var(--intergalactic-spacing-1x, 4px);
+  margin-top: 1px;
+  margin-bottom: -1px;
+}
+
+SPointShape[shape='Pattern'][size='l'] {
+  margin-top: 4px;
+  margin-bottom: -4px;
 }
 
 SIcon {
@@ -110,8 +117,4 @@ SAdditionalLabel[size='l']::before {
 
 SAdditionalLabel[size='m']::before {
   margin-top: 8px;
-}
-
-SPatternSymbol {
-  transform: scale(0.8);
 }

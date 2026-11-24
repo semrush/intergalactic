@@ -330,62 +330,73 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test('Verify legend item highlights only its bubble', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, TAG.KEYBOARD, '@bubble-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@checkbox'],
-  }, async ({ page, browserName }) => {
+  const highlightCases = [
+    { name: 'gradient fill', patterns: false, fillOpacity: '0.1', highlightedFillOpacity: '0.3' },
+    { name: 'a11y patterns', patterns: true, fillOpacity: '0.5', highlightedFillOpacity: '1' },
+  ];
+
+  for (const highlightCase of highlightCases) {
+    test(`Verify legend item highlights only its bubble with ${highlightCase.name}`, {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, TAG.KEYBOARD, '@bubble-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@checkbox'],
+    }, async ({ page, browserName }) => {
     // Bubbles are drawn sorted by value, so the draw order differs from the legend order.
-    await loadPage(page, 'stories/components/d3-chart/tests/examples/bubble-chart/basic-usage.tsx', 'en', {
-      showLegend: true,
-      data: [
-        { x: 2, y: 3, value: 200, label: 'label 1' },
-        { x: 5, y: 5, value: 900, label: 'label 2' },
-        { x: 8, y: 7, value: 500, label: 'label 3' },
-      ],
-    });
+      await loadPage(page, 'stories/components/d3-chart/tests/examples/bubble-chart/basic-usage.tsx', 'en', {
+        showLegend: true,
+        patterns: highlightCase.patterns,
+        data: [
+          { x: 2, y: 3, value: 200, label: 'label 1' },
+          { x: 5, y: 5, value: 900, label: 'label 2' },
+          { x: 8, y: 7, value: 500, label: 'label 3' },
+        ],
+      });
 
-    const labels = ['label 1', 'label 2', 'label 3'];
-    const expectHighlighted = async (highlighted: string | null) => {
-      for (const label of labels) {
-        const group = locators.bubbleGroup(page, label);
-        const isHighlighted = highlighted === label;
-        await expect(group.locator('circle[data-ui-name="Bubble.Circle"]')).toHaveCSS('fill-opacity', isHighlighted ? '0.5' : '0.1');
-        await expect(group.locator('path[class*="SCenterHover"]')).toHaveCSS('opacity', isHighlighted ? '1' : '0');
-        await expect(group.locator('circle[data-ui-name="Bubble.Circle"]')).toHaveCSS('opacity', '1');
-        await expect(group.getByText(label, { exact: true })).toHaveCSS('opacity', '1');
-      }
-    };
+      const labels = ['label 1', 'label 2', 'label 3'];
+      const expectHighlighted = async (highlighted: string | null) => {
+        for (const label of labels) {
+          const group = locators.bubbleGroup(page, label);
+          const isHighlighted = highlighted === label;
+          await expect(group.locator('circle[data-ui-name="Bubble.Circle"]')).toHaveCSS(
+            'fill-opacity',
+            isHighlighted ? highlightCase.highlightedFillOpacity : highlightCase.fillOpacity,
+          );
+          await expect(group.locator('path[class*="SCenterHover"]')).toHaveCSS('opacity', isHighlighted ? '1' : '0');
+          await expect(group.locator('circle[data-ui-name="Bubble.Circle"]')).toHaveCSS('opacity', '1');
+          await expect(group.getByText(label, { exact: true })).toHaveCSS('opacity', '1');
+        }
+      };
 
-    await test.step('Verify no bubble is highlighted by default', async () => {
-      await expectHighlighted(null);
-    });
+      await test.step('Verify no bubble is highlighted by default', async () => {
+        await expectHighlighted(null);
+      });
 
-    await test.step('Verify hovering a legend item highlights its bubble', async () => {
-      await locators.legend(page).getByText('label 2', { exact: true }).hover();
-      await expectHighlighted('label 2');
-      await locators.legend(page).getByText('label 1', { exact: true }).hover();
-      await expectHighlighted('label 1');
-    });
+      await test.step('Verify hovering a legend item highlights its bubble', async () => {
+        await locators.legend(page).getByText('label 2', { exact: true }).hover();
+        await expectHighlighted('label 2');
+        await locators.legend(page).getByText('label 1', { exact: true }).hover();
+        await expectHighlighted('label 1');
+      });
 
-    await test.step('Verify leaving the legend removes the highlight', async () => {
-      await page.mouse.move(0, 0);
-      await expectHighlighted(null);
-    });
+      await test.step('Verify leaving the legend removes the highlight', async () => {
+        await page.mouse.move(0, 0);
+        await expectHighlighted(null);
+      });
 
-    await test.step('Verify focusing a legend item by keyboard highlights its bubble', async () => {
-      await locators.checkbox(page, 2).locator('input').focus();
-      await expectHighlighted('label 3');
-      await locators.checkbox(page, 2).locator('input').blur();
-      await expectHighlighted(null);
-    });
+      await test.step('Verify focusing a legend item by keyboard highlights its bubble', async () => {
+        await locators.checkbox(page, 2).locator('input').focus();
+        await expectHighlighted('label 3');
+        await locators.checkbox(page, 2).locator('input').blur();
+        await expectHighlighted(null);
+      });
 
-    // WebKit: the axis tick foreignObject intercepts the pointer over the labels.
-    // Firefox: headless Linux reports `(hover: hover)` as false, so the CSS :hover rules never apply.
-    const labelHoverStep = browserName === 'chromium' ? test.step : test.step.skip;
-    await labelHoverStep('Verify hovering a bubble label highlights its bubble', async () => {
-      await locators.bubbleGroup(page, 'label 1').getByText('label 1', { exact: true }).hover();
-      await expectHighlighted('label 1');
+      // WebKit: the axis tick foreignObject intercepts the pointer over the labels.
+      // Firefox: headless Linux reports `(hover: hover)` as false, so the CSS :hover rules never apply.
+      const labelHoverStep = browserName === 'chromium' ? test.step : test.step.skip;
+      await labelHoverStep('Verify hovering a bubble label highlights its bubble', async () => {
+        await locators.bubbleGroup(page, 'label 1').getByText('label 1', { exact: true }).hover();
+        await expectHighlighted('label 1');
+      });
     });
-  });
+  }
 
   test('Verify legend hover does not highlight bubbles with disableHoverItems', {
     tag: [TAG.PRIORITY_LOW, TAG.MOUSE, '@bubble-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@checkbox'],

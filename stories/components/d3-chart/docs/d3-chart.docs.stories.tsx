@@ -12,7 +12,6 @@ import CustomPatternsExample from './examples/d3-chart/custom-patterns';
 import DefaultDeltaPercentCalculationExample from './examples/d3-chart/default-delta-percent-calculation';
 import EnforcingPatternsExample from './examples/d3-chart/enforcing-patterns';
 import ExportToImageExample from './examples/d3-chart/export-to-image';
-import LowLevelComponentsUseExample from './examples/d3-chart/low-level-components-use';
 import PaddingMarginsExample from './examples/d3-chart/paddings-&-margins';
 import PatternFillExample from './examples/d3-chart/pattern-fill';
 import ReferenceLineExample from './examples/d3-chart/reference-line';
@@ -66,10 +65,6 @@ export const EnforcingPatterns: StoryObj = {
 
 export const ExportToImage: StoryObj = {
   render: ExportToImageExample,
-};
-
-export const LowLevelComponentsUse: StoryObj = {
-  render: LowLevelComponentsUseExample,
 };
 
 export const PaddingMargins: StoryObj = {

@@ -614,12 +614,14 @@ test.describe(`${TAG.VISUAL}`, () => {
     await locators.closeHint(page).waitFor({ state: 'visible' });
 
     await page.keyboard.press('Tab');
+    await locators.closeHint(page).waitFor({ state: 'hidden' });
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
+    await expect(locators.closeButton(page)).toBeFocused();
     await locators.closeHint(page).waitFor({ state: 'visible' });
     await page.waitForFunction(() => {
-      const el = document.querySelector('[data-ui-name="Hint"]');
-      return el && getComputedStyle(el).opacity === '1';
+      const hints = Array.from(document.querySelectorAll('[data-ui-name="Hint"]'));
+      return hints.length === 1 && getComputedStyle(hints[0]).opacity === '1';
     });
     await expect(page).toHaveScreenshot();
   });

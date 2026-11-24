@@ -1,9 +1,9 @@
+import Flags from '@semcore/flags';
 import MathPlusAltL from '@semcore/icon/MathPlusAlt/l';
 import MathPlusAltM from '@semcore/icon/MathPlusAlt/m';
 import Badge from '@semcore/ui/badge';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import Counter, { type NSCounter } from '@semcore/ui/counter';
-import Flags from '@semcore/ui/flags';
 import Tag, { type NSTag } from '@semcore/ui/tag';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

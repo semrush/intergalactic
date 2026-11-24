@@ -4,6 +4,7 @@ import BasicUsageExample, { defaultProps as BasicUsageProps } from './examples/l
 import HiddenHoverPropExample from './examples/line-chart/disable-hover-line';
 import LineAreWithEmptyExample from './examples/line-chart/line-area-with-empty';
 import LinesExample from './examples/line-chart/lines';
+import PatternDasharrayExample, { defaultProps as PatternDasharrayProps } from './examples/line-chart/pattern-dasharray';
 import { getChartArgTypes, referenceControls } from './examples/stories_props_helper';
 
 const meta: Meta = {
@@ -22,6 +23,16 @@ export const LineAreWithEmpty: StoryObj = {
 
 export const Lines: StoryObj = {
   render: LinesExample,
+};
+
+export const PatternDasharray: StoryObj<typeof PatternDasharrayProps> = {
+  render: PatternDasharrayExample,
+  argTypes: {
+    seriesCount: { control: { type: 'number', min: 1, max: 24, step: 1 } },
+    patterns: { control: 'boolean' },
+    customPatterns: { control: 'boolean' },
+  },
+  args: PatternDasharrayProps,
 };
 
 /**

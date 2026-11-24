@@ -31,7 +31,6 @@ const data = [...Array(5).keys()].map((d, i) => ({
   x: i,
   Line1: Math.random() * 10,
   Line2: Math.random() * 10,
-  Line3: Math.random() * 10,
 }));
 
 function getJSX(props: AreaChartJSXProps) {
