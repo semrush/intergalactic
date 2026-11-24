@@ -260,6 +260,7 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify onClose fires with onEscape when Escape is pressed', async () => {
       await locators.button(page, 'Open modal').click();
       await locators.close(page).waitFor({ state: 'visible' });
+      await expect(locators.close(page)).toBeFocused();
 
       const payload = await getClosePayload(() => page.keyboard.press('Escape'));
       expect(payload.trigger).toBe('onEscape');

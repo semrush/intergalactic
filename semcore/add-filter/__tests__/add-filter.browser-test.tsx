@@ -318,6 +318,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await locators.addFilterMenuItem(page, 'Color').waitFor({ state: 'visible' });
         await locators.addFilterMenuItem(page, 'Color').click();
         await expect(locators.selectTrigger(page, 'Color')).toBeFocused();
+        await expect(locators.selectTrigger(page, 'Color')).toHaveAttribute('aria-expanded', 'true');
       });
 
       await test.step('Verify filter hidden and filters list expanded when clicking on Add filter', async () => {
@@ -329,6 +330,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Verify filter removes and filters list remain hidden when clicking outside', async () => {
         await locators.addFilterMenuItem(page, 'Color').click();
+        await expect(locators.selectTrigger(page, 'Color')).toHaveAttribute('aria-expanded', 'true');
         await page.mouse.click(0, 0);
         await expect(locators.selectTrigger(page, 'Color')).not.toBeVisible();
         await expect(locators.addFilterMenuItem(page, 'Color')).not.toBeVisible();
@@ -338,6 +340,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify filter removed and filters list hidden via filter trigger click', async () => {
         await locators.addFilterBtn(page).click();
         await locators.addFilterMenuItem(page, 'Color').click();
+        await expect(locators.selectTrigger(page, 'Color')).toHaveAttribute('aria-expanded', 'true');
         await locators.selectTrigger(page, 'Color').click();
         await expect(locators.selectTrigger(page, 'Color')).not.toBeVisible();
         await expect(locators.addFilterMenuItem(page, 'Color')).not.toBeVisible();

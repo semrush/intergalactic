@@ -628,6 +628,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await test.step('Verify tab switch focus to input', async () => {
       await page.keyboard.press('Enter');
       await locators.options(page).first().waitFor({ state: 'visible' });
+      await expect(searchInput).toBeFocused();
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await expect(searchInput).toBeFocused();
@@ -649,6 +650,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await test.step('Verify nothing found state', async () => {
       await page.keyboard.press('Enter');
       await locators.options(page).first().waitFor({ state: 'visible' });
+      await expect(searchInput).toBeFocused();
       await page.keyboard.type('test');
       await expect(page.locator('text="Nothing found"')).toBeVisible();
       await expect(locators.options(page)).toHaveCount(0);

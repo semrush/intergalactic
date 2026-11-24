@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import CustomPatternsExample from './examples/d3-chart/custom-patterns';
 import GridAxisPropsExample, { defaultProps as BasicUsageProps } from './examples/d3-chart/grid-axis-props';
 import HoveredTickExample, { defaultProps as HoveredTickProps } from './examples/d3-chart/hovered-tick';
 import PlotAndA11yPropsExample from './examples/d3-chart/plot-props';
@@ -80,6 +81,10 @@ export const HoveredTick: StoryObj<typeof HoveredTickProps> = {
     height: { control: { type: 'number' } },
   },
   args: HoveredTickProps,
+};
+
+export const CustomPatterns: StoryObj = {
+  render: CustomPatternsExample,
 };
 
 export const TooltipDeltaEdgeCases = {

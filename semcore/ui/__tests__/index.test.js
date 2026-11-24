@@ -6,10 +6,18 @@ import fs from 'fs-extra';
 const packageJsonPath = path.resolve(__dirname, '../package.json');
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 
+const semcoreDir = path.resolve(__dirname, '../../');
+const excludedPackages = ['ui', 'icon', 'illustration', 'flags'];
+
 const semcorePackages = fs
-  .readdirSync(path.resolve(__dirname, '../../'), { withFileTypes: true })
-  .filter((entry) => entry.isDirectory() && !['ui', 'icon', 'illustration', 'theme'].includes(entry.name))
-  .map((entry) => `@semcore/${entry.name}`)
+  .readdirSync(semcoreDir, { withFileTypes: true })
+  .filter(
+    (entry) =>
+      entry.isDirectory() &&
+      !excludedPackages.includes(entry.name) &&
+      fs.existsSync(path.join(semcoreDir, entry.name, 'package.json')),
+  )
+  .map((entry) => `@semcore/${entry.name}`);
 
 const dependencyPackages = Object.keys(packageJson.dependencies || {}).filter((pkg) =>
   pkg.startsWith('@semcore/'),

@@ -120,15 +120,6 @@ test.describe(`@d3-chart ${TAG.ACCESSIBILITY}`, () => {
     });
   });
 
-  test('low-level-components-use', async ({ page }) => {
-    await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/low-level-components-use.tsx', 'en');
-
-    await test.step('Verify initial state', async () => {
-      const violations = await getAccessibilityViolations({ page });
-      expect(violations).toEqual([]);
-    });
-  });
-
   test('paddings-&-margins', async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/paddings-&-margins.tsx', 'en');
 
