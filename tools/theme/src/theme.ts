@@ -2106,7 +2106,7 @@ export const theme: Theme = {
         description: 'Shadow of the elevated chart dot.',
       },
       box_shadow_chart_elevated: {
-        value: '0px 0px 2px 0px oklch(from {baseTokens.colors.gray.800} l c h / 0.165), 0px 1px 2px 0px oklch(from {baseTokens.colors.gray.800} l c h / 0.165)',
+        value: 'drop-shadow(0px 0px 2px oklch(from {baseTokens.colors.gray.800} l c h / 0.165)) drop-shadow(0px 1px 2px oklch(from {baseTokens.colors.gray.800} l c h / 0.165))',
         description: 'Shadow of elevated elements on charts.',
       },
       box_shadow_control_elevated: {

@@ -3426,9 +3426,11 @@
   },
   {
     "name": "--intergalactic-box-shadow-chart-elevated",
-    "value": "0px 0px 2px 0px oklch(from oklch(0.23 0.009 245) l c h / 0.165), 0px 1px 2px 0px oklch(from oklch(0.23 0.009 245) l c h / 0.165)",
+    "value": "drop-shadow(0px 0px 2px oklch(from oklch(0.23 0.009 245) l c h / 0.165)) drop-shadow(0px 1px 2px oklch(from oklch(0.23 0.009 245) l c h / 0.165))",
     "description": "Shadow of elevated elements on charts.",
-    "components": []
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-box-shadow-control-elevated",

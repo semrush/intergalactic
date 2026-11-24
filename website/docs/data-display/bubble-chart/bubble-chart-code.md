@@ -23,16 +23,6 @@ For all the following examples, scale is calculated taking into account syntheti
 For understanding the mathematics, used in `Change.Bubble` to calculate common scale, refer to [our GitHub repository](https://github.com/semrush/intergalactic/blob/HEAD/semcore/d3-chart/src/component/Chart/BubbleChart.tsx#L63).
 :::
 
-## Bubble chart
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/d3-chart/docs/examples/bubble-chart/bubble-chart.tsx';
-</script>
-
-:::
-
 ## Color customization
 
 If required, you can assign your own color to every circle in Bubble chart. For this you need to put in the data the color for each circle.

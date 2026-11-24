@@ -8,8 +8,10 @@ import {
   type ScaleBand,
   type ScalePoint,
   type NumberValue,
+  type ScaleLinear,
   scaleBand,
   scaleSqrt,
+  scaleLinear,
 } from 'd3-scale';
 import type React from 'react';
 
@@ -52,8 +54,9 @@ export const definedNullData = (x: number, y: number) => (plot: { [xOrY: number]
 export const definedData = (x: number, y: number) => (plot: { [xOrY: number]: unknown }) =>
   plot[x] !== null && plot[x] !== undefined && plot[y] !== null && plot[y] !== undefined;
 
-export const scaleOfBandwidth = <Scale extends ScaleBand<{}>>(scale: Scale, value: number) =>
-  scale.bandwidth ? scale(value)! + scale.bandwidth() / 2 : scale(value);
+export const scaleOfBandwidth = (scale: ScaleBand<any> | ScaleTime<any, any> | ScaleLinear<any, any>, value: number | Date | string): number => {
+  return 'bandwidth' in scale ? scale(value)! + scale.bandwidth() / 2 : (typeof value !== 'string' ? scale(value) : 0);
+};
 
 export const minMax = <
   Key extends string = string,
@@ -302,37 +305,59 @@ export const calculateBubbleDomain = (
   key: 'x' | 'y',
   range: [number, number],
 ): [min: number, max: number] => {
-  const miniestValue = data.reduce(
-    (acc, item) => {
-      if (item[key] - item.value < acc.min) {
-        acc.min = item[key] - item.value;
-        acc.value = item.value;
-      }
-      return acc;
-    },
-    { value: data[0].value, min: data[0][key] - data[0].value },
-  ).value;
-  const maxestValue = data.reduce(
-    (acc, item) => {
-      if (item.value + item[key] > acc.max) {
-        acc.max = item.value + item.x;
-        acc.value = item.value;
-      }
-      return acc;
-    },
-    { value: data[0].value, max: data[0].value + data[0][key] },
-  ).value;
+  if (!data.length) return [0, 1];
 
-  let [min, max] = minMax(data, key);
-
-  const pixelRatio = Math.abs(max - min) / Math.abs(range[0] - range[1]);
   const valueScale = getBubbleChartValueScale(data, 'value');
-  const minValueShift = valueScale(miniestValue) * pixelRatio;
-  const maxValueShift = valueScale(maxestValue) * pixelRatio;
-  min -= minValueShift * 2;
-  max += maxValueShift * 2;
+  const axisLengthPx = Math.abs(range[1] - range[0]);
 
-  return [Math.floor(min), Math.floor(max)];
+  const points = data.map((dataItem) => ({
+    x: dataItem[key],
+    r: valueScale(dataItem.value) + 1, // stroke-width/2
+  }));
+
+  if (points.length === 1) {
+    const x = points[0].x;
+    return [Math.floor(x - 1), Math.ceil(x + 1)];
+  }
+
+  let maxK = 0;
+
+  for (let i = 0; i < points.length; i++) {
+    for (let j = 0; j < points.length; j++) {
+      if (i === j) continue;
+
+      const dx = points[j].x - points[i].x;
+      if (dx <= 0) continue;
+
+      const availablePx = axisLengthPx - points[i].r - points[j].r;
+      if (availablePx <= 0) continue;
+
+      const k = dx / availablePx;
+      if (k > maxK) {
+        maxK = k;
+      }
+    }
+  }
+
+  if (maxK === 0) {
+    const x = points[0].x;
+    return [Math.floor(x - 1), Math.ceil(x + 1)];
+  }
+
+  let domainMin = Infinity;
+  let domainMax = -Infinity;
+
+  for (const point of points) {
+    const min = point.x - point.r * maxK;
+    const max = point.x + point.r * maxK;
+    if (min < domainMin) domainMin = min;
+    if (max > domainMax) domainMax = max;
+  }
+
+  return [
+    Math.floor(domainMin),
+    Math.ceil(domainMax),
+  ];
 };
 
 type CommonEvents = {
@@ -393,4 +418,14 @@ export function getHorizontalPathFromRect(data: RectData, radius = 6) {
   const path = `M ${x},${y + r} Q ${x},${y} ${x + r},${y} H ${x + width - r} Q ${x + width},${y} ${x + width},${y + r} V ${y + height - r} Q ${x + width},${y + height} ${x + width - r},${y + height} H ${x + r} Q ${x},${y + height} ${x},${y + height - 6} Z`;
 
   return path;
+}
+
+export function formatValue(locale: string, value: unknown) {
+  if (value instanceof Date) {
+    return new Intl.DateTimeFormat(locale ?? 'en', {
+      day: 'numeric',
+      month: 'short',
+    }).format(value);
+  }
+  return value;
 }

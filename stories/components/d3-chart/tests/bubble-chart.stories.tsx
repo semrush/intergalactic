@@ -16,6 +16,9 @@ export const BasicUsage = {
   render: BasicUsageExample,
   argTypes: getChartArgTypes({
     fractionalValues: { control: 'boolean' },
+    axisValueFormat: { control: 'select', options: ['off', 'units'] },
+    manyBubbles: { control: 'boolean' },
+    defaultTicksCount: { control: 'boolean' },
   }),
   args: BasicUsageProps,
 };

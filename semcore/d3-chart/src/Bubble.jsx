@@ -5,12 +5,13 @@ import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { transition } from 'd3-transition';
 import React from 'react';
 
+import { HoverLine } from './component/Hover/HoverLine';
 import { SvgElement } from './component/SvgElement';
 import createElement from './createElement';
 import { PatternFill } from './Pattern';
 import style from './style/bubble.shadow.css';
 import Tooltip from './Tooltip';
-import { getBubbleChartValueScale, measureText } from './utils';
+import { getBubbleChartValueScale, measureText, formatValue } from './utils';
 
 class BubbleRoot extends Component {
   static displayName = 'Bubble';
@@ -23,12 +24,18 @@ class BubbleRoot extends Component {
     markedCross: true,
   };
 
+  state = {
+    hoveredIndex: null,
+  };
+
   generateGetBoundingClientRect(x = 0, y = 0) {
     return () => ({ width: 0, height: 0, top: y, right: x, bottom: y, left: x });
   }
 
   bindHandlerTooltip = (visible, props, tooltipProps) => ({ clientX, clientY }) => {
     const { eventEmitter, plotId } = this.asProps;
+
+    this.setState({ hoveredIndex: visible ? props.index : null });
 
     eventEmitter.emit(`setTooltipPosition_${plotId}`, clientX, clientY);
     eventEmitter.emit(`setTooltipRenderingProps_${plotId}`, props, tooltipProps);
@@ -121,8 +128,9 @@ class BubbleRoot extends Component {
   }
 
   render() {
-    const { data, uid, scale, x, y, value, Children } = this.asProps;
+    const { data, uid, scale, x, y, value, Children, xFormatValue, yFormatValue, locale } = this.asProps;
     const [xScale, yScale] = scale;
+    const { hoveredIndex } = this.state;
     const xSize = Math.abs(xScale.range()[0] - xScale.range()[1]);
     const ySize = Math.abs(yScale.range()[0] - yScale.range()[1]);
     const xMargin = Math.min(xScale.range()[0], xScale.range()[1]);
@@ -135,6 +143,20 @@ class BubbleRoot extends Component {
 
     return (
       <>
+        {hoveredIndex !== null && (
+          <>
+            <HoverLine
+              xIndex={hoveredIndex}
+              yIndex={hoveredIndex}
+              formatValue={[
+                xFormatValue ?? formatValue.bind(null, locale),
+                yFormatValue ?? formatValue.bind(null, locale),
+              ]}
+              x={x}
+              y={y}
+            />
+          </>
+        )}
         {isAdvancedMode
           ? (
               <Children />
@@ -181,6 +203,7 @@ function BubbleCircle(props) {
     clickable,
     onClick,
     onClickCircleRoot,
+    hovered,
   } = props;
   const circleData = data[index];
 
@@ -188,8 +211,11 @@ function BubbleCircle(props) {
 
   const [xScale, yScale] = scale;
 
+  const SGroup = SvgElement;
   const SBubble = Element;
-  const SCenter = 'text';
+  const SGradient = SvgElement;
+  const SCenter = 'path';
+  const SCenterHover = 'path';
   const SLabel = 'text';
   const z = getBubbleChartValueScale(data, value);
 
@@ -201,47 +227,64 @@ function BubbleCircle(props) {
       ? 'right'
       : 'left';
   const labelDistance = {
-    right: xScale(circleData[x]) + offset[0] - z(circleData[value]),
-    left: xScale(circleData[x]) + offset[0] + z(circleData[value]),
+    right: xScale(circleData[x]) + offset[0] - z(circleData[value]) - 4,
+    left: xScale(circleData[x]) + offset[0] + z(circleData[value]) + 4,
   }[labelPosition];
 
+  const colorValue = resolveColor(circleData[color] ?? color);
+
+  const cx = xScale(circleData[x]) + offset[0];
+  const cy = yScale(circleData[y]) + offset[1];
+
   return sstyled(styles)(
-    <SvgElement
+    <SGroup
       tag='g'
       key={`circle(#${index})`}
       onClickCapture={callAllEventHandlers(onClickCircleRoot(index), onClick)}
       onMouseMove={bindHandlerTooltip(true, props, { xIndex: index, index, patterns })}
       onMouseLeave={bindHandlerTooltip(false, props, { xIndex: index, index, patterns })}
       visible={`${visible}`}
+      hovered={hovered}
     >
-      {markedCross && (
-        <SCenter
-          aria-hidden
-          x={xScale(circleData[x]) + offset[0]}
-          y={yScale(circleData[y]) + offset[1]}
-          dy='.3em'
-          clipPath={`url(#${uid})`}
-          color={resolveColor(circleData[color] ?? color)}
-          transparent={transparent}
-        >
-          &#43;
-        </SCenter>
-      )}
+      <defs>
+        <SGradient tag='radialGradient' id={`${uid}_${index}_radial-gradient`} cx='50%' cy='50%' r='50%'>
+          <stop offset='0%' stopColor='#fff' />
+          <stop offset='100%' stopColor={colorValue} />
+        </SGradient>
+      </defs>
       <SBubble
         aria-hidden
         id={`${uid}${uid}`}
         index={index}
         render='circle'
         clipPath={`url(#${uid})`}
-        cx={xScale(circleData[x]) + offset[0]}
-        cy={yScale(circleData[y]) + offset[1]}
-        color={resolveColor(circleData[color])}
-        pattern={patterns ? `url(#${uid}-${index}-pattern)` : undefined}
+        cx={cx}
+        cy={cy}
+        color={colorValue}
+        pattern={patterns ? `url(#${uid}-${index}-pattern)` : `url(#${uid}_${index}_radial-gradient)`}
+        withPatterns={Boolean(patterns)}
         r={z(circleData[value])}
         use:duration={`${duration}ms`}
-        transparent={transparent}
         clickable={clickable || Boolean(onClick)}
+        transparent={transparent}
       />
+      {markedCross && (
+        <>
+          <SCenterHover
+            aria-hidden
+            d={`M ${cx - 3.5} ${cy} H ${cx + 3.5} M ${cx} ${cy - 3.5} V ${cy + 3.5}`}
+            clipPath={`url(#${uid})`}
+            transparent={transparent}
+          />
+          <SCenter
+            aria-hidden
+            d={`M ${cx - 2.5} ${cy} H ${cx + 2.5} M ${cx} ${cy - 2.5} V ${cy + 2.5}`}
+            clipPath={`url(#${uid})`}
+            color={colorValue}
+            transparent={transparent}
+          />
+        </>
+      )}
       {patterns && (
         <PatternFill
           id={`${uid}-${index}-pattern`}
@@ -264,7 +307,7 @@ function BubbleCircle(props) {
           {circleData[label]}
         </SLabel>
       )}
-    </SvgElement>,
+    </SGroup>,
   );
 }
 
