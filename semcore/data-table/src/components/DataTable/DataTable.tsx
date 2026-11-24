@@ -1002,7 +1002,7 @@ class DataTableRoot<
         h={h}
         hMax={hMax}
         hMin={hMin}
-        shadow={false}
+        shadow={true}
         ref={this.scrollAreaRef}
         container={this.tableContainerRef}
         styles={scrollStyles}
