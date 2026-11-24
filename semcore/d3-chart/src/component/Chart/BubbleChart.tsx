@@ -9,6 +9,7 @@ import React from 'react';
 import { Bubble, calculateBubbleDomain, YAxis as YAxisOld, XAxis as XAxisOld, Tooltip } from '../..';
 import { XAxis } from '../Axis/XAxis';
 import { YAxis } from '../Axis/YAxis';
+import { Grid } from '../Grid/Grid';
 import { HoverLine } from '../Hover/HoverLine';
 import { AbstractAxisChart } from './AbstractChart/AbstractAxisChart';
 import type { ChartState } from './AbstractChart/AbstractChart';
@@ -256,20 +257,15 @@ class BubbleChartComponent extends AbstractAxisChart<
     const {
       showXAxis,
       showYAxis,
-      data,
+      yTicksCount,
+      xTicksCount,
     } = this.asProps;
-
-    if (!Array.isArray(data)) {
-      return null;
-    }
-
-    const xTicks = this.xTicks;
-    const yTicks = this.yTicks;
 
     return (
       <>
         {showYAxis && (
-          <YAxisOld>
+          <>
+            <Grid scale={[this.xScale, this.yScale]} orientation='horizontal' dataHintsHandler={this.dataHintsHandlers} ticksCount={yTicksCount} />
             <HoverLine
               uid={this.plotId}
               data={this.data}
@@ -277,12 +273,11 @@ class BubbleChartComponent extends AbstractAxisChart<
               scale={[this.xScale, this.yScale]}
               eventEmitter={this.eventEmitter}
             />
-            <YAxisOld.Grid ticks={yTicks} />
-          </YAxisOld>
+          </>
         )}
-
         {showXAxis && (
-          <XAxisOld>
+          <>
+            <Grid scale={[this.xScale, this.yScale]} orientation='vertical' dataHintsHandler={this.dataHintsHandlers} ticksCount={xTicksCount} />
             <HoverLine
               uid={this.plotId}
               data={this.data}
@@ -290,8 +285,7 @@ class BubbleChartComponent extends AbstractAxisChart<
               scale={[this.xScale, this.yScale]}
               eventEmitter={this.eventEmitter}
             />
-            <XAxisOld.Grid ticks={xTicks} />
-          </XAxisOld>
+          </>
         )}
       </>
     );

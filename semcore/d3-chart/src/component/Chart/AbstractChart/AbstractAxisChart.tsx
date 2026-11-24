@@ -90,7 +90,6 @@ export abstract class AbstractAxisChart<
   protected renderGrid(): React.ReactNode {
     const {
       showYAxis,
-      groupKey,
     } = this.asProps;
 
     const yTicks = this.yTicks;
