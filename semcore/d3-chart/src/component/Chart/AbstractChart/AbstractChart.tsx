@@ -668,7 +668,7 @@ export abstract class AbstractChart<
     const xAxisRef = this.xAxisRef?.current?.getBoundingClientRect();
 
     width = width - (yAxisRect?.width ?? 0);
-    height = height - ((yAxisRect?.height ?? 0) + (xAxisRef?.height ?? 0));
+    height = height - (xAxisRef?.height ?? 0);
 
     if (aspect) {
       const minHeight = cssToIntDefault(computedStyles.getPropertyValue('min-height'), -1);
