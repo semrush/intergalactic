@@ -262,6 +262,7 @@ SHead[sideIndents='wide'] {
 }
 
 SHeadCheckboxCol {
+  grid-area: 1 / 1 / 2 / 2;
   cursor: pointer;
 
   &[disabled] {
