@@ -19,7 +19,7 @@ export const locators = {
   stackGroupBar: nthOrAll('[data-ui-name="StackGroupBar"]'),
   stackGroupBarBar: nthOrAll('[data-ui-name="StackGroupBar.Bar"]'),
   lineDots: nthOrAll('[data-ui-name="Line.Dots"]'),
-  hoverRect: (page: Page) => page.locator('[data-ui-name="Tooltip.Trigger"]'),
+  hoverRect: (page: Page) => page.locator('[data-ui-name="HoverRect"]'),
   highlights: (page: Page) => page.locator('path[mask$="-fade-mask)"]'),
   forecastBars: (page: Page) => page.locator('[data-ui-name][mask$="-forecast-mask)"]'),
   potentialBars: (page: Page) => page.locator('[data-ui-name][mask$="-potential-mask)"]'),

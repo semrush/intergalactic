@@ -13,7 +13,7 @@ export const locators = {
     const base = page.locator('[data-ui-name="Line.Dots"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
-  tooltip: (page: Page) => page.locator('[data-ui-name="Line.Tooltip"], [data-ui-name="HoverLine.Tooltip"]'),
+  tooltip: (page: Page) => page.locator('[data-ui-name="HoverLine"]'),
   referenceLine: (page: Page) => page.locator('[data-ui-name="ReferenceLine"]'),
   referenceLineArea: (page: Page) => page.locator('path[fill$="-pattern)"]:not([value])'),
   referenceArea: (page: Page) => page.locator('path[fill$="-pattern)"][value]'),
