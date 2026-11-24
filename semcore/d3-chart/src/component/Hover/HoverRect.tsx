@@ -92,10 +92,38 @@ class HoverRectComponent extends Component<NSHoverRect.Props, [], NSHoverRect.Un
       });
     }
 
+    if (typeof xValue === 'string' && 'bandwidth' in xScale) {
+      const xScaled = xScale(xValue);
+      if (xScaled === undefined) {
+        return '';
+      }
+
+      return getVerticalPathFromRect({
+        x: xScaled - (xStep * xPaddingInner) / 2,
+        y: yRange[1],
+        width: xStep - xPaddingInner / 2,
+        height: yRange[0] - yRange[1],
+      });
+    }
+
     if (typeof yValue === 'number' || yValue instanceof Date) {
       return getHorizontalPathFromRect({
         x: xRange[0],
         y: yScale(yValue) - (yStep * yPaddingInner) / 2,
+        width: xRange[1] - xRange[0],
+        height: yStep - yPaddingInner / 2,
+      });
+    }
+
+    if (typeof yValue === 'string' && 'bandwidth' in yScale) {
+      const yScaled = yScale(yValue);
+      if (yScaled === undefined) {
+        return '';
+      }
+
+      return getHorizontalPathFromRect({
+        x: xRange[0],
+        y: yScaled - (yStep * yPaddingInner) / 2,
         width: xRange[1] - xRange[0],
         height: yStep - yPaddingInner / 2,
       });
