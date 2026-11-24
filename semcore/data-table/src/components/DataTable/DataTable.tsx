@@ -1058,10 +1058,12 @@ class DataTableRoot<
 
             <SHeadShadowLeft
               ref={this.headerShadowLeftRef}
+              top={headerProps?.sticky ? 0 : undefined}
               data-with-animation={headerShadowWithAnimation.toString()}
             />
             <SHeadShadowRight
               ref={this.headerShadowRightRef}
+              top={headerProps?.sticky ? 0 : undefined}
               data-with-animation={headerShadowWithAnimation.toString()}
             />
             <SBodyShadowLeft ref={this.bodyShadowLeftRef} />

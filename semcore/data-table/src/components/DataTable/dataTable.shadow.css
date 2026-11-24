@@ -95,7 +95,6 @@ SHeadShadowLeft, SHeadShadowRight, SBodyShadowLeft, SBodyShadowRight {
   }
 
   &[data-cell-name=""] {
-    z-index: 16;
     &::before {
       left: 0;
     }
@@ -104,5 +103,9 @@ SHeadShadowLeft, SHeadShadowRight, SBodyShadowLeft, SBodyShadowRight {
       right: 0;
     }
   }
+}
+
+SBodyShadowLeft[data-cell-name=""], SBodyShadowRight[data-cell-name=""] {
+  z-index: 16;
 }
 
