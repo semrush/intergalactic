@@ -145,6 +145,22 @@ exports[`DataTable > Verify data-ui-name 1`] = `
                       ],
                       "uiName": "DataTable.Body",
                     },
+                    {
+                      "children": [],
+                      "uiName": "Box",
+                    },
+                    {
+                      "children": [],
+                      "uiName": "Box",
+                    },
+                    {
+                      "children": [],
+                      "uiName": "Box",
+                    },
+                    {
+                      "children": [],
+                      "uiName": "Box",
+                    },
                   ],
                   "uiName": "DataTable",
                 },
