@@ -989,6 +989,8 @@ class DataTableRoot<
       gridTemplateRows = `${this.hasGroups ? 'auto auto' : 'auto'} repeat(${this.totalRows}, ${virtualScroll.rowHeight}px)`;
     }
 
+    const headerShadowWithAnimation = headerProps?.sticky && this.scrollDirection === 'horizontal' && !this.isDataEmpty;
+
     return sstyled(styles)(
       <ScrollArea
         leftOffset={offsetLeftSum}
@@ -1054,8 +1056,14 @@ class DataTableRoot<
                   </>
                 )}
 
-            <SHeadShadowLeft ref={this.headerShadowLeftRef} />
-            <SHeadShadowRight ref={this.headerShadowRightRef} />
+            <SHeadShadowLeft
+              ref={this.headerShadowLeftRef}
+              data-with-animation={headerShadowWithAnimation.toString()}
+            />
+            <SHeadShadowRight
+              ref={this.headerShadowRightRef}
+              data-with-animation={headerShadowWithAnimation.toString()}
+            />
             <SBodyShadowLeft ref={this.bodyShadowLeftRef} />
             <SBodyShadowRight ref={this.bodyShadowRightRef} />
           </SDataTable>
