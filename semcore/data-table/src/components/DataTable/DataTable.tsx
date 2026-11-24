@@ -1156,6 +1156,8 @@ class DataTableRoot<
   };
 
   private setShadows() {
+    const lastColumnIndex = this.columns.length;
+
     if (this.headerShadowLeftRef.current) {
       const leftShadowGridArea = `1 / ${this.fixedCellsData.left.gridColumnStart || 1} / ${this.hasGroups ? 3 : 2} / ${this.fixedCellsData.left.gridColumnStart || 1}`;
       this.headerShadowLeftRef.current.style.setProperty('grid-area', leftShadowGridArea);
@@ -1164,7 +1166,7 @@ class DataTableRoot<
 
     if (this.headerShadowRightRef.current) {
       const gridColumnStart = this.fixedCellsData.right.gridColumnStart ? Number(this.fixedCellsData.right.gridColumnStart) : null;
-      const rightShadowGridArea = `1 / ${gridColumnStart ?? -1} / ${this.hasGroups ? 3 : 2} / ${gridColumnStart ? gridColumnStart + 1 : -2}`;
+      const rightShadowGridArea = `1 / ${gridColumnStart ?? lastColumnIndex} / ${this.hasGroups ? 3 : 2} / ${(gridColumnStart ?? lastColumnIndex) + 1}`;
 
       this.headerShadowRightRef.current.style.setProperty('grid-area', rightShadowGridArea);
       this.headerShadowRightRef.current.dataset.cellName = this.fixedCellsData.right.name;
@@ -1178,7 +1180,7 @@ class DataTableRoot<
 
     if (this.bodyShadowRightRef.current) {
       const gridColumnStart = this.fixedCellsData.right.gridColumnStart ? Number(this.fixedCellsData.right.gridColumnStart) : null;
-      const rightShadowGridArea = `${this.hasGroups ? 3 : 2} / ${gridColumnStart ?? -1} / 10000 / ${gridColumnStart ? gridColumnStart + 1 : -2}`;
+      const rightShadowGridArea = `${this.hasGroups ? 3 : 2} / ${gridColumnStart ?? lastColumnIndex} / 10000 / ${(gridColumnStart ?? lastColumnIndex) + 1}`;
 
       this.bodyShadowRightRef.current.style.setProperty('grid-area', rightShadowGridArea);
       this.bodyShadowRightRef.current.dataset.cellName = this.fixedCellsData.right.name;
