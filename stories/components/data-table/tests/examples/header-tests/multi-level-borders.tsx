@@ -1,6 +1,7 @@
 import AmazonM from '@semcore/icon/color/Amazon/m';
 import { ButtonLink } from '@semcore/ui/button';
 import { DataTable } from '@semcore/ui/data-table';
+import type { DataTableProps } from '@semcore/ui/data-table';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -12,6 +13,109 @@ export const multiLevelBordersProps: MultiLevelBordersProps = {
   virtualScroll: false,
 };
 
+const columns: DataTableProps<typeof data, any, any>['columns'] = [
+  { name: 'other', children: 'Other' },
+  {
+    name: 'group1',
+    children: 'Borders left',
+    borders: 'left',
+    columns: [
+      {
+        name: 'kd',
+        gtcWidth: '100px',
+        children: (
+          <>
+            <Text>
+              Kd Organic Sessions Organic Sessions
+              <ButtonLink size={100} addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+            </Text>
+          </>
+        ),
+
+      },
+      { name: 'cpc', children: 'CPC' },
+      { name: 'vol', children: 'Vol.' },
+
+    ],
+  },
+
+  { name: 'keyword', children: 'Keyword' },
+  {
+    name: 'group2',
+    children: (
+      <Text ellipsis={true}>Borders both - Organic Sessions rganic Sessions rganic Sessions</Text>
+    ),
+    borders: 'both',
+    columns: [
+      {
+        name: 'kd2',
+        gtcWidth: '100px',
+        children: (
+          <>
+            <Text ellipsis={true}>
+              Kd Organic Sessions Organic Sessions
+            </Text>
+            <ButtonLink size={100} addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+          </>
+        ),
+
+      },
+      { name: 'cpc', children: 'CPC' },
+      { name: 'vol', children: 'Vol.' },
+
+    ],
+  },
+
+  { name: 'other', children: 'Other' },
+
+  {
+    name: 'group3',
+    children: 'Borders right',
+    borders: 'right',
+    columns: [
+      {
+        name: 'kd',
+        gtcWidth: '100px',
+        children: (
+          <>
+            <Text>
+              Kd Organic Sessions Organic Sessions
+              <ButtonLink size={100} addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+            </Text>
+          </>
+        ),
+
+      },
+      { name: 'cpc', children: 'CPC' },
+
+    ],
+  },
+
+  { name: 'other', children: 'Other' },
+
+  {
+    name: 'group4',
+    children: 'Borders default',
+    columns: [
+      {
+        name: 'kd',
+        gtcWidth: '100px',
+        children: (
+          <>
+            <Text>
+              Kd Organic Sessions Organic Sessions
+              <ButtonLink size={100} addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+            </Text>
+          </>
+        ),
+
+      },
+      { name: 'cpc', children: 'CPC' },
+
+    ],
+  },
+];
+
 const Demo = (props: MultiLevelBordersProps) => {
   return (
     <>
@@ -22,109 +126,7 @@ const Demo = (props: MultiLevelBordersProps) => {
         h='100%'
         virtualScroll={props.virtualScroll}
 
-        columns={[
-          { name: 'other', children: 'Other' },
-          {
-            name: 'group1',
-            children: 'Borders left',
-            borders: 'left',
-            columns: [
-              {
-                name: 'kd',
-                gtcWidth: '100px',
-                children: (
-                  <>
-                    <Text>
-                      Kd Organic Sessions Organic Sessions
-                      <ButtonLink size={100} addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-                    </Text>
-                  </>
-                ),
-
-              },
-              { name: 'cpc', children: 'CPC' },
-              { name: 'vol', children: 'Vol.' },
-
-            ],
-          },
-
-          { name: 'keyword', children: 'Keyword' },
-          {
-            name: 'group2',
-            children: (
-              <Text ellipsis={true}>Borders both - Organic Sessions rganic Sessions rganic Sessions</Text>
-            ),
-            borders: 'both',
-            columns: [
-              {
-                name: 'kd2',
-                gtcWidth: '100px',
-                children: (
-                  <>
-                    <Text ellipsis={true}>
-                      Kd Organic Sessions Organic Sessions
-                    </Text>
-                    <ButtonLink size={100} addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-                  </>
-                ),
-
-              },
-              { name: 'cpc', children: 'CPC' },
-              { name: 'vol', children: 'Vol.' },
-
-            ],
-          },
-
-          { name: 'other', children: 'Other' },
-
-          {
-            name: 'group3',
-            children: 'Borders right',
-            borders: 'right',
-            columns: [
-              {
-                name: 'kd',
-                gtcWidth: '100px',
-                children: (
-                  <>
-                    <Text>
-                      Kd Organic Sessions Organic Sessions
-                      <ButtonLink size={100} addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-                    </Text>
-                  </>
-                ),
-
-              },
-              { name: 'cpc', children: 'CPC' },
-
-            ],
-          },
-
-          { name: 'other', children: 'Other' },
-
-          {
-            name: 'group4',
-            children: 'Borders default',
-            columns: [
-              {
-                name: 'kd',
-                gtcWidth: '100px',
-                children: (
-                  <>
-                    <Text>
-                      Kd Organic Sessions Organic Sessions
-                      <ButtonLink size={100} addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-                    </Text>
-                  </>
-                ),
-
-              },
-              { name: 'cpc', children: 'CPC' },
-
-            ],
-          },
-
-        ]}
+        columns={columns}
       />
     </>
   );
