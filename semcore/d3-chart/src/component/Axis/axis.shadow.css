@@ -30,6 +30,7 @@ SXAxis {
 
   SHoveredTick, STick {
     margin: 0 0 3px 0;
+    text-align: center;
   }
 
   SHoveredTick {

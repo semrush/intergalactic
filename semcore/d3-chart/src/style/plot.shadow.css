@@ -1,5 +1,5 @@
 SPlot {
-  overflow: visible;
+  overflow: hidden;
 }
 
 SPlot:focus {
