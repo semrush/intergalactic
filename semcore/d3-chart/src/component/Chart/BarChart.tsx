@@ -275,7 +275,6 @@ class BarChartComponent extends AbstractAxisChart<
         ticksCount={xTicksCount}
         valueFormatter={axisXValueFormatter ?? this.axisValueFormatter}
         eventEmitter={this.eventEmitter}
-        mr={`${this.plotPadding}px`}
         onMouseMove={invertAxis ? () => false : undefined}
       />
     );
@@ -359,8 +358,8 @@ class BarChartComponent extends AbstractAxisChart<
 
     const testItem = data[0][groupKey];
     const range = invertAxis
-      ? [plotHeight, this.plotPadding]
-      : [this.plotPadding, plotWidth - 2 * this.plotPadding];
+      ? [plotHeight, 0]
+      : [0, plotWidth];
 
     if (testItem instanceof Date && !Number.isNaN(testItem.getMilliseconds())) {
       const domain = minMax(data, groupKey);
@@ -382,8 +381,8 @@ class BarChartComponent extends AbstractAxisChart<
     return scaleLinear()
       .range(
         invertAxis
-          ? [this.plotPadding, plotWidth - 2 * this.plotPadding]
-          : [plotHeight, this.plotPadding],
+          ? [0, plotWidth]
+          : [plotHeight, 0],
       )
       .domain([0, max]);
   }

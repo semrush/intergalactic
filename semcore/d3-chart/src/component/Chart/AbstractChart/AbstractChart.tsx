@@ -59,10 +59,6 @@ export abstract class AbstractChart<
   public static style = style;
 
   public readonly plotId = uniqueId();
-  /**
-   * Padding from the end's of chart to the container (except axis sides)
-   */
-  protected plotPadding = 10;
 
   protected dataHints = makeDataHintsContainer();
   protected dataHintsHandlers = makeDataHintsHandlers(this.dataHints);

@@ -55,7 +55,7 @@ class ScatterPlotChartComponent extends AbstractAxisChart<
 
     const radius = getScatterPlotRadius(valueKey) / this.getValueScale([...this.flatValues]);
     const testItem = data[0][groupKey];
-    const range = [this.plotPadding, plotWidth - this.plotPadding];
+    const range = [0, plotWidth];
     const domain = minMax(data, groupKey);
 
     if (testItem instanceof Date && !Number.isNaN(testItem.getMilliseconds())) {
@@ -80,7 +80,7 @@ class ScatterPlotChartComponent extends AbstractAxisChart<
     const min = Math.min(...flatValues) - radius;
 
     return scaleLinear()
-      .range([plotHeight, this.plotPadding])
+      .range([plotHeight, 0])
       .domain([min, max]);
   }
 

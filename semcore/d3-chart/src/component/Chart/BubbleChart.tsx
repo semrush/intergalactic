@@ -112,7 +112,7 @@ class BubbleChartComponent extends AbstractAxisChart<
       return xScale;
     }
 
-    const range = [this.plotPadding, plotWidth - this.plotPadding];
+    const range = [0, plotWidth];
     const domain = calculateBubbleDomain(data, 'x', range);
 
     return scaleLinear().domain(domain).range(range);
@@ -126,7 +126,7 @@ class BubbleChartComponent extends AbstractAxisChart<
       return yScale;
     }
 
-    const range = [plotHeight, this.plotPadding];
+    const range = [plotHeight, 0];
     const domain = calculateBubbleDomain(data, 'y', range);
 
     return scaleLinear().domain(domain).range(range);

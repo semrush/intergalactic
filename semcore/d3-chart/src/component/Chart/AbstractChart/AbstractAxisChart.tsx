@@ -156,7 +156,6 @@ export abstract class AbstractAxisChart<
         ticksCount={xTicksCount}
         valueFormatter={axisXValueFormatter ?? this.axisValueFormatter}
         eventEmitter={this.eventEmitter}
-        mr={`${this.plotPadding}px`}
       />
     );
   }
@@ -180,6 +179,7 @@ export abstract class AbstractAxisChart<
           // @ts-expect-error for css only
           yAxisPosition={resolvedYAxisPosition}
         >
+          {this.renderXAxis()}
           {(resolvedYAxisPosition === 'left' || resolvedYAxisPosition === 'both') && this.renderYAxis('left')}
           <Plot
             uid={this.plotId}
@@ -205,7 +205,6 @@ export abstract class AbstractAxisChart<
             {this.renderChart()}
           </Plot>
           {(resolvedYAxisPosition === 'right' || resolvedYAxisPosition === 'both') && this.renderYAxis('right')}
-          {this.renderXAxis()}
         </SChartContainer>
       </SChart>,
     );

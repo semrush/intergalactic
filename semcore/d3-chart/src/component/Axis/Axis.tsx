@@ -64,18 +64,8 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
       return null;
     }
 
-    let hoveredTranslate: Parameters<this['getCssTranslate']>[0];
-
-    if (dataIndex === 0 && !('bandwidth' in scale)) {
-      hoveredTranslate = '0%';
-    } else if (dataIndex === data.length - 1 && !('bandwidth' in scale)) {
-      hoveredTranslate = `calc(${scaleOfBandwidth(scale, value) ?? 0}px - 100%)`;
-    } else {
-      hoveredTranslate = scaleOfBandwidth(scale, value) ?? 0;
-    }
-
     const style = {
-      transform: this.getCssTranslate(hoveredTranslate),
+      transform: this.getCssTranslate(scaleOfBandwidth(scale, value) ?? 0),
     };
 
     return sstyled(styles)(

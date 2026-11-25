@@ -48,7 +48,7 @@ class AreaChartComponent extends AbstractAxisChart<
     }
 
     const testItem = data[0][groupKey];
-    const range = [this.plotPadding, plotWidth - this.plotPadding];
+    const range = [0, plotWidth];
     const domain = minMax(data, groupKey);
 
     if (testItem instanceof Date && !Number.isNaN(testItem.getMilliseconds())) {
@@ -71,7 +71,7 @@ class AreaChartComponent extends AbstractAxisChart<
     const max = stacked ? super.maxStackedValue : Math.max(...flatValues);
 
     return scaleLinear()
-      .range([plotHeight - this.plotPadding, this.plotPadding])
+      .range([plotHeight, 0])
       .domain([min, max]);
   }
 

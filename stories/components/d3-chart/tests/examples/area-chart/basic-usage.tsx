@@ -112,6 +112,7 @@ const Demo = (props: AreaChartStoryProps) => {
       w={plotWidth}
       h={plotHeight}
       overflow='auto'
+      pr={8}
     >
       <Chart.Area
         data-testid='TEST'
