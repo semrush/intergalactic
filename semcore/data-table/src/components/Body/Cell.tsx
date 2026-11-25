@@ -104,7 +104,6 @@ class CellRoot<Data extends DataTableData, UniqKeyType>
         fixed={column.fixed}
         style={style}
         data-cell-name={column.name}
-        className='custom-class-name'
       >
         <SCell
           ref={this.cellRef}
