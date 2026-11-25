@@ -11,6 +11,10 @@ SXAxis, SYAxis {
     color: var(--intergalactic-chart-grid-text-label, oklch(from oklch(0.182 0.045 244.8 / 0.593) l c h / 0.4));
   }
 
+  STick:not([aria-hidden]):has(:focus-visible) {
+    z-index: 1;
+  }
+
   SHoveredTick {
     padding: 3px 12px;
     border-radius: var(--intergalactic-rounded-medium, 6px);
@@ -25,12 +29,11 @@ SXAxis {
   overflow: hidden;
 
   SHoveredTick, STick {
-    margin: 0 0 var(--intergalactic-spacing-1x, 4px) 0;
+    margin: 0 0 3px 0;
   }
 
   SHoveredTick {
-    margin-top: calc(-1 * var(--intergalactic-spacing-1x, 4px));
-    padding-top: var(--intergalactic-spacing-1x, 4px);
+    margin-top: -3px;
     margin-bottom: 0;
   }
 }

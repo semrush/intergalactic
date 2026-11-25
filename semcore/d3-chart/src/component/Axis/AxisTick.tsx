@@ -30,7 +30,13 @@ class AxisTickComponent extends Component<NSAxisTick.Props, [], never, {}, NSAxi
     const { isInteractive } = this.state;
 
     return sstyled(styles)(
-      <STick size={100} ref={this.tickRef} style={{ transform: translate }} data-ui-name='Axis.Ticks' aria-hidden={isInteractive ? undefined : true}>
+      <STick
+        size={100}
+        ref={this.tickRef}
+        style={{ transform: translate }}
+        data-ui-name='Axis.Ticks'
+        aria-hidden={isInteractive ? undefined : true}
+      >
         {valueFormatter(value)}
       </STick>,
     );
