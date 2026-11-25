@@ -8,6 +8,7 @@ import type { NSAxisTick } from './AxisTick.type';
 
 class AxisTickComponent extends Component<NSAxisTick.Props, [], never, {}, NSAxisTick.State> {
   static style = styles;
+  static displayName = 'Axis.Tick';
 
   tickRef = React.createRef<HTMLSpanElement>();
 

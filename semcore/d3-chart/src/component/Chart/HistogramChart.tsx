@@ -4,7 +4,9 @@ import { scaleBand, scaleLinear, type ScaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
 // @ts-ignore
-import { Bar, minMax, HoverRect, StackBar, type BarProps } from '../..';
+import { Bar, minMax, Tooltip, StackBar, type BarProps } from '../..';
+import { Grid } from '../Grid/Grid';
+import { HoverRect } from '../Hover/HoverRect';
 import { AbstractAxisChart } from './AbstractChart/AbstractAxisChart';
 import type { ChartState } from './AbstractChart/AbstractChart';
 import type { HistogramChartData, HistogramChartDefaultProps, HistogramChartProps, HistogramChartType } from './HistogramChart.type';
@@ -152,28 +154,77 @@ class HistogramChartComponent extends AbstractAxisChart<
   }
 
   renderTooltip(): React.ReactNode {
-    const { data, groupKey, invertAxis, showXAxis } = this.asProps;
+    const { data, groupKey, invertAxis } = this.asProps;
 
     return (
-      <HoverRect.Tooltip
+      <Tooltip
         x={invertAxis ? undefined : groupKey}
         y={invertAxis ? groupKey : undefined}
         wMin={100}
-        hideTickHover={!showXAxis}
       >
-        {({ xIndex, yIndex }: any) => {
-          const index = invertAxis ? yIndex : xIndex;
+        {({ index }: any) => {
           const dataItem = data[index];
 
           return {
             children: this.getTooltipChildren({
-              Tooltip: HoverRect.Tooltip,
+              Tooltip: Tooltip,
               dataItem,
               index,
             }),
           };
         }}
-      </HoverRect.Tooltip>
+      </Tooltip>
+    );
+  }
+
+  protected override renderGrid(): React.ReactNode {
+    const {
+      invertAxis,
+      showXAxis,
+      showYAxis,
+      xTicksCount,
+      yTicksCount,
+      groupKey,
+    } = this.asProps;
+
+    return (
+      <>
+        {showYAxis && invertAxis !== true && (
+          <>
+            <Grid
+              scale={[this.xScale, this.yScale]}
+              orientation='horizontal'
+              dataHintsHandler={this.dataHintsHandlers}
+              ticksCount={yTicksCount}
+            />
+            <HoverRect
+              data={this.data}
+              uid={this.plotId}
+              eventEmitter={this.eventEmitter}
+              scale={[this.xScale, this.yScale]}
+              keyX={groupKey}
+            />
+          </>
+        )}
+
+        {showXAxis && invertAxis === true && (
+          <>
+            <Grid
+              scale={[this.xScale, this.yScale]}
+              orientation='vertical'
+              dataHintsHandler={this.dataHintsHandlers}
+              ticksCount={xTicksCount}
+            />
+            <HoverRect
+              data={this.data}
+              uid={this.plotId}
+              eventEmitter={this.eventEmitter}
+              scale={[this.xScale, this.yScale]}
+              keyY={groupKey}
+            />
+          </>
+        )}
+      </>
     );
   }
 
