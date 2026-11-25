@@ -9,25 +9,14 @@ const legendProps = {
 };
 
 const Demo = () => {
-  const MARGIN = 0;
   const width = 500;
   const height = 300;
-
-  const xScale = scaleLinear()
-    .range([MARGIN, width - MARGIN])
-    .domain([0, 10]);
-
-  const yScale = scaleLinear()
-    .range([height - MARGIN, MARGIN])
-    .domain([-2, 10]);
 
   return (
     <Chart.Bubble
       data={data}
       plotWidth={width}
       plotHeight={height}
-      xScale={xScale}
-      yScale={yScale}
       legendProps={legendProps}
       patterns
       aria-label='Bubble chart with pattern fill'
