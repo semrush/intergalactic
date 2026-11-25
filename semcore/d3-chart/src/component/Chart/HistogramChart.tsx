@@ -5,12 +5,12 @@ import React from 'react';
 
 // @ts-ignore
 import { Bar, minMax, HoverRect, StackBar, type BarProps } from '../..';
+import { AbstractAxisChart } from './AbstractChart/AbstractAxisChart';
 import type { ChartState } from './AbstractChart/AbstractChart';
-import { AbstractChart } from './AbstractChart/AbstractChart';
 import type { HistogramChartData, HistogramChartDefaultProps, HistogramChartProps, HistogramChartType } from './HistogramChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
-class HistogramChartComponent extends AbstractChart<
+class HistogramChartComponent extends AbstractAxisChart<
   HistogramChartData,
   HistogramChartProps,
   typeof HistogramChartComponent.enhance,

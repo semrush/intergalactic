@@ -2,11 +2,11 @@ import type { Flex } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 
-import type { BaseChartProps } from './AbstractChart/AbstractChart.type';
+import type { AbstractAxisChartProps } from './AbstractChart/AbstractAxisChart.type';
 
 export type HistogramChartData = Array<Record<string, number | Date>>;
 
-export type HistogramChartProps = BaseChartProps<HistogramChartData> & {
+export type HistogramChartProps = AbstractAxisChartProps<HistogramChartData> & {
   /** Field name that groups the data points */
   groupKey: string;
   /** Custom x-axis scale */
