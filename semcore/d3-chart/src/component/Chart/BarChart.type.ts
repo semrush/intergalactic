@@ -24,7 +24,7 @@ export type BarChartProps = AbstractAxisChartProps<BarChartData> & {
    */
   invertAxis?: boolean;
   /** Custom x-axis scale */
-  xScale?: ScaleBand<any> | ScaleTime<any, any>;
+  xScale?: ScaleBand<any>;
   /** Custom y-axis scale */
   yScale?: ScaleLinear<any, any>;
   /** Controls whether bars are grouped side-by-side or stacked */

@@ -3,17 +3,17 @@ import React from 'react';
 
 import BarMockData from '../../../__mocks__/bar';
 
-const formatDate = (date: any) =>
+const formatDate = (date: Date) =>
   new Intl.DateTimeFormat('en-US', {
     month: 'short',
     day: 'numeric',
     year: 'numeric',
   }).format(date);
 
-const formatXAxisValue = (value: any) => {
+const formatXAxisValue = (value: Date) => {
   const index = data.findIndex((d) => d.date_chart === value);
 
-  return index % 2 === 0 ? formatDate(value) : null;
+  return index % 4 === 0 ? 'n/a' : formatDate(value);
 };
 
 const Demo = () => {

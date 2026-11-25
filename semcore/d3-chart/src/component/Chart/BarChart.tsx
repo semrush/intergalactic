@@ -356,16 +356,9 @@ class BarChartComponent extends AbstractAxisChart<
     } = this.asProps;
     const { plotWidth, plotHeight } = this;
 
-    const testItem = data[0][groupKey];
     const range = invertAxis
       ? [plotHeight, 0]
       : [0, plotWidth];
-
-    if (testItem instanceof Date && !Number.isNaN(testItem.getMilliseconds())) {
-      const domain = minMax(data, groupKey);
-
-      return scaleTime(domain, range);
-    }
 
     const domain = data.map((item) => item[groupKey]);
 
