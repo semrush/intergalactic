@@ -10,7 +10,6 @@ import type { ChartEvents, ListData } from '../Chart/AbstractChart/AbstractChart
 declare namespace NSAxis {
 
   type Props = NSBox.Props & {
-    uid: string;
     eventEmitter: EventEmitter<ChartEvents>;
     scale: ScaleBand<any> | ScaleLinear<any, any> | ScaleTime<any, any>;
     valueFormatter: (value: unknown) => React.ReactNode;

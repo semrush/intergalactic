@@ -301,6 +301,11 @@ type BaseEvents = {
   onMouseMoveChart: (e: React.MouseEvent, rootElement: SVGSVGElement, isTickUnder: boolean, point: [number, number]) => void;
   onMouseLeaveChart: (e: React.MouseEvent) => void;
 
+  setTooltipVisible: (isVisible: boolean) => void;
+
+  hoverPosition: (clientX: number, clientY: number) => void;
+  hoverListItem: (index: number, invertAxis: boolean) => void;
+
   leaveChart: () => void;
 };
 
@@ -308,14 +313,6 @@ type CommonEvents = {
   setTooltipPosition: (clientX: number, clientY: number) => void;
   setTooltipRenderingProps: (_: {}, params: { index: number }) => void;
   setTooltipVisible: (isVisible: boolean) => void;
-
-  hoverPosition: (clientX: number, clientY: number) => void;
-  hoverListItem: (index: number, invertAxis: boolean) => void;
-
-  // moveOverChart: (clientX: number, clientY: number) => void;
-  // moveOverListItem: (index: number) => void;
-  //
-  // leaveChart: () => void;
 };
 
 export type ChartEvents = BaseEvents & {

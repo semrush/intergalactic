@@ -25,13 +25,14 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
   abstract handleMoveOverAxis(event: React.MouseEvent<HTMLElement>): void;
 
   componentDidMount() {
-    this.asProps.eventEmitter.on(`hoverListItem_${this.asProps.uid}`, this.handleHoverListItemEvent);
-    this.asProps.eventEmitter.on('leaveChart', this.handleLeaveChartEvent);
+    const { eventEmitter } = this.asProps;
+    eventEmitter.on(`hoverListItem`, this.handleHoverListItemEvent);
+    eventEmitter.on('leaveChart', this.handleLeaveChartEvent);
   }
 
   componentWillUnmount(): void {
-    const { eventEmitter, uid } = this.asProps;
-    eventEmitter.off(`hoverListItem_${uid}`, this.handleHoverListItemEvent);
+    const { eventEmitter } = this.asProps;
+    eventEmitter.off(`hoverListItem`, this.handleHoverListItemEvent);
     eventEmitter.off(`leaveChart`, this.handleLeaveChartEvent);
   }
 

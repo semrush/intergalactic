@@ -226,9 +226,9 @@ export abstract class AbstractAxisChart<
       const value = invertAxis ? invert(this.yScale, point[1]) : invert(this.xScale, point[0]);
       const index = this.getIndexByValue(value);
 
-      this.eventEmitter.emit(`hoverPosition_${this.plotId}`, point[0] + rect.x, event.clientY);
-      this.eventEmitter.emit(`hoverListItem_${this.plotId}`, index, Boolean(invertAxis));
-      this.eventEmitter.emit(`setTooltipVisible_${this.plotId}`, index !== -1);
+      this.eventEmitter.emit(`hoverPosition`, point[0] + rect.x, event.clientY);
+      this.eventEmitter.emit(`hoverListItem`, index, Boolean(invertAxis));
+      this.eventEmitter.emit(`setTooltipVisible`, index !== -1);
     }
 
     this.eventEmitter.emit('onMouseMoveChart', event);
@@ -237,7 +237,7 @@ export abstract class AbstractAxisChart<
   protected handleMouseLeaveChartContainer() {
     this.eventEmitter.emit('onMouseLeaveChart');
     this.eventEmitter.emit('leaveChart');
-    this.eventEmitter.emit(`setTooltipVisible_${this.plotId}`, false);
+    this.eventEmitter.emit(`setTooltipVisible`, false);
   };
 
   protected preventPlotMoveEvents() {
