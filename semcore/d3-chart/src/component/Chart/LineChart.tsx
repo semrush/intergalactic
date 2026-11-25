@@ -53,7 +53,7 @@ class LineChartComponent extends AbstractAxisChart<
   }
 
   protected get yScale(): ScaleLinear<any, any> {
-    const { yScale, marginX = 0 } = this.asProps;
+    const { yScale } = this.asProps;
     const { plotHeight } = this;
 
     if (yScale) {
@@ -66,7 +66,7 @@ class LineChartComponent extends AbstractAxisChart<
     const min = Math.min(...flatValues);
 
     return scaleLinear()
-      .range([plotHeight - marginX, this.plotPadding])
+      .range([plotHeight, this.plotPadding])
       .domain([min, max]);
   }
 

@@ -66,7 +66,7 @@ class ScatterPlotChartComponent extends AbstractAxisChart<
   }
 
   protected get yScale(): ScaleLinear<any, any> {
-    const { yScale, marginX = 0, valueKey } = this.asProps;
+    const { yScale, valueKey } = this.asProps;
     const { plotHeight } = this;
 
     if (yScale) {
@@ -80,7 +80,7 @@ class ScatterPlotChartComponent extends AbstractAxisChart<
     const min = Math.min(...flatValues) - radius;
 
     return scaleLinear()
-      .range([plotHeight - marginX, this.plotPadding])
+      .range([plotHeight, this.plotPadding])
       .domain([min, max]);
   }
 

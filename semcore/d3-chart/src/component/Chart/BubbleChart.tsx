@@ -119,14 +119,14 @@ class BubbleChartComponent extends AbstractAxisChart<
   }
 
   override get yScale(): ScaleLinear<any, any> {
-    const { yScale, marginX = 0, data } = this.asProps;
+    const { yScale, data } = this.asProps;
     const { plotHeight } = this;
 
     if (yScale) {
       return yScale;
     }
 
-    const range = [plotHeight - marginX, this.plotPadding];
+    const range = [plotHeight, this.plotPadding];
     const domain = calculateBubbleDomain(data, 'y', range);
 
     return scaleLinear().domain(domain).range(range);
