@@ -198,7 +198,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         page,
         'stories/components/d3-chart/tests/examples/cigarette-chart/basic-usage.tsx',
         'en',
-        { data: { X: 0, Y: 0 }, duration: 0, invertAxis: false },
+        { data: { X: 0, Y: 0 }, duration: 0 },
       );
 
       await locators.plot(page).first().waitFor({ state: 'visible' });

@@ -8,6 +8,7 @@ import {
   countRoundedCorners,
   dataTypeCases,
   expectDataTypes,
+  getAxisTickPosition,
   getBarBoxes,
   getGaps,
   hoverCenter,
@@ -387,16 +388,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           { category: 'Category 0', a: 5, b: 4, c: 1 },
           { category: 'Category 1', a: 20, b: 0, c: 0 },
         ]);
-        await expect(page.locator('line[data-ui-name="Axis"]')).toHaveCount(2);
-        const valueAxisLength = await page.locator('line[data-ui-name="Axis"]').evaluateAll((lines, axis) => {
-          const valueAxis = lines.find((line) =>
-            axis === 'x' ? line.getAttribute('y1') === line.getAttribute('y2') : line.getAttribute('x1') === line.getAttribute('x2'),
-          )!;
-          const [start, end] = axis === 'x' ? ['x1', 'x2'] : ['y1', 'y2'];
-          return Math.abs(Number(valueAxis.getAttribute(end)) - Number(valueAxis.getAttribute(start)));
-        }, variant.axis);
+        const zero = await getAxisTickPosition(page, variant.axis, '0');
+        const twenty = await getAxisTickPosition(page, variant.axis, '20');
 
-        expect(stacked).toBeCloseTo(valueAxisLength / 2, 0);
+        expect(stacked).toBeCloseTo(Math.abs(twenty - zero) / 2, 0);
       });
     });
   });

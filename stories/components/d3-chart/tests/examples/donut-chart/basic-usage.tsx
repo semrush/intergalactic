@@ -3,7 +3,7 @@ import type { DonutChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import { getChartProps, getPropsToChart } from '../stories_props_helper';
+import { getNoAxisChartProps, getPropsToChart } from '../stories_props_helper';
 
 type BasicUsageProps = Omit<DonutChartProps, 'innerLabel' | 'patterns'> & {
   patterns?: DonutChartProps['patterns'] | false;
@@ -51,7 +51,7 @@ const data = {
 
 // showLegend is left out of the defaults so that DonutChart's own logic works
 // (the legend is hidden automatically when data has only 1 item)
-const { showLegend: _showLegend, ...chartProps } = getChartProps<BasicUsageProps>({
+const { showLegend: _showLegend, ...chartProps } = getNoAxisChartProps<BasicUsageProps>({
   data,
   halfsize: false,
   innerLabel: '71,240',

@@ -5,6 +5,7 @@ import { TAG } from '@semcore/testing-utils/shared/tags';
 import {
   BAR_STORY,
   countRoundedCorners,
+  getAxisTickPosition,
   getBarBoxes,
   getCornerRadius,
   getCurveCornerSizes,
@@ -283,15 +284,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, BAR_STORY, 'en', { invertAxis: true, dataType: 'none', highlightDots: 'none', duration: 0 });
 
-    await test.step('Verify the left edge of every bar is on the y axis line', async () => {
+    await test.step('Verify the left edge of every bar is at 0 on the value axis', async () => {
       await expect(locators.groupBarHorizontalBar(page)).toHaveCount(5);
-      await expect(page.locator('line[data-ui-name="Axis"]')).toHaveCount(2);
-      const axisX = await page.locator('line[data-ui-name="Axis"]').evaluateAll((lines) =>
-        Number(lines.find((line) => line.getAttribute('x1') === line.getAttribute('x2'))!.getAttribute('x1')),
-      );
+      const zeroX = await getAxisTickPosition(page, 'x', '0');
       const boxes = await getBarBoxes(locators.groupBarHorizontalBar(page), 'y');
       expect(boxes).toHaveLength(5);
-      expect(boxes.map((box) => box.x)).toEqual(boxes.map(() => axisX));
+
+      for (const box of boxes) {
+        expect(box.x).toBeCloseTo(zeroX, 0);
+      }
     });
   });
 

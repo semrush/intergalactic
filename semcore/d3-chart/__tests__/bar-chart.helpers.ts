@@ -10,6 +10,8 @@ const nthOrAll = (selector: string) => (page: Page, index?: number) => {
 
 export const locators = {
   plot: (page: Page) => page.locator('svg[data-ui-name="Plot"]').first(),
+  /** The whole chart: legend, plot and the axes, which are rendered next to the plot, not inside it. */
+  chart: (page: Page) => page.locator('[data-ui-name="Chart.Bar"]').first(),
   groupBarBar: nthOrAll('[data-ui-name="GroupBar.Bar"]'),
   groupBarHorizontalBar: nthOrAll('[data-ui-name="GroupBar.HorizontalBar"]'),
   bar: nthOrAll('[data-ui-name="Bar"]'),
@@ -24,10 +26,35 @@ export const locators = {
   forecastBars: (page: Page) => page.locator('[data-ui-name][mask$="-forecast-mask)"]'),
   potentialBars: (page: Page) => page.locator('[data-ui-name][mask$="-potential-mask)"]'),
   legend: (page: Page) => page.getByLabel('Chart legend'),
-  tooltip: (page: Page) => page.locator('[data-ui-name="Tooltip"]'),
+  /** `Chart.*` render `Tooltip`; the legacy stories render `HoverLine.Tooltip` / `HoverRect.Tooltip`. */
+  tooltip: (page: Page) => page.locator('[data-ui-name="Tooltip"], [data-ui-name="HoverLine.Tooltip"], [data-ui-name="HoverRect.Tooltip"]'),
 };
 
 export type Box = { x: number; y: number; width: number; height: number };
+
+/**
+ * Where the scale puts `label` on the X or Y axis of a `Chart.*`, in the plot's own coordinates
+ * (the ones `getBarBoxes` returns). The axes are HTML next to the plot, and each tick label is
+ * centred on its scale value, so the centre of the label is the point on the scale.
+ */
+export const getAxisTickPosition = async (page: Page, axis: 'x' | 'y', label: string) => {
+  const axisLocator = page.locator(`[data-ui-name="Axis"][class*="${axis === 'x' ? 'SXAxis' : 'SYAxis'}"]`).first();
+  await expect(axisLocator).toBeVisible();
+
+  const position = await axisLocator.evaluate((element, { axis, label }) => {
+    const plot = document.querySelector('svg[data-ui-name="Plot"]')!.getBoundingClientRect();
+    const tick = [...element.children].find((child) =>
+      !child.className.toString().includes('SHoveredTick') && child.textContent === label,
+    );
+    if (!tick) return null;
+
+    const box = tick.getBoundingClientRect();
+    return axis === 'x' ? box.x + box.width / 2 - plot.x : box.y + box.height / 2 - plot.y;
+  }, { axis, label });
+
+  expect(position, `tick "${label}" on the ${axis.toUpperCase()} axis`).not.toBeNull();
+  return position!;
+};
 
 export const getBarBoxes = async (locator: Locator, axis: 'x' | 'y' = 'x') => {
   await expect(locator.first()).toBeAttached();

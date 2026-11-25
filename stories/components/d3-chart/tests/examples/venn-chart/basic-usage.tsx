@@ -3,7 +3,7 @@ import type { VennChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import { getChartProps, getPropsToChart } from '../stories_props_helper';
+import { getNoAxisChartProps, getPropsToChart } from '../stories_props_helper';
 
 type VennChartStoryProps = VennChartProps & {
   /**
@@ -92,7 +92,7 @@ const legendProps = {
   },
 };
 
-export const defaultProps = getChartProps<VennChartProps>({
+export const defaultProps = getNoAxisChartProps<VennChartProps>({
   data,
   showLegend: true,
   legendProps,

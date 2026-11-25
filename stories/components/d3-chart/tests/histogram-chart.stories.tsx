@@ -8,6 +8,8 @@ const meta: Meta = {
 export default meta;
 export const BasicUsage = {
   render: BasicUsageExample,
-  argTypes: getChartArgTypes(),
+  argTypes: getChartArgTypes({
+    invertAxis: { control: 'boolean' },
+  }),
   args: BasicUsageProps,
 };

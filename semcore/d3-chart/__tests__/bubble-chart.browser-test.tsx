@@ -25,7 +25,8 @@ export const locators = {
     const base = page.locator('label[data-ui-name="Checkbox"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
-  tooltip: (page: Page) => page.locator('[data-ui-name="Bubble.Tooltip"]'),
+  /** `Chart.Bubble` renders `Tooltip`; the legacy stories render `Bubble.Tooltip`. */
+  tooltip: (page: Page) => page.locator('[data-ui-name="Tooltip"], [data-ui-name="Bubble.Tooltip"]'),
   hoveredTickText: (page: Page) =>
     page.locator('[data-ui-name="Axis"] [data-ui-name="Text"]'),
 };
@@ -44,7 +45,6 @@ test.describe(`${TAG.VISUAL}`, () => {
       marginY: 40,
       showXAxis: true,
       showYAxis: true,
-      invertAxis: false,
       showTooltip: true,
       showTotalInTooltip: true,
       patterns: false,
@@ -58,24 +58,9 @@ test.describe(`${TAG.VISUAL}`, () => {
       marginY: 20,
       showXAxis: false,
       showYAxis: false,
-      invertAxis: false,
       showTooltip: true,
       showTotalInTooltip: false,
       patterns: true,
-      duration: 0,
-    },
-    {
-      description: 'Inverted: yAxis and no tooltip',
-      plotWidth: 600,
-      plotHeight: 350,
-      marginX: 80,
-      marginY: 50,
-      showXAxis: false,
-      showYAxis: true,
-      invertAxis: true,
-      showTooltip: false,
-      showTotalInTooltip: false,
-      patterns: false,
       duration: 0,
     },
   ];
@@ -456,8 +441,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     await test.step('Verify every axis label is formatted', async () => {
-      const xTicks = page.locator('[data-ui-name="Axis"][class*="_SXAxis"] [data-ui-name="Axis.Ticks"]');
-      const yTicks = page.locator('[data-ui-name="Axis"][class*="_SYAxis"] [data-ui-name="Axis.Ticks"]');
+      const xTicks = page.locator('[data-ui-name="Axis"][class*="_SXAxis"] [data-ui-name="Axis.Tick"]');
+      const yTicks = page.locator('[data-ui-name="Axis"][class*="_SYAxis"] [data-ui-name="Axis.Tick"]');
       await expect(xTicks.first()).toHaveText(/ px$/);
       await expect(yTicks.first()).toHaveText(/^\$/);
       const xLabels = await xTicks.allTextContents();

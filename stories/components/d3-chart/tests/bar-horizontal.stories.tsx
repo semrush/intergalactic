@@ -27,6 +27,7 @@ export const HorizontalBarProps: StoryObj = {
 export const BasicUsage = {
   render: BasicUsageExample,
   argTypes: getChartArgTypes({
+    invertAxis: { control: 'boolean' },
     maxBarSize: { control: { type: 'number', min: 0, max: 100, step: 1 } },
   }),
   args: BasicUsageProps,

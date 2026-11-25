@@ -1,4 +1,4 @@
-import type { Page } from '@semcore/testing-utils/playwright';
+import type { Locator, Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { expectEachToHaveAttribute, loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
@@ -13,7 +13,8 @@ export const locators = {
     return typeof index === 'number' ? base.nth(index) : base;
   },
   tooltip: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="HoverLine.Tooltip"], [data-ui-name="Chart.Tooltip"]');
+    // `Chart.*` render `Tooltip`; the legacy stories render `HoverLine.Tooltip` / `HoverRect.Tooltip`.
+    const base = page.locator('[data-ui-name="Tooltip"], [data-ui-name="HoverLine.Tooltip"], [data-ui-name="HoverRect.Tooltip"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
   referenceLine: (page: Page, index?: number) => {
@@ -25,7 +26,8 @@ export const locators = {
     return typeof index === 'number' ? base.nth(index) : base;
   },
   axisTicks: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="Axis.Ticks"]');
+    // Legacy XAxis/YAxis render `Axis.Ticks`; the axes of `Chart.*` render `Axis.Tick`.
+    const base = page.locator('[data-ui-name="Axis.Ticks"], [data-ui-name="Axis.Tick"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
   axis: (page: Page, index?: number) => {
@@ -51,7 +53,19 @@ export const locators = {
   diffDown: (page: Page) => page.locator('[data-ui-name="DiffDown"]'),
   tooltipTitle: (page: Page) => page.locator('[data-ui-name="Tooltip.Title"]'),
   hoverLine: (page: Page) => page.locator('g[data-ui-name="HoverLine"]'),
+  /** Y axes of `Chart.*`; there are two of them when `yAxisPosition` is `both`. */
+  yAxes: (page: Page) => page.locator('[data-ui-name="Axis"][class*="SYAxis"]'),
+  /** The chart root: the element that holds the legend, the plot and the axes. */
+  chartRoot: (page: Page) => page.getByRole('group').filter({ has: page.locator('svg[data-ui-name="Plot"]') }).first(),
 };
+
+/** Tick labels of one axis, without the hovered-tick pill. */
+const readAxisTicks = (axis: Locator) =>
+  axis.evaluate((el) =>
+    [...el.children]
+      .filter((child) => !child.className.toString().includes('SHoveredTick'))
+      .map((child) => child.textContent),
+  );
 
 /** See BASE_RADIUS and ACTIVE_RADIUS in Dots.jsx. */
 const BASE_RADIUS = 3.5;
@@ -63,6 +77,8 @@ const HOVERED_TICK_EXAMPLE = 'stories/components/d3-chart/tests/examples/d3-char
 const AREA_CHART_EXAMPLE = 'stories/components/d3-chart/tests/examples/area-chart/basic-usage.tsx';
 const LINE_CHART_EXAMPLE = 'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx';
 const BAR_CHART_EXAMPLE = 'stories/components/d3-chart/tests/examples/bar-chart/basic-usage.tsx';
+const BUBBLE_CHART_EXAMPLE = 'stories/components/d3-chart/tests/examples/bubble-chart/basic-usage.tsx';
+const SCATTERPLOT_CHART_EXAMPLE = 'stories/components/d3-chart/tests/examples/scatterplot-chart/basic-usage.tsx';
 const DELTA_EDGE_CASES_EXAMPLE = 'stories/components/d3-chart/tests/examples/d3-chart/tooltip-delta-edge-cases.tsx';
 const CUSTOM_PATTERNS_EXAMPLE = 'stories/components/d3-chart/tests/examples/d3-chart/custom-patterns.tsx';
 
@@ -349,6 +365,41 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 
+  test.describe('Y axis position', () => {
+    // Y axis variants, `left` is the default,
+    // so the other visual tests already cover it.
+    (['right', 'both'] as const).forEach((yAxisPosition) => {
+      test(`Verify Area chart with yAxisPosition=${yAxisPosition}`, {
+        tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@area-chart'],
+      }, async ({ page }) => {
+        await loadPage(page, AREA_CHART_EXAMPLE, 'en', {
+          yAxisPosition,
+          plotWidth: 400,
+          plotHeight: 220,
+          duration: 0,
+          showLegend: false,
+        });
+        await locators.plot(page).waitFor({ state: 'visible' });
+        await expect(locators.chartRoot(page)).toHaveScreenshot(`y-axis-position-area-${yAxisPosition}.png`);
+      });
+    });
+
+    test('Verify horizontal Bar chart with category labels on both sides', {
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@bar-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, BAR_CHART_EXAMPLE, 'en', {
+        invertAxis: true,
+        yAxisPosition: 'both',
+        plotWidth: 500,
+        plotHeight: 260,
+        duration: 0,
+        showLegend: false,
+      });
+      await locators.plot(page).waitFor({ state: 'visible' });
+      await expect(locators.chartRoot(page)).toHaveScreenshot('y-axis-position-bar-horizontal-both.png');
+    });
+  });
+
   test.describe('Adaptive chart', () => {
     test('Verify chart looks good on small resolutions', {
       tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@line-chart'],
@@ -409,7 +460,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await hoverPlotCenter(page);
 
-      const tooltipSymbol = locators.tooltip(page).locator('[data-ui-name="HoverLine.Tooltip.Dot"] svg');
+      const tooltipSymbol = locators.tooltip(page).locator('[data-ui-name="Tooltip.Dot"] svg, [data-ui-name="HoverLine.Tooltip.Dot"] svg');
       await expect(tooltipSymbol).toHaveCount(1);
       await expect(tooltipSymbol).toHaveAttribute('viewBox', CUSTOM_SYMBOL_VIEWBOX);
     });
@@ -451,8 +502,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await hoverPlotCenter(page);
 
-        await expect(locators.hoveredTick(page)).toHaveCount(1);
-        await expect(locators.hoveredTick(page)).toHaveCount(1);
+        await expect(locators.oldHoveredTick(page)).toHaveCount(1);
         await expect(page).toHaveScreenshot();
       });
     });
@@ -668,6 +718,96 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
+  test.describe('Y axis position', () => {
+    /**
+     * One case per implementation of `renderYAxis`: the base one in AbstractAxisChart (Area,
+     * also used by Line and Histogram) and the overrides in Bar, Bubble and ScatterPlot.
+     * Bar with `invertAxis` puts the categories on the Y axis.
+     */
+    const charts = [
+      { name: 'Area', example: AREA_CHART_EXAMPLE, props: {}, tag: '@area-chart' },
+      { name: 'Bar', example: BAR_CHART_EXAMPLE, props: {}, tag: '@bar-chart' },
+      { name: 'horizontal Bar', example: BAR_CHART_EXAMPLE, props: { invertAxis: true }, tag: '@bar-chart' },
+      { name: 'Bubble', example: BUBBLE_CHART_EXAMPLE, props: {}, tag: '@bubble-chart' },
+      { name: 'ScatterPlot', example: SCATTERPLOT_CHART_EXAMPLE, props: {}, tag: '@scatterplot-chart' },
+    ] as const;
+
+    charts.forEach(({ name, example, props, tag }) => {
+      test(`Verify yAxisPosition places the Y axis of ${name}`, {
+        tag: [TAG.PRIORITY_HIGH, '@d3-chart', tag],
+      }, async ({ page }) => {
+        // `left` is the default and is checked by every other test of these charts.
+        const load = async (yAxisPosition: 'right' | 'both') => {
+          await loadPage(page, example, 'en', { ...props, yAxisPosition, duration: 0, showLegend: false });
+          await locators.plot(page).waitFor({ state: 'visible' });
+          return (await locators.plot(page).boundingBox())!;
+        };
+
+        await test.step('right: one Y axis, to the right of the plot', async () => {
+          const plot = await load('right');
+          await expect(locators.yAxes(page)).toHaveCount(1);
+          const axis = (await locators.yAxes(page).boundingBox())!;
+          expect(axis.x).toBeGreaterThanOrEqual(plot.x + plot.width - 1);
+        });
+
+        await test.step('both: two Y axes with the same ticks, one on each side', async () => {
+          const plot = await load('both');
+          await expect(locators.yAxes(page)).toHaveCount(2);
+
+          const left = (await locators.yAxes(page).nth(0).boundingBox())!;
+          const right = (await locators.yAxes(page).nth(1).boundingBox())!;
+          expect(left.x + left.width).toBeLessThanOrEqual(plot.x + 1);
+          expect(right.x).toBeGreaterThanOrEqual(plot.x + plot.width - 1);
+
+          const leftTicks = await readAxisTicks(locators.yAxes(page).nth(0));
+          expect(leftTicks.length).toBeGreaterThan(0);
+          expect(await readAxisTicks(locators.yAxes(page).nth(1))).toEqual(leftTicks);
+        });
+      });
+    });
+
+    test('Verify yAxisPosition=both keeps the chart within plotWidth', {
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@area-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, AREA_CHART_EXAMPLE, 'en', {
+        yAxisPosition: 'both',
+        plotWidth: 400,
+        plotHeight: 220,
+        duration: 0,
+        showLegend: false,
+      });
+      await locators.plot(page).waitFor({ state: 'visible' });
+
+      const chart = (await locators.chartRoot(page).boundingBox())!;
+      const right = (await locators.yAxes(page).nth(1).boundingBox())!;
+      expect(right.x + right.width).toBeLessThanOrEqual(chart.x + chart.width + 1);
+      expect(chart.width).toBeLessThanOrEqual(400);
+    });
+
+    (['right', 'both'] as const).forEach((yAxisPosition) => {
+      test(`Verify showYAxis=false with yAxisPosition=${yAxisPosition} leaves no Y axis and no empty column`, {
+        tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@area-chart'],
+      }, async ({ page }) => {
+        await loadPage(page, AREA_CHART_EXAMPLE, 'en', {
+          yAxisPosition,
+          showYAxis: false,
+          plotWidth: 400,
+          plotHeight: 220,
+          duration: 0,
+          showLegend: false,
+        });
+        await locators.plot(page).waitFor({ state: 'visible' });
+
+        await expect(locators.yAxes(page)).toHaveCount(0);
+
+        const chart = (await locators.chartRoot(page).boundingBox())!;
+        const plot = (await locators.plot(page).boundingBox())!;
+        expect(plot.x).toBeLessThanOrEqual(chart.x + 1);
+        expect(plot.x + plot.width).toBeGreaterThanOrEqual(chart.x + chart.width - 1);
+      });
+    });
+  });
+
   test.describe('Tick links', () => {
     const LINKS_EXAMPLE = 'stories/components/d3-chart/docs/examples/bar-chart/links.tsx';
 
@@ -741,33 +881,47 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       expect(linkSize).toBe(tickSize);
     });
 
-    test('Verify the hovered tick hides while a tick link has keyboard focus', {
+    test('Verify a tick link with keyboard focus is drawn above the hovered tick', {
       tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@d3-chart', '@bar-chart', '@link'],
     }, async ({ page }) => {
       await loadPage(page, LINKS_EXAMPLE, 'en');
       await locators.plot(page).waitFor({ state: 'visible' });
 
       const tickLinks = locators.axisTicks(page).locator('a');
+      const link = tickLinks.first();
       const pill = locators.hoveredTick(page);
 
-      await hoverTickColumn(page, tickLinks.first());
-      await expect(pill).toHaveCSS('visibility', 'visible');
+      /** Whether the link itself, not the pill, is the topmost element at the link centre. */
+      const isLinkOnTop = () =>
+        link.evaluate((element) => {
+          const box = element.getBoundingClientRect();
+          const top = document.elementFromPoint(box.x + box.width / 2, box.y + box.height / 2);
+          return top !== null && (top === element || element.contains(top));
+        });
 
-      await test.step('Focus the link with the keyboard', async () => {
+      await hoverTickColumn(page, link);
+      await expect(pill).toBeVisible();
+
+      await test.step('Without focus, the hovered tick covers the link', async () => {
+        expect(await isLinkOnTop()).toBe(false);
+      });
+
+      await test.step('Focus the link with the keyboard: it is drawn above the hovered tick', async () => {
         // Focus arrives by Shift+Tab, so the link matches :focus-visible in every browser.
         await tickLinks.nth(1).focus();
         await page.keyboard.press('Shift+Tab');
 
-        await expect(tickLinks.first()).toBeFocused();
-        await expect(pill).toHaveCSS('visibility', 'hidden');
+        await expect(link).toBeFocused();
+        await expect(pill).toBeVisible();
+        expect(await isLinkOnTop()).toBe(true);
       });
 
-      await test.step('Move focus off the tick links', async () => {
+      await test.step('Move focus off the link: the hovered tick covers it again', async () => {
         // The first link is the first tab stop, so Shift+Tab would leave the page.
-        await tickLinks.first().blur();
+        await link.blur();
 
-        await expect(tickLinks.first()).not.toBeFocused();
-        await expect(pill).toHaveCSS('visibility', 'visible');
+        await expect(link).not.toBeFocused();
+        expect(await isLinkOnTop()).toBe(false);
       });
     });
   });
@@ -894,8 +1048,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await hoverPlotCenter(page);
 
-        await expect(locators.hoveredTick(page)).toHaveCount(0);
-        await expect(locators.hoveredTick(page)).toHaveCount(0);
+        await expect(locators.oldHoveredTick(page)).toHaveCount(0);
       });
 
       test(`Verify the tick pill is rendered on hover for Hover${hoverType}`, {
@@ -905,7 +1058,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await hoverPlotCenter(page);
 
-        await expect(locators.oldHoveredTick(page)).toHaveCount(1);
         await expect(locators.oldHoveredTick(page)).toHaveCount(1);
       });
     });
@@ -1027,7 +1179,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await hoverPlotCenter(page);
 
       await expect(locators.hoverLine(page)).toHaveCount(0);
-      await expect(locators.hoveredTick(page)).toHaveCount(0);
+      await expect(locators.oldHoveredTick(page)).toHaveCount(0);
     });
 
     test('Verify hovering the axis area below the plot keeps the tooltip open', {
@@ -1416,14 +1568,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test.describe('Hovered tick value', () => {
     /**
-     * Labels of the X axis only. Each tick is its own `Axis.Ticks` element and the axis it
+     * Labels of the X axis only. Each tick is its own `Axis.Tick` element and the axis it
      * belongs to shows up as a position modifier in its generated class, so the vertical
      * axis (`_position_left`) has to be filtered out — its labels are numbers too and
      * would otherwise be mistaken for X values.
      */
     const readXAxisLabels = (page: Page) =>
       page
-        .locator('[data-ui-name="Axis.Ticks"][class*="_SXAxis"]')
+        .locator('[data-ui-name="Axis"][class*="SXAxis"] [data-ui-name="Axis.Tick"]')
         .evaluateAll((els) => els.map((e) => e.textContent));
 
     const hoverDot = async (page: Page, selector: string, index: number) => {
@@ -1475,7 +1627,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await hoverPlotCenter(page);
 
       await test.step('Verify the hover trigger is a HoverRect', async () => {
-        await expect(page.locator('[data-ui-name="Tooltip.Trigger"]').first()).toHaveJSProperty('tagName', 'path');
+        await expect(page.locator('[data-ui-name="HoverRect"]').first()).toHaveJSProperty('tagName', 'path');
       });
 
       await test.step('Verify the pill shows the hovered category', async () => {
