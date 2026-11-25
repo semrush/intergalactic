@@ -62,6 +62,7 @@ STooltipDeltaWrapper {
 SChartContainer {
   display: grid;
   width: fit-content;
+  grid-template: 'plot' 'xAxis';
 }
 
 SChartContainer[yAxisPosition='left'] {
