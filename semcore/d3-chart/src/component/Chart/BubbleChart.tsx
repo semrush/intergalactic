@@ -105,14 +105,14 @@ class BubbleChartComponent extends AbstractAxisChart<
   }
 
   override get xScale() {
-    const { xScale, marginY = 0, data } = this.asProps;
+    const { xScale, data } = this.asProps;
     const { plotWidth } = this;
 
     if (xScale) {
       return xScale;
     }
 
-    const range = [marginY, plotWidth - this.plotPadding];
+    const range = [this.plotPadding, plotWidth - this.plotPadding];
     const domain = calculateBubbleDomain(data, 'x', range);
 
     return scaleLinear().domain(domain).range(range);
@@ -202,8 +202,8 @@ class BubbleChartComponent extends AbstractAxisChart<
     );
   }
 
-  protected override renderYAxis(): React.ReactNode {
-    const { yTicksCount, showYAxis, axisYValueFormatter, yAxisPosition } = this.asProps;
+  protected override renderYAxis(yAxisPosition: 'left' | 'right'): React.ReactNode {
+    const { yTicksCount, showYAxis, axisYValueFormatter } = this.asProps;
 
     if (!showYAxis) {
       return null;
@@ -211,7 +211,7 @@ class BubbleChartComponent extends AbstractAxisChart<
 
     return (
       <YAxis
-        ref={this.yAxisRef}
+        ref={yAxisPosition === 'left' ? this.yLeftAxisRef : this.yRightAxisRef}
         uid={this.plotId}
         data={this.data}
         plotBoundaryRect={this.plotBoundaryRect}

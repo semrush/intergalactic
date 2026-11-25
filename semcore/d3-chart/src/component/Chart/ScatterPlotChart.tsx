@@ -46,7 +46,7 @@ class ScatterPlotChartComponent extends AbstractAxisChart<
   }
 
   protected get xScale() {
-    const { xScale, marginY = 0, data, groupKey, valueKey } = this.asProps;
+    const { xScale, data, groupKey, valueKey } = this.asProps;
     const { plotWidth } = this;
 
     if (xScale) {
@@ -55,7 +55,7 @@ class ScatterPlotChartComponent extends AbstractAxisChart<
 
     const radius = getScatterPlotRadius(valueKey) / this.getValueScale([...this.flatValues]);
     const testItem = data[0][groupKey];
-    const range = [marginY, plotWidth - this.plotPadding];
+    const range = [this.plotPadding, plotWidth - this.plotPadding];
     const domain = minMax(data, groupKey);
 
     if (testItem instanceof Date && !Number.isNaN(testItem.getMilliseconds())) {
@@ -153,8 +153,8 @@ class ScatterPlotChartComponent extends AbstractAxisChart<
     return this.asProps.getI18nText('legendForChart', { chartType: 'ScatterPlot' });
   }
 
-  protected override renderYAxis(): React.ReactNode {
-    const { yTicksCount, showYAxis, axisYValueFormatter, yAxisPosition } = this.asProps;
+  protected override renderYAxis(yAxisPosition: 'left' | 'right'): React.ReactNode {
+    const { yTicksCount, showYAxis, axisYValueFormatter } = this.asProps;
 
     if (!showYAxis) {
       return null;
@@ -162,7 +162,7 @@ class ScatterPlotChartComponent extends AbstractAxisChart<
 
     return (
       <YAxis
-        ref={this.yAxisRef}
+        ref={yAxisPosition === 'left' ? this.yLeftAxisRef : this.yRightAxisRef}
         uid={this.plotId}
         data={this.data}
         dataKey='y'

@@ -34,7 +34,7 @@ class LineChartComponent extends AbstractAxisChart<
   } as const;
 
   protected get xScale() {
-    const { xScale, marginY = 0, data, groupKey } = this.asProps;
+    const { xScale, data, groupKey } = this.asProps;
     const { plotWidth } = this;
 
     if (xScale) {
@@ -42,7 +42,7 @@ class LineChartComponent extends AbstractAxisChart<
     }
 
     const testItem = data[0][groupKey];
-    const range = [marginY, plotWidth - this.plotPadding];
+    const range = [this.plotPadding, plotWidth - this.plotPadding];
     const domain = minMax(data, groupKey);
 
     if (testItem instanceof Date && !Number.isNaN(testItem.getMilliseconds())) {

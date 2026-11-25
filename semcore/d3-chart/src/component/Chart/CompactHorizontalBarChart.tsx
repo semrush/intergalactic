@@ -116,7 +116,7 @@ class CompactHorizontalBarChartComponent extends AbstractChart<
   }
 
   private get valueScale() {
-    const { marginY = 0 } = this.asProps;
+    const { marginY = this.plotPadding } = this.asProps;
     const { plotWidth } = this;
 
     const sum = [...super.flatValues.values()].reduce((acc, d) => acc + d, 0);

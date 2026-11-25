@@ -23,7 +23,7 @@ export type AbstractAxisChartProps<D extends ListData = ListData> = BaseChartPro
    * Position of Y axis.
    * @default 'left'
    */
-  yAxisPosition?: NSAxis.Props['yAxisPosition'];
+  yAxisPosition?: NSAxis.Props['yAxisPosition'] | 'both';
 
   /**
    * Count of ticks for X axis

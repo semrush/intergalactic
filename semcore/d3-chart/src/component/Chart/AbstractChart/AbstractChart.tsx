@@ -655,11 +655,13 @@ export abstract class AbstractChart<
     }
 
     // @ts-expect-error yAxisRef is in AbstractAxisChart only
-    const yAxisRect = this.yAxisRef?.current?.getBoundingClientRect();
+    const yLeftAxisRect = this.yLeftAxisRef?.current?.getBoundingClientRect();
+    // @ts-expect-error yAxisRef is in AbstractAxisChart only
+    const yRightAxisRect = this.yRightAxisRef?.current?.getBoundingClientRect();
     // @ts-expect-error yAxisRef is in AbstractAxisChart only
     const xAxisRef = this.xAxisRef?.current?.getBoundingClientRect();
 
-    width = width - (yAxisRect?.width ?? 0);
+    width = width - (yLeftAxisRect?.width ?? 0) - (yRightAxisRect?.width ?? 0);
     height = height - (xAxisRef?.height ?? 0);
 
     if (aspect) {

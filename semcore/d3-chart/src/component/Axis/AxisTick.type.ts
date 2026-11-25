@@ -1,13 +1,13 @@
 import type { NSBox } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
-import type * as React from 'react';
+
+import type { NSAxis } from './Axis.type';
 
 declare namespace NSAxisTick {
 
   type Props = NSBox.Props & {
-    value: number | string | Date;
-    translate: string;
-    valueFormatter: (value: unknown) => React.ReactNode;
+    yAxisPosition: NSAxis.Props['yAxisPosition'];
+    primaryText: NSAxis.Props['primaryText'];
   };
 
   type State = {

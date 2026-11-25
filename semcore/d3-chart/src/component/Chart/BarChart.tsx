@@ -232,7 +232,7 @@ class BarChartComponent extends AbstractAxisChart<
     );
   }
 
-  protected override renderYAxis(): React.ReactNode {
+  protected override renderYAxis(yAxisPosition: 'left' | 'right'): React.ReactNode {
     const { yTicksCount, showYAxis, axisYValueFormatter, groupKey, invertAxis } = this.asProps;
 
     if (!showYAxis) {
@@ -242,12 +242,13 @@ class BarChartComponent extends AbstractAxisChart<
     return (
       <YAxis
         uid={this.plotId}
-        ref={this.yAxisRef}
+        ref={yAxisPosition === 'left' ? this.yLeftAxisRef : this.yRightAxisRef}
         dataKey={groupKey}
         plotBoundaryRect={this.plotBoundaryRect}
         scale={this.yScale}
         ticksCount={yTicksCount}
         primaryText={!!invertAxis}
+        yAxisPosition={yAxisPosition}
         valueFormatter={axisYValueFormatter ?? this.valueFormatter}
         data={this.data}
         eventEmitter={this.eventEmitter}
@@ -350,8 +351,6 @@ class BarChartComponent extends AbstractAxisChart<
 
   private get categoryScale() {
     const {
-      marginY = 0,
-      marginX = 0,
       invertAxis,
       data,
       groupKey,
@@ -360,8 +359,8 @@ class BarChartComponent extends AbstractAxisChart<
 
     const testItem = data[0][groupKey];
     const range = invertAxis
-      ? [plotHeight - marginX, this.plotPadding]
-      : [marginY, plotWidth - this.plotPadding];
+      ? [plotHeight - this.plotPadding, this.plotPadding]
+      : [this.plotPadding, plotWidth - this.plotPadding];
 
     if (testItem instanceof Date && !Number.isNaN(testItem.getMilliseconds())) {
       const domain = minMax(data, groupKey);
@@ -375,7 +374,7 @@ class BarChartComponent extends AbstractAxisChart<
   }
 
   private get valueScale() {
-    const { marginY = 0, marginX = 0, invertAxis, type } = this.asProps;
+    const { invertAxis, type } = this.asProps;
     const { plotWidth, plotHeight } = this;
 
     const max = type === 'stack' ? super.maxStackedValue : Math.max(...super.flatValues);
@@ -383,8 +382,8 @@ class BarChartComponent extends AbstractAxisChart<
     return scaleLinear()
       .range(
         invertAxis
-          ? [marginY, plotWidth - this.plotPadding]
-          : [plotHeight - marginX, this.plotPadding],
+          ? [this.plotPadding, plotWidth - this.plotPadding]
+          : [plotHeight - this.plotPadding, this.plotPadding],
       )
       .domain([0, max]);
   }

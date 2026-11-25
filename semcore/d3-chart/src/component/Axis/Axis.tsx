@@ -105,7 +105,7 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
   }
 
   renderTicks() {
-    const { valueFormatter } = this.asProps;
+    const { valueFormatter, yAxisPosition, primaryText } = this.asProps;
 
     return (
       <>
@@ -113,10 +113,12 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
           return (
             <AxisTick
               key={`${index}_${tick.value}`}
-              value={tick.value}
-              valueFormatter={valueFormatter}
-              translate={this.getCssTranslate(tick.translate)}
-            />
+              style={{ transform: this.getCssTranslate(tick.translate) }}
+              yAxisPosition={yAxisPosition}
+              primaryText={primaryText}
+            >
+              {valueFormatter(tick.value)}
+            </AxisTick>
           );
         })}
         {this.renderHoveredTick()}

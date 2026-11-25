@@ -11,7 +11,7 @@ import type { ChartState } from './AbstractChart';
 import { AbstractChart } from './AbstractChart';
 import type { ListData } from './AbstractChart.type';
 // @ts-ignore
-import { Plot, YAxis as YAxisOld } from '../../..';
+import { Plot } from '../../..';
 import { invert } from '../../../utils';
 import { XAxis } from '../../Axis/XAxis';
 import { YAxis } from '../../Axis/YAxis';
@@ -27,7 +27,8 @@ export abstract class AbstractAxisChart<
   DefaultProps extends Intergalactic.InternalTypings.ValidDefaultProps<DefaultProps, Props & InnerProps> = never,
 > extends AbstractChart<Data, Props, Enhancers, InnerProps, State, DefaultProps> {
   protected xAxisRef = React.createRef<HTMLDivElement>();
-  protected yAxisRef = React.createRef<HTMLDivElement>();
+  protected yLeftAxisRef = React.createRef<HTMLDivElement>();
+  protected yRightAxisRef = React.createRef<HTMLDivElement>();
 
   constructor(props: Props) {
     super(props);
@@ -113,8 +114,8 @@ export abstract class AbstractAxisChart<
     );
   }
 
-  protected renderYAxis(): React.ReactNode {
-    const { yTicksCount, showYAxis, axisYValueFormatter, yAxisPosition, groupKey } = this.asProps;
+  protected renderYAxis(yAxisPosition: 'left' | 'right'): React.ReactNode {
+    const { yTicksCount, showYAxis, axisYValueFormatter, groupKey } = this.asProps;
 
     if (!showYAxis || !groupKey) {
       return null;
@@ -122,7 +123,7 @@ export abstract class AbstractAxisChart<
 
     return (
       <YAxis
-        ref={this.yAxisRef}
+        ref={yAxisPosition === 'left' ? this.yLeftAxisRef : this.yRightAxisRef}
         uid={this.plotId}
         data={this.data}
         dataKey={groupKey}
@@ -163,8 +164,10 @@ export abstract class AbstractAxisChart<
   public override render() {
     const SChart = Root;
     const SChartContainer = Box;
-    const { styles, patterns, a11yAltTextConfig, duration, showTooltip, locale, yAxisPosition = 'left' } = this.asProps;
+    const { styles, patterns, a11yAltTextConfig, duration, showTooltip, locale, yAxisPosition = 'left', showYAxis } = this.asProps;
     const { plotWidth, plotHeight } = this;
+
+    const resolvedYAxisPosition = showYAxis !== true ? undefined : yAxisPosition;
 
     const { extractedAriaProps } = extractAriaProps(this.asProps);
 
@@ -174,8 +177,10 @@ export abstract class AbstractAxisChart<
         <SChartContainer
           onMouseMove={this.handleMouseMoveChartContainer}
           onMouseLeave={this.handleMouseLeaveChartContainer}
+          // @ts-expect-error for css only
+          yAxisPosition={yAxisPosition}
         >
-          {yAxisPosition === 'left' && this.renderYAxis()}
+          {(yAxisPosition === 'left' || yAxisPosition === 'both') && this.renderYAxis('left')}
           <Plot
             uid={this.plotId}
             data={this.data}
@@ -199,7 +204,7 @@ export abstract class AbstractAxisChart<
             {!showTooltip ? null : this.renderTooltip()}
             {this.renderChart()}
           </Plot>
-          {yAxisPosition === 'right' && this.renderYAxis()}
+          {(yAxisPosition === 'right' || yAxisPosition === 'both') && this.renderYAxis('right')}
           {this.renderXAxis()}
         </SChartContainer>
       </SChart>,

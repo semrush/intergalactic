@@ -1,4 +1,4 @@
-import { Component, createComponent, sstyled } from '@semcore/core';
+import { Component, createComponent, Root, sstyled } from '@semcore/core';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { Text } from '@semcore/typography';
 import * as React from 'react';
@@ -24,21 +24,19 @@ class AxisTickComponent extends Component<NSAxisTick.Props, [], never, {}, NSAxi
   }
 
   render() {
-    const STick = Text;
+    const STick = Root;
 
-    const { valueFormatter, value, translate, styles } = this.asProps;
+    const { styles } = this.asProps;
     const { isInteractive } = this.state;
 
     return sstyled(styles)(
       <STick
+        render={Text}
         size={100}
         ref={this.tickRef}
-        style={{ transform: translate }}
         data-ui-name='Axis.Ticks'
         aria-hidden={isInteractive ? undefined : true}
-      >
-        {valueFormatter(value)}
-      </STick>,
+      />,
     );
   }
 }

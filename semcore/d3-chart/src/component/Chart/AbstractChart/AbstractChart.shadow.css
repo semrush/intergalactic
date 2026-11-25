@@ -61,7 +61,18 @@ STooltipDeltaWrapper {
 
 SChartContainer {
   display: grid;
-  grid-template: 'yAxis plot' '. xAxis';
-  grid-template-columns: min-content 1fr;
   width: fit-content;
+}
+
+SChartContainer[yAxisPosition='left'] {
+  grid-template: 'yAxis plot' '. xAxis';
+  grid-template-columns: max-content 1fr;
+}
+SChartContainer[yAxisPosition='right'] {
+  grid-template: 'plot yAxis' 'xAxis .';
+  grid-template-columns: 1fr max-content;
+}
+SChartContainer[yAxisPosition='both'] {
+  grid-template: 'yLeftAxis plot yRgihtAxis' '. xAxis .';
+  grid-template-columns: max-content 1fr max-content;
 }

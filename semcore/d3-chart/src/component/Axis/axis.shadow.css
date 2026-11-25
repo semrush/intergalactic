@@ -39,17 +39,25 @@ SXAxis {
 }
 
 SYAxis {
-  padding-left: var(--intergalactic-spacing-2x, 8px);
-
   SHoveredTick, STick {
     margin: 0 var(--intergalactic-spacing-3x, 12px);
   }
 
-  &[position='left'] {
+  &[yAxisPosition='left'] {
+    padding-left: var(--intergalactic-spacing-2x, 8px);
     justify-items: end;
+
+    SHoveredTick, STick {
+      text-align: right;
+    }
   }
-  &[position='right'] {
+  &[yAxisPosition='right'] {
+    padding-right: var(--intergalactic-spacing-2x, 8px);
     justify-items: start;
+
+    SHoveredTick, STick {
+      text-align: left;
+    }
   }
 
   &[primaryText] > STick {

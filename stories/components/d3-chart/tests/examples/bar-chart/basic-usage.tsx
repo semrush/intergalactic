@@ -127,6 +127,7 @@ const Demo = (props: BarChartProps) => {
 export const defaultProps = getChartProps<BarChartProps>({
   groupKey: 'category',
   type: 'group',
+  invertAxis: false,
   data: undefined,
   maxBarSize: 12,
   trend: {

@@ -116,12 +116,6 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
    * @deprecated. Axis can be only in AbstractAxisChart
    */
   showYAxis?: boolean;
-
-  /**
-   * Position of Y axis.
-   * @deprecated. Axis can be only in AbstractAxisChart
-   */
-  yAxisPosition?: NSAxis.Props['yAxisPosition'];
   /**
    * Map with colors for data items
    */
