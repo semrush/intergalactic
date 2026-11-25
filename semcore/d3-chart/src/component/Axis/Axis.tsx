@@ -51,7 +51,7 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
   renderHoveredTick() {
     const SHoveredTick = Text;
 
-    const { scale, valueFormatter, data, dataKey, styles } = this.asProps;
+    const { scale, valueFormatter, data, dataKey, styles, plotBoundaryRect } = this.asProps;
     const { dataIndex } = this.state;
     const item = data[dataIndex];
 
@@ -64,12 +64,14 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
       return null;
     }
 
+    const tickWidth = plotBoundaryRect.width / this.ticks.length;
+
     const style = {
       transform: this.getCssTranslate(scaleOfBandwidth(scale, value) ?? 0),
     };
 
     return sstyled(styles)(
-      <SHoveredTick size={100} style={style} aria-hidden>
+      <SHoveredTick size={100} style={style} aria-hidden w={tickWidth > 0 ? tickWidth : undefined}>
         {valueFormatter(item[dataKey])}
       </SHoveredTick>,
     );
@@ -95,7 +97,8 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
   }
 
   renderTicks() {
-    const { valueFormatter, yAxisPosition, primaryText } = this.asProps;
+    const { valueFormatter, yAxisPosition, primaryText, plotBoundaryRect } = this.asProps;
+    const tickWidth = plotBoundaryRect.width / this.ticks.length;
 
     return (
       <>
@@ -106,6 +109,7 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
               style={{ transform: this.getCssTranslate(tick.translate) }}
               yAxisPosition={yAxisPosition}
               primaryText={primaryText}
+              w={tickWidth > 0 ? `${tickWidth}px` : undefined}
             >
               {valueFormatter(tick.value)}
             </AxisTick>
