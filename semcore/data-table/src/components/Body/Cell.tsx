@@ -103,7 +103,7 @@ class CellRoot<Data extends DataTableData, UniqKeyType>
         gridArea={gridArea}
         fixed={column.fixed}
         style={style}
-        data-cell-name={column.name}
+        data-cell-name={typeof column.name === 'string' ? column.name : undefined}
       >
         <SCell
           ref={this.cellRef}

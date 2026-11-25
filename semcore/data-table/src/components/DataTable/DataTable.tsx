@@ -1162,11 +1162,13 @@ class DataTableRoot<
 
   private setShadows() {
     const lastColumnIndex = this.columns.length;
+    const leftName = this.fixedCellsData.left.name;
+    const rightName = this.fixedCellsData.right.name;
 
     if (this.headerShadowLeftRef.current) {
       const leftShadowGridArea = `1 / ${this.fixedCellsData.left.gridColumnStart || 1} / ${this.hasGroups ? 3 : 2} / ${this.fixedCellsData.left.gridColumnStart || 1}`;
       this.headerShadowLeftRef.current.style.setProperty('grid-area', leftShadowGridArea);
-      this.headerShadowLeftRef.current.dataset.cellName = this.fixedCellsData.left.name;
+      this.headerShadowLeftRef.current.dataset.cellName = leftName;
     }
 
     if (this.headerShadowRightRef.current) {
@@ -1174,13 +1176,13 @@ class DataTableRoot<
       const rightShadowGridArea = `1 / ${gridColumnStart ?? lastColumnIndex} / ${this.hasGroups ? 3 : 2} / ${(gridColumnStart ?? lastColumnIndex) + 1}`;
 
       this.headerShadowRightRef.current.style.setProperty('grid-area', rightShadowGridArea);
-      this.headerShadowRightRef.current.dataset.cellName = this.fixedCellsData.right.name;
+      this.headerShadowRightRef.current.dataset.cellName = rightName;
     }
 
     if (this.bodyShadowLeftRef.current) {
       const leftShadowGridArea = `${this.hasGroups ? 3 : 2} / ${this.fixedCellsData.left.gridColumnStart || 1} / 10000 / ${this.fixedCellsData.left.gridColumnStart || 1}`;
       this.bodyShadowLeftRef.current.style.setProperty('grid-area', leftShadowGridArea);
-      this.bodyShadowLeftRef.current.dataset.cellName = this.fixedCellsData.left.name;
+      this.bodyShadowLeftRef.current.dataset.cellName = leftName;
     }
 
     if (this.bodyShadowRightRef.current) {
@@ -1188,7 +1190,7 @@ class DataTableRoot<
       const rightShadowGridArea = `${this.hasGroups ? 3 : 2} / ${gridColumnStart ?? lastColumnIndex} / 10000 / ${(gridColumnStart ?? lastColumnIndex) + 1}`;
 
       this.bodyShadowRightRef.current.style.setProperty('grid-area', rightShadowGridArea);
-      this.bodyShadowRightRef.current.dataset.cellName = this.fixedCellsData.right.name;
+      this.bodyShadowRightRef.current.dataset.cellName = rightName;
     }
   }
 
