@@ -71,7 +71,13 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
     };
 
     return sstyled(styles)(
-      <SHoveredTick size={100} style={style} aria-hidden w={tickWidth > 0 ? tickWidth : undefined}>
+      <SHoveredTick
+        size={100}
+        style={style}
+        aria-hidden
+        w={tickWidth > 0 ? tickWidth : undefined}
+        inert=''
+      >
         {valueFormatter(item[dataKey])}
       </SHoveredTick>,
     );

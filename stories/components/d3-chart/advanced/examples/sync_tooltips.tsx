@@ -7,8 +7,7 @@ const ee = new PlotEventEmitter();
 
 const Demo = () => {
   const plotWidth = 500;
-  const marginY = 40;
-  const range = [marginY, plotWidth - 6]; // 6 - default plotPadding
+  const range = [0, plotWidth]; // 6 - default plotPadding
 
   return (
     <Box>

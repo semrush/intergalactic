@@ -301,6 +301,7 @@ export namespace Intergalactic {
         ReturnResult,
         AdditionalContext
       >;
+      inert?: '' | boolean;
     } & ComponentBasicProps<Tag extends [ComponentTag, keyof JSX.IntrinsicElements] ? Tag[0] : Tag, Instance> &
     MergeProps<
       EfficientOmit<Props, 'tag' | 'children'>,
