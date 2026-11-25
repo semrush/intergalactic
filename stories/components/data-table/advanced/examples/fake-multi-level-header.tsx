@@ -1,18 +1,35 @@
-import { Flex } from '@semcore/ui/base-components';
+import { Box, Flex } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
 import Tooltip from '@semcore/ui/tooltip';
 import React from 'react';
 
 export default () => {
+  const tableRef = React.useRef<HTMLDivElement>(null);
+  const headerRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const table = tableRef.current;
+    const parent = headerRef.current?.parentElement;
+
+    if (table instanceof HTMLDivElement && parent instanceof HTMLElement) {
+      const tableLeft = table.getBoundingClientRect().left;
+      const left = parent.getBoundingClientRect().left;
+      parent.style.setProperty('left', `${left - tableLeft}px`);
+    }
+  }, []);
+
   return (
     <DataTable
       wMax={900}
+      ref={tableRef}
       aria-label='One multiple column'
       data={data}
       columns={[
         {
           name: 'url',
-          children: 'Page URL',
+          children: () => {
+            return <Box>Page URL</Box>;
+          },
           gtcWidth: 'max-content',
           fixed: 'left',
         },
@@ -29,16 +46,19 @@ export default () => {
           name: 'some group',
           children: () => {
             return (
-              <Tooltip title='Example tooltip content'>
+              <Tooltip title='Example tooltip content' ref={headerRef}>
                 Hreflang Codes Usage
               </Tooltip>
             );
           },
           style: {
+            justifyContent: 'start',
+            position: 'sticky',
+            top: 0,
+            zIndex: 20,
             width: 'fit-content',
             borderBottom: '1px solid var(--intergalactic-border-secondary, #e0e1e9)',
           },
-          fixed: 'left',
           borders: 'left',
           columns: langs.map((lang) => ({
             name: lang,

@@ -100,21 +100,28 @@ test.describe(`${TAG.VISUAL}`, () => {
     await loadPage(page, 'stories/components/data-table/advanced/examples/fixed_columns_width_with_shadows.tsx', 'en');
 
     const lastColumn = page.locator('[data-ui-name="Head.Column"]').last();
+    const headShadow = page.locator('[data-ui-name="DataTable.Head"]');
+    const rightShadow = page.locator('[data-ui-name="DataTable"] > :nth-last-child(3)');
 
-    const shadowLeft = await lastColumn.evaluate((node) =>
-      window.getComputedStyle(node, '::after').getPropertyValue('left'));
+    const rightShadowOpacity = () => rightShadow.evaluate((node) =>
+      window.getComputedStyle(node, '::after').getPropertyValue('opacity'));
 
-    expect(shadowLeft, 'shadow ::after has left: 0px only when it is shown').not.toBe('0px');
+    await test.step('No right shadow while the table fits the screen', async () => {
+      await expect(headShadow).toHaveAttribute('data-shadow', '');
+      expect(await rightShadowOpacity()).toBe('0');
+    });
 
     await page.setViewportSize({ width: 400, height: 700 });
     await page.waitForTimeout(100);
 
-    await expect.poll(
-      () => lastColumn.evaluate((node) => {
-        return window.getComputedStyle(node, '::after').getPropertyValue('left') === '0px';
-      }),
-      { timeout: 5000 },
-    ).toBe(true);
+    await test.step('Right shadow appears next to the fixed column on a narrow screen', async () => {
+      await expect(headShadow).toHaveAttribute('data-shadow', 'end');
+      await expect.poll(rightShadowOpacity, { timeout: 5000 }).toBe('1');
+
+      const shadowBox = await rightShadow.boundingBox();
+      const columnBox = await lastColumn.boundingBox();
+      expect(Math.abs(shadowBox!.x - columnBox!.x)).toBeLessThan(1);
+    });
   });
 });
 

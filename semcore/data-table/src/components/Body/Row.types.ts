@@ -85,17 +85,12 @@ export type DataTableRowProps<Data extends DataTableData, UniqKeyType> = {
   'uid': string;
   'sideIndents'?: 'wide';
 
-  'getFixedStyle': (
-    cell: Pick<DTColumn, 'name' | 'fixed'>,
-  ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
-
   'renderCell'?: (props: CellRenderProps<Data[number], UniqKeyType>) => React.ReactNode | Record<string, any>;
   'getI18nText': (key: string) => string;
   'virtualScroll'?: VirtualScroll;
   'tableRef': React.RefObject<HTMLDivElement>;
   'onCellClick': DataTableCellProps<Data, UniqKeyType>['onClick'];
   'rawData': DataRowItem[];
-  'shadowVertical'?: '' | 'end' | 'start' | 'median';
   'expandedRows': Set<UniqKeyType>;
   'accordionMode'?: DataTableProps<any, any, any>['accordionMode'];
   'rowsHeightMap': Map<number, [number, number, HTMLElement | null]>;

@@ -326,4 +326,49 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       }
     });
   });
+
+  [
+    { name: 'header sticks to the page', h: null, viewport: { width: 800, height: 400 }, pageScroll: 200 },
+    { name: 'table with own height', h: '300px', viewport: { width: 800, height: 220 }, pageScroll: 120 },
+  ].forEach(({ name, h, viewport, pageScroll }) => {
+    test(`Verify head shadows of fixed columns follow sticky header on page scroll when ${name}`, {
+      tag: [TAG.PRIORITY_HIGH, '@data-table'],
+    }, async ({ page, browserName }) => {
+      test.fixme(
+        browserName === 'firefox' && h === null,
+        'Firefox: head shadows of fixed columns stay in place while the sticky header follows the page',
+      );
+
+      await page.setViewportSize(viewport);
+      await loadPage(page, 'stories/components/data-table/tests/examples/scroll-tests/with-fixed-column.tsx', 'en', { sticky: true, h });
+
+      const table = page.locator('[data-ui-name="DataTable"]');
+      const header = locators.getHeadColumn(page, 1);
+      const headShadows = [
+        table.locator(':scope > :nth-last-child(4)'),
+        table.locator(':scope > :nth-last-child(3)'),
+      ];
+
+      await test.step('Scroll the table horizontally so both head shadows are shown', async () => {
+        await scrollTableTo(page, { top: 0, left: 200 });
+        await expect(table).toHaveAttribute('data-shadow', 'median');
+      });
+
+      await test.step('Scroll the page', async () => {
+        await page.evaluate((y) => window.scrollTo(0, y), pageScroll);
+        await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(0);
+      });
+
+      await test.step('Head shadows stay on the header', async () => {
+        for (const shadow of headShadows) {
+          await expect.poll(async () => {
+            const shadowBox = (await shadow.boundingBox())!;
+            const headerBox = (await header.boundingBox())!;
+
+            return Math.abs(shadowBox.y - headerBox.y);
+          }, { timeout: 3000 }).toBeLessThanOrEqual(1);
+        }
+      });
+    });
+  });
 });

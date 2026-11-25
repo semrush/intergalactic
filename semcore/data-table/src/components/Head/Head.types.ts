@@ -2,7 +2,6 @@ import type * as React from 'react';
 
 import type { ColumnPropsInner, DTColumn } from './Column.types';
 import type { ISelectedRows } from '../../store/SelectableRows';
-import type { BodyPropsInner } from '../Body/Body.types';
 import type { DataTableCellProps } from '../Body/Cell.types';
 import type { DTRow } from '../Body/Row.types';
 import type { ROW_GROUP } from '../DataTable/DataTable';
@@ -62,11 +61,7 @@ export type HeadPropsInner<
   onChangeSelectAll?: (selectedRows: UniqKeyType[], event?: React.SyntheticEvent<HTMLElement>) => void;
   flatRows: DTRow<UniqKeyType>[];
 
-  getFixedStyle: (
-    cell: Pick<DTColumn, 'name' | 'fixed'>,
-  ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
   onCellClick: DataTableCellProps<Data, UniqKeyType>['onClick'];
-  shadowVertical?: BodyPropsInner<Data, UniqKeyType>['shadowVertical'];
   scrollDirection?: ColumnPropsInner<Data, UniqKey, UniqKeyType>['scrollDirection'];
   isDataEmpty: boolean;
 
