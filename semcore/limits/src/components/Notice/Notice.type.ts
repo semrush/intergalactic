@@ -22,6 +22,10 @@ declare namespace NSLimitsNotice {
       onClose?: (event: React.SyntheticEvent) => void;
     };
 
+    type DefaultProps = {
+      theme: 'default';
+    };
+
     type Component = Intergalactic.Component<'div', Props>;
 }
 
