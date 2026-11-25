@@ -13,32 +13,33 @@ SXAxis, SYAxis {
 
   SHoveredTick {
     padding: 3px 12px;
-    border-radius: 6px;
+    border-radius: var(--intergalactic-rounded-medium, 6px);
     background-color: var(--intergalactic-chart-x-axis-accent-tick, oklch(0.96 0.005 232.5));
   }
 }
 
 SXAxis {
   grid-area: xAxis;
-  padding-top: 8px;
+  padding-top: var(--intergalactic-spacing-2x, 8px);
   border-top: 1px solid var(--intergalactic-chart-grid-x-axis, oklch(0.88 0.011 234.9));
   overflow: hidden;
 
   SHoveredTick, STick {
-    margin: 0 0 3px 0;
+    margin: 0 0 var(--intergalactic-spacing-1x, 4px) 0;
   }
 
   SHoveredTick {
-    margin-top: -3px;
+    margin-top: calc(-1 * var(--intergalactic-spacing-1x, 4px));
+    padding-top: var(--intergalactic-spacing-1x, 4px);
     margin-bottom: 0;
   }
 }
 
 SYAxis {
-  padding-left: 8px;
+  padding-left: var(--intergalactic-spacing-2x, 8px);
 
   SHoveredTick, STick {
-    margin: 0 12px;
+    margin: 0 var(--intergalactic-spacing-3x, 12px);
   }
 
   &[position='left'] {
