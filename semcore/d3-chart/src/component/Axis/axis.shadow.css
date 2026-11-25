@@ -35,6 +35,8 @@ SXAxis {
 }
 
 SYAxis {
+  padding-left: 8px;
+
   SHoveredTick, STick {
     margin: 0 12px;
   }

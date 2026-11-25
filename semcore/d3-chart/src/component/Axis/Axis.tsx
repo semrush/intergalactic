@@ -4,6 +4,7 @@ import { bisector } from 'd3-array';
 import * as React from 'react';
 
 import type { NSAxis } from './Axis.type';
+import { AxisTick } from './AxisTick';
 import { scaleOfBandwidth } from '../../utils';
 
 export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], never, {}, NSAxis.State, NSAxis.DefaultProps> {
@@ -19,7 +20,7 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
     this.handleMoveOverAxis = this.handleMoveOverAxis.bind(this);
   }
 
-  abstract getCssTranslate(translate: number): string;
+  abstract getCssTranslate(translate: number | `calc(${string})` | `${string}%`): string;
   abstract handleHoverListItemEvent(index: number, invertAxis: boolean): void;
   abstract handleMoveOverAxis(event: React.MouseEvent<HTMLElement>): void;
 
@@ -64,13 +65,22 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
       return null;
     }
 
-    const hoveredTranslate = scaleOfBandwidth(scale, value) ?? 0;
+    let hoveredTranslate: Parameters<this['getCssTranslate']>[0];
+
+    if (dataIndex === 0) {
+      hoveredTranslate = '0%';
+    } else if (dataIndex === data.length - 1) {
+      hoveredTranslate = `calc(${scaleOfBandwidth(scale, value) ?? 0}px - 100%)`;
+    } else {
+      hoveredTranslate = scaleOfBandwidth(scale, value) ?? 0;
+    }
+
     const style = {
       transform: this.getCssTranslate(hoveredTranslate),
     };
 
     return sstyled(styles)(
-      <SHoveredTick size={100} style={style}>
+      <SHoveredTick size={100} style={style} aria-hidden>
         {valueFormatter(item[dataKey])}
       </SHoveredTick>,
     );
@@ -96,21 +106,18 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
   }
 
   renderTicks() {
-    const STick = Text;
-
-    const { valueFormatter, styles } = this.asProps;
+    const { valueFormatter } = this.asProps;
 
     return (
       <>
         {this.ticks.map((tick, index) => {
-          const style = {
-            transform: this.getCssTranslate(tick.translate),
-          };
-
-          return sstyled(styles)(
-            <STick key={`${index}_${tick.value}`} size={100} style={style} data-ui-name='Axis.Ticks'>
-              {valueFormatter(tick.value)}
-            </STick>,
+          return (
+            <AxisTick
+              key={`${index}_${tick.value}`}
+              value={tick.value}
+              valueFormatter={valueFormatter}
+              translate={this.getCssTranslate(tick.translate)}
+            />
           );
         })}
         {this.renderHoveredTick()}

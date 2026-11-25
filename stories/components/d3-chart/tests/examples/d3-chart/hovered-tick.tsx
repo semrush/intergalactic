@@ -68,7 +68,7 @@ const Demo = (props: HoveredTickStoryProps) => {
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])
     .domain(minMax(linearData, 'x'));
-
+  console.log(hoverProps);
   return (
     <Plot data={linearData} scale={[xScale, yScale]} width={width} height={height}>
       <YAxis>

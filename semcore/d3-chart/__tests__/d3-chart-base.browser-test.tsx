@@ -46,6 +46,7 @@ export const locators = {
   },
 
   hoveredTick: (page: Page) => page.locator('[data-ui-name="Axis"] [data-ui-name="Text"]'),
+  oldHoveredTick: (page: Page) => page.locator('svg[data-ui-name="Plot"] foreignObject[class*="SHoveredTickWrapper"]'),
   diffUp: (page: Page) => page.locator('[data-ui-name="DiffUp"]'),
   diffDown: (page: Page) => page.locator('[data-ui-name="DiffDown"]'),
   tooltipTitle: (page: Page) => page.locator('[data-ui-name="Tooltip.Title"]'),
@@ -904,8 +905,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await hoverPlotCenter(page);
 
-        await expect(locators.hoveredTick(page)).toHaveCount(1);
-        await expect(locators.hoveredTick(page)).toHaveCount(1);
+        await expect(locators.oldHoveredTick(page)).toHaveCount(1);
+        await expect(locators.oldHoveredTick(page)).toHaveCount(1);
       });
     });
 
@@ -931,7 +932,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await test.step(`Verify the pill on the ${name} tick`, async () => {
           await page.mouse.move(plotBox.x + plotBox.width * ratio, plotBox.y + plotBox.height / 2);
 
-          const pill = locators.hoveredTick(page).first();
+          const pill = locators.oldHoveredTick(page).first();
           await expect(pill).toBeVisible();
 
           const pillBox = await pill.boundingBox();
@@ -1049,7 +1050,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.mouse.move(box.x + box.width / 2, box.y + box.height - 20);
       });
 
-      await expect(locators.hoveredTick(page)).toHaveCount(1);
+      await expect(locators.oldHoveredTick(page)).toHaveCount(1);
     });
 
     (
@@ -1085,7 +1086,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await hoverPlotCenter(page);
 
-        const pill = locators.hoveredTick(page).first();
+        const pill = locators.oldHoveredTick(page).first();
         await expect(pill).toHaveAttribute('position', xPosition);
 
         const plotBox = await plot.boundingBox();
@@ -1422,7 +1423,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
      */
     const readXAxisLabels = (page: Page) =>
       page
-        .locator('[data-ui-name="Axis.Ticks"][class*="_position_bottom"]')
+        .locator('[data-ui-name="Axis.Ticks"][class*="_SXAxis"]')
         .evaluateAll((els) => els.map((e) => e.textContent));
 
     const hoverDot = async (page: Page, selector: string, index: number) => {

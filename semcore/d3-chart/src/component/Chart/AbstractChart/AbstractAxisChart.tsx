@@ -155,6 +155,7 @@ export abstract class AbstractAxisChart<
         ticksCount={xTicksCount}
         valueFormatter={axisXValueFormatter ?? this.axisValueFormatter}
         eventEmitter={this.eventEmitter}
+        mr={`${this.plotPadding}px`}
       />
     );
   }

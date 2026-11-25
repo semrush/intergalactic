@@ -3,6 +3,7 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { scaleBand, scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
+import { Grid } from '../Grid/Grid';
 import { AbstractAxisChart } from './AbstractChart/AbstractAxisChart';
 import type { ChartState } from './AbstractChart/AbstractChart';
 import type { BaseLegendProps } from './AbstractChart/AbstractChart.type';
@@ -186,8 +187,8 @@ class BarChartComponent extends AbstractAxisChart<
         onClick={onClickHoverRect}
         hideTickHover={!showXAxis}
       >
-        {({ xIndex, yIndex }: any) => {
-          const index = invertAxis ? yIndex : xIndex;
+        {(props: { index: number }) => {
+          const index = props.index;
           const dataItem = data[index];
 
           return {
@@ -273,6 +274,7 @@ class BarChartComponent extends AbstractAxisChart<
         ticksCount={xTicksCount}
         valueFormatter={axisXValueFormatter ?? this.axisValueFormatter}
         eventEmitter={this.eventEmitter}
+        mr={`${this.plotPadding}px`}
         onMouseMove={invertAxis ? () => false : undefined}
       />
     );
@@ -283,43 +285,47 @@ class BarChartComponent extends AbstractAxisChart<
       invertAxis,
       showXAxis,
       showYAxis,
-      data,
+      xTicksCount,
+      yTicksCount,
       groupKey,
     } = this.asProps;
 
-    const xTicks = this.xTicks;
-    const yTicks = this.yTicks;
-
     return (
       <>
-        {showYAxis && (
-          <YAxisOld>
-            {invertAxis !== true && (
-              <HoverRect
-                data={this.data}
-                uid={this.plotId}
-                eventEmitter={this.eventEmitter}
-                scale={[this.xScale, this.yScale]}
-                keyX={groupKey}
-              />
-            )}
-            {invertAxis !== true && (yTicks ? <YAxisOld.Grid ticks={yTicks} /> : <YAxisOld.Grid />)}
-          </YAxisOld>
+        {showYAxis && invertAxis !== true && (
+          <>
+            <Grid
+              scale={[this.xScale, this.yScale]}
+              orientation='horizontal'
+              dataHintsHandler={this.dataHintsHandlers}
+              ticksCount={yTicksCount}
+            />
+            <HoverRect
+              data={this.data}
+              uid={this.plotId}
+              eventEmitter={this.eventEmitter}
+              scale={[this.xScale, this.yScale]}
+              keyX={groupKey}
+            />
+          </>
         )}
 
-        {showXAxis && (
-          <XAxisOld>
-            {invertAxis === true && (
-              <HoverRect
-                data={this.data}
-                uid={this.plotId}
-                eventEmitter={this.eventEmitter}
-                scale={[this.xScale, this.yScale]}
-                keyY={groupKey}
-              />
-            )}
-            {invertAxis === true && (xTicks ? <XAxisOld.Grid ticks={xTicks} /> : <XAxisOld.Grid />)}
-          </XAxisOld>
+        {showXAxis && invertAxis === true && (
+          <>
+            <Grid
+              scale={[this.xScale, this.yScale]}
+              orientation='vertical'
+              dataHintsHandler={this.dataHintsHandlers}
+              ticksCount={xTicksCount}
+            />
+            <HoverRect
+              data={this.data}
+              uid={this.plotId}
+              eventEmitter={this.eventEmitter}
+              scale={[this.xScale, this.yScale]}
+              keyY={groupKey}
+            />
+          </>
         )}
       </>
     );

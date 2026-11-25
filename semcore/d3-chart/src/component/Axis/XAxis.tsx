@@ -11,8 +11,12 @@ class XAxisComponent extends AbstractAxisComponent {
   static displayName = 'Axis';
   static style = styles;
 
-  override getCssTranslate(translate: number): string {
-    return `translateX(calc(${translate}px - 50%))`;
+  override getCssTranslate(translate: number | `calc(${string})` | `${string}%`): string {
+    if (typeof translate === 'number') {
+      return `translateX(calc(${translate}px - 50%))`;
+    }
+
+    return `translateX(${translate})`;
   };
 
   override handleHoverListItemEvent(index: number, invertAxis: boolean) {

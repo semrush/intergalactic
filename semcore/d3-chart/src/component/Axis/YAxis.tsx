@@ -16,7 +16,11 @@ class YAxisComponent extends AbstractAxisComponent {
   };
 
   override getCssTranslate(translate: number): string {
-    return `translateY(calc(${translate}px - 50%))`;
+    if (typeof translate === 'number') {
+      return `translateY(calc(${translate}px - 50%))`;
+    }
+
+    return `translateX(${translate})`;
   };
 
   override handleHoverListItemEvent(index: number, invertAxis: boolean) {
@@ -35,15 +39,15 @@ class YAxisComponent extends AbstractAxisComponent {
     const { eventEmitter, uid, scale, plotBoundaryRect } = this.asProps;
 
     const rect = target.getBoundingClientRect();
-    const xPoint = event.clientX - rect.left;
-    const value = invert(scale, xPoint);
+    const point = event.clientY - rect.top;
+    const value = invert(scale, point);
     const index = this.getIndexByValue(value);
 
-    const yPoint = plotBoundaryRect.top + plotBoundaryRect.height / 2;
+    const xPoint = plotBoundaryRect.left + plotBoundaryRect.width / 2;
 
     eventEmitter.emit(`setTooltipVisible_${uid}`, true);
-    eventEmitter.emit(`hoverPosition_${uid}`, xPoint + rect.left, yPoint);
-    eventEmitter.emit(`hoverListItem_${uid}`, index, false);
+    eventEmitter.emit(`hoverPosition_${uid}`, xPoint, point + rect.top);
+    eventEmitter.emit(`hoverListItem_${uid}`, index, true);
   };
 
   render() {
