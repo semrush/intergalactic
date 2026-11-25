@@ -84,14 +84,10 @@ export type BodyPropsInner<Data extends DataTableData, UniqKeyType> = DataTableB
   ) => void;
   renderEmptyData: () => React.ReactNode;
   sideIndents?: 'wide';
-  getFixedStyle: (
-    cell: Pick<DTColumn, 'name' | 'fixed'>,
-  ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
   accordionDuration: number | [number, number];
   onCellClick: DataTableCellProps<Data, UniqKeyType>['onClick'];
   rawData: DataRowItem[];
   accordionMode?: DataTableProps<any, any, any>['accordionMode'];
-  shadowVertical?: '' | 'end' | 'start' | 'median';
   renderCellOverlay?: () => React.ReactNode;
   limit?: DataTableProps<any, any, any>['limit'];
   variant?: DataTableProps<any, any, any>['variant'];

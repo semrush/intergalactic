@@ -340,6 +340,7 @@ SRow[sideIndents='wide'], SCollapseRow[sideIndents='wide'] {
 
 SCollapseRow {
   position: relative;
+  z-index: 9;
 }
 
 SRow[isAccordionRow] SCellWrapper:first-child,
@@ -353,48 +354,6 @@ SCollapseRow {
     width: 2px;
     z-index: 20;
     background-color: var(--intergalactic-table-border-accordion-accent, oklch(0.23 0.009 245));
-  }
-}
-
-SCellWrapper[fixed][shadowVertical] {
-  &:after {
-    content: '';
-    position: absolute;
-    pointer-events: none;
-    display: none;
-    top: 0;
-    width: 5px;
-    height: 100%;
-    z-index: 5;
-  }
-}
-
-SCellWrapper[fixed='left'][shadowVertical='median'],
-SCellWrapper[fixed='left'][shadowVertical='start'] {
-  margin-right: -5px;
-
-  &:after {
-    display: block;
-    right: 0;
-    background: var(--intergalactic-scroll-area-shadow-left,
-    linear-gradient(to right, oklch(from oklch(0.23 0.009 245) l c h / 0.08) 20.55%, transparent 100%));
-  }
-  SCell {
-    margin-right: 5px;
-  }
-}
-SCellWrapper[fixed='right'][shadowVertical='median'],
-SCellWrapper[fixed='right'][shadowVertical='end'] {
-  margin-left: -5px;
-  &:after {
-    display: block;
-    left: 0;
-    background: var(--intergalactic-scroll-area-shadow-right,
-    linear-gradient(to left, oklch(from oklch(0.23 0.009 245) l c h / 0.08) 20.55%, transparent 100%));
-  }
-
-  SCell {
-    margin-left: 5px;
   }
 }
 

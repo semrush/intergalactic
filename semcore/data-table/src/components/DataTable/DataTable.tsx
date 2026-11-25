@@ -22,7 +22,7 @@ import type {
   DataTableType,
   ColumnGroupConfig,
   ColumnItemConfig,
-  DataRowItem, ColumnsConfig,
+  DataRowItem, ColumnsConfig, FixedColumnsConfig,
 } from './DataTable.types';
 import { ScrollBars } from './ScrollBars';
 import type { ISelectedRows } from '../../store/SelectableRows';
@@ -55,7 +55,6 @@ type State<
   scrollTop: number;
   scrollDirection: 'down' | 'up';
   selectAllMessage: string;
-  shadowVertical: BodyPropsInner<Data, UniqKeyType>['shadowVertical'];
   expandedRows: Set<UniqKeyType>;
   scrollOffset: [number, number];
 };
@@ -118,6 +117,12 @@ class DataTableRoot<
   private hasGroups = false;
   private hasFixedColumn = false;
 
+  private fixedCellsSizeCache = new Map<string, { width: number; height: number }>();
+  private fixedCellsData: FixedColumnsConfig = {
+    left: { name: '', gridColumnStart: '' },
+    right: { name: '', gridColumnStart: '' },
+  };
+
   private focusedCell: [RowIndex, ColIndex] = [-1, -1];
 
   private scrollAreaRef = React.createRef<HTMLDivElement>();
@@ -128,6 +133,11 @@ class DataTableRoot<
   private headerRef = React.createRef<HTMLDivElement>();
   private spinnerRef = React.createRef<HTMLDivElement>();
   private containerResizeEndTimeoutId: ReturnType<typeof setTimeout> | null = null;
+
+  private headerShadowLeftRef = React.createRef<HTMLDivElement>();
+  private headerShadowRightRef = React.createRef<HTMLDivElement>();
+  private bodyShadowLeftRef = React.createRef<HTMLDivElement>();
+  private bodyShadowRightRef = React.createRef<HTMLDivElement>();
 
   private gridAreaGroupMap = new Map<number, string>();
 
@@ -170,7 +180,6 @@ class DataTableRoot<
     scrollTop: 0,
     scrollDirection: 'down',
     selectAllMessage: '',
-    shadowVertical: '',
     expandedRows: new Set<UniqKeyType>(),
     scrollOffset: [0, 0],
   };
@@ -181,9 +190,10 @@ class DataTableRoot<
       requestAnimationFrame(() => {
         this.setState({
           scrollOffset: this.getScrollOffsetValue(),
+        }, () => {
+          this.calculateVerticalShadow();
+          this.calculateContainerHeight();
         });
-        this.calculateVerticalShadow();
-        this.calculateContainerHeight();
       });
     }
 
@@ -196,10 +206,15 @@ class DataTableRoot<
     }
   }
 
-  componentDidUpdate(prevProps: any) {
+  componentDidUpdate(prevProps: DataTableProps<Data, UniqKey, UniqKeyType>) {
     const { data, selectedRows, columns } = this.asProps;
 
     if (prevProps.data !== data || prevProps.columns !== columns) {
+      this.fixedCellsData.left.name = '';
+      this.fixedCellsData.right.name = '';
+      this.fixedCellsData.left.gridColumnStart = '';
+      this.fixedCellsData.right.gridColumnStart = '';
+
       if (this.hasFixedColumn) {
         this.calculateVerticalShadow();
       }
@@ -341,7 +356,6 @@ class DataTableRoot<
       variant,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
-    const { shadowVertical } = this.state;
 
     const sideIndentsValue = variant === 'card' ? 'wide' : sideIndents;
 
@@ -366,9 +380,7 @@ class DataTableRoot<
       selectedRows,
       flatRows: this.getFlatRows(),
       onChangeSelectAll: Array.isArray(selectedRows) ? this.handleSelectAllRows : undefined,
-      getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
-      shadowVertical,
       scrollDirection: this.scrollDirection,
       isDataEmpty: this.isDataEmpty,
       withAnimation: this.scrollDirection === 'horizontal' && !this.isDataEmpty,
@@ -400,7 +412,6 @@ class DataTableRoot<
       accordionAnimationRows,
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
-    const { shadowVertical } = this.state;
 
     return {
       accordionDuration,
@@ -435,10 +446,8 @@ class DataTableRoot<
       sideIndents,
       selectedRows,
       onSelectRow: Array.isArray(selectedRows) ? this.handleSelectRow : undefined,
-      getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
       rawData,
-      shadowVertical,
       renderCellOverlay,
       limit,
       variant,
@@ -794,15 +803,13 @@ class DataTableRoot<
     if (this.asProps.virtualScroll) {
       const scrollTop = e.target.scrollTop;
 
-      if (scrollTop === this.state.scrollTop) {
-        return;
+      if (scrollTop !== this.state.scrollTop) {
+        const scrollDirection = scrollTop > this.state.scrollTop ? 'down' : 'up';
+        this.setState({ scrollTop, scrollDirection });
       }
-
-      const scrollDirection = scrollTop > this.state.scrollTop ? 'down' : 'up';
-      this.setState({ scrollTop, scrollDirection });
     }
 
-    if (this.hasFixedColumn) {
+    if (this.hasFixedColumn || this.scrollDirection === 'both' || this.scrollDirection === 'horizontal') {
       this.calculateVerticalShadow();
     }
   });
@@ -816,7 +823,7 @@ class DataTableRoot<
 
     const roundedScroll = Math.round(scrollLeft);
     const roundedMaxScroll = Math.round(maxScrollRight);
-    let shadow: BodyPropsInner<Data, UniqKeyType>['shadowVertical'] = '';
+    let shadow = '';
     // not scroll
     if (roundedMaxScroll <= 0) {
       // start scroll
@@ -830,7 +837,12 @@ class DataTableRoot<
       shadow = 'median';
     }
 
-    this.setState({ shadowVertical: shadow });
+    if (this.tableRef.current) {
+      this.tableRef.current.dataset.shadow = shadow;
+    }
+    if (this.headerRef.current) {
+      this.headerRef.current.dataset.shadow = shadow;
+    }
   };
 
   handleFocus = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
@@ -941,6 +953,10 @@ class DataTableRoot<
 
   render() {
     const SDataTable = Root;
+    const SHeadShadowLeft = Box;
+    const SHeadShadowRight = Box;
+    const SBodyShadowLeft = Box;
+    const SBodyShadowRight = Box;
     const {
       Children,
       styles,
@@ -977,6 +993,8 @@ class DataTableRoot<
     if (virtualScroll && typeof virtualScroll !== 'boolean' && 'rowHeight' in virtualScroll) {
       gridTemplateRows = `${this.hasGroups ? 'auto auto' : 'auto'} repeat(${this.totalRows}, ${virtualScroll.rowHeight}px)`;
     }
+
+    const headerShadowWithAnimation = Boolean(headerProps?.sticky && this.scrollDirection === 'horizontal' && !this.isDataEmpty);
 
     return sstyled(styles)(
       <ScrollArea
@@ -1042,6 +1060,19 @@ class DataTableRoot<
                     <DataTable.Body />
                   </>
                 )}
+
+            <SHeadShadowLeft
+              ref={this.headerShadowLeftRef}
+              top={headerProps?.sticky ? 0 : undefined}
+              data-with-animation={headerShadowWithAnimation.toString()}
+            />
+            <SHeadShadowRight
+              ref={this.headerShadowRightRef}
+              top={headerProps?.sticky ? 0 : undefined}
+              data-with-animation={headerShadowWithAnimation.toString()}
+            />
+            <SBodyShadowLeft ref={this.bodyShadowLeftRef} />
+            <SBodyShadowRight ref={this.bodyShadowRightRef} />
           </SDataTable>
         </ScrollArea.Container>
 
@@ -1069,53 +1100,99 @@ class DataTableRoot<
 
     const offsets = this.columns.reduce(
       (acc, column) => {
+        const { width, height } = this.headerNodesMap.get(column.name)?.current?.getBoundingClientRect() ?? { width: 0, height: 0 };
+
         if (column.fixed === 'left') {
-          acc[0] += this.headerNodesMap.get(column.name)?.current?.getBoundingClientRect().width ?? 0;
+          acc[0] += width;
+          this.fixedCellsSizeCache.set(column.name, { width, height });
+
+          this.fixedCellsData.left.name = column.name;
+          this.fixedCellsData.left.gridColumnStart = column.gridArea?.split(' / ')[1] ?? '';
         }
         if (column.fixed === 'right') {
-          acc[1] += this.headerNodesMap.get(column.name)?.current?.getBoundingClientRect().width ?? 0;
+          acc[1] += width;
+          this.fixedCellsSizeCache.set(column.name, { width, height });
+
+          if (this.fixedCellsData.right.name === '') {
+            this.fixedCellsData.right.name = column.name;
+            this.fixedCellsData.right.gridColumnStart = column.gridArea?.split(' / ')[1] ?? '';
+          }
         }
         return acc;
       },
       [0, 0] as [leftOffset: number, rightOffset: number],
     );
 
+    this.setShadows();
+
+    this.fixedCellsSizeCache.entries().forEach(([name, { width }]) => {
+      const columnElements = this.tableContainerRef.current?.querySelectorAll(`[data-cell-name="${name}"]`) ?? [];
+      const columnIndex = this.columns.findIndex((col) => col.name === name);
+
+      if (columnIndex !== -1 && columnElements) {
+        const side = this.columns[columnIndex]?.fixed;
+
+        if (side) {
+          const startIndexSideMap = {
+            left: 0,
+            right: columnIndex + 1,
+          };
+          const endIndexSideMap = {
+            left: columnIndex,
+            right: this.columns.length,
+          };
+          const columnsFixed = this.columns.slice(startIndexSideMap[side], endIndexSideMap[side]);
+
+          const sum = columnsFixed.reduce(
+            (acc, column) => acc + (this.fixedCellsSizeCache.get(column.name)?.width ?? 0),
+            0,
+          );
+
+          for (const columnElement of columnElements) {
+            if (columnElement instanceof HTMLElement) {
+              columnElement.style.setProperty(side, `${sum}px`);
+            }
+          }
+        }
+      }
+    });
+
     return offsets;
   };
 
-  private getFixedStyle = (
-    cell: Pick<DTColumn, 'name' | 'fixed'>,
-  ): [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined] => {
-    const side = cell.fixed;
-    if (!side) return [undefined, undefined];
-    const names = cell.name.split('/');
-    const nameSideMap = {
-      left: names[0],
-      right: names[names.length - 1],
-    };
-    const name = nameSideMap[side];
-    const index = this.columns.findIndex((column) => column.name === name);
+  private setShadows() {
+    const lastColumnIndex = this.columns.length;
+    const leftName = this.fixedCellsData.left.name;
+    const rightName = this.fixedCellsData.right.name;
 
-    if (index === -1) return [undefined, undefined];
+    if (this.headerShadowLeftRef.current) {
+      const leftShadowGridArea = `1 / ${this.fixedCellsData.left.gridColumnStart || 1} / ${this.hasGroups ? 3 : 2} / ${this.fixedCellsData.left.gridColumnStart || 1}`;
+      this.headerShadowLeftRef.current.style.setProperty('grid-area', leftShadowGridArea);
+      this.headerShadowLeftRef.current.dataset.cellName = leftName;
+    }
 
-    const startIndexSideMap = {
-      left: 0,
-      right: index + 1,
-    };
-    const endIndexSideMap = {
-      left: index,
-      right: this.columns.length,
-    };
-    const columnsFixed = this.columns.slice(startIndexSideMap[side], endIndexSideMap[side]);
+    if (this.headerShadowRightRef.current) {
+      const gridColumnStart = this.fixedCellsData.right.gridColumnStart ? Number(this.fixedCellsData.right.gridColumnStart) : null;
+      const rightShadowGridArea = `1 / ${gridColumnStart ?? lastColumnIndex} / ${this.hasGroups ? 3 : 2} / ${(gridColumnStart ?? lastColumnIndex) + 1}`;
 
-    if (columnsFixed.length < 1) return [side, 0];
+      this.headerShadowRightRef.current.style.setProperty('grid-area', rightShadowGridArea);
+      this.headerShadowRightRef.current.dataset.cellName = rightName;
+    }
 
-    const sum = columnsFixed.reduce(
-      (acc, column) => acc + (this.headerNodesMap.get(column.name)?.current?.getBoundingClientRect().width ?? 0),
-      0,
-    );
-    return [side, `${sum}px`];
-  };
+    if (this.bodyShadowLeftRef.current) {
+      const leftShadowGridArea = `${this.hasGroups ? 3 : 2} / ${this.fixedCellsData.left.gridColumnStart || 1} / 10000 / ${this.fixedCellsData.left.gridColumnStart || 1}`;
+      this.bodyShadowLeftRef.current.style.setProperty('grid-area', leftShadowGridArea);
+      this.bodyShadowLeftRef.current.dataset.cellName = leftName;
+    }
+
+    if (this.bodyShadowRightRef.current) {
+      const gridColumnStart = this.fixedCellsData.right.gridColumnStart ? Number(this.fixedCellsData.right.gridColumnStart) : null;
+      const rightShadowGridArea = `${this.hasGroups ? 3 : 2} / ${gridColumnStart ?? lastColumnIndex} / 10000 / ${(gridColumnStart ?? lastColumnIndex) + 1}`;
+
+      this.bodyShadowRightRef.current.style.setProperty('grid-area', rightShadowGridArea);
+      this.bodyShadowRightRef.current.dataset.cellName = rightName;
+    }
+  }
 
   private calculateColumnsFromConfig(): [DTColumn[], DTColumn[]] {
     const { columns, data, selectedRows } = this.props;
@@ -1191,19 +1268,6 @@ class DataTableRoot<
       return 'columns' in child;
     };
 
-    const setShowShadows = (col: DTColumn, i: number): void => {
-      let prevCol = treeColumns[i - 1];
-      if ('columns' in prevCol && prevCol.columns) {
-        prevCol = prevCol.columns[prevCol.columns.length - 1];
-      }
-
-      if (prevCol.fixed && !col.fixed) {
-        prevCol.showShadowVertical = true;
-      } else if (!prevCol.fixed && col.fixed) {
-        col.showShadowVertical = true;
-      }
-    };
-
     columns.forEach((child, i) => {
       if (childIsColumn(child)) {
         const col = makeColumn(child);
@@ -1216,10 +1280,6 @@ class DataTableRoot<
 
         calculatedColumns.push(col);
         treeColumns.push(col);
-
-        if (i > 0) {
-          setShowShadows(col, i);
-        }
       } else if (childIsGroup(child)) {
         const Group = makeColumn(child);
         const childCount = child.columns.length;
@@ -1246,10 +1306,6 @@ class DataTableRoot<
           gridColumnIndex++;
 
           calculatedColumns.push(col);
-
-          if (isFirst && i > 0) {
-            setShowShadows(col, i);
-          }
 
           Group.columns?.push(col);
         });

@@ -329,6 +329,7 @@ export class Column<
         render={Flex}
         ref={this.columnRef}
         role='columnheader'
+        data-cell-name={name}
         tabIndex={-1}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
