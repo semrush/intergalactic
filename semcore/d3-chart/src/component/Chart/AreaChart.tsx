@@ -71,7 +71,7 @@ class AreaChartComponent extends AbstractAxisChart<
     const max = stacked ? super.maxStackedValue : Math.max(...flatValues);
 
     return scaleLinear()
-      .range([plotHeight - marginX, this.plotPadding])
+      .range([plotHeight - this.plotPadding, this.plotPadding])
       .domain([min, max]);
   }
 

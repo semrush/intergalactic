@@ -178,9 +178,9 @@ export abstract class AbstractAxisChart<
           onMouseMove={this.handleMouseMoveChartContainer}
           onMouseLeave={this.handleMouseLeaveChartContainer}
           // @ts-expect-error for css only
-          yAxisPosition={yAxisPosition}
+          yAxisPosition={resolvedYAxisPosition}
         >
-          {(yAxisPosition === 'left' || yAxisPosition === 'both') && this.renderYAxis('left')}
+          {(resolvedYAxisPosition === 'left' || resolvedYAxisPosition === 'both') && this.renderYAxis('left')}
           <Plot
             uid={this.plotId}
             data={this.data}
@@ -204,7 +204,7 @@ export abstract class AbstractAxisChart<
             {!showTooltip ? null : this.renderTooltip()}
             {this.renderChart()}
           </Plot>
-          {(yAxisPosition === 'right' || yAxisPosition === 'both') && this.renderYAxis('right')}
+          {(resolvedYAxisPosition === 'right' || resolvedYAxisPosition === 'both') && this.renderYAxis('right')}
           {this.renderXAxis()}
         </SChartContainer>
       </SChart>,
