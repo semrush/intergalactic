@@ -5,6 +5,7 @@ import { bisector } from 'd3-array';
 import React from 'react';
 
 import { HIGHLIGHT_DOT, GOOD, BAD, INSIGHTFUL } from './component/Chart/AbstractChart/AbstractChart.type';
+import { SvgElement } from './component/SvgElement';
 import createElement from './createElement';
 import { PatternSymbol, getPatternSymbolSize, PotentialGradient } from './Pattern';
 import style from './style/dot.shadow.css';
@@ -14,9 +15,9 @@ const BASE_RADIUS = 3.5;
 const ACTIVE_RADIUS = 4.5;
 
 function Dots(props) {
-  const SDotHighlight = 'circle';
-  const SDotBorder = 'circle';
-  const SDotBackdrop = 'circle';
+  const SDotHighlight = SvgElement;
+  const SDotBorder = SvgElement;
+  const SDotBackdrop = SvgElement;
   const {
     Element: SDot,
     styles,
@@ -133,6 +134,7 @@ function Dots(props) {
             {d[HIGHLIGHT_DOT] && (
               <>
                 <SDotBorder
+                  tag='circle'
                   visible={visible}
                   active={active}
                   hide={hide}
@@ -142,6 +144,7 @@ function Dots(props) {
                   r={11.5}
                 />
                 <SDotHighlight
+                  tag='circle'
                   color={resolveHighlightColor(d[HIGHLIGHT_DOT])}
                   value={d}
                   visible={visible}
@@ -196,7 +199,8 @@ function Dots(props) {
             visible={visible}
             active={active}
             hide={hide}
-            __excludeProps={['display', 'data', 'scale']}
+            __excludeProps={['display', 'data', 'scale', 'visible', 'active', 'transparent']}
+
           />,
         ),
       );
