@@ -561,9 +561,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
+      await expect(locators.button(page, 'Next year')).toBeFocused();
+
+      const focusedMonth = page.locator('[data-ui-name="CalendarMonths.Unit"]:focus');
 
       await page.keyboard.press('Enter');
       await page.keyboard.press('ArrowLeft');
+      await expect(focusedMonth).toHaveCount(1);
+      const monthAfterLeft = await focusedMonth.getAttribute('aria-label');
 
       const [initialTo1, initialTo2] = await Promise.all([
         locators.compareValue(page).nth(2).inputValue(),
@@ -571,20 +576,24 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       ]);
 
       await page.keyboard.press('ArrowUp');
+      await expect(focusedMonth).toHaveCount(1);
+      await expect(focusedMonth).not.toHaveAttribute('aria-label', monthAfterLeft ?? '');
       await page.keyboard.press('Space');
+
+      await expect(locators.compareValue(page).nth(2)).not.toHaveValue(initialTo1);
+      await expect(locators.compareValue(page).nth(3)).toHaveValue(initialTo2);
 
       const [afterUpTo1, afterUpTo2] = await Promise.all([
         locators.compareValue(page).nth(2).inputValue(),
         locators.compareValue(page).nth(3).inputValue(),
       ]);
 
-      expect(afterUpTo1).not.toBe(initialTo1);
-      expect(afterUpTo2).toBe(initialTo2);
-
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('Space');
       await page.waitForTimeout(50);
+
+      await expect(locators.compareValue(page).nth(3)).not.toHaveValue(afterUpTo2);
 
       const [afterRightTo1, afterRightTo2] = await Promise.all([
         locators.compareValue(page).nth(2).inputValue(),
