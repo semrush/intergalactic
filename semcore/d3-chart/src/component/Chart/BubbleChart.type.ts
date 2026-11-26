@@ -34,8 +34,6 @@ export type BubbleChartProps = Intergalactic.InternalTypings.EfficientOmit<
 
 export type BubbleChartDefaultProps = {
   direction: 'column';
-  showXAxis: true;
-  showYAxis: true;
   showTooltip: true;
   locale: 'en';
 };
