@@ -203,11 +203,7 @@ class BubbleChartComponent extends AbstractAxisChart<
   }
 
   protected override renderYAxis(yAxisPosition: 'left' | 'right'): React.ReactNode {
-    const { yTicksCount, showYAxis, axisYValueFormatter } = this.asProps;
-
-    if (!showYAxis) {
-      return null;
-    }
+    const { yTicksCount, axisYValueFormatter } = this.asProps;
 
     return (
       <YAxis
@@ -228,11 +224,7 @@ class BubbleChartComponent extends AbstractAxisChart<
   }
 
   protected override renderXAxis(): React.ReactNode {
-    const { xTicksCount, showXAxis, axisXValueFormatter } = this.asProps;
-
-    if (!showXAxis) {
-      return null;
-    }
+    const { xTicksCount, axisXValueFormatter } = this.asProps;
 
     return (
       <XAxis
