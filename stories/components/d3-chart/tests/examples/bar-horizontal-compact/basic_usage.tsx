@@ -3,7 +3,7 @@ import type { CompactHorizontalBarChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import { getChartProps, getPropsToChart } from '../stories_props_helper';
+import { getNoAxisChartProps, getPropsToChart } from '../stories_props_helper';
 
 const Demo = (props: CompactHorizontalBarChartProps) => {
   const { plotWidth, plotHeight, ...chartProps } = getPropsToChart(props);
@@ -48,13 +48,10 @@ const data = [
   },
 ];
 
-export const defaultProps = getChartProps<CompactHorizontalBarChartProps>({
+export const defaultProps = getNoAxisChartProps<CompactHorizontalBarChartProps>({
   y: 'category',
   x: 'value',
-  marginX: 0,
-  marginY: 0,
   plotHeight: 350,
-  showXAxis: false,
   data,
 });
 

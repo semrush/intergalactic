@@ -891,11 +891,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       const link = tickLinks.first();
       const pill = locators.hoveredTick(page);
 
-      /** Whether the link itself, not the pill, is the topmost element at the link centre. */
+      /**
+       * Whether the link itself, not the pill, is painted on top at the link centre.
+       * The pill is `inert`, and hit testing skips inert elements, so `inert` is lifted for the check.
+       */
       const isLinkOnTop = () =>
         link.evaluate((element) => {
+          const inertElements = [...document.querySelectorAll('[inert]')];
+          inertElements.forEach((inertElement) => inertElement.removeAttribute('inert'));
           const box = element.getBoundingClientRect();
           const top = document.elementFromPoint(box.x + box.width / 2, box.y + box.height / 2);
+          inertElements.forEach((inertElement) => inertElement.setAttribute('inert', ''));
           return top !== null && (top === element || element.contains(top));
         });
 

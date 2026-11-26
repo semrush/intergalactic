@@ -24,14 +24,11 @@ export const locators = {
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
-  test('Verify bar horizontal compact with config 1 (Standard: all features, medium size, with axis)', {
+  test('Verify bar horizontal compact with config 1 (Standard: all features, medium size)', {
     tag: [TAG.PRIORITY_LOW, TAG.MOUSE, '@bar-horizontal-compact', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(page, STORY, 'en', {
       plotHeight: 350,
-      marginX: 40,
-      marginY: 40,
-      showXAxis: true,
       showTooltip: true,
       patterns: false,
       duration: 0,

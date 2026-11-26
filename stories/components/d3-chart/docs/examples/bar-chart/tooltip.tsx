@@ -11,12 +11,11 @@ const legendProps = {
 };
 
 const Demo = () => {
-  const MARGIN = 0;
   const width = 500;
   const height = 300;
 
   const yScale = scaleLinear()
-    .range([height - MARGIN, MARGIN])
+    .range([height, 0])
     .domain([0, 10]);
 
   return (
@@ -25,8 +24,6 @@ const Demo = () => {
       data={data}
       plotWidth={width}
       plotHeight={height}
-      marginX={MARGIN}
-      marginY={MARGIN}
       yScale={yScale}
       legendProps={legendProps}
       aria-label='Bar chart'

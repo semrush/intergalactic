@@ -16,8 +16,6 @@ export const baseLegendProps: Omit<BaseLegendProps, 'withTrend' | 'trendIsVisibl
 export const baseChartProps: StoryChartProps<BaseChartProps<any>> = {
   plotWidth: 500,
   plotHeight: 300,
-  marginX: 0,
-  marginY: 0,
   yAxisPosition: 'left',
   showXAxis: true,
   showYAxis: true,
@@ -48,12 +46,10 @@ export function getChartProps<F>(chartProps: Partial<F>): F {
 }
 
 /**
- * Axis props and margins have no effect on charts without axes (Donut, Radar, Venn, Cigarette,
+ * Axis props have no effect on charts without axes (Donut, Radar, Venn, Cigarette,
  * ScoreDonut), so the stories of those charts neither pass nor show them.
  */
 const axisPropNames = [
-  'marginX',
-  'marginY',
   'yAxisPosition',
   'showXAxis',
   'showYAxis',
@@ -139,7 +135,6 @@ const CATEGORY = {
   tooltip: 'Tooltip',
   a11y: 'Accessibility & locale',
   chart: 'Chart props',
-  deprecated: 'Deprecated',
 } as const;
 
 const inCategory = (category: string, control: Record<string, any>) => ({
@@ -187,24 +182,14 @@ export const getChartArgTypes = (additionalControls: Record<string, any> = {}) =
     }),
   };
 
-  // Still read by Line, Area, Bubble, Scatter, Histogram and CompactHorizontalBar; kept until that is fixed.
-  const deprecatedControls: Record<string, any> = {
-    marginX: inCategory(CATEGORY.deprecated, { control: { type: 'number' } }),
-    marginY: inCategory(CATEGORY.deprecated, { control: { type: 'number' } }),
-  };
-
   const result: Record<string, any> = { ...baseControls };
 
   Object.entries(additionalControls).forEach(([name, control]) => {
     // A story overriding a common control keeps its group unless it sets its own.
-    const baseCategory = (baseControls[name] ?? deprecatedControls[name])?.table?.category;
+    const baseCategory = baseControls[name]?.table?.category;
     const category = control?.table?.category ?? baseCategory ?? categoryOfStoryControl[name] ?? CATEGORY.chart;
 
     result[name] = inCategory(category, control ?? {});
-  });
-
-  Object.entries(deprecatedControls).forEach(([name, control]) => {
-    if (!(name in additionalControls)) result[name] = control;
   });
 
   return result;
