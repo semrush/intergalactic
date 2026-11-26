@@ -463,6 +463,25 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
+  test('Verify hovering a legend item keeps a chart with dots rendered', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@line-chart', '@d3-chart', '@chart-legend', '@checkbox'],
+  }, async ({ page }) => {
+    const pageErrors: string[] = [];
+    page.on('pageerror', (error) => pageErrors.push(error.message));
+
+    await loadPage(page, BASIC_USAGE_STORY, 'en', { showDots: true, duration: 0 });
+    await locators.plot(page).waitFor({ state: 'visible' });
+    await expect(locators.dots(page)).not.toHaveCount(0);
+
+    await test.step('Hover the first legend item: the chart and its dots stay rendered', async () => {
+      await locators.legendItem(page).first().hover();
+
+      await expect(locators.plot(page)).toBeVisible();
+      await expect(locators.dots(page)).not.toHaveCount(0);
+      expect(pageErrors).toEqual([]);
+    });
+  });
+
   test.describe('Pattern dashes', () => {
     test('Verify any 12 neighbouring pattern lines get distinct dashes', {
       tag: [TAG.PRIORITY_HIGH, '@d3-chart', '@line-chart', '@base-components', '@flex-box', '@typography', '@checkbox'],

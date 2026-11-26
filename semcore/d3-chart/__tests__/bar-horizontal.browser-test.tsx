@@ -198,6 +198,21 @@ Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify a responsive horizontal bar chart stays inside its own box', {
+    tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/d3-chart/tests/examples/bar-horizontal/basic-usage.tsx', 'en', { duration: 0 });
+
+    const chart = page.locator('[data-ui-name="Chart.Bar"]');
+    await chart.locator('svg[data-ui-name="Plot"]').waitFor({ state: 'visible' });
+
+    const overflowRight = await chart.evaluate((root) => {
+      const rootRight = root.getBoundingClientRect().right;
+      return Math.max(0, ...[...root.querySelectorAll('*')].map((element) => element.getBoundingClientRect().right - rootRight));
+    });
+    expect(overflowRight).toBeLessThanOrEqual(0.5);
+  });
+
   const ariaHiddenDocsCases = [
     {
       title: 'Verify Chart.Bar with GroupBar.HorizontalBar aria-hidden attributes',
