@@ -99,17 +99,14 @@ export abstract class AbstractAxisChart<
     return (
       <>
         {showYAxis && (
-          <>
-            <Grid scale={[this.xScale, this.yScale]} orientation='horizontal' dataHintsHandler={this.dataHintsHandlers} ticksCount={yTicks?.length} />
-            <HoverLine
-              data={this.data}
-              scale={[this.xScale, this.yScale]}
-              uid={this.plotId}
-              eventEmitter={this.eventEmitter}
-              keyX={groupKey}
-            />
-          </>
+          <Grid scale={[this.xScale, this.yScale]} orientation='horizontal' dataHintsHandler={this.dataHintsHandlers} ticksCount={yTicks?.length} />
         )}
+        <HoverLine
+          data={this.data}
+          scale={[this.xScale, this.yScale]}
+          eventEmitter={this.eventEmitter}
+          keyX={groupKey}
+        />
       </>
     );
   }
@@ -124,7 +121,6 @@ export abstract class AbstractAxisChart<
     return (
       <YAxis
         ref={yAxisPosition === 'left' ? this.yLeftAxisRef : this.yRightAxisRef}
-        uid={this.plotId}
         data={this.data}
         dataKey={groupKey}
         plotBoundaryRect={this.plotBoundaryRect}
@@ -148,7 +144,6 @@ export abstract class AbstractAxisChart<
     return (
       <XAxis
         ref={this.xAxisRef}
-        uid={this.plotId}
         data={this.data}
         dataKey={groupKey}
         plotBoundaryRect={this.plotBoundaryRect}
@@ -218,7 +213,7 @@ export abstract class AbstractAxisChart<
       return;
     }
 
-    const rect = plotElement.getBoundingClientRect();
+    const rect = this.plotBoundaryRect;
     const point = [event.clientX - rect.left - target.clientLeft, event.clientY - rect.top - target.clientTop];
 
     if (hasParent(target, plotElement)) {

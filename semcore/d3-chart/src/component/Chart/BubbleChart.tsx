@@ -212,7 +212,6 @@ class BubbleChartComponent extends AbstractAxisChart<
     return (
       <YAxis
         ref={yAxisPosition === 'left' ? this.yLeftAxisRef : this.yRightAxisRef}
-        uid={this.plotId}
         data={this.data}
         plotBoundaryRect={this.plotBoundaryRect}
         dataKey='y'
@@ -236,7 +235,6 @@ class BubbleChartComponent extends AbstractAxisChart<
     return (
       <XAxis
         ref={this.xAxisRef}
-        uid={this.plotId}
         plotBoundaryRect={this.plotBoundaryRect}
         data={this.data}
         dataKey='x'
@@ -254,39 +252,24 @@ class BubbleChartComponent extends AbstractAxisChart<
   }
 
   protected override renderGrid(): React.ReactNode {
-    const {
-      showXAxis,
-      showYAxis,
-      yTicksCount,
-      xTicksCount,
-    } = this.asProps;
+    const { yTicksCount, xTicksCount } = this.asProps;
 
     return (
       <>
-        {showYAxis && (
-          <>
-            <Grid scale={[this.xScale, this.yScale]} orientation='horizontal' dataHintsHandler={this.dataHintsHandlers} ticksCount={yTicksCount} />
-            <HoverLine
-              uid={this.plotId}
-              data={this.data}
-              keyX='x'
-              scale={[this.xScale, this.yScale]}
-              eventEmitter={this.eventEmitter}
-            />
-          </>
-        )}
-        {showXAxis && (
-          <>
-            <Grid scale={[this.xScale, this.yScale]} orientation='vertical' dataHintsHandler={this.dataHintsHandlers} ticksCount={xTicksCount} />
-            <HoverLine
-              uid={this.plotId}
-              data={this.data}
-              keyY='y'
-              scale={[this.xScale, this.yScale]}
-              eventEmitter={this.eventEmitter}
-            />
-          </>
-        )}
+        <Grid scale={[this.xScale, this.yScale]} orientation='horizontal' dataHintsHandler={this.dataHintsHandlers} ticksCount={yTicksCount} />
+        <Grid scale={[this.xScale, this.yScale]} orientation='vertical' dataHintsHandler={this.dataHintsHandlers} ticksCount={xTicksCount} />
+        <HoverLine
+          data={this.data}
+          keyX='x'
+          scale={[this.xScale, this.yScale]}
+          eventEmitter={this.eventEmitter}
+        />
+        <HoverLine
+          data={this.data}
+          keyY='y'
+          scale={[this.xScale, this.yScale]}
+          eventEmitter={this.eventEmitter}
+        />
       </>
     );
   }

@@ -241,7 +241,6 @@ class BarChartComponent extends AbstractAxisChart<
 
     return (
       <YAxis
-        uid={this.plotId}
         ref={yAxisPosition === 'left' ? this.yLeftAxisRef : this.yRightAxisRef}
         dataKey={groupKey}
         plotBoundaryRect={this.plotBoundaryRect}
@@ -267,7 +266,6 @@ class BarChartComponent extends AbstractAxisChart<
     return (
       <XAxis
         ref={this.xAxisRef}
-        uid={this.plotId}
         data={this.data}
         dataKey={groupKey}
         plotBoundaryRect={this.plotBoundaryRect}
@@ -293,40 +291,30 @@ class BarChartComponent extends AbstractAxisChart<
     return (
       <>
         {showYAxis && invertAxis !== true && (
-          <>
-            <Grid
-              scale={[this.xScale, this.yScale]}
-              orientation='horizontal'
-              dataHintsHandler={this.dataHintsHandlers}
-              ticksCount={yTicksCount}
-            />
-            <HoverRect
-              data={this.data}
-              uid={this.plotId}
-              eventEmitter={this.eventEmitter}
-              scale={[this.xScale, this.yScale]}
-              keyX={groupKey}
-            />
-          </>
+          <Grid
+            scale={[this.xScale, this.yScale]}
+            orientation='horizontal'
+            dataHintsHandler={this.dataHintsHandlers}
+            ticksCount={yTicksCount}
+          />
         )}
 
         {showXAxis && invertAxis === true && (
-          <>
-            <Grid
-              scale={[this.xScale, this.yScale]}
-              orientation='vertical'
-              dataHintsHandler={this.dataHintsHandlers}
-              ticksCount={xTicksCount}
-            />
-            <HoverRect
-              data={this.data}
-              uid={this.plotId}
-              eventEmitter={this.eventEmitter}
-              scale={[this.xScale, this.yScale]}
-              keyY={groupKey}
-            />
-          </>
+          <Grid
+            scale={[this.xScale, this.yScale]}
+            orientation='vertical'
+            dataHintsHandler={this.dataHintsHandlers}
+            ticksCount={xTicksCount}
+          />
         )}
+
+        <HoverRect
+          data={this.data}
+          eventEmitter={this.eventEmitter}
+          scale={[this.xScale, this.yScale]}
+          keyX={invertAxis !== true ? groupKey : undefined}
+          keyY={invertAxis === true ? groupKey : undefined}
+        />
       </>
     );
   }
