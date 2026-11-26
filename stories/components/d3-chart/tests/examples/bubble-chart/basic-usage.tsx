@@ -62,7 +62,6 @@ const Demo = (props: BubbleChartStoryProps) => {
       w={plotWidth}
       h={plotHeight}
       overflow='auto'
-      px={5}
     >
       <Chart.Bubble
         {...(chartProps as BubbleChartProps)}

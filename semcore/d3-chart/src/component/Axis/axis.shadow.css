@@ -42,15 +42,13 @@ SXAxis {
 }
 
 SYAxis {
-  SHoveredTick, STick {
-    margin: 0 var(--intergalactic-spacing-3x, 12px) 0 0;
-  }
 
   &[yAxisPosition='left'] {
     justify-items: end;
 
     SHoveredTick, STick {
       text-align: right;
+      margin: 0 var(--intergalactic-spacing-3x, 12px) 0 0;
     }
   }
   &[yAxisPosition='right'] {
@@ -58,6 +56,7 @@ SYAxis {
 
     SHoveredTick, STick {
       text-align: left;
+      margin: 0 0 0 var(--intergalactic-spacing-3x, 12px);
     }
   }
 
