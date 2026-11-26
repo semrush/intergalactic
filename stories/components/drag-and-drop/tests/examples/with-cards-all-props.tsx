@@ -39,7 +39,7 @@ const WidgetCard: React.FC<{ title: string }> = ({ title }) => {
           duration={0}
           groupKey='date'
           data={data}
-          plotWidth={200}
+          plotWidth={170}
           plotHeight={200}
           aria-label={`${title} chart`}
         />

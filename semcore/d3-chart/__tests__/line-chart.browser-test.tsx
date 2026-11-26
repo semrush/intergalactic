@@ -440,10 +440,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       'en',
     );
 
-    await test.step('Verify duration attribute on groups', async () => {
+    await test.step('Verify dots animate with the default 500ms duration', async () => {
       await locators.plot(page).first().waitFor({ state: 'visible' });
 
-      await expect(locators.group(page, 0)).toHaveAttribute('duration', '500ms');
+      await expect(locators.plot(page).locator('circle').first()).toHaveCSS('transition-duration', '0.5s');
     });
   });
 

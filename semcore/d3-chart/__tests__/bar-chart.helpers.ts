@@ -49,7 +49,13 @@ export const getAxisTickPosition = async (page: Page, axis: 'x' | 'y', label: st
     if (!tick) return null;
 
     const box = tick.getBoundingClientRect();
-    return axis === 'x' ? box.x + box.width / 2 - plot.x : box.y + box.height / 2 - plot.y;
+    if (axis === 'y') return box.y + box.height / 2 - plot.y;
+
+    // The first and the last X labels are aligned to the plot edges, so their value is at the label edge.
+    const transform = (tick as HTMLElement).style.transform;
+    if (transform === 'translateX(0%)') return box.left - plot.x;
+    if (transform.includes('100%')) return box.right - plot.x;
+    return box.x + box.width / 2 - plot.x;
   }, { axis, label });
 
   expect(position, `tick "${label}" on the ${axis.toUpperCase()} axis`).not.toBeNull();

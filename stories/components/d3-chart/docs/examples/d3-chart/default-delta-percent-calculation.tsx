@@ -11,7 +11,7 @@ const data = [
 
 const PLOT_WIDTH = 500;
 
-const xScale = scaleTime([data[0].date, data[data.length - 1].date], [40, PLOT_WIDTH - 30]);
+const xScale = scaleTime([data[0].date, data[data.length - 1].date], [0, PLOT_WIDTH]);
 
 const formatDate = (value: unknown) =>
   new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric' }).format(value as Date);

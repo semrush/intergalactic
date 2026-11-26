@@ -6,18 +6,17 @@ import React from 'react';
 import StackedBarMockData from '../../../__mocks__/stacked-bar';
 
 const Demo = () => {
-  const MARGIN = 30;
   const width = 500;
   const height = 300;
 
   const xScale = scaleBand()
-    .range([MARGIN, width - MARGIN])
+    .range([0, width])
     .domain(data.map((d) => d.bar))
     .paddingInner(0.4)
     .paddingOuter(0.2);
 
   const yScale = scaleLinear()
-    .range([height - MARGIN, 0])
+    .range([height, 0])
     .domain([0, 15]);
 
   return (
