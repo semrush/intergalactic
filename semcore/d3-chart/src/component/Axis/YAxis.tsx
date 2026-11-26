@@ -36,14 +36,14 @@ class YAxisComponent extends AbstractAxisComponent {
       return;
     }
 
-    const { eventEmitter, scale, plotBoundaryRect } = this.asProps;
+    const { eventEmitter, scale, plotWidth } = this.asProps;
 
     const rect = target.getBoundingClientRect();
     const point = event.clientY - rect.top;
     const value = invert(scale, point);
     const index = this.getIndexByValue(value);
 
-    const xPoint = plotBoundaryRect.left + plotBoundaryRect.width / 2;
+    const xPoint = rect.right + plotWidth / 2;
 
     eventEmitter.emit(`setTooltipVisible`, true);
     eventEmitter.emit(`hoverPosition`, xPoint, point + rect.top);

@@ -50,7 +50,7 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
   renderHoveredTick() {
     const SHoveredTick = Text;
 
-    const { valueFormatter, data, dataKey, styles, plotBoundaryRect, yAxisPosition } = this.asProps;
+    const { valueFormatter, data, dataKey, styles, plotWidth, yAxisPosition } = this.asProps;
     const { dataIndex } = this.state;
     const item = data[dataIndex];
 
@@ -62,7 +62,7 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
     if (!(typeof value === 'number' || typeof value === 'string' || value instanceof Date)) {
       return null;
     }
-    const tickWidth = plotBoundaryRect.width / this.ticks.length;
+    const tickWidth = plotWidth / this.ticks.length;
 
     const style = {
       transform: this.getTranslate(value),
@@ -101,22 +101,20 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
   }
 
   get plotWidth() {
-    const { plotBoundaryRect, scale } = this.asProps;
+    const { plotWidth, scale } = this.asProps;
     const [from, to] = scale.range();
-    let plotWidth = plotBoundaryRect.width;
 
     if (from !== 0 && to !== 0) {
-      plotWidth = Math.abs(to - from);
+      return Math.abs(to - from);
     }
 
     return plotWidth;
   }
 
   getTranslate(value: number | string | Date) {
-    const { scale, plotBoundaryRect, yAxisPosition } = this.asProps;
+    const { scale, plotWidth, yAxisPosition } = this.asProps;
 
-    const plotWidth = this.plotWidth;
-    const tickWidth = plotWidth / this.ticks.length;
+    const tickWidth = this.plotWidth / this.ticks.length;
     const calculatedTranslate = scaleOfBandwidth(scale, value) ?? 0;
 
     let translate: Parameters<this['getCssTranslate']>[0] = calculatedTranslate;
@@ -124,7 +122,7 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
     if (!('bandwidth' in scale) && yAxisPosition === undefined) {
       if (calculatedTranslate < tickWidth / 2) {
         translate = '0%';
-      } else if (calculatedTranslate > plotBoundaryRect.width - tickWidth / 2) {
+      } else if (calculatedTranslate > plotWidth - tickWidth / 2) {
         translate = `calc(${translate}px - 100%)`;
       }
     }

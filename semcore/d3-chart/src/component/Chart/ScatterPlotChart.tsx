@@ -163,12 +163,12 @@ class ScatterPlotChartComponent extends AbstractAxisChart<
     return (
       <YAxis
         ref={yAxisPosition === 'left' ? this.yLeftAxisRef : this.yRightAxisRef}
-        uid={this.plotId}
         data={this.data}
         dataKey='y'
         scale={this.yScale}
         ticksCount={yTicksCount}
-        plotBoundaryRect={this.plotBoundaryRect}
+        plotWidth={this.plotWidth}
+        plotHeight={this.plotHeight}
         valueFormatter={axisYValueFormatter ?? this.valueFormatter}
         yAxisPosition={yAxisPosition}
         eventEmitter={this.eventEmitter}
@@ -187,9 +187,9 @@ class ScatterPlotChartComponent extends AbstractAxisChart<
     return (
       <XAxis
         ref={this.xAxisRef}
-        uid={this.plotId}
         data={this.data}
-        plotBoundaryRect={this.plotBoundaryRect}
+        plotWidth={this.plotWidth}
+        plotHeight={this.plotHeight}
         dataKey='x'
         scale={this.xScale}
         ticksCount={xTicksCount}

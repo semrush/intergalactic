@@ -123,7 +123,8 @@ export abstract class AbstractAxisChart<
         ref={yAxisPosition === 'left' ? this.yLeftAxisRef : this.yRightAxisRef}
         data={this.data}
         dataKey={groupKey}
-        plotBoundaryRect={this.plotBoundaryRect}
+        plotWidth={this.plotWidth}
+        plotHeight={this.plotHeight}
         scale={this.yScale}
         ticksCount={yTicksCount}
         valueFormatter={axisYValueFormatter ?? this.axisValueFormatter}
@@ -146,7 +147,8 @@ export abstract class AbstractAxisChart<
         ref={this.xAxisRef}
         data={this.data}
         dataKey={groupKey}
-        plotBoundaryRect={this.plotBoundaryRect}
+        plotWidth={this.plotWidth}
+        plotHeight={this.plotHeight}
         scale={this.xScale}
         ticksCount={xTicksCount}
         valueFormatter={axisXValueFormatter ?? this.axisValueFormatter}
@@ -213,7 +215,7 @@ export abstract class AbstractAxisChart<
       return;
     }
 
-    const rect = this.plotBoundaryRect;
+    const rect = plotElement.getBoundingClientRect();
     const point = [event.clientX - rect.left - target.clientLeft, event.clientY - rect.top - target.clientTop];
 
     if (hasParent(target, plotElement)) {

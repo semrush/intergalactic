@@ -209,7 +209,8 @@ class BubbleChartComponent extends AbstractAxisChart<
       <YAxis
         ref={yAxisPosition === 'left' ? this.yLeftAxisRef : this.yRightAxisRef}
         data={this.data}
-        plotBoundaryRect={this.plotBoundaryRect}
+        plotWidth={this.plotWidth}
+        plotHeight={this.plotHeight}
         dataKey='y'
         scale={this.yScale}
         ticksCount={yTicksCount}
@@ -227,7 +228,8 @@ class BubbleChartComponent extends AbstractAxisChart<
     return (
       <XAxis
         ref={this.xAxisRef}
-        plotBoundaryRect={this.plotBoundaryRect}
+        plotWidth={this.plotWidth}
+        plotHeight={this.plotHeight}
         data={this.data}
         dataKey='x'
         scale={this.xScale}

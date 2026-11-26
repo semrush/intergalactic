@@ -243,7 +243,8 @@ class BarChartComponent extends AbstractAxisChart<
       <YAxis
         ref={yAxisPosition === 'left' ? this.yLeftAxisRef : this.yRightAxisRef}
         dataKey={groupKey}
-        plotBoundaryRect={this.plotBoundaryRect}
+        plotWidth={this.plotWidth}
+        plotHeight={this.plotHeight}
         scale={this.yScale}
         ticksCount={yTicksCount}
         primaryText={!!invertAxis}
@@ -268,7 +269,8 @@ class BarChartComponent extends AbstractAxisChart<
         ref={this.xAxisRef}
         data={this.data}
         dataKey={groupKey}
-        plotBoundaryRect={this.plotBoundaryRect}
+        plotWidth={this.plotWidth}
+        plotHeight={this.plotHeight}
         scale={this.xScale}
         ticksCount={xTicksCount}
         valueFormatter={axisXValueFormatter ?? this.axisValueFormatter}

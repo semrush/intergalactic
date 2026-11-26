@@ -29,7 +29,7 @@ import type { HoverRect, Tooltip as TooltipComponent } from '../../..';
 import { Plot } from '../../..';
 import { makeDataHintsContainer, makeDataHintsHandlers } from '../../../a11y/hints';
 import { interpolateValue, uniqueId } from '../../../utils';
-import { ElementRect } from '../../../utils/ElementRect';
+import { PlotSize } from '../../../utils/PlotSize';
 import ChartLegend, { ChartLegendTable } from '../../ChartLegend';
 import type { LegendFlexProps } from '../../ChartLegend/LegendFlex/LegendFlex.type';
 import type { LegendItem } from '../../ChartLegend/LegendItem/LegendItem.type';
@@ -67,8 +67,6 @@ export abstract class AbstractChart<
   protected legendRef = React.createRef<HTMLDivElement>();
   protected plotRef = React.createRef<SVGElement>();
 
-  protected plotBoundaryRect = new ElementRect();
-
   private observer: ResizeObserver | undefined;
 
   protected readonly eventEmitter: EventEmitter<ChartEvents>;
@@ -105,12 +103,6 @@ export abstract class AbstractChart<
   public componentDidMount(): void {
     if (this.chartRef.current) {
       this.observer?.observe(this.chartRef.current);
-    }
-    if (this.plotRef.current) {
-      this.plotBoundaryRect.setFromElement(this.plotRef.current);
-      if ((this.plotWidth && this.plotHeight)) {
-        this.forceUpdate();
-      }
     }
   }
 
@@ -679,11 +671,6 @@ export abstract class AbstractChart<
     this.setState({
       plotWidth: plotWidth ? 0 : width,
       plotHeight: plotHeight ? 0 : height,
-    }, () => {
-      if (this.plotRef.current) {
-        this.plotBoundaryRect.setFromElement(this.plotRef.current);
-        this.forceUpdate();
-      }
     });
 
     onResize?.([width, height], entities);

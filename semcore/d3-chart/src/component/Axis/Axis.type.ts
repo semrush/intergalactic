@@ -4,7 +4,6 @@ import type EventEmitter from '@semcore/core/lib/utils/eventEmitter';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import type * as React from 'react';
 
-import type { ElementRect } from '../../utils/ElementRect';
 import type { ChartEvents, ListData } from '../Chart/AbstractChart/AbstractChart.type';
 
 declare namespace NSAxis {
@@ -15,7 +14,8 @@ declare namespace NSAxis {
     valueFormatter: (value: unknown) => React.ReactNode;
     data: ListData;
     dataKey: keyof Props['data'][number];
-    plotBoundaryRect: ElementRect;
+    plotWidth: number;
+    plotHeight: number;
     /**
      * @default true
      */

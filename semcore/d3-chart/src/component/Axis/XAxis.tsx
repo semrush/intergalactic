@@ -32,14 +32,14 @@ class XAxisComponent extends AbstractAxisComponent {
       return;
     }
 
-    const { eventEmitter, scale, plotBoundaryRect } = this.asProps;
+    const { eventEmitter, scale, plotHeight } = this.asProps;
 
     const rect = target.getBoundingClientRect();
     const xPoint = event.clientX - rect.left;
     const value = invert(scale, xPoint);
     const index = this.getIndexByValue(value);
 
-    const yPoint = plotBoundaryRect.top + plotBoundaryRect.height / 2;
+    const yPoint = rect.top - plotHeight / 2;
 
     eventEmitter.emit(`setTooltipVisible`, true);
     eventEmitter.emit(`hoverPosition`, xPoint + rect.left, yPoint);
