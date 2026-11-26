@@ -123,7 +123,7 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
       if (calculatedTranslate < tickWidth / 2) {
         translate = '0%';
       } else if (calculatedTranslate > plotWidth - tickWidth / 2) {
-        translate = `calc(${translate}px - 100%)`;
+        translate = `calc(${translate}px - 100% + ${(plotWidth - this.plotWidth) / 2}px)`;
       }
     }
 
@@ -133,7 +133,7 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
   renderTicks() {
     const { valueFormatter, yAxisPosition, primaryText } = this.asProps;
 
-    const tickWidth = this.plotWidth / this.ticks.length;
+    const tickWidth = this.plotWidth / (this.ticks.length + 1);
 
     return (
       <>
