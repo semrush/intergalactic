@@ -294,13 +294,14 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
                 <Chart.Line
                   groupKey='x'
                   data={dashboardLineChart.data}
-                  yTicksCount={Y_TICKS_COUNT}
+                  yTicksCount={4}
                   xTicksCount={7}
                   plotHeight={CHART_CONTAINER_HEIGHT}
                   showDots
                   showLegend
                   legendProps={dashboardLineChart.legendProps}
                   aria-label='Line chart'
+                  yAxisPosition='right'
                 />
               </Card.Body>
             </Card>
