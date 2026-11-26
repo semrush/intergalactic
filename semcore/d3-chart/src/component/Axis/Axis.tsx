@@ -52,7 +52,7 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
   renderHoveredTick() {
     const SHoveredTick = Text;
 
-    const { scale, valueFormatter, data, dataKey, styles, plotBoundaryRect } = this.asProps;
+    const { scale, valueFormatter, data, dataKey, styles, plotBoundaryRect, yAxisPosition } = this.asProps;
     const { dataIndex } = this.state;
     const item = data[dataIndex];
 
@@ -70,12 +70,13 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
 
     let translate: Parameters<this['getCssTranslate']>[0] = calculatedTranslate;
 
-    if (calculatedTranslate < tickWidth / 2) {
-      translate = '0%';
-    } else if (calculatedTranslate > plotBoundaryRect.width - tickWidth / 2) {
-      translate = `calc(${translate}px - 100%)`;
+    if (yAxisPosition === undefined) {
+      if (calculatedTranslate < tickWidth / 2) {
+        translate = '0%';
+      } else if (calculatedTranslate > plotBoundaryRect.width - tickWidth / 2) {
+        translate = `calc(${translate}px - 100%)`;
+      }
     }
-
     const style = {
       transform: this.getCssTranslate(translate),
     };
@@ -125,7 +126,7 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
               style={{ transform: this.getCssTranslate(tick.translate) }}
               yAxisPosition={yAxisPosition}
               primaryText={primaryText}
-              w={yAxisPosition === undefined && tickWidth > 0 ? `${tickWidth}px` : undefined} // set width only for X-axis
+              wMax={yAxisPosition === undefined && tickWidth > 0 ? `${tickWidth}px` : undefined} // set width only for X-axis
             >
               {valueFormatter(tick.value)}
             </AxisTick>
