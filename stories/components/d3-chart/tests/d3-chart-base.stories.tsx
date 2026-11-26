@@ -79,6 +79,7 @@ export const HoveredTick: StoryObj<typeof HoveredTickProps> = {
     hideHoverLine: { control: 'boolean' },
     width: { control: { type: 'number' } },
     height: { control: { type: 'number' } },
+    xDomainPadding: { control: { type: 'number', min: 0, step: 1 }, if: { arg: 'hoverType', eq: 'Line' } },
   },
   args: HoveredTickProps,
 };

@@ -434,8 +434,15 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await page.waitForTimeout(500);
       await page.setViewportSize({ width: 768, height: 1200 });
-      await locators.lineDots(page, 0).hover();
-      await locators.tooltip(page, 0).waitFor({ state: 'visible' });
+
+      await test.step('Hover the line chart: both charts show their tooltip', async () => {
+        await locators.plot(page, 0).hover();
+
+        await expect(locators.tooltip(page)).toHaveCount(2);
+        await expect(locators.tooltip(page, 0)).toBeVisible();
+        await expect(locators.tooltip(page, 1)).toBeVisible();
+      });
+
       await expect(page).toHaveScreenshot();
     });
   });
