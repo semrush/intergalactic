@@ -34,8 +34,8 @@ class BubbleRoot extends Component {
     eventEmitter.emit(`setTooltipRenderingProps_${plotId}`, props, tooltipProps);
     eventEmitter.emit(`setTooltipVisible_${plotId}`, visible);
 
-    eventEmitter.emit(`hoverListItem_${plotId}`, visible ? props.index : -1, false);
-    eventEmitter.emit(`hoverListItem_${plotId}`, visible ? props.index : -1, true);
+    eventEmitter.emit(`hoverListItem`, visible ? props.index : -1, false);
+    eventEmitter.emit(`hoverListItem`, visible ? props.index : -1, true);
   };
 
   animationCircle() {

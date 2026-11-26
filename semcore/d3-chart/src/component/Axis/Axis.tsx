@@ -76,7 +76,7 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
         size={100}
         style={style}
         aria-hidden
-        w={tickWidth > 0 ? tickWidth : undefined}
+        wMax={tickWidth > 0 ? tickWidth : undefined}
         inert=''
       >
         {valueFormatter(item[dataKey])}
