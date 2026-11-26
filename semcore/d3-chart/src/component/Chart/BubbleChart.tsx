@@ -217,8 +217,6 @@ class BubbleChartComponent extends AbstractAxisChart<
         yAxisPosition={yAxisPosition}
         eventEmitter={this.eventEmitter}
         onMouseMove={() => false}
-        mr={yAxisPosition === 'left' ? 1.5 : undefined}
-        ml={yAxisPosition === 'right' ? 1.5 : undefined}
       />
     );
   }

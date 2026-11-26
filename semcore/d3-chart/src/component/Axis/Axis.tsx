@@ -44,15 +44,13 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
     const { scale, ticksCount } = this.asProps;
     const ticks: Array<string | number | Date> = 'ticks' in scale ? scale.ticks(ticksCount) : scale.domain();
 
-    return ticks.map((tick) => {
-      return { value: tick, translate: scaleOfBandwidth(scale, tick) ?? 0 };
-    });
+    return ticks;
   }
 
   renderHoveredTick() {
     const SHoveredTick = Text;
 
-    const { scale, valueFormatter, data, dataKey, styles, plotBoundaryRect, yAxisPosition } = this.asProps;
+    const { valueFormatter, data, dataKey, styles, plotBoundaryRect, yAxisPosition } = this.asProps;
     const { dataIndex } = this.state;
     const item = data[dataIndex];
 
@@ -64,21 +62,10 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
     if (!(typeof value === 'number' || typeof value === 'string' || value instanceof Date)) {
       return null;
     }
-
     const tickWidth = plotBoundaryRect.width / this.ticks.length;
-    const calculatedTranslate = scaleOfBandwidth(scale, value) ?? 0;
 
-    let translate: Parameters<this['getCssTranslate']>[0] = calculatedTranslate;
-
-    if (!('bandwidth' in scale) && yAxisPosition === undefined) {
-      if (calculatedTranslate < tickWidth / 2) {
-        translate = '0%';
-      } else if (calculatedTranslate > plotBoundaryRect.width - tickWidth / 2) {
-        translate = `calc(${translate}px - 100%)`;
-      }
-    }
     const style = {
-      transform: this.getCssTranslate(translate),
+      transform: this.getTranslate(value),
     };
 
     return sstyled(styles)(
@@ -113,8 +100,8 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
     return -1;
   }
 
-  renderTicks() {
-    const { valueFormatter, yAxisPosition, primaryText, plotBoundaryRect, scale } = this.asProps;
+  get plotWidth() {
+    const { plotBoundaryRect, scale } = this.asProps;
     const [from, to] = scale.range();
     let plotWidth = plotBoundaryRect.width;
 
@@ -122,20 +109,46 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
       plotWidth = Math.abs(to - from);
     }
 
+    return plotWidth;
+  }
+
+  getTranslate(value: number | string | Date) {
+    const { scale, plotBoundaryRect, yAxisPosition } = this.asProps;
+
+    const plotWidth = this.plotWidth;
     const tickWidth = plotWidth / this.ticks.length;
+    const calculatedTranslate = scaleOfBandwidth(scale, value) ?? 0;
+
+    let translate: Parameters<this['getCssTranslate']>[0] = calculatedTranslate;
+
+    if (!('bandwidth' in scale) && yAxisPosition === undefined) {
+      if (calculatedTranslate < tickWidth / 2) {
+        translate = '0%';
+      } else if (calculatedTranslate > plotBoundaryRect.width - tickWidth / 2) {
+        translate = `calc(${translate}px - 100%)`;
+      }
+    }
+
+    return this.getCssTranslate(translate);
+  }
+
+  renderTicks() {
+    const { valueFormatter, yAxisPosition, primaryText } = this.asProps;
+
+    const tickWidth = this.plotWidth / this.ticks.length;
 
     return (
       <>
         {this.ticks.map((tick, index) => {
           return (
             <AxisTick
-              key={`${index}_${tick.value}`}
-              style={{ transform: this.getCssTranslate(tick.translate) }}
+              key={`${index}_${tick}`}
+              style={{ transform: this.getTranslate(tick) }}
               yAxisPosition={yAxisPosition}
               primaryText={primaryText}
               wMax={yAxisPosition === undefined && tickWidth > 0 ? `${tickWidth}px` : undefined} // set width only for X-axis
             >
-              {valueFormatter(tick.value)}
+              {valueFormatter(tick)}
             </AxisTick>
           );
         })}

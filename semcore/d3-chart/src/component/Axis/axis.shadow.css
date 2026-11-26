@@ -42,21 +42,32 @@ SXAxis {
 }
 
 SYAxis {
+  SHoveredTick {
+    padding: 3px 8px;
+  }
 
   &[yAxisPosition='left'] {
     justify-items: end;
 
-    SHoveredTick, STick {
+    STick {
       text-align: right;
       margin: 0 var(--intergalactic-spacing-3x, 12px) 0 0;
+    }
+    SHoveredTick {
+      text-align: right;
+      margin: 0 var(--intergalactic-spacing-1x, 4px) 0 calc(-1 * var(--intergalactic-spacing-3x, 12px));
     }
   }
   &[yAxisPosition='right'] {
     justify-items: start;
 
-    SHoveredTick, STick {
+    STick {
       text-align: left;
       margin: 0 0 0 var(--intergalactic-spacing-3x, 12px);
+    }
+    SHoveredTick {
+      text-align: left;
+      margin: 0 calc(-1 * var(--intergalactic-spacing-3x, 12px)) 0 var(--intergalactic-spacing-1x, 4px);
     }
   }
 
@@ -64,10 +75,6 @@ SYAxis {
     &> STick, &> SHoveredTick {
       color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
     }
-  }
-
-  SHoveredTick {
-    margin: 0 0 0 -12px;
   }
 }
 

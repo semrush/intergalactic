@@ -115,6 +115,7 @@ const Demo = (props: BarChartProps) => {
       w={plotWidth}
       h={plotHeight}
       overflow='auto'
+      px={5}
     >
       <Chart.Bar
         {...barProps}
