@@ -57,10 +57,13 @@ class TooltipRoot extends Component {
     const { eventEmitter, plotId, rootRef } = this.asProps;
 
     const setCoordinates = (x, y) => {
-      const boundaryRect = rootRef.current?.getBoundingClientRect() ?? {};
+      const boundaryRect = rootRef?.current?.getBoundingClientRect();
 
       this.virtualElementPosition.x = x;
-      this.virtualElementPosition.y = y >= boundaryRect.top && y <= boundaryRect.top + boundaryRect.height ? y : boundaryRect.top + boundaryRect.height / 2;
+      this.virtualElementPosition.y = !boundaryRect
+        ? y
+        : y >= boundaryRect.top && y <= boundaryRect.top + boundaryRect.height ? y : boundaryRect.top + boundaryRect.height / 2;
+
       if (this.virtualTriggerElement === null) {
         this.virtualTriggerElement = {};
         setTimeout(() => {
