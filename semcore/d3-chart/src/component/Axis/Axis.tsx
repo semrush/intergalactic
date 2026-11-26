@@ -66,9 +66,18 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
     }
 
     const tickWidth = plotBoundaryRect.width / this.ticks.length;
+    const calculatedTranslate = scaleOfBandwidth(scale, value) ?? 0;
+
+    let translate: Parameters<this['getCssTranslate']>[0] = calculatedTranslate;
+
+    if (calculatedTranslate < tickWidth / 2) {
+      translate = '0%';
+    } else if (calculatedTranslate > plotBoundaryRect.width - tickWidth / 2) {
+      translate = `calc(${translate}px - 100%)`;
+    }
 
     const style = {
-      transform: this.getCssTranslate(scaleOfBandwidth(scale, value) ?? 0),
+      transform: this.getCssTranslate(translate),
     };
 
     return sstyled(styles)(
