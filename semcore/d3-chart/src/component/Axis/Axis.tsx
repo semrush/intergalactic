@@ -62,7 +62,7 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
     if (!(typeof value === 'number' || typeof value === 'string' || value instanceof Date)) {
       return null;
     }
-    const tickWidth = plotWidth / this.ticks.length;
+    const tickWidth = this.plotWidth / this.ticks.length;
 
     const style = {
       transform: this.getTranslate(value),
@@ -133,7 +133,7 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
   renderTicks() {
     const { valueFormatter, yAxisPosition, primaryText } = this.asProps;
 
-    const tickWidth = this.plotWidth / (this.ticks.length + 1);
+    const tickWidth = this.plotWidth / this.ticks.length;
 
     return (
       <>
