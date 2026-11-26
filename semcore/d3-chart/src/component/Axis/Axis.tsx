@@ -116,7 +116,7 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
               style={{ transform: this.getCssTranslate(tick.translate) }}
               yAxisPosition={yAxisPosition}
               primaryText={primaryText}
-              w={tickWidth > 0 ? `${tickWidth}px` : undefined}
+              w={yAxisPosition === undefined && tickWidth > 0 ? `${tickWidth}px` : undefined} // set width only for X-axis
             >
               {valueFormatter(tick.value)}
             </AxisTick>

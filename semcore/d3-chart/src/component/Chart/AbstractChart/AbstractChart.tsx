@@ -679,6 +679,7 @@ export abstract class AbstractChart<
     }, () => {
       if (this.plotRef.current) {
         this.plotBoundaryRect.setFromElement(this.plotRef.current);
+        this.forceUpdate();
       }
     });
 
