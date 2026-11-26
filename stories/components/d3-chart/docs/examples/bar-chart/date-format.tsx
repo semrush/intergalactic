@@ -10,10 +10,14 @@ const formatDate = (date: Date) =>
     year: 'numeric',
   }).format(date);
 
-const formatXAxisValue = (value: Date) => {
-  const index = data.findIndex((d) => d.date_chart === value);
+const formatXAxisValue = (value: unknown) => {
+  if (value instanceof Date) {
+    const index = data.findIndex((d) => d.date_chart === value);
 
-  return index % 4 === 0 ? 'n/a' : formatDate(value);
+    return index % 4 === 0 ? 'n/a' : formatDate(value);
+  }
+
+  return '';
 };
 
 const Demo = () => {
