@@ -159,6 +159,7 @@ function Dots(props) {
             )}
             {transparent && (
               <SDotBackdrop
+                tag='circle'
                 hide={hide}
                 cx={d3.x()(d)}
                 cy={d3.y()(d)}
@@ -206,9 +207,9 @@ function Dots(props) {
     }
     return acc;
   }, []);
-  const SDots = 'g';
+  const SDots = SvgElement;
   return sstyled(styles)(
-    <SDots duration={`${duration}ms`} onClickCapture={handlerOnClick}>
+    <SDots tag='g' duration={`${duration}ms`} onClickCapture={handlerOnClick}>
       <PotentialGradient id={`dotGradient_${uid}`} />
       { patterns && (
         <defs>
