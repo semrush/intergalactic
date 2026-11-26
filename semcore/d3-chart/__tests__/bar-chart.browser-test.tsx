@@ -913,6 +913,32 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
+  test('Verify the hover rect is under the pointer after the page scrolls', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+  }, async ({ page }) => {
+    await page.setViewportSize({ width: 800, height: 240 });
+    await loadPage(page, BAR_STORY, 'en', { invertAxis: true, duration: 0 });
+    await locators.plot(page).waitFor({ state: 'visible' });
+
+    await test.step('Scroll the page so the chart moves up', async () => {
+      await page.mouse.wheel(0, 80);
+      await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(0);
+    });
+
+    await test.step('Hover Category 2: the hover rect is under the pointer', async () => {
+      const tick = page.locator('[data-ui-name="Axis.Tick"]').filter({ hasText: 'Category 2' });
+      const tickBox = (await tick.boundingBox())!;
+      const plotBox = (await locators.plot(page).boundingBox())!;
+      const pointerY = tickBox.y + tickBox.height / 2;
+      await page.mouse.move(plotBox.x + plotBox.width / 2, pointerY);
+
+      await expect(locators.hoverRect(page)).toBeVisible();
+      const rectBox = (await locators.hoverRect(page).boundingBox())!;
+      expect(pointerY).toBeGreaterThanOrEqual(rectBox.y);
+      expect(pointerY).toBeLessThanOrEqual(rectBox.y + rectBox.height);
+    });
+  });
+
   test('Verify vertical bars start at the x axis', {
     tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {

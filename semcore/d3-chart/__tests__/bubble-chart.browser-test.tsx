@@ -218,6 +218,26 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
+  test('Verify the legacy Bubble.Tooltip gets the same item through xIndex as through index', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bubble-chart', '@d3-chart', '@typography'],
+  }, async ({ page }) => {
+    const readTooltip = async (tooltipIndexKey: 'index' | 'xIndex') => {
+      await loadPage(page, 'stories/components/d3-chart/tests/examples/bubble-chart/on-click-in-bubble.tsx', 'en', { tooltipIndexKey });
+      await locators.plot(page).waitFor({ state: 'visible' });
+      const box = (await locators.bubbleCircle(page, 2).boundingBox())!;
+      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+      await expect(locators.tooltip(page)).toBeVisible();
+      return locators.tooltip(page).innerText();
+    };
+
+    const byIndex = await readTooltip('index');
+    expect(byIndex).toContain('X axis: 6');
+
+    await test.step('Read the same bubble through xIndex', async () => {
+      expect(await readTooltip('xIndex')).toBe(byIndex);
+    });
+  });
+
   test('Verify onClickBubble returns the index in data', {
     tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bubble-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {

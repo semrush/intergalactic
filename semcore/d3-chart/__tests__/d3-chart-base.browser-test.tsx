@@ -791,6 +791,57 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       expect(chart.width).toBeLessThanOrEqual(400);
     });
 
+    test('Verify Y axis labels keep a 12px gap from the plot on both sides', {
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@line-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, LINE_CHART_EXAMPLE, 'en', { yAxisPosition: 'both', duration: 0, showLegend: false });
+      await locators.plot(page).waitFor({ state: 'visible' });
+      await expect(locators.yAxes(page)).toHaveCount(2);
+
+      const plot = (await locators.plot(page).boundingBox())!;
+      const tickEdges = (axis: Locator) =>
+        axis.locator('[data-ui-name="Axis.Tick"]').evaluateAll((ticks) =>
+          ticks.map((tick) => {
+            const box = tick.getBoundingClientRect();
+            return { left: box.left, right: box.right };
+          }),
+        );
+
+      await test.step('Verify the left labels end 12px before the plot', async () => {
+        const edges = await tickEdges(locators.yAxes(page).nth(0));
+        expect(edges.length).toBeGreaterThan(0);
+        expect(Math.round(plot.x - Math.max(...edges.map((edge) => edge.right)))).toBe(12);
+      });
+
+      await test.step('Verify the right labels start 12px after the plot', async () => {
+        const edges = await tickEdges(locators.yAxes(page).nth(1));
+        expect(edges.length).toBeGreaterThan(0);
+        expect(Math.round(Math.min(...edges.map((edge) => edge.left)) - (plot.x + plot.width))).toBe(12);
+      });
+    });
+
+    test('Verify the hovered category label on a right Y axis stays outside the plot', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@bar-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, BAR_CHART_EXAMPLE, 'en', {
+        invertAxis: true,
+        yAxisPosition: 'right',
+        duration: 0,
+        showLegend: false,
+        withReferenceLine: false,
+        withReferenceArea: false,
+      });
+      await locators.plot(page).waitFor({ state: 'visible' });
+
+      const plot = (await locators.plot(page).boundingBox())!;
+      await page.mouse.move(plot.x + plot.width / 2, plot.y + plot.height / 2);
+
+      const pill = locators.yAxes(page).locator('[data-ui-name="Text"]');
+      await expect(pill).toBeVisible();
+      const pillBox = (await pill.boundingBox())!;
+      expect(pillBox.x).toBeGreaterThanOrEqual(plot.x + plot.width - 1);
+    });
+
     (['right', 'both'] as const).forEach((yAxisPosition) => {
       test(`Verify showYAxis=false with yAxisPosition=${yAxisPosition} leaves no Y axis and no empty column`, {
         tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@area-chart'],
@@ -1224,7 +1275,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         ['only the Y axis', { showXAxis: false }],
       ] as const
     ).forEach(([name, axisProps]) => {
-      test(`Verify hovering a chart with ${name} renders no pill and raises no error`, {
+      test(`Verify hovering a chart with ${name} shows the hover line and raises no error`, {
         tag: [TAG.PRIORITY_LOW, TAG.MOUSE, '@d3-chart', '@base-components', '@flex-box', '@checkbox', '@line-chart'],
       }, async ({ page }) => {
         const pageErrors: string[] = [];
@@ -1235,7 +1286,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await hoverPlotCenter(page);
 
-        await expect(locators.hoveredTick(page)).toHaveCount(0);
+        await expect(locators.hoverLine(page)).toHaveCount(1);
         expect(pageErrors).toEqual([]);
       });
     });
