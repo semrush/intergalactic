@@ -41,22 +41,9 @@ test.describe(`${TAG.VISUAL}`, () => {
       description: 'Standard: all features enabled, medium size',
       plotWidth: 500,
       plotHeight: 300,
-      showXAxis: true,
-      showYAxis: true,
       showTooltip: true,
       showTotalInTooltip: true,
       patterns: false,
-      duration: 0,
-    },
-    {
-      description: 'Patterns: no axes, patterns enabled, large size',
-      plotWidth: 700,
-      plotHeight: 400,
-      showXAxis: false,
-      showYAxis: false,
-      showTooltip: true,
-      showTotalInTooltip: false,
-      patterns: true,
       duration: 0,
     },
   ];
@@ -118,13 +105,19 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await locators.plot(page).waitFor({ state: 'visible' });
 
-    await test.step('Verify patterns render correctly with default state', async () => {
-      const groups = await locators.group(page).all();
-      for (const group of groups) {
+    await test.step('Verify each bubble is filled with its own pattern', async () => {
+      const bubbleGroups = page.locator('g:has(> circle[data-ui-name="Bubble.Circle"])');
+      await expect(bubbleGroups).toHaveCount(5);
+
+      for (const group of await bubbleGroups.all()) {
         const pattern = group.locator('pattern');
-        const patternCount = await pattern.count();
-        expect(patternCount).toBeGreaterThanOrEqual(0);
+        await expect(pattern).toHaveCount(1);
+
+        const patternId = await pattern.getAttribute('id');
+        await expect(group.locator(':scope > circle[data-ui-name="Bubble.Circle"]'))
+          .toHaveCSS('fill', new RegExp(`#${patternId}"?\\)$`));
       }
+
       await expect(page).toHaveScreenshot();
     });
 

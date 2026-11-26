@@ -59,14 +59,23 @@ const axisPropNames = [
   'axisYValueFormatter',
 ] as const;
 
-const omitAxisProps = <T extends Record<string, any>>(props: T): T => {
+const omitProps = <T extends Record<string, any>>(props: T, names: readonly string[]): T => {
   const result: Record<string, any> = { ...props };
-  axisPropNames.forEach((name) => delete result[name]);
+  names.forEach((name) => delete result[name]);
   return result as T;
 };
 
+const omitAxisProps = <T extends Record<string, any>>(props: T): T => omitProps(props, axisPropNames);
+
 export function getNoAxisChartProps<F>(chartProps: Partial<F>): F {
   return omitAxisProps(getChartProps<F>(chartProps) as any);
+}
+
+/** `Chart.Bubble` always draws both axes, so it has no `showXAxis` / `showYAxis` props. */
+const axisTogglePropNames = ['showXAxis', 'showYAxis'] as const;
+
+export function getChartPropsWithoutAxisToggles<F>(chartProps: Partial<F>): F {
+  return omitProps(getChartProps<F>(chartProps) as any, axisTogglePropNames);
 }
 
 export function getPropsToChart<F>(props: StoryChartProps<F>): F {
@@ -197,3 +206,6 @@ export const getChartArgTypes = (additionalControls: Record<string, any> = {}) =
 
 export const getNoAxisChartArgTypes = (additionalControls?: any) =>
   omitAxisProps(getChartArgTypes(additionalControls));
+
+export const getChartArgTypesWithoutAxisToggles = (additionalControls?: any) =>
+  omitProps(getChartArgTypes(additionalControls), axisTogglePropNames);
