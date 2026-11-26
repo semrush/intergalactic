@@ -200,7 +200,6 @@ function Dots(props) {
             active={active}
             hide={hide}
             __excludeProps={['display', 'data', 'scale', 'visible', 'active', 'transparent']}
-
           />,
         ),
       );
@@ -212,13 +211,15 @@ function Dots(props) {
     <SDots duration={`${duration}ms`} onClickCapture={handlerOnClick}>
       <PotentialGradient id={`dotGradient_${uid}`} />
       { patterns && (
-        <PatternSymbol
-          color={resolveColor(color)}
-          patternKey={color}
-          id={svgPatternId}
-          patterns={patterns}
-          x={-1 * width}
-        />
+        <defs>
+          <PatternSymbol
+            color={resolveColor(color)}
+            patternKey={color}
+            id={svgPatternId}
+            patterns={patterns}
+            x={-1 * width}
+          />
+        </defs>
       )}
       {dots}
     </SDots>,
