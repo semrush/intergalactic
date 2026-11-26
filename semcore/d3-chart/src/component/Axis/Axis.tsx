@@ -70,7 +70,7 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
 
     let translate: Parameters<this['getCssTranslate']>[0] = calculatedTranslate;
 
-    if (!('bandwidth' in scale)) {
+    if (!('bandwidth' in scale) && yAxisPosition === undefined) {
       if (calculatedTranslate < tickWidth / 2) {
         translate = '0%';
       } else if (calculatedTranslate > plotBoundaryRect.width - tickWidth / 2) {

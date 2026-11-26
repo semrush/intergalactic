@@ -41,7 +41,7 @@ SXAxis {
 
 SYAxis {
   SHoveredTick, STick {
-    margin: 0 var(--intergalactic-spacing-3x, 12px);
+    margin: 0 var(--intergalactic-spacing-3x, 12px) 0 0;
   }
 
   &[yAxisPosition='left'] {
@@ -59,12 +59,14 @@ SYAxis {
     }
   }
 
-  &[primaryText] > STick {
-    color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
+  &[primaryText] {
+    &> STick, &> SHoveredTick {
+      color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
+    }
   }
 
   SHoveredTick {
-    margin: 0;
+    margin: 0 0 0 -12px;
   }
 }
 

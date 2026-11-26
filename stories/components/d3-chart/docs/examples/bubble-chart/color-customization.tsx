@@ -1,5 +1,4 @@
 import { Chart } from '@semcore/ui/d3-chart';
-import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
 import BubbleMockData from '../../../__mocks__/bubble';
