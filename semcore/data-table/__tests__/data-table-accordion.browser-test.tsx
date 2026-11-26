@@ -814,6 +814,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Verify accordion not expands when pressing TAB on cell without toggle', async () => {
         await page.keyboard.press('ArrowDown');
+        await expect(page.getByRole('gridcell', { name: 'www.ebay.com', exact: true })).toBeFocused();
         await page.keyboard.press('Enter');
         await expect(locators.chart(page, 'Chart')).toHaveCount(0);
       });
