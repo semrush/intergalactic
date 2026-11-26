@@ -25,9 +25,8 @@ SXAxis, SYAxis {
 SXAxis {
   grid-area: xAxis;
   padding-top: var(--intergalactic-spacing-2x, 8px);
-  border-top: 1px solid var(--intergalactic-chart-grid-x-axis, oklch(0.88 0.011 234.9));
-
-  margin-top: -0.5px;
+  /*border-top: 1px solid var(--intergalactic-chart-grid-x-axis, oklch(0.88 0.011 234.9));*/
+  /*margin-top: -0.5px;*/
 
   SHoveredTick, STick {
     margin: 0 0 3px 0;

@@ -4,3 +4,9 @@ SGrid {
   stroke-dasharray: 0 6;
   stroke-linecap: round;
 }
+
+SAxis {
+  fill: transparent;
+  stroke: var(--intergalactic-chart-grid-x-axis, oklch(0.88 0.011 234.9));
+  stroke-linecap: round;
+}
