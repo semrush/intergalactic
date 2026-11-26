@@ -1,3 +1,7 @@
 {
-  "of": "of"
+  "of": "of",
+  "used": "used",
+  "cancelAnytime": "Cancel anytime",
+  "cancelAnytimeDetails": "Cancellation details",
+  "back": "Back"
 }
