@@ -12,7 +12,7 @@ const Demo = () => {
 
   const xScale = scaleTime()
     .domain(minMax(data, 'date_chart'))
-    .range([30, width - 75]); // custom range for nice view of charts
+    .range([30, width - 64]); // custom range for nice view of charts
 
   const getDate = (date: unknown) => {
     if (date instanceof Date) {

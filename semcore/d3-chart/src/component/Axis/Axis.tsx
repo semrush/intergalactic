@@ -114,8 +114,15 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
   }
 
   renderTicks() {
-    const { valueFormatter, yAxisPosition, primaryText, plotBoundaryRect } = this.asProps;
-    const tickWidth = plotBoundaryRect.width / this.ticks.length;
+    const { valueFormatter, yAxisPosition, primaryText, plotBoundaryRect, scale } = this.asProps;
+    const [from, to] = scale.range();
+    let plotWidth = plotBoundaryRect.width;
+
+    if (from !== 0 && to !== 0) {
+      plotWidth = Math.abs(to - from);
+    }
+
+    const tickWidth = plotWidth / this.ticks.length;
 
     return (
       <>
