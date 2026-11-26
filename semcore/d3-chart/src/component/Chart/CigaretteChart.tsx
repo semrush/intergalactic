@@ -78,8 +78,6 @@ class CigaretteChartComponent extends AbstractChart<
     };
   }
 
-  protected override plotPadding = 0;
-
   private offset = 0;
 
   private get activeDataDefinitions() {

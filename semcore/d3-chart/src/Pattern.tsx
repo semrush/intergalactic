@@ -672,6 +672,7 @@ export const PatternSymbol: React.FC<
         height={height}
         viewBox={viewBox}
         aria-hidden={true}
+        style={{ visibility: 'hidden' }}
       >
         {children}
       </svg>

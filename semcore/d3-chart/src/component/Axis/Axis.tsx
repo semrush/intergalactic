@@ -25,13 +25,14 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
   abstract handleMoveOverAxis(event: React.MouseEvent<HTMLElement>): void;
 
   componentDidMount() {
-    this.asProps.eventEmitter.on(`hoverListItem_${this.asProps.uid}`, this.handleHoverListItemEvent);
-    this.asProps.eventEmitter.on('leaveChart', this.handleLeaveChartEvent);
+    const { eventEmitter } = this.asProps;
+    eventEmitter.on(`hoverListItem`, this.handleHoverListItemEvent);
+    eventEmitter.on('leaveChart', this.handleLeaveChartEvent);
   }
 
   componentWillUnmount(): void {
-    const { eventEmitter, uid } = this.asProps;
-    eventEmitter.off(`hoverListItem_${uid}`, this.handleHoverListItemEvent);
+    const { eventEmitter } = this.asProps;
+    eventEmitter.off(`hoverListItem`, this.handleHoverListItemEvent);
     eventEmitter.off(`leaveChart`, this.handleLeaveChartEvent);
   }
 
@@ -51,7 +52,7 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
   renderHoveredTick() {
     const SHoveredTick = Text;
 
-    const { scale, valueFormatter, data, dataKey, styles } = this.asProps;
+    const { scale, valueFormatter, data, dataKey, styles, plotBoundaryRect } = this.asProps;
     const { dataIndex } = this.state;
     const item = data[dataIndex];
 
@@ -64,22 +65,20 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
       return null;
     }
 
-    let hoveredTranslate: Parameters<this['getCssTranslate']>[0];
-
-    if (dataIndex === 0 && !('bandwidth' in scale)) {
-      hoveredTranslate = '0%';
-    } else if (dataIndex === data.length - 1 && !('bandwidth' in scale)) {
-      hoveredTranslate = `calc(${scaleOfBandwidth(scale, value) ?? 0}px - 100%)`;
-    } else {
-      hoveredTranslate = scaleOfBandwidth(scale, value) ?? 0;
-    }
+    const tickWidth = plotBoundaryRect.width / this.ticks.length;
 
     const style = {
-      transform: this.getCssTranslate(hoveredTranslate),
+      transform: this.getCssTranslate(scaleOfBandwidth(scale, value) ?? 0),
     };
 
     return sstyled(styles)(
-      <SHoveredTick size={100} style={style} aria-hidden>
+      <SHoveredTick
+        size={100}
+        style={style}
+        aria-hidden
+        w={tickWidth > 0 ? tickWidth : undefined}
+        inert=''
+      >
         {valueFormatter(item[dataKey])}
       </SHoveredTick>,
     );
@@ -105,7 +104,8 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
   }
 
   renderTicks() {
-    const { valueFormatter, yAxisPosition, primaryText } = this.asProps;
+    const { valueFormatter, yAxisPosition, primaryText, plotBoundaryRect } = this.asProps;
+    const tickWidth = plotBoundaryRect.width / this.ticks.length;
 
     return (
       <>
@@ -116,6 +116,7 @@ export abstract class AbstractAxisComponent extends Component<NSAxis.Props, [], 
               style={{ transform: this.getCssTranslate(tick.translate) }}
               yAxisPosition={yAxisPosition}
               primaryText={primaryText}
+              w={tickWidth > 0 ? `${tickWidth}px` : undefined}
             >
               {valueFormatter(tick.value)}
             </AxisTick>

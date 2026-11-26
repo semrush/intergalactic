@@ -29,19 +29,19 @@ class HoverLineComponent extends Component<NSHoverLine.Props, [], NSHoverLine.Un
   Element!: React.FC<{ children?: React.ReactNode; render: string }>;
 
   componentDidMount() {
-    const { eventEmitter, uid } = this.asProps;
+    const { eventEmitter } = this.asProps;
 
-    eventEmitter.on(`hoverListItem_${uid}`, this.handleHoverListItemEvent);
+    eventEmitter.on(`hoverListItem`, this.handleHoverListItemEvent);
     eventEmitter.on('leaveChart', this.handleLeaveChartEvent);
   }
 
   componentWillUnmount(): void {
-    const { eventEmitter, uid } = this.asProps;
-    eventEmitter.off(`hoverListItem_${uid}`, this.handleHoverListItemEvent);
+    const { eventEmitter } = this.asProps;
+    eventEmitter.off(`hoverListItem`, this.handleHoverListItemEvent);
     eventEmitter.off(`leaveChart`, this.handleLeaveChartEvent);
   }
 
-  handleHoverListItemEvent: ChartEvents[`hoverListItem_${string}`] = (index, invertAxis) => {
+  handleHoverListItemEvent: ChartEvents[`hoverListItem`] = (index, invertAxis) => {
     this.handlers.index(index);
   };
 

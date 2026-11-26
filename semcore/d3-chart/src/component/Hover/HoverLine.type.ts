@@ -8,7 +8,6 @@ declare namespace NSHoverLine {
   type Props = {
     data: ListData;
     scale: [ScaleBand<any> | ScaleTime<any, any> | ScaleLinear<any, any>, ScaleBand<any> | ScaleTime<any, any> | ScaleLinear<any, any>];
-    uid: string;
     eventEmitter: EventEmitter<ChartEvents>;
     keyX?: keyof Props['data'][number];
     keyY?: keyof Props['data'][number];

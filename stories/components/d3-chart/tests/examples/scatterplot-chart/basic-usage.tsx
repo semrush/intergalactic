@@ -19,6 +19,7 @@ const Demo = (props: ScatterPlotChartProps) => {
       w={plotWidth}
       h={plotHeight}
       overflow='auto'
+      pr={5}
     >
       <Chart.ScatterPlot
         {...chartProps}

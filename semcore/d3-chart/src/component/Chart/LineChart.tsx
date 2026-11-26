@@ -42,7 +42,7 @@ class LineChartComponent extends AbstractAxisChart<
     }
 
     const testItem = data[0][groupKey];
-    const range = [this.plotPadding, plotWidth - this.plotPadding];
+    const range = [0, plotWidth];
     const domain = minMax(data, groupKey);
 
     if (testItem instanceof Date && !Number.isNaN(testItem.getMilliseconds())) {
@@ -66,7 +66,7 @@ class LineChartComponent extends AbstractAxisChart<
     const min = Math.min(...flatValues);
 
     return scaleLinear()
-      .range([plotHeight, this.plotPadding])
+      .range([plotHeight, 0])
       .domain([min, max]);
   }
 

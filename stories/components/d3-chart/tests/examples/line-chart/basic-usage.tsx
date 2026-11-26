@@ -215,6 +215,7 @@ const Demo = (props: LineChartStoryProps) => {
         w={plotWidth}
         h={plotHeight}
         overflow='auto'
+        pr={5}
       >
         <Chart.Line
           {...responsiveChartProps}

@@ -54,11 +54,13 @@ class TooltipRoot extends Component {
   virtualTriggerElement = null;
   unsubscribe = [];
   componentDidMount() {
-    const { eventEmitter, plotId } = this.asProps;
+    const { eventEmitter, plotId, rootRef } = this.asProps;
 
     const setCoordinates = (x, y) => {
+      const boundaryRect = rootRef.current?.getBoundingClientRect() ?? {};
+
       this.virtualElementPosition.x = x;
-      this.virtualElementPosition.y = y;
+      this.virtualElementPosition.y = y >= boundaryRect.top && y <= boundaryRect.top + boundaryRect.height ? y : boundaryRect.top + boundaryRect.height / 2;
       if (this.virtualTriggerElement === null) {
         this.virtualTriggerElement = {};
         setTimeout(() => {
@@ -80,8 +82,11 @@ class TooltipRoot extends Component {
         this.setState({ $visible: visible }),
       ),
       eventEmitter.subscribe(`setTooltipPosition_${plotId}`, setCoordinates),
-      eventEmitter.subscribe(`hoverPosition_${plotId}`, setCoordinates),
-      eventEmitter.subscribe(`hoverListItem_${plotId}`, (index, invertAxis) => {
+      eventEmitter.subscribe(`setTooltipVisible`, (visible) =>
+        this.setState({ $visible: visible }),
+      ),
+      eventEmitter.subscribe(`hoverPosition`, setCoordinates),
+      eventEmitter.subscribe(`hoverListItem`, (index, invertAxis) => {
         this.setState({
           tooltipProps: {
             [invertAxis ? 'yIndex' : 'xIndex']: index,
