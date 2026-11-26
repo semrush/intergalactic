@@ -19,12 +19,14 @@ import {
   DASHBOARD_DOMAIN_OPTIONS,
 } from './dashboardDomainCharts';
 import BarMockData from '../../../../../../components/d3-chart/__mocks__/bar';
+import BubbleMockData from '../../../../../../components/d3-chart/__mocks__/bubble';
 import CigaretteMockData from '../../../../../../components/d3-chart/__mocks__/cigarette';
 import DonutMockData from '../../../../../../components/d3-chart/__mocks__/donut';
 import ScatterplotMockData from '../../../../../../components/d3-chart/__mocks__/scatterplot';
 import VennMockData from '../../../../../../components/d3-chart/__mocks__/venn';
 import AreaChartBasicExample from '../../../../../../components/d3-chart/docs/examples/area-chart/basic-usage';
 import BarChartLinksExample from '../../../../../../components/d3-chart/docs/examples/bar-chart/links';
+import BarHorizontalBasicExample from '../../../../../../components/d3-chart/docs/examples/bar-horizontal/basic-usage';
 import LegendWithMetricsExample
   from '../../../../../../components/d3-chart/docs/examples/chart-legend/legend-with-metrics';
 import ReferenceLineExample from '../../../../../../components/d3-chart/docs/examples/d3-chart/reference-line';
@@ -391,7 +393,7 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
                 <Flex justifyContent='space-between' alignItems='flex-start' w='100%'>
                   <Box>
                     <Card.Title tag='h3'>Bar horizontal</Card.Title>
-                    <Card.Description>Compact horizontal bars.</Card.Description>
+                    <Card.Description>Horizontal bars by category.</Card.Description>
                   </Box>
                   <Button addonLeft={FileExportM} aria-label='Export'>
                     Export
@@ -399,13 +401,7 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
                 </Flex>
               </Card.Header>
               <Card.Body>
-                <Chart.CompactHorizontalBar
-                  y='category'
-                  x='value'
-                  data={BarMockData.WithValue.slice(0, 3)}
-                  plotHeight={CHART_CONTAINER_HEIGHT}
-                  aria-label='Compact horizontal bar chart'
-                />
+                <BarHorizontalBasicExample />
               </Card.Body>
             </Card>
 
@@ -636,6 +632,74 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
                   aria-label='Cigarette chart vertical'
                 />
               </Box>
+            </Card.Body>
+          </Card>
+
+          <Card
+            tag='section'
+            style={{
+              flex: '1 1 calc(33.333% - 11px)',
+              minWidth: 'min(100%, 280px)',
+              maxWidth: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
+            <Card.Header>
+              <Flex justifyContent='space-between' alignItems='center' w='100%'>
+                <Card.Title tag='h3'>Bubble</Card.Title>
+                <Button addonLeft={FileExportM} aria-label='Export'>
+                  Export
+                </Button>
+              </Flex>
+            </Card.Header>
+            <Card.Body style={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
+              <Chart.Bubble
+                data={BubbleMockData.Label}
+                plotHeight={CHART_CONTAINER_HEIGHT}
+                yTicksCount={Y_TICKS_COUNT}
+                aria-label='Bubble chart'
+              />
+            </Card.Body>
+          </Card>
+        </Flex>
+
+        <Flex gap={2} flexWrap alignItems='stretch' mb={4} style={{ width: '100%', boxSizing: 'border-box' }}>
+          <Card tag='section' style={cardSectionStyle('1 1 calc(50% - 8px)')}>
+            <Card.Header>
+              <Flex justifyContent='space-between' alignItems='center' w='100%'>
+                <Card.Title tag='h3'>Score bar</Card.Title>
+                <Button addonLeft={FileExportM} aria-label='Export'>
+                  Export
+                </Button>
+              </Flex>
+            </Card.Header>
+            <Card.Body>
+              <Chart.ScoreBar
+                data={BarMockData.WithValue}
+                aria-label='Score bar chart'
+              />
+            </Card.Body>
+          </Card>
+
+          <Card tag='section' style={cardSectionStyle('1 1 calc(50% - 8px)')}>
+            <Card.Header>
+              <Flex justifyContent='space-between' alignItems='center' w='100%'>
+                <Card.Title tag='h3'>Score donut</Card.Title>
+                <Button addonLeft={FileExportM} aria-label='Export'>
+                  Export
+                </Button>
+              </Flex>
+            </Card.Header>
+            <Card.Body>
+              <Chart.ScoreDonut
+                data={{ value: 20 }}
+                plotWidth={180}
+                plotHeight={180}
+                showTooltip
+                showLegend
+                aria-label='Score donut chart'
+              />
             </Card.Body>
           </Card>
         </Flex>
