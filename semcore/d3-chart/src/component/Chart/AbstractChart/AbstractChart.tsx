@@ -108,6 +108,9 @@ export abstract class AbstractChart<
     }
     if (this.plotRef.current) {
       this.plotBoundaryRect.setFromElement(this.plotRef.current);
+      if ((this.plotWidth && this.plotHeight)) {
+        this.forceUpdate();
+      }
     }
   }
 
