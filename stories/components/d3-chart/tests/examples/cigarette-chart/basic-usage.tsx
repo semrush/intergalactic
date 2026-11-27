@@ -3,7 +3,7 @@ import type { CigaretteChartProps } from '@semcore/ui/d3-chart';
 import { Chart, interpolateValue } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import { getChartProps } from '../stories_props_helper';
+import { getNoAxisChartProps } from '../stories_props_helper';
 
 const data: Record<string, number | typeof interpolateValue> = {
   Cats: 3524,
@@ -111,7 +111,7 @@ const Demo = ({
   );
 };
 
-export const defaultProps = getChartProps<CigaretteChartProps>({
+export const defaultProps = getNoAxisChartProps<CigaretteChartProps>({
   data,
   plotHeight: 28,
   showLegend: true,

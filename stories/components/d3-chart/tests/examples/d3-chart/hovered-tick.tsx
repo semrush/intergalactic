@@ -11,6 +11,11 @@ type HoveredTickStoryProps = {
   hideHoverLine?: boolean;
   width?: number;
   height?: number;
+  /**
+   * Widens the X domain of the `Line` variant by this many units on each side, so the first and
+   * last data points no longer sit on the axis edges.
+   */
+  xDomainPadding?: number;
 };
 
 const MARGIN = 40;
@@ -33,6 +38,7 @@ const Demo = (props: HoveredTickStoryProps) => {
     hideHoverLine = false,
     width = 500,
     height = 300,
+    xDomainPadding = 0,
   } = props;
 
   // `hideHoverLine` is read by `HoverLine`/`HoverRect` at runtime, but it is missing from the
@@ -65,9 +71,10 @@ const Demo = (props: HoveredTickStoryProps) => {
     );
   }
 
+  const [xMin, xMax] = minMax(linearData, 'x');
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])
-    .domain(minMax(linearData, 'x'));
+    .domain([xMin - xDomainPadding, xMax + xDomainPadding]);
 
   return (
     <Plot data={linearData} scale={[xScale, yScale]} width={width} height={height}>
@@ -92,6 +99,7 @@ export const defaultProps: HoveredTickStoryProps = {
   hideHoverLine: false,
   width: 500,
   height: 300,
+  xDomainPadding: 0,
 };
 
 Demo.defaultProps = defaultProps;

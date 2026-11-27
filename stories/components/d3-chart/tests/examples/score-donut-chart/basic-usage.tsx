@@ -6,7 +6,7 @@ import Divider from '@semcore/ui/divider';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-import { getChartProps, getPropsToChart } from '../stories_props_helper';
+import { getNoAxisChartProps, getPropsToChart } from '../stories_props_helper';
 
 /**
  * `tooltipValueFormatter` receives `data.value` for both slices, so it formats the score
@@ -135,12 +135,10 @@ const Demo: DemoComponent = (props: ScoreDonutChartStoryArgs) => {
 };
 
 export const defaultProps: ScoreDonutChartStoryArgs = {
-  ...getChartProps<ScoreDonutChartStoryProps>({
+  ...getNoAxisChartProps<ScoreDonutChartStoryProps>({
     data: { value: 40 },
     // Mirrors the component defaults. `innerRadius` is left out: Donut derives it from the
     // ring thickness when it is absent, and any fixed number here would change the look.
-    marginX: 0,
-    marginY: 0,
     halfsize: false,
     patterns: false,
     withInnerLabel: false,

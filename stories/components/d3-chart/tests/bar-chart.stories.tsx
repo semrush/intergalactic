@@ -72,6 +72,7 @@ const barReferenceControls = {
 
 export const BasicUsage: StoryObj = {
   argTypes: getChartArgTypes({
+    invertAxis: { control: 'boolean' },
     type: { control: 'select', options: ['stack', 'group'] },
     maxBarSize: { control: { type: 'number', min: 0, max: 100, step: 1 } },
     // Applied to Category 0–2; `mixed` is good / insightful / bad.

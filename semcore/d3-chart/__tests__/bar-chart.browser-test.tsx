@@ -8,6 +8,7 @@ import {
   countRoundedCorners,
   dataTypeCases,
   expectDataTypes,
+  getAxisTickPosition,
   getBarBoxes,
   getCornerRadius,
   getCurveCornerSizes,
@@ -29,33 +30,25 @@ test.describe(`${TAG.VISUAL}`, () => {
         priority: TAG.PRIORITY_HIGH,
         plotWidth: 500,
         plotHeight: 300,
-        marginX: 40,
-        marginY: 40,
         showXAxis: true,
         showYAxis: true,
         invertAxis: false,
         showTooltip: true,
         showLegend: true,
         patterns: false,
-        multilineXTicks: false,
-        multilineYTicks: false,
         duration: 0,
       },
       {
-        description: 'Patterns: minimal axes and UI, multiline ticks',
+        description: 'Patterns: minimal axes and UI',
         priority: TAG.PRIORITY_MEDIUM,
         plotWidth: 400,
         plotHeight: 350,
-        marginX: 40,
-        marginY: 40,
         showXAxis: true,
         showYAxis: false,
         invertAxis: false,
         showTooltip: true,
         showLegend: true,
         patterns: true,
-        multilineXTicks: true,
-        multilineYTicks: false,
         duration: 0,
       },
       {
@@ -63,16 +56,12 @@ test.describe(`${TAG.VISUAL}`, () => {
         priority: TAG.PRIORITY_MEDIUM,
         plotWidth: 500,
         plotHeight: 300,
-        marginX: 60,
-        marginY: 60,
         showXAxis: true,
         showYAxis: true,
         invertAxis: true,
         showTooltip: true,
         showLegend: false,
         patterns: false,
-        multilineXTicks: false,
-        multilineYTicks: true,
         duration: 0,
       },
     ];
@@ -525,7 +514,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await test.step('Verify forecast stripes, potential gradient and highlights', async () => {
           await locators.plot(page).waitFor({ state: 'visible' });
-          await expect(locators.plot(page)).toHaveScreenshot(`bar-data-types-${name}.png`);
+          await expect(locators.chart(page)).toHaveScreenshot(`bar-data-types-${name}.png`);
         });
       });
     });
@@ -750,8 +739,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         const barSizes = boxes.map((box) => (variant.axis === 'x' ? box.width : box.height));
 
+        // getBBox returns floats: a 12px bar can read as 12.000004, so sizes are rounded to 0.01px.
         for (const size of barSizes) {
-          expect(size).toBeLessThanOrEqual(MAX_BAR_SIZE);
+          expect(Math.round(size * 100) / 100).toBeLessThanOrEqual(MAX_BAR_SIZE);
         }
 
         return barSizes;
@@ -928,15 +918,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, BAR_STORY, 'en', { dataType: 'none', highlightDots: 'none', duration: 0 });
 
-    await test.step('Verify the bottom of every bar is on the x axis line', async () => {
+    await test.step('Verify the bottom of every bar is at 0 on the value axis', async () => {
       await expect(locators.groupBarBar(page)).toHaveCount(5);
-      await expect(page.locator('line[data-ui-name="Axis"]')).toHaveCount(2);
-      const axisY = await page.locator('line[data-ui-name="Axis"]').evaluateAll((lines) =>
-        Number(lines.find((line) => line.getAttribute('y1') === line.getAttribute('y2'))!.getAttribute('y1')),
-      );
+      const zeroY = await getAxisTickPosition(page, 'y', '0');
       const boxes = await getBarBoxes(locators.groupBarBar(page));
       expect(boxes).toHaveLength(5);
-      expect(boxes.map((box) => Number((box.y + box.height).toFixed(2)))).toEqual(boxes.map(() => axisY));
+
+      for (const box of boxes) {
+        expect(box.y + box.height).toBeCloseTo(zeroY, 0);
+      }
     });
   });
 

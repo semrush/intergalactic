@@ -1,18 +1,30 @@
+import type { Intergalactic } from '@semcore/core';
+import type EventEmitter from '@semcore/core/lib/utils/eventEmitter';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 
-import type { makeDataHintsContainer } from '../../a11y/hints';
-import type { ChartMetaData } from '../../ChartMetaData';
-import type { ListData } from '../Chart/AbstractChart.type';
+import type { ChartEvents, ListData } from '../Chart/AbstractChart/AbstractChart.type';
 
-export type HoverLineProps = {
-  data: ListData;
-  x: keyof HoverLineProps['data'][number];
-  y: keyof HoverLineProps['data'][number];
-  scale: [ScaleBand<any> | ScaleTime<any, any> | ScaleLinear<any, any>, ScaleBand<any> | ScaleTime<any, any> | ScaleLinear<any, any>];
-  meta: ChartMetaData;
-  xIndex: number | null;
-  yIndex: number | null;
-  hideTickHover?: boolean;
-  dataHints: ReturnType<typeof makeDataHintsContainer>;
-  formatValue: (value: unknown) => string | [((value: unknown) => string), ((value: unknown) => string)];
+declare namespace NSHoverLine {
+  type Props = {
+    data: ListData;
+    scale: [ScaleBand<any> | ScaleTime<any, any> | ScaleLinear<any, any>, ScaleBand<any> | ScaleTime<any, any> | ScaleLinear<any, any>];
+    eventEmitter: EventEmitter<ChartEvents>;
+    keyX?: keyof Props['data'][number];
+    keyY?: keyof Props['data'][number];
+    index?: number;
+  };
+
+  type UncontrolledProps = {
+    index: number;
+  };
+
+  type DefaultProps = {
+    defaultIndex: -1;
+  };
+
+  type Component = Intergalactic.Component<'line', Props>;
+}
+
+export {
+  type NSHoverLine,
 };

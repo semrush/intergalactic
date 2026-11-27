@@ -129,5 +129,8 @@ export type IntergalacticD3Component<BaseTag extends Intergalactic.Tag, Props, C
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
 Intergalactic.InternalTypings.ComponentAdditive<BaseTag, BaseTag, Props>;
 
+/**
+ * @deprecated. You should use Chart.* for charts.
+ */
 declare const Plot: IntergalacticD3Component<'svg', PlotProps, Context>;
 export default Plot;

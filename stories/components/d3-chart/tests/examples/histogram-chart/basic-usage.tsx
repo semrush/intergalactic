@@ -16,6 +16,7 @@ const Demo = (props: HistogramChartProps) => {
       w={plotWidth}
       h={plotHeight}
       overflow='auto'
+      pr={5}
     >
       <Chart.Histogram
         {...chartProps}

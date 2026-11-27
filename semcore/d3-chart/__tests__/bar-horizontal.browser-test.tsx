@@ -5,6 +5,7 @@ import { TAG } from '@semcore/testing-utils/shared/tags';
 import {
   BAR_STORY,
   countRoundedCorners,
+  getAxisTickPosition,
   getBarBoxes,
   getCornerRadius,
   getCurveCornerSizes,
@@ -197,6 +198,21 @@ Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify a responsive horizontal bar chart stays inside its own box', {
+    tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/d3-chart/tests/examples/bar-horizontal/basic-usage.tsx', 'en', { duration: 0 });
+
+    const chart = page.locator('[data-ui-name="Chart.Bar"]');
+    await chart.locator('svg[data-ui-name="Plot"]').waitFor({ state: 'visible' });
+
+    const overflowRight = await chart.evaluate((root) => {
+      const rootRight = root.getBoundingClientRect().right;
+      return Math.max(0, ...[...root.querySelectorAll('*')].map((element) => element.getBoundingClientRect().right - rootRight));
+    });
+    expect(overflowRight).toBeLessThanOrEqual(0.5);
+  });
+
   const ariaHiddenDocsCases = [
     {
       title: 'Verify Chart.Bar with GroupBar.HorizontalBar aria-hidden attributes',
@@ -266,6 +282,28 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
+  test('Verify tooltip shows the hovered bar when categories are not in alphabetical order', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+  }, async ({ page }) => {
+    const data = [
+      { category: 'Mar', bar: 2 },
+      { category: 'Jan', bar: 5 },
+      { category: 'Feb', bar: 7 },
+      { category: 'Apr', bar: 4 },
+      { category: 'C.10', bar: 6 },
+      { category: 'C.2', bar: 3 },
+    ];
+    await loadPage(page, BAR_STORY, 'en', { invertAxis: true, data, trend: undefined, duration: 0 });
+    await expect(locators.groupBarHorizontalBar(page)).toHaveCount(data.length);
+
+    for (const [index, { category }] of data.entries()) {
+      await test.step(`Verify tooltip shows "${category}" over its bar`, async () => {
+        await hoverCenter(page, locators.groupBarHorizontalBar(page, index));
+        await expect(locators.tooltip(page)).toContainText(category);
+      });
+    }
+  });
+
   test('Verify horizontal hover rect is rounded at all 4 corners', {
     tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
@@ -283,15 +321,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, BAR_STORY, 'en', { invertAxis: true, dataType: 'none', highlightDots: 'none', duration: 0 });
 
-    await test.step('Verify the left edge of every bar is on the y axis line', async () => {
+    await test.step('Verify the left edge of every bar is at 0 on the value axis', async () => {
       await expect(locators.groupBarHorizontalBar(page)).toHaveCount(5);
-      await expect(page.locator('line[data-ui-name="Axis"]')).toHaveCount(2);
-      const axisX = await page.locator('line[data-ui-name="Axis"]').evaluateAll((lines) =>
-        Number(lines.find((line) => line.getAttribute('x1') === line.getAttribute('x2'))!.getAttribute('x1')),
-      );
+      const zeroX = await getAxisTickPosition(page, 'x', '0');
       const boxes = await getBarBoxes(locators.groupBarHorizontalBar(page), 'y');
       expect(boxes).toHaveLength(5);
-      expect(boxes.map((box) => box.x)).toEqual(boxes.map(() => axisX));
+
+      for (const box of boxes) {
+        expect(box.x).toBeCloseTo(zeroX, 0);
+      }
     });
   });
 

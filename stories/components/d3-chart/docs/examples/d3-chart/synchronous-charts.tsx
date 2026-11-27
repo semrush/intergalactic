@@ -1,14 +1,6 @@
-import {
-  Bar,
-  HoverLine,
-  HoverRect,
-  Line,
-  XAxis,
-  Plot,
-  YAxis,
-  PlotEventEmitter,
-} from '@semcore/ui/d3-chart';
-import { scaleLinear, scaleBand } from 'd3-scale';
+import { Flex } from '@semcore/ui/base-components';
+import { Chart, PlotEventEmitter, minMax } from '@semcore/ui/d3-chart';
+import { scaleTime } from 'd3-scale';
 import React from 'react';
 
 import BarMockData from '../../../__mocks__/bar';
@@ -17,75 +9,47 @@ const eventEmitter = new PlotEventEmitter();
 
 const Demo = () => {
   const [width, height] = [600, 300];
-  const MARGIN_X = 80;
-  const MARGIN_Y = 45;
 
-  const xScale = scaleBand()
-    .domain(data.map((d) => String(d.date_chart)))
-    .range([MARGIN_X, width - MARGIN_X])
-    .paddingInner(0.4)
-    .paddingOuter(0.2);
+  const xScale = scaleTime()
+    .domain(minMax(data, 'date_chart'))
+    .range([30, width - 64]); // custom range for nice view of charts
 
-  const yScale = scaleLinear()
-    .domain([0, Math.max(...data.map((d) => d.download))])
-    .range([height - MARGIN_Y, MARGIN_Y]);
+  const getDate = (date: unknown) => {
+    if (date instanceof Date) {
+      return new Intl.DateTimeFormat('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+      }).format(date);
+    }
 
-  const getDate = (date: number) =>
-    new Intl.DateTimeFormat('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
-    }).format(date);
+    return '';
+  };
 
   return (
-    <>
-      <Plot
+    <Flex direction='column' gap={8}>
+      <Chart.Line
         data={data}
-        scale={[xScale, yScale]}
-        width={width}
-        height={height}
+        groupKey='date_chart'
+        aria-label='Line chart'
         eventEmitter={eventEmitter}
-      >
-        <YAxis ticks={yScale.ticks(4)}>
-          <YAxis.Ticks />
-          <YAxis.Grid />
-        </YAxis>
-        <HoverLine.Tooltip x='date_chart' wMin={100}>
-          {({ xIndex }) => ({
-            children: <>{data[xIndex]?.download}</>,
-          })}
-        </HoverLine.Tooltip>
-        <Line x='date_chart' y='download'>
-          <Line.Dots display />
-        </Line>
-      </Plot>
+        axisXValueFormatter={getDate}
+        w={width}
+        h={height}
+        // @ts-ignore
+        xScale={xScale}
+      />
 
-      <Plot
+      <Chart.Bar
+        groupKey='date_chart'
         data={data}
-        scale={[xScale, yScale]}
-        width={width}
-        height={height}
+        w={width}
+        h={height}
+        aria-label='Bar chart'
         eventEmitter={eventEmitter}
-      >
-        <YAxis ticks={yScale.ticks(4)}>
-          <YAxis.Ticks />
-          <YAxis.Grid />
-        </YAxis>
-        <XAxis>
-          <XAxis.Ticks>
-            {({ value, index }) => ({
-              children: index % 2 ? '' : getDate(Number(value)),
-            })}
-          </XAxis.Ticks>
-        </XAxis>
-        <HoverRect.Tooltip x='date_chart' wMin={100}>
-          {({ xIndex }) => ({
-            children: <>{data[xIndex]?.download}</>,
-          })}
-        </HoverRect.Tooltip>
-        <Bar x='date_chart' y='download' />
-      </Plot>
-    </>
+        axisXValueFormatter={getDate}
+      />
+    </Flex>
   );
 };
 

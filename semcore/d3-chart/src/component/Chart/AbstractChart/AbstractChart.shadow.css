@@ -5,6 +5,12 @@ SChart {
   min-height: 0;
 }
 
+SXAxis {
+  fill: transparent;
+  stroke: var(--intergalactic-chart-grid-x-axis, oklch(0.88 0.011 234.9));
+  stroke-linecap: round;
+}
+
 STooltipChildrenWrapper {
   display: grid;
   gap: var(--intergalactic-spacing-2x, 8px);
@@ -56,4 +62,24 @@ STooltipDeltaWrapper {
   STooltipDeltaIcon {
     align-self: center;
   }
+}
+
+
+SChartContainer {
+  display: grid;
+  width: fit-content;
+  grid-template: 'plot' 'xAxis';
+}
+
+SChartContainer[yAxisPosition='left'] {
+  grid-template: 'yAxis plot' '. xAxis';
+  grid-template-columns: max-content 1fr;
+}
+SChartContainer[yAxisPosition='right'] {
+  grid-template: 'plot yAxis' 'xAxis .';
+  grid-template-columns: 1fr max-content;
+}
+SChartContainer[yAxisPosition='both'] {
+  grid-template: 'yLeftAxis plot yRightAxis' '. xAxis .';
+  grid-template-columns: max-content 1fr max-content;
 }

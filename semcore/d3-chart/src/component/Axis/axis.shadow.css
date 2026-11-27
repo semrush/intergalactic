@@ -1,0 +1,77 @@
+SXAxis, SYAxis {
+  position: relative;
+  display: grid;
+  align-items: start;
+
+  SHoveredTick, STick {
+    grid-area: 1/1;
+    display: block;
+    width: fit-content;
+    font-variant-numeric: tabular-nums;
+    color: var(--intergalactic-chart-grid-text-label, oklch(from oklch(0.182 0.045 244.8 / 0.593) l c h / 0.4));
+  }
+
+  STick:not([aria-hidden]):has(:focus-visible) {
+    z-index: 1;
+  }
+
+  SHoveredTick {
+    padding: 3px 12px;
+    border-radius: var(--intergalactic-rounded-medium, 6px);
+    background-color: var(--intergalactic-chart-x-axis-accent-tick, oklch(0.96 0.005 232.5));
+  }
+}
+
+SXAxis {
+  grid-area: xAxis;
+  padding-top: var(--intergalactic-spacing-2x, 8px);
+
+  SHoveredTick, STick {
+    margin: 0 0 3px 0;
+    text-align: center;
+    overflow-wrap: break-word;
+  }
+
+  SHoveredTick {
+    margin-top: -3px;
+    margin-bottom: 0;
+  }
+}
+
+SYAxis {
+  SHoveredTick {
+    padding: 3px 8px;
+  }
+
+  &[yAxisPosition='left'] {
+    justify-items: end;
+
+    STick {
+      text-align: right;
+      margin: 0 var(--intergalactic-spacing-3x, 12px) 0 0;
+    }
+    SHoveredTick {
+      text-align: right;
+      margin: 0 var(--intergalactic-spacing-1x, 4px) 0 calc(-1 * var(--intergalactic-spacing-3x, 12px));
+    }
+  }
+  &[yAxisPosition='right'] {
+    justify-items: start;
+
+    STick {
+      text-align: left;
+      margin: 0 0 0 var(--intergalactic-spacing-3x, 12px);
+    }
+    SHoveredTick {
+      text-align: left;
+      margin: 0 calc(-1 * var(--intergalactic-spacing-3x, 12px)) 0 var(--intergalactic-spacing-1x, 4px);
+    }
+  }
+
+  &[primaryText] {
+    &> STick, &> SHoveredTick {
+      color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
+    }
+  }
+}
+

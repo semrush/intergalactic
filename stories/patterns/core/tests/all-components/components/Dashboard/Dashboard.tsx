@@ -19,12 +19,14 @@ import {
   DASHBOARD_DOMAIN_OPTIONS,
 } from './dashboardDomainCharts';
 import BarMockData from '../../../../../../components/d3-chart/__mocks__/bar';
+import BubbleMockData from '../../../../../../components/d3-chart/__mocks__/bubble';
 import CigaretteMockData from '../../../../../../components/d3-chart/__mocks__/cigarette';
 import DonutMockData from '../../../../../../components/d3-chart/__mocks__/donut';
 import ScatterplotMockData from '../../../../../../components/d3-chart/__mocks__/scatterplot';
 import VennMockData from '../../../../../../components/d3-chart/__mocks__/venn';
 import AreaChartBasicExample from '../../../../../../components/d3-chart/docs/examples/area-chart/basic-usage';
 import BarChartLinksExample from '../../../../../../components/d3-chart/docs/examples/bar-chart/links';
+import BarHorizontalBasicExample from '../../../../../../components/d3-chart/docs/examples/bar-horizontal/basic-usage';
 import LegendWithMetricsExample
   from '../../../../../../components/d3-chart/docs/examples/chart-legend/legend-with-metrics';
 import ReferenceLineExample from '../../../../../../components/d3-chart/docs/examples/d3-chart/reference-line';
@@ -289,22 +291,18 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
                 </Flex>
               </Card.Header>
               <Card.Body>
-                <ChartBox>
-                  {([width, height]) => (
-                    <Chart.Line
-                      groupKey='x'
-                      data={dashboardLineChart.data}
-                      plotWidth={width}
-                      plotHeight={height - LEGEND_RESERVE_HEIGHT}
-                      yTicksCount={Y_TICKS_COUNT}
-                      xTicksCount={7}
-                      showDots
-                      showLegend
-                      legendProps={dashboardLineChart.legendProps}
-                      aria-label='Line chart'
-                    />
-                  )}
-                </ChartBox>
+                <Chart.Line
+                  groupKey='x'
+                  data={dashboardLineChart.data}
+                  yTicksCount={4}
+                  xTicksCount={7}
+                  plotHeight={CHART_CONTAINER_HEIGHT}
+                  showDots
+                  showLegend
+                  legendProps={dashboardLineChart.legendProps}
+                  aria-label='Line chart'
+                  yAxisPosition='right'
+                />
               </Card.Body>
             </Card>
 
@@ -321,24 +319,19 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
                 </Flex>
               </Card.Header>
               <Card.Body>
-                <ChartBox>
-                  {([width, height]) => (
-                    <Chart.Area
-                      groupKey='time'
-                      data={dashboardAreaChart.data}
-                      plotWidth={width}
-                      plotHeight={height - LEGEND_RESERVE_HEIGHT}
-                      yTicksCount={Y_TICKS_COUNT}
-                      xTicksCount={5}
-                      stacked
-                      showDots
-                      showLegend
-                      legendProps={dashboardAreaChart.legendProps}
-                      axisXValueFormatter={formatAreaAxis}
-                      aria-label='Area chart'
-                    />
-                  )}
-                </ChartBox>
+                <Chart.Area
+                  groupKey='time'
+                  data={dashboardAreaChart.data}
+                  plotHeight={CHART_CONTAINER_HEIGHT}
+                  yTicksCount={Y_TICKS_COUNT}
+                  xTicksCount={5}
+                  stacked
+                  showDots
+                  showLegend
+                  legendProps={dashboardAreaChart.legendProps}
+                  axisXValueFormatter={formatAreaAxis}
+                  aria-label='Area chart'
+                />
               </Card.Body>
             </Card>
 
@@ -401,7 +394,7 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
                 <Flex justifyContent='space-between' alignItems='flex-start' w='100%'>
                   <Box>
                     <Card.Title tag='h3'>Bar horizontal</Card.Title>
-                    <Card.Description>Compact horizontal bars.</Card.Description>
+                    <Card.Description>Horizontal bars by category.</Card.Description>
                   </Box>
                   <Button addonLeft={FileExportM} aria-label='Export'>
                     Export
@@ -409,18 +402,7 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
                 </Flex>
               </Card.Header>
               <Card.Body>
-                <ChartBox h={260}>
-                  {([width, height]) => (
-                    <Chart.CompactHorizontalBar
-                      y='category'
-                      x='value'
-                      data={BarMockData.WithValue.slice(0, 3)}
-                      plotWidth={width}
-                      plotHeight={height}
-                      aria-label='Compact horizontal bar chart'
-                    />
-                  )}
-                </ChartBox>
+                <BarHorizontalBasicExample />
               </Card.Body>
             </Card>
 
@@ -437,27 +419,22 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
                 </Flex>
               </Card.Header>
               <Card.Body>
-                <ChartBox>
-                  {([width, height]) => (
-                    <Chart.ScatterPlot
-                      data={ScatterplotMockData.ThreeSetsWithValue}
-                      groupKey='x'
-                      plotWidth={width}
-                      plotHeight={height - LEGEND_RESERVE_HEIGHT}
-                      yTicksCount={Y_TICKS_COUNT}
-                      xTicksCount={7}
-                      showLegend
-                      legendProps={{
-                        legendMap: {
-                          y1: { label: 'Organic' },
-                          y2: { label: 'Paid' },
-                          y3: { label: 'Social' },
-                        },
-                      }}
-                      aria-label='Scatterplot chart'
-                    />
-                  )}
-                </ChartBox>
+                <Chart.ScatterPlot
+                  data={ScatterplotMockData.ThreeSetsWithValue}
+                  groupKey='x'
+                  plotHeight={CHART_CONTAINER_HEIGHT}
+                  yTicksCount={Y_TICKS_COUNT}
+                  xTicksCount={7}
+                  showLegend
+                  legendProps={{
+                    legendMap: {
+                      y1: { label: 'Organic' },
+                      y2: { label: 'Paid' },
+                      y3: { label: 'Social' },
+                    },
+                  }}
+                  aria-label='Scatterplot chart'
+                />
               </Card.Body>
             </Card>
           </Flex>
@@ -482,20 +459,14 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
                 </Flex>
               </Card.Header>
               <Card.Body style={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
-                <ChartBox>
-                  {([width, height]) => (
-                    <Chart.Bar
-                      groupKey='category'
-                      data={BarMockData.Default}
-                      plotWidth={width}
-                      plotHeight={height}
-                      marginX={52}
-                      yTicksCount={Y_TICKS_COUNT}
-                      colorMap={{ bar: 'blue-500' }}
-                      aria-label='Bar chart by category'
-                    />
-                  )}
-                </ChartBox>
+                <Chart.Bar
+                  groupKey='category'
+                  data={BarMockData.Default}
+                  plotHeight={CHART_CONTAINER_HEIGHT}
+                  yTicksCount={Y_TICKS_COUNT}
+                  colorMap={{ bar: 'blue-500' }}
+                  aria-label='Bar chart by category'
+                />
                 <Box mt='auto' pt={3} ml={5} style={{ alignSelf: 'flex-start' }}>
                   <Button>View full report</Button>
                 </Box>
@@ -540,22 +511,16 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
                     <Pills.Item value='outgoing'>Outgoing links</Pills.Item>
                   </Pills>
                 </Flex>
-                <ChartBox>
-                  {([width, height]) => (
-                    <Chart.Bar
-                      groupKey='month'
-                      type='stack'
-                      data={dashboardStackedBarData}
-                      plotWidth={width}
-                      plotHeight={height}
-                      marginX={52}
-                      yTicksCount={Y_TICKS_COUNT}
-                      colorMap={STACKED_BAR_COLOR_MAP}
-                      showLegend={false}
-                      aria-label='Stacked bar chart by month'
-                    />
-                  )}
-                </ChartBox>
+                <Chart.Bar
+                  groupKey='month'
+                  type='stack'
+                  data={dashboardStackedBarData}
+                  plotHeight={CHART_CONTAINER_HEIGHT}
+                  yTicksCount={Y_TICKS_COUNT}
+                  colorMap={STACKED_BAR_COLOR_MAP}
+                  showLegend={false}
+                  aria-label='Stacked bar chart by month'
+                />
                 <Box mt='auto' pt={3} ml={5} style={{ alignSelf: 'flex-start' }}>
                   <Button>View full report</Button>
                 </Box>
@@ -581,21 +546,15 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
                 </Flex>
               </Card.Header>
               <Card.Body style={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
-                <ChartBox>
-                  {([width, height]) => (
-                    <Chart.Bar
-                      groupKey='category'
-                      type='group'
-                      data={BarMockData.TwoBars}
-                      plotWidth={width}
-                      plotHeight={height - LEGEND_RESERVE_HEIGHT}
-                      marginX={48}
-                      yTicksCount={Y_TICKS_COUNT}
-                      showLegend
-                      aria-label='Grouped bar chart'
-                    />
-                  )}
-                </ChartBox>
+                <Chart.Bar
+                  groupKey='category'
+                  type='group'
+                  data={BarMockData.TwoBars}
+                  plotHeight={CHART_CONTAINER_HEIGHT}
+                  yTicksCount={Y_TICKS_COUNT}
+                  showLegend
+                  aria-label='Grouped bar chart'
+                />
                 <Box mt='auto' pt={3} ml={5} style={{ alignSelf: 'flex-start' }}>
                   <Button>View full report</Button>
                 </Box>
@@ -662,22 +621,86 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
               </Flex>
             </Card.Header>
             <Card.Body style={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
-              <ChartBox>
-                {([, height]) => (
-                  <Box style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                    <Chart.Cigarette
-                      data={CigaretteMockData.Default}
-                      plotWidth={44}
-                      plotHeight={height - LEGEND_RESERVE_HEIGHT}
-                      invertAxis={false}
-                      showLegend
-                      tooltipTitle='Some title for tooltip'
-                      showTotalInTooltip
-                      aria-label='Cigarette chart vertical'
-                    />
-                  </Box>
-                )}
-              </ChartBox>
+              <Box style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                <Chart.Cigarette
+                  data={CigaretteMockData.Default}
+                  plotWidth={44}
+                  plotHeight={CHART_CONTAINER_HEIGHT}
+                  invertAxis={false}
+                  showLegend
+                  tooltipTitle='Some title for tooltip'
+                  showTotalInTooltip
+                  aria-label='Cigarette chart vertical'
+                />
+              </Box>
+            </Card.Body>
+          </Card>
+
+          <Card
+            tag='section'
+            style={{
+              flex: '1 1 calc(33.333% - 11px)',
+              minWidth: 'min(100%, 280px)',
+              maxWidth: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
+            <Card.Header>
+              <Flex justifyContent='space-between' alignItems='center' w='100%'>
+                <Card.Title tag='h3'>Bubble</Card.Title>
+                <Button addonLeft={FileExportM} aria-label='Export'>
+                  Export
+                </Button>
+              </Flex>
+            </Card.Header>
+            <Card.Body style={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
+              <Chart.Bubble
+                data={BubbleMockData.Label}
+                plotHeight={CHART_CONTAINER_HEIGHT}
+                yTicksCount={Y_TICKS_COUNT}
+                aria-label='Bubble chart'
+              />
+            </Card.Body>
+          </Card>
+        </Flex>
+
+        <Flex gap={2} flexWrap alignItems='stretch' mb={4} style={{ width: '100%', boxSizing: 'border-box' }}>
+          <Card tag='section' style={cardSectionStyle('1 1 calc(50% - 8px)')}>
+            <Card.Header>
+              <Flex justifyContent='space-between' alignItems='center' w='100%'>
+                <Card.Title tag='h3'>Score bar</Card.Title>
+                <Button addonLeft={FileExportM} aria-label='Export'>
+                  Export
+                </Button>
+              </Flex>
+            </Card.Header>
+            <Card.Body>
+              <Chart.ScoreBar
+                data={BarMockData.WithValue}
+                aria-label='Score bar chart'
+              />
+            </Card.Body>
+          </Card>
+
+          <Card tag='section' style={cardSectionStyle('1 1 calc(50% - 8px)')}>
+            <Card.Header>
+              <Flex justifyContent='space-between' alignItems='center' w='100%'>
+                <Card.Title tag='h3'>Score donut</Card.Title>
+                <Button addonLeft={FileExportM} aria-label='Export'>
+                  Export
+                </Button>
+              </Flex>
+            </Card.Header>
+            <Card.Body>
+              <Chart.ScoreDonut
+                data={{ value: 20 }}
+                plotWidth={180}
+                plotHeight={180}
+                showTooltip
+                showLegend
+                aria-label='Score donut chart'
+              />
             </Card.Body>
           </Card>
         </Flex>

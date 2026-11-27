@@ -3,7 +3,7 @@ import type { BubbleChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import { getChartProps, getPropsToChart } from '../stories_props_helper';
+import { getChartPropsWithoutAxisToggles, getPropsToChart } from '../stories_props_helper';
 
 type BubbleChartStoryProps = BubbleChartProps & {
   /**
@@ -111,7 +111,7 @@ const manyBubblesData = Array.from({ length: 20 }, (_, index) => ({
   label: `item ${index + 1}`,
 }));
 
-export const defaultProps = getChartProps<BubbleChartStoryProps>({
+export const defaultProps = getChartPropsWithoutAxisToggles<BubbleChartStoryProps>({
   data,
   // Off by default: the existing visual tests screenshot this story, and swapping the
   // dataset would move every bubble.

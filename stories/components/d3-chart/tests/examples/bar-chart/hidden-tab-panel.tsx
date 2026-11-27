@@ -37,28 +37,33 @@ const Demo = ({ withReferenceArea = false }: StoryProps) => {
           </TabLine.Item>
         ))}
       </TabLine>
-      {tabs.map(({ value, data }) => (
-        <Box
-          key={value}
-          id={`panel-${value}`}
-          role='tabpanel'
-          aria-labelledby={`tab-${value}`}
-          hidden={tab !== value}
-          mt={4}
-        >
-          <Chart.Bar
-            data={data}
-            groupKey='category'
-            plotWidth={500}
-            plotHeight={260}
-            maxBarSize={12}
-            showLegend={false}
-            duration={0}
-            referenceArea={withReferenceArea ? { value: ['Category 2', 'Category 4'], use: 'good' } : undefined}
-            aria-label={`${value} chart`}
-          />
-        </Box>
-      ))}
+      {tabs.map(({ value, data }) => {
+        if (tab === value) {
+          return (
+            <Box
+              key={value}
+              id={`panel-${value}`}
+              role='tabpanel'
+              aria-labelledby={`tab-${value}`}
+              mt={4}
+            >
+              <Chart.Bar
+                data={data}
+                groupKey='category'
+                plotWidth={500}
+                plotHeight={260}
+                maxBarSize={12}
+                showLegend={false}
+                duration={0}
+                referenceArea={withReferenceArea ? { value: ['Category 2', 'Category 4'], use: 'good' } : undefined}
+                aria-label={`${value} chart`}
+              />
+            </Box>
+          );
+        }
+
+        return null;
+      })}
     </>
   );
 };

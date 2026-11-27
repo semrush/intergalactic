@@ -3,7 +3,7 @@ import type { RadarChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import { getChartProps, getPropsToChart } from '../stories_props_helper';
+import { getNoAxisChartProps, getPropsToChart } from '../stories_props_helper';
 
 const Demo = (props: RadarChartProps) => {
   const onClickHandler = () => {
@@ -35,7 +35,7 @@ const data = {
   data_2: [5, 2, 1, 2, 7, 6],
 };
 
-export const defaultProps = getChartProps<RadarChartProps>({
+export const defaultProps = getNoAxisChartProps<RadarChartProps>({
   data,
   groupKey: 'categories',
 });

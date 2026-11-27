@@ -37,7 +37,8 @@ export const locators = {
     const base = page.locator('[data-ui-name="Checkbox"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
-  tooltip: (page: Page) => page.locator('[data-ui-name="Line.Tooltip"], [data-ui-name="HoverLine.Tooltip"]'),
+  /** `Chart.*` render `Tooltip`; the legacy stories render `HoverLine.Tooltip` / `HoverRect.Tooltip`. */
+  tooltip: (page: Page) => page.locator('[data-ui-name="Tooltip"], [data-ui-name="HoverLine.Tooltip"], [data-ui-name="HoverRect.Tooltip"]'),
   linePath: (page: Page) => page.locator('path[data-ui-name="Line"]'),
   plotPath: (page: Page) => page.locator('svg[data-ui-name="Plot"] path'),
 };
@@ -112,11 +113,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       name: 'All features enabled, standard size',
       plotWidth: 500,
       plotHeight: 300,
-      marginX: 40,
-      marginY: 40,
       showXAxis: true,
       showYAxis: true,
-      invertAxis: false,
       showTooltip: true,
       showTotalInTooltip: true,
       showLegend: true,
@@ -128,11 +126,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       name: 'Large size, minimal margins, no axes',
       plotWidth: 700,
       plotHeight: 400,
-      marginX: 20,
-      marginY: 20,
       showXAxis: false,
       showYAxis: false,
-      invertAxis: false,
       showTooltip: true,
       showTotalInTooltip: false,
       showLegend: true,
@@ -141,46 +136,11 @@ test.describe(`${TAG.VISUAL}`, () => {
       duration: 0,
     },
     {
-      name: 'Inverted axis, small size, no tooltip',
-      plotWidth: 400,
-      plotHeight: 250,
-      marginX: 60,
-      marginY: 60,
-      showXAxis: true,
-      showYAxis: false,
-      invertAxis: true,
-      showTooltip: false,
-      showTotalInTooltip: false,
-      showLegend: false,
-      showDots: true,
-      patterns: false,
-      duration: 0,
-    },
-    {
-      name: 'Inverted, large margins, patterns',
-      plotWidth: 600,
-      plotHeight: 350,
-      marginX: 80,
-      marginY: 50,
-      showXAxis: false,
-      showYAxis: true,
-      invertAxis: true,
-      showTooltip: true,
-      showTotalInTooltip: true,
-      showLegend: false,
-      showDots: false,
-      patterns: true,
-      duration: 0,
-    },
-    {
       name: 'Minimal features, medium size',
       plotWidth: 450,
       plotHeight: 280,
-      marginX: 30,
-      marginY: 70,
       showXAxis: true,
       showYAxis: true,
-      invertAxis: false,
       showTooltip: false,
       showTotalInTooltip: true,
       showLegend: true,
@@ -192,11 +152,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       name: 'No legend, mixed features',
       plotWidth: 550,
       plotHeight: 320,
-      marginX: 45,
-      marginY: 35,
       showXAxis: true,
       showYAxis: false,
-      invertAxis: false,
       showTooltip: true,
       showTotalInTooltip: false,
       showLegend: false,
@@ -483,10 +440,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       'en',
     );
 
-    await test.step('Verify duration attribute on groups', async () => {
+    await test.step('Verify dots animate with the default 500ms duration', async () => {
       await locators.plot(page).first().waitFor({ state: 'visible' });
 
-      await expect(locators.group(page, 0)).toHaveAttribute('duration', '500ms');
+      await expect(locators.plot(page).locator('circle').first()).toHaveCSS('transition-duration', '0.5s');
     });
   });
 
@@ -503,6 +460,25 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       for (let i = 0; i < (await lines.count()); i++) {
         await expect(lines.nth(i)).toHaveCSS('stroke-width', '2px');
       }
+    });
+  });
+
+  test('Verify hovering a legend item keeps a chart with dots rendered', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@line-chart', '@d3-chart', '@chart-legend', '@checkbox'],
+  }, async ({ page }) => {
+    const pageErrors: string[] = [];
+    page.on('pageerror', (error) => pageErrors.push(error.message));
+
+    await loadPage(page, BASIC_USAGE_STORY, 'en', { showDots: true, duration: 0 });
+    await locators.plot(page).waitFor({ state: 'visible' });
+    await expect(locators.dots(page)).not.toHaveCount(0);
+
+    await test.step('Hover the first legend item: the chart and its dots stay rendered', async () => {
+      await locators.legendItem(page).first().hover();
+
+      await expect(locators.plot(page)).toBeVisible();
+      await expect(locators.dots(page)).not.toHaveCount(0);
+      expect(pageErrors).toEqual([]);
     });
   });
 

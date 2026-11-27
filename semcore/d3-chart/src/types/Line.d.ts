@@ -87,6 +87,9 @@ export type LineAreaProps = Omit<LineProps, 'transparent'> & {
   autoInterpolate?: boolean;
 };
 
+/**
+ * @deprecated. You should use Chart.Line for charts.
+ */
 declare const Line: IntergalacticD3Component<'line', LineProps, Context> & {
   Dots: IntergalacticD3Component<'circle', LineDotsProps, LineDotsContext>;
   Null: IntergalacticD3Component<'path', LineNullProps>;

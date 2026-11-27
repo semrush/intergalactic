@@ -40,16 +40,18 @@ const Demo = () => {
           />
         ))}
         <Bubble.Tooltip>
-          {({ index }) => ({
-            children: (
-              <>
-                <Bubble.Tooltip.Title>Data</Bubble.Tooltip.Title>
-                <Text tag='div'>X axis: {data[index].x}</Text>
-                <Text tag='div'>Y axis: {data[index].y}</Text>
-                <Text tag='div'>Value: {data[index].value}</Text>
-              </>
-            ),
-          })}
+          {({ index, ...rest }) => {
+            return {
+              children: (
+                <>
+                  <Bubble.Tooltip.Title>Data</Bubble.Tooltip.Title>
+                  <Text tag='div'>X axis: {data[index].x}</Text>
+                  <Text tag='div'>Y axis: {data[index].y}</Text>
+                  <Text tag='div'>Value: {data[index].value}</Text>
+                </>
+              ),
+            };
+          }}
         </Bubble.Tooltip>
       </Bubble>
 

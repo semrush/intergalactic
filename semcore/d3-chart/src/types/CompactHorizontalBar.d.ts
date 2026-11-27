@@ -72,6 +72,9 @@ export type CompactHorizontalBarFillProps = NSBox.Props & {
 };
 type Fill = IntergalacticD3Component<'rect', CompactHorizontalBarFillProps, Context & BarContext>;
 
+/**
+ * @deprecated. You should use Chart.ScoreBar for charts.
+ */
 declare const CompactHorizontalBar: IntergalacticD3Component<
   'g',
   CompactHorizontalBarProps,

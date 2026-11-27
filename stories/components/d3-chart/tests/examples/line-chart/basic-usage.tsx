@@ -1,6 +1,7 @@
 import { Box } from '@semcore/ui/base-components';
 import type { LineChartProps } from '@semcore/ui/d3-chart';
-import { Chart } from '@semcore/ui/d3-chart';
+import { Chart, minMax } from '@semcore/ui/d3-chart';
+import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
 import dataPipeline, {
@@ -32,6 +33,11 @@ type LineChartStoryProps = LineChartProps & {
    */
   deltaOverride?: 'off' | keyof typeof deltaOverrides;
   withInterpolatedGaps?: boolean;
+  /**
+   * Widens the X domain by this many units on each side, so the first and last points no longer
+   * sit on the axis edges. Applied once the plot width is known.
+   */
+  xDomainPadding?: number;
 
   withReferenceLine?: boolean;
   withReferenceArea?: boolean;
@@ -128,6 +134,7 @@ const Demo = (props: LineChartStoryProps) => {
     titleFormat,
     deltaOverride,
     withInterpolatedGaps,
+    xDomainPadding,
     withReferenceLine,
     withReferenceArea,
     referenceLineValue,
@@ -171,6 +178,17 @@ const Demo = (props: LineChartStoryProps) => {
       ? deltaOverrides[deltaOverride as keyof typeof deltaOverrides]
       : undefined;
 
+  const xRangeWidth = useExplicitPlotWidth ? plotWidth : measuredSize?.[0];
+  const xScale = React.useMemo(() => {
+    if (!xDomainPadding || !xRangeWidth) return undefined;
+
+    const [xMin, xMax] = minMax(chartData, groupKey);
+
+    return scaleLinear()
+      .range([0, xRangeWidth])
+      .domain([xMin - xDomainPadding, xMax + xDomainPadding]);
+  }, [xDomainPadding, xRangeWidth, chartData, groupKey]);
+
   const responsiveChartProps: LineChartProps = {
     ...(chartProps as LineChartProps),
     groupKey,
@@ -182,6 +200,7 @@ const Demo = (props: LineChartStoryProps) => {
     ...(useExplicitPlotWidth ? { plotWidth } : {}),
     ...(tooltipTitleFormatter ? { tooltipTitleFormatter } : {}),
     ...(getPercentDelta ? { getPercentDelta } : {}),
+    ...(xScale ? { xScale } : {}),
   };
 
   if (withReferenceLine) {
@@ -215,6 +234,7 @@ const Demo = (props: LineChartStoryProps) => {
         w={plotWidth}
         h={plotHeight}
         overflow='auto'
+        pr={5}
       >
         <Chart.Line
           {...responsiveChartProps}
@@ -240,6 +260,7 @@ export const defaultProps = getChartProps<LineChartStoryProps>({
   highlightDots: 'none',
   dataType: 'none',
   withInterpolatedGaps: false,
+  xDomainPadding: 0,
   titleFormat: 'off',
   deltaOverride: 'off',
   withReferenceLine: false,

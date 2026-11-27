@@ -4,11 +4,11 @@ import { type ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
 // @ts-ignore
-import { Area, minMax, HoverLine, StackedArea } from '../..';
-import type { ChartState } from './AbstractChart';
-import { AbstractChart } from './AbstractChart';
-import type { ObjectData } from './AbstractChart.type';
-import { HIGHLIGHT_DOT } from './AbstractChart.type';
+import { Area, minMax, Tooltip, StackedArea } from '../..';
+import { AbstractAxisChart } from './AbstractChart/AbstractAxisChart';
+import type { ChartState } from './AbstractChart/AbstractChart';
+import type { ObjectData } from './AbstractChart/AbstractChart.type';
+import { HIGHLIGHT_DOT } from './AbstractChart/AbstractChart.type';
 import type {
   AreaChartData,
   AreaChartProps,
@@ -17,7 +17,7 @@ import type {
 } from './AreaChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
-class AreaChartComponent extends AbstractChart<
+class AreaChartComponent extends AbstractAxisChart<
   AreaChartData,
   AreaChartProps,
   typeof AreaChartComponent.enhance,
@@ -40,7 +40,7 @@ class AreaChartComponent extends AbstractChart<
   } as const;
 
   get xScale() {
-    const { xScale, marginY = 40, data, groupKey } = this.asProps;
+    const { xScale, data, groupKey } = this.asProps;
     const { plotWidth } = this;
 
     if (xScale) {
@@ -48,7 +48,7 @@ class AreaChartComponent extends AbstractChart<
     }
 
     const testItem = data[0][groupKey];
-    const range = [marginY, plotWidth - this.plotPadding];
+    const range = [0, plotWidth];
     const domain = minMax(data, groupKey);
 
     if (testItem instanceof Date && !Number.isNaN(testItem.getMilliseconds())) {
@@ -59,7 +59,7 @@ class AreaChartComponent extends AbstractChart<
   }
 
   get yScale(): ScaleLinear<any, any> {
-    const { yScale, marginX = 32, stacked } = this.asProps;
+    const { yScale, marginX = 0, stacked } = this.asProps;
     const { plotHeight } = this;
 
     if (yScale) {
@@ -71,7 +71,7 @@ class AreaChartComponent extends AbstractChart<
     const max = stacked ? super.maxStackedValue : Math.max(...flatValues);
 
     return scaleLinear()
-      .range([plotHeight - marginX, this.plotPadding])
+      .range([plotHeight, 0])
       .domain([min, max]);
   }
 
@@ -127,22 +127,22 @@ class AreaChartComponent extends AbstractChart<
   }
 
   renderTooltip() {
-    const { data, groupKey, showXAxis } = this.asProps;
+    const { data, groupKey } = this.asProps;
 
     return (
-      <HoverLine.Tooltip x={groupKey} wMin={100} hideTickHover={!showXAxis}>
+      <Tooltip x={groupKey} wMin={100}>
         {({ xIndex }: any) => {
           const dataItem = data[xIndex];
 
           return {
             children: this.getTooltipChildren({
-              Tooltip: HoverLine.Tooltip,
+              Tooltip: Tooltip,
               dataItem,
               index: xIndex,
             }),
           };
         }}
-      </HoverLine.Tooltip>
+      </Tooltip>
     );
   }
 

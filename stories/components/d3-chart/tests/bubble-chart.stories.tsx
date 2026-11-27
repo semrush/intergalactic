@@ -4,7 +4,7 @@ import BasicUsageExample, { defaultProps as BasicUsageProps } from './examples/b
 import type { defaultProps as UsageProps } from './examples/bubble-chart/bubble-chart-on-click';
 import BubbleChartOnClickExample from './examples/bubble-chart/bubble-chart-on-click';
 import OnClickBubbleExample from './examples/bubble-chart/on-click-in-bubble';
-import { getChartArgTypes } from './examples/stories_props_helper';
+import { getChartArgTypesWithoutAxisToggles } from './examples/stories_props_helper';
 
 const meta: Meta = {
   title: 'Components/d3Charts/Tests/Bubble-Chart',
@@ -14,7 +14,7 @@ export default meta;
 
 export const BasicUsage = {
   render: BasicUsageExample,
-  argTypes: getChartArgTypes({
+  argTypes: getChartArgTypesWithoutAxisToggles({
     fractionalValues: { control: 'boolean' },
     axisValueFormat: { control: 'select', options: ['off', 'units'] },
     manyBubbles: { control: 'boolean' },

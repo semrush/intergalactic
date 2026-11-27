@@ -61,6 +61,7 @@ export const BasicUsage = {
       ...storyKnob,
     },
     withInterpolatedGaps: { control: 'boolean', ...storyKnob },
+    xDomainPadding: { control: { type: 'number', min: 0, step: 1 }, ...storyKnob },
     // Variants label the numeric group key. Date-shaped titles live in the Tooltip-Format story.
     titleFormat: { control: 'select', options: ['off', 'point', 'week', 'padded'], ...storyKnob },
     // Needs showDeltaPercentInTooltip to be on.

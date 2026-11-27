@@ -3,7 +3,7 @@ import type { Intergalactic } from '@semcore/core';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import type React from 'react';
 
-import type { BaseChartProps } from './AbstractChart.type';
+import type { BaseChartProps } from './AbstractChart/AbstractChart.type';
 
 type BarKey = string;
 

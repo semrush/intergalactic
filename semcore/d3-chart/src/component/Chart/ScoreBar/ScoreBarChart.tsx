@@ -2,26 +2,25 @@ import { Box } from '@semcore/base-components';
 import { createComponent, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import colorResolverEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
-import type { ChartState } from '../AbstractChart';
-import { AbstractChart } from '../AbstractChart';
-import type { BaseLegendProps } from '../AbstractChart.type';
 import style from './scoreBarChart.shadow.css';
 import type {
   ScoreBarChartData,
   ScoreBarChartProps,
   ScoreBarChartType,
-  ScoreBarChartDefaultProps, ScoreBarEvents,
+  ScoreBarChartDefaultProps,
 } from './ScoreBarChart.type';
 import { ScoreBarItem } from './ScoreBarItem';
 // @ts-ignore
 import { Tooltip } from '../../../';
 import { localizedMessages } from '../../../translations/__intergalactic-dynamic-locales';
+import type { ChartState } from '../AbstractChart/AbstractChart';
+import { AbstractChart } from '../AbstractChart/AbstractChart';
+import type { BaseLegendProps } from '../AbstractChart/AbstractChart.type';
 
 class ScoreBarChartComponent extends AbstractChart<
   ScoreBarChartData,
@@ -51,14 +50,6 @@ class ScoreBarChartComponent extends AbstractChart<
       prop: 'duration',
     }),
   ] as const;
-
-  private readonly eventEmitter: EventEmitter<ScoreBarEvents>;
-
-  constructor(props: ScoreBarChartProps) {
-    super(props);
-
-    this.eventEmitter = props.eventEmitter || new EventEmitter();
-  }
 
   override render() {
     const SChart = Root;

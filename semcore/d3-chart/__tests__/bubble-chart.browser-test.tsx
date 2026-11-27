@@ -25,10 +25,10 @@ export const locators = {
     const base = page.locator('label[data-ui-name="Checkbox"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
-  tooltip: (page: Page) => page.locator('[data-ui-name="Bubble.Tooltip"]'),
-  // The tick pill under the hovered tick on each axis; the hash part of the class name changes between builds.
+  /** `Chart.Bubble` renders `Tooltip`; the legacy stories render `Bubble.Tooltip`. */
+  tooltip: (page: Page) => page.locator('[data-ui-name="Tooltip"], [data-ui-name="Bubble.Tooltip"]'),
   hoveredTickText: (page: Page) =>
-    page.locator('svg[data-ui-name="Plot"] foreignObject[class*="SHoveredTickWrapper"] span'),
+    page.locator('[data-ui-name="Axis"] [data-ui-name="Text"]'),
 };
 
 /* =====================================================
@@ -41,41 +41,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       description: 'Standard: all features enabled, medium size',
       plotWidth: 500,
       plotHeight: 300,
-      marginX: 40,
-      marginY: 40,
-      showXAxis: true,
-      showYAxis: true,
-      invertAxis: false,
       showTooltip: true,
       showTotalInTooltip: true,
-      patterns: false,
-      duration: 0,
-    },
-    {
-      description: 'Patterns: no axes, patterns enabled, large size',
-      plotWidth: 700,
-      plotHeight: 400,
-      marginX: 20,
-      marginY: 20,
-      showXAxis: false,
-      showYAxis: false,
-      invertAxis: false,
-      showTooltip: true,
-      showTotalInTooltip: false,
-      patterns: true,
-      duration: 0,
-    },
-    {
-      description: 'Inverted: yAxis and no tooltip',
-      plotWidth: 600,
-      plotHeight: 350,
-      marginX: 80,
-      marginY: 50,
-      showXAxis: false,
-      showYAxis: true,
-      invertAxis: true,
-      showTooltip: false,
-      showTotalInTooltip: false,
       patterns: false,
       duration: 0,
     },
@@ -138,13 +105,19 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await locators.plot(page).waitFor({ state: 'visible' });
 
-    await test.step('Verify patterns render correctly with default state', async () => {
-      const groups = await locators.group(page).all();
-      for (const group of groups) {
+    await test.step('Verify each bubble is filled with its own pattern', async () => {
+      const bubbleGroups = page.locator('g:has(> circle[data-ui-name="Bubble.Circle"])');
+      await expect(bubbleGroups).toHaveCount(5);
+
+      for (const group of await bubbleGroups.all()) {
         const pattern = group.locator('pattern');
-        const patternCount = await pattern.count();
-        expect(patternCount).toBeGreaterThanOrEqual(0);
+        await expect(pattern).toHaveCount(1);
+
+        const patternId = await pattern.getAttribute('id');
+        await expect(group.locator(':scope > circle[data-ui-name="Bubble.Circle"]'))
+          .toHaveCSS('fill', new RegExp(`#${patternId}"?\\)$`));
       }
+
       await expect(page).toHaveScreenshot();
     });
 
@@ -457,8 +430,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     await test.step('Verify every axis label is formatted', async () => {
-      const xTicks = page.locator('[data-ui-name="Axis.Ticks"][class*="_position_bottom"]');
-      const yTicks = page.locator('[data-ui-name="Axis.Ticks"][class*="_position_left"]');
+      const xTicks = page.locator('[data-ui-name="Axis"][class*="_SXAxis"] [data-ui-name="Axis.Tick"]');
+      const yTicks = page.locator('[data-ui-name="Axis"][class*="_SYAxis"] [data-ui-name="Axis.Tick"]');
       await expect(xTicks.first()).toHaveText(/ px$/);
       await expect(yTicks.first()).toHaveText(/^\$/);
       const xLabels = await xTicks.allTextContents();
@@ -470,7 +443,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify the hovered tick pills use the same format', async () => {
       const box = await locators.bubbleGroup(page, 'label 1').locator('circle').boundingBox();
       await page.mouse.move(box!.x + box!.width / 2, box!.y + box!.height / 2);
-      await expect(locators.hoveredTickText(page)).toHaveText(['2 px', '$3']);
+      await expect(page.locator('[data-ui-name="Axis"][class*="_SXAxis"] [data-ui-name="Text"]')).toHaveText('2 px');
+      await expect(page.locator('[data-ui-name="Axis"][class*="_SYAxis"] [data-ui-name="Text"]')).toHaveText('$3');
     });
   });
 

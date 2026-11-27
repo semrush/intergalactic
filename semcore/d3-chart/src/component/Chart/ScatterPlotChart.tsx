@@ -7,8 +7,10 @@ import React from 'react';
 
 // @ts-ignore
 import { minMax, ScatterPlot, getScatterPlotRadius } from '../..';
-import type { ChartState } from './AbstractChart';
-import { AbstractChart } from './AbstractChart';
+import { XAxis } from '../Axis/XAxis';
+import { YAxis } from '../Axis/YAxis';
+import { AbstractAxisChart } from './AbstractChart/AbstractAxisChart';
+import type { ChartState } from './AbstractChart/AbstractChart';
 import type {
   ScatterPlotChartData,
   ScatterPlotChartDefaultProps,
@@ -17,7 +19,7 @@ import type {
 } from './ScatterPlotChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
-class ScatterPlotChartComponent extends AbstractChart<
+class ScatterPlotChartComponent extends AbstractAxisChart<
   ScatterPlotChartData,
   ScatterPlotChartProps,
   typeof ScatterPlotChartComponent.enhance,
@@ -44,7 +46,7 @@ class ScatterPlotChartComponent extends AbstractChart<
   }
 
   protected get xScale() {
-    const { xScale, marginY = 30, data, groupKey, valueKey } = this.asProps;
+    const { xScale, data, groupKey, valueKey } = this.asProps;
     const { plotWidth } = this;
 
     if (xScale) {
@@ -53,7 +55,7 @@ class ScatterPlotChartComponent extends AbstractChart<
 
     const radius = getScatterPlotRadius(valueKey) / this.getValueScale([...this.flatValues]);
     const testItem = data[0][groupKey];
-    const range = [marginY, plotWidth - this.plotPadding];
+    const range = [0, plotWidth];
     const domain = minMax(data, groupKey);
 
     if (testItem instanceof Date && !Number.isNaN(testItem.getMilliseconds())) {
@@ -64,7 +66,7 @@ class ScatterPlotChartComponent extends AbstractChart<
   }
 
   protected get yScale(): ScaleLinear<any, any> {
-    const { yScale, marginX = 30, valueKey } = this.asProps;
+    const { yScale, valueKey } = this.asProps;
     const { plotHeight } = this;
 
     if (yScale) {
@@ -78,7 +80,7 @@ class ScatterPlotChartComponent extends AbstractChart<
     const min = Math.min(...flatValues) - radius;
 
     return scaleLinear()
-      .range([plotHeight - marginX, this.plotPadding])
+      .range([plotHeight, 0])
       .domain([min, max]);
   }
 
@@ -150,6 +152,61 @@ class ScatterPlotChartComponent extends AbstractChart<
   protected getLegendAriaLabel(): string {
     return this.asProps.getI18nText('legendForChart', { chartType: 'ScatterPlot' });
   }
+
+  protected override renderYAxis(yAxisPosition: 'left' | 'right'): React.ReactNode {
+    const { yTicksCount, showYAxis, axisYValueFormatter } = this.asProps;
+
+    if (!showYAxis) {
+      return null;
+    }
+
+    return (
+      <YAxis
+        ref={yAxisPosition === 'left' ? this.yLeftAxisRef : this.yRightAxisRef}
+        data={this.data}
+        dataKey='y'
+        scale={this.yScale}
+        ticksCount={yTicksCount}
+        plotWidth={this.plotWidth}
+        plotHeight={this.plotHeight}
+        valueFormatter={axisYValueFormatter ?? this.valueFormatter}
+        yAxisPosition={yAxisPosition}
+        eventEmitter={this.eventEmitter}
+        onMouseMove={() => false}
+      />
+    );
+  }
+
+  protected override renderXAxis(): React.ReactNode {
+    const { xTicksCount, showXAxis, axisXValueFormatter } = this.asProps;
+
+    if (!showXAxis) {
+      return null;
+    }
+
+    return (
+      <XAxis
+        ref={this.xAxisRef}
+        data={this.data}
+        plotWidth={this.plotWidth}
+        plotHeight={this.plotHeight}
+        dataKey='x'
+        scale={this.xScale}
+        ticksCount={xTicksCount}
+        valueFormatter={axisXValueFormatter ?? this.valueFormatter}
+        eventEmitter={this.eventEmitter}
+        onMouseMove={() => false}
+      />
+    );
+  }
+
+  protected override handleMouseMoveChartContainer() {
+    return false;
+  }
+
+  protected preventPlotMoveEvents() {
+    return true;
+  };
 }
 
 /**

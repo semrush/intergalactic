@@ -3,16 +3,16 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { type ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
-import type { ObjectData } from './AbstractChart.type';
-import { HIGHLIGHT_DOT } from './AbstractChart.type';
+import { AbstractAxisChart } from './AbstractChart/AbstractAxisChart';
+import type { ObjectData } from './AbstractChart/AbstractChart.type';
+import { HIGHLIGHT_DOT } from './AbstractChart/AbstractChart.type';
 import type { LineChartData, LineChartDefaultProps, LineChartProps, LineChartType } from './LineChart.type';
 // @ts-ignore
-import { Line, minMax, HoverLine, ReferenceLine, ReferenceStripes } from '../..';
-import type { ChartState } from './AbstractChart';
-import { AbstractChart } from './AbstractChart';
+import { Line, minMax, Tooltip, ReferenceLine, ReferenceStripes } from '../..';
+import type { ChartState } from './AbstractChart/AbstractChart';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
-class LineChartComponent extends AbstractChart<
+class LineChartComponent extends AbstractAxisChart<
   LineChartData,
   LineChartProps,
   typeof LineChartComponent.enhance,
@@ -34,7 +34,7 @@ class LineChartComponent extends AbstractChart<
   } as const;
 
   protected get xScale() {
-    const { xScale, marginY = 30, data, groupKey } = this.asProps;
+    const { xScale, data, groupKey } = this.asProps;
     const { plotWidth } = this;
 
     if (xScale) {
@@ -42,7 +42,7 @@ class LineChartComponent extends AbstractChart<
     }
 
     const testItem = data[0][groupKey];
-    const range = [marginY, plotWidth - this.plotPadding];
+    const range = [0, plotWidth];
     const domain = minMax(data, groupKey);
 
     if (testItem instanceof Date && !Number.isNaN(testItem.getMilliseconds())) {
@@ -53,7 +53,7 @@ class LineChartComponent extends AbstractChart<
   }
 
   protected get yScale(): ScaleLinear<any, any> {
-    const { yScale, marginX = 32 } = this.asProps;
+    const { yScale } = this.asProps;
     const { plotHeight } = this;
 
     if (yScale) {
@@ -66,7 +66,7 @@ class LineChartComponent extends AbstractChart<
     const min = Math.min(...flatValues);
 
     return scaleLinear()
-      .range([plotHeight - marginX, this.plotPadding])
+      .range([plotHeight, 0])
       .domain([min, max]);
   }
 
@@ -97,22 +97,22 @@ class LineChartComponent extends AbstractChart<
   }
 
   protected renderTooltip() {
-    const { data, groupKey, showXAxis } = this.asProps;
+    const { data, groupKey } = this.asProps;
 
     return (
-      <HoverLine.Tooltip x={groupKey} wMin={100} hideTickHover={!showXAxis}>
+      <Tooltip x={groupKey} wMin={100}>
         {({ xIndex }: any) => {
           const dataItem = data[xIndex];
 
           return {
             children: this.getTooltipChildren({
-              Tooltip: HoverLine.Tooltip,
+              Tooltip: Tooltip,
               dataItem,
               index: xIndex,
             }),
           };
         }}
-      </HoverLine.Tooltip>
+      </Tooltip>
     );
   }
 

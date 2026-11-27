@@ -29,6 +29,9 @@ export type StackedAreaContext = {
   series: any[];
 };
 
+/**
+ * @deprecated. You should use Chart.Area for charts.
+ */
 declare const StackedArea: IntergalacticD3Component<'g', StackedAreaProps, StackedAreaContext> & {
   Area: typeof Area;
 };

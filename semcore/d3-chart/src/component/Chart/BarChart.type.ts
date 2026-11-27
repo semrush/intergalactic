@@ -3,7 +3,8 @@ import type { Intergalactic } from '@semcore/core';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import type React from 'react';
 
-import type { AriaNameProps, BaseChartProps, ReferenceArea, ReferenceLine } from './AbstractChart.type';
+import type { AbstractAxisChartProps } from './AbstractChart/AbstractAxisChart.type';
+import type { AriaNameProps, ReferenceArea, ReferenceLine } from './AbstractChart/AbstractChart.type';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 
 type TrendItem = {
@@ -15,11 +16,15 @@ type BarKey = string;
 
 export type BarChartData = Array<Record<BarKey, string | number | Date>>;
 
-export type BarChartProps = BaseChartProps<BarChartData> & {
+export type BarChartProps = AbstractAxisChartProps<BarChartData> & {
   /** Field name that groups the data points */
   groupKey: string;
+  /**
+   * invert axis and show horizontal charts
+   */
+  invertAxis?: boolean;
   /** Custom x-axis scale */
-  xScale?: ScaleBand<any> | ScaleTime<any, any>;
+  xScale?: ScaleBand<any>;
   /** Custom y-axis scale */
   yScale?: ScaleLinear<any, any>;
   /** Controls whether bars are grouped side-by-side or stacked */

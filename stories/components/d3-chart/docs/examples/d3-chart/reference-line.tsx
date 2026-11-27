@@ -17,19 +17,17 @@ const valueFormatter = (value: unknown) => {
 };
 
 const Demo = () => {
-  const MARGIN = { top: 28, right: 0, bottom: 32, left: 46 };
   const width = 500;
   const height = 220;
-  const plotWidth = width - MARGIN.left - MARGIN.right;
-  const monthWidth = plotWidth / data.length;
+  const monthWidth = width / data.length;
   const lastMonth = data[data.length - 1].time;
 
   const xScale = scaleTime()
-    .range([MARGIN.left, width - MARGIN.right])
+    .range([0, width])
     .domain([data[0].time, lastMonth]);
 
   const yScale = scaleLinear()
-    .range([height - MARGIN.bottom, MARGIN.top])
+    .range([height, 0])
     .domain([0, 30000]);
 
   return (

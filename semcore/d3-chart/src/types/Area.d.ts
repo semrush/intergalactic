@@ -58,6 +58,9 @@ export type AreaNullProps = Context & {
   hide?: boolean;
 };
 
+/**
+ * @deprecated. You should use Chart.Area for charts.
+ */
 declare const Area: IntergalacticD3Component<'path', AreaProps, Context> & {
   Dots: IntergalacticD3Component<'circle', AreaDotsProps, AreaDotsContext>;
   Null: IntergalacticD3Component<'path', AreaNullProps, Context>;

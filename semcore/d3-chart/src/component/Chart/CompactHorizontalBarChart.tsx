@@ -3,9 +3,9 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { scaleBand, scaleLinear } from 'd3-scale';
 import React from 'react';
 
-import type { ChartState } from './AbstractChart';
-import { AbstractChart } from './AbstractChart';
-import type { BaseLegendProps } from './AbstractChart.type';
+import type { ChartState } from './AbstractChart/AbstractChart';
+import { AbstractChart } from './AbstractChart/AbstractChart';
+import type { BaseLegendProps } from './AbstractChart/AbstractChart.type';
 import type {
   CompactHorizontalBarChartData,
   CompactHorizontalBarChartDefaultProps,
@@ -105,23 +105,22 @@ class CompactHorizontalBarChartComponent extends AbstractChart<
   }
 
   private get categoryScale() {
-    const { marginY = 40, data, y } = this.asProps;
+    const { data, y } = this.asProps;
     const { plotHeight } = this;
 
     return scaleBand()
-      .range([plotHeight - marginY, marginY])
+      .range([plotHeight, 0])
       .domain([...data].reverse().map((d) => d[y]) as any)
       .paddingInner(0.6)
       .paddingOuter(0.2);
   }
 
   private get valueScale() {
-    const { marginY = 0 } = this.asProps;
     const { plotWidth } = this;
 
     const sum = [...super.flatValues.values()].reduce((acc, d) => acc + d, 0);
 
-    return scaleLinear().range([marginY, plotWidth]).domain([marginY, sum]);
+    return scaleLinear().range([0, plotWidth]).domain([0, sum]);
   }
 }
 

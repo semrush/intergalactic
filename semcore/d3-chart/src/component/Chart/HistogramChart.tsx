@@ -4,13 +4,15 @@ import { scaleBand, scaleLinear, type ScaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
 // @ts-ignore
-import { Bar, minMax, HoverRect, StackBar, type BarProps } from '../..';
-import type { ChartState } from './AbstractChart';
-import { AbstractChart } from './AbstractChart';
+import { Bar, minMax, Tooltip, StackBar, type BarProps } from '../..';
+import { Grid } from '../Grid/Grid';
+import { HoverRect } from '../Hover/HoverRect';
+import { AbstractAxisChart } from './AbstractChart/AbstractAxisChart';
+import type { ChartState } from './AbstractChart/AbstractChart';
 import type { HistogramChartData, HistogramChartDefaultProps, HistogramChartProps, HistogramChartType } from './HistogramChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
-class HistogramChartComponent extends AbstractChart<
+class HistogramChartComponent extends AbstractAxisChart<
   HistogramChartData,
   HistogramChartProps,
   typeof HistogramChartComponent.enhance,
@@ -34,9 +36,6 @@ class HistogramChartComponent extends AbstractChart<
   get xScale() {
     const {
       xScale,
-      marginY = 30,
-      marginX = 30,
-      invertAxis,
       data,
       groupKey,
     } = this.asProps;
@@ -47,9 +46,7 @@ class HistogramChartComponent extends AbstractChart<
     }
 
     const testItem = data[0][groupKey];
-    const range = invertAxis
-      ? [plotHeight - marginX, this.plotPadding]
-      : [marginY, plotWidth - this.plotPadding];
+    const range = [0, plotWidth];
 
     if (testItem instanceof Date && !Number.isNaN(testItem.getMilliseconds())) {
       const domain = minMax(data, groupKey);
@@ -65,9 +62,6 @@ class HistogramChartComponent extends AbstractChart<
   get yScale(): ScaleLinear<any, any> {
     const {
       yScale,
-      marginY = 30,
-      marginX = 30,
-      invertAxis,
       data,
     } = this.asProps;
     const { plotWidth, plotHeight } = this;
@@ -99,11 +93,7 @@ class HistogramChartComponent extends AbstractChart<
     return (
       yScale ??
       scaleLinear()
-        .range(
-          invertAxis
-            ? [marginY, plotWidth - this.plotPadding]
-            : [plotHeight - marginX, this.plotPadding],
-        )
+        .range([plotHeight, 0])
         .domain([0, max])
     );
   }
@@ -115,25 +105,21 @@ class HistogramChartComponent extends AbstractChart<
   }
 
   renderChart() {
-    const { groupKey, invertAxis } = this.asProps;
+    const { groupKey } = this.asProps;
     const { dataDefinitions, highlightedItem } = this.state;
 
     if (this.isStack) {
       return (
-        <StackBar x={invertAxis ? undefined : groupKey} y={invertAxis ? groupKey : undefined}>
+        <StackBar x={groupKey}>
           {dataDefinitions.map((item, index) => {
-            const BarComponent = invertAxis ? StackBar.HorizontalBar : StackBar.Bar;
+            const BarComponent = StackBar.Bar;
 
             const commonBarComponentProps: BarProps = {
               color: item.color,
               transparent: highlightedItem !== -1 && highlightedItem !== index,
             };
 
-            if (invertAxis) {
-              commonBarComponentProps.x = item.id;
-            } else {
-              commonBarComponentProps.y = item.id;
-            }
+            commonBarComponentProps.y = item.id;
 
             return item.checked && <BarComponent key={item.id} {...commonBarComponentProps} />;
           })}
@@ -146,8 +132,8 @@ class HistogramChartComponent extends AbstractChart<
     return (
       item.checked && (
         <Bar
-          x={invertAxis ? item.id : groupKey}
-          y={invertAxis ? groupKey : item.id}
+          x={groupKey}
+          y={item.id}
           key={item.id}
           color={item.color}
         />
@@ -156,28 +142,58 @@ class HistogramChartComponent extends AbstractChart<
   }
 
   renderTooltip(): React.ReactNode {
-    const { data, groupKey, invertAxis, showXAxis } = this.asProps;
+    const { data, groupKey } = this.asProps;
 
     return (
-      <HoverRect.Tooltip
-        x={invertAxis ? undefined : groupKey}
-        y={invertAxis ? groupKey : undefined}
+      <Tooltip
+        x={groupKey}
         wMin={100}
-        hideTickHover={!showXAxis}
       >
-        {({ xIndex, yIndex }: any) => {
-          const index = invertAxis ? yIndex : xIndex;
+        {({ index }: any) => {
           const dataItem = data[index];
 
           return {
             children: this.getTooltipChildren({
-              Tooltip: HoverRect.Tooltip,
+              Tooltip: Tooltip,
               dataItem,
               index,
             }),
           };
         }}
-      </HoverRect.Tooltip>
+      </Tooltip>
+    );
+  }
+
+  protected override renderGrid(): React.ReactNode {
+    const {
+      showXAxis,
+      showYAxis,
+      xTicksCount,
+      yTicksCount,
+      groupKey,
+    } = this.asProps;
+
+    return (
+      <>
+        {showYAxis && (
+          <>
+            <Grid
+              scale={[this.xScale, this.yScale]}
+              orientation='horizontal'
+              dataHintsHandler={this.dataHintsHandlers}
+              ticksCount={yTicksCount}
+            />
+            <HoverRect
+              data={this.data}
+              eventEmitter={this.eventEmitter}
+              scale={[this.xScale, this.yScale]}
+              keyX={groupKey}
+            />
+          </>
+        )}
+
+        {showXAxis !== false && this.renderXAxisLine()}
+      </>
     );
   }
 

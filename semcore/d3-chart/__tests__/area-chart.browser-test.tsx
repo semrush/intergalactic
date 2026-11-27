@@ -30,7 +30,8 @@ export const locators = {
   },
   highlightRing: (page: Page) => page.locator('circle[r="11.5"]'),
   highlightHalo: (page: Page) => page.locator('circle[r="8.5"]'),
-  tooltip: (page: Page) => page.locator('[data-ui-name="AreaChart.Tooltip"], [data-ui-name="Chart.Tooltip"], [data-ui-name="HoverLine.Tooltip"]'),
+  /** `Chart.*` render `Tooltip`; the legacy stories render `HoverLine.Tooltip` / `HoverRect.Tooltip`. */
+  tooltip: (page: Page) => page.locator('[data-ui-name="Tooltip"], [data-ui-name="HoverLine.Tooltip"], [data-ui-name="HoverRect.Tooltip"]'),
 };
 
 const AREA_STORY = 'stories/components/d3-chart/tests/examples/area-chart/basic-usage.tsx';
@@ -96,11 +97,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       stacked: false,
       plotWidth: 500,
       plotHeight: 300,
-      marginX: 40,
-      marginY: 40,
       showXAxis: true,
       showYAxis: true,
-      invertAxis: false,
       showTooltip: true,
       showTotalInTooltip: true,
       showPercentValueInTooltip: true,
@@ -114,35 +112,14 @@ test.describe(`${TAG.VISUAL}`, () => {
       stacked: true,
       plotWidth: 600,
       plotHeight: 350,
-      marginX: 40,
-      marginY: 40,
       showXAxis: false,
       showYAxis: false,
-      invertAxis: false,
       showTooltip: true,
       showTotalInTooltip: false,
       showPercentValueInTooltip: false,
       showLegend: true,
       showDots: false,
       patterns: true,
-      duration: 0,
-    },
-    {
-      description: 'Inverted: axis inversion, no tooltip',
-      stacked: false,
-      plotWidth: 500,
-      plotHeight: 300,
-      marginX: 60,
-      marginY: 60,
-      showXAxis: true,
-      showYAxis: true,
-      invertAxis: true,
-      showTooltip: false,
-      showTotalInTooltip: false,
-      showPercentValueInTooltip: true,
-      showLegend: false,
-      showDots: true,
-      patterns: false,
       duration: 0,
     },
     {
@@ -421,7 +398,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify both axes and their ticks are rendered', async () => {
       await expect(page.locator('[data-ui-name="Axis"]')).toHaveCount(2);
-      await expect(page.locator('[data-ui-name="Axis.Ticks"]')).toHaveCount(15);
+      await expect(page.locator('[data-ui-name="Axis.Tick"]')).toHaveCount(15);
     });
 
     await test.step('Verify tooltip visibility', async () => {

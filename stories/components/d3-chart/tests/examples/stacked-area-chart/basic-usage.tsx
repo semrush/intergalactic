@@ -30,6 +30,7 @@ const Demo = (props: AreaChartProps) => {
       w={plotWidth}
       h={plotHeight}
       overflow='auto'
+      pr={8}
     >
       <Chart.Area
         {...chartProps}

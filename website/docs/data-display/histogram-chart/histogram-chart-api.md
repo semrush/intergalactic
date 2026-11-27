@@ -16,8 +16,6 @@ For all common D3 chart properties, refer to [D3 chart API](/data-display/d3-cha
 
 ## Chart.Histogram
 
-For Horizontal view, use `invertAxis={true}`.
-
 ```js
 import { Chart } from '@semcore/ui/d3-chart';
 ```

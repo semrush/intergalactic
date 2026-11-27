@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { getChartArgTypes } from './examples/stories_props_helper';
+import { getNoAxisChartArgTypes } from './examples/stories_props_helper';
 import BasicUsageExample, { defaultProps as ShowLegendPropExampleProps } from './examples/venn-chart/basic-usage';
 import onClickVennExample from './examples/venn-chart/on-click-venn';
 
@@ -12,7 +12,7 @@ export default meta;
 
 export const BasicUsage = {
   render: BasicUsageExample,
-  argTypes: getChartArgTypes({
+  argTypes: getNoAxisChartArgTypes({
     fractionalValues: { control: 'boolean' },
   }),
   args: ShowLegendPropExampleProps,

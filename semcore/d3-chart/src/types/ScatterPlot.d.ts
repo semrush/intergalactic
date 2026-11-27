@@ -34,6 +34,9 @@ export type ScatterPlotProps = Context & {
   onClick?: (index: number, event: React.SyntheticEvent) => void;
 };
 
+/**
+ * @deprecated. You should use Chart.ScatterPlot for charts.
+ */
 declare const ScatterPlot: IntergalacticD3Component<'g', ScatterPlotProps, Context> & {
   Tooltip: TooltipType<
     ScatterPlotProps & {

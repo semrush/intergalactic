@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 
 import BasicUsageExample, { defaultProps as basicUsageProps } from './examples/score-donut-chart/basic-usage';
-import { getChartArgTypes, legendTypeControl } from './examples/stories_props_helper';
+import { getNoAxisChartArgTypes, legendTypeControl } from './examples/stories_props_helper';
 
 const meta: Meta = {
   title: 'Components/d3Charts/Tests/Score-Donut-Chart',
@@ -13,7 +13,7 @@ const hidden = { table: { disable: true } } as const;
 
 export const BasicUsage = {
   render: BasicUsageExample,
-  argTypes: getChartArgTypes({
+  argTypes: getNoAxisChartArgTypes({
     ...legendTypeControl,
     data: { control: { type: 'object' } },
     innerRadius: { control: { type: 'number', min: 0, max: 150 } },
@@ -27,14 +27,7 @@ export const BasicUsage = {
     showTotalInTooltip: hidden,
     showDeltaPercentInTooltip: hidden,
     deltaPercentGrowthColor: hidden,
-    // Not used by a donut: there are no axes and one tooltip per slice.
-    invertAxis: hidden,
-    showXAxis: hidden,
-    showYAxis: hidden,
-    xTicksCount: hidden,
-    yTicksCount: hidden,
-    multilineXTicks: hidden,
-    multilineYTicks: hidden,
+    // Not used by a donut: one tooltip per slice.
     tooltipViewType: hidden,
     showPercentValueInTooltip: hidden,
   }),

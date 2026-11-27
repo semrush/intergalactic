@@ -21,7 +21,7 @@ SChart {
   column-gap: var(--intergalactic-spacing-4x, 16px);
   row-gap: var(--intergalactic-spacing-4x, 16px);
   width: 100%;
-  padding: var(--intergalactic-spacing-2x, 8px);
+  padding-left: 0;
   box-sizing: border-box;
 
   &[mode='compact'] {

@@ -26,6 +26,7 @@ const Demo = () => {
       plotWidth={500}
       plotHeight={200}
       groupKey='time'
+      xTicksCount={5}
       tooltipValueFormatter={formatDate('tooltip')}
       axisXValueFormatter={formatDate('axis')}
       stacked={true}

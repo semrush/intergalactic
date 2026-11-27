@@ -43,7 +43,7 @@ const group = {
   },
   horizontalBarCompact: {
     title: 'Compact horizontal bar chart',
-    route: '../bar-horizontal-compact/bar-horizontal-compact',
+    route: '../score-bar-chart/score-bar-chart',
     disabled: false,
     type: 'charts',
   },
@@ -144,7 +144,7 @@ const group = {
   },
   horizontalBarCompact: {
     title: 'Compact horizontal bar chart',
-    route: '../bar-horizontal-compact/bar-horizontal-compact',
+    route: '../score-bar-chart/score-bar-chart',
     disabled: false,
     type: 'charts',
   },
@@ -354,7 +354,7 @@ const group = {
   },
   horizontalBarCompact: {
     title: 'Compact horizontal bar chart',
-    route: '../bar-horizontal-compact/bar-horizontal-compact',
+    route: '../score-bar-chart/score-bar-chart',
     disabled: false,
     type: 'charts',
   },
@@ -468,7 +468,7 @@ const group = {
   // },
   horizontalBarCompact: {
     title: 'Compact horizontal bar chart',
-    route: '../bar-horizontal-compact/bar-horizontal-compact',
+    route: '../score-bar-chart/score-bar-chart',
     disabled: false,
     type: 'charts',
   },

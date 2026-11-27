@@ -3,6 +3,8 @@ import type { Intergalactic } from '@semcore/core';
 import type EventEmitter from '@semcore/core/lib/utils/eventEmitter';
 import type React from 'react';
 
+import type { ChartEvents } from '../AbstractChart/AbstractChart.type';
+
 type Category = string;
 
 export type ScoreBarChartDataItem = {
@@ -35,7 +37,7 @@ export type ScoreBarChartProps = NSBox.Props & {
   /**
    * Custom event emitter. Could be useful to handle event on few charts at the same time.
    */
-  eventEmitter?: EventEmitter<ScoreBarEvents>;
+  eventEmitter?: EventEmitter<ChartEvents>;
   /**
    * Map with colors for data items
    */
@@ -79,8 +81,3 @@ export type ScoreBarChartDefaultProps = {
 };
 
 export type ScoreBarChartType = Intergalactic.Component<NSBox.Component, ScoreBarChartProps>;
-
-export type ScoreBarEvents =
-  Record<`setTooltipPosition_${string}`, (clientX: number, clientY: number) => void> &
-  Record<`setTooltipRenderingProps_${string}`, (_: {}, params: { index: number }) => void> &
-  Record<`setTooltipVisible_${string}`, (isVisible: boolean) => void>;

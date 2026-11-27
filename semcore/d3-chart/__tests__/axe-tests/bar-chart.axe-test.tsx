@@ -70,11 +70,11 @@ test.describe(`@d3-chart @bar-chart ${TAG.ACCESSIBILITY}`, () => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/bar-chart/links.tsx', 'en');
 
     const plotBox = await page.locator('svg[data-ui-name="Plot"]').boundingBox();
-    const linkBox = await page.locator('[data-ui-name="Axis.Ticks"] a').first().boundingBox();
+    const linkBox = await page.locator('[data-ui-name="Axis.Tick"] a').first().boundingBox();
     if (!plotBox || !linkBox) throw new Error('Bounding box not found');
 
     await page.mouse.move(linkBox.x + linkBox.width / 2, plotBox.y + plotBox.height / 2);
-    await expect(page.locator('foreignObject[data-hovered-tick] a')).toHaveCount(1);
+    await expect(page.locator('[data-ui-name="Axis"] [inert] a')).toHaveCount(1);
 
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);

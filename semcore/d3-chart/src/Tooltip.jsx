@@ -54,7 +54,28 @@ class TooltipRoot extends Component {
   virtualTriggerElement = null;
   unsubscribe = [];
   componentDidMount() {
-    const { eventEmitter, plotId } = this.asProps;
+    const { eventEmitter, plotId, rootRef } = this.asProps;
+
+    const setCoordinates = (x, y) => {
+      const boundaryRect = rootRef?.current?.getBoundingClientRect();
+
+      this.virtualElementPosition.x = x;
+      this.virtualElementPosition.y = !boundaryRect
+        ? y
+        : y >= boundaryRect.top && y <= boundaryRect.top + boundaryRect.height ? y : boundaryRect.top + boundaryRect.height / 2;
+
+      if (this.virtualTriggerElement === null) {
+        this.virtualTriggerElement = {};
+        setTimeout(() => {
+          this.setPopperTrigger(this.virtualTriggerElement);
+        }, 0);
+      }
+      this.virtualTriggerElement.getBoundingClientRect = () => {
+        const { x, y } = this.virtualElementPosition;
+        return { width: 0, height: 0, top: y, right: x, bottom: y, left: x };
+      };
+      this.popper.current?.update();
+    };
 
     this.unsubscribe.push(
       eventEmitter.subscribe(`setTooltipRenderingProps_${plotId}`, (anchorProps, tooltipProps) => {
@@ -63,20 +84,18 @@ class TooltipRoot extends Component {
       eventEmitter.subscribe(`setTooltipVisible_${plotId}`, (visible) =>
         this.setState({ $visible: visible }),
       ),
-      eventEmitter.subscribe(`setTooltipPosition_${plotId}`, (x, y) => {
-        this.virtualElementPosition.x = x;
-        this.virtualElementPosition.y = y;
-        if (this.virtualTriggerElement === null) {
-          this.virtualTriggerElement = {};
-          setTimeout(() => {
-            this.setPopperTrigger(this.virtualTriggerElement);
-          }, 0);
-        }
-        this.virtualTriggerElement.getBoundingClientRect = () => {
-          const { x, y } = this.virtualElementPosition;
-          return { width: 0, height: 0, top: y, right: x, bottom: y, left: x };
-        };
-        this.popper.current?.update();
+      eventEmitter.subscribe(`setTooltipPosition_${plotId}`, setCoordinates),
+      eventEmitter.subscribe(`setTooltipVisible`, (visible) =>
+        this.setState({ $visible: visible }),
+      ),
+      eventEmitter.subscribe(`hoverPosition`, setCoordinates),
+      eventEmitter.subscribe(`hoverListItem`, (index, invertAxis) => {
+        this.setState({
+          tooltipProps: {
+            [invertAxis ? 'yIndex' : 'xIndex']: index,
+            index, // fallback
+          },
+        });
       }),
     );
   }

@@ -3,19 +3,23 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { scaleBand, scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
-import type { ChartState } from './AbstractChart';
-import { AbstractChart } from './AbstractChart';
-import type { BaseLegendProps } from './AbstractChart.type';
+import { Grid } from '../Grid/Grid';
+import { AbstractAxisChart } from './AbstractChart/AbstractAxisChart';
+import type { ChartState } from './AbstractChart/AbstractChart';
+import type { BaseLegendProps } from './AbstractChart/AbstractChart.type';
 import type { BarChartData, BarChartProps, BarChartType, BarChartDefaultProps } from './BarChart.type';
 // @ts-ignore
-import { minMax, GroupBar, HoverRect, StackBar, Line, YAxis, XAxis, ReferenceLine } from '../..';
+import { minMax, GroupBar, StackBar, Line, YAxis as YAxisOld, XAxis as XAxisOld, ReferenceLine, Tooltip } from '../..';
 // @ts-ignore
 import { ReferenceArea } from '../../Reference';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import type { BarProps } from '../../types';
+import { XAxis } from '../Axis/XAxis';
+import { YAxis } from '../Axis/YAxis';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
+import { HoverRect } from '../Hover/HoverRect';
 
-class BarChartComponent extends AbstractChart<
+class BarChartComponent extends AbstractAxisChart<
   BarChartData,
   BarChartProps,
   typeof BarChartComponent.enhance,
@@ -176,26 +180,25 @@ class BarChartComponent extends AbstractChart<
     const { data, groupKey, invertAxis, onClickHoverRect, showXAxis } = this.asProps;
 
     return (
-      <HoverRect.Tooltip
+      <Tooltip
         x={invertAxis ? undefined : groupKey}
         y={invertAxis ? groupKey : undefined}
         wMin={100}
         onClick={onClickHoverRect}
-        hideTickHover={!showXAxis}
       >
-        {({ xIndex, yIndex }: any) => {
-          const index = invertAxis ? yIndex : xIndex;
+        {(props: { index: number }) => {
+          const index = props.index;
           const dataItem = data[index];
 
           return {
             children: this.getTooltipChildren({
-              Tooltip: HoverRect.Tooltip,
+              Tooltip: Tooltip,
               dataItem,
               index,
             }),
           };
         }}
-      </HoverRect.Tooltip>
+      </Tooltip>
     );
   }
 
@@ -228,59 +231,93 @@ class BarChartComponent extends AbstractChart<
     );
   }
 
-  protected override renderAxis(): React.ReactNode {
+  protected override renderYAxis(yAxisPosition: 'left' | 'right'): React.ReactNode {
+    const { yTicksCount, showYAxis, axisYValueFormatter, groupKey, invertAxis } = this.asProps;
+
+    if (!showYAxis) {
+      return null;
+    }
+
+    return (
+      <YAxis
+        ref={yAxisPosition === 'left' ? this.yLeftAxisRef : this.yRightAxisRef}
+        dataKey={groupKey}
+        plotWidth={this.plotWidth}
+        plotHeight={this.plotHeight}
+        scale={this.yScale}
+        ticksCount={yTicksCount}
+        primaryText={!!invertAxis}
+        yAxisPosition={yAxisPosition}
+        valueFormatter={axisYValueFormatter ?? this.valueFormatter}
+        data={this.data}
+        eventEmitter={this.eventEmitter}
+        onMouseMove={!invertAxis ? () => false : undefined}
+      />
+    );
+  }
+
+  protected renderXAxis(): React.ReactNode {
+    const { xTicksCount, showXAxis, axisXValueFormatter, groupKey, invertAxis } = this.asProps;
+
+    if (!showXAxis || !groupKey) {
+      return null;
+    }
+
+    return (
+      <XAxis
+        ref={this.xAxisRef}
+        data={this.data}
+        dataKey={groupKey}
+        plotWidth={this.plotWidth}
+        plotHeight={this.plotHeight}
+        scale={this.xScale}
+        ticksCount={xTicksCount}
+        valueFormatter={axisXValueFormatter ?? this.axisValueFormatter}
+        eventEmitter={this.eventEmitter}
+        onMouseMove={invertAxis ? () => false : undefined}
+      />
+    );
+  }
+
+  protected override renderGrid(): React.ReactNode {
     const {
       invertAxis,
       showXAxis,
       showYAxis,
-      data,
-      axisXValueFormatter,
-      axisYValueFormatter,
-      multilineXTicks,
-      multilineYTicks,
+      xTicksCount,
+      yTicksCount,
+      groupKey,
     } = this.asProps;
-
-    if (!Array.isArray(data)) {
-      return null;
-    }
-
-    const xTicks = this.xTicks;
-    const yTicks = this.yTicks;
-
-    const childrenX = axisXValueFormatter
-      ? ({ value }: any) => ({ children: axisXValueFormatter(value) })
-      : undefined;
-    const childrenY = axisYValueFormatter
-      ? ({ value }: any) => ({ children: axisYValueFormatter(value) })
-      : undefined;
 
     return (
       <>
-        {showYAxis && (
-          <YAxis>
-            {yTicks
-              ? (
-                  <YAxis.Ticks primaryText={invertAxis} multiline={multilineYTicks} ticks={yTicks}>{childrenY}</YAxis.Ticks>
-                )
-              : (
-                  <YAxis.Ticks primaryText={invertAxis} multiline={multilineYTicks}>{childrenY}</YAxis.Ticks>
-                )}
-            {invertAxis !== true && (yTicks ? <YAxis.Grid ticks={yTicks} /> : <YAxis.Grid />)}
-          </YAxis>
+        {showYAxis && invertAxis !== true && (
+          <Grid
+            scale={[this.xScale, this.yScale]}
+            orientation='horizontal'
+            dataHintsHandler={this.dataHintsHandlers}
+            ticksCount={yTicksCount}
+          />
         )}
 
-        {showXAxis && (
-          <XAxis>
-            {xTicks
-              ? (
-                  <XAxis.Ticks multiline={multilineXTicks} ticks={xTicks}>{childrenX}</XAxis.Ticks>
-                )
-              : (
-                  <XAxis.Ticks multiline={multilineXTicks}>{childrenX}</XAxis.Ticks>
-                )}
-            {invertAxis === true && (xTicks ? <XAxis.Grid ticks={xTicks} /> : <XAxis.Grid />)}
-          </XAxis>
+        {showXAxis && invertAxis === true && (
+          <Grid
+            scale={[this.xScale, this.yScale]}
+            orientation='vertical'
+            dataHintsHandler={this.dataHintsHandlers}
+            ticksCount={xTicksCount}
+          />
         )}
+
+        {this.renderXAxisLine()}
+
+        <HoverRect
+          data={this.data}
+          eventEmitter={this.eventEmitter}
+          scale={[this.xScale, this.yScale]}
+          keyX={invertAxis !== true ? groupKey : undefined}
+          keyY={invertAxis === true ? groupKey : undefined}
+        />
       </>
     );
   }
@@ -304,24 +341,15 @@ class BarChartComponent extends AbstractChart<
 
   private get categoryScale() {
     const {
-      marginY = 40,
-      marginX = 32,
       invertAxis,
       data,
       groupKey,
     } = this.asProps;
     const { plotWidth, plotHeight } = this;
 
-    const testItem = data[0][groupKey];
     const range = invertAxis
-      ? [plotHeight - marginX, this.plotPadding]
-      : [marginY, plotWidth - this.plotPadding];
-
-    if (testItem instanceof Date && !Number.isNaN(testItem.getMilliseconds())) {
-      const domain = minMax(data, groupKey);
-
-      return scaleTime(domain, range);
-    }
+      ? [plotHeight, 0]
+      : [0, plotWidth];
 
     const domain = data.map((item) => item[groupKey]);
 
@@ -329,7 +357,7 @@ class BarChartComponent extends AbstractChart<
   }
 
   private get valueScale() {
-    const { marginY = 40, marginX = 32, invertAxis, type } = this.asProps;
+    const { invertAxis, type } = this.asProps;
     const { plotWidth, plotHeight } = this;
 
     const max = type === 'stack' ? super.maxStackedValue : Math.max(...super.flatValues);
@@ -337,8 +365,8 @@ class BarChartComponent extends AbstractChart<
     return scaleLinear()
       .range(
         invertAxis
-          ? [marginY, plotWidth - this.plotPadding]
-          : [plotHeight - marginX, this.plotPadding],
+          ? [0, plotWidth]
+          : [plotHeight, 0],
       )
       .domain([0, max]);
   }

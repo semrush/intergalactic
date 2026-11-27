@@ -55,18 +55,7 @@ Intergalactic.InternalTypings.ComponentAdditive<
 TooltipTypeBase;
 
 /**
- * @deprecated Consider migration to better typed Bubble.Tooltip, HoverLine.Tooltip,
- * HoverRect.Tooltip, Donut.Tooltip, Radar.Tooltip,
- * ScatterPlot.Tooltip or Venn.Tooltip.
- *
- * Migration examples:
- * 1. `<Tooltip tag={HoverLine}>...</Tooltip>` => `<HoverLine.Tooltip>...</HoverLine.Tooltip>`
- * 2. `<Tooltip tag={HoverRect}>...</Tooltip>` => `<HoverRect.Tooltip>...</HoverRect.Tooltip>`
- * 3. `<Tooltip tag={Radar.Hover}>...</Tooltip>` => `<Radar.Tooltip>...</Radar.Tooltip>`
- * 4. `<Tooltip>...</Tooltip>` => `<Bubble.Tooltip>...</Bubble.Tooltip>`
- * 5. `<Tooltip>...</Tooltip>` => `<Donut.Tooltip>...</Donut.Tooltip>`
- * 6. `<Tooltip>...</Tooltip>` => `<ScatterPlot.Tooltip>...</ScatterPlot.Tooltip>`
- * 7. `<Tooltip>...</Tooltip>` => `<Venn.Tooltip>...</Venn.Tooltip>`
+ * @deprecated Chart.* has tooltip inside. You shouldn't use this component anymore.
  */
 declare const Tooltip: TooltipType;
 

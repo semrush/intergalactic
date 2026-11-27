@@ -6,8 +6,8 @@ import React from 'react';
 
 // @ts-ignore
 import { Venn } from '../..';
-import type { ChartState } from './AbstractChart';
-import { AbstractChart } from './AbstractChart';
+import type { ChartState } from './AbstractChart/AbstractChart';
+import { AbstractChart } from './AbstractChart/AbstractChart';
 import type { VennChartData, VennChartDefaultProps, VennChartProps, VennChartType } from './VennChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';

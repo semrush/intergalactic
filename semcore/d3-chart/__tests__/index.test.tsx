@@ -1682,14 +1682,14 @@ describe('Chart tooltip percent delta', () => {
     // Keep fireEvent: the hovered index is resolved from explicit SVG coordinates.
     fireEvent.mouseMove(plot!, { clientX, clientY: 150 });
 
-    const tooltip = document.querySelector('[data-ui-name="HoverRect.Tooltip"]');
+    const tooltip = document.querySelector('[data-ui-name="Tooltip"]');
     expect(tooltip).not.toBeNull();
 
     return tooltip!;
   };
 
   const getTitle = (tooltip: Element) =>
-    tooltip.querySelector('[data-ui-name="HoverRect.Tooltip.Title"]')?.textContent;
+    tooltip.querySelector('[data-ui-name="Tooltip.Title"]')?.textContent;
 
   const getChildrenWrapper = (tooltip: Element) =>
     tooltip.querySelector('[class*="STooltipChildrenWrapper"]')!;
@@ -1836,14 +1836,14 @@ describe('Chart tooltip default formatting', () => {
     // Keep fireEvent: the hovered index is resolved from explicit SVG coordinates.
     fireEvent.mouseMove(plot!, { clientX: 250, clientY: 150 });
 
-    const tooltip = document.querySelector('[data-ui-name="HoverLine.Tooltip"]');
+    const tooltip = document.querySelector('[data-ui-name="Tooltip"]');
     expect(tooltip).not.toBeNull();
 
     return tooltip!;
   };
 
   const getTitle = (tooltip: Element) =>
-    tooltip.querySelector('[data-ui-name="HoverLine.Tooltip.Title"]')?.textContent;
+    tooltip.querySelector('[data-ui-name="Tooltip.Title"]')?.textContent;
 
   const getValues = (tooltip: Element) =>
     Array.from(tooltip.querySelectorAll('[data-ui-name="Text"]')).map((node) => node.textContent);
@@ -1924,7 +1924,7 @@ describe('Chart tooltip default formatting', () => {
     // Keep fireEvent: the hovered index is resolved from explicit SVG coordinates.
     fireEvent.mouseMove(plot!, { clientX: 250, clientY: 150 });
 
-    const tooltip = document.querySelector('[data-ui-name="HoverLine.Tooltip"]');
+    const tooltip = document.querySelector('[data-ui-name="Tooltip"]');
     expect(getTitle(tooltip!)).toBe('Freitag, 15. März 2024');
   });
 
