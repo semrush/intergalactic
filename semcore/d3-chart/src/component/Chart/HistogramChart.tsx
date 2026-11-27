@@ -36,7 +36,6 @@ class HistogramChartComponent extends AbstractAxisChart<
   get xScale() {
     const {
       xScale,
-      invertAxis,
       data,
       groupKey,
     } = this.asProps;
@@ -47,9 +46,7 @@ class HistogramChartComponent extends AbstractAxisChart<
     }
 
     const testItem = data[0][groupKey];
-    const range = invertAxis
-      ? [plotHeight, 0]
-      : [0, plotWidth];
+    const range = [0, plotWidth];
 
     if (testItem instanceof Date && !Number.isNaN(testItem.getMilliseconds())) {
       const domain = minMax(data, groupKey);
@@ -65,7 +62,6 @@ class HistogramChartComponent extends AbstractAxisChart<
   get yScale(): ScaleLinear<any, any> {
     const {
       yScale,
-      invertAxis,
       data,
     } = this.asProps;
     const { plotWidth, plotHeight } = this;
@@ -97,11 +93,7 @@ class HistogramChartComponent extends AbstractAxisChart<
     return (
       yScale ??
       scaleLinear()
-        .range(
-          invertAxis
-            ? [0, plotWidth]
-            : [plotHeight, 0],
-        )
+        .range([plotHeight, 0])
         .domain([0, max])
     );
   }
@@ -113,25 +105,21 @@ class HistogramChartComponent extends AbstractAxisChart<
   }
 
   renderChart() {
-    const { groupKey, invertAxis } = this.asProps;
+    const { groupKey } = this.asProps;
     const { dataDefinitions, highlightedItem } = this.state;
 
     if (this.isStack) {
       return (
-        <StackBar x={invertAxis ? undefined : groupKey} y={invertAxis ? groupKey : undefined}>
+        <StackBar x={groupKey}>
           {dataDefinitions.map((item, index) => {
-            const BarComponent = invertAxis ? StackBar.HorizontalBar : StackBar.Bar;
+            const BarComponent = StackBar.Bar;
 
             const commonBarComponentProps: BarProps = {
               color: item.color,
               transparent: highlightedItem !== -1 && highlightedItem !== index,
             };
 
-            if (invertAxis) {
-              commonBarComponentProps.x = item.id;
-            } else {
-              commonBarComponentProps.y = item.id;
-            }
+            commonBarComponentProps.y = item.id;
 
             return item.checked && <BarComponent key={item.id} {...commonBarComponentProps} />;
           })}
@@ -144,8 +132,8 @@ class HistogramChartComponent extends AbstractAxisChart<
     return (
       item.checked && (
         <Bar
-          x={invertAxis ? item.id : groupKey}
-          y={invertAxis ? groupKey : item.id}
+          x={groupKey}
+          y={item.id}
           key={item.id}
           color={item.color}
         />
@@ -154,12 +142,11 @@ class HistogramChartComponent extends AbstractAxisChart<
   }
 
   renderTooltip(): React.ReactNode {
-    const { data, groupKey, invertAxis } = this.asProps;
+    const { data, groupKey } = this.asProps;
 
     return (
       <Tooltip
-        x={invertAxis ? undefined : groupKey}
-        y={invertAxis ? groupKey : undefined}
+        x={groupKey}
         wMin={100}
       >
         {({ index }: any) => {
@@ -179,7 +166,6 @@ class HistogramChartComponent extends AbstractAxisChart<
 
   protected override renderGrid(): React.ReactNode {
     const {
-      invertAxis,
       showXAxis,
       showYAxis,
       xTicksCount,
@@ -189,7 +175,7 @@ class HistogramChartComponent extends AbstractAxisChart<
 
     return (
       <>
-        {showYAxis && invertAxis !== true && (
+        {showYAxis && (
           <>
             <Grid
               scale={[this.xScale, this.yScale]}
@@ -202,23 +188,6 @@ class HistogramChartComponent extends AbstractAxisChart<
               eventEmitter={this.eventEmitter}
               scale={[this.xScale, this.yScale]}
               keyX={groupKey}
-            />
-          </>
-        )}
-
-        {showXAxis && invertAxis === true && (
-          <>
-            <Grid
-              scale={[this.xScale, this.yScale]}
-              orientation='vertical'
-              dataHintsHandler={this.dataHintsHandlers}
-              ticksCount={xTicksCount}
-            />
-            <HoverRect
-              data={this.data}
-              eventEmitter={this.eventEmitter}
-              scale={[this.xScale, this.yScale]}
-              keyY={groupKey}
             />
           </>
         )}
