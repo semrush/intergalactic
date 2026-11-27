@@ -185,7 +185,6 @@ class BarChartComponent extends AbstractAxisChart<
         y={invertAxis ? groupKey : undefined}
         wMin={100}
         onClick={onClickHoverRect}
-        hideTickHover={!showXAxis}
       >
         {(props: { index: number }) => {
           const index = props.index;

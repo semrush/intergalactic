@@ -130,7 +130,7 @@ class AreaChartComponent extends AbstractAxisChart<
     const { data, groupKey, showXAxis } = this.asProps;
 
     return (
-      <Tooltip x={groupKey} wMin={100} hideTickHover={!showXAxis}>
+      <Tooltip x={groupKey} wMin={100}>
         {({ xIndex }: any) => {
           const dataItem = data[xIndex];
 
