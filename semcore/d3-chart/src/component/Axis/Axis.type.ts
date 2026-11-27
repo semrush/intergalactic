@@ -17,11 +17,7 @@ declare namespace NSAxis {
     plotWidth: number;
     plotHeight: number;
     /**
-     * @default true
-     */
-    hideTickHover?: boolean;
-    /**
-     * @default undefined'
+     * @default undefined
      */
     ticksCount?: number;
     /**
