@@ -46,7 +46,6 @@ class GridComponent extends Component<NSGrid.Props> {
 
   render() {
     const SGrid = this.Element;
-    const SAxis = this.Element;
 
     const { styles, scale, orientation, dataHintsHandler } = this.asProps;
     const ticks = this.ticks;
@@ -56,11 +55,11 @@ class GridComponent extends Component<NSGrid.Props> {
     }
 
     return ticks.map((value, i) => {
-      const linePosition = orientation === 'vertical' ? this.getVerticalPosition(value) : this.getHorizontalPosition(value);
-
       if (orientation === 'horizontal' && i === 0) {
-        return sstyled(styles)(<SAxis key={i} render='line' {...linePosition} />);
+        return null;
       }
+
+      const linePosition = orientation === 'vertical' ? this.getVerticalPosition(value) : this.getHorizontalPosition(value);
 
       return sstyled(styles)(<SGrid key={i} render='line' {...linePosition} />);
     });
