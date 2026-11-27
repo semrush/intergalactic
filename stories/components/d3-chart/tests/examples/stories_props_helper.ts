@@ -1,4 +1,4 @@
-import type { BaseChartProps, BaseLegendProps } from '@semcore/ui/d3-chart';
+import type { BaseChartProps, BaseLegendProps, LineChartProps } from '@semcore/ui/d3-chart';
 
 type StoryChartProps<T, LP = BaseLegendProps> = T & {
   [key in keyof LP as `legendProps.${key & string}`]?: LP[key];
@@ -16,9 +16,6 @@ export const baseLegendProps: Omit<BaseLegendProps, 'withTrend' | 'trendIsVisibl
 export const baseChartProps: StoryChartProps<BaseChartProps<any>> = {
   plotWidth: 500,
   plotHeight: 300,
-  yAxisPosition: 'left',
-  showXAxis: true,
-  showYAxis: true,
   showTooltip: true,
   showTotalInTooltip: true,
   showDeltaPercentInTooltip: false,
@@ -26,8 +23,6 @@ export const baseChartProps: StoryChartProps<BaseChartProps<any>> = {
   // control to `good` swaps the two, for metrics where growing is the bad outcome.
   deltaPercentGrowthColor: 'good',
   locale: 'en',
-  xTicksCount: 10,
-  yTicksCount: 10,
   duration: 200,
   data: [],
   showLegend: true,
@@ -38,7 +33,32 @@ Object.entries(baseLegendProps).forEach(([key, value]) => {
   baseChartProps[`legendProps.${key}`] = value;
 });
 
+/**
+ * Axis props live only on charts with axes
+ */
+export const axisChartProps: Pick<
+  LineChartProps,
+  'yAxisPosition' | 'showXAxis' | 'showYAxis' | 'xTicksCount' | 'yTicksCount'
+> = {
+  yAxisPosition: 'left',
+  showXAxis: true,
+  showYAxis: true,
+  xTicksCount: 10,
+  yTicksCount: 10,
+};
+
 export function getChartProps<F>(chartProps: Partial<F>): F {
+  return {
+    ...baseChartProps,
+    ...axisChartProps,
+    ...chartProps,
+  } as F;
+}
+
+/**
+ * Same as `getChartProps`, but without `axisChartProps`: charts without axes
+ */
+export function getNoAxisChartProps<F>(chartProps: Partial<F>): F {
   return {
     ...baseChartProps,
     ...chartProps,
@@ -46,8 +66,7 @@ export function getChartProps<F>(chartProps: Partial<F>): F {
 }
 
 /**
- * Axis props have no effect on charts without axes (Donut, Radar, Venn, Cigarette,
- * ScoreDonut), so the stories of those charts neither pass nor show them.
+ * Axis controls hidden from the argTypes of charts without axes, see `getNoAxisChartArgTypes`.
  */
 const axisPropNames = [
   'yAxisPosition',
@@ -66,10 +85,6 @@ const omitProps = <T extends Record<string, any>>(props: T, names: readonly stri
 };
 
 const omitAxisProps = <T extends Record<string, any>>(props: T): T => omitProps(props, axisPropNames);
-
-export function getNoAxisChartProps<F>(chartProps: Partial<F>): F {
-  return omitAxisProps(getChartProps<F>(chartProps) as any);
-}
 
 /** `Chart.Bubble` always draws both axes, so it has no `showXAxis` / `showYAxis` props. */
 const axisTogglePropNames = ['showXAxis', 'showYAxis'] as const;
