@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.1] - 2026-11-27
+
+### Changed
+
+- `InputTags.Value` fills the available space from the last tag to the
+right border.
+
 ## [18.0.0] - 2026-10-08
 
 ### BREAK

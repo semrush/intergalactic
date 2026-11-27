@@ -1,7 +1,7 @@
 {
   "name": "@semcore/dropdown-menu",
   "description": "Semrush DropdownMenu Component",
-  "version": "18.0.1",
+  "version": "18.0.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,7 +17,7 @@
     "require": "./lib/cjs/index.js"
   },
   "dependencies": {
-    "@semcore/button": "^18.0.0",
+    "@semcore/button": "^18.0.1",
     "@semcore/dropdown": "^18.0.0",
     "@semcore/typography": "^18.0.0",
     "classnames": "2.2.6"

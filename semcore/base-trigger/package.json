@@ -1,7 +1,7 @@
 {
   "name": "@semcore/base-trigger",
   "description": "Semrush BaseTrigger Component",
-  "version": "18.0.1",
+  "version": "18.0.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -19,9 +19,9 @@
   "dependencies": {
     "@semcore/counter": "^18.0.0",
     "@semcore/spin": "^18.0.0",
-    "@semcore/tooltip": "^18.0.0",
+    "@semcore/tooltip": "^18.0.1",
     "@semcore/typography": "^18.0.0",
-    "@semcore/button": "^18.0.0"
+    "@semcore/button": "^18.0.1"
   },
   "peerDependencies": {
     "@semcore/base-components": "^18.0.0",

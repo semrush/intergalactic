@@ -1,7 +1,7 @@
 {
   "name": "@semcore/errors",
   "description": "Semrush Errors Component",
-  "version": "18.0.0",
+  "version": "18.0.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,7 +17,7 @@
     "require": "./lib/cjs/index.js"
   },
   "dependencies": {
-    "@semcore/button": "^18.0.0",
+    "@semcore/button": "^18.0.1",
     "@semcore/illustration": "^18.0.0",
     "@semcore/typography": "^18.0.0"
   },
