@@ -97,7 +97,7 @@ class LineChartComponent extends AbstractAxisChart<
   }
 
   protected renderTooltip() {
-    const { data, groupKey, showXAxis } = this.asProps;
+    const { data, groupKey } = this.asProps;
 
     return (
       <Tooltip x={groupKey} wMin={100}>
