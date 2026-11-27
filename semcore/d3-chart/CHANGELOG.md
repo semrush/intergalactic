@@ -2,6 +2,61 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.2.0] - 2026-11-27
+
+### Added
+
+- Axis margins are now calculated automatically.
+- Hovered ticks are highlighted on the axes.
+- `Chart.Bubble` redesign: gradients, label margins, data highlighting
+from the legend, its own grid, and axes that are always shown.
+- `yAxisPosition` property for placement on the `left`, on the `right`,
+or `both`.
+- New `ScoreBarChart` component with default and compact modes.
+- Added `referenceLine` and `referenceArea` props to `Chart.Bar` (for
+vertical bars only).
+- Added `forecast` and `potential` data visualization and highlight
+markers to vertical bars.
+- New `Chart.ScoreDonut` component.
+
+### Changed
+
+- `invertAxis` is now only available in `Chart.Bar`. It was removed from
+`Chart.Histogram`.
+- `xScale` in `Chart.Bar` now only accepts `ScaleBand`.
+- Deprecated `marginX`/`marginY` (calculated automatically now).
+- Deprecated: `invertAxis`, `showXAxis`, `showYAxis`, `xTicksCount`,
+`yTicksCount`, `axisXValueFormatter` in `BaseChartProps` (only
+`AbstractAxisChart` has axes now).
+- Deprecated the low-level components `Plot`, `ResponsiveContainer`,
+`XAxis`/`YAxis`, `Line`, `Area`, `StackedArea`, `Bar`, `HorizontalBar`,
+`GroupBar`, `StackBar`, `CompactHorizontalBar`, `Bubble`, `ScatterPlot`,
+`Donut`, `Radar`, `Venn`, `HoverLine`, `HoverRect`, `Tooltip` and
+`ClipPath`. Use `Chart.*` instead.
+- Bubble chart styles.
+- Updated patterns to match the new styles and adjusted their order.
+- Updated symbols to align with the revised patterns.
+- Fixed the issue with the custom symbol not being passed to the
+tooltip.
+- Bar chart design, including rounded corners, spacing between stacked
+segments, and hover highlights.
+- Replaced compact horizontal bar chart documentation with ScoreBarChart
+documentation.
+- Deprecated `Bar.Background`, `HorizontalBar.Background` and
+`CompactHorizontalBar`.
+- Hover states to match them with other charts' behaviour.
+- Added 2px border-radius to the segments.
+- Increased stroke between the segments to 2px.
+- BREAK! Changed `innerLabel` type. For now this is `[string, string]` -
+Numeric label and secondary description. Both are required. Fixed styles
+for both strings.
+- BREAK! No `active` property for the DonutPie anymore. Use
+`transparent` for non-active pies.
+
+### Fixed
+
+- Missed `de` translation.
+
 ## [18.1.0] - 2026-11-02
 
 ### Changed

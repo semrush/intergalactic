@@ -1,3 +1,91 @@
+## [18.2.0] - 2026-11-27
+
+### @semcore/input-tags
+
+- **Changed** `InputTags.Value` fills the available space from the last tag to the
+right border.
+
+### @semcore/tooltip
+
+- **Fixed** Arrow border in now thicker.
+
+### @semcore/select
+
+- **Fixed** Prevented open Select options from changing the value after the Select
+becomes disabled.
+
+### @semcore/pagination
+
+- **Fixed** `Next` button theme.
+
+### @semcore/button
+
+- **Changed** styles for the `neighborLocation` property.
+
+### @semcore/flags
+
+- **Changed** Rewrote the component in TS. Atomic types are now deprecated, and all
+related types have been consolidated under the `NSFlags` namespace.
+- **Changed** Update flag's container style (added border-radius and border).
+- **Changed** Package moved out of scope `@semcore/ui`.
+
+### @semcore/data-table
+
+- **Fixed** Performance issue with fixed columns on scroll.
+
+### @semcore/d3-chart
+
+- **Added** Axis margins are now calculated automatically.
+- **Added** Hovered ticks are highlighted on the axes.
+- **Added** `Chart.Bubble` redesign: gradients, label margins, data highlighting
+from the legend, its own grid, and axes that are always shown.
+- **Added** `yAxisPosition` property for placement on the `left`, on the `right`,
+or `both`.
+- **Changed** `invertAxis` is now only available in `Chart.Bar`. It was removed from
+`Chart.Histogram`.
+- **Changed** `xScale` in `Chart.Bar` now only accepts `ScaleBand`.
+- **Changed** Deprecated `marginX`/`marginY` (calculated automatically now).
+- **Changed** Deprecated: `invertAxis`, `showXAxis`, `showYAxis`, `xTicksCount`,
+`yTicksCount`, `axisXValueFormatter` in `BaseChartProps` (only
+`AbstractAxisChart` has axes now).
+- **Changed** Deprecated the low-level components `Plot`, `ResponsiveContainer`,
+`XAxis`/`YAxis`, `Line`, `Area`, `StackedArea`, `Bar`, `HorizontalBar`,
+`GroupBar`, `StackBar`, `CompactHorizontalBar`, `Bubble`, `ScatterPlot`,
+`Donut`, `Radar`, `Venn`, `HoverLine`, `HoverRect`, `Tooltip` and
+`ClipPath`. Use `Chart.*` instead.
+- **Changed** Bubble chart styles.
+- **Changed** Updated patterns to match the new styles and adjusted their order.
+- **Changed** Updated symbols to align with the revised patterns.
+- **Changed** Fixed the issue with the custom symbol not being passed to the
+tooltip.
+- **Added** New `ScoreBarChart` component with default and compact modes.
+- **Added** Added `referenceLine` and `referenceArea` props to `Chart.Bar` (for
+vertical bars only).
+- **Added** Added `forecast` and `potential` data visualization and highlight
+markers to vertical bars.
+- **Changed** Bar chart design, including rounded corners, spacing between stacked
+segments, and hover highlights.
+- **Changed** Replaced compact horizontal bar chart documentation with ScoreBarChart
+documentation.
+- **Changed** Deprecated `Bar.Background`, `HorizontalBar.Background` and
+`CompactHorizontalBar`.
+- **Fixed** Missed `de` translation.
+- **Added** New `Chart.ScoreDonut` component.
+- **Changed** Hover states to match them with other charts' behaviour.
+- **Changed** Added 2px border-radius to the segments.
+- **Changed** Increased stroke between the segments to 2px.
+- **Changed** BREAK! Changed `innerLabel` type. For now this is `[string, string]` -
+Numeric label and secondary description. Both are required. Fixed styles
+for both strings.
+- **Changed** BREAK! No `active` property for the DonutPie anymore. Use
+`transparent` for non-active pies.
+
+### @semcore/core
+
+- **Fixed** Issue in `LastInteractionType.handleKeyDown` to prevent errors related
+to an undefined `e.key` when the event was triggered by an autocomplete
+action.
+
 ## [18.1.0] - 2026-11-02
 
 ### @semcore/core
