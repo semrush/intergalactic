@@ -268,8 +268,8 @@ export abstract class AbstractAxisChart<
   };
 
   protected getIndexByValue(value: unknown): number {
-    const { groupKey } = this.asProps;
-    const scale = this.xScale;
+    const { groupKey, invertAxis } = this.asProps;
+    const scale = invertAxis ? this.yScale : this.xScale;
 
     if (!groupKey) {
       return -1;
@@ -280,7 +280,10 @@ export abstract class AbstractAxisChart<
       // @ts-expect-error difficult to type it because of history  reasons
       return bisect(this.data, value);
     } else if ('step' in scale && typeof scale.step !== 'undefined') { // detect bar chart
-      const index = this.data.findIndex((d) => d[groupKey] === value);
+      const index = this.data.findIndex((d) => {
+        return d[groupKey] === value;
+      });
+
       return index;
     }
 
