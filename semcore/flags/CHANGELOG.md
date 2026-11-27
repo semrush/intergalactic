@@ -2,6 +2,15 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.1.1] - 2026-11-27
+
+### Changed
+
+- Rewrote the component in TS. Atomic types are now deprecated, and all
+related types have been consolidated under the `NSFlags` namespace.
+- Update flag's container style (added border-radius and border).
+- Package moved out of scope `@semcore/ui`.
+
 ## [18.1.0] - 2026-11-02
 
 ### Added
