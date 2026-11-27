@@ -80,6 +80,6 @@ SChartContainer[yAxisPosition='right'] {
   grid-template-columns: 1fr max-content;
 }
 SChartContainer[yAxisPosition='both'] {
-  grid-template: 'yLeftAxis plot yRgihtAxis' '. xAxis .';
+  grid-template: 'yLeftAxis plot yRightAxis' '. xAxis .';
   grid-template-columns: max-content 1fr max-content;
 }

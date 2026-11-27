@@ -20,7 +20,7 @@ class YAxisComponent extends AbstractAxisComponent {
       return `translateY(calc(${translate}px - 50%))`;
     }
 
-    return `translateX(${translate})`;
+    return `translateY(${translate})`;
   };
 
   override handleHoverListItemEvent(index: number, invertAxis: boolean) {
