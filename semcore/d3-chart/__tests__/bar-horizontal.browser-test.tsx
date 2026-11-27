@@ -282,6 +282,28 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
+  test('Verify tooltip shows the hovered bar when categories are not in alphabetical order', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
+  }, async ({ page }) => {
+    const data = [
+      { category: 'Mar', bar: 2 },
+      { category: 'Jan', bar: 5 },
+      { category: 'Feb', bar: 7 },
+      { category: 'Apr', bar: 4 },
+      { category: 'C.10', bar: 6 },
+      { category: 'C.2', bar: 3 },
+    ];
+    await loadPage(page, BAR_STORY, 'en', { invertAxis: true, data, trend: undefined, duration: 0 });
+    await expect(locators.groupBarHorizontalBar(page)).toHaveCount(data.length);
+
+    for (const [index, { category }] of data.entries()) {
+      await test.step(`Verify tooltip shows "${category}" over its bar`, async () => {
+        await hoverCenter(page, locators.groupBarHorizontalBar(page, index));
+        await expect(locators.tooltip(page)).toContainText(category);
+      });
+    }
+  });
+
   test('Verify horizontal hover rect is rounded at all 4 corners', {
     tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@horizontal-bar-chart', '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {

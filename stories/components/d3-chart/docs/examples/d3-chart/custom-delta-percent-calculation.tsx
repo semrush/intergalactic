@@ -10,6 +10,7 @@ const Demo = () => {
       data={data}
       plotWidth={500}
       plotHeight={200}
+      xTicksCount={8}
       aria-label='Area chart'
       showDeltaPercentInTooltip
       getPercentDelta={(key, index, data): number | null => {
