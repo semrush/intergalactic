@@ -29,7 +29,6 @@ import type { HoverRect, Tooltip as TooltipComponent } from '../../..';
 import { Plot } from '../../..';
 import { makeDataHintsContainer, makeDataHintsHandlers } from '../../../a11y/hints';
 import { interpolateValue, uniqueId } from '../../../utils';
-import { PlotSize } from '../../../utils/PlotSize';
 import ChartLegend, { ChartLegendTable } from '../../ChartLegend';
 import type { LegendFlexProps } from '../../ChartLegend/LegendFlex/LegendFlex.type';
 import type { LegendItem } from '../../ChartLegend/LegendItem/LegendItem.type';
