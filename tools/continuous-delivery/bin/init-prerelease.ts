@@ -1,5 +1,7 @@
 #!/usr/bin/env tsm
 
+import process from 'process';
+
 /**
  * Options:
  *   --check
@@ -7,4 +9,6 @@
  */
 import { initPrerelease } from '../index';
 
-await initPrerelease();
+const [,, pack] = process.argv;
+
+await initPrerelease(pack);

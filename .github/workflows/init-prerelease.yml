@@ -3,6 +3,16 @@ on:
   workflow_dispatch:
     branch:
       - release/v18
+    inputs:
+      package:
+        type: choice
+        description: "Package:"
+        required: true
+        options:
+          - "ui"
+          - "icon"
+          - "illustration"
+          - "flags"
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 jobs:
@@ -76,4 +86,4 @@ jobs:
           git config user.name "semrush-ci-whale"
           git config user.email "semrush-ci-whale@users.noreply.github.com"
           git remote set-url origin "https://${GITHUB_SECRET}@github.com/semrush/intergalactic.git"
-          pnpm init-prerelease
+          pnpm init-prerelease ${{ inputs.tool }}

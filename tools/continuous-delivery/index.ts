@@ -18,7 +18,11 @@ import { validateSlackIntegrationEnv } from './src/utils/slackIntegration';
 
 dotenv.config();
 
-export const initPrerelease = async () => {
+export const initPrerelease = async (pack: unknown) => {
+  if (pack === 'icon' || pack === 'illustration' || pack === 'flags') {
+    return initPackagePrerelease(pack);
+  }
+
   const prevReleaseTag = await gitUtils.getPrevReleaseTag();
 
   const packages = new Package();
