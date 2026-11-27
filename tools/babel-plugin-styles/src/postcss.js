@@ -41,7 +41,10 @@ module.exports = function (options) {
       ...options.presetEnv,
     }),
     mixins({
-      mixinsFiles: path.join(__dirname, '../../../semcore/base-components/src/components/flex-box/style/focus-outline-mixin.css'),
+      mixinsFiles: [
+        path.join(__dirname, '../../../semcore/base-components/src/components/flex-box/style/focus-outline-mixin.css'),
+        path.join(__dirname, '../../../semcore/base-components/src/components/flex-box/style/input-focus-outline-mixin.css'),
+      ],
     }),
     inlineCssVariables(),
     syncPlugin(postcssColorMod()),
