@@ -30,8 +30,9 @@ const ignoreComponents = [
   '@semcore/email',
   '@semcore/utils',
   '@semcore/table',
-  // '@semcore/icon', // separate to another pipeline
-  // '@semcore/illustration', // separate to another pipeline
+  '@semcore/icon', // separate to another pipeline
+  '@semcore/illustration', // separate to another pipeline
+  '@semcore/flags', // separate to another pipeline
   '@semcore/theme', // separate to another pipeline
 ];
 
