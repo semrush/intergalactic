@@ -2,6 +2,43 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.2.0] - 2026-11-27
+
+### Changed
+
+- Bubble chart styles.
+- Updated patterns to match the new styles and adjusted their order.
+- Updated symbols to align with the revised patterns.
+- Fixed the issue with the custom symbol not being passed to the
+tooltip.
+- Bar chart design, including rounded corners, spacing between stacked
+segments, and hover highlights.
+- Replaced compact horizontal bar chart documentation with ScoreBarChart
+documentation.
+- Deprecated `Bar.Background`, `HorizontalBar.Background` and
+`CompactHorizontalBar`.
+- Hover states to match them with other charts' behaviour.
+- Added 2px border-radius to the segments.
+- Increased stroke between the segments to 2px.
+- BREAK! Changed `innerLabel` type. For now this is `[string, string]` -
+Numeric label and secondary description. Both are required. Fixed styles
+for both strings.
+- BREAK! No `active` property for the DonutPie anymore. Use
+`transparent` for non-active pies.
+
+### Added
+
+- New `ScoreBarChart` component with default and compact modes.
+- Added `referenceLine` and `referenceArea` props to `Chart.Bar` (for
+vertical bars only).
+- Added `forecast` and `potential` data visualization and highlight
+markers to vertical bars.
+- New `Chart.ScoreDonut` component.
+
+### Fixed
+
+- Missed `de` translation.
+
 ## [18.1.0] - 2026-11-02
 
 ### Changed

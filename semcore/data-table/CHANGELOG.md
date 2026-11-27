@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [18.0.2] - 2026-11-27
+
+### Fixed
+
+- Performance issue with fixed columns on scroll.
+
 ## [18.0.1] - 2026-11-02
 
 ### Fixed
