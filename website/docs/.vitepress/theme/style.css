@@ -556,6 +556,10 @@ video {
   padding-right: 4px;
   line-height: normal;
   overflow: auto;
+
+  & * {
+    box-sizing: unset;
+  }
 }
 
 @media (min-width: 640px) {

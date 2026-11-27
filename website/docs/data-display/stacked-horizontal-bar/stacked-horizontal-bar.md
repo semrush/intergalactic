@@ -39,9 +39,11 @@ Refer to [Horizontal bar chart > Margins](/data-display/bar-horizontal/bar-horiz
 
 Refer to [Horizontal bar chart > Grid and axes](/data-display/bar-horizontal/bar-horizontal#grid-and-axes).
 
-## Category labels
+<!-- TODO: Update the part below later -->
+[//]: # (## Category labels)
 
-Refer to [Horizontal bar chart > Category labels](/data-display/bar-horizontal/bar-horizontal#category-labels).
+[//]: # ()
+[//]: # (Refer to [Horizontal bar chart > Category labels]&#40;/data-display/bar-horizontal/bar-horizontal#category-labels&#41;.)
 
 ## Legend
 
