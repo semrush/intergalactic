@@ -36,7 +36,7 @@ class LastInteractionType {
 
   private handleKeyDown(e: KeyboardEvent) {
     this.lastFocusSource = 'keyboard';
-    this.lastKeyboardKey = e.key.toLowerCase();
+    this.lastKeyboardKey = e.key?.toLowerCase(); // e.key could be undefined if the event fired from autofill inputs
   }
 }
 
