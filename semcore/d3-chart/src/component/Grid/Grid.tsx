@@ -57,6 +57,10 @@ class GridComponent extends Component<NSGrid.Props> {
     return ticks.map((value, i) => {
       const linePosition = orientation === 'vertical' ? this.getVerticalPosition(value) : this.getHorizontalPosition(value);
 
+      if (i === 0 && orientation === 'horizontal' && linePosition.y1 === scale[1].range()[0]) {
+        return null;
+      }
+
       return sstyled(styles)(<SGrid key={i} render='line' {...linePosition} />);
     });
   }
