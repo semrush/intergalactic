@@ -214,7 +214,6 @@ class HistogramChartComponent extends AbstractAxisChart<
               dataHintsHandler={this.dataHintsHandlers}
               ticksCount={xTicksCount}
             />
-            {this.renderXAxisLine()}
             <HoverRect
               data={this.data}
               eventEmitter={this.eventEmitter}
@@ -223,6 +222,8 @@ class HistogramChartComponent extends AbstractAxisChart<
             />
           </>
         )}
+
+        {showXAxis !== false && this.renderXAxisLine()}
       </>
     );
   }
