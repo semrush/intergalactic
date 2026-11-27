@@ -12,7 +12,7 @@ import { AbstractChart } from './AbstractChart';
 import type { ListData } from './AbstractChart.type';
 // @ts-ignore
 import { Plot } from '../../..';
-import { invert } from '../../../utils';
+import { invert, scaleOfBandwidth } from '../../../utils';
 import { XAxis } from '../../Axis/XAxis';
 import { YAxis } from '../../Axis/YAxis';
 import { Grid } from '../../Grid/Grid';
@@ -88,26 +88,52 @@ export abstract class AbstractAxisChart<
     return this.valueFormatter(value);
   }
 
+  protected renderXAxisLine() {
+    const {
+      showXAxis,
+      styles,
+    } = this.asProps;
+
+    if (showXAxis === false) {
+      return null;
+    }
+
+    const SXAxis = 'line';
+    const xRange = this.xScale.range();
+    const yRange = this.yScale.range();
+
+    return sstyled(styles)(
+      <SXAxis
+        x1={xRange[0]}
+        x2={xRange[1]}
+        y1={yRange[0]}
+        y2={yRange[0]}
+      />,
+    );
+  }
+
   protected renderGrid(): React.ReactNode {
     const {
       showYAxis,
       groupKey,
+      styles,
     } = this.asProps;
 
     const yTicks = this.yTicks;
 
-    return (
+    return sstyled(styles)(
       <>
         {showYAxis && (
           <Grid scale={[this.xScale, this.yScale]} orientation='horizontal' dataHintsHandler={this.dataHintsHandlers} ticksCount={yTicks?.length} />
         )}
+        {this.renderXAxisLine()}
         <HoverLine
           data={this.data}
           scale={[this.xScale, this.yScale]}
           eventEmitter={this.eventEmitter}
           keyX={groupKey}
         />
-      </>
+      </>,
     );
   }
 

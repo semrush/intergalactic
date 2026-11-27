@@ -310,6 +310,8 @@ class BarChartComponent extends AbstractAxisChart<
           />
         )}
 
+        {this.renderXAxisLine()}
+
         <HoverRect
           data={this.data}
           eventEmitter={this.eventEmitter}

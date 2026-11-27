@@ -5,6 +5,12 @@ SChart {
   min-height: 0;
 }
 
+SXAxis {
+  fill: transparent;
+  stroke: var(--intergalactic-chart-grid-x-axis, oklch(0.88 0.011 234.9));
+  stroke-linecap: round;
+}
+
 STooltipChildrenWrapper {
   display: grid;
   gap: var(--intergalactic-spacing-2x, 8px);

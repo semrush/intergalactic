@@ -199,7 +199,6 @@ class HistogramChartComponent extends AbstractAxisChart<
             />
             <HoverRect
               data={this.data}
-              uid={this.plotId}
               eventEmitter={this.eventEmitter}
               scale={[this.xScale, this.yScale]}
               keyX={groupKey}
@@ -215,9 +214,9 @@ class HistogramChartComponent extends AbstractAxisChart<
               dataHintsHandler={this.dataHintsHandlers}
               ticksCount={xTicksCount}
             />
+            {this.renderXAxisLine()}
             <HoverRect
               data={this.data}
-              uid={this.plotId}
               eventEmitter={this.eventEmitter}
               scale={[this.xScale, this.yScale]}
               keyY={groupKey}

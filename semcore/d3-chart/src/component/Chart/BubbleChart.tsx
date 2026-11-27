@@ -252,6 +252,7 @@ class BubbleChartComponent extends AbstractAxisChart<
       <>
         <Grid scale={[this.xScale, this.yScale]} orientation='horizontal' dataHintsHandler={this.dataHintsHandlers} ticksCount={yTicksCount} />
         <Grid scale={[this.xScale, this.yScale]} orientation='vertical' dataHintsHandler={this.dataHintsHandlers} ticksCount={xTicksCount} />
+        {this.renderXAxisLine()}
         <HoverLine
           data={this.data}
           keyX='x'
